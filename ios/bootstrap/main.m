@@ -1,8 +1,8 @@
 //
 //  main.m
-//  furiousblocks
+//  test
 //
-//  Created by Bertrand Quenin on 29/06/12.
+//  Created by Bertrand Quenin on 01/07/12.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 

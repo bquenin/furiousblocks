@@ -1,8 +1,8 @@
 //
-//  furiousblocksAppDelegate.cpp
-//  furiousblocks
+//  testAppDelegate.cpp
+//  test
 //
-//  Created by Bertrand Quenin on 29/06/12.
+//  Created by Bertrand Quenin on 01/07/12.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 
@@ -30,9 +30,6 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
     // pDirector->enableRetinaDisplay(true);
-
-    // sets landscape mode
-    // pDirector->setDeviceOrientation(kCCDeviceOrientationLandscapeLeft);
 
     // turn on display FPS
     pDirector->setDisplayStats(true);
