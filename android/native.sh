@@ -1,6 +1,6 @@
 # set params
 NDK_ROOT=/Users/tsug/android-ndk-r8
-COCOS2DX_ROOT=/Users/tsug/cocos2d-2.0-rc0a-x-2.0
+COCOS2DX_ROOT=/Users/tsug/cocos2d-2.0-rc2-x-2.0.1
 GAME_ROOT=..
 GAME_ANDROID_ROOT=$GAME_ROOT/android
 
