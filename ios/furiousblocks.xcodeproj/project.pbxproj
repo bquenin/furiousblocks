@@ -194,6 +194,8 @@
 		02E030C4159FBA4100C26BE0 /* CCSpriteLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E030B3159FBA4100C26BE0 /* CCSpriteLoader.cpp */; };
 		02E030C8159FBB1600C26BE0 /* CCScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E030C7159FBB1600C26BE0 /* CCScrollView.cpp */; };
 		02E030CA159FBB9600C26BE0 /* ccCArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E030C9159FBB9600C26BE0 /* ccCArray.cpp */; };
+		2E211F1159E493100CB0ADC /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0ADB /* fps_images-hd.png */; };
+		2E211F1159E493100CB0ADE /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0ADD /* fps_images-ipadhd.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -600,6 +602,8 @@
 		02E20FB0159E492E00CB0ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		02E20FB2159E492E00CB0ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02E20FB4159E492E00CB0ADA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2E211F1159E493100CB0ADB /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-hd.png"; sourceTree = "<group>"; };
+		2E211F1159E493100CB0ADD /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-ipadhd.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -624,6 +628,8 @@
 		02BAEA13159E577F00BCA0C3 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				2E211F1159E493100CB0ADD /* fps_images-ipadhd.png */,
+				2E211F1159E493100CB0ADB /* fps_images-hd.png */,
 				02E03071159FB9E800C26BE0 /* CloseNormal.png */,
 				02E03072159FB9E800C26BE0 /* CloseSelected.png */,
 				02E03073159FB9E800C26BE0 /* Default.png */,
@@ -1485,6 +1491,8 @@
 				02E03087159FB9E800C26BE0 /* Icon.png in Resources */,
 				02E03088159FB9E800C26BE0 /* Icon@2x.png in Resources */,
 				02E0308A159FB9E800C26BE0 /* iTunesArtwork in Resources */,
+				2E211F1159E493100CB0ADC /* fps_images-hd.png in Resources */,
+				2E211F1159E493100CB0ADE /* fps_images-ipadhd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
