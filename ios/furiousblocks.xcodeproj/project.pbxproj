@@ -638,9 +638,8 @@
 				02E0307C159FB9E800C26BE0 /* Info.plist */,
 				02E0307D159FB9E800C26BE0 /* iTunesArtwork */,
 			);
-			name = assets;
-			path = ../assets;
-			sourceTree = "<group>";
+			path = assets;
+			sourceTree = SOURCE_ROOT;
 		};
 		02BAEA34159E578F00BCA0C3 /* libs */ = {
 			isa = PBXGroup;
@@ -1421,9 +1420,8 @@
 				02BAF101159E5C0E00BCA0C3 /* AppController.mm */,
 				02BAF102159E5C0E00BCA0C3 /* RootViewController.mm */,
 			);
-			name = bootstrap;
-			path = furiousblocks;
-			sourceTree = "<group>";
+			path = bootstrap;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
