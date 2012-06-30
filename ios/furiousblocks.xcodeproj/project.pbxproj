@@ -1364,7 +1364,7 @@
 			);
 			name = generic;
 			path = ../generic;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		02E030C5159FBB0600C26BE0 /* CCScrollView */ = {
 			isa = PBXGroup;
