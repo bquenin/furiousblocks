@@ -36,28 +36,28 @@
 */
 // Override to allow orientations other than the default landscape orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return UIInterfaceOrientationIsLandscape( interfaceOrientation );
-    
-    // switch to this line if you want to set portrait view
-    // return UIInterfaceOrientationIsPortrait( interfaceOrientation );
+  return UIInterfaceOrientationIsPortrait( interfaceOrientation );
+
+  // switch to this line if you want to set portrait view
+  // return UIInterfaceOrientationIsPortrait( interfaceOrientation );
 }
 
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
+
+  // Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
 }
 
 
 - (void)dealloc {
-    [super dealloc];
+  [super dealloc];
 }
 
 

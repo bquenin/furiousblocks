@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		028D818715A064800057EFA4 /* PanelScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 028D818615A064800057EFA4 /* PanelScene.cpp */; };
-		028D818B15A064980057EFA4 /* iphone-sd.png in Resources */ = {isa = PBXBuildFile; fileRef = 028D818815A064980057EFA4 /* iphone-sd.png */; };
-		028D818C15A064980057EFA4 /* iphone-sd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 028D818915A064980057EFA4 /* iphone-sd.plist */; };
+		028D818B15A064980057EFA4 /* iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 028D818815A064980057EFA4 /* iphone.png */; };
+		028D818C15A064980057EFA4 /* iphone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 028D818915A064980057EFA4 /* iphone.plist */; };
 		02BAEEB9159E5AAB00BCA0C3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FA6159E492E00CB0ADA /* QuartzCore.framework */; };
 		02BAEEBA159E5AAB00BCA0C3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FA8159E492E00CB0ADA /* OpenGLES.framework */; };
 		02BAEEBB159E5AAB00BCA0C3 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FAA159E492E00CB0ADA /* OpenAL.framework */; };
@@ -166,7 +166,6 @@
 		02BAF4B7159E5F5C00BCA0C3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */; };
 		02E0307E159FB9E800C26BE0 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03071159FB9E800C26BE0 /* CloseNormal.png */; };
 		02E0307F159FB9E800C26BE0 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03072159FB9E800C26BE0 /* CloseSelected.png */; };
-		02E03080159FB9E800C26BE0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03073159FB9E800C26BE0 /* Default.png */; };
 		02E03081159FB9E800C26BE0 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03074159FB9E800C26BE0 /* fps_images.png */; };
 		02E03082159FB9E800C26BE0 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03075159FB9E800C26BE0 /* HelloWorld.png */; };
 		02E03083159FB9E800C26BE0 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03076159FB9E800C26BE0 /* Icon-72.png */; };
@@ -212,9 +211,9 @@
 /* Begin PBXFileReference section */
 		028D818515A064800057EFA4 /* PanelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelScene.h; sourceTree = "<group>"; };
 		028D818615A064800057EFA4 /* PanelScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PanelScene.cpp; sourceTree = "<group>"; };
-		028D818815A064980057EFA4 /* iphone-sd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-sd.png"; sourceTree = "<group>"; };
-		028D818915A064980057EFA4 /* iphone-sd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iphone-sd.plist"; sourceTree = "<group>"; };
-		028D818A15A064980057EFA4 /* iphone-sd.zwd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iphone-sd.zwd"; sourceTree = "<group>"; };
+		028D818815A064980057EFA4 /* iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone.png; sourceTree = "<group>"; };
+		028D818915A064980057EFA4 /* iphone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iphone.plist; sourceTree = "<group>"; };
+		028D818A15A064980057EFA4 /* iphone.zwd */ = {isa = PBXFileReference; lastKnownFileType = file; path = iphone.zwd; sourceTree = "<group>"; };
 		02BAEA37159E578F00BCA0C3 /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
 		02BAEA38159E578F00BCA0C3 /* CCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAction.h; sourceTree = "<group>"; };
 		02BAEA39159E578F00BCA0C3 /* CCActionCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCActionCamera.cpp; sourceTree = "<group>"; };
@@ -555,7 +554,6 @@
 		02BAF106159E5C7200BCA0C3 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = bootstrap/Prefix.pch; sourceTree = SOURCE_ROOT; };
 		02E03071159FB9E800C26BE0 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseNormal.png; path = assets/CloseNormal.png; sourceTree = SOURCE_ROOT; };
 		02E03072159FB9E800C26BE0 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CloseSelected.png; path = assets/CloseSelected.png; sourceTree = SOURCE_ROOT; };
-		02E03073159FB9E800C26BE0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = assets/Default.png; sourceTree = SOURCE_ROOT; };
 		02E03074159FB9E800C26BE0 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = assets/fps_images.png; sourceTree = SOURCE_ROOT; };
 		02E03075159FB9E800C26BE0 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HelloWorld.png; path = assets/HelloWorld.png; sourceTree = SOURCE_ROOT; };
 		02E03076159FB9E800C26BE0 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "assets/Icon-72.png"; sourceTree = SOURCE_ROOT; };
@@ -677,7 +675,6 @@
 				2E211F1159E493100CB0ADB /* fps_images-hd.png */,
 				02E03071159FB9E800C26BE0 /* CloseNormal.png */,
 				02E03072159FB9E800C26BE0 /* CloseSelected.png */,
-				02E03073159FB9E800C26BE0 /* Default.png */,
 				02E03074159FB9E800C26BE0 /* fps_images.png */,
 				02E03075159FB9E800C26BE0 /* HelloWorld.png */,
 				02E03076159FB9E800C26BE0 /* Icon-72.png */,
@@ -1429,6 +1426,7 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
+				028D818A15A064980057EFA4 /* iphone.zwd */,
 				02BAEA13159E577F00BCA0C3 /* assets */,
 				02BAEA34159E578F00BCA0C3 /* libs */,
 				02BAEC48159E57C600BCA0C3 /* generic */,
@@ -1527,9 +1525,8 @@
 		2E211F1159E493100CB0B17 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
-				028D818815A064980057EFA4 /* iphone-sd.png */,
-				028D818915A064980057EFA4 /* iphone-sd.plist */,
-				028D818A15A064980057EFA4 /* iphone-sd.zwd */,
+				028D818815A064980057EFA4 /* iphone.png */,
+				028D818915A064980057EFA4 /* iphone.plist */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
@@ -1586,7 +1583,6 @@
 			files = (
 				02E0307E159FB9E800C26BE0 /* CloseNormal.png in Resources */,
 				02E0307F159FB9E800C26BE0 /* CloseSelected.png in Resources */,
-				02E03080159FB9E800C26BE0 /* Default.png in Resources */,
 				02E03081159FB9E800C26BE0 /* fps_images.png in Resources */,
 				02E03082159FB9E800C26BE0 /* HelloWorld.png in Resources */,
 				02E03083159FB9E800C26BE0 /* Icon-72.png in Resources */,
@@ -1598,8 +1594,8 @@
 				02E0308A159FB9E800C26BE0 /* iTunesArtwork in Resources */,
 				2E211F1159E493100CB0ADC /* fps_images-hd.png in Resources */,
 				2E211F1159E493100CB0ADE /* fps_images-ipadhd.png in Resources */,
-				028D818B15A064980057EFA4 /* iphone-sd.png in Resources */,
-				028D818C15A064980057EFA4 /* iphone-sd.plist in Resources */,
+				028D818B15A064980057EFA4 /* iphone.png in Resources */,
+				028D818C15A064980057EFA4 /* iphone.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
