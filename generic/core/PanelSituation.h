@@ -17,7 +17,7 @@
 #include "GarbageSituation.h"
 #include "PanelEvent.h"
 #include "FBPoint.h"
-#import "FuriousBlocksCoreDefaults.h"
+#include "FuriousBlocksCoreDefaults.h"
 
 using namespace std;
 
