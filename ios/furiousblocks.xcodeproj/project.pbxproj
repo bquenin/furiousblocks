@@ -206,6 +206,9 @@
 		2E211F1159E493100CB0B0F /* PanelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B0E /* PanelEvent.cpp */; };
 		2E211F1159E493100CB0B11 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B10 /* Player.cpp */; };
 		2E211F1159E493100CB0B15 /* SimpleRNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B14 /* SimpleRNG.cpp */; };
+		2E211F1159E493100CB0B1A /* blocks-hd.zwd in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B19 /* blocks-hd.zwd */; };
+		2E211F1159E493100CB0B1C /* blocks-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B1B /* blocks-hd.png */; };
+		2E211F1159E493100CB0B1E /* blocks-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B1D /* blocks-hd.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -647,6 +650,9 @@
 		2E211F1159E493100CB0B0E /* PanelEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelEvent.cpp; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B10 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B14 /* SimpleRNG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleRNG.cpp; sourceTree = "<group>"; };
+		2E211F1159E493100CB0B19 /* blocks-hd.zwd */ = {isa = PBXFileReference; lastKnownFileType = file.zwd; path = "blocks-hd.zwd"; sourceTree = "<group>"; };
+		2E211F1159E493100CB0B1B /* blocks-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blocks-hd.png"; sourceTree = "<group>"; };
+		2E211F1159E493100CB0B1D /* blocks-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = "blocks-hd.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1423,6 +1429,7 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
+				2E211F1159E493100CB0B19 /* blocks-hd.zwd */,
 				028D818A15A064980057EFA4 /* iphone.zwd */,
 				02BAEA13159E577F00BCA0C3 /* assets */,
 				02BAEA34159E578F00BCA0C3 /* libs */,
@@ -1515,6 +1522,8 @@
 		2E211F1159E493100CB0B17 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				2E211F1159E493100CB0B1D /* blocks-hd.plist */,
+				2E211F1159E493100CB0B1B /* blocks-hd.png */,
 				028D818815A064980057EFA4 /* iphone.png */,
 				028D818915A064980057EFA4 /* iphone.plist */,
 			);
@@ -1595,6 +1604,9 @@
 				2E211F1159E493100CB0ADE /* fps_images-ipadhd.png in Resources */,
 				028D818B15A064980057EFA4 /* iphone.png in Resources */,
 				028D818C15A064980057EFA4 /* iphone.plist in Resources */,
+				2E211F1159E493100CB0B1A /* blocks-hd.zwd in Resources */,
+				2E211F1159E493100CB0B1C /* blocks-hd.png in Resources */,
+				2E211F1159E493100CB0B1E /* blocks-hd.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
