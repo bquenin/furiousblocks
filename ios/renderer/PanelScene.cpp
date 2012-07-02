@@ -30,8 +30,8 @@ bool PanelScene::init() {
   core->addPlayer(player);
 
   // Sprite sheet
-  CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
-  CCSpriteBatchNode *batch = CCSpriteBatchNode::create("blocks.png", 100);
+  CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("iphone.plist");
+  CCSpriteBatchNode *batch = CCSpriteBatchNode::create("iphone.png", 100);
   addChild(batch);
 
   // Frame assets
