@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "FuriousBlocksCore.h"
 
-using namespace cocos2d;
+USING_NS_CC;
 
 class PanelScene : public cocos2d::CCLayer {
 public:

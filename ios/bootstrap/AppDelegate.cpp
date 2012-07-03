@@ -9,9 +9,15 @@
 #include "AppDelegate.h"
 
 #include "cocos2d.h"
-#include "PanelScene.h"
+#include "extensions/CCBReader/CCBReader.h"
+#include "extensions/CCBReader/CCNodeLoaderLibrary.h"
+//#include "HelloCocosBuilder/HelloCocosBuilderLayerLoader.h"
+
+//#include "PanelScene.h"
+#include "TitleSceneLoader.h"
 
 USING_NS_CC;
+USING_NS_CC_EXT;
 
 AppDelegate::AppDelegate() {
 }
@@ -33,11 +39,42 @@ bool AppDelegate::applicationDidFinishLaunching() {
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
 
+//  // Assume that PVR images have premultiplied alpha
+//  [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
+//
+//  // Unzip resources published by CocosBuilder
+//  [CCBReader unzipResources:@"ccb.zip"];
+//
+//  // Use the CCBReader to load the HelloCocosBuilder scene
+//  // from the ccbi-file.
+//  CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"HelloCocosBuilder.ccbi"];
+//
+//  // Add the scene to the stack. The director will run it when it automatically when the view is displayed.
+//  [director_ pushScene: scene];
+
+
+  /* Create an autorelease CCNodeLoaderLibrary. */
+  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
+
+  ccNodeLoaderLibrary->registerCCNodeLoader("TitleScene", TitleSceneLoader::loader());
+
+  /* Create an autorelease CCBReader. */
+  cocos2d::extension::CCBReader *ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+  ccbReader->autorelease();
+
   // create a scene. it's an autorelease object
-  CCScene *pScene = PanelScene::scene();
+  CCScene *pScene = CCScene::create();
+  CCLOG("scene");
+  /* Read the ccbi file. */
+  CCNode *node = ccbReader->readNodeGraphFromFile("./", "TitleScene.ccbi", pScene);
+  CCLOG("test");
+
+  if (node != NULL) {
+    pScene->addChild(node);
+  }
 
   // run
-  pDirector->runWithScene(pScene);
+  pDirector->pushScene(pScene);
 
   return true;
 }
