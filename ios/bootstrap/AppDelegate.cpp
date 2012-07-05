@@ -64,10 +64,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
   // create a scene. it's an autorelease object
   CCScene *pScene = CCScene::create();
-  CCLOG("scene");
+
   /* Read the ccbi file. */
   CCNode *node = ccbReader->readNodeGraphFromFile("./", "TitleScene.ccbi", pScene);
-  CCLOG("test");
 
   if (node != NULL) {
     pScene->addChild(node);
