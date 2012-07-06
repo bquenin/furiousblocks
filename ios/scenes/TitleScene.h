@@ -36,14 +36,14 @@ public:
   TitleScene();
   virtual ~TitleScene();
 
-  void openTest(const char *pCCBFileName, const char *pCCNodeName = NULL, cocos2d::extension::CCNodeLoader *pCCNodeLoader = NULL);
+//  void openTest(const char *pCCBFileName, const char *pCCNodeName = NULL, cocos2d::extension::CCNodeLoader *pCCNodeLoader = NULL);
 
   virtual cocos2d::SEL_MenuHandler onResolveCCBCCMenuItemSelector(cocos2d::CCObject *pTarget, cocos2d::CCString *pSelectorName);
   virtual cocos2d::extension::SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject *pTarget, cocos2d::CCString *pSelectorName);
   virtual bool onAssignCCBMemberVariable(cocos2d::CCObject *pTarget, cocos2d::CCString *pMemberVariableName, cocos2d::CCNode *pNode);
   virtual void onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNodeLoader *pNodeLoader);
 
-  void onMenuTestClicked(cocos2d::CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
+  void onArcadeClicked(cocos2d::CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
   void onSpriteTestClicked(cocos2d::CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
   void onButtonTestClicked(cocos2d::CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
   void onLabelTestClicked(cocos2d::CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
@@ -53,6 +53,7 @@ public:
 private:
 //  cocos2d::CCSprite *mBurstSprite;
 //  cocos2d::CCLabelTTF *mTestTitleLabelTTF;
+//  void onEnter();
 };
 
 

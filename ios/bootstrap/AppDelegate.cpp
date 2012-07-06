@@ -15,9 +15,11 @@
 
 //#include "PanelScene.h"
 #include "TitleSceneLoader.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
+using namespace CocosDenshion;
 
 AppDelegate::AppDelegate() {
 }
@@ -52,6 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //  // Add the scene to the stack. The director will run it when it automatically when the view is displayed.
 //  [director_ pushScene: scene];
 
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
 
   /* Create an autorelease CCNodeLoaderLibrary. */
   CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();

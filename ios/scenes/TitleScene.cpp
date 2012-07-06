@@ -9,6 +9,7 @@
 
 USING_NS_CC;
 USING_NS_CC_EXT;
+using namespace CocosDenshion;
 
 TitleScene::TitleScene()
 //: mBurstSprite(NULL)
@@ -69,12 +70,12 @@ SEL_MenuHandler TitleScene::onResolveCCBCCMenuItemSelector(CCObject *pTarget, CC
 }
 
 SEL_CCControlHandler TitleScene::onResolveCCBCCControlSelector(CCObject *pTarget, CCString *pSelectorName) {
-//  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onMenuTestClicked", HelloCocosBuilderLayer::onMenuTestClicked);
-//  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onSpriteTestClicked", HelloCocosBuilderLayer::onSpriteTestClicked);
-//  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onButtonTestClicked", HelloCocosBuilderLayer::onButtonTestClicked);
-//  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onLabelTestClicked", HelloCocosBuilderLayer::onLabelTestClicked);
-//  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onParticleSystemTestClicked", HelloCocosBuilderLayer::onParticleSystemTestClicked);
-//  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onScrollViewTestClicked", HelloCocosBuilderLayer::onScrollViewTestClicked);
+  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onArcade", TitleScene::onArcadeClicked);
+  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onSpriteTestClicked", TitleScene::onSpriteTestClicked);
+  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onButtonTestClicked", TitleScene::onButtonTestClicked);
+  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onLabelTestClicked", TitleScene::onLabelTestClicked);
+  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onParticleSystemTestClicked", TitleScene::onParticleSystemTestClicked);
+  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onScrollViewTestClicked", TitleScene::onScrollViewTestClicked);
 
   return NULL;
 }
@@ -87,8 +88,9 @@ bool TitleScene::onAssignCCBMemberVariable(CCObject *pTarget, CCString *pMemberV
 }
 
 
-void TitleScene::onMenuTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
-//  this->openTest("ccb/MenuTest.ccbi", "MenuTestLayer", MenuTestLayerLoader::loader());
+void TitleScene::onArcadeClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
+  //this->openTest("ccb/MenuTest.ccbi", "MenuTestLayer", MenuTestLayerLoader::loader());
+  CCLOG("Arcade clicked!");
 }
 
 void TitleScene::onSpriteTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
@@ -110,3 +112,7 @@ void TitleScene::onParticleSystemTestClicked(CCObject *pSender, cocos2d::extensi
 void TitleScene::onScrollViewTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
 //  this->openTest("ccb/ScrollViewTest.ccbi", "ScrollViewTestLayer", ScrollViewTestLayerLoader::loader());
 }
+
+//void TitleScene::onEnter() {
+//    SimpleAudioEngine::sharedEngine()->playBackgroundMusic(std::string(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3")).c_str(), true);
+//}
