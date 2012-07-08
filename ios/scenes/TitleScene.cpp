@@ -72,11 +72,6 @@ SEL_MenuHandler TitleScene::onResolveCCBCCMenuItemSelector(CCObject *pTarget, CC
 
 SEL_CCControlHandler TitleScene::onResolveCCBCCControlSelector(CCObject *pTarget, CCString *pSelectorName) {
   CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onArcade", TitleScene::onArcadeClicked);
-  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onSpriteTestClicked", TitleScene::onSpriteTestClicked);
-  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onButtonTestClicked", TitleScene::onButtonTestClicked);
-  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onLabelTestClicked", TitleScene::onLabelTestClicked);
-  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onParticleSystemTestClicked", TitleScene::onParticleSystemTestClicked);
-  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onScrollViewTestClicked", TitleScene::onScrollViewTestClicked);
 
   return NULL;
 }
@@ -93,26 +88,6 @@ void TitleScene::onArcadeClicked(CCObject *pSender, cocos2d::extension::CCContro
   //this->openTest("ccb/MenuTest.ccbi", "MenuTestLayer", MenuTestLayerLoader::loader());
   CCLOG("Arcade clicked!");
   void *ptr = malloc(1048576);
-}
-
-void TitleScene::onSpriteTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
-//  this->openTest("ccb/SpriteTest.ccbi", "SpriteTestLayer", SpriteTestLayerLoader::loader());
-}
-
-void TitleScene::onButtonTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
-//  this->openTest("ccb/ButtonTest.ccbi", "ButtonTestLayer", ButtonTestLayerLoader::loader());
-}
-
-void TitleScene::onLabelTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
-//  this->openTest("ccb/LabelTest.ccbi", "LabelTestLayer", LabelTestLayerLoader::loader());
-}
-
-void TitleScene::onParticleSystemTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
-//  this->openTest("ccb/ParticleSystemTest.ccbi", "ParticleSystemTestLayer", ParticleSystemTestLayerLoader::loader());
-}
-
-void TitleScene::onScrollViewTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
-//  this->openTest("ccb/ScrollViewTest.ccbi", "ScrollViewTestLayer", ScrollViewTestLayerLoader::loader());
 }
 
 //void TitleScene::onEnter() {
