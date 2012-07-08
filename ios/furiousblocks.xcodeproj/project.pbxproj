@@ -218,12 +218,10 @@
 		2E211F1159E493100CB0B80 /* btn-b-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B7F /* btn-b-1.png */; };
 		2E211F1159E493100CB0B82 /* btn-b-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B81 /* btn-b-2.png */; };
 		2E211F1159E493100CB0B84 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B83 /* bg.png */; };
-		2E211F1159E493100CB0B86 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B85 /* title.png */; };
 		2E211F1159E493100CB0B88 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B87 /* title.png */; };
 		2E211F1159E493100CB0B8A /* btn-test-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B89 /* btn-test-0.png */; };
 		2E211F1159E493100CB0B8C /* btn-test-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8B /* btn-test-1.png */; };
 		2E211F1159E493100CB0B8E /* btn-test-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8D /* btn-test-2.png */; };
-		2E211F1159E493100CB0B90 /* comic andy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8F /* comic andy.ttf */; };
 		36795749C7BC17A8E2F51020 /* voices.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3679577E82874D572CB16A51 /* voices.mp3 */; };
 		3679585AEE35BB0074D2C8BE /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36795750D8ABB35D780985F6 /* harmonic.mp3 */; };
 		36795A62E7326C9E81019150 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 367956D4972C3050E29AAFDB /* SkaterDudes.ttf */; };
@@ -683,12 +681,10 @@
 		2E211F1159E493100CB0B7F /* btn-b-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-b-1.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B81 /* btn-b-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-b-2.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B83 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
-		2E211F1159E493100CB0B85 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B87 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B89 /* btn-test-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-0.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8B /* btn-test-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-1.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8D /* btn-test-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-2.png"; sourceTree = "<group>"; };
-		2E211F1159E493100CB0B8F /* comic andy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = "comic andy.ttf"; sourceTree = "<group>"; };
 		367956D4972C3050E29AAFDB /* SkaterDudes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = SkaterDudes.ttf; sourceTree = "<group>"; };
 		36795750D8ABB35D780985F6 /* harmonic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = harmonic.mp3; sourceTree = "<group>"; };
 		3679577E82874D572CB16A51 /* voices.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voices.mp3; sourceTree = "<group>"; };
@@ -725,7 +721,6 @@
 			children = (
 				3679577E82874D572CB16A51 /* voices.mp3 */,
 				36795750D8ABB35D780985F6 /* harmonic.mp3 */,
-				2E211F1159E493100CB0B85 /* title.png */,
 				2E211F1159E493100CB0ADD /* fps_images-ipadhd.png */,
 				2E211F1159E493100CB0ADB /* fps_images-hd.png */,
 				02E03071159FB9E800C26BE0 /* CloseNormal.png */,
@@ -1575,7 +1570,6 @@
 			isa = PBXGroup;
 			children = (
 				367956D4972C3050E29AAFDB /* SkaterDudes.ttf */,
-				2E211F1159E493100CB0B8F /* comic andy.ttf */,
 				2E211F1159E493100CB0B8D /* btn-test-2.png */,
 				2E211F1159E493100CB0B8B /* btn-test-1.png */,
 				2E211F1159E493100CB0B89 /* btn-test-0.png */,
@@ -1691,12 +1685,10 @@
 				2E211F1159E493100CB0B82 /* btn-b-2.png in Resources */,
 				2E211F1159E493100CB0B84 /* bg.png in Resources */,
 				025861C615A4450C00AA8112 /* Default.png in Resources */,
-				2E211F1159E493100CB0B86 /* title.png in Resources */,
 				2E211F1159E493100CB0B88 /* title.png in Resources */,
 				2E211F1159E493100CB0B8A /* btn-test-0.png in Resources */,
 				2E211F1159E493100CB0B8C /* btn-test-1.png in Resources */,
 				2E211F1159E493100CB0B8E /* btn-test-2.png in Resources */,
-				2E211F1159E493100CB0B90 /* comic andy.ttf in Resources */,
 				36795A62E7326C9E81019150 /* SkaterDudes.ttf in Resources */,
 				3679585AEE35BB0074D2C8BE /* harmonic.mp3 in Resources */,
 				36795749C7BC17A8E2F51020 /* voices.mp3 in Resources */,

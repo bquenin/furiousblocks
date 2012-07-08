@@ -14,7 +14,8 @@ USING_NS_CC_EXT;
 TitleScene::TitleScene()
 //: mBurstSprite(NULL)
 //, mTestTitleLabelTTF(NULL)
-{}
+{
+}
 
 TitleScene::~TitleScene() {
 //  CC_SAFE_RELEASE(mBurstSprite);
@@ -91,6 +92,7 @@ bool TitleScene::onAssignCCBMemberVariable(CCObject *pTarget, CCString *pMemberV
 void TitleScene::onArcadeClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
   //this->openTest("ccb/MenuTest.ccbi", "MenuTestLayer", MenuTestLayerLoader::loader());
   CCLOG("Arcade clicked!");
+  void *ptr = malloc(1048576);
 }
 
 void TitleScene::onSpriteTestClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
