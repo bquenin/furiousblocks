@@ -7,11 +7,11 @@
 #include "FBPoint.h"
 
 FBPoint::FBPoint(const FBPoint & p) {
-    this->x = p.x;
-    this->y = p.y;
+  this->x = p.x;
+  this->y = p.y;
 }
 
 FBPoint::FBPoint(int x, int y) {
-    this->x = x;
-    this->y = y;
+  this->x = x;
+  this->y = y;
 }

@@ -8,11 +8,11 @@
 #define __Move_H_
 
 class Move {
-    public:
-    unsigned char type;
+public:
+  unsigned char type;
 
-    Move(const unsigned char type);
-    Move(const Move *move);
+  Move(const unsigned char type);
+  Move(const Move *move);
 };
 
 #endif //__Move_H_

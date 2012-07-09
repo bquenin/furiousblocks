@@ -8,15 +8,17 @@
 
 using namespace std;
 
-Player::Player() : id(123) {}
+Player::Player() : id(123) {
+}
 
-Player::~Player() {}
+Player::~Player() {
+}
 
-void Player::operator()() {
-    while (true) {
-        cout << name << " player thread tick " << endl;
-        sleep(1);
-    }
+void Player:: operator ()() {
+  while (true) {
+    cout << name << " player thread tick " << endl;
+    sleep(1);
+  }
 
 //        try {
 //            final boolean isMostRecentData = situations.size() <= 1;
@@ -32,7 +34,7 @@ void Player::operator()() {
 }
 
 Move *Player::onMoveRequest() {
-    return NULL;
+  return NULL;
 }
 
 void Player::onSituationUpdate(PanelSituation *panelSituation) {

@@ -8,13 +8,13 @@
 #define __BlockType_H_
 
 enum BlockType {
-    YELLOW = 0, //
-    GREEN = 1, //
-    RED = 2, //
-    PURPLE = 3, //
-    BLUE = 4, //
-    GARBAGE = 5, //
-    INVISIBLE = 6 //
+  YELLOW = 0, //
+  GREEN = 1, //
+  RED = 2, //
+  PURPLE = 3, //
+  BLUE = 4, //
+  GARBAGE = 5, //
+  INVISIBLE = 6 //
 };
 
 #endif //__BlockType_H_

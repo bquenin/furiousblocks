@@ -6,7 +6,6 @@
 
 
 #include "TitleScene.h"
-#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -64,8 +63,8 @@ void TitleScene::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNode
 //  CCRotateBy * ccRotateBy = CCRotateBy::create(0.5f, 10);
 //  CCRepeatForever * ccRepeatForever = CCRepeatForever::create(ccRotateBy);
 //  this->mBurstSprite->runAction(ccRepeatForever);
-  SimpleAudioEngine::sharedEngine()->playBackgroundMusic(std::string(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3")).c_str(), true);
-  CCLOG("Playing bg music");
+//  SimpleAudioEngine::sharedEngine()->playBackgroundMusic(std::string(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3")).c_str(), true);
+//  CCLOG("Playing bg music");
 }
 
 

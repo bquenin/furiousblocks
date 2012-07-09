@@ -8,11 +8,11 @@
 #define __PanelState_H_
 
 enum PanelState {
-    PLAY, //
-    QUAKING, //
-    GAMEOVER_PHASE1, //
-    GAMEOVER_PHASE2, //
-    GAMEOVER_PHASE3 //
+  PLAY, //
+  QUAKING, //
+  GAMEOVER_PHASE1, //
+  GAMEOVER_PHASE2, //
+  GAMEOVER_PHASE3 //
 };
 
 #endif //__PanelState_H_

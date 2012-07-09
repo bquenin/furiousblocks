@@ -12,13 +12,13 @@
 #include <iostream>
 
 class GarbageSituation {
-    public:
-    const int width;
-    const int height;
-    const int owner;
+public:
+  const int width;
+  const int height;
+  const int owner;
 
-    GarbageSituation(const int width, const int height, const int owner) : width(width), height(height), owner(owner) {
-    }
+  GarbageSituation(const int width, const int height, const int owner) : width(width), height(height), owner(owner) {
+  }
 };
 
 #endif //__GarbageSituation_H_

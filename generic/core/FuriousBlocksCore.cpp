@@ -7,51 +7,51 @@
 #include "FuriousBlocksCore.h"
 
 FuriousBlocksCore::FuriousBlocksCore(int seed) : seed(seed) {
-    this->gameSituation = NULL;
-    SimpleRNG *random = new SimpleRNG(seed);
+  this->gameSituation = NULL;
+  SimpleRNG *random = new SimpleRNG(seed);
 
-    // Initial panel
-    for (int y = 0; y < PANEL_HEIGHT / 4 + 1; y++) {
-        for (int x = 0; x < PANEL_WIDTH; x++) {
-            initialBlockTypes[x][y] = (BlockType) (random->nextInt() % FBPanel::numberOfRegularBlocks);
-        }
+  // Initial panel
+  for (int y = 0; y < PANEL_HEIGHT / 4 + 1; y++) {
+    for (int x = 0; x < PANEL_WIDTH; x++) {
+      initialBlockTypes[x][y] = (BlockType) (random->nextInt() % FBPanel::numberOfRegularBlocks);
     }
+  }
 }
 
 FuriousBlocksCore::~FuriousBlocksCore() {
-    for (map<Player *, FBPanel *>::const_iterator entry = playerToPanel.begin(); entry != playerToPanel.end(); entry++) {
-        delete entry->second;
-    }
-    playerToPanel.clear();
-    players.clear();
+  for (map<Player *, FBPanel *>::const_iterator entry = playerToPanel.begin(); entry != playerToPanel.end(); entry++) {
+    delete entry->second;
+  }
+  playerToPanel.clear();
+  players.clear();
 }
 
 void FuriousBlocksCore::addPlayer(Player *newPlayer) {
-    FBPanel *panel = new FBPanel(seed + newPlayer->id, newPlayer->id, initialBlockTypes);
-    panel->addPanelListener(this);
-    //        panel.stackGarbage(panel.newGarbage(3, 1, newPlayer.getId(), true));
-    //    panel.stackGarbage(panel.newGarbage(6, 1, newPlayer.getId(), true));
-    //    panel.stackGarbage(panel.newGarbage(6, 2, newPlayer.getId(), true));
-    //    panel.stackGarbage(panel.newGarbage(6, 2, newPlayer.getId(), true));
+  FBPanel *panel = new FBPanel(seed + newPlayer->id, newPlayer->id, initialBlockTypes);
+  panel->addPanelListener(this);
+  //        panel.stackGarbage(panel.newGarbage(3, 1, newPlayer.getId(), true));
+  //    panel.stackGarbage(panel.newGarbage(6, 1, newPlayer.getId(), true));
+  //    panel.stackGarbage(panel.newGarbage(6, 2, newPlayer.getId(), true));
+  //    panel.stackGarbage(panel.newGarbage(6, 2, newPlayer.getId(), true));
 
 //    playerToThread.put(newPlayer, new Thread(newPlayer, newPlayer.getName()));
-    playerToPanel[newPlayer] = panel;
+  playerToPanel[newPlayer] = panel;
 }
 
 int FuriousBlocksCore::hashCode() {
-    if (playerToPanel.empty()) {
-        return 0;
-    }
+  if (playerToPanel.empty()) {
+    return 0;
+  }
 
-    int hash = 1;
-    for (map<Player *, FBPanel *>::const_iterator entry = playerToPanel.begin(); entry != playerToPanel.end(); entry++) {
-        hash = 31 * hash + entry->second->hashCode();
-    }
-    return hash;
+  int hash = 1;
+  for (map<Player *, FBPanel *>::const_iterator entry = playerToPanel.begin(); entry != playerToPanel.end(); entry++) {
+    hash = 31 * hash + entry->second->hashCode();
+  }
+  return hash;
 }
 
 GameSituation *FuriousBlocksCore::getGameSituation() {
-    return gameSituation;
+  return gameSituation;
 }
 
 void FuriousBlocksCore::before() {
@@ -61,38 +61,38 @@ void FuriousBlocksCore::before() {
 }
 
 void FuriousBlocksCore::onTick(long tick) {
-    // Request player moves
-    for (map<Player *, FBPanel *>::const_iterator entry = playerToPanel.begin(); entry != playerToPanel.end(); entry++) {
-        Player *player = entry->first;
-        FBPanel *panel = entry->second;
-        if (panel->gameOver) {
-            continue;
-        }
-        Move *move = player->onMoveRequest();
-        if (move != NULL) {
-            panel->submitMove(move);
-            delete move;
-        }
+  // Request player moves
+  for (map<Player *, FBPanel *>::const_iterator entry = playerToPanel.begin(); entry != playerToPanel.end(); entry++) {
+    Player *player = entry->first;
+    FBPanel *panel = entry->second;
+    if (panel->gameOver) {
+      continue;
     }
-
-    // Panels tick
-    map<int, PanelSituation *> panelSituations;
-    for (map<Player *, FBPanel *>::const_iterator entry = playerToPanel.begin(); entry != playerToPanel.end(); entry++) {
-        Player *player = entry->first;
-        FBPanel *panel = entry->second;
-        PanelSituation *panelSituation = panel->onTick(tick);
-        panelSituations[player->id] = panelSituation;
-        if (panel->gameOver) {
-            continue;
-        }
-        player->onSituationUpdate(panelSituation);
+    Move *move = player->onMoveRequest();
+    if (move != NULL) {
+      panel->submitMove(move);
+      delete move;
     }
+  }
 
-    // Update game situation and keep a reference on it
-    GameSituation *newSituation = new GameSituation(panelSituations, tick);
+  // Panels tick
+  map<int, PanelSituation *> panelSituations;
+  for (map<Player *, FBPanel *>::const_iterator entry = playerToPanel.begin(); entry != playerToPanel.end(); entry++) {
+    Player *player = entry->first;
+    FBPanel *panel = entry->second;
+    PanelSituation *panelSituation = panel->onTick(tick);
+    panelSituations[player->id] = panelSituation;
+    if (panel->gameOver) {
+      continue;
+    }
+    player->onSituationUpdate(panelSituation);
+  }
+
+  // Update game situation and keep a reference on it
+  GameSituation *newSituation = new GameSituation(panelSituations, tick);
 //    referenceManager::reference(newSituation);
 
-    // Share it and release the previous one
+  // Share it and release the previous one
   delete gameSituation;
   gameSituation = newSituation;
 //    GameSituation *previousSituation = gameSituation.fetch_and_store(newSituation);

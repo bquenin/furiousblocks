@@ -16,13 +16,13 @@
 using namespace std;
 
 class Combo {
-    public:
-    set<Block *> blocks;
-    int owner;
-    int skillChainLevel;
+public:
+  set<Block *> blocks;
+  int owner;
+  int skillChainLevel;
 
-    Combo(const int owner);
-    ComboSituation *getSituation();
+  Combo(const int owner);
+  ComboSituation *getSituation();
 };
 
 #endif //__Combo_H_

@@ -10,12 +10,12 @@
 #include <iostream>
 
 class FBPoint {
-    public:
-    int x;
-    int y;
+public:
+  int x;
+  int y;
 
-    FBPoint(const FBPoint & p);
-    FBPoint(int x = 0, int y = 0);
+  FBPoint(const FBPoint & p);
+  FBPoint(int x = 0, int y = 0);
 };
 
 #endif //__FBPoint_H_

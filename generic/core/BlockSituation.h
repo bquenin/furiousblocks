@@ -15,28 +15,28 @@
 
 
 class BlockSituation {
-    public:
-    long id;
-    BlockType type;
-    BlockState state;
-    int stateTick;
-    int garbageBlockType;
-    int garbageOwner;
-    bool combo;
-    bool movable;
-    bool combinable;
+public:
+  long id;
+  BlockType type;
+  BlockState state;
+  int stateTick;
+  int garbageBlockType;
+  int garbageOwner;
+  bool combo;
+  bool movable;
+  bool combinable;
 
-    BlockSituation(long id, BlockType type, BlockState state, int stateTick, int garbageBlockType, int garbageOwner, bool combo, bool movable, bool combinable)
-    : id(id), type(type), state(state), stateTick(stateTick), garbageBlockType(garbageBlockType), garbageOwner(garbageOwner), combo(combo), movable(movable), combinable(combinable) {
-    }
+  BlockSituation(long id, BlockType type, BlockState state, int stateTick, int garbageBlockType, int garbageOwner, bool combo, bool movable, bool combinable)
+  : id(id), type(type), state(state), stateTick(stateTick), garbageBlockType(garbageBlockType), garbageOwner(garbageOwner), combo(combo), movable(movable), combinable(combinable) {
+  }
 
-    const static bool isComputable(const BlockSituation *blockSituation) {
-        return blockSituation != NULL && blockSituation->movable && blockSituation->state == IDLE;
-    }
+  const static bool isComputable(const BlockSituation *blockSituation) {
+    return blockSituation != NULL && blockSituation->movable && blockSituation->state == IDLE;
+  }
 
-    const static bool isMovable(const BlockSituation *blockSituation) {
-        return blockSituation == NULL && blockSituation->state == IDLE && blockSituation->type != GARBAGE;
-    }
+  const static bool isMovable(const BlockSituation *blockSituation) {
+    return blockSituation == NULL && blockSituation->state == IDLE && blockSituation->type != GARBAGE;
+  }
 
 };
 

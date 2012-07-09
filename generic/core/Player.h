@@ -15,16 +15,16 @@
 using namespace std;
 
 class Player {
-    public:
-    int id;
-    string name;
+public:
+  int id;
+  string name;
 
-    Player();
-    ~Player();
-    void operator ()(); // TBB mandates that you supply () operator
+  Player();
+  ~Player();
+  void operator ()(); // TBB mandates that you supply () operator
 
-    Move *onMoveRequest();
-    void onSituationUpdate(PanelSituation *panelSituation);
+  Move *onMoveRequest();
+  void onSituationUpdate(PanelSituation *panelSituation);
 };
 
 #endif //__Player_H_

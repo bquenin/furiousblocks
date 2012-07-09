@@ -16,11 +16,11 @@
 using namespace std;
 
 class GameSituation {
-    public:
-    map<int, PanelSituation *> panelSituations;
-    const long tick;
+public:
+  map<int, PanelSituation *> panelSituations;
+  const long tick;
 
-    GameSituation(const map<int, PanelSituation *> &panelSituations, const long tick) : panelSituations(panelSituations), tick(tick) {
+  GameSituation(const map<int, PanelSituation *> &panelSituations, const long tick) : panelSituations(panelSituations), tick(tick) {
 //        final Map<Integer, Integer> scoreToPlayer = new TreeMap<Integer, Integer>();
 //        for (final Map.Entry<Integer, PanelSituation> entry : panelSituations.entrySet()) {
 //            scoreToPlayer.put(entry.getKey(), entry.getValue().getScore());
@@ -31,14 +31,14 @@ class GameSituation {
 //        for (final int key : sortedMap.keySet()) {
 //            panelSituations.get(key).setRank(rank++);
 //        }
-    }
+  }
 
-    ~GameSituation() {
-        for (map<int, PanelSituation *>::iterator entry = panelSituations.begin(); entry != panelSituations.end(); entry++) {
-            delete entry->second;
-        }
-        panelSituations.clear();
+  ~GameSituation() {
+    for (map<int, PanelSituation *>::iterator entry = panelSituations.begin(); entry != panelSituations.end(); entry++) {
+      delete entry->second;
     }
+    panelSituations.clear();
+  }
 
 };
 

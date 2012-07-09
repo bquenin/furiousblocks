@@ -10,14 +10,14 @@
 #define __PanelEvent_H_
 
 class PanelEvent {
-    private:
-    PanelEventType type;
+private:
+  PanelEventType type;
 
-    public:
-    int data1;
-    int data2;
+public:
+  int data1;
+  int data2;
 
-    PanelEvent(const PanelEventType &type, const int data1 = 0, const int data2 = 0);
+  PanelEvent(const PanelEventType &type, const int data1 = 0, const int data2 = 0);
 
 };
 

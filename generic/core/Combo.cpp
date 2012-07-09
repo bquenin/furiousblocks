@@ -7,10 +7,10 @@
 #include "Combo.h"
 
 Combo::Combo(int owner) {
-    this->owner = owner;
-    this->skillChainLevel = 1;
+  this->owner = owner;
+  this->skillChainLevel = 1;
 }
 
 ComboSituation *Combo::getSituation() {
-    return new ComboSituation(blocks.size(), skillChainLevel);
+  return new ComboSituation(blocks.size(), skillChainLevel);
 }

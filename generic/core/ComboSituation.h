@@ -12,12 +12,12 @@
 #include <iostream>
 
 class ComboSituation {
-    public:
-    const int size;
-    const int skillChainLevel;
+public:
+  const int size;
+  const int skillChainLevel;
 
-    ComboSituation(const int size, const int skillChainLevel) : size(size), skillChainLevel(skillChainLevel) {
-    }
+  ComboSituation(const int size, const int skillChainLevel) : size(size), skillChainLevel(skillChainLevel) {
+  }
 };
 
 #endif //__ComboSituation_H_

@@ -7,9 +7,9 @@
 #include "Move.h"
 
 Move::Move(unsigned char type) {
-    this->type = type;
+  this->type = type;
 }
 
 Move::Move(const Move *move) {
-    this->type = move->type;
+  this->type = move->type;
 }

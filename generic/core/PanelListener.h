@@ -8,11 +8,12 @@
 #define __PanelListener_H_
 
 class PanelListener {
-    public:
-    virtual ~PanelListener() {};
+public:
+  virtual ~PanelListener() {
+  };
 
-    private:
-    virtual void onCombo() = 0;
+private:
+  virtual void onCombo() = 0;
 };
 
 #endif //__PanelListener_H_
