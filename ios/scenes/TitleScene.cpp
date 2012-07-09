@@ -6,10 +6,11 @@
 
 
 #include "TitleScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
-//using namespace CocosDenshion;
+using namespace CocosDenshion;
 
 TitleScene::TitleScene()
 //: mBurstSprite(NULL)
@@ -63,6 +64,8 @@ void TitleScene::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNode
 //  CCRotateBy * ccRotateBy = CCRotateBy::create(0.5f, 10);
 //  CCRepeatForever * ccRepeatForever = CCRepeatForever::create(ccRotateBy);
 //  this->mBurstSprite->runAction(ccRepeatForever);
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic(std::string(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3")).c_str(), true);
+  CCLOG("Playing bg music");
 }
 
 
@@ -87,9 +90,6 @@ bool TitleScene::onAssignCCBMemberVariable(CCObject *pTarget, CCString *pMemberV
 void TitleScene::onArcadeClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
   //this->openTest("ccb/MenuTest.ccbi", "MenuTestLayer", MenuTestLayerLoader::loader());
   CCLOG("Arcade clicked!");
-  void *ptr = malloc(1048576);
+//  void *ptr = malloc(1048576);
 }
 
-//void TitleScene::onEnter() {
-//    SimpleAudioEngine::sharedEngine()->playBackgroundMusic(std::string(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3")).c_str(), true);
-//}

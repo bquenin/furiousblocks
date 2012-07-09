@@ -48,7 +48,6 @@ public:
 private:
 //  cocos2d::CCSprite *mBurstSprite;
 //  cocos2d::CCLabelTTF *mTestTitleLabelTTF;
-//  void onEnter();
 };
 
 
