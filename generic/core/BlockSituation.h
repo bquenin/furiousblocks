@@ -35,7 +35,7 @@ public:
   }
 
   const static bool isMovable(const BlockSituation *blockSituation) {
-    return blockSituation == NULL && blockSituation->state == IDLE && blockSituation->type != GARBAGE;
+      return blockSituation == NULL && blockSituation->state == IDLE && blockSituation->type != BlockType::GARBAGE;
   }
 
 };

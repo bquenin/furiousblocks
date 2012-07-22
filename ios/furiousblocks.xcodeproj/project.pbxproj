@@ -221,28 +221,6 @@
 		36795749C7BC17A8E2F51020 /* voices.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3679577E82874D572CB16A51 /* voices.mp3 */; };
 		3679585AEE35BB0074D2C8BE /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36795750D8ABB35D780985F6 /* harmonic.mp3 */; };
 		36795A62E7326C9E81019150 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 367956D4972C3050E29AAFDB /* SkaterDudes.ttf */; };
-		D23832ED15BC9B660046BDC4 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832B915BC9B660046BDC4 /* Block.cpp */; };
-		D23832EE15BC9B660046BDC4 /* BlockSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832BB15BC9B660046BDC4 /* BlockSituation.cpp */; };
-		D23832F015BC9B660046BDC4 /* ComboSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832C215BC9B660046BDC4 /* ComboSituation.cpp */; };
-		D23832F115BC9B660046BDC4 /* FuriousBlocksCoreDefaults.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832C515BC9B660046BDC4 /* FuriousBlocksCoreDefaults.cpp */; };
-		D23832F215BC9B660046BDC4 /* FuriousBlocksCoreListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832C715BC9B660046BDC4 /* FuriousBlocksCoreListener.cpp */; };
-		D23832F315BC9B660046BDC4 /* GameSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832C915BC9B660046BDC4 /* GameSituation.cpp */; };
-		D23832F415BC9B660046BDC4 /* GarbageBlockType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832CB15BC9B660046BDC4 /* GarbageBlockType.cpp */; };
-		D23832F515BC9B660046BDC4 /* GarbageSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832CD15BC9B660046BDC4 /* GarbageSituation.cpp */; };
-		D23832F615BC9B660046BDC4 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832CF15BC9B660046BDC4 /* Move.cpp */; };
-		D23832F715BC9B660046BDC4 /* MoveType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832D115BC9B660046BDC4 /* MoveType.cpp */; };
-		D23832F815BC9B660046BDC4 /* NetworkContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832D315BC9B660046BDC4 /* NetworkContext.cpp */; };
-		D23832F915BC9B660046BDC4 /* NetworkPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832D515BC9B660046BDC4 /* NetworkPlayer.cpp */; };
-		D23832FA15BC9B660046BDC4 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832D715BC9B660046BDC4 /* Object.cpp */; };
-		D23832FB15BC9B660046BDC4 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832D915BC9B660046BDC4 /* Panel.cpp */; };
-		D23832FC15BC9B660046BDC4 /* PanelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832DB15BC9B660046BDC4 /* PanelEvent.cpp */; };
-		D23832FD15BC9B660046BDC4 /* PanelListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832DE15BC9B660046BDC4 /* PanelListener.cpp */; };
-		D23832FE15BC9B660046BDC4 /* PanelSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832E015BC9B660046BDC4 /* PanelSituation.cpp */; };
-		D23832FF15BC9B660046BDC4 /* PanelSituationHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832E215BC9B660046BDC4 /* PanelSituationHelper.cpp */; };
-		D238330015BC9B660046BDC4 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832E515BC9B660046BDC4 /* Player.cpp */; };
-		D238330115BC9B660046BDC4 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832E715BC9B660046BDC4 /* Point.cpp */; };
-		D238330215BC9B660046BDC4 /* SimpleRNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832E915BC9B660046BDC4 /* SimpleRNG.cpp */; };
-		D238330315BC9B660046BDC4 /* StackGarbageEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23832EB15BC9B660046BDC4 /* StackGarbageEvent.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -702,56 +680,6 @@
 		367956D4972C3050E29AAFDB /* SkaterDudes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = SkaterDudes.ttf; sourceTree = "<group>"; };
 		36795750D8ABB35D780985F6 /* harmonic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = harmonic.mp3; sourceTree = "<group>"; };
 		3679577E82874D572CB16A51 /* voices.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voices.mp3; sourceTree = "<group>"; };
-		D23832B915BC9B660046BDC4 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../../generic/wip/Block.cpp; sourceTree = "<group>"; };
-		D23832BA15BC9B660046BDC4 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../../generic/wip/Block.h; sourceTree = "<group>"; };
-		D23832BB15BC9B660046BDC4 /* BlockSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockSituation.cpp; path = ../../generic/wip/BlockSituation.cpp; sourceTree = "<group>"; };
-		D23832BC15BC9B660046BDC4 /* BlockSituation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockSituation.h; path = ../../generic/wip/BlockSituation.h; sourceTree = "<group>"; };
-		D23832BD15BC9B660046BDC4 /* BlockState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockState.h; path = ../../generic/wip/BlockState.h; sourceTree = "<group>"; };
-		D23832BE15BC9B660046BDC4 /* BlockType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockType.h; path = ../../generic/wip/BlockType.h; sourceTree = "<group>"; };
-		D23832C115BC9B660046BDC4 /* Combo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Combo.h; path = ../../generic/wip/Combo.h; sourceTree = "<group>"; };
-		D23832C215BC9B660046BDC4 /* ComboSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComboSituation.cpp; path = ../../generic/wip/ComboSituation.cpp; sourceTree = "<group>"; };
-		D23832C315BC9B660046BDC4 /* ComboSituation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComboSituation.h; path = ../../generic/wip/ComboSituation.h; sourceTree = "<group>"; };
-		D23832C415BC9B660046BDC4 /* FuriousBlocksCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FuriousBlocksCore.h; path = ../../generic/wip/FuriousBlocksCore.h; sourceTree = "<group>"; };
-		D23832C515BC9B660046BDC4 /* FuriousBlocksCoreDefaults.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FuriousBlocksCoreDefaults.cpp; path = ../../generic/wip/FuriousBlocksCoreDefaults.cpp; sourceTree = "<group>"; };
-		D23832C615BC9B660046BDC4 /* FuriousBlocksCoreDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FuriousBlocksCoreDefaults.h; path = ../../generic/wip/FuriousBlocksCoreDefaults.h; sourceTree = "<group>"; };
-		D23832C715BC9B660046BDC4 /* FuriousBlocksCoreListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FuriousBlocksCoreListener.cpp; path = ../../generic/wip/FuriousBlocksCoreListener.cpp; sourceTree = "<group>"; };
-		D23832C815BC9B660046BDC4 /* FuriousBlocksCoreListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FuriousBlocksCoreListener.h; path = ../../generic/wip/FuriousBlocksCoreListener.h; sourceTree = "<group>"; };
-		D23832C915BC9B660046BDC4 /* GameSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameSituation.cpp; path = ../../generic/wip/GameSituation.cpp; sourceTree = "<group>"; };
-		D23832CA15BC9B660046BDC4 /* GameSituation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameSituation.h; path = ../../generic/wip/GameSituation.h; sourceTree = "<group>"; };
-		D23832CB15BC9B660046BDC4 /* GarbageBlockType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GarbageBlockType.cpp; path = ../../generic/wip/GarbageBlockType.cpp; sourceTree = "<group>"; };
-		D23832CC15BC9B660046BDC4 /* GarbageBlockType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GarbageBlockType.h; path = ../../generic/wip/GarbageBlockType.h; sourceTree = "<group>"; };
-		D23832CD15BC9B660046BDC4 /* GarbageSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GarbageSituation.cpp; path = ../../generic/wip/GarbageSituation.cpp; sourceTree = "<group>"; };
-		D23832CE15BC9B660046BDC4 /* GarbageSituation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GarbageSituation.h; path = ../../generic/wip/GarbageSituation.h; sourceTree = "<group>"; };
-		D23832CF15BC9B660046BDC4 /* Move.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Move.cpp; path = ../../generic/wip/Move.cpp; sourceTree = "<group>"; };
-		D23832D015BC9B660046BDC4 /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Move.h; path = ../../generic/wip/Move.h; sourceTree = "<group>"; };
-		D23832D115BC9B660046BDC4 /* MoveType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MoveType.cpp; path = ../../generic/wip/MoveType.cpp; sourceTree = "<group>"; };
-		D23832D215BC9B660046BDC4 /* MoveType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoveType.h; path = ../../generic/wip/MoveType.h; sourceTree = "<group>"; };
-		D23832D315BC9B660046BDC4 /* NetworkContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetworkContext.cpp; path = ../../generic/wip/NetworkContext.cpp; sourceTree = "<group>"; };
-		D23832D415BC9B660046BDC4 /* NetworkContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkContext.h; path = ../../generic/wip/NetworkContext.h; sourceTree = "<group>"; };
-		D23832D515BC9B660046BDC4 /* NetworkPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetworkPlayer.cpp; path = ../../generic/wip/NetworkPlayer.cpp; sourceTree = "<group>"; };
-		D23832D615BC9B660046BDC4 /* NetworkPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkPlayer.h; path = ../../generic/wip/NetworkPlayer.h; sourceTree = "<group>"; };
-		D23832D715BC9B660046BDC4 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = ../../generic/wip/Object.cpp; sourceTree = "<group>"; };
-		D23832D815BC9B660046BDC4 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object.h; path = ../../generic/wip/Object.h; sourceTree = "<group>"; };
-		D23832D915BC9B660046BDC4 /* Panel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Panel.cpp; path = ../../generic/wip/Panel.cpp; sourceTree = "<group>"; };
-		D23832DA15BC9B660046BDC4 /* Panel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Panel.h; path = ../../generic/wip/Panel.h; sourceTree = "<group>"; };
-		D23832DB15BC9B660046BDC4 /* PanelEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PanelEvent.cpp; path = ../../generic/wip/PanelEvent.cpp; sourceTree = "<group>"; };
-		D23832DC15BC9B660046BDC4 /* PanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelEvent.h; path = ../../generic/wip/PanelEvent.h; sourceTree = "<group>"; };
-		D23832DD15BC9B660046BDC4 /* PanelEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelEventType.h; path = ../../generic/wip/PanelEventType.h; sourceTree = "<group>"; };
-		D23832DE15BC9B660046BDC4 /* PanelListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PanelListener.cpp; path = ../../generic/wip/PanelListener.cpp; sourceTree = "<group>"; };
-		D23832DF15BC9B660046BDC4 /* PanelListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelListener.h; path = ../../generic/wip/PanelListener.h; sourceTree = "<group>"; };
-		D23832E015BC9B660046BDC4 /* PanelSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PanelSituation.cpp; path = ../../generic/wip/PanelSituation.cpp; sourceTree = "<group>"; };
-		D23832E115BC9B660046BDC4 /* PanelSituation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelSituation.h; path = ../../generic/wip/PanelSituation.h; sourceTree = "<group>"; };
-		D23832E215BC9B660046BDC4 /* PanelSituationHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PanelSituationHelper.cpp; path = ../../generic/wip/PanelSituationHelper.cpp; sourceTree = "<group>"; };
-		D23832E315BC9B660046BDC4 /* PanelSituationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelSituationHelper.h; path = ../../generic/wip/PanelSituationHelper.h; sourceTree = "<group>"; };
-		D23832E415BC9B660046BDC4 /* PanelState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanelState.h; path = ../../generic/wip/PanelState.h; sourceTree = "<group>"; };
-		D23832E515BC9B660046BDC4 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../../generic/wip/Player.cpp; sourceTree = "<group>"; };
-		D23832E615BC9B660046BDC4 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../../generic/wip/Player.h; sourceTree = "<group>"; };
-		D23832E715BC9B660046BDC4 /* Point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Point.cpp; path = ../../generic/wip/Point.cpp; sourceTree = "<group>"; };
-		D23832E815BC9B660046BDC4 /* Point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Point.h; path = ../../generic/wip/Point.h; sourceTree = "<group>"; };
-		D23832E915BC9B660046BDC4 /* SimpleRNG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimpleRNG.cpp; path = ../../generic/wip/SimpleRNG.cpp; sourceTree = "<group>"; };
-		D23832EA15BC9B660046BDC4 /* SimpleRNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleRNG.h; path = ../../generic/wip/SimpleRNG.h; sourceTree = "<group>"; };
-		D23832EB15BC9B660046BDC4 /* StackGarbageEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StackGarbageEvent.cpp; path = ../../generic/wip/StackGarbageEvent.cpp; sourceTree = "<group>"; };
-		D23832EC15BC9B660046BDC4 /* StackGarbageEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StackGarbageEvent.h; path = ../../generic/wip/StackGarbageEvent.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1517,7 +1445,6 @@
 			isa = PBXGroup;
 			children = (
 				2E211F1159E493100CB0ADF /* core */,
-				7969EAA33AC398C186B7A907 /* wip */,
 			);
 			name = generic;
 			path = ../generic;
@@ -1669,64 +1596,6 @@
 			);
 			path = ccbpub;
 			sourceTree = "<group>";
-		};
-		7969EAA33AC398C186B7A907 /* wip */ = {
-			isa = PBXGroup;
-			children = (
-				D23832B915BC9B660046BDC4 /* Block.cpp */,
-				D23832BA15BC9B660046BDC4 /* Block.h */,
-				D23832BB15BC9B660046BDC4 /* BlockSituation.cpp */,
-				D23832BC15BC9B660046BDC4 /* BlockSituation.h */,
-				D23832BD15BC9B660046BDC4 /* BlockState.h */,
-				D23832BE15BC9B660046BDC4 /* BlockType.h */,
-				D23832C115BC9B660046BDC4 /* Combo.h */,
-				D23832C215BC9B660046BDC4 /* ComboSituation.cpp */,
-				D23832C315BC9B660046BDC4 /* ComboSituation.h */,
-				D23832C415BC9B660046BDC4 /* FuriousBlocksCore.h */,
-				D23832C515BC9B660046BDC4 /* FuriousBlocksCoreDefaults.cpp */,
-				D23832C615BC9B660046BDC4 /* FuriousBlocksCoreDefaults.h */,
-				D23832C715BC9B660046BDC4 /* FuriousBlocksCoreListener.cpp */,
-				D23832C815BC9B660046BDC4 /* FuriousBlocksCoreListener.h */,
-				D23832C915BC9B660046BDC4 /* GameSituation.cpp */,
-				D23832CA15BC9B660046BDC4 /* GameSituation.h */,
-				D23832CB15BC9B660046BDC4 /* GarbageBlockType.cpp */,
-				D23832CC15BC9B660046BDC4 /* GarbageBlockType.h */,
-				D23832CD15BC9B660046BDC4 /* GarbageSituation.cpp */,
-				D23832CE15BC9B660046BDC4 /* GarbageSituation.h */,
-				D23832CF15BC9B660046BDC4 /* Move.cpp */,
-				D23832D015BC9B660046BDC4 /* Move.h */,
-				D23832D115BC9B660046BDC4 /* MoveType.cpp */,
-				D23832D215BC9B660046BDC4 /* MoveType.h */,
-				D23832D315BC9B660046BDC4 /* NetworkContext.cpp */,
-				D23832D415BC9B660046BDC4 /* NetworkContext.h */,
-				D23832D515BC9B660046BDC4 /* NetworkPlayer.cpp */,
-				D23832D615BC9B660046BDC4 /* NetworkPlayer.h */,
-				D23832D715BC9B660046BDC4 /* Object.cpp */,
-				D23832D815BC9B660046BDC4 /* Object.h */,
-				D23832D915BC9B660046BDC4 /* Panel.cpp */,
-				D23832DA15BC9B660046BDC4 /* Panel.h */,
-				D23832DB15BC9B660046BDC4 /* PanelEvent.cpp */,
-				D23832DC15BC9B660046BDC4 /* PanelEvent.h */,
-				D23832DD15BC9B660046BDC4 /* PanelEventType.h */,
-				D23832DE15BC9B660046BDC4 /* PanelListener.cpp */,
-				D23832DF15BC9B660046BDC4 /* PanelListener.h */,
-				D23832E015BC9B660046BDC4 /* PanelSituation.cpp */,
-				D23832E115BC9B660046BDC4 /* PanelSituation.h */,
-				D23832E215BC9B660046BDC4 /* PanelSituationHelper.cpp */,
-				D23832E315BC9B660046BDC4 /* PanelSituationHelper.h */,
-				D23832E415BC9B660046BDC4 /* PanelState.h */,
-				D23832E515BC9B660046BDC4 /* Player.cpp */,
-				D23832E615BC9B660046BDC4 /* Player.h */,
-				D23832E715BC9B660046BDC4 /* Point.cpp */,
-				D23832E815BC9B660046BDC4 /* Point.h */,
-				D23832E915BC9B660046BDC4 /* SimpleRNG.cpp */,
-				D23832EA15BC9B660046BDC4 /* SimpleRNG.h */,
-				D23832EB15BC9B660046BDC4 /* StackGarbageEvent.cpp */,
-				D23832EC15BC9B660046BDC4 /* StackGarbageEvent.h */,
-			);
-			name = wip;
-			path = ../generic/wip;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -1994,28 +1863,6 @@
 				2E211F1159E493100CB0B15 /* SimpleRNG.cpp in Sources */,
 				028D818715A064800057EFA4 /* PanelScene.cpp in Sources */,
 				2E211F1159E493100CB0B22 /* TitleScene.cpp in Sources */,
-				D23832ED15BC9B660046BDC4 /* Block.cpp in Sources */,
-				D23832EE15BC9B660046BDC4 /* BlockSituation.cpp in Sources */,
-				D23832F015BC9B660046BDC4 /* ComboSituation.cpp in Sources */,
-				D23832F115BC9B660046BDC4 /* FuriousBlocksCoreDefaults.cpp in Sources */,
-				D23832F215BC9B660046BDC4 /* FuriousBlocksCoreListener.cpp in Sources */,
-				D23832F315BC9B660046BDC4 /* GameSituation.cpp in Sources */,
-				D23832F415BC9B660046BDC4 /* GarbageBlockType.cpp in Sources */,
-				D23832F515BC9B660046BDC4 /* GarbageSituation.cpp in Sources */,
-				D23832F615BC9B660046BDC4 /* Move.cpp in Sources */,
-				D23832F715BC9B660046BDC4 /* MoveType.cpp in Sources */,
-				D23832F815BC9B660046BDC4 /* NetworkContext.cpp in Sources */,
-				D23832F915BC9B660046BDC4 /* NetworkPlayer.cpp in Sources */,
-				D23832FA15BC9B660046BDC4 /* Object.cpp in Sources */,
-				D23832FB15BC9B660046BDC4 /* Panel.cpp in Sources */,
-				D23832FC15BC9B660046BDC4 /* PanelEvent.cpp in Sources */,
-				D23832FD15BC9B660046BDC4 /* PanelListener.cpp in Sources */,
-				D23832FE15BC9B660046BDC4 /* PanelSituation.cpp in Sources */,
-				D23832FF15BC9B660046BDC4 /* PanelSituationHelper.cpp in Sources */,
-				D238330015BC9B660046BDC4 /* Player.cpp in Sources */,
-				D238330115BC9B660046BDC4 /* Point.cpp in Sources */,
-				D238330215BC9B660046BDC4 /* SimpleRNG.cpp in Sources */,
-				D238330315BC9B660046BDC4 /* StackGarbageEvent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2066,8 +1913,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2095,8 +1942,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PREPROCESSOR_DEFINITIONS = (

@@ -14,12 +14,12 @@ Block::Block(const int id, const BlockType type, const int index, const int skil
   combinable = true;
 
   switch (type) {
-    case BlockType:: GARBAGE:
+    case BlockType::GARBAGE:
       movable = false;
       combinable = false;
       break;
 
-    case BlockType:: INVISIBLE:
+    case BlockType::INVISIBLE:
       combinable = false;
       break;
 

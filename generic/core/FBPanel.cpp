@@ -5,10 +5,10 @@
 //
 
 #include <iostream>
+#include <assert.h>
 #include "FBPanel.h"
 #include "MoveType.h"
 #include "GarbageBlockType.h"
-#include <array>
 
 using namespace std;
 
@@ -59,7 +59,7 @@ FBPanel::~FBPanel() {
 Block *FBPanel::newRandom(const BlockType excludedType, const int poppingIndex, const int skillChainLevel) {
   const int randomIndex = this->random->nextInt() % numberOfRegularBlocks;
   int index = randomIndex == lastIndex ? (randomIndex + 1) % numberOfRegularBlocks : randomIndex;
-  if (index == excludedType) {
+  if (index == (int) excludedType) {
     index = (index + 1) % numberOfRegularBlocks;
   }
   return newBlock((BlockType) index, poppingIndex, skillChainLevel);
@@ -203,10 +203,10 @@ void FBPanel::processMove() {
       }
 
       if (src == NULL) {
-        src = blocks[cursor.x][cursor.y] = newBlock(INVISIBLE);
+          src = blocks[cursor.x][cursor.y] = newBlock(BlockType::INVISIBLE);
       }
       if (dst == NULL) {
-        dst = blocks[cursor.x + 1][cursor.y] = newBlock(INVISIBLE);
+        dst = blocks[cursor.x + 1][cursor.y] = newBlock(BlockType::INVISIBLE);
       }
       src->switchForth();
       dst->switchBack();
@@ -418,12 +418,12 @@ void FBPanel::mechanics() {
           blocks[x][y]->idle();
           blocks[x + 1][y]->idle();
 
-          if (blocks[x][y]->type == INVISIBLE) {
+          if (blocks[x][y]->type == BlockType::INVISIBLE) {
             blocks[x][y]->toDelete();
           } else if (blocks[x][y - 1] == NULL) {
             blocks[x][y]->hover(BLOCK_HOVERINGTIME);
           }
-          if (blocks[x + 1][y]->type == INVISIBLE) {
+          if (blocks[x + 1][y]->type == BlockType::INVISIBLE) {
             blocks[x + 1][y]->toDelete();
           } else if (blocks[x + 1][y - 1] == NULL) {
             blocks[x + 1][y]->hover(BLOCK_HOVERINGTIME);
@@ -439,7 +439,7 @@ void FBPanel::mechanics() {
           // a skill chain
 
           // Exclude invisible blocks
-          if (blocks[x][y]->type != INVISIBLE) {
+          if (blocks[x][y]->type != BlockType::INVISIBLE) {
             for (int k = y + 1; k < Y; k++) {
 
               // If the block is not computable just exit the loop
@@ -462,11 +462,11 @@ void FBPanel::mechanics() {
         case DONE_HOVERING:
         case DONE_AIRBOUNCING:
           switch (type) {
-            case BLUE:
-            case GREEN:
-            case PURPLE:
-            case RED:
-            case YELLOW:
+            case BlockType::BLUE:
+            case BlockType::GREEN:
+            case BlockType::PURPLE:
+            case BlockType::RED:
+            case BlockType::YELLOW:
               // Does the block have to fall ?
               if (blocks[x][y - 1] == NULL) {
                 // yes, move the block down
@@ -479,7 +479,7 @@ void FBPanel::mechanics() {
                 events.insert(new PanelEvent(BLOCK_LAND));
               }
               break;
-            case GARBAGE: {
+            case BlockType::GARBAGE: {
               Garbage *garbage = getGarbageByBlock(current);
               assert(garbage != NULL);
               // Does the garbage have to fall ?
@@ -493,18 +493,18 @@ void FBPanel::mechanics() {
               x += garbage->width - 1;
             }
               break;
-            case INVISIBLE:
+            case BlockType::INVISIBLE:
               break;
           }
           break;
 
         case DONE_BLINKING:
           switch (type) {
-            case BLUE:
-            case GREEN:
-            case PURPLE:
-            case RED:
-            case YELLOW: {
+            case BlockType::BLUE:
+            case BlockType::GREEN:
+            case BlockType::PURPLE:
+            case BlockType::RED:
+            case BlockType::YELLOW: {
               const Combo *combo = getComboByBlock(current);
               assert(combo != NULL);
 
@@ -516,7 +516,7 @@ void FBPanel::mechanics() {
               }
             }
               break;
-            case GARBAGE: {
+            case BlockType::GARBAGE: {
               Clearing *clearing = getClearingByBlock(current);
               assert(clearing != NULL);
               Garbage *garbage = getGarbageByBlock(current);
@@ -526,20 +526,20 @@ void FBPanel::mechanics() {
               x += garbage->width - 1;
             }
               break;
-            case INVISIBLE:
+            case BlockType::INVISIBLE:
               break;
           }
           break;
 
         case DONE_EXPLODING:
           switch (type) {
-            case BLUE:
-            case GREEN:
-            case PURPLE:
-            case RED:
-            case YELLOW: {
+            case BlockType::BLUE:
+            case BlockType::GREEN:
+            case BlockType::PURPLE:
+            case BlockType::RED:
+            case BlockType::YELLOW: {
               Combo *combo = getComboByBlock(current);
-              assert(combo != NULL);
+              assert(combo != nullptr);
               bool doneExploding = true;
 
               for (set<Block *>::const_iterator block = combo->blocks.begin(); block != combo->blocks.end(); block++) {
@@ -562,8 +562,8 @@ void FBPanel::mechanics() {
               }
             }
               break;
-            case GARBAGE:
-            case INVISIBLE:
+            case BlockType::GARBAGE:
+            case BlockType::INVISIBLE:
               break;
           }
           break;
@@ -955,9 +955,9 @@ void FBPanel::Garbage::inject(const int x, const int y) {
   for (int j = y, h = 0; h < height; j--, h++) {
     for (int i = x, w = 0; w < width; i++, w++) {
       if (blocks[i][j] == NULL) {
-        blocks[i][j] = parent->newBlock(GARBAGE);
+        blocks[i][j] = parent->newBlock(BlockType::GARBAGE);
       } else {
-        blocks[i][j] = parent->newBlock(GARBAGE, blocks[i][j]->poppingIndex, blocks[i][j]->poppingSkillChainLevel);
+        blocks[i][j] = parent->newBlock(BlockType::GARBAGE, blocks[i][j]->poppingIndex, blocks[i][j]->poppingSkillChainLevel);
       }
       blocks[i][j]->garbageOwner = owner;
       barBlocks.insert(blocks[i][j]);

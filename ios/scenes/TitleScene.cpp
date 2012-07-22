@@ -9,7 +9,7 @@
 
 USING_NS_CC;
 USING_NS_CC_EXT;
-using namespace CocosDenshion;
+// using namespace CocosDenshion;
 
 TitleScene::TitleScene()
 //: mBurstSprite(NULL)
