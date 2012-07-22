@@ -5,10 +5,10 @@
 //
 
 #include <iostream>
-#include <assert.h>
 #include "FBPanel.h"
 #include "MoveType.h"
 #include "GarbageBlockType.h"
+#include <array>
 
 using namespace std;
 
@@ -62,7 +62,6 @@ Block *FBPanel::newRandom(const BlockType excludedType, const int poppingIndex, 
   if (index == excludedType) {
     index = (index + 1) % numberOfRegularBlocks;
   }
-  lastIndex = index;
   return newBlock((BlockType) index, poppingIndex, skillChainLevel);
 }
 
@@ -509,11 +508,11 @@ void FBPanel::mechanics() {
               const Combo *combo = getComboByBlock(current);
               assert(combo != NULL);
 
-              for (set<Block *>::const_iterator block = combo->blocks.begin(); block != combo->blocks.end(); ++block) {
-                if ((*block)->state == EXPLODING) {
+              for (auto &block : combo->blocks) {
+                if (block->state == EXPLODING) {
                   break;
                 }
-                (*block)->explode(revealingTime += BLOCK_REVEALINGTIMEINCREMENT);
+                block->explode(revealingTime += BLOCK_REVEALINGTIMEINCREMENT);
               }
             }
               break;

@@ -18,8 +18,8 @@ TitleScene::TitleScene()
 }
 
 TitleScene::~TitleScene() {
-//  CC_SAFE_RELEASE(mBurstSprite);
-//  CC_SAFE_RELEASE(mTestTitleLabelTTF);
+  //  CC_SAFE_RELEASE(mBurstSprite);
+  //  CC_SAFE_RELEASE(mTestTitleLabelTTF);
 }
 
 //void TitleScene::openTest(const char * pCCBFileName, const char * pCCNodeName, CCNodeLoader * pCCNodeLoader) {
@@ -60,11 +60,11 @@ TitleScene::~TitleScene() {
 
 
 void TitleScene::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNodeLoader *pNodeLoader) {
-//  CCRotateBy * ccRotateBy = CCRotateBy::create(0.5f, 10);
-//  CCRepeatForever * ccRepeatForever = CCRepeatForever::create(ccRotateBy);
-//  this->mBurstSprite->runAction(ccRepeatForever);
-//  SimpleAudioEngine::sharedEngine()->playBackgroundMusic(std::string(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3")).c_str(), true);
-//  CCLOG("Playing bg music");
+  //  CCRotateBy * ccRotateBy = CCRotateBy::create(0.5f, 10);
+  //  CCRepeatForever * ccRepeatForever = CCRepeatForever::create(ccRotateBy);
+  //  this->mBurstSprite->runAction(ccRepeatForever);
+  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic(std::string(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3")).c_str(), true);
+  //  CCLOG("Playing bg music");
 }
 
 
@@ -79,8 +79,8 @@ SEL_CCControlHandler TitleScene::onResolveCCBCCControlSelector(CCObject *pTarget
 }
 
 bool TitleScene::onAssignCCBMemberVariable(CCObject *pTarget, CCString *pMemberVariableName, CCNode *pNode) {
-//  CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mBurstSprite", CCSprite *, this->mBurstSprite);
-//  CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTestTitleLabelTTF", CCLabelTTF *, this->mTestTitleLabelTTF);
+  //  CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mBurstSprite", CCSprite *, this->mBurstSprite);
+  //  CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTestTitleLabelTTF", CCLabelTTF *, this->mTestTitleLabelTTF);
 
   return false;
 }
@@ -89,6 +89,6 @@ bool TitleScene::onAssignCCBMemberVariable(CCObject *pTarget, CCString *pMemberV
 void TitleScene::onArcadeClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
   //this->openTest("ccb/MenuTest.ccbi", "MenuTestLayer", MenuTestLayerLoader::loader());
   CCLOG("Arcade clicked!");
-//  void *ptr = malloc(1048576);
+  //  void *ptr = malloc(1048576);
 }
 

@@ -6,6 +6,8 @@ LOCAL_MODULE := game_shared
 
 LOCAL_MODULE_FILENAME := libgame
 
+LOCAL_CPPFLAGS = -std=gnu++0x
+
 LOCAL_SRC_FILES := bootstrap/main.cpp \
                    bootstrap/AppDelegate.cpp \
                    ../../generic/core/Block.cpp \

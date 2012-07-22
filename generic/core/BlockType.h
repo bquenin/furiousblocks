@@ -7,7 +7,7 @@
 #ifndef __BlockType_H_
 #define __BlockType_H_
 
-enum BlockType {
+enum class BlockType : std::int8_t {
   YELLOW = 0, //
   GREEN = 1, //
   RED = 2, //

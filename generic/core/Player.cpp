@@ -17,7 +17,7 @@ Player::~Player() {
 void Player:: operator ()() {
   while (true) {
     cout << name << " player thread tick " << endl;
-    sleep(1);
+    
   }
 
 //        try {
