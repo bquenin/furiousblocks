@@ -36,7 +36,7 @@ public:
   protected:
     FBPanel *parent;
     Block ***blocks;
-    set<Block *> barBlocks;
+    set<Block &> barBlocks;
 
   public:
     int owner;

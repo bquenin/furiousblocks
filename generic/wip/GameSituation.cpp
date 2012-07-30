@@ -1,13 +1,14 @@
+#include <cstdint>
+#include <map>
+#include "PanelSituation.h"
 #include "GameSituation.h"
+
 using namespace std;
 
-GameSituation::GameSituation(map<Integer*,PanelSituation*>* panelSituations)
-:playerIdToPanelSituation(nullptr)
-{
-    playerIdToPanelSituation = panelSituations;
+GameSituation::GameSituation(map<int32_t, PanelSituation *> panelSituations) {
+  playerIdToPanelSituation = panelSituations;
 }
 
-map<Integer*,PanelSituation*> GameSituation::getPlayerIdToPanelSituation()
-{
-    return Collections->unmodifiableMap(playerIdToPanelSituation);
+const map<int32_t, PanelSituation *> &GameSituation::getPlayerIdToPanelSituation() {
+  return playerIdToPanelSituation;
 }

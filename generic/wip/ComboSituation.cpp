@@ -1,25 +1,14 @@
+#include <cstdint>
+#include <list>
+#include <unordered_set>
 #include "ComboSituation.h"
+
 using namespace std;
 
-ComboSituation::ComboSituation(int size, int skillChainLevel, list<Integer*>* blockIds)
-:size(0), skillChainLevel(0), blockIds(nullptr)
-{
-    this->size = size;
-    this->skillChainLevel = skillChainLevel;
-    this->blockIds = blockIds;
+ComboSituation::ComboSituation(int32_t size, int32_t skillChainLevel, unordered_set<int32_t> &blockIds) :
+size(size), skillChainLevel(skillChainLevel), blockIds(blockIds) {
 }
 
-int ComboSituation::getSkillChainLevel()
-{
-    return skillChainLevel;
-}
-
-int ComboSituation::getSize()
-{
-    return size;
-}
-
-bool ComboSituation::contains(int blockId)
-{
-    return blockIds->contains(blockId);
+bool ComboSituation::contains(int32_t blockId) {
+  return blockIds.find(blockId) != blockIds.end();
 }

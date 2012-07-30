@@ -1,16 +1,20 @@
 #ifndef __SimpleRNG_H_
 #define __SimpleRNG_H_
+
+#include <cstdint>
+
 using namespace std;
-class SimpleRNG
-{
-public:
-    SimpleRNG(int u);
-    int nextInt();
-    double nextDouble();
+
+class SimpleRNG {
+private:
+  int32_t m_w = 521288629;
+  int32_t m_z = 362436069;
 
 protected:
-private:
-    int m_w;
-    int m_z;
+public:
+  SimpleRNG(int32_t u);
+  int32_t nextInt();
+  double nextDouble();
 };
+
 #endif //__SimpleRNG_H_

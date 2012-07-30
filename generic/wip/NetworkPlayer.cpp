@@ -1,28 +1,24 @@
+#include "PanelSituation.h"
+#include "Channel.h"
+#include "LobbyPlayer.h"
+#include "Move.h"
 #include "NetworkPlayer.h"
-using namespace std;
 
-NetworkPlayer::NetworkPlayer(LobbyPlayer* lobbyPlayer, Channel* channel)
-:ready(false), channel(nullptr)
-{
-    this->channel = channel;
+NetworkPlayer::NetworkPlayer(LobbyPlayer& lobbyPlayer, Channel& channel) {
+  this->channel = channel;
 }
 
-NetworkPlayer::NetworkPlayer(LobbyPlayer* lobbyPlayer)
-:ready(false), channel(nullptr)
-{
-    NetworkPlayer(lobbyPlayer, nullptr);
+NetworkPlayer::NetworkPlayer(LobbyPlayer& lobbyPlayer) {
+  NetworkPlayer(lobbyPlayer, nullptr);
 }
 
-Channel* NetworkPlayer::getChannel()
-{
-    return channel;
+Channel& NetworkPlayer::getChannel() {
+  return channel;
 }
 
-void NetworkPlayer::submitMove(Move* move)
-{
-    this->move.set(move);
+void NetworkPlayer::submitMove(Move& move) {
+  this->move.set(move);
 }
 
-void NetworkPlayer::playerTick(PanelSituation* panelSituation, bool isMostRecentData)
-{
+void NetworkPlayer::playerTick(PanelSituation& panelSituation, bool isMostRecentData) {
 }

@@ -1,27 +1,28 @@
+#include <cstdint>
+#include <map>
+#include <list>
+#include "AtomicLong.h"
+#include "TickStatus.h"
+#include "StackGarbageEvent.h"
 #include "NetworkContext.h"
+
 using namespace std;
 
-NetworkContext::NetworkContext()
-:backlog(new HashMap<Long*,TickStatus*>()), garbageEventsBacklog(new HashMap<Long*,LinkedList<StackGarbageEvent*> >()), lastACKedTick(new AtomicLong(-1))
-{
+NetworkContext::NetworkContext() {
 }
 
-long NetworkContext::getLastACKedTick()
-{
-    return lastACKedTick->get();
+int64_t NetworkContext::getLastACKedTick() {
+  return lastACKedTick.get();
 }
 
-void NetworkContext::setLastACKedTick(long  lastACKedTick)
-{
-    this->lastACKedTick.set(lastACKedTick);
+void NetworkContext::setLastACKedTick(int64_t lastACKedTick) {
+  this->lastACKedTick.set(lastACKedTick);
 }
 
-map<Long*,TickStatus*> NetworkContext::getBacklog()
-{
-    return backlog;
+map<int64_t, TickStatus *> NetworkContext::getBacklog() {
+  return backlog;
 }
 
-map<Long*,LinkedList<StackGarbageEvent*> > NetworkContext::getGarbageEventsBacklog()
-{
-    return garbageEventsBacklog;
+map<int64_t, list<StackGarbageEvent *> > NetworkContext::getGarbageEventsBacklog() {
+  return garbageEventsBacklog;
 }

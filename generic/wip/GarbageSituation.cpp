@@ -1,31 +1,13 @@
+#include <cstdint>
+#include <list>
 #include "GarbageSituation.h"
+
 using namespace std;
 
-GarbageSituation::GarbageSituation(int width, int height, int owner, list<Integer*>* blocks)
-:width(0), height(0), owner(0), blocks(nullptr)
-{
-    this->width = width;
-    this->height = height;
-    this->owner = owner;
-    this->blocks = blocks;
+GarbageSituation::GarbageSituation(int32_t width, int32_t height, int32_t owner, unordered_set<int32_t> blocks) :
+width(width), height(height), owner(owner), blocks(blocks) {
 }
 
-int GarbageSituation::getWidth()
-{
-    return width;
-}
-
-int GarbageSituation::getHeight()
-{
-    return height;
-}
-
-int GarbageSituation::getOwner()
-{
-    return owner;
-}
-
-bool GarbageSituation::contains(int blockId)
-{
-    return blocks->contains(blockId);
+bool GarbageSituation::contains(int32_t blockId) {
+  return blocks.find(blockId) != blocks.end();
 }

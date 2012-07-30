@@ -1,78 +1,19 @@
+#include <cstdint>
+#include <memory>
 #include "Block.h"
+#include "FuriousBlocksCoreDefaults.h"
 
-Block::Block(int id, BlockType type, int index, int skillChainLevel)
-:id(0), type(nullptr), state(nullptr), stateTick(0), garbageBlockType(0), garbageOwner(0), poppingIndex(0), poppingSkillChainLevel(0), combo(false), fallingFromClearing(false), justLand(false), clearing(nullptr) {
-  this->id = id;
-  this->type = type;
-  idle();
-  fallingFromClearing = false;
-  justLand = false;
-  poppingIndex = index;
-  poppingSkillChainLevel = skillChainLevel;
-}
+using namespace std;
 
-int Block::getId() {
-  return id;
-}
-
-BlockType Block::getType() {
-  return type;
-}
-
-BlockState Block::getState() {
-  return state;
-}
-
-int Block::getStateTick() {
-  return stateTick;
-}
-
-void Block::setGarbageOwner(int garbageOwner) {
-  this->garbageOwner = garbageOwner;
-}
-
-bool Block::isFallingFromClearing() {
-  return fallingFromClearing;
-}
-
-void Block::setFallingFromClearing(bool fallingFromClearing) {
-  this->fallingFromClearing = fallingFromClearing;
-}
-
-void Block::setCombo() {
-  this->combo = true;
-}
-
-int Block::getGarbageBlockType() {
-  return garbageBlockType;
-}
-
-void Block::setGarbageBlockType(int garbageBlockType) {
-  this->garbageBlockType = garbageBlockType;
-}
-
-int Block::getPoppingIndex() {
-  return poppingIndex;
-}
-
-void Block::setPoppingIndex(int poppingIndex) {
-  this->poppingIndex = poppingIndex;
-}
-
-int Block::getPoppingSkillChainLevel() {
-  return poppingSkillChainLevel;
-}
-
-void Block::setPoppingSkillChainLevel(int poppingSkillChainLevel) {
-  this->poppingSkillChainLevel = poppingSkillChainLevel;
-}
-
-void Block::setJustLand() {
-  this->justLand = false;
-}
-
-bool Block::hasJustLand() {
-  return justLand;
+Block::Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel) :
+id (id),
+type(type),
+state(BlockState::IDLE),
+stateTick(0),
+fallingFromClearing(false),
+justLand(false),
+poppingIndex(index),
+poppingSkillChainLevel(skillChainLevel) {
 }
 
 void Block::idle() {
@@ -112,12 +53,12 @@ void Block::blink() {
   stateTick = FuriousBlocksCoreDefaults::BLOCK_BLINKINGTIME;
 }
 
-void Block::explode(int explodingTime) {
+void Block::explode(int32_t explodingTime) {
   state = BlockState::EXPLODING;
   stateTick = explodingTime;
 }
 
-void Block::reveal(int revealingTime) {
+void Block::reveal(int32_t revealingTime) {
   state = BlockState::REVEALING;
   stateTick = revealingTime;
 }
@@ -127,11 +68,11 @@ void Block::airBounce() {
   stateTick = FuriousBlocksCoreDefaults::BLOCK_AIRBOUNCINGTIME;
 }
 
-void Block:: delete() {
+void Block:: toDelete() {
   state = BlockState::TO_DELETE;
 }
 
-PanelEvent *Block::update() {
+PanelEvent* Block::update() {
   PanelEvent *event = nullptr;
   if (stateTick > 0) {
     stateTick--;
@@ -153,7 +94,7 @@ PanelEvent *Block::update() {
         break;
       case BlockState::REVEALING:
         if (stateTick == 0) {
-          event = new PanelEvent(PanelEventType::BLOCK_POP);
+          event= new PanelEvent(PanelEventType::BLOCK_POP);
         }
         state = BlockState::DONE_REVEALING;
         break;
@@ -178,18 +119,18 @@ PanelEvent *Block::update() {
   return event;
 }
 
-BlockSituation *Block::getSituation() {
-  return new BlockSituation(id, type, state, stateTick, garbageBlockType, garbageOwner, combo, justLand, fallingFromClearing, poppingIndex);
+unique_ptr<BlockSituation> Block::getSituation() {
+  return unique_ptr<BlockSituation>(new BlockSituation(id, type, state, stateTick, garbageBlockType, garbageOwner, combo, justLand, fallingFromClearing, poppingIndex));
 }
 
-bool Block::isComputable(Block *block) {
+bool Block::isComputable(Block* block) {
   return block != nullptr && block->movable && block->state == BlockState::IDLE;
 }
 
-void Block::setClearing(Clearing *clearing) {
-  this->clearing = clearing;
-}
-
-Clearing *Block::getClearing() {
-  return clearing;
-}
+//void Block::setClearing(Clearing& clearing) {
+//  this->clearing = clearing;
+//}
+//
+//Clearing& Block::getClearing() {
+//  return clearing;
+//}
