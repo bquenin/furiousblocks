@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <set>
 #include <map>
+#include <atomic>
 #include "FuriousBlocksCoreListener.h"
 #include "Panel.h"
 #include "PanelSituation.h"
@@ -12,7 +13,6 @@
 #include "GameSituation.h"
 #include "Move.h"
 #include "BlockType.h"
-#include "NetworkContext.h"
 #include "PanelEvent.h"
 
 using namespace std;
@@ -29,8 +29,8 @@ private:
 
 protected:
   map<Player *, Panel *> playerToPanel;
-  AtomicReference<GameSituation *>& gameSituation = new AtomicReference<GameSituation *>();
-  map<int32_t, NetworkContext *> networkContexts;
+  atomic<GameSituation *>& gameSituation = new AtomicReference<GameSituation *>();
+//  map<int32_t, NetworkContext *> networkContexts;
 
 public:
   BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT] = nullptr;

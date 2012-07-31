@@ -20,6 +20,7 @@ class Clearing;
 
 class Panel {
   friend class Clearing;
+  friend class PanelSituation;
 private:
   class BlockBar {
     friend class Panel;
@@ -81,9 +82,9 @@ private:
   int64_t localTick = 0;
   int32_t playerId = 0;
   furiousblocks::Point &cursor;
-  list<Combo *> combos;
+  unordered_set<Combo *> combos;
   list<Panel::Garbage *> garbages;
-  unordered_set<Clearing *> clearings;
+  vector<Clearing> clearings;
   list<Panel::Garbage *> garbageStack;
   PanelState state = PanelState::IDLE;
   int32_t stateTick = 0;
@@ -110,11 +111,11 @@ private:
   void newLine();
   void quake();
   void mechanics(int64_t tick);
-  Combo& getComboByBlock(Block& block);
+  Combo getComboByBlock(Block& block);
   Panel::Garbage& getGarbageByBlock(Block& block);
-  Combo& detectCombo();
-  void processCombo(Combo& combo);
-  PanelSituation& getSituation();
+  Combo detectCombo();
+  void processCombo(Combo combo);
+  PanelSituation getSituation();
 
 protected:
   static const int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
@@ -129,7 +130,7 @@ public:
   Panel(int32_t seed, int32_t playerId, BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener* panelListener = nullptr);
   void reset();
   void setTransposedBlocks(BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT]);
-  PanelSituation& onTick(int64_t tick);
+  PanelSituation onTick(int64_t tick);
   void stackGarbage(Panel::Garbage& garbage);
   Panel::Garbage& newGarbage(int32_t width, int32_t height, int32_t owner, bool skill);
   int64_t getLocalTick();

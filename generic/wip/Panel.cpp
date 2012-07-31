@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <set>
 #include <list>
+#include <vector>
 #include "PanelState.h"
 #include "ComboSituation.h"
 #include "PanelEvent.h"
@@ -48,28 +49,27 @@ void Panel::reset() {
     }
   }
 }
-PanelSituation& Panel::getSituation() {
+
+PanelSituation Panel::getSituation() {
   unique_ptr<BlockSituation> blockSituations[Panel::X][Panel::Y_DISPLAY + 1];
   for (int32_t y = 0; y < (Panel::Y_DISPLAY + 1); y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
       blockSituations[x][y] = std::move(blocks[x][y] == nullptr ? nullptr : blocks[x][y]->getSituation());
     }
   }
-  list<ComboSituation> comboSituations;
+  vector<ComboSituation> comboSituations;
   for (auto combo: combos) {
-    ComboSituation situ = combo.getSituation();
-    comboSituations.add(situ);
-    delete situ;
+    comboSituations.push_back(combo->getSituation());
   }
-  list<GarbageSituation *> garbageSituations;
-  for (auto &&garbage: garbages) {
-    garbageSituations.add(garbage.getSituation());
+  vector<GarbageSituation> garbageSituations;
+  for (auto garbage: garbages) {
+    garbageSituations.push_back(garbage->getSituation());
   }
-  list<GarbageSituation *> garbageStackSituation;
+  vector<GarbageSituation> garbageStackSituation;
   for (auto &&garbage: garbageStack) {
-    garbageStackSituation.add(garbage.getSituation());
+    garbageStackSituation.push_back(garbage->getSituation());
   }
-  return PanelSituation(blockSituations, locked, comboSituations, new Point(cursor), scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, !clearings.isEmpty());
+  return PanelSituation(blockSituations, locked, comboSituations, *new furiousblocks::Point(cursor), scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, clearings.size() != 0);
 }
 void Panel::setTransposedBlocks(BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT]) {
   for (int32_t y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
@@ -95,7 +95,7 @@ Block* Panel::newBlock(BlockType blockType, int32_t index, int32_t skillChainLev
   return new Block(random.nextInt(), blockType, index, skillChainLevel);
 }
 
-PanelSituation& Panel::onTick(int64_t tick) {
+PanelSituation Panel::onTick(int64_t tick) {
   if (stateTick > 0) {
     stateTick--;
   }
@@ -123,7 +123,7 @@ PanelSituation& Panel::onTick(int64_t tick) {
     case PanelState::IDLE: {
       processMove();
       mechanics(tick);
-      Combo& currentCombo = detectCombo();
+      Combo currentCombo = detectCombo();
       if (currentCombo.size() > 0) {
         processCombo(currentCombo);
       }
@@ -486,22 +486,24 @@ void Panel::mechanics(int64_t tick) {
             case BlockType::GREEN:
             case BlockType::PURPLE:
             case BlockType::RED:
-            case BlockType::YELLOW:
-              Combo& combo = getComboByBlock(current);
+            case BlockType::YELLOW: {
+              Combo combo = getComboByBlock(current);
               for (auto block: combo.blocks) {
                 if (block->state == BlockState::EXPLODING) {
                   break;
                 }
                 block->explode(revealingTime += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
               }
+            }
               break;
-            case BlockType::GARBAGE:
+            case BlockType::GARBAGE: {
               Clearing *clearing = current.clearing;
               Panel::Garbage& garbage = getGarbageByBlock(current);
               revealingTime = garbage.reveal(x, y, revealingTime, *clearing);
               clearing->setRevealingTime(tick + revealingTime);
               clearing->removeBar(&garbage);
               x += garbage.width - 1;
+            }
               break;
           }
           break;
@@ -511,8 +513,8 @@ void Panel::mechanics(int64_t tick) {
             case BlockType::GREEN:
             case BlockType::PURPLE:
             case BlockType::RED:
-            case BlockType::YELLOW:
-              Combo& combo = getComboByBlock(current);
+            case BlockType::YELLOW: {
+              Combo combo = getComboByBlock(current);
               bool doneExploding = true;
               for (auto block: combo.blocks) {
                 if (block->state != BlockState::DONE_EXPLODING) {
@@ -521,23 +523,25 @@ void Panel::mechanics(int64_t tick) {
                 }
               }
               if (doneExploding) {
-                combos.remove(&combo);
+                combos.remove(combo);
                 for (auto block: combo.blocks) {
                   block->toDelete();
                 }
                 combo.blocks.clear();
               }
+            }
               break;
             case BlockType::GARBAGE:
               break;
           }
           break;
-        case BlockState::DONE_REVEALING:
+        case BlockState::DONE_REVEALING: {
           Clearing* clearing = current.clearing;
           if (clearing->isDoneRevealing(tick)) {
             clearing->onDoneRevealing();
-            clearings.erase(clearing);
+            clearings.remove(clearing);
           }
+        }
           break;
         case BlockState::EXPLODING:
         case BlockState::BLINKING:
@@ -555,10 +559,10 @@ void Panel::mechanics(int64_t tick) {
   }
 }
 
-Combo& Panel::getComboByBlock(Block& block) {
+Combo Panel::getComboByBlock(Block& block) {
   for (auto combo: combos) {
-    if (combo->contains(block)) {
-      return *combo;
+    if (combo.contains(block)) {
+      return combo;
     }
   }
   throw runtime_error("We shoudl not be there");
@@ -573,9 +577,9 @@ Panel::Garbage& Panel::getGarbageByBlock(Block& block) {
   throw runtime_error("We shoudl not be there");
 }
 
-Combo& Panel::detectCombo() {
-  Combo& currentCombo = *new Combo(playerId);
-  bool *comboMask[Panel::X][Panel::Y];
+Combo Panel::detectCombo() {
+  Combo currentCombo(playerId);
+  bool comboMask[Panel::X][Panel::Y];
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
       Block* current = blocks[x][y];
@@ -584,16 +588,16 @@ Combo& Panel::detectCombo() {
       }
       int32_t xIdem = 1;
       for (int32_t right = x + 1; right < Panel::X; right++) {
-        Block& rightBlock = blocks[right][y];
-        if (rightBlock == nullptr || rightBlock.getState() != BlockState::IDLE || rightBlock.getType() != current.getType()) {
+        Block* rightBlock = blocks[right][y];
+        if (rightBlock == nullptr || rightBlock->state != BlockState::IDLE || rightBlock->type != current->type) {
           break;
         }
         xIdem++;
       }
       int32_t yIdem = 1;
       for (int32_t above = y + 1; above < Panel::Y; above++) {
-        Block& aboveBlock = blocks[x][above];
-        if (aboveBlock == nullptr || aboveBlock.getState() != BlockState::IDLE || aboveBlock.getType() != current.getType()) {
+        Block* aboveBlock = blocks[x][above];
+        if (aboveBlock == nullptr || aboveBlock->state != BlockState::IDLE || aboveBlock->type != current->type) {
           break;
         }
         yIdem++;
@@ -616,20 +620,20 @@ Combo& Panel::detectCombo() {
       if (!comboMask[x][y]) {
         continue;
       }
-      currentCombo.addBlock(blocks[x][y]);
-      blocks[x][y].setCombo();
-      blocks[x][y].setPoppingIndex(poppingIndex++);
+      currentCombo.addBlock(*blocks[x][y]);
+      blocks[x][y]->combo = true;
+      blocks[x][y]->poppingIndex = poppingIndex++;
     }
   }
   return currentCombo;
 }
 
-void Panel::processCombo(Combo& combo) {
-  combos.add(combo);
+void Panel::processCombo(Combo combo) {
+  combos.push_back(combo);
   locked = true;
   bool isSkillCombo = false;
-  for (auto &&block: combo.getBlocks()) {
-    isSkillCombo = block.isFallingFromClearing();
+  for (auto block: combo.blocks) {
+    isSkillCombo = block->fallingFromClearing;
     if (isSkillCombo) {
       break;
     }
@@ -639,7 +643,7 @@ void Panel::processCombo(Combo& combo) {
     skillChainLevel++;
     comboSkillChainLevel = skillChainLevel;
     if (panelListener != nullptr) {
-      panelListener.onEvent(playerId, new PanelEvent(PanelEventType::SKILL_COMBO));
+      panelListener->onEvent(playerId, new PanelEvent(PanelEventType::SKILL_COMBO));
     }
     score += (1000 * skillChainLevel) + (combo.size() * 100);
   } else {
@@ -745,10 +749,10 @@ Panel::BlockBar::BlockBar(Panel *__parent, int32_t width, int32_t height, int32_
   __parent
 }
 {
-this->id = __parent->random.nextInt();
-this->width = width;
-this->height = height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height;
-this->owner = owner;
+  this->id = __parent->random.nextInt();
+  this->width = width;
+  this->height = height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height;
+  this->owner = owner;
 }
 
 bool Panel::BlockBar::contains(Block* block) {
@@ -806,7 +810,7 @@ Panel::Garbage::Garbage(Panel *__parent, int32_t width, int32_t height, int32_t 
   __parent
 }
 {
-this->skill = skill;
+  this->skill = skill;
 }
 
 bool Panel::Garbage::isSkill() {
