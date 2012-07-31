@@ -4,11 +4,10 @@
 #include <cstdint>
 #include "PanelEvent.h"
 
-using namespace std;
-
-class FuriousBlocksCoreListener {
+class FuriousBlocksCoreListener
+{
 private:
-  virtual void onEvent(int64_t playerId, PanelEvent& panelEvent);
+    virtual void onEvent(int64_t playerId, PanelEvent* panelEvent);
 
 protected:
 public:

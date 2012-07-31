@@ -1,20 +1,21 @@
 #include <cstdint>
 #include <set>
 #include <list>
-#include <vector>
-#include "PanelState.h"
-#include "ComboSituation.h"
-#include "PanelEvent.h"
-#include "GarbageSituation.h"
-#include "BlockSituation.h"
 #include "Panel.h"
 #include "MoveType.h"
-#include "Clearing.h"
+#include "GarbageBlockType.h"
 
-using namespace std;
+Panel::Panel(int32_t seed, int32_t playerId, BlockType ***initialBlockTypes) {
+  Panel(seed, playerId, initialBlockTypes, nullptr);
+}
 
-Panel::Panel(int32_t seed, int32_t playerId, BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener)
-: playerId(playerId), panelListener(panelListener), random(*new SimpleRNG(seed)), scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), cursor(*new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1)) {
+Panel::Panel(int32_t seed, int32_t playerId, BlockType ***initialBlockTypes, PanelListener *panelListener) {
+  this->playerId = playerId;
+  this->panelListener = panelListener;
+  random = new SimpleRNG(seed);
+  scrollingSpeed = levelScrollingSpeed = Panel::INITIAL_SCROLLING_SPEED;
+  cursor->x = (Panel::X / 2) - 1;
+  cursor->y = (Panel::Y_DISPLAY / 2) - 1;
   if (initialBlockTypes != nullptr) {
     for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
       for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
@@ -23,7 +24,7 @@ Panel::Panel(int32_t seed, int32_t playerId, BlockType *initialBlockTypes[Furiou
     }
   }
   for (int32_t x = 0; x < Panel::X; x++) {
-    blocks[x][0] = blocks[x][1] == nullptr ? newRandom() : newRandom(&blocks[x][1]->type);
+    blocks[x][0] = blocks[x][1] == nullptr ? newRandom(nullptr) : newRandom(blocks[x][1]->type);
   }
 }
 
@@ -50,52 +51,39 @@ void Panel::reset() {
   }
 }
 
-PanelSituation Panel::getSituation() {
-  unique_ptr<BlockSituation> blockSituations[Panel::X][Panel::Y_DISPLAY + 1];
-  for (int32_t y = 0; y < (Panel::Y_DISPLAY + 1); y++) {
-    for (int32_t x = 0; x < Panel::X; x++) {
-      blockSituations[x][y] = std::move(blocks[x][y] == nullptr ? nullptr : blocks[x][y]->getSituation());
-    }
-  }
-  vector<ComboSituation> comboSituations;
-  for (auto combo: combos) {
-    comboSituations.push_back(combo->getSituation());
-  }
-  vector<GarbageSituation> garbageSituations;
-  for (auto garbage: garbages) {
-    garbageSituations.push_back(garbage->getSituation());
-  }
-  vector<GarbageSituation> garbageStackSituation;
-  for (auto &&garbage: garbageStack) {
-    garbageStackSituation.push_back(garbage->getSituation());
-  }
-  return PanelSituation(blockSituations, locked, comboSituations, *new furiousblocks::Point(cursor), scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, clearings.size() != 0);
-}
-void Panel::setTransposedBlocks(BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT]) {
-  for (int32_t y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
-    for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-      blocks[y][x] = initialBlockTypes[x][y] == nullptr ? nullptr : newBlock(*initialBlockTypes[x][y]);
+void Panel::setTransposedBlocks(BlockType ***initialBlockTypes) {
+  for (int32_t y = 0; y < initialBlockTypes[0]->length; y++) {
+    for (int32_t x = 0; x < initialBlockTypes->length; x++) {
+      blocks[y][x] = initialBlockTypes[x][y] == nullptr ? nullptr : newBlock(initialBlockTypes[x][y]);
     }
   }
   for (int32_t x = 0; x < Panel::X; x++) {
-    blocks[x][0] = blocks[x][1] == nullptr ? newRandom(nullptr) : newRandom(&blocks[x][1]->type);
+    blocks[x][0] = blocks[x][1] == nullptr ? newRandom(nullptr) : newRandom(blocks[x][1]->type);
   }
 }
 
-Block* Panel::newRandom(BlockType *excludedType, int32_t poppingIndex, int32_t skillChainLevel) {
-  int32_t randomIndex = random.nextInt() % Panel::numberOfRegularBlocks;
+Block *Panel::newRandom(BlockType excludedType) {
+  return newRandom(excludedType, 0, 0);
+}
+
+Block *Panel::newRandom(BlockType excludedType, int32_t poppingIndex, int32_t skillChainLevel) {
+  int32_t randomIndex = random->nextInt() % Panel::numberOfRegularBlocks;
   int32_t index = randomIndex == lastIndex ? (randomIndex + 1) % Panel::numberOfRegularBlocks : randomIndex;
-  if (index == static_cast<int32_t>(*excludedType)) {
+  if (values()[index] == excludedType) {
     index = (index + 1) % Panel::numberOfRegularBlocks;
   }
-  return newBlock(static_cast<BlockType>(lastIndex = index), poppingIndex, skillChainLevel);
+  return newBlock(values()[lastIndex = index], poppingIndex, skillChainLevel);
 }
 
-Block* Panel::newBlock(BlockType blockType, int32_t index, int32_t skillChainLevel) {
-  return new Block(random.nextInt(), blockType, index, skillChainLevel);
+Block *Panel::newBlock(BlockType blockType) {
+  return newBlock(blockType, 0, 0);
 }
 
-PanelSituation Panel::onTick(int64_t tick) {
+Block *Panel::newBlock(BlockType blockType, int32_t index, int32_t skillChainLevel) {
+  return new Block(random->nextInt(), blockType, index, skillChainLevel);
+}
+
+PanelSituation *Panel::onTick(int64_t tick) {
   if (stateTick > 0) {
     stateTick--;
   }
@@ -120,18 +108,16 @@ PanelSituation Panel::onTick(int64_t tick) {
   }
   switch (state) {
     case PanelState::QUAKING:
-    case PanelState::IDLE: {
+    case PanelState::IDLE:
       processMove();
       mechanics(tick);
-      Combo currentCombo = detectCombo();
-      if (currentCombo.size() > 0) {
+      Combo *currentCombo = detectCombo();
+      if (currentCombo->size() > 0) {
         processCombo(currentCombo);
       }
       scrolling(tick);
       dropGarbages();
-    }
       break;
-      
     case PanelState::GAMEOVER_PHASE1:
       if ((stateTick % 4) == 0) {
         for (int32_t i = 0; i < Panel::X; i++) {
@@ -139,7 +125,7 @@ PanelSituation Panel::onTick(int64_t tick) {
             continue;
           }
           for (int32_t j = Panel::Y_DISPLAY; j > 0; j--) {
-            Block* current = blocks[i][j];
+            Block *current = blocks[i][j];
             if (!Block::isComputable(current)) {
               continue;
             }
@@ -168,13 +154,13 @@ void Panel::processMove() {
   if (move == nullptr) {
     return;
   }
-  int32_t type = move->getType();
+  int32_t type = move->type;
   switch (type) {
     case MoveType::BLOCK_SWITCH: {
-      Block *src = blocks[cursor.x][cursor.y];
-      Block *dst = blocks[cursor.x + 1][cursor.y];
-      Block *aboveSrc = blocks[cursor.x][cursor.y + 1];
-      Block *aboveDst = blocks[cursor.x + 1][cursor.y + 1];
+      Block *src = blocks[cursor->x][cursor->y];
+      Block *dst = blocks[cursor->x + 1][cursor->y];
+      Block *aboveSrc = blocks[cursor->x][cursor->y + 1];
+      Block *aboveDst = blocks[cursor->x + 1][cursor->y + 1];
       if ((src == nullptr) && (dst == nullptr)) {
         break;
       }
@@ -199,10 +185,10 @@ void Panel::processMove() {
         }
       }
       if (src == nullptr) {
-        src = blocks[cursor.x][cursor.y] = newBlock(BlockType::INVISIBLE);
+        src = blocks[cursor->x][cursor->y] = newBlock(BlockType::INVISIBLE);
       }
       if (dst == nullptr) {
-        dst = blocks[cursor.x + 1][cursor.y] = newBlock(BlockType::INVISIBLE);
+        dst = blocks[cursor->x + 1][cursor->y] = newBlock(BlockType::INVISIBLE);
       }
       src->switchForth();
       dst->switchBack();
@@ -212,32 +198,32 @@ void Panel::processMove() {
     }
       break;
     case MoveType::CURSOR_DOWN:
-      if (cursor.y != 1) {
-        cursor.y--;
+      if (cursor->y != 1) {
+        cursor->y--;
         if (panelListener != nullptr) {
           panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_MOVE));
         }
       }
       break;
     case MoveType::CURSOR_LEFT:
-      if (cursor.x != 0) {
-        cursor.x--;
+      if (cursor->x != 0) {
+        cursor->x--;
         if (panelListener != nullptr) {
           panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_MOVE));
         }
       }
       break;
     case MoveType::CURSOR_RIGHT:
-      if (cursor.x != (Panel::X - 2)) {
-        cursor.x++;
+      if (cursor->x != (Panel::X - 2)) {
+        cursor->x++;
         if (panelListener != nullptr) {
           panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_MOVE));
         }
       }
       break;
     case MoveType::CURSOR_UP:
-      if (cursor.y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
-        cursor.y++;
+      if (cursor->y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
+        cursor->y++;
         if (panelListener != nullptr) {
           panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_MOVE));
         }
@@ -255,7 +241,7 @@ void Panel::processMove() {
 }
 
 void Panel::dropGarbages() {
-  for (auto garbage : list<Panel::Garbage *>(garbageStack)) {
+  for (auto garbage: new std::list<Panel::Garbage *>(garbageStack)) {
     int32_t y = (Panel::Y_DISPLAY + garbage->height) - 1;
     for (int32_t h = 0, j = y; h < garbage->height; h++, j--) {
       for (int32_t i = 0, w = 0; w < garbage->width; i++, w++) {
@@ -264,8 +250,8 @@ void Panel::dropGarbages() {
         }
       }
     }
-    garbageStack.remove(garbage);
-    int32_t xPos = garbage->width < Panel::X ? random.nextInt() % (Panel::X - garbage->width) : 0;
+    garbageStack->remove(garbage);
+    int32_t xPos = garbage->width < Panel::X ? random->nextInt() % (Panel::X - garbage->width) : 0;
     garbage->inject(xPos, y);
   }
 }
@@ -286,19 +272,19 @@ void Panel::scrolling(int64_t tick) {
     return;
   }
   scrollingSpeed = lifting ? 1 : scrollingEnabled ? levelScrollingSpeed : INT32_MAX;
-  bool newLineRequired = false;
+  bool newLine = false;
   if (tick % scrollingSpeed == 0) {
     scrollingDelta++;
     if (scrollingDelta >= FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT) {
-      newLineRequired = true;
+      newLine = true;
     }
     scrollingDelta %= FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT;
   }
-  if (newLineRequired) {
+  if (newLine) {
     newLine();
     gracePeriod();
-    if (cursor.y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
-      cursor.y++;
+    if (cursor->y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
+      cursor->y++;
     }
   }
 }
@@ -313,7 +299,7 @@ void Panel::gracePeriod() {
   }
   if (!topLineEmpty) {
     if (gracing) {
-      garbageStack.clear();
+      garbageStack->clear();
       gameOver = true;
       state = PanelState::GAMEOVER_PHASE1;
       stateTick = FuriousBlocksCoreDefaults::PANEL_QUAKINGTIME - 1;
@@ -343,21 +329,21 @@ void Panel::newLine() {
     }
   }
   for (int32_t x = 0; x < Panel::X; x++) {
-    blocks[x][0] = blocks[x][1] == nullptr ? newRandom() : newRandom(&blocks[x][1]->type);
+    blocks[x][0] = blocks[x][1] == nullptr ? newRandom(nullptr) : newRandom(blocks[x][1]->type);
   }
 }
 
-void Panel::stackGarbage(Panel::Garbage& garbage) {
-  if (garbage.isSkill()) {
-    for (ListIterator<Panel::Garbage *>& iterator = garbageStack.listIterator(garbageStack.size()); iterator.hasPrevious();) {
-      Panel::Garbage& stackedGarbage = iterator.previous();
-      if (stackedGarbage.isSkill() && stackedGarbage->height == garbage->height - 1 && stackedGarbage.getOwner() == garbage.getOwner()) {
-        iterator.set(garbage);
+void Panel::stackGarbage(Panel::Garbage *garbage) {
+  if (garbage->isSkill()) {
+    for (ListIterator<Panel::Garbage *> *iterator = garbageStack->listIterator(garbageStack->size()); iterator->hasPrevious();) {
+      Panel::Garbage *stackedGarbage = iterator->previous();
+      if (stackedGarbage->isSkill() && stackedGarbage->height == garbage->height - 1 && stackedGarbage->getOwner() == garbage->getOwner()) {
+        iterator->set(garbage);
         return;
       }
     }
   }
-  garbageStack.add(garbage);
+  garbageStack->add(garbage);
 }
 
 void Panel::quake() {
@@ -370,38 +356,36 @@ void Panel::mechanics(int64_t tick) {
   int32_t revealingTime = FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEBASE;
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
-      Block* tmp = blocks[x][y];
-      if (tmp == nullptr) {
+      Block *current = blocks[x][y];
+      if (current == nullptr) {
         continue;
       }
-      Block &current = *tmp;
-      
-      if (current.justLand) {
-        current.justLand = false;
-        current.fallingFromClearing = false;
+      if (current->justLand) {
+        current->justLand = false;
+        current->fallingFromClearing = false;
       }
-      PanelEvent* event = current.update();
+      PanelEvent *event = current->update();
       if (event != nullptr) {
-        event->data1 = current.poppingSkillChainLevel;
-        event->data2 = current.poppingIndex;
+        event->data1 = current->poppingSkillChainLevel;
+        event->data2 = current->poppingIndex;
         event->data3 = tick;
         if (panelListener != nullptr) {
           panelListener->onEvent(playerId, event);
         }
       }
-      BlockType type = current.type;
-      BlockState state = current.state;
+      BlockType type = current->type;
+      BlockState state = current->state;
       switch (state) {
         case BlockState::DONE_SWITCHING_FORTH:
           blocks[x][y] = blocks[x + 1][y];
-          blocks[x + 1][y] = &current;
+          blocks[x + 1][y] = current;
           blocks[x][y]->idle();
           blocks[x + 1][y]->idle();
           if (blocks[x][y]->type == BlockType::INVISIBLE) {
-            blocks[x][y]->toDelete();
+            blocks[x][y]->delete();
           }
           if (blocks[x + 1][y]->type == BlockType::INVISIBLE) {
-            blocks[x + 1][y]->toDelete();
+            blocks[x + 1][y]->delete();
           }
           break;
         case BlockState::TO_DELETE:
@@ -424,15 +408,15 @@ void Panel::mechanics(int64_t tick) {
             case BlockType::YELLOW:
             case BlockType::TUTORIAL:
               if (blocks[x][y - 1] == nullptr) {
-                current.hover();
+                current->hover();
               }
               break;
             case BlockType::GARBAGE:
-              Panel::Garbage& garbage = getGarbageByBlock(current);
-              if (garbage.hasToFall(x, y)) {
-                garbage.fall(x, y);
+              Panel::Garbage *garbage = getGarbageByBlock(current);
+              if (garbage->hasToFall(x, y)) {
+                garbage->fall(x, y);
               }
-              x += garbage.width - 1;
+              x += garbage->width - 1;
               break;
           }
           break;
@@ -447,10 +431,10 @@ void Panel::mechanics(int64_t tick) {
               }
               blocks[x][k]->fall();
             }
-            blocks[x][y - 1] = &current;
+            blocks[x][y - 1] = current;
             blocks[x][y] = nullptr;
           } else {
-            current.land();
+            current->land();
           }
           break;
         case BlockState::FALLING:
@@ -462,21 +446,21 @@ void Panel::mechanics(int64_t tick) {
             case BlockType::YELLOW:
             case BlockType::TUTORIAL:
               if (blocks[x][y - 1] == nullptr) {
-                blocks[x][y - 1] = &current;
+                blocks[x][y - 1] = current;
                 blocks[x][y] = nullptr;
               } else {
-                current.land();
+                current->land();
               }
               break;
             case BlockType::GARBAGE:
-              Panel::Garbage& garbage = getGarbageByBlock(current);
-              if (garbage.hasToFall(x, y)) {
-                garbage.fall(x, y);
+              Panel::Garbage *garbage = getGarbageByBlock(current);
+              if (garbage->hasToFall(x, y)) {
+                garbage->fall(x, y);
               } else {
-                garbage.idle();
+                garbage->idle();
                 quake();
               }
-              x += garbage.width - 1;
+              x += garbage->width - 1;
               break;
           }
           break;
@@ -486,24 +470,22 @@ void Panel::mechanics(int64_t tick) {
             case BlockType::GREEN:
             case BlockType::PURPLE:
             case BlockType::RED:
-            case BlockType::YELLOW: {
-              Combo combo = getComboByBlock(current);
-              for (auto block: combo.blocks) {
+            case BlockType::YELLOW:
+              Combo *combo = getComboByBlock(current);
+              for (auto block: combo->blocks) {
                 if (block->state == BlockState::EXPLODING) {
                   break;
                 }
                 block->explode(revealingTime += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
               }
-            }
               break;
-            case BlockType::GARBAGE: {
-              Clearing *clearing = current.clearing;
-              Panel::Garbage& garbage = getGarbageByBlock(current);
-              revealingTime = garbage.reveal(x, y, revealingTime, *clearing);
+            case BlockType::GARBAGE:
+              Clearing *clearing = current->getClearing();
+              Panel::Garbage *garbage = getGarbageByBlock(current);
+              revealingTime = garbage->reveal(x, y, revealingTime, clearing);
               clearing->setRevealingTime(tick + revealingTime);
-              clearing->removeBar(&garbage);
-              x += garbage.width - 1;
-            }
+              clearing->removeBar(garbage);
+              x += garbage->width - 1;
               break;
           }
           break;
@@ -513,35 +495,32 @@ void Panel::mechanics(int64_t tick) {
             case BlockType::GREEN:
             case BlockType::PURPLE:
             case BlockType::RED:
-            case BlockType::YELLOW: {
-              Combo combo = getComboByBlock(current);
+            case BlockType::YELLOW:
+              Combo *combo = getComboByBlock(current);
               bool doneExploding = true;
-              for (auto block: combo.blocks) {
+              for (auto block: combo->blocks) {
                 if (block->state != BlockState::DONE_EXPLODING) {
                   doneExploding = false;
                   break;
                 }
               }
               if (doneExploding) {
-                combos.remove(combo);
-                for (auto block: combo.blocks) {
-                  block->toDelete();
+                combos->remove(combo);
+                for (auto block: combo->blocks) {
+                  block->delete();
                 }
-                combo.blocks.clear();
+                combo->blocks->clear();
               }
-            }
               break;
             case BlockType::GARBAGE:
-              break;
           }
           break;
-        case BlockState::DONE_REVEALING: {
-          Clearing* clearing = current.clearing;
+        case BlockState::DONE_REVEALING:
+          Clearing *clearing = current->getClearing();
           if (clearing->isDoneRevealing(tick)) {
             clearing->onDoneRevealing();
-            clearings.remove(clearing);
+            clearings->remove(clearing);
           }
-        }
           break;
         case BlockState::EXPLODING:
         case BlockState::BLINKING:
@@ -553,42 +532,41 @@ void Panel::mechanics(int64_t tick) {
         case BlockState::SWITCHING_FORTH:
           break;
         default:
-          break;
       }
     }
   }
 }
 
-Combo Panel::getComboByBlock(Block& block) {
+Combo *Panel::getComboByBlock(Block *block) {
   for (auto combo: combos) {
-    if (combo.contains(block)) {
+    if (combo->contains(block)) {
       return combo;
     }
   }
-  throw runtime_error("We shoudl not be there");
+  return nullptr;
 }
 
-Panel::Garbage& Panel::getGarbageByBlock(Block& block) {
+Panel::Garbage *Panel::getGarbageByBlock(Block *block) {
   for (auto garbage: garbages) {
     if (garbage->contains(block)) {
-      return *garbage;
+      return garbage;
     }
   }
-  throw runtime_error("We shoudl not be there");
+  return nullptr;
 }
 
-Combo Panel::detectCombo() {
-  Combo currentCombo(playerId);
+Combo *Panel::detectCombo() {
+  Combo *currentCombo = new Combo(playerId);
   bool comboMask[Panel::X][Panel::Y];
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
-      Block* current = blocks[x][y];
+      Block *current = blocks[x][y];
       if (current == nullptr || current->state != BlockState::IDLE || !current->movable || !current->combinable) {
         continue;
       }
       int32_t xIdem = 1;
       for (int32_t right = x + 1; right < Panel::X; right++) {
-        Block* rightBlock = blocks[right][y];
+        Block *rightBlock = blocks[right][y];
         if (rightBlock == nullptr || rightBlock->state != BlockState::IDLE || rightBlock->type != current->type) {
           break;
         }
@@ -596,7 +574,7 @@ Combo Panel::detectCombo() {
       }
       int32_t yIdem = 1;
       for (int32_t above = y + 1; above < Panel::Y; above++) {
-        Block* aboveBlock = blocks[x][above];
+        Block *aboveBlock = blocks[x][above];
         if (aboveBlock == nullptr || aboveBlock->state != BlockState::IDLE || aboveBlock->type != current->type) {
           break;
         }
@@ -620,19 +598,20 @@ Combo Panel::detectCombo() {
       if (!comboMask[x][y]) {
         continue;
       }
-      currentCombo.addBlock(*blocks[x][y]);
+      currentCombo->addBlock(blocks[x][y]);
       blocks[x][y]->combo = true;
-      blocks[x][y]->poppingIndex = poppingIndex++;
+      int32_t poppingIndex1 = poppingIndex++;
+      blocks[x][y]->poppingIndex = poppingIndex1;
     }
   }
   return currentCombo;
 }
 
-void Panel::processCombo(Combo combo) {
-  combos.push_back(combo);
+void Panel::processCombo(Combo *combo) {
+  combos->add(combo);
   locked = true;
   bool isSkillCombo = false;
-  for (auto block: combo.blocks) {
+  for (auto block: combo->blocks) {
     isSkillCombo = block->fallingFromClearing;
     if (isSkillCombo) {
       break;
@@ -645,86 +624,106 @@ void Panel::processCombo(Combo combo) {
     if (panelListener != nullptr) {
       panelListener->onEvent(playerId, new PanelEvent(PanelEventType::SKILL_COMBO));
     }
-    score += (1000 * skillChainLevel) + (combo.size() * 100);
+    score += (1000 * skillChainLevel) + (combo->size() * 100);
   } else {
-    if (clearings.isEmpty()) {
+    if (clearings->isEmpty()) {
       skillChainLevel = 1;
     }
-    score += combo.size() * 100;
+    score += combo->size() * 100;
   }
-  for (auto &&block: combo.getBlocks()) {
-    block.setPoppingSkillChainLevel(skillChainLevel);
+  for (auto block: combo->blocks) {
+    block->poppingSkillChainLevel = skillChainLevel;
   }
   combo->skillChainLevel = comboSkillChainLevel;
-  for (auto &&block: combo.getBlocks()) {
-    block.blink();
+  for (auto block: combo->blocks) {
+    block->blink();
   }
   if (panelListener != nullptr) {
-    panelListener.onCombo(combo);
+    panelListener->onCombo(combo);
   }
-  if ((combo.size() >= 4) || (combo.getSkillChainLevel() > 1)) {
-    if (combo.size() >= 4) {
-      bonusFreezingTime = static_cast<int32_t>(((combo.size() / 2) * FuriousBlocksCoreDefaults::CORE_FREQUENCY));
+  if ((combo->size() >= 4) || (combo->skillChainLevel > 1)) {
+    if (combo->size() >= 4) {
+      bonusFreezingTime = static_cast<int32_t>(((combo->size() / 2) * FuriousBlocksCoreDefaults::CORE_FREQUENCY));
     }
-    if (combo.getSkillChainLevel() > 1) {
-      if (combo.getSkillChainLevel() == 2) {
+    if (combo->skillChainLevel > 1) {
+      if (combo->skillChainLevel == 2) {
         bonusFreezingTime = static_cast<int32_t>((5 * FuriousBlocksCoreDefaults::CORE_FREQUENCY));
       } else {
-        bonusFreezingTime += (combo.getSkillChainLevel() / 2) + FuriousBlocksCoreDefaults::CORE_FREQUENCY;
+        bonusFreezingTime += (combo->skillChainLevel / 2) + FuriousBlocksCoreDefaults::CORE_FREQUENCY;
       }
     }
     freeze(bonusFreezingTime);
   }
-  int32_t poppingIndex = combo.size();
-  Clearing& clearing = new Clearing();
+  int32_t poppingIndex = combo->size();
+  Clearing *clearing = new Clearing();
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
-      Block& current = blocks[x][y];
-      if (current == nullptr || current.getState() != BlockState::BLINKING || current.getStateTick() != FuriousBlocksCoreDefaults::BLOCK_BLINKINGTIME) {
+      Block *current = blocks[x][y];
+      if (current == nullptr || current->state != BlockState::BLINKING || current->stateTick != FuriousBlocksCoreDefaults::BLOCK_BLINKINGTIME) {
         continue;
       }
       if (y + 1 < Panel::Y) {
-        Block& aboveBlock = blocks[x][y + 1];
-        Panel::Garbage& garbage = getGarbageByBlock(aboveBlock);
+        Block *aboveBlock = blocks[x][y + 1];
+        Panel::Garbage *garbage = getGarbageByBlock(aboveBlock);
         if (aboveBlock != nullptr && garbage != nullptr) {
-          poppingIndex = garbage.blink(poppingIndex, combo);
-          clearing.addBlockBar(garbage);
+          poppingIndex = garbage->blink(poppingIndex, combo);
+          clearing->addBlockBar(garbage);
         }
       }
       if (y - 1 > 0) {
-        Block& belowBlock = blocks[x][y - 1];
-        Panel::Garbage& garbage = getGarbageByBlock(belowBlock);
+        Block *belowBlock = blocks[x][y - 1];
+        Panel::Garbage *garbage = getGarbageByBlock(belowBlock);
         if (belowBlock != nullptr && garbage != nullptr) {
-          poppingIndex = garbage.blink(poppingIndex, combo);
-          clearing.addBlockBar(garbage);
+          poppingIndex = garbage->blink(poppingIndex, combo);
+          clearing->addBlockBar(garbage);
         }
       }
       if (x + 1 < Panel::X) {
-        Block& rightBlock = blocks[x + 1][y];
-        Panel::Garbage& garbage = getGarbageByBlock(rightBlock);
+        Block *rightBlock = blocks[x + 1][y];
+        Panel::Garbage *garbage = getGarbageByBlock(rightBlock);
         if (rightBlock != nullptr && garbage != nullptr) {
-          poppingIndex = garbage.blink(poppingIndex, combo);
-          clearing.addBlockBar(garbage);
+          poppingIndex = garbage->blink(poppingIndex, combo);
+          clearing->addBlockBar(garbage);
         }
       }
       if (x - 1 > 0) {
-        Block& leftBlock = blocks[x - 1][y];
-        Panel::Garbage& garbage = getGarbageByBlock(leftBlock);
+        Block *leftBlock = blocks[x - 1][y];
+        Panel::Garbage *garbage = getGarbageByBlock(leftBlock);
         if (leftBlock != nullptr && garbage != nullptr) {
-          poppingIndex = garbage.blink(poppingIndex, combo);
-          clearing.addBlockBar(garbage);
+          poppingIndex = garbage->blink(poppingIndex, combo);
+          clearing->addBlockBar(garbage);
         }
       }
     }
   }
-  if (!clearing.isEmpty()) {
-    clearings.add(clearing);
+  if (!clearing->isEmpty()) {
+    clearings->add(clearing);
   }
 }
 
+PanelSituation *Panel::getSituation() {
+  BlockSituation *blockSituations[Panel::X][Panel::Y_DISPLAY + 1];
+  for (int32_t y = 0; y < (Panel::Y_DISPLAY + 1); y++) {
+    for (int32_t x = 0; x < Panel::X; x++) {
+      blockSituations[x][y] = blocks[x][y] == nullptr ? nullptr : blocks[x][y]->getSituation();
+    }
+  }
+  std::list<ComboSituation *> comboSituations;
+  for (auto combo: combos) {
+    comboSituations->add(combo->getSituation());
+  }
+  std::list<GarbageSituation *> garbageSituations;
+  for (auto garbage: garbages) {
+    garbageSituations->add(garbage->getSituation());
+  }
+  std::list<GarbageSituation *> garbageStackSituation;
+  for (auto garbage: garbageStack) {
+    garbageStackSituation->add(garbage->getSituation());
+  }
+  return new PanelSituation(blockSituations, locked, comboSituations, new Point(cursor), scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, !clearings->isEmpty());
+}
 
-
-Panel::Garbage& Panel::newGarbage(int32_t width, int32_t height, int32_t owner, bool skill) {
+Panel::Garbage *Panel::newGarbage(int32_t width, int32_t height, int32_t owner, bool skill) {
   return new Panel::Garbage(width, height, owner, skill);
 }
 
@@ -740,7 +739,7 @@ bool Panel::isGameOver() {
   return gameOver;
 }
 
-void Panel::submitMove(Move& move) {
+void Panel::submitMove(Move *move) {
   this->move = new Move(move);
 }
 
@@ -749,14 +748,14 @@ Panel::BlockBar::BlockBar(Panel *__parent, int32_t width, int32_t height, int32_
   __parent
 }
 {
-  this->id = __parent->random.nextInt();
-  this->width = width;
-  this->height = height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height;
-  this->owner = owner;
+this->id = __parent->random->nextInt();
+this->width = width;
+this->height = height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height;
+this->owner = owner;
 }
 
-bool Panel::BlockBar::contains(Block* block) {
-  return barBlocks.contains(block);
+bool Panel::BlockBar::contains(Block *block) {
+  return barBlocks->contains(block);
 }
 
 bool Panel::BlockBar::hasToFall(int32_t xOrigin, int32_t yOrigin) {
@@ -778,27 +777,28 @@ void Panel::BlockBar::fall(int32_t xOrigin, int32_t yOrigin) {
 }
 
 void Panel::BlockBar::idle() {
-  for (auto &&block: barBlocks) {
-    block.idle();
+  for (auto block: barBlocks) {
+    block->idle();
   }
 }
 
 int32_t Panel::BlockBar::blink(int32_t poppingIndex) {
-  if (barBlocks.iterator().next().getState() == BlockState::BLINKING) {
+  if (barBlocks->iterator()->next()->state == BlockState::BLINKING) {
     return poppingIndex;
   }
   int32_t index = poppingIndex;
-  for (auto &&block: barBlocks) {
-    block.blink();
-    block.setPoppingIndex(index++);
-    block.setPoppingSkillChainLevel(__parent->skillChainLevel);
+  for (auto block: barBlocks) {
+    block->blink();
+    int32_t poppingIndex1 = index++;
+    block->poppingIndex = poppingIndex1;
+    block->poppingSkillChainLevel = __parent->skillChainLevel;
   }
   return index;
 }
 
 bool Panel::BlockBar::isRevealing() {
-  for (auto &&block: barBlocks) {
-    if (block.getState() == BlockState::REVEALING) {
+  for (auto block: barBlocks) {
+    if (block->state == BlockState::REVEALING) {
       return true;
     }
   }
@@ -810,7 +810,7 @@ Panel::Garbage::Garbage(Panel *__parent, int32_t width, int32_t height, int32_t 
   __parent
 }
 {
-  this->skill = skill;
+this->skill = skill;
 }
 
 bool Panel::Garbage::isSkill() {
@@ -827,80 +827,80 @@ void Panel::Garbage::inject(int32_t x, int32_t y) {
       if (__parent->blocks[i][j] == nullptr) {
         __parent->blocks[i][j] = newBlock(BlockType::GARBAGE);
       } else {
-        __parent->blocks[i][j] = newBlock(BlockType::GARBAGE, __parent->blocks[i][j].getPoppingIndex(), __parent->blocks[i][j].getPoppingSkillChainLevel());
+        __parent->blocks[i][j] = newBlock(BlockType::GARBAGE, __parent->blocks[i][j]->poppingIndex, __parent->blocks[i][j]->poppingSkillChainLevel);
       }
-      __parent->blocks[i][j].setGarbageOwner(owner);
-      barBlocks.add(__parent->blocks[i][j]);
+      __parent->blocks[i][j]->garbageOwner = owner;
+      barBlocks->add(__parent->blocks[i][j]);
     }
   }
-  __parent->garbages.add(this);
+  __parent->garbages->add(this);
   switch (height) {
     case 1:
       for (int32_t w = 1; w < (width - 1); w++) {
-        __parent->blocks[x + w][y].setGarbageBlockType(GarbageBlockType::UPDOWN);
+        __parent->blocks[x + w][y]->garbageBlockType = GarbageBlockType::UPDOWN;
       }
-      __parent->blocks[x][y].setGarbageBlockType(GarbageBlockType::UPLEFTDOWN);
-      __parent->blocks[(x + width) - 1][y].setGarbageBlockType(GarbageBlockType::UPRIGHTDOWN);
+      __parent->blocks[x][y]->garbageBlockType = GarbageBlockType::UPLEFTDOWN;
+      __parent->blocks[(x + width) - 1][y]->garbageBlockType = GarbageBlockType::UPRIGHTDOWN;
       break;
     default:
       for (int32_t h = 0; h < height; h++) {
         for (int32_t w = 0; w < width; w++) {
-          __parent->blocks[x + w][y - h].setGarbageBlockType(GarbageBlockType::PLAIN);
+          __parent->blocks[x + w][y - h]->garbageBlockType = GarbageBlockType::PLAIN;
         }
       }
-      __parent->blocks[x][y].setGarbageBlockType(GarbageBlockType::UPLEFT);
-      __parent->blocks[x][y - (height - 1)].setGarbageBlockType(GarbageBlockType::DOWNLEFT);
-      __parent->blocks[(x + width) - 1][y].setGarbageBlockType(GarbageBlockType::UPRIGHT);
-      __parent->blocks[(x + width) - 1][y - (height - 1)].setGarbageBlockType(GarbageBlockType::DOWNRIGHT);
+      __parent->blocks[x][y]->garbageBlockType = GarbageBlockType::UPLEFT;
+      __parent->blocks[x][y - (height - 1)]->garbageBlockType = GarbageBlockType::DOWNLEFT;
+      __parent->blocks[(x + width) - 1][y]->garbageBlockType = GarbageBlockType::UPRIGHT;
+      __parent->blocks[(x + width) - 1][y - (height - 1)]->garbageBlockType = GarbageBlockType::DOWNRIGHT;
       if (width > 2) {
         for (int32_t w = 1; w < (width - 1); w++) {
-          __parent->blocks[x + w][y].setGarbageBlockType(GarbageBlockType::UP);
-          __parent->blocks[x + w][y - (height - 1)].setGarbageBlockType(GarbageBlockType::DOWN);
+          __parent->blocks[x + w][y]->garbageBlockType = GarbageBlockType::UP;
+          __parent->blocks[x + w][y - (height - 1)]->garbageBlockType = GarbageBlockType::DOWN;
         }
       }
       if (height > 2) {
         for (int32_t h = 1; h < (height - 1); h++) {
-          __parent->blocks[x][y - h].setGarbageBlockType(GarbageBlockType::LEFT);
-          __parent->blocks[(x + width) - 1][y - h].setGarbageBlockType(GarbageBlockType::RIGHT);
+          __parent->blocks[x][y - h]->garbageBlockType = GarbageBlockType::LEFT;
+          __parent->blocks[(x + width) - 1][y - h]->garbageBlockType = GarbageBlockType::RIGHT;
         }
       }
       break;
   }
 }
 
-int32_t Panel::Garbage::blink(int32_t poppingIndex, Combo& combo) {
+int32_t Panel::Garbage::blink(int32_t poppingIndex, Combo *combo) {
   triggeringCombo = combo;
   return BlockBar::blink(poppingIndex);
 }
 
-int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing& parentClearing) {
+int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing *parentClearing) {
   if (isRevealing()) {
     return revealingTime;
   }
-  __parent->garbages.remove(this);
+  __parent->garbages->remove(this);
   int32_t revealingTimeIncrement = revealingTime;
   if (triggeringCombo != nullptr) {
-    for (auto &&block: triggeringCombo.getBlocks()) {
-      if (block.getState() == BlockState::EXPLODING) {
+    for (auto block: triggeringCombo->blocks) {
+      if (block->state == BlockState::EXPLODING) {
         break;
       }
-      block.explode(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
+      block->explode(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
     }
   }
-  Panel::BlockLine& subLine = new Panel::BlockLine(width, owner);
-  subLine.inject(xOrigin, yOrigin);
-  parentClearing.addBlockBar(subLine);
-  revealingTimeIncrement = subLine.reveal(xOrigin, yOrigin, revealingTimeIncrement);
+  Panel::BlockLine *subLine = new Panel::BlockLine(width, owner);
+  subLine->inject(xOrigin, yOrigin);
+  parentClearing->addBlockBar(subLine);
+  revealingTimeIncrement = subLine->reveal(xOrigin, yOrigin, revealingTimeIncrement);
   if (height > 1) {
-    Panel::Garbage& subGarbage = newGarbage(width, height - 1, owner, skill);
-    subGarbage.inject(xOrigin, yOrigin + height - 1);
-    parentClearing.addBlockBar(subGarbage);
+    Panel::Garbage *subGarbage = newGarbage(width, height - 1, owner, skill);
+    subGarbage->inject(xOrigin, yOrigin + height - 1);
+    parentClearing->addBlockBar(subGarbage);
     for (int32_t y = yOrigin + 1; y < yOrigin + height && y < Panel::Y; y++) {
       for (int32_t x = xOrigin; x < xOrigin + width && x < Panel::X; x++) {
         if (y <= Panel::Y_DISPLAY) {
-          __parent->blocks[x][y].reveal(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
+          __parent->blocks[x][y]->reveal(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
         } else {
-          __parent->blocks[x][y].reveal(-1);
+          __parent->blocks[x][y]->reveal(-1);
         }
       }
     }
@@ -909,17 +909,17 @@ int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t reveali
 }
 
 void Panel::Garbage::onDoneRevealing() {
-  for (auto &&block: barBlocks) {
-    block.idle();
+  for (auto block: barBlocks) {
+    block->idle();
   }
 }
 
-GarbageSituation Panel::Garbage::getSituation() {
-  list<int32_t> blockIds;
-  for (auto &&barBlock: barBlocks) {
-    blockIds.add(barBlock.getId());
+GarbageSituation *Panel::Garbage::getSituation() {
+  std::list<int32_t> blockIds;
+  for (auto barBlock: barBlocks) {
+    blockIds->add(barBlock->id);
   }
-  return GarbageSituation(width, height, owner, blockIds);
+  return new GarbageSituation(width, height, owner, blockIds);
 }
 
 Panel::BlockLine::BlockLine(Panel *__parent, int32_t width, int32_t owner)
@@ -935,18 +935,18 @@ void Panel::BlockLine::inject(int32_t x, int32_t y) {
       if (__parent->blocks[i][j] == nullptr) {
         __parent->blocks[i][j] = newRandom(nullptr);
       } else {
-        __parent->blocks[i][j] = newRandom(nullptr, __parent->blocks[i][j].getPoppingIndex(), __parent->blocks[i][j].getPoppingSkillChainLevel());
+        __parent->blocks[i][j] = newRandom(nullptr, __parent->blocks[i][j]->poppingIndex, __parent->blocks[i][j]->poppingSkillChainLevel);
       }
-      __parent->blocks[i][j].setGarbageOwner(owner);
-      barBlocks.add(__parent->blocks[i][j]);
+      __parent->blocks[i][j]->garbageOwner = owner;
+      barBlocks->add(__parent->blocks[i][j]);
     }
   }
 }
 
 void Panel::BlockLine::onDoneRevealing() {
-  for (auto &&block: barBlocks) {
-    block.airBounce();
-    block.setFallingFromClearing(true);
+  for (auto block: barBlocks) {
+    block->airBounce();
+    block->fallingFromClearing = true;
   }
 }
 
@@ -958,9 +958,9 @@ int32_t Panel::BlockLine::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revea
   for (int32_t y = yOrigin; y < yOrigin + height && y < Panel::Y; y++) {
     for (int32_t x = xOrigin; x < xOrigin + width && x < Panel::X; x++) {
       if (y <= Panel::Y_DISPLAY) {
-        __parent->blocks[x][y].reveal(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
+        __parent->blocks[x][y]->reveal(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
       } else {
-        __parent->blocks[x][y].reveal(-1);
+        __parent->blocks[x][y]->reveal(-1);
       }
     }
   }

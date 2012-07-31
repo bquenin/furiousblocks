@@ -3,17 +3,14 @@
 
 #include <cstdint>
 
-using namespace std;
-
-class Move {
+class Move
+{
 private:
-  int8_t type = 0;
-
 protected:
 public:
-  Move(int8_t type);
-  Move(Move& move);
-  int8_t getType();
+    int8_t type = 0;
+    Move(int8_t type);
+    Move(Move* move);
 };
 
 #endif //__Move_H_

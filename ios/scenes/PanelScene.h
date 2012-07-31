@@ -26,7 +26,7 @@ public:
   Player *player;
 
   // Renderer
-  CCSprite *grid[PANEL_WIDTH][PANEL_HEIGHT];
+  CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
   CCSpriteFrame *BLOCKS_BLUE_HOVER_01;
   CCSpriteFrame *BLOCKS_GREEN_COMPRESSED_01;
@@ -54,7 +54,7 @@ public:
   CCSpriteFrame *GARBAGE_RIGHT_BOTTOM;
   CCSpriteFrame *GARBAGE_TOP_RIGHT_BOTTOM;
   CCSpriteFrame *BLOCKS_BLUE_PANIC_04;
-//        CCSpriteFrame *EYE_SURPRISE ;
+  //        CCSpriteFrame *EYE_SURPRISE ;
   CCSpriteFrame *BLOCKS_GREEN_LAND_02;
   CCSpriteFrame *GARBAGE_TOP_BOTTOM;
   CCSpriteFrame *BLOCKS_GREEN_COMPRESSED_02;
@@ -100,7 +100,7 @@ public:
   CCSpriteFrame *BLOCKS_RED_HAPPY;
   CCSpriteFrame *BLOCKS_YELLOW_HOVER_04;
   CCSpriteFrame *GARBAGE_SINGLE;
-//        CCSpriteFrame *EYE ;
+  //        CCSpriteFrame *EYE ;
   CCSpriteFrame *BLOCKS_GREEN_PANIC_03;
   CCSpriteFrame *GARBAGE_LEFT_BOTTOM;
   CCSpriteFrame *BLOCKS_BLUE_PANIC_03;

@@ -3,18 +3,15 @@
 
 #include <cstdint>
 #include "Combo.h"
-#include "PanelEvent.h"
 
-using namespace std;
-
-class PanelListener {
-  friend class Panel;
+class PanelListener
+{
 private:
-  virtual void onEvent(int64_t playerId, const PanelEvent* panelEvent);
-  virtual ~PanelListener();
+
 protected:
 public:
-  virtual void onCombo(Combo& combo);
+    virtual void onCombo(Combo* combo);
+  virtual void onEvent(int64_t playerId, PanelEvent* panelEvent);
 };
 
 #endif //__PanelListener_H_

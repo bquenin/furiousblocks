@@ -1,11 +1,10 @@
 #include <cstdint>
+#include <set>
 #include "Clearing.h"
 
-using namespace std;
-
-void Clearing::addBlockBar(Panel::BlockBar* bar) {
+void Clearing::addBlockBar(Panel::BlockBar *bar) {
   for (auto block: bar->barBlocks) {
-    block->clearing = this;
+    block->setClearing(this);
   }
   bars.insert(bar);
 }
@@ -20,7 +19,7 @@ void Clearing::onDoneRevealing() {
   }
 }
 
-bool Clearing::contains(Block& block) {
+bool Clearing::contains(Block *block) {
   for (auto bar: bars) {
     if (bar->contains(block)) {
       return true;
@@ -30,12 +29,12 @@ bool Clearing::contains(Block& block) {
 }
 
 bool Clearing::isEmpty() {
-  return bars.size() == 0;
+  return bars.empty();
 }
 
-void Clearing::removeBar(Panel::BlockBar* bar) {
+void Clearing::removeBar(Panel::BlockBar *bar) {
   for (auto block: bar->barBlocks) {
-    block->clearing = nullptr;
+    block->setClearing(nullptr);
   }
   bars.erase(bar);
 }

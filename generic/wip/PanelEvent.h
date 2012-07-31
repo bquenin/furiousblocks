@@ -4,20 +4,19 @@
 #include <cstdint>
 #include "PanelEventType.h"
 
-using namespace std;
-
-class PanelEvent {
+class PanelEvent
+{
 private:
-  PanelEvent(PanelEventType type, int32_t data1, int32_t data2);
+    PanelEvent(PanelEventType type, int32_t data1, int32_t data2);
 
 protected:
 public:
-  PanelEventType type;
-  int32_t data1 = 0;
-  int32_t data2 = 0;
-  int64_t data3 = 0;
-  PanelEvent(PanelEventType type);
-  PanelEvent(PanelEventType type, int32_t data1);
+    PanelEventType type;
+    int32_t data1 = 0;
+    int32_t data2 = 0;
+    int64_t data3 = 0;
+    PanelEvent(PanelEventType type);
+    PanelEvent(PanelEventType type, int32_t data1);
 };
 
 #endif //__PanelEvent_H_

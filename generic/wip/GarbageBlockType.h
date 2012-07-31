@@ -3,10 +3,11 @@
 
 #include <cstdint>
 
-using namespace std;
-
-class GarbageBlockType {
+class GarbageBlockType
+{
 private:
+protected:
+public:
   int32_t UPLEFTDOWN = 1;
   int32_t UPDOWN = 2;
   int32_t UPRIGHTDOWN = 3;
@@ -19,9 +20,6 @@ private:
   int32_t LEFT = 10;
   int32_t PLAIN = 11;
   int32_t RIGHT = 12;
-
-protected:
-public:
 };
 
 #endif //__GarbageBlockType_H_

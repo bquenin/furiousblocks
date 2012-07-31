@@ -1,12 +1,11 @@
 #include <cstdint>
-#include <list>
-#include <unordered_set>
+#include <set>
 #include "ComboSituation.h"
 
-using namespace std;
-
-ComboSituation::ComboSituation(int32_t size, int32_t skillChainLevel, unordered_set<int32_t> &blockIds) :
-size(size), skillChainLevel(skillChainLevel), blockIds(blockIds) {
+ComboSituation::ComboSituation(int32_t size, int32_t skillChainLevel, std::set<int32_t> blockIds) {
+  this->size = size;
+  this->skillChainLevel = skillChainLevel;
+  this->blockIds = blockIds;
 }
 
 bool ComboSituation::contains(int32_t blockId) {
