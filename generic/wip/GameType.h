@@ -2,6 +2,8 @@
 #define __GameType_H_
 
 
-enum class GameType{ VERSUS_ENDLESS};
+enum class GameType {
+  VERSUS_ENDLESS
+};
 
 #endif //__GameType_H_

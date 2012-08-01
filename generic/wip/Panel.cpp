@@ -108,7 +108,7 @@ PanelSituation *Panel::onTick(int64_t tick) {
   }
   switch (state) {
     case PanelState::QUAKING:
-    case PanelState::IDLE:
+    case PanelState::IDLE: {
       processMove();
       mechanics(tick);
       Combo *currentCombo = detectCombo();
@@ -117,6 +117,7 @@ PanelSituation *Panel::onTick(int64_t tick) {
       }
       scrolling(tick);
       dropGarbages();
+    }
       break;
     case PanelState::GAMEOVER_PHASE1:
       if ((stateTick % 4) == 0) {
@@ -241,7 +242,7 @@ void Panel::processMove() {
 }
 
 void Panel::dropGarbages() {
-  for (auto garbage: new std::list<Panel::Garbage *>(garbageStack)) {
+  for (auto garbage : new std::list<Panel::Garbage *>(garbageStack)) {
     int32_t y = (Panel::Y_DISPLAY + garbage->height) - 1;
     for (int32_t h = 0, j = y; h < garbage->height; h++, j--) {
       for (int32_t i = 0, w = 0; w < garbage->width; i++, w++) {
@@ -272,15 +273,15 @@ void Panel::scrolling(int64_t tick) {
     return;
   }
   scrollingSpeed = lifting ? 1 : scrollingEnabled ? levelScrollingSpeed : INT32_MAX;
-  bool newLine = false;
+  bool needNewLine = false;
   if (tick % scrollingSpeed == 0) {
     scrollingDelta++;
     if (scrollingDelta >= FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT) {
-      newLine = true;
+      needNewLine = true;
     }
     scrollingDelta %= FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT;
   }
-  if (newLine) {
+  if (needNewLine) {
     newLine();
     gracePeriod();
     if (cursor->y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
@@ -532,6 +533,7 @@ void Panel::mechanics(int64_t tick) {
         case BlockState::SWITCHING_FORTH:
           break;
         default:
+          break;
       }
     }
   }

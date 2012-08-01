@@ -3,8 +3,7 @@
 
 #include <cstdint>
 
-class GarbageBlockType
-{
+class GarbageBlockType {
 private:
 protected:
 public:

@@ -4,14 +4,13 @@
 #include <cstdint>
 #include "Combo.h"
 
-class PanelListener
-{
+class PanelListener {
 private:
 
 protected:
 public:
-    virtual void onCombo(Combo* combo);
-  virtual void onEvent(int64_t playerId, PanelEvent* panelEvent);
+  virtual void onCombo(Combo *combo);
+  virtual void onEvent(int64_t playerId, PanelEvent *panelEvent);
 };
 
 #endif //__PanelListener_H_

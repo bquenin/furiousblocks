@@ -5,15 +5,14 @@
 #include <map>
 #include "PanelSituation.h"
 
-class GameSituation
-{
+class GameSituation {
 private:
-    std::map<int32_t,PanelSituation*> playerIdToPanelSituation;
+  std::map<int32_t, PanelSituation *> playerIdToPanelSituation;
 
 protected:
 public:
-    GameSituation(std::map<int32_t,PanelSituation*> panelSituations);
-    std::map<int32_t,PanelSituation*> getPlayerIdToPanelSituation();
+  GameSituation(std::map<int32_t, PanelSituation *> panelSituations);
+  std::map<int32_t, PanelSituation *> getPlayerIdToPanelSituation();
 };
 
 #endif //__GameSituation_H_
