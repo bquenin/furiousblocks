@@ -12,10 +12,10 @@ private:
 
 protected:
   //    AtomicReference<Move*>* move = new AtomicReference<Move*>();
-  Player(int32_t id, const std::string name);
   //    virtual void playerTick(PanelSituation* panelSituation, bool isMostRecentData) = 0;
 
 public:
+  Player(int32_t id = 123, const std::string name = "default");
   int32_t id = 0;
   std::string name;
   //    Move* onMoveRequest();

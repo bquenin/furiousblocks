@@ -25,7 +25,7 @@ protected:
   //    AtomicReference<GameSituation*>* gameSituation = new AtomicReference<GameSituation*>();
 
 public:
-  BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
+  BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
   FuriousBlocksCore(int32_t seed);
   FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener);
   void addPlayer(Player *newPlayer);

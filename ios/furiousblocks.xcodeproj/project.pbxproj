@@ -212,9 +212,9 @@
 		36795749C7BC17A8E2F51020 /* voices.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3679577E82874D572CB16A51 /* voices.mp3 */; };
 		3679585AEE35BB0074D2C8BE /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36795750D8ABB35D780985F6 /* harmonic.mp3 */; };
 		36795A62E7326C9E81019150 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 367956D4972C3050E29AAFDB /* SkaterDudes.ttf */; };
+		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D2BD39A215C5D0A90038E59C /* BlockSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */; };
-		D2BD39A515C5D0A90038E59C /* Clearing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397015C5D0A90038E59C /* Clearing.cpp */; };
 		D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
 		D2BD39A715C5D0A90038E59C /* ComboSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397415C5D0A90038E59C /* ComboSituation.cpp */; };
 		D2BD39AA15C5D0A90038E59C /* GameSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397B15C5D0A90038E59C /* GameSituation.cpp */; };
@@ -654,14 +654,13 @@
 		367956D4972C3050E29AAFDB /* SkaterDudes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = SkaterDudes.ttf; sourceTree = "<group>"; };
 		36795750D8ABB35D780985F6 /* harmonic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = harmonic.mp3; sourceTree = "<group>"; };
 		3679577E82874D572CB16A51 /* voices.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voices.mp3; sourceTree = "<group>"; };
+		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
 		D2BD396815C5D0A90038E59C /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
 		D2BD396915C5D0A90038E59C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockSituation.cpp; sourceTree = "<group>"; };
 		D2BD396B15C5D0A90038E59C /* BlockSituation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockSituation.h; sourceTree = "<group>"; };
 		D2BD396D15C5D0A90038E59C /* BlockState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockState.h; sourceTree = "<group>"; };
 		D2BD396F15C5D0A90038E59C /* BlockType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockType.h; sourceTree = "<group>"; };
-		D2BD397015C5D0A90038E59C /* Clearing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Clearing.cpp; sourceTree = "<group>"; };
-		D2BD397115C5D0A90038E59C /* Clearing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clearing.h; sourceTree = "<group>"; };
 		D2BD397215C5D0A90038E59C /* Combo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Combo.cpp; sourceTree = "<group>"; };
 		D2BD397315C5D0A90038E59C /* Combo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Combo.h; sourceTree = "<group>"; };
 		D2BD397415C5D0A90038E59C /* ComboSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComboSituation.cpp; sourceTree = "<group>"; };
@@ -1574,14 +1573,13 @@
 		D2BD396715C5D0A90038E59C /* wip */ = {
 			isa = PBXGroup;
 			children = (
+				7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */,
 				D2BD396815C5D0A90038E59C /* Block.cpp */,
 				D2BD396915C5D0A90038E59C /* Block.h */,
 				D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */,
 				D2BD396B15C5D0A90038E59C /* BlockSituation.h */,
 				D2BD396D15C5D0A90038E59C /* BlockState.h */,
 				D2BD396F15C5D0A90038E59C /* BlockType.h */,
-				D2BD397015C5D0A90038E59C /* Clearing.cpp */,
-				D2BD397115C5D0A90038E59C /* Clearing.h */,
 				D2BD397215C5D0A90038E59C /* Combo.cpp */,
 				D2BD397315C5D0A90038E59C /* Combo.h */,
 				D2BD397415C5D0A90038E59C /* ComboSituation.cpp */,
@@ -1877,7 +1875,6 @@
 				2E211F1159E493100CB0B22 /* TitleScene.cpp in Sources */,
 				D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */,
 				D2BD39A215C5D0A90038E59C /* BlockSituation.cpp in Sources */,
-				D2BD39A515C5D0A90038E59C /* Clearing.cpp in Sources */,
 				D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */,
 				D2BD39A715C5D0A90038E59C /* ComboSituation.cpp in Sources */,
 				D2BD39AA15C5D0A90038E59C /* GameSituation.cpp in Sources */,
@@ -1889,6 +1886,7 @@
 				D2BD39BA15C5D0A90038E59C /* Player.cpp in Sources */,
 				D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */,
 				D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */,
+				7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

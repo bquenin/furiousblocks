@@ -7,11 +7,8 @@
 #include "PanelEvent.h"
 #include "BlockSituation.h"
 
-class Clearing;
-
 class Block {
 private:
-  Clearing *clearing = nullptr;
 
 protected:
 public:
@@ -42,9 +39,8 @@ public:
   PanelEvent *update();
   BlockSituation *getSituation();
   static bool isComputable(Block *block);
-  void setClearing(Clearing *clearing);
-  Clearing *getClearing();
   Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel);
+  void *clearing = nullptr;
 };
 
 #endif //__Block_H_

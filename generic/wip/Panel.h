@@ -18,19 +18,20 @@
 #include "Point.h"
 
 class Panel {
-  friend class Clearing;
+
 private:
   class BlockBar {
     friend class Clearing;
-  private:
-    int32_t id = 0;
-    int32_t owner = 0;
-    Panel *__parent;
-    BlockBar(Panel *__parent, int32_t width, int32_t height, int32_t owner);
-    virtual void onDoneRevealing() = 0;
+    friend class Garbage;
+    friend class BlockLine;
 
   protected:
+    int32_t id = 0;
+    Panel *__parent;
+    BlockBar(Panel *__parent, int32_t width, int32_t height, int32_t owner);
+    int32_t owner = 0;
   public:
+    virtual void onDoneRevealing() = 0;
     bool contains(Block *block);
     bool hasToFall(int32_t xOrigin, int32_t yOrigin);
     void fall(int32_t xOrigin, int32_t yOrigin);
@@ -41,7 +42,29 @@ private:
     int32_t height = 0;
     std::set<Block *> barBlocks;
   };
-  class Garbage : BlockBar {
+
+  class Clearing {
+    friend class Block;
+
+  private:
+    std::set<Panel::BlockBar *> bars;
+    int64_t revealingTime = 0;
+
+  protected:
+  public:
+    void addBlockBar(Panel::BlockBar *bar);
+    bool isDoneRevealing(int64_t tick);
+    void onDoneRevealing();
+    bool contains(Block *block);
+    bool isEmpty();
+    void removeBar(Panel::BlockBar *bar);
+    void setRevealingTime(int64_t revealingTime);
+  };
+
+  class Garbage : public BlockBar {
+    friend class Clearing;
+    friend class Panel;
+
   private:
     bool skill = false;
     Combo *triggeringCombo = nullptr;
@@ -58,17 +81,20 @@ private:
     int32_t reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing *parentClearing);
     GarbageSituation *getSituation();
   };
-  class BlockLine : BlockBar {
+
+
+  class BlockLine : public BlockBar {
   private:
     Panel *__parent;
-    BlockLine(Panel *__parent, int32_t width, int32_t owner);
-    void inject(int32_t x, int32_t y);
-    void onDoneRevealing();
 
+    void onDoneRevealing();
   protected:
   public:
+    BlockLine(Panel *__parent, int32_t width, int32_t owner);
     int32_t reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime);
+    void inject(int32_t x, int32_t y);
   };
+
   static const int32_t INITIAL_SCROLLING_SPEED = static_cast<int32_t>(FuriousBlocksCoreDefaults::CORE_FREQUENCY);
   static const int64_t NEXT_LEVEL = static_cast<int64_t>((FuriousBlocksCoreDefaults::CORE_FREQUENCY * 1000));
   int32_t lastIndex = -1;
@@ -76,10 +102,10 @@ private:
   int64_t localTick = 0;
   int32_t playerId = 0;
   furiousblocks::Point *cursor;
-  std::list<Combo *> combos;
-  std::list<Panel::Garbage *> garbages;
+  std::set<Combo *> combos;
+  std::set<Panel::Garbage *> garbages;
   std::set<Clearing *> clearings;
-  std::list<Panel::Garbage *> garbageStack;
+  std::set<Panel::Garbage *> garbageStack;
   PanelState state = PanelState::IDLE;
   int32_t stateTick = 0;
   int32_t levelScrollingSpeed = 0;
@@ -96,8 +122,8 @@ private:
   int32_t wallOffset = 0;
   int32_t score = 0;
   PanelListener *panelListener = nullptr;
-  Block *newRandom(BlockType excludedType, int32_t poppingIndex, int32_t skillChainLevel);
-  Block *newBlock(BlockType blockType, int32_t index, int32_t skillChainLevel);
+  Block *newRandom(BlockType excludedType = static_cast<BlockType>(-1), int32_t poppingIndex = 0, int32_t skillChainLevel = 0);
+  Block *newBlock(BlockType blockType, int32_t index = 0, int32_t skillChainLevel = 0);
   void processMove();
   void dropGarbages();
   void scrolling(int64_t tick);
@@ -115,16 +141,12 @@ private:
 protected:
   static const int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
 
-  Block *newRandom(BlockType excludedType);
-  Block *newBlock(BlockType blockType);
-
 public:
   static const int32_t numberOfRegularBlocks = 5;
   bool scrollingEnabled = true;
-  Panel(int32_t seed, int32_t playerId, BlockType ***initialBlockTypes);
-  Panel(int32_t seed, int32_t playerId, BlockType ***initialBlockTypes, PanelListener *panelListener);
+  Panel(int32_t seed, int32_t playerId, BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener = nullptr);
   void reset();
-  void setTransposedBlocks(BlockType ***initialBlockTypes);
+  void setTransposedBlocks(BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT]);
   PanelSituation *onTick(int64_t tick);
   void stackGarbage(Panel::Garbage *garbage);
   Panel::Garbage *newGarbage(int32_t width, int32_t height, int32_t owner, bool skill);
