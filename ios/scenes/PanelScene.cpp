@@ -1,4 +1,5 @@
 #include "PanelScene.h"
+#include <thread>
 
 USING_NS_CC;
 
@@ -14,6 +15,10 @@ CCScene *PanelScene::scene() {
 
   // return the scene
   return scene;
+}
+
+void call_from_thread() {
+  std::cout << "Hello, World" << std::endl;
 }
 
 // on "init" you need to initialize your instance
@@ -162,6 +167,7 @@ bool PanelScene::init() {
     }
   }
 
+  std::thread t1(call_from_thread);
 
 
   // Start the core

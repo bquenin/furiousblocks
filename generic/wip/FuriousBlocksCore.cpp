@@ -48,7 +48,7 @@ void FuriousBlocksCore::stop() {
 
 void FuriousBlocksCore::onTick(int64_t tick) {
   for (const auto &entry: playerToPanel) {
-    Player *player = entry.first;
+//    Player *player = entry.first;
     Panel *panel = entry.second;
     if (panel->isGameOver()) {
       continue;
@@ -70,7 +70,10 @@ void FuriousBlocksCore::onTick(int64_t tick) {
     }
     player->onSituationUpdate(panelSituation);
   }
-//  gameSituation->set(new GameSituation(panelSituations));
+  GameSituation * oldSituation = new GameSituation(panelSituations);
+  if (oldSituation != nullptr) {
+    delete oldSituation;
+  }
 }
 
 void FuriousBlocksCore::onCombo(Combo *combo) {

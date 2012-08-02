@@ -4,11 +4,13 @@
 #include <cstdint>
 #include <set>
 #include <map>
+#include <atomic>
 #import "FuriousBlocksCoreListener.h"
 #import "FuriousBlocksCoreDefaults.h"
 #import "Player.h"
 #import "Panel.h"
 #import "GameSituation.h"
+
 
 class FuriousBlocksCore : PanelListener {
 private:
@@ -22,7 +24,7 @@ private:
 
 protected:
   std::map<Player *, Panel *> playerToPanel;
-  //    AtomicReference<GameSituation*>* gameSituation = new AtomicReference<GameSituation*>();
+  std::atomic<GameSituation*> gameSituation;
 
 public:
   BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
