@@ -6,10 +6,10 @@
 
 class FuriousBlocksCoreListener {
 private:
-  virtual void onEvent(int64_t playerId, PanelEvent *panelEvent);
 
 protected:
 public:
+  virtual void onEvent(int64_t playerId, PanelEvent *panelEvent);
 };
 
 #endif //__FuriousBlocksCoreListener_H_

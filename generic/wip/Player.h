@@ -21,6 +21,7 @@ public:
   //    Move* onMoveRequest();
   //    void onSituationUpdate(PanelSituation* panelSituation);
   //    void run();
+  void onSituationUpdate(PanelSituation *panelSituation);
 };
 
 #endif //__Player_H_

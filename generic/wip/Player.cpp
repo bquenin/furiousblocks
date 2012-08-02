@@ -6,3 +6,7 @@ Player::Player(int32_t id, const std::string name) {
   this->name = name;
 }
 
+void Player::onSituationUpdate(PanelSituation *panelSituation) {
+
+}
+

@@ -10,7 +10,7 @@
 #import "Panel.h"
 #import "GameSituation.h"
 
-class FuriousBlocksCore {
+class FuriousBlocksCore : PanelListener {
 private:
   int32_t seed = 0;
   int64_t nanoPeriod = static_cast<int64_t>((1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY * 1000000000));
@@ -38,7 +38,7 @@ public:
   void onTick(int64_t tick);
   void onCombo(Combo *combo);
   void onEvent(int64_t playerId, PanelEvent *panelEvent);
-  std::set<Player *> getPlayers();
+//  std::set<Player *> getPlayers();
   void justATick();
 };
 

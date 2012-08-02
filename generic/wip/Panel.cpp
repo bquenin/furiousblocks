@@ -5,7 +5,7 @@
 #include "MoveType.h"
 #include "GarbageBlockType.h"
 
-Panel::Panel(int32_t seed, int32_t playerId, BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener) {
+Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener) {
   this->playerId = playerId;
   this->panelListener = panelListener;
   random = new SimpleRNG(seed);
@@ -788,9 +788,13 @@ void Panel::BlockBar::idle() {
 }
 
 int32_t Panel::BlockBar::blink(int32_t poppingIndex) {
-  if (barBlocks->iterator()->next()->state == BlockState::BLINKING) {
+  std::set<Block *>::const_iterator first = barBlocks.begin();
+  if ((*first)->state == BlockState::BLINKING) {
     return poppingIndex;
   }
+//  if (barBlocks->iterator()->next()->state == BlockState::BLINKING) {
+//    return poppingIndex;
+//  }
   int32_t index = poppingIndex;
   for (auto block: barBlocks) {
     block->blink();
