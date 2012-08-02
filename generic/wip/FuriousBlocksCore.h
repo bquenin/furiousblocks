@@ -17,8 +17,8 @@ private:
   int32_t seed = 0;
   int64_t nanoPeriod = static_cast<int64_t>((1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY * 1000000000));
   int64_t tick = 0;
-  bool running = false;
-  bool paused = false;
+  volatile bool running = false;
+  volatile bool paused = false;
   bool singleTick = false;
   FuriousBlocksCoreListener *listener = nullptr;
 
@@ -28,8 +28,7 @@ protected:
 
 public:
   BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
-  FuriousBlocksCore(int32_t seed);
-  FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener);
+  FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener = nullptr);
   void addPlayer(Player *newPlayer);
   void addPlayer(Player *newPlayer, Panel *panel);
   //    AtomicReference<GameSituation*> getGameSituation();

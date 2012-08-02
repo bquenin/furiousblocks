@@ -3,10 +3,6 @@
 #include <map>
 #include "FuriousBlocksCore.h"
 
-FuriousBlocksCore::FuriousBlocksCore(int32_t seed) {
-  FuriousBlocksCore(seed, nullptr);
-}
-
 FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener) {
   this->listener = listener;
   this->seed = seed;
