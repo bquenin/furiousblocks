@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <set>
 #include <list>
-#include <MacTypes.h>
 #include "Block.h"
 #include "Combo.h"
 #include "GarbageSituation.h"
@@ -26,10 +25,10 @@ private:
     friend class BlockLine;
 
   protected:
-    int32_t id = 0;
+    int32_t id;
     Panel *__parent;
     BlockBar(Panel *__parent, int32_t width, int32_t height, int32_t owner);
-    int32_t owner = 0;
+    int32_t owner;
   public:
     virtual void onDoneRevealing() = 0;
     bool contains(Block *block);
@@ -38,8 +37,8 @@ private:
     void idle();
     int32_t blink(int32_t poppingIndex);
     bool isRevealing();
-    int32_t width = 0;
-    int32_t height = 0;
+    int32_t width;
+    int32_t height;
     std::set<Block *> barBlocks;
   };
 
@@ -48,7 +47,7 @@ private:
 
   private:
     std::set<Panel::BlockBar *> bars;
-    int64_t revealingTime = 0;
+    int64_t revealingTime;
 
   protected:
   public:
@@ -66,8 +65,8 @@ private:
     friend class Panel;
 
   private:
-    bool skill = false;
-    Combo *triggeringCombo = nullptr;
+    bool skill;
+    Combo *triggeringCombo;
     Panel *__parent;
     Garbage(Panel *__parent, int32_t width, int32_t height, int32_t owner, bool skill);
     void inject(int32_t x, int32_t y);
@@ -143,7 +142,7 @@ protected:
 
 public:
   static const int32_t numberOfRegularBlocks = 5;
-  bool scrollingEnabled = true;
+  bool scrollingEnabled;
   Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener = nullptr);
   void reset();
   void setTransposedBlocks(BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT]);

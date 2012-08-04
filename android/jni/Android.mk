@@ -31,12 +31,10 @@ LOCAL_SRC_FILES := bootstrap/main.cpp \
 		../../generic/wip/PanelEventType.cpp \
 		../../generic/wip/PanelListener.cpp \
 		../../generic/wip/PanelSituation.cpp \
-		../../generic/wip/PanelSituationHelper.cpp \
 		../../generic/wip/PanelState.cpp \
 		../../generic/wip/Player.cpp \
 		../../generic/wip/Point.cpp \
 		../../generic/wip/SimpleRNG.cpp \
-		../../generic/wip/StackGarbageEvent.cpp \
                    renderer/PanelScene.cpp
                    
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../generic/core \

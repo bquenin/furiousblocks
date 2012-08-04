@@ -5,11 +5,11 @@
 #include <set>
 #include <map>
 #include <atomic>
-#import "FuriousBlocksCoreListener.h"
-#import "FuriousBlocksCoreDefaults.h"
-#import "Player.h"
-#import "Panel.h"
-#import "GameSituation.h"
+#include "FuriousBlocksCoreListener.h"
+#include "FuriousBlocksCoreDefaults.h"
+#include "Player.h"
+#include "Panel.h"
+#include "GameSituation.h"
 
 
 class FuriousBlocksCore : PanelListener {
