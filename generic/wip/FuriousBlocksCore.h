@@ -31,7 +31,6 @@ public:
   FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener = nullptr);
   void addPlayer(Player *newPlayer);
   void addPlayer(Player *newPlayer, Panel *panel);
-  //    AtomicReference<GameSituation*> getGameSituation();
   void run();
   void pause();
   void resume();
