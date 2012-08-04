@@ -5,13 +5,10 @@
 #include "MoveType.h"
 #include "GarbageBlockType.h"
 
-Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener) {
-  this->playerId = playerId;
-  this->panelListener = panelListener;
-  random = new SimpleRNG(seed);
-  scrollingSpeed = levelScrollingSpeed = Panel::INITIAL_SCROLLING_SPEED;
-  cursor->x = (Panel::X / 2) - 1;
-  cursor->y = (Panel::Y_DISPLAY / 2) - 1;
+Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener)
+: lastIndex(-1), random(new SimpleRNG(seed)), localTick(0), playerId(playerId), cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1)),state (PanelState::IDLE), stateTick(0),
+levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), scrollingDelta(0), freezingTime(0), bonusFreezingTime(0), skillChainLevel(1),
+move(nullptr), locked(false), lifting(false), gracing(false), gameOver(false), wallOffset(0), score(0), panelListener(panelListener) {
   if (initialBlockTypes != nullptr) {
     for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
       for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {

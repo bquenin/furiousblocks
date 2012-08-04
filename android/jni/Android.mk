@@ -10,15 +10,33 @@ LOCAL_CPPFLAGS = -std=gnu++0x
 
 LOCAL_SRC_FILES := bootstrap/main.cpp \
                    bootstrap/AppDelegate.cpp \
-                   ../../generic/core/Block.cpp \
-                   ../../generic/core/Combo.cpp \
-                   ../../generic/core/FBPanel.cpp \
-                   ../../generic/core/FBPoint.cpp \
-                   ../../generic/core/FuriousBlocksCore.cpp \
-                   ../../generic/core/Move.cpp \
-                   ../../generic/core/PanelEvent.cpp \
-                   ../../generic/core/Player.cpp \
-                   ../../generic/core/SimpleRNG.cpp \
+		../../generic/wip/Block.cpp \
+		../../generic/wip/BlockSituation.cpp \
+		../../generic/wip/BlockState.cpp \
+		../../generic/wip/BlockType.cpp \
+		../../generic/wip/Clearing.cpp \
+		../../generic/wip/Combo.cpp \
+		../../generic/wip/ComboSituation.cpp \
+		../../generic/wip/FuriousBlocksCore.cpp \
+		../../generic/wip/FuriousBlocksCoreDefaults.cpp \
+		../../generic/wip/FuriousBlocksCoreListener.cpp \
+		../../generic/wip/GameSituation.cpp \
+		../../generic/wip/GameType.cpp \
+		../../generic/wip/GarbageBlockType.cpp \
+		../../generic/wip/GarbageSituation.cpp \
+		../../generic/wip/Move.cpp \
+		../../generic/wip/MoveType.cpp \
+		../../generic/wip/Panel.cpp \
+		../../generic/wip/PanelEvent.cpp \
+		../../generic/wip/PanelEventType.cpp \
+		../../generic/wip/PanelListener.cpp \
+		../../generic/wip/PanelSituation.cpp \
+		../../generic/wip/PanelSituationHelper.cpp \
+		../../generic/wip/PanelState.cpp \
+		../../generic/wip/Player.cpp \
+		../../generic/wip/Point.cpp \
+		../../generic/wip/SimpleRNG.cpp \
+		../../generic/wip/StackGarbageEvent.cpp \
                    renderer/PanelScene.cpp
                    
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../generic/core \

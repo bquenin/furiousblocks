@@ -7,7 +7,7 @@ class Move {
 private:
 protected:
 public:
-  int8_t type = 0;
+  int8_t type;
   Move(int8_t type);
   Move(Move *move);
 };

@@ -16,7 +16,7 @@ protected:
 
 public:
   Player(int32_t id = 123, const std::string name = "default");
-  int32_t id = 0;
+  int32_t id;
   std::string name;
   //    Move* onMoveRequest();
   //    void onSituationUpdate(PanelSituation* panelSituation);

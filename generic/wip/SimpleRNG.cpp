@@ -2,8 +2,8 @@
 #include <cstdlib>
 #include "SimpleRNG.h"
 
-SimpleRNG::SimpleRNG(int32_t u) {
-  m_w = u;
+SimpleRNG::SimpleRNG(int32_t u)
+: m_w(u), m_z(362436069) {
 }
 
 int32_t SimpleRNG::nextInt() {

@@ -22,9 +22,9 @@ public:
   int32_t poppingSkillChainLevel;
   bool combo;
   bool fallingFromClearing;
-  bool justLand = false;
-  bool movable = false;
-  bool combinable = false;
+  bool justLand;
+  bool movable;
+  bool combinable;
   void idle();
   void switchBack();
   void switchForth();
@@ -40,7 +40,7 @@ public:
   BlockSituation *getSituation();
   static bool isComputable(Block *block);
   Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel);
-  void *clearing = nullptr;
+  void *clearing;
 };
 
 #endif //__Block_H_

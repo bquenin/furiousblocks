@@ -8,11 +8,11 @@ namespace furiousblocks {
   private:
   protected:
   public:
-    int32_t x = 0;
-    int32_t y = 0;
+    int32_t x;
+    int32_t y;
     Point();
     Point(Point *p);
-    Point(int32_t x, int32_t y);
+    Point(int32_t x = 0, int32_t y = 0);
   };
 }
 #endif //__Point_H_

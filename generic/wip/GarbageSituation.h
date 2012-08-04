@@ -6,9 +6,9 @@
 
 class GarbageSituation {
 private:
-  int32_t width = 0;
-  int32_t height = 0;
-  int32_t owner = 0;
+  int32_t width;
+  int32_t height;
+  int32_t owner;
   std::set<int32_t> blocks;
 
 protected:

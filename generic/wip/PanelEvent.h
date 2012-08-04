@@ -6,16 +6,15 @@
 
 class PanelEvent {
 private:
-  PanelEvent(PanelEventType type, int32_t data1, int32_t data2);
+
 
 protected:
 public:
   PanelEventType type;
-  int32_t data1 = 0;
-  int32_t data2 = 0;
-  int64_t data3 = 0;
-  PanelEvent(PanelEventType type);
-  PanelEvent(PanelEventType type, int32_t data1);
+  int32_t data1;
+  int32_t data2;
+  int32_t data3;
+  PanelEvent(PanelEventType type, int32_t data1 = 0, int32_t data2 = 0);
 };
 
 #endif //__PanelEvent_H_

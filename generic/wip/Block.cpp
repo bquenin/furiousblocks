@@ -1,5 +1,4 @@
 #include <cstdint>
-#include <strings.h>
 #include "Block.h"
 #include "FuriousBlocksCoreDefaults.h"
 
