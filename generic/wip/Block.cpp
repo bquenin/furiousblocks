@@ -1,10 +1,10 @@
 #include <cstdint>
+#include <strings.h>
 #include "Block.h"
 #include "FuriousBlocksCoreDefaults.h"
 
-Block::Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel) {
-  this->id = id;
-  this->type = type;
+Block::Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel) :
+id(id),type(type),state(BlockState::IDLE),stateTick(0),garbageBlockType(0),garbageOwner(0),poppingIndex(index),poppingSkillChainLevel(skillChainLevel),combo(false),fallingFromClearing(false), justLand(false), movable(false), combinable(false) {
   switch (type) {
     case BlockType::GARBAGE:
       movable = false;
@@ -19,14 +19,6 @@ Block::Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel)
       combinable = true;
       break;
   }
-  state = BlockState::IDLE;
-  stateTick = 0;
-  poppingIndex = 0;
-  poppingSkillChainLevel = 0;
-  fallingFromClearing = false;
-  justLand = false;
-  poppingIndex = index;
-  poppingSkillChainLevel = skillChainLevel;
 }
 
 void Block::idle() {

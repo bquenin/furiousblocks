@@ -1,19 +1,8 @@
 #include <cstdint>
 #include "BlockSituation.h"
 
-BlockSituation::BlockSituation(int32_t id, BlockType type, BlockState state, int32_t stateTick, int32_t garbageBlockType, int32_t garbageOwner, bool combo, bool justLand, bool fallingFromClearing, int32_t poppingIndex, bool movable, bool combinable) {
-  this->id = id;
-  this->type = type;
-  this->state = state;
-  this->stateTick = stateTick;
-  this->garbageBlockType = garbageBlockType;
-  this->garbageOwner = garbageOwner;
-  this->combo = combo;
-  this->justLand = justLand;
-  this->fallingFromClearing = fallingFromClearing;
-  this->poppingIndex = poppingIndex;
-  this->movable = movable;
-  this->combinable = combinable;
+BlockSituation::BlockSituation(int32_t id, BlockType type, BlockState state, int32_t stateTick, int32_t garbageBlockType, int32_t garbageOwner, bool combo, bool justLand, bool fallingFromClearing, int32_t poppingIndex, bool movable, bool combinable)
+: id(id), type(type), state(state), stateTick(stateTick),garbageBlockType(garbageBlockType), garbageOwner(garbageOwner), combo(combo), justLand(justLand), fallingFromClearing(fallingFromClearing), poppingIndex(poppingIndex), movable(movable), combinable(combinable) {
 }
 
 bool BlockSituation::isComputable(BlockSituation *blockSituation) {

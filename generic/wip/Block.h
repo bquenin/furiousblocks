@@ -12,16 +12,16 @@ private:
 
 protected:
 public:
-  int32_t id = 0;
+  int32_t id;
   BlockType type;
   BlockState state;
-  int32_t stateTick = 0;
-  int32_t garbageBlockType = 0;
-  int32_t garbageOwner = 0;
-  int32_t poppingIndex = 0;
-  int32_t poppingSkillChainLevel = 0;
-  bool combo = false;
-  bool fallingFromClearing = false;
+  int32_t stateTick;
+  int32_t garbageBlockType;
+  int32_t garbageOwner;
+  int32_t poppingIndex;
+  int32_t poppingSkillChainLevel;
+  bool combo;
+  bool fallingFromClearing;
   bool justLand = false;
   bool movable = false;
   bool combinable = false;

@@ -6,8 +6,8 @@
 
 class ComboSituation {
 private:
-  int32_t size = 0;
-  int32_t skillChainLevel = 0;
+  int32_t size;
+  int32_t skillChainLevel;
   std::set<int32_t> blockIds;
 
 protected:

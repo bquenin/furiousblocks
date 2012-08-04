@@ -3,9 +3,8 @@
 #include <map>
 #include "FuriousBlocksCore.h"
 
-FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener) {
-  this->listener = listener;
-  this->seed = seed;
+FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
+: seed(seed), tick (0), running(false), paused(false), singleTick(false), listener(listener) {
   SimpleRNG *random = new SimpleRNG(seed);
   for (int32_t y = 0; y < 4; y++) {
     for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
@@ -44,15 +43,15 @@ void FuriousBlocksCore::stop() {
 
 void FuriousBlocksCore::onTick(int64_t tick) {
   for (const auto &entry: playerToPanel) {
-//    Player *player = entry.first;
+    //    Player *player = entry.first;
     Panel *panel = entry.second;
     if (panel->isGameOver()) {
       continue;
     }
-//    Move *move = player->onMoveRequest();
-//    if (move != nullptr) {
-//      panel->submitMove(move);
-//    }
+    //    Move *move = player->onMoveRequest();
+    //    if (move != nullptr) {
+    //      panel->submitMove(move);
+    //    }
   }
 
   std::map<int32_t, PanelSituation *> panelSituations;
@@ -66,7 +65,7 @@ void FuriousBlocksCore::onTick(int64_t tick) {
     }
     player->onSituationUpdate(panelSituation);
   }
-  GameSituation * oldSituation = new GameSituation(panelSituations);
+  GameSituation *oldSituation = new GameSituation(panelSituations);
   if (oldSituation != nullptr) {
     delete oldSituation;
   }

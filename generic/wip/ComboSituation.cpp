@@ -2,10 +2,8 @@
 #include <set>
 #include "ComboSituation.h"
 
-ComboSituation::ComboSituation(int32_t size, int32_t skillChainLevel, std::set<int32_t> blockIds) {
-  this->size = size;
-  this->skillChainLevel = skillChainLevel;
-  this->blockIds = blockIds;
+ComboSituation::ComboSituation(int32_t size, int32_t skillChainLevel, std::set<int32_t> blockIds)
+: size(size),skillChainLevel(skillChainLevel),blockIds(blockIds){
 }
 
 bool ComboSituation::contains(int32_t blockId) {

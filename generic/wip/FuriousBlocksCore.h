@@ -14,13 +14,13 @@
 
 class FuriousBlocksCore : PanelListener {
 private:
-  int32_t seed = 0;
-  int64_t nanoPeriod = static_cast<int64_t>((1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY * 1000000000));
-  int64_t tick = 0;
-  volatile bool running = false;
-  volatile bool paused = false;
-  bool singleTick = false;
-  FuriousBlocksCoreListener *listener = nullptr;
+  static constexpr int64_t nanoPeriod = static_cast<int64_t>((1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY * 1000000000));
+  int32_t seed;
+  int64_t tick;
+  volatile bool running;
+  volatile bool paused;
+  bool singleTick;
+  FuriousBlocksCoreListener *listener;
 
 protected:
   std::map<Player *, Panel *> playerToPanel;

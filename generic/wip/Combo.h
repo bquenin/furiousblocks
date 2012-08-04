@@ -12,8 +12,8 @@ private:
 protected:
 public:
   std::set<Block *> blocks;
-  int32_t owner = 0;
-  int32_t skillChainLevel = 1;
+  int32_t owner;
+  int32_t skillChainLevel;
   Combo(int32_t owner);
   void addBlock(Block *block);
   int32_t size();

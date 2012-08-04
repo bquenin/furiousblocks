@@ -2,8 +2,8 @@
 #include <set>
 #include "Combo.h"
 
-Combo::Combo(int32_t owner) {
-  this->owner = owner;
+Combo::Combo(int32_t owner)
+:owner(owner), skillChainLevel(1){
 }
 
 void Combo::addBlock(Block *block) {
