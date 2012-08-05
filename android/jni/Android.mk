@@ -37,7 +37,7 @@ LOCAL_SRC_FILES := bootstrap/main.cpp \
 		../../generic/wip/SimpleRNG.cpp \
                    renderer/PanelScene.cpp
                    
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../generic/core \
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../generic/wip \
                     $(LOCAL_PATH)/renderer
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static
