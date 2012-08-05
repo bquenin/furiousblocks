@@ -3,7 +3,7 @@
 #include "Combo.h"
 
 Combo::Combo(int32_t owner)
-:owner(owner), skillChainLevel(1){
+:owner(owner), skillChainLevel(1) {
 }
 
 void Combo::addBlock(Block *block) {

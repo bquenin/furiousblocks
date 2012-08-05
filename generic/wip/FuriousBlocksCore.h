@@ -24,7 +24,7 @@ private:
 
 protected:
   std::map<Player *, Panel *> playerToPanel;
-  std::atomic<GameSituation*> gameSituation;
+  std::atomic<GameSituation *> gameSituation;
 
 public:
   BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
@@ -38,7 +38,7 @@ public:
   void onTick(int64_t tick);
   void onCombo(Combo *combo);
   void onEvent(int64_t playerId, PanelEvent *panelEvent);
-//  std::set<Player *> getPlayers();
+  //  std::set<Player *> getPlayers();
   void justATick();
 };
 

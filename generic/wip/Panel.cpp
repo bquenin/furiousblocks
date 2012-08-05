@@ -6,7 +6,7 @@
 #include "GarbageBlockType.h"
 
 Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener)
-: lastIndex(-1), random(new SimpleRNG(seed)), localTick(0), playerId(playerId), cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1)),state (PanelState::IDLE), stateTick(0),
+: lastIndex(-1), random(new SimpleRNG(seed)), localTick(0), playerId(playerId), cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1)), state (PanelState::IDLE), stateTick(0),
 levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), scrollingDelta(0), freezingTime(0), bonusFreezingTime(0), skillChainLevel(1),
 move(nullptr), locked(false), lifting(false), gracing(false), gameOver(false), wallOffset(0), score(0), panelListener(panelListener) {
   if (initialBlockTypes != nullptr) {
@@ -789,9 +789,9 @@ int32_t Panel::BlockBar::blink(int32_t poppingIndex) {
   if ((*first)->state == BlockState::BLINKING) {
     return poppingIndex;
   }
-//  if (barBlocks->iterator()->next()->state == BlockState::BLINKING) {
-//    return poppingIndex;
-//  }
+  //  if (barBlocks->iterator()->next()->state == BlockState::BLINKING) {
+  //    return poppingIndex;
+  //  }
   int32_t index = poppingIndex;
   for (auto block: barBlocks) {
     block->blink();
