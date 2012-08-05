@@ -184,7 +184,7 @@ bool PanelScene::init() {
 
 void PanelScene::update(float dt) {
   core->onTick(tick++);
-  GameSituation *gs = core->gameSituation.load();
+  GameSituation *gs = core->gameSituation;
   PanelSituation *ps = gs->playerIdToPanelSituation[123];
 
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
@@ -194,7 +194,7 @@ void PanelScene::update(float dt) {
         grid[x][y]->setVisible(false);
         continue;
       }
-      grid[x][y]->setPosition(ccp(x * 48, y * 48 + ps->scrollingOffset * 48 / 16));
+      grid[x][y]->setPosition(ccp(x * 96, y * 96 + ps->scrollingOffset * 96  / 16));
       grid[x][y]->setVisible(true);
       CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
       if (frame != nullptr) {
