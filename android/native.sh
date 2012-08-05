@@ -41,3 +41,5 @@ else
         NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/prebuilt
 fi
 
+cp obj/local/armeabi/libgame.so libs/armeabi/libgame.so
+

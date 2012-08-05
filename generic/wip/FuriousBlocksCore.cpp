@@ -67,8 +67,8 @@ void FuriousBlocksCore::onTick(int64_t tick) {
     }
     player->onSituationUpdate(panelSituation);
   }
-
   gameSituation = new GameSituation(panelSituations);
+
 //  if (oldSituation != nullptr) {
 //    delete oldSituation;
 //  }
