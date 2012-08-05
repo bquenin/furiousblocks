@@ -15,9 +15,9 @@ protected:
   //    virtual void playerTick(PanelSituation* panelSituation, bool isMostRecentData) = 0;
 
 public:
-  Player(int32_t id = 123, const std::string name = "default");
   int32_t id;
   std::string name;
+  Player(int32_t id = 123, const std::string name = "default");
   //    Move* onMoveRequest();
   //    void onSituationUpdate(PanelSituation* panelSituation);
   //    void run();

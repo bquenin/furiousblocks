@@ -130,11 +130,3 @@ BlockSituation *Block::getSituation() {
 bool Block::isComputable(Block *block) {
   return block != nullptr && block->movable && block->state == BlockState::IDLE;
 }
-
-//void Block::setClearing(Clearing *clearing) {
-//  this->clearing = clearing;
-//}
-//
-//Clearing *Block::getClearing() {
-//  return clearing;
-//}

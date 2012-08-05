@@ -8,6 +8,4 @@ id(id), name(name) {
 }
 
 void Player::onSituationUpdate(PanelSituation *panelSituation) {
-
 }
-

@@ -11,6 +11,8 @@ public:
 
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
+  void update(float d);
+  CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
 
   // there's no 'id' in cpp, so we recommand to return the exactly class pointer
   static cocos2d::CCScene *scene();
@@ -134,7 +136,7 @@ public:
   CCSpriteFrame *BLOCKS_PURPLE_HOVER_02;
   CCSpriteFrame *BLOCKS_BLUE_COMPRESSED_02;
   CCSpriteFrame *BLOCKS_BLUE_LAND_01;
-
+  int tick;
 };
 
 #endif // __PANELSCENE_H_

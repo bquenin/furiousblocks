@@ -9,13 +9,18 @@ Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[F
 : lastIndex(-1), random(new SimpleRNG(seed)), localTick(0), playerId(playerId), cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1)), state (PanelState::IDLE), stateTick(0),
 levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), scrollingDelta(0), freezingTime(0), bonusFreezingTime(0), skillChainLevel(1),
 move(nullptr), locked(false), lifting(false), gracing(false), gameOver(false), wallOffset(0), score(0), panelListener(panelListener) {
-  if (initialBlockTypes != nullptr) {
-    for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
-      for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-        blocks[x][y] = newBlock(initialBlockTypes[x][y]);
-      }
+  for (int32_t y = 0; y < Panel::Y; y++) {
+    for (int32_t x = 0; x < Panel::X; x++) {
+      blocks[x][y] = nullptr;
     }
   }
+
+  for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+    for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+      blocks[x][y] = initialBlockTypes[x][y] == static_cast<BlockType>(-1) ? nullptr : newBlock(initialBlockTypes[x][y]);
+    }
+  }
+
   for (int32_t x = 0; x < Panel::X; x++) {
     blocks[x][0] = blocks[x][1] == nullptr ? newRandom() : newRandom(blocks[x][1]->type);
   }
@@ -355,7 +360,7 @@ void Panel::mechanics(int64_t tick) {
       if (event != nullptr) {
         event->data1 = current->poppingSkillChainLevel;
         event->data2 = current->poppingIndex;
-        event->data3 = tick;
+        event->data3 = static_cast<int32_t>(tick);
         if (panelListener != nullptr) {
           panelListener->onEvent(playerId, event);
         }
@@ -561,6 +566,12 @@ Panel::Garbage *Panel::getGarbageByBlock(Block *block) {
 Combo *Panel::detectCombo() {
   Combo *currentCombo = new Combo(playerId);
   bool comboMask[Panel::X][Panel::Y];
+
+  for (int32_t y = 0; y < Panel::Y; y++) {
+    for (int32_t x = 0; x < Panel::X; x++) {
+      comboMask[x][y] = false;
+    }
+  }
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
       Block *current = blocks[x][y];
@@ -1005,4 +1016,3 @@ void Panel::Clearing::removeBar(Panel::BlockBar *bar) {
 void Panel::Clearing::setRevealingTime(int64_t revealingTime) {
   this->revealingTime = revealingTime;
 }
-

@@ -6,9 +6,15 @@
 FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
 : seed(seed), tick (0), running(false), paused(false), singleTick(false), listener(listener) {
   SimpleRNG *random = new SimpleRNG(seed);
+  for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+    for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+      initialBlockTypes[x][y] = static_cast<BlockType>(-1);
+    }
+  }
+
   for (int32_t y = 0; y < 4; y++) {
     for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-      initialBlockTypes[x][y] = static_cast<BlockType >(random->nextInt() % Panel::numberOfRegularBlocks);
+      initialBlockTypes[x][y] = static_cast<BlockType>(random->nextInt() % Panel::numberOfRegularBlocks);
     }
   }
 }
@@ -20,10 +26,6 @@ void FuriousBlocksCore::addPlayer(Player *newPlayer) {
 void FuriousBlocksCore::addPlayer(Player *newPlayer, Panel *panel) {
   playerToPanel[newPlayer] = panel == nullptr ? new Panel(seed + newPlayer->id, newPlayer->id, initialBlockTypes, this) : panel;
 }
-
-//AtomicReference<GameSituation *> FuriousBlocksCore::getGameSituation() {
-//  return gameSituation;
-//}
 
 void FuriousBlocksCore::run() {
   running = true;
@@ -65,10 +67,11 @@ void FuriousBlocksCore::onTick(int64_t tick) {
     }
     player->onSituationUpdate(panelSituation);
   }
-  GameSituation *oldSituation = new GameSituation(panelSituations);
-  if (oldSituation != nullptr) {
-    delete oldSituation;
-  }
+
+  gameSituation.store(new GameSituation(panelSituations));
+//  if (oldSituation != nullptr) {
+//    delete oldSituation;
+//  }
 }
 
 void FuriousBlocksCore::onCombo(Combo *combo) {
