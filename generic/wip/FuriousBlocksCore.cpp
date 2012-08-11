@@ -2,6 +2,10 @@
 #include <set>
 #include <map>
 #include "FuriousBlocksCore.h"
+#include "CCStdC.h"
+#include "cocos2d.h"
+
+USING_NS_CC;
 
 FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
 : seed(seed), tick (0), running(false), paused(false), singleTick(false), listener(listener) {
@@ -67,7 +71,8 @@ void FuriousBlocksCore::onTick(int64_t tick) {
     }
     player->onSituationUpdate(panelSituation);
   }
-  gameSituation = new GameSituation(panelSituations);
+
+  gameSituation.reset(new GameSituation(panelSituations));
 
 //  if (oldSituation != nullptr) {
 //    delete oldSituation;

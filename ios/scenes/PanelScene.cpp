@@ -184,8 +184,8 @@ bool PanelScene::init() {
 
 void PanelScene::update(float dt) {
   core->onTick(tick++);
-  GameSituation *gs = core->gameSituation.load();
-  PanelSituation *ps = gs->playerIdToPanelSituation[123];
+  auto gs(core->gameSituation);
+  auto ps = gs->playerIdToPanelSituation[123];
 
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {

@@ -105,6 +105,8 @@ PanelSituation *Panel::onTick(int64_t tick) {
       Combo *currentCombo = detectCombo();
       if (currentCombo->size() > 0) {
         processCombo(currentCombo);
+      } else {
+        delete currentCombo;
       }
       scrolling(tick);
       dropGarbages();
@@ -365,6 +367,7 @@ void Panel::mechanics(int64_t tick) {
         if (panelListener != nullptr) {
           panelListener->onEvent(playerId, event);
         }
+        delete event;
       }
       BlockType type = current->type;
       BlockState state = current->state;
@@ -391,6 +394,7 @@ void Panel::mechanics(int64_t tick) {
             }
           }
           blocks[x][y] = nullptr;
+          delete current;
           break;
         case BlockState::IDLE:
           switch (type) {
@@ -737,7 +741,7 @@ PanelSituation *Panel::getSituation() {
   for (auto garbage: garbageStack) {
     garbageStackSituation.insert(garbage->getSituation());
   }
-  return new PanelSituation(blockSituations, locked, comboSituations, new furiousblocks::Point(cursor), scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, !clearings.empty());
+  return new PanelSituation(blockSituations, locked, comboSituations, cursor, scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, !clearings.empty());
 }
 
 Panel::Garbage *Panel::newGarbage(int32_t width, int32_t height, int32_t owner, bool skill) {

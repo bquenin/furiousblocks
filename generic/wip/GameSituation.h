@@ -9,6 +9,7 @@ class GameSituation {
 public:
   std::map<int32_t, PanelSituation *> playerIdToPanelSituation;
   GameSituation(std::map<int32_t, PanelSituation *> panelSituations);
+  ~GameSituation();
 };
 
 #endif //__GameSituation_H_

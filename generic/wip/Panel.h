@@ -81,7 +81,6 @@ private:
     GarbageSituation *getSituation();
   };
 
-
   class BlockLine : public BlockBar {
   private:
     Panel *__parent;

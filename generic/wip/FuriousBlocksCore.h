@@ -39,7 +39,7 @@ public:
   void onEvent(int64_t playerId, PanelEvent *panelEvent);
   //  std::set<Player *> getPlayers();
   void justATick();
-  std::atomic<GameSituation*> gameSituation;
+  std::shared_ptr<GameSituation> gameSituation;
 };
 
 #endif //__FuriousBlocksCore_H_
