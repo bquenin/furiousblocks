@@ -5,6 +5,7 @@
 #include <set>
 #include <map>
 #include <atomic>
+#include <memory>
 #include "FuriousBlocksCoreListener.h"
 #include "FuriousBlocksCoreDefaults.h"
 #include "Player.h"

@@ -184,26 +184,24 @@ bool PanelScene::init() {
 
 void PanelScene::update(float dt) {
   core->onTick(tick++);
-  GameSituation *gs = core->gameSituation;
-  CCLOG("gs = %d\n", gs);
+  auto gs(core->gameSituation);
+  auto ps = gs->playerIdToPanelSituation[123];
 
-//  PanelSituation *ps = gs->playerIdToPanelSituation[123];
-//
-//  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
-//    for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-//      BlockSituation *current = ps->blockSituations[x][y];
-//      if (current == nullptr) {
-//        grid[x][y]->setVisible(false);
-//        continue;
-//      }
-//      grid[x][y]->setPosition(ccp(x * 96, y * 96 + ps->scrollingOffset * 96  / 16));
-//      grid[x][y]->setVisible(true);
-//      CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
-//      if (frame != nullptr) {
-//        grid[x][y]->setDisplayFrame(frame);
-//      }
-//    }
-//  }
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+    for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+      BlockSituation *current = ps->blockSituations[x][y];
+      if (current == nullptr) {
+        grid[x][y]->setVisible(false);
+        continue;
+      }
+      grid[x][y]->setPosition(ccp(x * 48, y * 48 + ps->scrollingOffset * 48 / 16));
+      grid[x][y]->setVisible(true);
+      CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
+      if (frame != nullptr) {
+        grid[x][y]->setDisplayFrame(frame);
+      }
+    }
+  }
 }
 
 CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {

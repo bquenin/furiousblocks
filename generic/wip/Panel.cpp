@@ -4,7 +4,6 @@
 #include "Panel.h"
 #include "MoveType.h"
 #include "GarbageBlockType.h"
-#include "CCCommon.h"
 
 Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener)
 : lastIndex(-1), random(new SimpleRNG(seed)), localTick(0), playerId(playerId), cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1)), state (PanelState::IDLE), stateTick(0),
