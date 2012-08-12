@@ -1566,7 +1566,8 @@
 				D2E1CD0515D7D80B00D844D0 /* iphone.png */,
 				D2E1CD0615D7D80B00D844D0 /* title.png */,
 			);
-			path = graphics;
+			name = graphics;
+			path = assets/graphics;
 			sourceTree = SOURCE_ROOT;
 		};
 		7969E75D1854DA1DCC2BE82E /* fonts */ = {
@@ -1574,7 +1575,8 @@
 			children = (
 				D2E1CD0D15D7D81400D844D0 /* SkaterDudes.ttf */,
 			);
-			path = fonts;
+			name = fonts;
+			path = assets/fonts;
 			sourceTree = SOURCE_ROOT;
 		};
 		7969EA2F0767E1C68A87CC8B /* bgm */ = {
@@ -1583,7 +1585,8 @@
 				D2E1CCFD15D7D7F700D844D0 /* harmonic.mp3 */,
 				D2E1CCFE15D7D7F700D844D0 /* voices.mp3 */,
 			);
-			path = bgm;
+			name = bgm;
+			path = assets/bgm;
 			sourceTree = SOURCE_ROOT;
 		};
 		D2BD396715C5D0A90038E59C /* wip */ = {
