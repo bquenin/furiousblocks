@@ -152,10 +152,9 @@ bool PanelScene::init() {
 
   //        [sprite runAction:[CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO] ]];
 
-  // Sprite grid
-  //  CCSprite *background = [CCSprite spriteWithSpriteFrameName:@"bg.png");
-  //  background.anchorPoint = ccp(0, 0);
-  //  [batch addChild:background];
+  CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
+  background->setAnchorPoint(ccp(0, 0));
+  batch->addChild(background);
 
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
@@ -194,7 +193,7 @@ void PanelScene::update(float dt) {
         grid[x][y]->setVisible(false);
         continue;
       }
-      grid[x][y]->setPosition(ccp(x * 48, y * 48 + ps->scrollingOffset * 48 / 16));
+      grid[x][y]->setPosition(ccp(17 + x * 48, 10 + y * 48 + ps->scrollingOffset * 48 / 16));
       grid[x][y]->setVisible(true);
       CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
       if (frame != nullptr) {

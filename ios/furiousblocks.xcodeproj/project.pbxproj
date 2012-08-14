@@ -204,6 +204,7 @@
 		2E211F1159E493100CB0B8C /* btn-test-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8B /* btn-test-1.png */; };
 		2E211F1159E493100CB0B8E /* btn-test-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8D /* btn-test-2.png */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
+		7969EA137813246DD6483364 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA18D03D613363724329 /* bg.png */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D2BD39A215C5D0A90038E59C /* BlockSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */; };
 		D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
@@ -219,7 +220,6 @@
 		D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */; };
 		D2E1CCFF15D7D7F700D844D0 /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CCFD15D7D7F700D844D0 /* harmonic.mp3 */; };
 		D2E1CD0015D7D7F700D844D0 /* voices.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CCFE15D7D7F700D844D0 /* voices.mp3 */; };
-		D2E1CD0715D7D80B00D844D0 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CD0115D7D80B00D844D0 /* bg.png */; };
 		D2E1CD0815D7D80B00D844D0 /* blocks.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CD0215D7D80B00D844D0 /* blocks.plist */; };
 		D2E1CD0915D7D80B00D844D0 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CD0315D7D80B00D844D0 /* blocks.png */; };
 		D2E1CD0A15D7D80B00D844D0 /* iphone.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CD0415D7D80B00D844D0 /* iphone.plist */; };
@@ -646,6 +646,7 @@
 		2E211F1159E493100CB0B8B /* btn-test-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-1.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8D /* btn-test-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-2.png"; sourceTree = "<group>"; };
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
+		7969EA18D03D613363724329 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		D2BD396815C5D0A90038E59C /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
 		D2BD396915C5D0A90038E59C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockSituation.cpp; sourceTree = "<group>"; };
@@ -685,7 +686,6 @@
 		D2BD39A015C5D0A90038E59C /* SimpleRNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleRNG.h; sourceTree = "<group>"; };
 		D2E1CCFD15D7D7F700D844D0 /* harmonic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = harmonic.mp3; path = assets/bgm/harmonic.mp3; sourceTree = SOURCE_ROOT; };
 		D2E1CCFE15D7D7F700D844D0 /* voices.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = voices.mp3; path = assets/bgm/voices.mp3; sourceTree = SOURCE_ROOT; };
-		D2E1CD0115D7D80B00D844D0 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = assets/graphics/bg.png; sourceTree = SOURCE_ROOT; };
 		D2E1CD0215D7D80B00D844D0 /* blocks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = blocks.plist; path = assets/graphics/blocks.plist; sourceTree = SOURCE_ROOT; };
 		D2E1CD0315D7D80B00D844D0 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = assets/graphics/blocks.png; sourceTree = SOURCE_ROOT; };
 		D2E1CD0415D7D80B00D844D0 /* iphone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = iphone.plist; path = assets/graphics/iphone.plist; sourceTree = SOURCE_ROOT; };
@@ -1559,7 +1559,7 @@
 		7969E40F5CAB04DF7A2A5BC1 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
-				D2E1CD0115D7D80B00D844D0 /* bg.png */,
+				7969EA18D03D613363724329 /* bg.png */,
 				D2E1CD0215D7D80B00D844D0 /* blocks.plist */,
 				D2E1CD0315D7D80B00D844D0 /* blocks.png */,
 				D2E1CD0415D7D80B00D844D0 /* iphone.plist */,
@@ -1707,13 +1707,13 @@
 				2E211F1159E493100CB0B8E /* btn-test-2.png in Resources */,
 				D2E1CCFF15D7D7F700D844D0 /* harmonic.mp3 in Resources */,
 				D2E1CD0015D7D7F700D844D0 /* voices.mp3 in Resources */,
-				D2E1CD0715D7D80B00D844D0 /* bg.png in Resources */,
 				D2E1CD0815D7D80B00D844D0 /* blocks.plist in Resources */,
 				D2E1CD0915D7D80B00D844D0 /* blocks.png in Resources */,
 				D2E1CD0A15D7D80B00D844D0 /* iphone.plist in Resources */,
 				D2E1CD0B15D7D80B00D844D0 /* iphone.png in Resources */,
 				D2E1CD0C15D7D80B00D844D0 /* title.png in Resources */,
 				D2E1CD0E15D7D81400D844D0 /* SkaterDudes.ttf in Resources */,
+				7969EA137813246DD6483364 /* bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

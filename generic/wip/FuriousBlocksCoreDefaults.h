@@ -15,7 +15,7 @@ public:
   static constexpr int32_t BLOCK_REVEALINGTIMEBASE = 26;
   static constexpr int32_t BLOCK_REVEALINGTIMEINCREMENT = 10;
   static constexpr int32_t PANEL_WIDTH = 6;
-  static constexpr int32_t PANEL_HEIGHT = 11;
+  static constexpr int32_t PANEL_HEIGHT = 9;
   static constexpr int32_t PANEL_QUAKINGTIME = 64;
   static constexpr float CORE_FREQUENCY = 60;
 };
