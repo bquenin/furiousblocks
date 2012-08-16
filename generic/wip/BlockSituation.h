@@ -8,10 +8,8 @@
 class BlockSituation {
 private:
   int32_t stateTick;
-  int32_t garbageBlockType;
   int32_t garbageOwner;
   bool combo;
-  bool justLand;
   bool fallingFromClearing;
   int32_t poppingIndex;
 
@@ -27,6 +25,8 @@ public:
   static bool isMovable(BlockSituation *blockSituation);
   int32_t getPoppingIndex();
   bool isFallingFromClearing();
+  int32_t garbageBlockType;
+  bool justLand;
 };
 
 #endif //__BlockSituation_H_

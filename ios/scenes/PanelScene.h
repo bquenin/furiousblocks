@@ -26,6 +26,7 @@ public:
   // Core
   FuriousBlocksCore *core;
   Player *player;
+  int tick;
 
   // Renderer
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
@@ -136,7 +137,27 @@ public:
   CCSpriteFrame *BLOCKS_PURPLE_HOVER_02;
   CCSpriteFrame *BLOCKS_BLUE_COMPRESSED_02;
   CCSpriteFrame *BLOCKS_BLUE_LAND_01;
-  int tick;
+
+  CCAnimation *YELLOW_PANICKING;
+  CCAnimation *BLUE_PANICKING;
+  CCAnimation *RED_PANICKING;
+  CCAnimation *GREEN_PANICKING;
+  CCAnimation *PURPLE_PANICKING;
+
+  CCAnimation *YELLOW_COMPRESSING;
+  CCAnimation *BLUE_COMPRESSING;
+  CCAnimation *RED_COMPRESSING;
+  CCAnimation *GREEN_COMPRESSING;
+  CCAnimation *PURPLE_COMPRESSING;
+
+  CCAnimation *YELLOW_BLINKING;
+  CCAnimation *BLUE_BLINKING;
+  CCAnimation *RED_BLINKING;
+  CCAnimation *GREEN_BLINKING;
+  CCAnimation *PURPLE_BLINKING;
+  CCAnimation *GARBAGE_BLINKING;
+
+  CCAnimation *CURSOR;
 };
 
 #endif // __PANELSCENE_H_
