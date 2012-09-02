@@ -23,7 +23,6 @@ cocos2d::CCSpriteFrame *Animation::getKeyFrame(float stateTime, bool looping) {
   } else {
     frameNumber = frameNumber % keyFrames.size();
   }
-  CCLOG("returning frame address = %X", keyFrames[frameNumber]);
   return keyFrames[frameNumber];
 }
 

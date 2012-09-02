@@ -248,7 +248,7 @@ void PanelScene::update(float dt) {
         continue;
       }
       grid[x][y]->setPosition(ccp(17 + x * 48, 10 + y * 48 + ps->scrollingOffset * 48 / 16));
-      CCSpriteFrame *frame = getBlockFrame(current, stateTime, false, false);
+      CCSpriteFrame *frame = getBlockFrame(current, stateTime, false, true);
       if (frame != nullptr) {
         grid[x][y]->setDisplayFrame(frame);
         grid[x][y]->setVisible(true);
