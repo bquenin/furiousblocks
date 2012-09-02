@@ -217,21 +217,22 @@ bool PanelScene::init() {
 
 void PanelScene::update(float dt) {
   core->onTick(tick++);
-  auto gs(core->gameSituation);
+  std::shared_ptr<GameSituation> gs(core->gameSituation);
   auto ps = gs->playerIdToPanelSituation[123];
 
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       BlockSituation *current = ps->blockSituations[x][y];
+      CCSprite *block = grid[x][y];
       if (current == nullptr) {
-        grid[x][y]->setVisible(false);
+        block->setVisible(false);
         continue;
       }
-      grid[x][y]->setPosition(ccp(17 + x * 48, 10 + y * 48 + ps->scrollingOffset * 48 / 16));
-      grid[x][y]->setVisible(true);
+      block->setPosition(ccp(17 + x * 48, 10 + y * 48 + ps->scrollingOffset * 48 / 16));
+      block->setVisible(true);
       CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
       if (frame != nullptr) {
-        grid[x][y]->setDisplayFrame(frame);
+        block->setDisplayFrame(frame);
       }
     }
   }
@@ -240,6 +241,7 @@ void PanelScene::update(float dt) {
 CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {
   BlockState state = blockSituation->state;
   BlockType type = blockSituation->type;
+
   switch (state) {
     case BlockState::EXPLODING:
       switch (type) {
@@ -253,51 +255,15 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t
           return BLOCKS_PURPLE_HAPPY;
         case BlockType::BLUE:
           return BLOCKS_BLUE_HAPPY;
+        case BlockType::GARBAGE:
+        case BlockType::INVISIBLE:
+        case BlockType::TUTORIAL:
+          return nullptr;
       }
+
     case BlockState::REVEALING:
       return GARBAGE_BLINK;
 
-    case BlockState::AIRBOUNCING:
-      switch (type) {
-        case BlockType::YELLOW:
-          return BLOCKS_YELLOW_HOVER_01;
-          //                        return YELLOW_AIRBOUNCING.keyFrames[YELLOW_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
-        case BlockType::GREEN:
-          return BLOCKS_GREEN_HOVER_01;
-          //                        return GREEN_AIRBOUNCING.keyFrames[GREEN_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
-        case BlockType::RED:
-          return BLOCKS_RED_HOVER_01;
-          //                        return RED_AIRBOUNCING.keyFrames[RED_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
-        case BlockType::PURPLE:
-          return BLOCKS_PURPLE_HOVER_01;
-          //                        return PURPLE_AIRBOUNCING.keyFrames[PURPLE_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
-        case BlockType::BLUE:
-          return BLOCKS_BLUE_HOVER_01;
-          //                        return BLUE_AIRBOUNCING.keyFrames[BLUE_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
-      }
-
-      //      case DONE_FALLING:
-      //        switch (type) {
-      //          case YELLOW:
-      //            animations.put(blockSituation.getId(), new AnimationContext(YELLOW_LANDING, tick));
-      //            break;
-      //          case BLUE:
-      //            animations.put(blockSituation.getId(), new AnimationContext(BLUE_LANDING, tick));
-      //            break;
-      //          case PURPLE:
-      //            animations.put(blockSituation.getId(), new AnimationContext(PURPLE_LANDING, tick));
-      //            break;
-      //          case RED:
-      //            animations.put(blockSituation.getId(), new AnimationContext(RED_LANDING, tick));
-      //            break;
-      //          case GREEN:
-      //            animations.put(blockSituation.getId(), new AnimationContext(GREEN_LANDING, tick));
-      //            break;
-      //          case GARBAGE:
-      //          case INVISIBLE:
-      //            break;
-      //        }
-      //        //$FALL-THROUGH$
 
     case BlockState::BLINKING:
     case BlockState::FALLING:
@@ -310,218 +276,210 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t
     case BlockState::HOVERING:
     case BlockState::DONE_AIRBOUNCING:
     case BlockState::IDLE:
-      if (blockSituation->justLand && state == BlockState:: IDLE && type != BlockType::GARBAGE && type != BlockType::TUTORIAL) {
-        //        NonLoopingAnimation animation = null;
-        //        switch (type) {
-        //          case YELLOW:
-        //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, YELLOW_LANDING);
-        //            break;
-        //          case BLUE:
-        //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, BLUE_LANDING);
-        //            break;
-        //          case PURPLE:
-        //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, PURPLE_LANDING);
-        //            break;
-        //          case RED:
-        //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, RED_LANDING);
-        //            break;
-        //          case GREEN:
-        //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, GREEN_LANDING);
-        //            break;
-        //        }
-        //        animations.put(blockSituation.getId(), animation);
-        //        return animation.getKeyFrame(stateTime);
-        //      }
-        //      if (currentAnimation != null) {
-        //        if (currentAnimation.isAnimationFinished(stateTime)) {
-        //          animations.remove(blockSituation.getId());
-        //        } else {
-        //          return currentAnimation.getKeyFrame(stateTime);
-        //        }
-        //      }
-
-        switch (type) {
-          case BlockType::YELLOW:
-            if (compressed && state == BlockState:: IDLE) {
-              return YELLOW_COMPRESSING.getKeyFrame(stateTime, true);
-            }
-            if (panicking && state == BlockState::IDLE) {
-              return YELLOW_PANICKING.getKeyFrame(stateTime, true);
-            }
-            return BlockState::state == BlockState::BLINKING ? YELLOW_BLINKING.getKeyFrame(stateTime, true) : BLOCKS_YELLOW_IDLE;
-          case BlockType::GREEN:
-            if (compressed && state == BlockState::IDLE) {
-              return GREEN_COMPRESSING.getKeyFrame(stateTime, true);
-            }
-            if (panicking && state == BlockState::IDLE) {
-              return GREEN_PANICKING.getKeyFrame(stateTime, true);
-            }
-            return state == BlockState::BLINKING ? GREEN_BLINKING.getKeyFrame(stateTime, true) : BLOCKS_GREEN_IDLE;
-          case BlockType::RED:
-            if (compressed && state == BlockState::IDLE) {
-              return RED_COMPRESSING.getKeyFrame(stateTime, true);
-            }
-            if (panicking && state == BlockState::IDLE) {
-              return RED_PANICKING.getKeyFrame(stateTime, true);
-            }
-            return state == BlockState::BLINKING ? RED_BLINKING.getKeyFrame(stateTime, true) : BLOCKS_RED_IDLE;
-          case BlockType::PURPLE:
-            if (compressed && state == BlockState::IDLE) {
-              return PURPLE_COMPRESSING.getKeyFrame(stateTime, true);
-            }
-            if (panicking && state == BlockState::IDLE) {
-              return PURPLE_PANICKING.getKeyFrame(stateTime, true);
-            }
-            return state == BlockState::BLINKING ? PURPLE_BLINKING.getKeyFrame(stateTime, true) : BLOCKS_PURPLE_IDLE;
-          case BlockType::BLUE:
-            if (compressed && state == BlockState::IDLE) {
-              return BLUE_COMPRESSING.getKeyFrame(stateTime, true);
-            }
-            if (panicking && state == BlockState::IDLE) {
-              return BLUE_PANICKING.getKeyFrame(stateTime, true);
-            }
-            return state == BlockState::BLINKING ? BLUE_BLINKING.getKeyFrame(stateTime, true) : BLOCKS_BLUE_IDLE;
-          case BlockType::TUTORIAL:
-            return GARBAGE_SINGLE;
-          case BlockType::GARBAGE:
-            if (state == BlockState::BLINKING && GARBAGE_BLINKING.getKeyFrame(stateTime, true) == GARBAGE_BLINK) {
-              return GARBAGE_BLINK;
-            }
-            switch (blockSituation->garbageBlockType) {
-              case GarbageBlockType::DOWN:
-                return GARBAGE_BOTTOM;
-              case GarbageBlockType::DOWNLEFT:
-                return GARBAGE_LEFT_BOTTOM;
-              case GarbageBlockType::DOWNRIGHT:
-                return GARBAGE_RIGHT_BOTTOM;
-              case GarbageBlockType::LEFT:
-                return GARBAGE_LEFT;
-              case GarbageBlockType::PLAIN:
-                return GARBAGE_PLAIN;
-              case GarbageBlockType::RIGHT:
-                return GARBAGE_RIGHT;
-              case GarbageBlockType::UP:
-                return GARBAGE_TOP;
-              case GarbageBlockType::UPDOWN:
-                return GARBAGE_TOP_BOTTOM;
-              case GarbageBlockType::UPLEFT:
-                return GARBAGE_TOP_LEFT;
-              case GarbageBlockType::UPLEFTDOWN:
-                return GARBAGE_TOP_LEFT_BOTTOM;
-              case GarbageBlockType::UPRIGHT:
-                return GARBAGE_TOP_RIGHT;
-              case GarbageBlockType::UPRIGHTDOWN:
-                return GARBAGE_TOP_RIGHT_BOTTOM;
-            }
-        }
-
-        //                if (currentAnimationContext != null) {
-        //                    TextureRegion region = currentAnimationContext.getKeyFrame(tick);
-        //                    if (region != null) {
-        //                        return region;
-        //                    }
-        //                    animations.remove(blockSituation.getId());
-        //                }
-        //      switch (type) {
-        //        case BlockType::YELLOW:
-        //          if (compressed && state == BlockState:: IDLE) {
-        //            return BLOCKS_YELLOW_COMPRESSED_01;
-        //            //                            return YELLOW_COMPRESSING.keyFrames[((int) (tick % YELLOW_COMPRESSING.keyFrames.length))];
-        //          }
-        //          if (panicking && state == BlockState::IDLE) {
-        //            return BLOCKS_YELLOW_PANIC_01;
-        //            //                            return YELLOW_PANICKING.keyFrames[((int) (tick % YELLOW_PANICKING.keyFrames.length))];
-        //          }
-        //          return BLOCKS_YELLOW_IDLE;
-        //        case BlockType::GREEN:
-        //          if (compressed && state == BlockState::IDLE) {
-        //            return BLOCKS_GREEN_COMPRESSED_01;
-        //            //                            return GREEN_COMPRESSING.keyFrames[((int) (tick % GREEN_COMPRESSING.keyFrames.length))];
-        //          }
-        //          if (panicking && state == BlockState::IDLE) {
-        //            return BLOCKS_GREEN_PANIC_01;
-        //            //                            return GREEN_PANICKING.keyFrames[((int) (tick % GREEN_PANICKING.keyFrames.length))];
-        //          }
-        //          return BLOCKS_GREEN_IDLE;
-        //        case BlockType::RED:
-        //          if (compressed && state == BlockState::IDLE) {
-        //            return BLOCKS_RED_COMPRESSED_01;
-        //            //                            return RED_COMPRESSING.keyFrames[((int) (tick % RED_COMPRESSING.keyFrames.length))];
-        //          }
-        //          if (panicking && state == BlockState::IDLE) {
-        //            return BLOCKS_RED_PANIC_01;
-        //            //                            return RED_PANICKING.keyFrames[((int) (tick % RED_PANICKING.keyFrames.length))];
-        //          }
-        //          return BLOCKS_RED_IDLE;
-        //        case BlockType::PURPLE:
-        //          if (compressed && state == BlockState::IDLE) {
-        //            return BLOCKS_PURPLE_COMPRESSED_01;
-        //            //                            return PURPLE_COMPRESSING.keyFrames[((int) (tick % PURPLE_COMPRESSING.keyFrames.length))];
-        //          }
-        //          if (panicking && state == BlockState::IDLE) {
-        //            return BLOCKS_PURPLE_PANIC_01;
-        //            //                            return PURPLE_PANICKING.keyFrames[((int) (tick % PURPLE_PANICKING.keyFrames.length))];
-        //          }
-        //          return BLOCKS_PURPLE_IDLE;
-        //        case BlockType::BLUE:
-        //          if (compressed && state == BlockState::IDLE) {
-        //            return BLOCKS_BLUE_COMPRESSED_01;
-        //            //                            return BLUE_COMPRESSING.keyFrames[((int) (tick % BLUE_COMPRESSING.keyFrames.length))];
-        //          }
-        //          if (panicking && state == BlockState::IDLE) {
-        //            return BLOCKS_BLUE_PANIC_01;
-        //            //                            return BLUE_PANICKING.keyFrames[((int) (tick % BLUE_PANICKING.keyFrames.length))];
-        //          }
-        //          return BLOCKS_BLUE_IDLE;
-        //        case BlockType::GARBAGE:
-        //          //                        final int garbageBlockType = blockSituation.getGarbageBlockType();
-        //          //                        switch (garbageBlockType) {
-        //          //                            case GarbageBlockType.DOWN:
-        //          //                                return GARBAGE_BOTTOM;
-        //          //                            case GarbageBlockType.DOWNLEFT:
-        //          //                                return GARBAGE_BOTTOMLEFT;
-        //          //                            case GarbageBlockType.DOWNRIGHT:
-        //          //                                return GARBAGE_BOTTOMRIGHT;
-        //          //                            case GarbageBlockType.LEFT:
-        //          //                                return GARBAGE_LEFT;
-        //          //                            case GarbageBlockType.PLAIN:
-        //          //                                return GARBAGE_PLAIN;
-        //          //                            case GarbageBlockType.RIGHT:
-        //          //                                return GARBAGE_RIGHT;
-        //          //                            case GarbageBlockType.UP:
-        //          //                                return GARBAGE_TOP;
-        //          //                            case GarbageBlockType.UPDOWN:
-        //          //                                return GARBAGE_TOPBOTTOM;
-        //          //                            case GarbageBlockType.UPLEFT:
-        //          //                                return GARBAGE_TOPLEFT;
-        //          //                            case GarbageBlockType.UPLEFTDOWN:
-        //          //                                return GARBAGE_TOPLEFTBOTTOM;
-        //          //                            case GarbageBlockType.UPRIGHT:
-        //          //                                return GARBAGE_TOPRIGHT;
-        //          //                            case GarbageBlockType.UPRIGHTDOWN:
-        //          //                                return GARBAGE_TOPRIGHTBOTTOM;
-        //          //                            default:
-        //          //                                throw new IllegalStateException("Undefined garbage block type: " + garbageBlockType);
-        //          //                        }
-        //          return GARBAGE_BLINK;
-        //      }
-        case BlockState::DONE_EXPLODING:
-        case BlockState::TO_DELETE:
-        //                animations.remove(blockSituation.getId());
-        return nullptr;
+      switch (type) {
+        case BlockType::YELLOW:
+          return BLOCKS_YELLOW_IDLE;
+        case BlockType::GREEN:
+          return BLOCKS_GREEN_IDLE;
+        case BlockType::RED:
+          return BLOCKS_RED_IDLE;
+        case BlockType::PURPLE:
+          return BLOCKS_PURPLE_IDLE;
+        case BlockType::BLUE:
+          return BLOCKS_BLUE_IDLE;
+        case BlockType::TUTORIAL:
+          return GARBAGE_SINGLE;
+        case BlockType::GARBAGE:
+          switch (blockSituation->garbageBlockType) {
+            case GarbageBlockType::DOWN:
+              return GARBAGE_BOTTOM;
+            case GarbageBlockType::DOWNLEFT:
+              return GARBAGE_LEFT_BOTTOM;
+            case GarbageBlockType::DOWNRIGHT:
+              return GARBAGE_RIGHT_BOTTOM;
+            case GarbageBlockType::LEFT:
+              return GARBAGE_LEFT;
+            case GarbageBlockType::PLAIN:
+              return GARBAGE_PLAIN;
+            case GarbageBlockType::RIGHT:
+              return GARBAGE_RIGHT;
+            case GarbageBlockType::UP:
+              return GARBAGE_TOP;
+            case GarbageBlockType::UPDOWN:
+              return GARBAGE_TOP_BOTTOM;
+            case GarbageBlockType::UPLEFT:
+              return GARBAGE_TOP_LEFT;
+            case GarbageBlockType::UPLEFTDOWN:
+              return GARBAGE_TOP_LEFT_BOTTOM;
+            case GarbageBlockType::UPRIGHT:
+              return GARBAGE_TOP_RIGHT;
+            case GarbageBlockType::UPRIGHTDOWN:
+              return GARBAGE_TOP_RIGHT_BOTTOM;
+            default:
+              break;
+          }
+        case BlockType ::INVISIBLE:
+          return nullptr;
       }
 
+    case BlockState::DONE_EXPLODING:
+    case BlockState::TO_DELETE:
+    case BlockState::AIRBOUNCING:
       return nullptr;
   }
 
+  return nullptr;
+}
 
-  void PanelScene::menuCloseCallback(CCObject *pSender) {
-    CCDirector::sharedDirector()->end();
+CCAnimate *PanelScene::getBlockAnimation(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {
+  BlockState state = blockSituation->state;
+  BlockType type = blockSituation->type;
+
+  switch (state) {
+
+    case BlockState::AIRBOUNCING:
+      //      switch (type) {
+      //        case BlockType::YELLOW:
+      //          return new CCAnimate(YELLOW_AIRBOUNCING);
+      //        case BlockType::GREEN:
+      //          return BLOCKS_GREEN_HOVER_01;
+      //          //                        return GREEN_AIRBOUNCING.keyFrames[GREEN_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
+      //        case BlockType::RED:
+      //          return BLOCKS_RED_HOVER_01;
+      //          //                        return RED_AIRBOUNCING.keyFrames[RED_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
+      //        case BlockType::PURPLE:
+      //          return BLOCKS_PURPLE_HOVER_01;
+      //          //                        return PURPLE_AIRBOUNCING.keyFrames[PURPLE_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
+      //        case BlockType::BLUE:
+      //          return BLOCKS_BLUE_HOVER_01;
+      //          //                        return BLUE_AIRBOUNCING.keyFrames[BLUE_AIRBOUNCING.keyFrames.length - blockSituation.getStateTick()];
+      //      }
+
+
+    case BlockState::BLINKING:
+    case BlockState::FALLING:
+    case BlockState::SWITCHING_BACK:
+    case BlockState::SWITCHING_FORTH:
+    case BlockState::DONE_BLINKING:
+    case BlockState::DONE_REVEALING:
+    case BlockState::DONE_HOVERING:
+    case BlockState::DONE_SWITCHING_FORTH:
+    case BlockState::HOVERING:
+    case BlockState::DONE_AIRBOUNCING:
+    case BlockState::IDLE:
+      //      if (blockSituation->justLand && state == BlockState:: IDLE && type != BlockType::GARBAGE && type != BlockType::TUTORIAL) {
+      //        switch (type) {
+      //          case YELLOW:
+      //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, YELLOW_LANDING);
+      //            break;
+      //          case BLUE:
+      //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, BLUE_LANDING);
+      //            break;
+      //          case PURPLE:
+      //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, PURPLE_LANDING);
+      //            break;
+      //          case RED:
+      //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, RED_LANDING);
+      //            break;
+      //          case GREEN:
+      //            animation = new NonLoopingAnimation(stateTime, 4.0f / CORE_FREQUENCY, GREEN_LANDING);
+      //            break;
+      //        }
+      //        animations.put(blockSituation.getId(), animation);
+      //        return animation.getKeyFrame(stateTime);
+      //      }
+      //      if (currentAnimation != null) {
+      //        if (currentAnimation.isAnimationFinished(stateTime)) {
+      //          animations.remove(blockSituation.getId());
+      //        } else {
+      //          return currentAnimation.getKeyFrame(stateTime);
+      //        }
+      //      }
+
+      switch (type) {
+        case BlockType::YELLOW:
+          if (compressed && state == BlockState:: IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_COMPRESSING));
+            //              return YELLOW_COMPRESSING.getKeyFrame(stateTime, true);
+          }
+          if (panicking && state == BlockState::IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_PANICKING));
+          }
+          if (state == BlockState::BLINKING) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_BLINKING));
+          }
+          return nullptr;
+
+        case BlockType::GREEN:
+          if (compressed && state == BlockState:: IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_COMPRESSING));
+            //              return YELLOW_COMPRESSING.getKeyFrame(stateTime, true);
+          }
+          if (panicking && state == BlockState::IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_PANICKING));
+          }
+          if (state == BlockState::BLINKING) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_BLINKING));
+          }
+          return nullptr;
+        case BlockType::RED:
+          if (compressed && state == BlockState:: IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_COMPRESSING));
+            //              return YELLOW_COMPRESSING.getKeyFrame(stateTime, true);
+          }
+          if (panicking && state == BlockState::IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_PANICKING));
+          }
+          if (state == BlockState::BLINKING) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_BLINKING));
+          }
+          return nullptr;
+
+        case BlockType::PURPLE:
+          if (compressed && state == BlockState:: IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_COMPRESSING));
+            //              return YELLOW_COMPRESSING.getKeyFrame(stateTime, true);
+          }
+          if (panicking && state == BlockState::IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_PANICKING));
+          }
+          if (state == BlockState::BLINKING) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_BLINKING));
+          }
+          return nullptr;
+
+        case BlockType::BLUE:
+          if (compressed && state == BlockState:: IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_COMPRESSING));
+            //              return YELLOW_COMPRESSING.getKeyFrame(stateTime, true);
+          }
+          if (panicking && state == BlockState::IDLE) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_PANICKING));
+          }
+          if (state == BlockState::BLINKING) {
+            //            sprite->runAction(CCAnimate::create(YELLOW_BLINKING));
+          }
+          return nullptr;
+
+      }
+
+    case BlockState::DONE_EXPLODING:
+    case BlockState::TO_DELETE:
+      return nullptr;
+  }
+
+  return nullptr;
+}
+
+
+void PanelScene::menuCloseCallback(CCObject *pSender) {
+  CCDirector::sharedDirector()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
+  exit(0);
 #endif
-  }
+}
+
 
 //
 //- (void)dealloc {

@@ -1916,7 +1916,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1928,6 +1928,7 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1936,7 +1937,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -1947,6 +1948,7 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1958,7 +1960,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1977,6 +1980,8 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1987,7 +1992,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -2004,6 +2010,8 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

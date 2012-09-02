@@ -13,8 +13,9 @@ public:
   virtual bool init();
   void update(float d);
   CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
+  CCAnimate *getBlockAnimation(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
 
-  // there's no 'id' in cpp, so we recommand to return the exactly class pointer
+  // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
 
   // a selector callback
