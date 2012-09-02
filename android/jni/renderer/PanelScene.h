@@ -1,8 +1,10 @@
 #ifndef __PANELSCENE_H_
 #define __PANELSCENE_H_
 
+#include <unordered_map>
 #include "cocos2d.h"
 #include "FuriousBlocksCore.h"
+#include "NonLoopingAnimation.h"
 
 USING_NS_CC;
 
@@ -12,23 +14,28 @@ public:
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
   void update(float d);
-  CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
+  CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, float stateTime, bool compressed, bool panicking);
 
-  // there's no 'id' in cpp, so we recommand to return the exactly class pointer
+  // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
 
   // a selector callback
   void menuCloseCallback(CCObject *pSender);
 
   // implement the "static node()" method manually
-  LAYER_CREATE_FUNC(PanelScene);
+  CREATE_FUNC(PanelScene);
 
   // Core
   FuriousBlocksCore *core;
   Player *player;
+  int tick;
 
   // Renderer
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
+  std::unordered_map<int32_t, NonLoopingAnimation *> animations;
+  float stateTime;
+
+  // Assets
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
   CCSpriteFrame *BLOCKS_BLUE_HOVER_01;
   CCSpriteFrame *BLOCKS_GREEN_COMPRESSED_01;
@@ -136,7 +143,27 @@ public:
   CCSpriteFrame *BLOCKS_PURPLE_HOVER_02;
   CCSpriteFrame *BLOCKS_BLUE_COMPRESSED_02;
   CCSpriteFrame *BLOCKS_BLUE_LAND_01;
-  int tick;
+
+  Animation *YELLOW_PANICKING;
+  Animation *BLUE_PANICKING;
+  Animation *RED_PANICKING;
+  Animation *GREEN_PANICKING;
+  Animation *PURPLE_PANICKING;
+
+  Animation *YELLOW_COMPRESSING;
+  Animation *BLUE_COMPRESSING;
+  Animation *RED_COMPRESSING;
+  Animation *GREEN_COMPRESSING;
+  Animation *PURPLE_COMPRESSING;
+
+  Animation *YELLOW_BLINKING;
+  Animation *BLUE_BLINKING;
+  Animation *RED_BLINKING;
+  Animation *GREEN_BLINKING;
+  Animation *PURPLE_BLINKING;
+  Animation *GARBAGE_BLINKING;
+
+  Animation *CURSOR;
 };
 
 #endif // __PANELSCENE_H_

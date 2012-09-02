@@ -1,7 +1,7 @@
 # set params
 # NDK_ROOT=/Users/bquenin/android-ndk-r7-crystax-5.beta2
 NDK_ROOT=/Users/bquenin/android-ndk-r8b
-COCOS2DX_ROOT=/Users/bquenin/cocos2d-2.0-rc2-x-2.0.1
+COCOS2DX_ROOT=/Users/bquenin/cocos2d-2.0-x-2.0.2
 GAME_ROOT=..
 GAME_ANDROID_ROOT=$GAME_ROOT/android
 
