@@ -34,6 +34,7 @@ THE SOFTWARE.
 #include "cocoa/CCArray.h"
 #include "CCGL.h"
 #include "kazmath/mat4.h"
+#include "label_nodes/CCLabelTTF.h"
 
 NS_CC_BEGIN
 
@@ -164,6 +165,16 @@ public:
     /** returns the size of the OpenGL view in pixels.
     */
     CCSize getWinSizeInPixels(void);
+    
+    /** returns visible size of the OpenGL view in points.
+     *  the value is equal to getWinSize if don't invoke
+     *  CCEGLView::setDesignResolutionSize()
+     */
+    CCSize getVisibleSize();
+    
+    /** returns visible origin of the OpenGL view in points.
+     */
+    CCPoint getVisibleOrigin();
 
     /** changes the projection size */
     void reshapeProjection(const CCSize& newWindowSize);
@@ -220,10 +231,6 @@ public:
     /** Ends the execution, releases the running scene.
      It doesn't remove the OpenGL view from its parent. You have to do it manually.
      */
-
-    /* end is key word of lua, use other name to export to lua. */
-    inline void endToLua(void){end();}
-
     void end(void);
 
     /** Pauses the running scene.
@@ -280,11 +287,8 @@ public:
     Only available when compiled using SDK >= 4.0.
     @since v0.99.4
     */
-    void setContentScaleFactor(CCFloat scaleFactor);
-    CCFloat getContentScaleFactor(void);
-
-    typedef void(*WatcherCallbackFun)(void *pSender);
-    void setWatcherCallbackFun(void *pSender, WatcherCallbackFun fun);
+    void setContentScaleFactor(float scaleFactor);
+    float getContentScaleFactor(void);
 
 public:
     /** CCScheduler associated with this director
@@ -344,9 +348,9 @@ protected:
     float m_fAccumDt;
     float m_fFrameRate;
     
-    CCLabelAtlas *m_pFPSLabel;
-    CCLabelAtlas *m_pSPFLabel;
-    CCLabelAtlas *m_pDrawsLabel;
+    CCLabelTTF *m_pFPSLabel;
+    CCLabelTTF *m_pSPFLabel;
+    CCLabelTTF *m_pDrawsLabel;
     
     /** Whether or not the Director is paused */
     bool m_bPaused;
@@ -388,7 +392,7 @@ protected:
     CCSize m_obWinSizeInPixels;
     
     /* content scale factor */
-    CCFloat    m_fContentScaleFactor;
+    float    m_fContentScaleFactor;
 
     /* store the fps string */
     char *m_pszFPS;
@@ -401,10 +405,9 @@ protected:
 
     /* contentScaleFactor could be simulated */
     bool m_bIsContentScaleSupported;
-
-    WatcherCallbackFun m_pWatcherFun;
-    void *m_pWatcherSender;
-
+    
+    // CCEGLViewProtocol will recreate stats labels to fit visible rect
+    friend class CCEGLViewProtocol;
 };
 
 /** 

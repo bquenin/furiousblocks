@@ -171,22 +171,14 @@ bool PanelScene::init() {
   CURSOR = new Animation(16.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 
   CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
-  background->
-      setAnchorPoint(ccp(0, 0)
-  );
+  background->setAnchorPoint(ccp(0, 0));
   batch->addChild(background);
 
   // Initialize the grid
-  for (int y = 0;
-       y < FuriousBlocksCoreDefaults::PANEL_HEIGHT;
-       y++) {
-    for (int x = 0;
-         x < FuriousBlocksCoreDefaults::PANEL_WIDTH;
-         x++) {
-      grid[x][y] = CCSprite::create(GARBAGE_PLAIN);
-      grid[x][y]->
-          setAnchorPoint(ccp(0, 0)
-      );
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+    for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+      grid[x][y] = CCSprite::createWithSpriteFrame(GARBAGE_PLAIN);
+      grid[x][y]->setAnchorPoint(ccp(0, 0));
       grid[x][y]->setVisible(false);
       batch->addChild(grid[x][y]);
     }

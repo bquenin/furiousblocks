@@ -9,8 +9,8 @@
 #include "AppDelegate.h"
 
 #include "cocos2d.h"
-#include "extensions/CCBReader/CCBReader.h"
-#include "extensions/CCBReader/CCNodeLoaderLibrary.h"
+#include "CCBReader/CCBReader.h"
+#include "CCBReader/CCNodeLoaderLibrary.h"
 //#include "HelloCocosBuilder/HelloCocosBuilderLayerLoader.h"
 
 //#include "PanelScene.h"
@@ -31,7 +31,7 @@ AppDelegate::~AppDelegate() {
 bool AppDelegate::applicationDidFinishLaunching() {
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
-  pDirector->setOpenGLView(&CCEGLView::sharedOpenGLView());
+  pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
   // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
   pDirector->enableRetinaDisplay(true);

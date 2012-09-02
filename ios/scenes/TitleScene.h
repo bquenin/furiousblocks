@@ -10,10 +10,10 @@
 #define __TitleScene_H_
 
 #include "cocos2d.h"
-#include "extensions/CCBReader/CCNodeLoader.h"
-#include "extensions/CCBReader/CCNodeLoaderListener.h"
-#include "extensions/CCBReader/CCBSelectorResolver.h"
-#include "extensions/CCBReader/CCBMemberVariableAssigner.h"
+#include "CCBReader/CCNodeLoader.h"
+#include "CCBReader/CCNodeLoaderListener.h"
+#include "CCBReader/CCBSelectorResolver.h"
+#include "CCBReader/CCBMemberVariableAssigner.h"
 
 /*
  * Note: for some pretty hard fucked up reason, the order of inheritance is important!

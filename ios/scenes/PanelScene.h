@@ -23,7 +23,7 @@ public:
   void menuCloseCallback(CCObject *pSender);
 
   // implement the "static node()" method manually
-  LAYER_CREATE_FUNC(PanelScene);
+  CREATE_FUNC(PanelScene);
 
   // Core
   FuriousBlocksCore *core;
