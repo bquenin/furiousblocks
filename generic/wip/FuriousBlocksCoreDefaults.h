@@ -17,7 +17,7 @@ public:
   static constexpr int32_t PANEL_WIDTH = 6;
   static constexpr int32_t PANEL_HEIGHT = 9;
   static constexpr int32_t PANEL_QUAKINGTIME = 64;
-  static constexpr float CORE_FREQUENCY = 60;
+  static constexpr float CORE_FREQUENCY = 30;
 };
 
 #endif //__FuriousBlocksCoreDefaults_H_

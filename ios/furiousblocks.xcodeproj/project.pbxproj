@@ -203,6 +203,8 @@
 		2E211F1159E493100CB0B8A /* btn-test-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B89 /* btn-test-0.png */; };
 		2E211F1159E493100CB0B8C /* btn-test-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8B /* btn-test-1.png */; };
 		2E211F1159E493100CB0B8E /* btn-test-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8D /* btn-test-2.png */; };
+		7969E61E701067E504AF3BE0 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E94A715401F041690453 /* NonLoopingAnimation.cpp */; };
+		7969E6651B593DE504255709 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E279828DECE920BF32AA /* Animation.cpp */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA137813246DD6483364 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA18D03D613363724329 /* bg.png */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
@@ -645,8 +647,12 @@
 		2E211F1159E493100CB0B89 /* btn-test-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-0.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8B /* btn-test-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-1.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8D /* btn-test-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-2.png"; sourceTree = "<group>"; };
+		7969E279828DECE920BF32AA /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
+		7969E4031BBA962011C7A062 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
+		7969E94A715401F041690453 /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
 		7969EA18D03D613363724329 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		7969EA64CACC3D5C4E6096D6 /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		D2BD396815C5D0A90038E59C /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
 		D2BD396915C5D0A90038E59C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockSituation.cpp; sourceTree = "<group>"; };
@@ -1466,7 +1472,7 @@
 		02BAEC48159E57C600BCA0C3 /* generic */ = {
 			isa = PBXGroup;
 			children = (
-				D2BD396715C5D0A90038E59C /* wip */,
+				D2BD396715C5D0A90038E59C /* core */,
 			);
 			name = generic;
 			path = ../generic;
@@ -1539,6 +1545,10 @@
 		2E211F1159E493100CB0B18 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7969EA64CACC3D5C4E6096D6 /* NonLoopingAnimation.h */,
+				7969E94A715401F041690453 /* NonLoopingAnimation.cpp */,
+				7969E4031BBA962011C7A062 /* Animation.h */,
+				7969E279828DECE920BF32AA /* Animation.cpp */,
 				2E211F1159E493100CB0B23 /* TitleScene.h */,
 				2E211F1159E493100CB0B21 /* TitleScene.cpp */,
 				2E211F1159E493100CB0B20 /* TitleSceneLoader.h */,
@@ -1589,7 +1599,7 @@
 			path = assets/bgm;
 			sourceTree = SOURCE_ROOT;
 		};
-		D2BD396715C5D0A90038E59C /* wip */ = {
+		D2BD396715C5D0A90038E59C /* core */ = {
 			isa = PBXGroup;
 			children = (
 				7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */,
@@ -1631,7 +1641,7 @@
 				D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */,
 				D2BD39A015C5D0A90038E59C /* SimpleRNG.h */,
 			);
-			name = wip;
+			name = core;
 			path = ../generic/wip;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -1906,6 +1916,8 @@
 				D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */,
 				D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */,
 				7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */,
+				7969E6651B593DE504255709 /* Animation.cpp in Sources */,
+				7969E61E701067E504AF3BE0 /* NonLoopingAnimation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,8 +1,10 @@
 #ifndef __PANELSCENE_H_
 #define __PANELSCENE_H_
 
+#include <unordered_map>
 #include "cocos2d.h"
 #include "FuriousBlocksCore.h"
+#include "NonLoopingAnimation.h"
 
 USING_NS_CC;
 
@@ -12,8 +14,7 @@ public:
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
   void update(float d);
-  CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
-  CCAnimate *getBlockAnimation(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
+  CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, float stateTime, bool compressed, bool panicking);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
@@ -31,6 +32,10 @@ public:
 
   // Renderer
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
+  std::unordered_map<int32_t, NonLoopingAnimation *> animations;
+  float stateTime;
+
+  // Assets
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
   CCSpriteFrame *BLOCKS_BLUE_HOVER_01;
   CCSpriteFrame *BLOCKS_GREEN_COMPRESSED_01;
@@ -139,26 +144,26 @@ public:
   CCSpriteFrame *BLOCKS_BLUE_COMPRESSED_02;
   CCSpriteFrame *BLOCKS_BLUE_LAND_01;
 
-  CCAnimation *YELLOW_PANICKING;
-  CCAnimation *BLUE_PANICKING;
-  CCAnimation *RED_PANICKING;
-  CCAnimation *GREEN_PANICKING;
-  CCAnimation *PURPLE_PANICKING;
+  Animation *YELLOW_PANICKING;
+  Animation *BLUE_PANICKING;
+  Animation *RED_PANICKING;
+  Animation *GREEN_PANICKING;
+  Animation *PURPLE_PANICKING;
 
-  CCAnimation *YELLOW_COMPRESSING;
-  CCAnimation *BLUE_COMPRESSING;
-  CCAnimation *RED_COMPRESSING;
-  CCAnimation *GREEN_COMPRESSING;
-  CCAnimation *PURPLE_COMPRESSING;
+  Animation *YELLOW_COMPRESSING;
+  Animation *BLUE_COMPRESSING;
+  Animation *RED_COMPRESSING;
+  Animation *GREEN_COMPRESSING;
+  Animation *PURPLE_COMPRESSING;
 
-  CCAnimation *YELLOW_BLINKING;
-  CCAnimation *BLUE_BLINKING;
-  CCAnimation *RED_BLINKING;
-  CCAnimation *GREEN_BLINKING;
-  CCAnimation *PURPLE_BLINKING;
-  CCAnimation *GARBAGE_BLINKING;
+  Animation *YELLOW_BLINKING;
+  Animation *BLUE_BLINKING;
+  Animation *RED_BLINKING;
+  Animation *GREEN_BLINKING;
+  Animation *PURPLE_BLINKING;
+  Animation *GARBAGE_BLINKING;
 
-  CCAnimation *CURSOR;
+  Animation *CURSOR;
 };
 
 #endif // __PANELSCENE_H_
