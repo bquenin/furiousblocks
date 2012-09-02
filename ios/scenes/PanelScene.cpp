@@ -170,31 +170,6 @@ bool PanelScene::init() {
 
   CURSOR = new Animation(16.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 
-  //  YELLOW_PANICKING = CCAnimation::create(CCArray::create(BLOCKS_YELLOW_PANIC_01, BLOCKS_YELLOW_PANIC_02, BLOCKS_YELLOW_PANIC_03, BLOCKS_YELLOW_PANIC_04, BLOCKS_YELLOW_PANIC_03, BLOCKS_YELLOW_PANIC_02, BLOCKS_YELLOW_PANIC_01, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  BLUE_PANICKING = CCAnimation::create(CCArray::create(BLOCKS_BLUE_PANIC_01, BLOCKS_BLUE_PANIC_02, BLOCKS_BLUE_PANIC_03, BLOCKS_BLUE_PANIC_04, BLOCKS_BLUE_PANIC_03, BLOCKS_BLUE_PANIC_02, BLOCKS_BLUE_PANIC_01, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  RED_PANICKING = CCAnimation::create(CCArray::create(BLOCKS_RED_PANIC_01, BLOCKS_RED_PANIC_02, BLOCKS_RED_PANIC_03, BLOCKS_RED_PANIC_04, BLOCKS_RED_PANIC_03, BLOCKS_RED_PANIC_02, BLOCKS_RED_PANIC_01, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  GREEN_PANICKING = CCAnimation::create(CCArray::create(BLOCKS_GREEN_PANIC_01, BLOCKS_GREEN_PANIC_02, BLOCKS_GREEN_PANIC_03, BLOCKS_GREEN_PANIC_04, BLOCKS_GREEN_PANIC_03, BLOCKS_GREEN_PANIC_02, BLOCKS_GREEN_PANIC_01, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  PURPLE_PANICKING = CCAnimation::create(CCArray::create(BLOCKS_PURPLE_PANIC_01, BLOCKS_PURPLE_PANIC_02, BLOCKS_PURPLE_PANIC_03, BLOCKS_PURPLE_PANIC_04, BLOCKS_PURPLE_PANIC_03, BLOCKS_PURPLE_PANIC_02, BLOCKS_PURPLE_PANIC_01, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //
-  //  YELLOW_COMPRESSING = CCAnimation::create(CCArray::create(BLOCKS_YELLOW_COMPRESSED_01, BLOCKS_YELLOW_COMPRESSED_02, BLOCKS_YELLOW_COMPRESSED_03, BLOCKS_YELLOW_COMPRESSED_04, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  BLUE_COMPRESSING = CCAnimation::create(CCArray::create(BLOCKS_BLUE_COMPRESSED_01, BLOCKS_BLUE_COMPRESSED_02, BLOCKS_BLUE_COMPRESSED_03, BLOCKS_BLUE_COMPRESSED_04, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  RED_COMPRESSING = CCAnimation::create(CCArray::create(BLOCKS_RED_COMPRESSED_01, BLOCKS_RED_COMPRESSED_02, BLOCKS_RED_COMPRESSED_03, BLOCKS_RED_COMPRESSED_04, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  GREEN_COMPRESSING = CCAnimation::create(CCArray::create(BLOCKS_GREEN_COMPRESSED_01, BLOCKS_GREEN_COMPRESSED_02, BLOCKS_GREEN_COMPRESSED_03, BLOCKS_GREEN_COMPRESSED_04, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  PURPLE_COMPRESSING = CCAnimation::create(CCArray::create(BLOCKS_PURPLE_COMPRESSED_01, BLOCKS_PURPLE_COMPRESSED_02, BLOCKS_PURPLE_COMPRESSED_03, BLOCKS_PURPLE_COMPRESSED_04, nullptr), 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //
-  //  YELLOW_BLINKING = CCAnimation::create(CCArray::create(BLOCKS_YELLOW_FLASH, BLOCKS_YELLOW_IDLE, nullptr), 1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  BLUE_BLINKING = CCAnimation::create(CCArray::create(BLOCKS_BLUE_FLASH, BLOCKS_BLUE_IDLE, nullptr), 1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  RED_BLINKING = CCAnimation::create(CCArray::create(BLOCKS_RED_FLASH, BLOCKS_RED_IDLE, nullptr), 1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  GREEN_BLINKING = CCAnimation::create(CCArray::create(BLOCKS_GREEN_FLASH, BLOCKS_GREEN_IDLE, nullptr), 1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  PURPLE_BLINKING = CCAnimation::create(CCArray::create(BLOCKS_PURPLE_FLASH, BLOCKS_PURPLE_IDLE, nullptr), 1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //  GARBAGE_BLINKING = CCAnimation::create(CCArray::create(GARBAGE_BLINK, GARBAGE_PLAIN, nullptr), 1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  //
-  //  CURSOR = CCAnimation::create(CCArray::create(CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02, nullptr), 16.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-
-  //  animationWithFrames:[NSArray arrayWithObjects:BLOCKS_BLUE_COMPRESSED_01, BLOCKS_BLUE_COMPRESSED_02, nil]];
-
-  //        [sprite runAction:[CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO] ]];
-
   CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
   background->
       setAnchorPoint(ccp(0, 0)
@@ -453,8 +428,6 @@ void PanelScene::menuCloseCallback(CCObject *pSender) {
 #endif
 }
 
-
-//
 //- (void)dealloc {
 //    delete core;
 //    delete player;
