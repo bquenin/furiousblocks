@@ -184,8 +184,8 @@ bool PanelScene::init() {
     }
   }
 
-  //  std::thread t1(call_from_thread);
-  //  t1.join();
+    std::thread t1(call_from_thread);
+    t1.join();
 
   // Start the core
   //  ThreadExecutor<FuriousBlocksCore> executor;

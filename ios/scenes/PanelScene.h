@@ -167,20 +167,3 @@ public:
 };
 
 #endif // __PANELSCENE_H_
-////
-//
-//
-//// When you import this file, you import all the cocos2d classes
-//#import "cocos2d.h"
-//#import "FuriousBlocksCore.h"
-//
-//// GameScreen
-//@interface PanelScene : CCLayer {
-//
-//}
-//
-//+ (CCScene *)scene;
-//
-//- (CCSpriteFrame *)getBlockFrame:(BlockSituation *)blockSituation:(long)tick:(bool)compressed:(bool)panicking;
-//
-//@end

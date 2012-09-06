@@ -272,8 +272,6 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float s
           case BlockType:: GREEN:
             animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_GREEN_HOVER_01, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_04, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_01});
             break;
-          case BlockType:: GARBAGE:
-            CCLOG("you should not be there");
         }
         animations[blockSituation->id] = animation;
         return animation->getKeyFrame(stateTime);
