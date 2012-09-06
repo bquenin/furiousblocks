@@ -28,6 +28,9 @@ bool PanelScene::init() {
     return false;
   }
 
+  this->setTouchEnabled(true);
+  CCLOG("isTouchEnabled = %d", isTouchEnabled());
+
   // Game initialization
   core = new FuriousBlocksCore(0);
 
@@ -190,10 +193,6 @@ bool PanelScene::init() {
   // Start the core
   //  ThreadExecutor<FuriousBlocksCore> executor;
   //  tbb::tbb_thread t(executor, core);
-
-  stateTime = 0;
-
-  tick = 0;
 
   // Start rendering
   schedule(schedule_selector(PanelScene::update));
@@ -410,18 +409,51 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float s
   return nullptr;
 }
 
-void PanelScene::menuCloseCallback(CCObject *pSender) {
-  CCDirector::sharedDirector()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  exit(0);
-#endif
+void PanelScene::onEnter() {
+  CCDirector *pDirector = CCDirector::sharedDirector();
+  pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+  CCLayer::onEnter();
 }
 
-//- (void)dealloc {
-//    delete core;
-//    delete player;
-//    [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
-//    [super dealloc];
-//}
-//@end
+void PanelScene::onExit() {
+  CCDirector *pDirector = CCDirector::sharedDirector();
+  pDirector->getTouchDispatcher()->removeDelegate(this);
+  CCLayer::onExit();
+}
+
+bool PanelScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
+  //  if (m_state != kPaddleStateUngrabbed) {
+  //    return false;
+  //  }
+  //  if (!containsTouchLocation(touch)) {
+  //    return false;
+  //  }
+  //
+  //  m_state = kPaddleStateGrabbed;
+  CCLOG("began");
+  return true;
+}
+
+void PanelScene::ccTouchMoved(CCTouch *touch, CCEvent *event) {
+  // If it weren't for the TouchDispatcher, you would need to keep a reference
+  // to the touch from touchBegan and check that the current touch is the same
+  // as that one.
+  // Actually, it would be even more complicated since in the Cocos dispatcher
+  // you get CCSets instead of 1 UITouch, so you'd need to loop through the set
+  // in each touchXXX method.
+
+  //  CCAssert(m_state == kPaddleStateGrabbed, L"Paddle - Unexpected state!");
+
+  CCPoint touchPoint = touch->getLocation();
+
+  CCLOG("x/y = %f/%f", touchPoint.x, touchPoint.y);
+
+  //  setPosition(CCPointMake(touchPoint.x, getPosition().y));
+}
+
+void PanelScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
+  CCLOG("end");
+  //  CCAssert(m_state == kPaddleStateGrabbed, L"Paddle - Unexpected state!");
+  //
+  //  m_state = kPaddleStateUngrabbed;
+}

@@ -10,11 +10,9 @@
 
 #include "cocos2d.h"
 #include "CCBReader/CCBReader.h"
-#include "CCBReader/CCNodeLoaderLibrary.h"
 //#include "HelloCocosBuilder/HelloCocosBuilderLayerLoader.h"
 
 //#include "PanelScene.h"
-#include "TitleSceneLoader.h"
 #include "SimpleAudioEngine.h"
 #include "PanelScene.h"
 
@@ -44,35 +42,33 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
 
-//  /* Create an autorelease CCNodeLoaderLibrary. */
-//  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
-//
-//  ccNodeLoaderLibrary->registerCCNodeLoader("TitleScene", TitleSceneLoader::loader());
-//
-//  /* Create an autorelease CCBReader. */
-//  cocos2d::extension::CCBReader *ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-//  ccbReader->autorelease();
-//
-//  // create a scene. it's an autorelease object
-//  CCScene *pScene = CCScene::create();
-//
-//  /* Read the ccbi file. */
-//  CCNode *node = ccbReader->readNodeGraphFromFile("./", "TitleScene.ccbi", pScene);
-//
-//  if (node != NULL) {
-//    pScene->addChild(node);
-//  }
-//
-//  // run
-//  pDirector->pushScene(pScene);
-
+  //  /* Create an autorelease CCNodeLoaderLibrary. */
+  //  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
+  //
+  //  ccNodeLoaderLibrary->registerCCNodeLoader("TitleScene", TitleSceneLoader::loader());
+  //
+  //  /* Create an autorelease CCBReader. */
+  //  cocos2d::extension::CCBReader *ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+  //  ccbReader->autorelease();
+  //
+  //  // create a scene. it's an autorelease object
+  //  CCScene *pScene = CCScene::create();
+  //
+  //  /* Read the ccbi file. */
+  //  CCNode *node = ccbReader->readNodeGraphFromFile("./", "TitleScene.ccbi", pScene);
+  //
+  //  if (node != NULL) {
+  //    pScene->addChild(node);
+  //  }
+  //
+  //  // run
+  //  pDirector->pushScene(pScene);
 
   // create a scene. it's an autorelease object
   CCScene *pScene = PanelScene::scene();
 
   // run
   pDirector->runWithScene(pScene);
-
 
   return true;
 }
