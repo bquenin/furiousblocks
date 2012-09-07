@@ -172,7 +172,6 @@
 		7969E61E701067E504AF3BE0 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E94A715401F041690453 /* NonLoopingAnimation.cpp */; };
 		7969E6651B593DE504255709 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E279828DECE920BF32AA /* Animation.cpp */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
-		7969EA137813246DD6483364 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA18D03D613363724329 /* bg.png */; };
 		D240547315F3D02D00908779 /* CCTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D240547215F3D02D00908779 /* CCTouch.cpp */; };
 		D240547715F3D0F800908779 /* CCNotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D240547515F3D0F800908779 /* CCNotificationCenter.cpp */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
@@ -302,7 +301,6 @@
 		02BAEAAC159E578F00BCA0C3 /* CCProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCProtocols.h; sourceTree = "<group>"; };
 		02BAEAAD159E578F00BCA0C3 /* ccTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccTypes.h; sourceTree = "<group>"; };
 		02BAEAAE159E578F00BCA0C3 /* cocos2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocos2d.h; sourceTree = "<group>"; };
-		02BAEAAF159E578F00BCA0C3 /* cocos2dExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocos2dExt.h; sourceTree = "<group>"; };
 		02BAEAB3159E578F00BCA0C3 /* aabb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aabb.h; sourceTree = "<group>"; };
 		02BAEAB5159E578F00BCA0C3 /* mat4stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mat4stack.h; sourceTree = "<group>"; };
 		02BAEAB6159E578F00BCA0C3 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
@@ -575,7 +573,6 @@
 		7969E4031BBA962011C7A062 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
 		7969E94A715401F041690453 /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
-		7969EA18D03D613363724329 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		7969EA64CACC3D5C4E6096D6 /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		D240547215F3D02D00908779 /* CCTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTouch.cpp; sourceTree = "<group>"; };
 		D240547515F3D0F800908779 /* CCNotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNotificationCenter.cpp; sourceTree = "<group>"; };
@@ -891,7 +888,6 @@
 				02BAEAAC159E578F00BCA0C3 /* CCProtocols.h */,
 				02BAEAAD159E578F00BCA0C3 /* ccTypes.h */,
 				02BAEAAE159E578F00BCA0C3 /* cocos2d.h */,
-				02BAEAAF159E578F00BCA0C3 /* cocos2dExt.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -1435,7 +1431,6 @@
 		7969E40F5CAB04DF7A2A5BC1 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
-				7969EA18D03D613363724329 /* bg.png */,
 				D2E1CD0215D7D80B00D844D0 /* blocks.plist */,
 				D2E1CD0315D7D80B00D844D0 /* blocks.png */,
 				D2E1CD0415D7D80B00D844D0 /* iphone.plist */,
@@ -1697,7 +1692,6 @@
 				D2E1CD0B15D7D80B00D844D0 /* iphone.png in Resources */,
 				D2E1CD0C15D7D80B00D844D0 /* title.png in Resources */,
 				D2E1CD0E15D7D81400D844D0 /* SkaterDudes.ttf in Resources */,
-				7969EA137813246DD6483364 /* bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

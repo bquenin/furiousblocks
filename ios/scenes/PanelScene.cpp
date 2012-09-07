@@ -28,15 +28,7 @@ bool PanelScene::init() {
     return false;
   }
 
-  this->setTouchEnabled(true);
-  CCLOG("isTouchEnabled = %d", isTouchEnabled());
-
-  // Game initialization
-  core = new FuriousBlocksCore(0);
-
-  // Player initialization
-  player = new Player();
-  core->addPlayer(player);
+  setTouchEnabled(true);
 
   // Sprite sheet
   CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
@@ -173,6 +165,7 @@ bool PanelScene::init() {
 
   CURSOR = new Animation(16.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 
+  // Background
   CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
   background->setAnchorPoint(ccp(0, 0));
   batch->addChild(background);
@@ -186,6 +179,18 @@ bool PanelScene::init() {
       batch->addChild(grid[x][y]);
     }
   }
+
+  // Cursor
+  CCSprite *cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
+  cursor->setAnchorPoint(ccp(0, 0));
+  batch->addChild(cursor);
+
+  // Game initialization
+  core = new FuriousBlocksCore(0);
+
+  // Player initialization
+  player = new Player();
+  core->addPlayer(player);
 
   //  std::thread t1(call_from_thread);
   //  t1.join();
@@ -223,6 +228,7 @@ void PanelScene::update(float dt) {
       }
     }
   }
+
 }
 
 CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float stateTime, bool compressed, bool panicking) {
