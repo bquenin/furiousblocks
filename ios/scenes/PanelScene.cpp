@@ -166,9 +166,9 @@ bool PanelScene::init() {
   CURSOR = new Animation(16.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 
   // Background
-  CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
-  background->setAnchorPoint(ccp(0, 0));
-  batch->addChild(background);
+  //  CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
+  //  background->setAnchorPoint(ccp(0, 0));
+  //  batch->addChild(background);
 
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
@@ -181,7 +181,7 @@ bool PanelScene::init() {
   }
 
   // Cursor
-  CCSprite *cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
+  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
   cursor->setAnchorPoint(ccp(0, 0));
   batch->addChild(cursor);
 
@@ -211,6 +211,7 @@ void PanelScene::update(float dt) {
   std::shared_ptr<GameSituation> gs(core->gameSituation);
   auto ps = gs->playerIdToPanelSituation[123];
 
+  // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       BlockSituation *current = ps->blockSituations[x][y];
@@ -228,6 +229,10 @@ void PanelScene::update(float dt) {
       }
     }
   }
+
+  // Cursor
+  cursor->setPosition(ccp(ps->cursorPosition.x * 48, ps->cursorPosition.y * 48 + ps->scrollingOffset * 48 / 16 - 8));
+  cursor->setDisplayFrame(CURSOR->getKeyFrame(stateTime, true));
 
 }
 

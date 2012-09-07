@@ -13,7 +13,6 @@
 class PanelSituation {
 private:
   bool isLocked;
-  furiousblocks::Point cursorPosition;
   PanelState state;
   int32_t stateTick;
   std::set<ComboSituation *> comboSituations;
@@ -34,8 +33,8 @@ public:
   ~PanelSituation();
   GarbageSituation *getGarbageByBlock(int32_t blockId);
   ComboSituation *getComboByBlock(int32_t blockId);
-  PanelSituation *getSimpleClone();
   int32_t scrollingOffset;
+  furiousblocks::Point cursorPosition;
 };
 
 #endif //__PanelSituation_H_

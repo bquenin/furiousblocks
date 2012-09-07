@@ -26,7 +26,7 @@ public:
   void ccTouchMoved(CCTouch *touch, CCEvent *event);
   void ccTouchEnded(CCTouch *touch, CCEvent *event);
 
-  // implement the "static node()" method manually
+  // Implement the "static node()" method manually
   CREATE_FUNC(PanelScene);
 
   // Core
@@ -38,6 +38,8 @@ public:
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
   float stateTime = 0;
+
+  CCSprite *cursor;
 
   // Assets
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
