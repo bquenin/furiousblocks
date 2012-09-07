@@ -1349,7 +1349,7 @@
 		02BAEC48159E57C600BCA0C3 /* generic */ = {
 			isa = PBXGroup;
 			children = (
-				D2BD396715C5D0A90038E59C /* core */,
+				D2BD396715C5D0A90038E59C /* wip */,
 			);
 			name = generic;
 			path = ../generic;
@@ -1398,8 +1398,6 @@
 		02E20FB6159E492E00CB0ADA /* bootstrap */ = {
 			isa = PBXGroup;
 			children = (
-				02BAEC4A159E57C600BCA0C3 /* AppDelegate.h */,
-				02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */,
 				02BAF106159E5C7200BCA0C3 /* Prefix.pch */,
 				02BAF0FE159E5C0E00BCA0C3 /* AppController.h */,
 				02BAF0FF159E5C0E00BCA0C3 /* RootViewController.h */,
@@ -1467,9 +1465,11 @@
 			path = assets/bgm;
 			sourceTree = SOURCE_ROOT;
 		};
-		D2BD396715C5D0A90038E59C /* core */ = {
+		D2BD396715C5D0A90038E59C /* wip */ = {
 			isa = PBXGroup;
 			children = (
+				02BAEC4A159E57C600BCA0C3 /* AppDelegate.h */,
+				02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */,
 				7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */,
 				D2BD396815C5D0A90038E59C /* Block.cpp */,
 				D2BD396915C5D0A90038E59C /* Block.h */,
@@ -1509,7 +1509,7 @@
 				D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */,
 				D2BD39A015C5D0A90038E59C /* SimpleRNG.h */,
 			);
-			name = core;
+			name = wip;
 			path = ../generic/wip;
 			sourceTree = SOURCE_ROOT;
 		};

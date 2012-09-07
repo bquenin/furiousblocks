@@ -10,7 +10,7 @@ LOCAL_CPPFLAGS = -DCOCOS2D_DEBUG -std=gnu++0x
 
 LOCAL_SRC_FILES := \
 bootstrap/main.cpp \
-bootstrap/AppDelegate.cpp \
+../../generic/wip/AppDelegate.cpp \
 ../../generic/wip/Block.cpp \
 ../../generic/wip/BlockSituation.cpp \
 ../../generic/wip/BlockState.cpp \
