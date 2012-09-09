@@ -3,7 +3,7 @@
 
 #include <cstdint>
 #include <set>
-#include <map>
+#include <unordered_map>
 #include <atomic>
 #include <memory>
 #include "FuriousBlocksCoreListener.h"
@@ -24,7 +24,7 @@ private:
   FuriousBlocksCoreListener *listener;
 
 protected:
-  std::map<Player *, Panel *> playerToPanel;
+  std::unordered_map<Player *, Panel *> playerToPanel;
 
 public:
   BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
