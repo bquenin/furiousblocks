@@ -2,19 +2,19 @@
 #include "BlockSituationEx.h"
 
 BlockSituationEx::BlockSituationEx()
-: BlockSituation(0, BlockType::INVISIBLE, BlockState::IDLE, 0, 0, 0, false, false, false, 0)
+: BlockSituation(0, BlockType::INVISIBLE, BlockState::IDLE, 0, 0, 0, false, false, false, 0, false, false)
 , origin(nullptr)
 , chainReplacement(false) {
 }
 
 BlockSituationEx::BlockSituationEx(BlockSituation *bs)
-: BlockSituation(bs->id, bs->type, bs->type, bs->stateTick, bs->garbageBlockType, bs->garbageOwner, bs->combo, bs->justLand, bs->fallingFromClearing, bs->poppingIndex)
+: BlockSituation(bs->id, bs->type, bs->state, bs->stateTick, bs->garbageBlockType, bs->garbageOwner, bs->combo, bs->justLand, bs->fallingFromClearing, bs->poppingIndex, bs->movable, bs->combinable)
 , origin(nullptr)
 , chainReplacement(false) {
 }
 
 BlockSituationEx::BlockSituationEx(BlockSituationEx *bsEx)
-: BlockSituation(bsEx->id, bsEx->type, bsEx->type, bsEx->stateTick, bsEx->garbageBlockType, bsEx->garbageOwner, bsEx->combo, bsEx->justLand, bsEx->fallingFromClearing, bsEx->poppingIndex)
+: BlockSituation(bsEx->id, bsEx->type, bsEx->state, bsEx->stateTick, bsEx->garbageBlockType, bsEx->garbageOwner, bsEx->combo, bsEx->justLand, bsEx->fallingFromClearing, bsEx->poppingIndex, bsEx->movable, bsEx->combinable)
 , origin(bsEx->origin)
 , chainReplacement(bsEx->chainReplacement)
 , targetColumnCosts(bsEx->targetColumnCosts) {

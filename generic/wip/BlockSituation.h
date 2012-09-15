@@ -6,19 +6,16 @@
 #include "BlockState.h"
 
 class BlockSituation {
-private:
-
-protected:
-  int32_t stateTick;
-  int32_t garbageOwner;
-  int32_t poppingIndex;
-  bool combo;
-  bool fallingFromClearing;
 public:
   BlockType type;
   BlockState state;
+  int32_t stateTick;
+  int32_t garbageOwner;
+  int32_t poppingIndex;
   int32_t id;
   int32_t garbageBlockType;
+  bool combo;
+  bool fallingFromClearing;
   bool movable;
   bool combinable;
   bool justLand;
