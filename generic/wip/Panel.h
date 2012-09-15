@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <set>
 #include <list>
+#include <set>
+#include <array>
 #include "Block.h"
 #include "Combo.h"
 #include "GarbageSituation.h"
@@ -154,7 +156,7 @@ public:
   void submitMove(Move *move);
   static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
   static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
-  Block *blocks[Panel::X][Panel::Y];
+  Block *blocks[Panel::X][Panel::Y]; // std::array<std::array<Block *, Panel::Y>, Panel::X> blocks;
 };
 
 #endif //__Panel_H_

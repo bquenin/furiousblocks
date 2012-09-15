@@ -1,14 +1,33 @@
 #include <cstdint>
-#include <set>
+#include <unordered_set>
 #include <list>
 #include "Panel.h"
 #include "MoveType.h"
 #include "GarbageBlockType.h"
 
 Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener)
-: lastIndex(-1), random(new SimpleRNG(seed)), localTick(0), playerId(playerId), cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1)), state (PanelState::IDLE), stateTick(0),
-levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED), scrollingDelta(0), freezingTime(0), bonusFreezingTime(0), skillChainLevel(1),
-move(nullptr), locked(false), lifting(false), gracing(false), gameOver(false), wallOffset(0), score(0), panelListener(panelListener), scrollingEnabled(true) {
+: lastIndex(-1)
+, random(new SimpleRNG(seed))
+, localTick(0)
+, playerId(playerId)
+, cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1))
+, state (PanelState::IDLE)
+, stateTick(0)
+, levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED)
+, scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED)
+, scrollingDelta(0)
+, freezingTime(0)
+, bonusFreezingTime(0)
+, skillChainLevel(1)
+, move(nullptr)
+, locked(false)
+, lifting(false)
+, gracing(false)
+, gameOver(false)
+, wallOffset(0)
+, score(0)
+, panelListener(panelListener)
+, scrollingEnabled(true) {
   for (int32_t y = 0; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
       blocks[x][y] = nullptr;
@@ -764,7 +783,7 @@ void Panel::submitMove(Move *move) {
 }
 
 Panel::BlockBar::BlockBar(Panel *__parent, int32_t width, int32_t height, int32_t owner)
-:__parent (__parent) {
+: __parent (__parent) {
   this->id = __parent->random->nextInt();
   this->width = width;
   this->height = height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height;
@@ -826,7 +845,8 @@ bool Panel::BlockBar::isRevealing() {
   return false;
 }
 
-Panel::Garbage::Garbage(Panel *__parent, int32_t width, int32_t height, int32_t owner, bool skill) :BlockBar(__parent, width, height, owner) {
+Panel::Garbage::Garbage(Panel *__parent, int32_t width, int32_t height, int32_t owner, bool skill)
+: BlockBar(__parent, width, height, owner) {
   this->skill = skill;
 }
 
@@ -932,14 +952,15 @@ void Panel::Garbage::onDoneRevealing() {
 }
 
 GarbageSituation *Panel::Garbage::getSituation() {
-  std::set<int32_t> blockIds;
+  std::unordered_set<int32_t> blockIds;
   for (auto barBlock: barBlocks) {
     blockIds.insert(barBlock->id);
   }
   return new GarbageSituation(width, height, owner, blockIds);
 }
 
-Panel::BlockLine::BlockLine(Panel *__parent, int32_t width, int32_t owner) : BlockBar(__parent, width, 1, owner) {
+Panel::BlockLine::BlockLine(Panel *__parent, int32_t width, int32_t owner)
+: BlockBar(__parent, width, 1, owner) {
 }
 
 void Panel::BlockLine::inject(int32_t x, int32_t y) {

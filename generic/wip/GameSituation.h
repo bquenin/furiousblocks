@@ -2,13 +2,13 @@
 #define __GameSituation_H_
 
 #include <cstdint>
-#include <map>
+#include <unordered_map>
 #include "PanelSituation.h"
 
 class GameSituation {
 public:
-  std::map<int32_t, PanelSituation *> playerIdToPanelSituation;
-  GameSituation(std::map<int32_t, PanelSituation *> panelSituations);
+  std::unordered_map<int32_t, PanelSituation *> playerIdToPanelSituation;
+  GameSituation(std::unordered_map<int32_t, PanelSituation *> panelSituations);
   ~GameSituation();
 };
 

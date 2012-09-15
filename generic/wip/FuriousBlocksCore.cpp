@@ -1,6 +1,6 @@
 #include <cstdint>
 #include <set>
-#include <map>
+#include <unordered_map>
 #include "FuriousBlocksCore.h"
 #include "CCStdC.h"
 #include "cocos2d.h"
@@ -8,7 +8,12 @@
 USING_NS_CC;
 
 FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
-: seed(seed), tick (0), running(false), paused(false), singleTick(false), listener(listener) {
+: seed(seed)
+, tick (0)
+, running(false)
+, paused(false)
+, singleTick(false)
+, listener(listener) {
   SimpleRNG *random = new SimpleRNG(seed);
   for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
     for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
@@ -60,7 +65,7 @@ void FuriousBlocksCore::onTick(int64_t tick) {
     //    }
   }
 
-  std::map<int32_t, PanelSituation *> panelSituations;
+  std::unordered_map<int32_t, PanelSituation *> panelSituations;
   for (const auto &entry: playerToPanel) {
     Player *player = entry.first;
     Panel *panel = entry.second;
@@ -74,9 +79,9 @@ void FuriousBlocksCore::onTick(int64_t tick) {
 
   gameSituation.reset(new GameSituation(panelSituations));
 
-//  if (oldSituation != nullptr) {
-//    delete oldSituation;
-//  }
+  //  if (oldSituation != nullptr) {
+  //    delete oldSituation;
+  //  }
 }
 
 void FuriousBlocksCore::onCombo(Combo *combo) {

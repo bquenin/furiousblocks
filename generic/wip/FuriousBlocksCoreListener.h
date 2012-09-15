@@ -5,11 +5,9 @@
 #include "PanelEvent.h"
 
 class FuriousBlocksCoreListener {
-private:
-
-protected:
 public:
   virtual void onEvent(int64_t playerId, PanelEvent *panelEvent);
+  virtual ~FuriousBlocksCoreListener();
 };
 
 #endif //__FuriousBlocksCoreListener_H_

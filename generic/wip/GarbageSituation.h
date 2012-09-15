@@ -2,18 +2,18 @@
 #define __GarbageSituation_H_
 
 #include <cstdint>
-#include <set>
+#include <unordered_set>
 
 class GarbageSituation {
 private:
   int32_t width;
   int32_t height;
   int32_t owner;
-  std::set<int32_t> blocks;
+  std::unordered_set<int32_t> blocks;
 
 protected:
 public:
-  GarbageSituation(int32_t width, int32_t height, int32_t owner, std::set<int32_t> blocks);
+  GarbageSituation(int32_t width, int32_t height, int32_t owner, std::unordered_set<int32_t> blocks);
   bool contains(int32_t blockId);
 };
 

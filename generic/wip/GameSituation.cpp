@@ -2,7 +2,7 @@
 #include <map>
 #include "GameSituation.h"
 
-GameSituation::GameSituation(std::map<int32_t, PanelSituation *> panelSituations)
+GameSituation::GameSituation(std::unordered_map<int32_t, PanelSituation *> panelSituations)
 : playerIdToPanelSituation(panelSituations) {
 }
 
