@@ -8,9 +8,10 @@
 
 USING_NS_CC;
 
-class PanelScene : public cocos2d::CCLayer {
+class PanelScene : public CCLayer {
 public:
-
+  PanelScene();
+  static void* game_draw_thread_callback(void*);
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
   void update(float d);
@@ -19,10 +20,14 @@ public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
 
-  // a selector callback
-  void menuCloseCallback(CCObject *pSender);
+  virtual void onEnter();
+  virtual void onExit();
 
-  // implement the "static node()" method manually
+  bool ccTouchBegan(CCTouch *touch, CCEvent *event);
+  void ccTouchMoved(CCTouch *touch, CCEvent *event);
+  void ccTouchEnded(CCTouch *touch, CCEvent *event);
+
+  // Implement the "static node()" method manually
   CREATE_FUNC(PanelScene);
 
   // Core
@@ -34,6 +39,8 @@ public:
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
   float stateTime;
+
+  CCSprite *cursor;
 
   // Assets
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
@@ -167,20 +174,3 @@ public:
 };
 
 #endif // __PANELSCENE_H_
-////
-//
-//
-//// When you import this file, you import all the cocos2d classes
-//#import "cocos2d.h"
-//#import "FuriousBlocksCore.h"
-//
-//// GameScreen
-//@interface PanelScene : CCLayer {
-//
-//}
-//
-//+ (CCScene *)scene;
-//
-//- (CCSpriteFrame *)getBlockFrame:(BlockSituation *)blockSituation:(long)tick:(bool)compressed:(bool)panicking;
-//
-//@end

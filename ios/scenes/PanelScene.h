@@ -10,7 +10,8 @@ USING_NS_CC;
 
 class PanelScene : public CCLayer {
 public:
-
+  PanelScene();
+  static void* game_draw_thread_callback(void*);
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
   void update(float d);
@@ -32,12 +33,12 @@ public:
   // Core
   FuriousBlocksCore *core;
   Player *player;
-  int tick = 0;
+  int tick;
 
   // Renderer
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
-  float stateTime = 0;
+  float stateTime;
 
   CCSprite *cursor;
 

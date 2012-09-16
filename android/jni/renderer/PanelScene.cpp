@@ -1,8 +1,12 @@
 #include "PanelScene.h"
 #include "GarbageBlockType.h"
-#include <thread>
 
 USING_NS_CC;
+
+PanelScene::PanelScene()
+: tick(0)
+, stateTime(0) {
+}
 
 CCScene *PanelScene::scene() {
   // 'scene' is an autorelease object
@@ -18,8 +22,9 @@ CCScene *PanelScene::scene() {
   return scene;
 }
 
-void call_from_thread() {
-  std::cout << "Hello, World" << std::endl;
+void *PanelScene::game_draw_thread_callback(void *pVoid) {
+  CCLOG("Hello World!");
+  return nullptr;
 }
 
 // on "init" you need to initialize your instance
@@ -28,12 +33,7 @@ bool PanelScene::init() {
     return false;
   }
 
-  // Game initialization
-  core = new FuriousBlocksCore(0);
-
-  // Player initialization
-  player = new Player();
-  core->addPlayer(player);
+  setTouchEnabled(true);
 
   // Sprite sheet
   CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
@@ -170,9 +170,10 @@ bool PanelScene::init() {
 
   CURSOR = new Animation(16.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 
-  CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
-  background->setAnchorPoint(ccp(0, 0));
-  batch->addChild(background);
+  // Background
+  //  CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
+  //  background->setAnchorPoint(ccp(0, 0));
+  //  batch->addChild(background);
 
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
@@ -184,16 +185,28 @@ bool PanelScene::init() {
     }
   }
 
-//    std::thread t1(call_from_thread);
-//    t1.join();
+  // Cursor
+  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
+  cursor->setAnchorPoint(ccp(0, 0));
+  batch->addChild(cursor);
+
+  // Game initialization
+  core = new FuriousBlocksCore(0);
+
+  // Player initialization
+  player = new Player();
+  core->addPlayer(player);
+
+  pthread_t t1;
+  pthread_create(&t1, NULL, PanelScene::game_draw_thread_callback, this);
+  pthread_join(t1, NULL);
+
+  //  std::thread t1(call_from_thread);
+  //  t1.join();
 
   // Start the core
   //  ThreadExecutor<FuriousBlocksCore> executor;
   //  tbb::tbb_thread t(executor, core);
-
-  stateTime = 0;
-
-  tick = 0;
 
   // Start rendering
   schedule(schedule_selector(PanelScene::update));
@@ -207,6 +220,7 @@ void PanelScene::update(float dt) {
   std::shared_ptr<GameSituation> gs(core->gameSituation);
   auto ps = gs->playerIdToPanelSituation[123];
 
+  // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       BlockSituation *current = ps->blockSituations[x][y];
@@ -214,7 +228,7 @@ void PanelScene::update(float dt) {
         grid[x][y]->setVisible(false);
         continue;
       }
-      grid[x][y]->setPosition(ccp(34 + x * 96, 10 + y * 96 + ps->scrollingOffset * 96 / 16));
+      grid[x][y]->setPosition(ccp(17 + x * 48, 10 + y * 48 + ps->scrollingOffset * 48 / 16));
       CCSpriteFrame *frame = getBlockFrame(current, stateTime, false, true);
       if (frame != nullptr) {
         grid[x][y]->setDisplayFrame(frame);
@@ -224,6 +238,11 @@ void PanelScene::update(float dt) {
       }
     }
   }
+
+  // Cursor
+  cursor->setPosition(ccp(ps->cursorPosition.x * 48, ps->cursorPosition.y * 48 + ps->scrollingOffset * 48 / 16 - 8));
+  cursor->setDisplayFrame(CURSOR->getKeyFrame(stateTime, true));
+
 }
 
 CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float stateTime, bool compressed, bool panicking) {
@@ -272,8 +291,6 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float s
           case BlockType:: GREEN:
             animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_GREEN_HOVER_01, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_04, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_01});
             break;
-          case BlockType:: GARBAGE:
-            CCLOG("you should not be there");
         }
         animations[blockSituation->id] = animation;
         return animation->getKeyFrame(stateTime);
@@ -412,18 +429,52 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float s
   return nullptr;
 }
 
-void PanelScene::menuCloseCallback(CCObject *pSender) {
-  CCDirector::sharedDirector()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  exit(0);
-#endif
+void PanelScene::onEnter() {
+  CCDirector *pDirector = CCDirector::sharedDirector();
+  pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+  CCLayer::onEnter();
 }
 
-//- (void)dealloc {
-//    delete core;
-//    delete player;
-//    [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
-//    [super dealloc];
-//}
-//@end
+void PanelScene::onExit() {
+  CCDirector *pDirector = CCDirector::sharedDirector();
+  pDirector->getTouchDispatcher()->removeDelegate(this);
+  CCLayer::onExit();
+}
+
+bool PanelScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
+  //  if (m_state != kPaddleStateUngrabbed) {
+  //    return false;
+  //  }
+  //  if (!containsTouchLocation(touch)) {
+  //    return false;
+  //  }
+  //
+  //  m_state = kPaddleStateGrabbed;
+  CCLOG("began");
+  return true;
+}
+
+
+void PanelScene::ccTouchMoved(CCTouch *touch, CCEvent *event) {
+  // If it weren't for the TouchDispatcher, you would need to keep a reference
+  // to the touch from touchBegan and check that the current touch is the same
+  // as that one.
+  // Actually, it would be even more complicated since in the Cocos dispatcher
+  // you get CCSets instead of 1 UITouch, so you'd need to loop through the set
+  // in each touchXXX method.
+
+  //  CCAssert(m_state == kPaddleStateGrabbed, L"Paddle - Unexpected state!");
+
+  CCPoint touchPoint = touch->getLocation();
+
+  CCLOG("x/y = %f/%f", touchPoint.x, touchPoint.y);
+
+  //  setPosition(CCPointMake(touchPoint.x, getPosition().y));
+}
+
+void PanelScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
+  CCLOG("end");
+  //  CCAssert(m_state == kPaddleStateGrabbed, L"Paddle - Unexpected state!");
+  //
+  //  m_state = kPaddleStateUngrabbed;
+}

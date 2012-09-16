@@ -1,8 +1,12 @@
 #include "PanelScene.h"
 #include "GarbageBlockType.h"
-#include <thread>
 
 USING_NS_CC;
+
+PanelScene::PanelScene()
+: tick(0)
+, stateTime(0) {
+}
 
 CCScene *PanelScene::scene() {
   // 'scene' is an autorelease object
@@ -18,8 +22,9 @@ CCScene *PanelScene::scene() {
   return scene;
 }
 
-void call_from_thread() {
+void *PanelScene::game_draw_thread_callback(void *pVoid) {
   std::cout << "Hello, World" << std::endl;
+  return nullptr;
 }
 
 // on "init" you need to initialize your instance
@@ -191,6 +196,10 @@ bool PanelScene::init() {
   // Player initialization
   player = new Player();
   core->addPlayer(player);
+
+  pthread_t t1;
+  pthread_create(&t1, NULL, PanelScene::game_draw_thread_callback, this);
+  pthread_join(t1, NULL);
 
   //  std::thread t1(call_from_thread);
   //  t1.join();
@@ -444,6 +453,7 @@ bool PanelScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
   CCLOG("began");
   return true;
 }
+
 
 void PanelScene::ccTouchMoved(CCTouch *touch, CCEvent *event) {
   // If it weren't for the TouchDispatcher, you would need to keep a reference

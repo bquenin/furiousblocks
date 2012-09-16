@@ -174,6 +174,7 @@
 		7969E6651B593DE504255709 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E279828DECE920BF32AA /* Animation.cpp */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA9D3983DF11655A3DC5 /* ComboProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EF398AF4831EAFCDF782 /* ComboProcessor.cpp */; };
+		D20DD12B16064370001671ED /* libpthread.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D20DD12A16064370001671ED /* libpthread.dylib */; };
 		D240547315F3D02D00908779 /* CCTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D240547215F3D02D00908779 /* CCTouch.cpp */; };
 		D240547715F3D0F800908779 /* CCNotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D240547515F3D0F800908779 /* CCNotificationCenter.cpp */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
@@ -580,6 +581,7 @@
 		7969EA64CACC3D5C4E6096D6 /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		7969EB5019FDBE1DE0C27B89 /* BlockSituationEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockSituationEx.h; sourceTree = "<group>"; };
 		7969EF398AF4831EAFCDF782 /* ComboProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComboProcessor.cpp; sourceTree = "<group>"; };
+		D20DD12A16064370001671ED /* libpthread.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpthread.dylib; path = usr/lib/libpthread.dylib; sourceTree = SDKROOT; };
 		D240547215F3D02D00908779 /* CCTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTouch.cpp; sourceTree = "<group>"; };
 		D240547515F3D0F800908779 /* CCNotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNotificationCenter.cpp; sourceTree = "<group>"; };
 		D240547615F3D0F800908779 /* CCNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNotificationCenter.h; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20DD12B16064370001671ED /* libpthread.dylib in Frameworks */,
 				02BAEEB9159E5AAB00BCA0C3 /* QuartzCore.framework in Frameworks */,
 				02BAEEBA159E5AAB00BCA0C3 /* OpenGLES.framework in Frameworks */,
 				02BAEEBB159E5AAB00BCA0C3 /* OpenAL.framework in Frameworks */,
@@ -1361,6 +1364,7 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
+				D20DD12A16064370001671ED /* libpthread.dylib */,
 				0250A3F615A36D3F0087AC45 /* builder */,
 				2E211F1159E493100CB0B18 /* scenes */,
 				2E211F1159E493100CB0B19 /* blocks-hd.zwd */,
