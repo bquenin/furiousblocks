@@ -10,8 +10,9 @@ USING_NS_CC;
 
 class PanelScene : public CCLayer {
 public:
-  static float constexpr xOffset = 0; // 17
-  static float constexpr yOffset = 0; // 10
+  static constexpr int32_t TILE_SIZE = 48;
+  static constexpr int32_t xOffset = 0; // 17
+  static constexpr int32_t yOffset = 0; // 10
 
   PanelScene();
   static void *game_draw_thread_callback(void *);

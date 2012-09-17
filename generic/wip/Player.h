@@ -16,8 +16,6 @@ enum class InputState {
 
 class Player : public CCObject, public CCTouchDelegate {
 public:
-  static constexpr float TILE_SIZE = 48;
-
   InputState inputState;
   int32_t id;
   Move *move;

@@ -226,7 +226,7 @@ void PanelScene::update(float dt) {
         grid[x][y]->setVisible(false);
         continue;
       }
-      grid[x][y]->setPosition(ccp(xOffset + x * 48, yOffset + y * 48 + ps->scrollingOffset * 48 / 16));
+      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
       CCSpriteFrame *frame = getBlockFrame(current, tick, false, true);
       if (frame != nullptr) {
         grid[x][y]->setDisplayFrame(frame);
@@ -238,7 +238,7 @@ void PanelScene::update(float dt) {
   }
 
   // Cursor
-  cursor->setPosition(ccp(ps->cursorPosition.x * 48 + xOffset - 16, ps->cursorPosition.y * 48 + ps->scrollingOffset * 48 / 16 - 8 + yOffset - 8));
+  cursor->setPosition(ccp(ps->cursorPosition.x * TILE_SIZE + xOffset - 16, ps->cursorPosition.y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT - 8 + yOffset - 8));
   cursor->setDisplayFrame(CURSOR->getKeyFrame(tick, true));
 
   tick++;
