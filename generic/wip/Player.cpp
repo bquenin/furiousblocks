@@ -56,7 +56,7 @@ void Player::ccTouchEnded(CCTouch *touch, CCEvent *event) {
   rightTrend = false;
 }
 
-Move *Player::onMoveRequest(PanelSituation *panelSituation) {
+Move *Player::onMoveRequest(PanelSituation * const panelSituation) {
   Move *move = nullptr;
   if (inputState != InputState::touched) {
     return move;

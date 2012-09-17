@@ -1140,7 +1140,6 @@
 		02BAEB37159E578F00BCA0C3 /* script_support */ = {
 			isa = PBXGroup;
 			children = (
-				D2BD399C15C5D0A90038E59C /* Player.h */,
 				02BAEB38159E578F00BCA0C3 /* CCScriptSupport.cpp */,
 				02BAEB39159E578F00BCA0C3 /* CCScriptSupport.h */,
 			);
@@ -1480,6 +1479,7 @@
 		D2BD396715C5D0A90038E59C /* wip */ = {
 			isa = PBXGroup;
 			children = (
+				D2BD399C15C5D0A90038E59C /* Player.h */,
 				02BAEC4A159E57C600BCA0C3 /* AppDelegate.h */,
 				02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */,
 				D2BD396815C5D0A90038E59C /* Block.cpp */,

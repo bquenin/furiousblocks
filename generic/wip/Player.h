@@ -29,7 +29,7 @@ public:
   bool ccTouchBegan(CCTouch *touch, CCEvent *event);
   void ccTouchMoved(CCTouch *touch, CCEvent *event);
   void ccTouchEnded(CCTouch *touch, CCEvent *event);
-  Move *onMoveRequest(PanelSituation *panelSituation);
+  Move *onMoveRequest(PanelSituation *const panelSituation);
 };
 
 #endif //__Player_H_
