@@ -1,6 +1,7 @@
 #include <cstdint>
 #include "Player.h"
-
+#include "MoveType.h"
+#include "PanelScene.h"
 
 Player::Player(int32_t id)
 : id(id)
@@ -19,7 +20,6 @@ bool Player::ccTouchBegan(CCTouch *touch, CCEvent *event) {
   //  }
   //
   inputState = InputState::touched;
-  CCLOG("inputState = %d", inputState);
 
   touchPointDown = touch->getLocation();
   touchPointDragged = touch->getLocation();
@@ -27,6 +27,8 @@ bool Player::ccTouchBegan(CCTouch *touch, CCEvent *event) {
   switchOnRight = false;
   leftTrend = false;
   rightTrend = false;
+
+//  CCLOG("touchPointDown = %f/%f", touchPointDown.x, touchPointDown.y);
 
   return true;
 }
@@ -43,10 +45,10 @@ void Player::ccTouchMoved(CCTouch *touch, CCEvent *event) {
     leftTrend = false;
     rightTrend = true;
   }
-  if ((touchPointDragged.x - 16) < (touchPointDown.x - 16) - ((touchPointDown.x - 16) / TILE_SIZE)) {
+  if ((touchPointDragged.x - PanelScene::xOffset) < (touchPointDown.x - PanelScene::xOffset) - ((touchPointDown.x - PanelScene::xOffset) / TILE_SIZE)) {
     switchOnLeft = true;
     switchOnRight = false;
-  } else if ((touchPointDragged.x - 16) > (touchPointDown.x - 16) + (TILE_SIZE - ((touchPointDown.x - 16) / TILE_SIZE))) {
+  } else if ((touchPointDragged.x - PanelScene::xOffset) > (touchPointDown.x - PanelScene::xOffset) + (TILE_SIZE - ((touchPointDown.x - PanelScene::xOffset) / TILE_SIZE))) {
     switchOnLeft = false;
     switchOnRight = true;
   }
@@ -62,34 +64,43 @@ void Player::ccTouchEnded(CCTouch *touch, CCEvent *event) {
   switchOnRight = false;
   leftTrend = false;
   rightTrend = false;
-
-  CCLOG("inputState = %d", inputState);
 }
 
-void Player::playerTick(PanelSituation panelSituation, bool isMostRecentData) {
-  if (inputState == InputState::touched) {
-    float const x = 16 + (TILE_SIZE * panelSituation.cursorPosition.x);
-    float const y = -48 + (TILE_SIZE * panelSituation.cursorPosition.y) + ((panelSituation.scrollingOffset * TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT);
-        CCRect cursorPosition(x + (leftTrend ? TILE_SIZE : 0), y, TILE_SIZE, TILE_SIZE);
-        CCPoint aPoint(touchPointDragged.x + (leftTrend ? TILE_SIZE : 0) - (rightTrend ? TILE_SIZE : 0), touchPointDragged.y);
-        if (cursorPosition.containsPoint(aPoint) && (switchOnLeft || switchOnRight)) {
-//          move = new Move(BLOCK_SWITCH);
-//          camera.unproject(touchPointDown.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-          touchPointDown = touchPointDragged;
-          switchOnLeft = false;
-          switchOnRight = false;
-        } else if (touchPointDown.x < cursorPosition.origin.x) {
-//          move = new Move(CURSOR_LEFT);
-        } else if (touchPointDown.x > cursorPosition.origin.x + cursorPosition.size.width) {
-//          move = new Move(CURSOR_RIGHT);
-        } else if (touchPointDown.y < cursorPosition.origin.y) {
-//          move = new Move(CURSOR_DOWN);
-        } else if (touchPointDown.y > cursorPosition.origin.y + cursorPosition.size.height) {
-//          move = new Move(CURSOR_UP);
-        }
+void Player::onSituationUpdate(PanelSituation *panelSituation) {
+  if (inputState != InputState::touched) {
+    if (move != nullptr) {
+      delete move;
+      move = nullptr;
+    }
+    return;
+  }
+  CCLOG("touchPointDown = %f/%f", touchPointDown.x, touchPointDown.y);
+  float const x = PanelScene::xOffset + (TILE_SIZE * panelSituation->cursorPosition.x);
+  float const y = PanelScene::yOffset + (TILE_SIZE * panelSituation->cursorPosition.y) + ((panelSituation->scrollingOffset * TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT);
+  CCRect cursorPosition(x /*+ (leftTrend ? TILE_SIZE : 0)*/, y, TILE_SIZE, TILE_SIZE);
+//  CCPoint aPoint(touchPointDragged.x + (leftTrend ? TILE_SIZE : 0) - (rightTrend ? TILE_SIZE : 0), touchPointDragged.y);
+//  if (cursorPosition.containsPoint(aPoint) && (switchOnLeft || switchOnRight)) {
+//    move = new Move(MoveType::BLOCK_SWITCH);
+//    //          camera.unproject(touchPointDown.set(Gdx.input.getX(), Gdx.input.getY(), 0));
+//    touchPointDown = touchPointDragged;
+//    switchOnLeft = false;
+//    switchOnRight = false;
+//  } else
+  if (touchPointDown.x < cursorPosition.origin.x) {
+//    move = new Move(MoveType::CURSOR_LEFT);
+    CCLOG("LEFT");
+  } else if (touchPointDown.x > cursorPosition.origin.x + cursorPosition.size.width) {
+//    move = new Move(MoveType::CURSOR_RIGHT);
+    CCLOG("RIGHT");
+  } else if (touchPointDown.y < cursorPosition.origin.y) {
+    CCLOG("DOWN");
+//    move = new Move(MoveType::CURSOR_DOWN);
+  } else if (touchPointDown.y > cursorPosition.origin.y + cursorPosition.size.height) {
+    CCLOG("UP");
+//    move = new Move(MoveType::CURSOR_UP);
   }
 }
 
-
-void Player::onSituationUpdate(PanelSituation *panelSituation) {
+Move *Player::onMoveRequest() {
+  return move;
 }

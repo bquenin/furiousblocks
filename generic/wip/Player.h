@@ -16,24 +16,24 @@ enum class InputState {
 
 class Player : public CCObject, public CCTouchDelegate {
 public:
+  static constexpr float TILE_SIZE = 48;
+
   InputState inputState;
   int32_t id;
-  Player(int32_t id = 123);
-  //    Move* onMoveRequest();
-  //    void onSituationUpdate(PanelSituation* panelSituation);
-  //    void run();
-  bool ccTouchBegan(CCTouch *touch, CCEvent *event);
-  void ccTouchMoved(CCTouch *touch, CCEvent *event);
-  void ccTouchEnded(CCTouch *touch, CCEvent *event);
-  void onSituationUpdate(PanelSituation *panelSituation);
+  Move *move;
   bool rightTrend;
   bool leftTrend;
   bool switchOnRight;
   bool switchOnLeft;
   CCPoint touchPointDown;
   CCPoint touchPointDragged;
-  void playerTick(PanelSituation panelSituation, bool isMostRecentData);
-  static constexpr float TILE_SIZE = 48;
+
+  Player(int32_t id = 123);
+  bool ccTouchBegan(CCTouch *touch, CCEvent *event);
+  void ccTouchMoved(CCTouch *touch, CCEvent *event);
+  void ccTouchEnded(CCTouch *touch, CCEvent *event);
+  void onSituationUpdate(PanelSituation *panelSituation);
+  Move *onMoveRequest();
 };
 
 #endif //__Player_H_

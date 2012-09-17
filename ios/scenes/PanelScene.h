@@ -10,6 +10,9 @@ USING_NS_CC;
 
 class PanelScene : public CCLayer {
 public:
+  static float constexpr xOffset = 0; // 17
+  static float constexpr yOffset = 0; // 10
+
   PanelScene();
   static void *game_draw_thread_callback(void *);
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone

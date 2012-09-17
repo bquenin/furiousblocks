@@ -2,8 +2,6 @@
 #include <set>
 #include <unordered_map>
 #include "FuriousBlocksCore.h"
-#include "CCStdC.h"
-#include "cocos2d.h"
 
 USING_NS_CC;
 
@@ -54,15 +52,15 @@ void FuriousBlocksCore::stop() {
 
 void FuriousBlocksCore::onTick(int64_t tick) {
   for (const auto &entry: playerToPanel) {
-    //    Player *player = entry.first;
+    Player *player = entry.first;
     Panel *panel = entry.second;
     if (panel->isGameOver()) {
       continue;
     }
-    //    Move *move = player->onMoveRequest();
-    //    if (move != nullptr) {
-    //      panel->submitMove(move);
-    //    }
+    Move *move = player->onMoveRequest();
+    if (move != nullptr) {
+      panel->submitMove(move);
+    }
   }
 
   std::unordered_map<int32_t, PanelSituation *> panelSituations;
