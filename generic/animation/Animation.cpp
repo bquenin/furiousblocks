@@ -7,16 +7,15 @@
 
 #include "Animation.h"
 
-Animation::Animation(float frameDuration, std::initializer_list<cocos2d::CCSpriteFrame *> frames)
+Animation::Animation(int64_t frameDuration, std::initializer_list<cocos2d::CCSpriteFrame *> frames)
 : frameDuration(frameDuration) {
   for (cocos2d::CCSpriteFrame *frame : frames) {
     keyFrames.push_back(frame);
   }
-  animationDuration = frameDuration * keyFrames.size();
 }
 
-cocos2d::CCSpriteFrame *Animation::getKeyFrame(float stateTime, bool looping) {
-  size_t frameNumber = static_cast<size_t> (stateTime / frameDuration);
+cocos2d::CCSpriteFrame *Animation::getKeyFrame(int64_t stateTick, bool looping) {
+  size_t frameNumber = static_cast<size_t> (stateTick / frameDuration);
 
   if (!looping) {
     frameNumber = std::min(keyFrames.size() - 1, frameNumber);
@@ -26,7 +25,7 @@ cocos2d::CCSpriteFrame *Animation::getKeyFrame(float stateTime, bool looping) {
   return keyFrames[frameNumber];
 }
 
-bool Animation::isAnimationFinished(float stateTime) {
-  size_t frameNumber = static_cast<size_t> (stateTime / frameDuration);
+bool Animation::isAnimationFinished(int64_t stateTick) {
+  size_t frameNumber = static_cast<size_t> (stateTick / frameDuration);
   return keyFrames.size() - 1 < frameNumber;
 }

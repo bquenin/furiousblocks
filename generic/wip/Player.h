@@ -5,23 +5,35 @@
 #include <string>
 #include "PanelSituation.h"
 #include "Move.h"
+#include "cocos2d.h"
 
-class Player {
-private:
-  //    BlockingQueue<PanelSituation*>* situations = new LinkedBlockingQueue<PanelSituation*>();
+USING_NS_CC;
 
-protected:
-  //    AtomicReference<Move*>* move = new AtomicReference<Move*>();
-  //    virtual void playerTick(PanelSituation* panelSituation, bool isMostRecentData) = 0;
+enum class InputState {
+  untouched,
+  touched
+};
 
+class Player : public CCObject, public CCTouchDelegate {
 public:
+  InputState inputState;
   int32_t id;
-  std::string name;
-  Player(int32_t id = 123, const std::string name = "default");
+  Player(int32_t id = 123);
   //    Move* onMoveRequest();
   //    void onSituationUpdate(PanelSituation* panelSituation);
   //    void run();
+  bool ccTouchBegan(CCTouch *touch, CCEvent *event);
+  void ccTouchMoved(CCTouch *touch, CCEvent *event);
+  void ccTouchEnded(CCTouch *touch, CCEvent *event);
   void onSituationUpdate(PanelSituation *panelSituation);
+  bool rightTrend;
+  bool leftTrend;
+  bool switchOnRight;
+  bool switchOnLeft;
+  CCPoint touchPointDown;
+  CCPoint touchPointDragged;
+  void playerTick(PanelSituation panelSituation, bool isMostRecentData);
+  static constexpr float TILE_SIZE = 48;
 };
 
 #endif //__Player_H_

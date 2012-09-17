@@ -10,15 +10,11 @@
 
 #include "cocos2d.h"
 #include "CCBReader/CCBReader.h"
-//#include "HelloCocosBuilder/HelloCocosBuilderLayerLoader.h"
-
-//#include "PanelScene.h"
-#include "SimpleAudioEngine.h"
 #include "PanelScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
-using namespace CocosDenshion;
+//using namespace CocosDenshion;
 
 AppDelegate::AppDelegate() {
 }

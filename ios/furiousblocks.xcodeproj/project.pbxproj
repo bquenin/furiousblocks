@@ -169,9 +169,9 @@
 		2E211F1159E493100CB0B8A /* btn-test-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B89 /* btn-test-0.png */; };
 		2E211F1159E493100CB0B8C /* btn-test-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8B /* btn-test-1.png */; };
 		2E211F1159E493100CB0B8E /* btn-test-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8D /* btn-test-2.png */; };
+		7969E14277F92AAAC5EAD0A6 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */; };
+		7969E2F5DA1276709612F52C /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1B1F4BE78AC5E68B104 /* Animation.cpp */; };
 		7969E57B761569B1AB1E09D2 /* BlockSituationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E5FF827BE79941A26858 /* BlockSituationEx.cpp */; };
-		7969E61E701067E504AF3BE0 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E94A715401F041690453 /* NonLoopingAnimation.cpp */; };
-		7969E6651B593DE504255709 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E279828DECE920BF32AA /* Animation.cpp */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA9D3983DF11655A3DC5 /* ComboProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EF398AF4831EAFCDF782 /* ComboProcessor.cpp */; };
 		D20DD12B16064370001671ED /* libpthread.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D20DD12A16064370001671ED /* libpthread.dylib */; };
@@ -572,13 +572,13 @@
 		2E211F1159E493100CB0B89 /* btn-test-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-0.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8B /* btn-test-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-1.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8D /* btn-test-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-2.png"; sourceTree = "<group>"; };
-		7969E279828DECE920BF32AA /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
+		7969E1B1F4BE78AC5E68B104 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		7969E3CA235EAD230BAFE49D /* ComboProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComboProcessor.h; sourceTree = "<group>"; };
-		7969E4031BBA962011C7A062 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
 		7969E5FF827BE79941A26858 /* BlockSituationEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockSituationEx.cpp; sourceTree = "<group>"; };
-		7969E94A715401F041690453 /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
-		7969EA64CACC3D5C4E6096D6 /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
+		7969E649D578804BFEB88638 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
+		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		7969EB5019FDBE1DE0C27B89 /* BlockSituationEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockSituationEx.h; sourceTree = "<group>"; };
 		7969EF398AF4831EAFCDF782 /* ComboProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComboProcessor.cpp; sourceTree = "<group>"; };
 		D20DD12A16064370001671ED /* libpthread.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpthread.dylib; path = usr/lib/libpthread.dylib; sourceTree = SDKROOT; };
@@ -1354,6 +1354,7 @@
 		02BAEC48159E57C600BCA0C3 /* generic */ = {
 			isa = PBXGroup;
 			children = (
+				D2714D2316068D1C00390FC4 /* animation */,
 				D2D6CCE615FD471F00211159 /* ai */,
 				D2BD396715C5D0A90038E59C /* wip */,
 			);
@@ -1418,10 +1419,6 @@
 		2E211F1159E493100CB0B18 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
-				7969EA64CACC3D5C4E6096D6 /* NonLoopingAnimation.h */,
-				7969E94A715401F041690453 /* NonLoopingAnimation.cpp */,
-				7969E4031BBA962011C7A062 /* Animation.h */,
-				7969E279828DECE920BF32AA /* Animation.cpp */,
 				2E211F1159E493100CB0B23 /* TitleScene.h */,
 				2E211F1159E493100CB0B21 /* TitleScene.cpp */,
 				2E211F1159E493100CB0B20 /* TitleSceneLoader.h */,
@@ -1469,6 +1466,18 @@
 			);
 			name = bgm;
 			path = assets/bgm;
+			sourceTree = SOURCE_ROOT;
+		};
+		D2714D2316068D1C00390FC4 /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */,
+				7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */,
+				7969E649D578804BFEB88638 /* Animation.h */,
+				7969E1B1F4BE78AC5E68B104 /* Animation.cpp */,
+			);
+			name = animation;
+			path = ../generic/animation;
 			sourceTree = SOURCE_ROOT;
 		};
 		D2BD396715C5D0A90038E59C /* wip */ = {
@@ -1873,8 +1882,6 @@
 				D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */,
 				D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */,
 				7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */,
-				7969E6651B593DE504255709 /* Animation.cpp in Sources */,
-				7969E61E701067E504AF3BE0 /* NonLoopingAnimation.cpp in Sources */,
 				D2DD6B8B15F3C58B0040271F /* CCBFileLoader.cpp in Sources */,
 				D2DD6B8C15F3C58B0040271F /* CCBReader.cpp in Sources */,
 				D2DD6B8D15F3C58B0040271F /* CCControlButtonLoader.cpp in Sources */,
@@ -1909,6 +1916,8 @@
 				D240547715F3D0F800908779 /* CCNotificationCenter.cpp in Sources */,
 				7969E57B761569B1AB1E09D2 /* BlockSituationEx.cpp in Sources */,
 				7969EA9D3983DF11655A3DC5 /* ComboProcessor.cpp in Sources */,
+				7969E2F5DA1276709612F52C /* Animation.cpp in Sources */,
+				7969E14277F92AAAC5EAD0A6 /* NonLoopingAnimation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

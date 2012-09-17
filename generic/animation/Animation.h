@@ -16,12 +16,11 @@
 class Animation {
 public:
   std::vector<cocos2d::CCSpriteFrame *> keyFrames;
-  float frameDuration;
-  float animationDuration;
-  Animation(float frameDuration, std::initializer_list<cocos2d::CCSpriteFrame *> keyFrames);
+  int64_t frameDuration;
+  Animation(int64_t frameDuration, std::initializer_list<cocos2d::CCSpriteFrame *> keyFrames);
 
-  cocos2d::CCSpriteFrame *getKeyFrame(float stateTime, bool looping);
-  bool isAnimationFinished(float stateTime);
+  cocos2d::CCSpriteFrame *getKeyFrame(int64_t stateTick, bool looping);
+  bool isAnimationFinished(int64_t stateTick);
 };
 
 #endif //__Animation_H_
