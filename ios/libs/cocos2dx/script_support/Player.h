@@ -18,7 +18,6 @@ class Player : public CCObject, public CCTouchDelegate {
 public:
   InputState inputState;
   int32_t id;
-  Move *move;
   bool rightTrend;
   bool leftTrend;
   bool switchOnRight;
@@ -30,8 +29,7 @@ public:
   bool ccTouchBegan(CCTouch *touch, CCEvent *event);
   void ccTouchMoved(CCTouch *touch, CCEvent *event);
   void ccTouchEnded(CCTouch *touch, CCEvent *event);
-  void onSituationUpdate(PanelSituation *panelSituation);
-  Move *onMoveRequest();
+  Move *onMoveRequest(PanelSituation *panelSituation);
 };
 
 #endif //__Player_H_

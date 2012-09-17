@@ -21,10 +21,10 @@ CCScene *PanelScene::scene() {
   return scene;
 }
 
-void *PanelScene::game_draw_thread_callback(void *pVoid) {
-  std::cout << "Hello, World" << std::endl;
-  return nullptr;
-}
+//void *PanelScene::game_draw_thread_callback(void *pVoid) {
+//  std::cout << "Hello, World" << std::endl;
+//  return nullptr;
+//}
 
 // on "init" you need to initialize your instance
 bool PanelScene::init() {
@@ -215,7 +215,7 @@ bool PanelScene::init() {
 
 void PanelScene::update(float dt) {
   core->onTick(tick);
-  std::shared_ptr<GameSituation> gs = core->gameSituation;
+  std::shared_ptr<GameSituation> gs(core->gameSituation);
   auto ps = gs->playerIdToPanelSituation[123];
 
   // Blocks

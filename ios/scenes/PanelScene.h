@@ -15,7 +15,7 @@ public:
   static constexpr int32_t yOffset = 0; // 10
 
   PanelScene();
-  static void *game_draw_thread_callback(void *);
+  //  static void *game_draw_thread_callback(void *);
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
   void update(float d);

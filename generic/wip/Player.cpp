@@ -56,15 +56,12 @@ void Player::ccTouchEnded(CCTouch *touch, CCEvent *event) {
   rightTrend = false;
 }
 
-void Player::onSituationUpdate(PanelSituation *panelSituation) {
+Move *Player::onMoveRequest(PanelSituation *panelSituation) {
+  Move *move = nullptr;
   if (inputState != InputState::touched) {
-    if (move != nullptr) {
-      delete move;
-      move = nullptr;
-    }
-    return;
+    return move;
   }
-  //  CCLOG("touchPointDown = %f/%f", touchPointDown.x, touchPointDown.y);
+  //      CCLOG("touchPointDown = %f/%f", touchPointDown.x, touchPointDown.y);
   int32_t const x = static_cast<int32_t> (PanelScene::xOffset + (PanelScene::TILE_SIZE * panelSituation->cursorPosition.x));
   int32_t const y = static_cast<int32_t> (PanelScene::yOffset + (PanelScene::TILE_SIZE * panelSituation->cursorPosition.y) + ((panelSituation->scrollingOffset * PanelScene::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
   CCRect cursorPosition(x + (leftTrend ? PanelScene::TILE_SIZE : 0), y, PanelScene::TILE_SIZE, PanelScene::TILE_SIZE);
@@ -77,25 +74,16 @@ void Player::onSituationUpdate(PanelSituation *panelSituation) {
     switchOnRight = false;
   } else if (touchPointDown.x < cursorPosition.origin.x) {
     move = new Move(MoveType::CURSOR_LEFT);
-    //    CCLOG("LEFT");
+    //          CCLOG("LEFT");
   } else if (touchPointDown.x > cursorPosition.origin.x + cursorPosition.size.width) {
     move = new Move(MoveType::CURSOR_RIGHT);
-    //    CCLOG("RIGHT");
+    //          CCLOG("RIGHT");
   } else if (touchPointDown.y < cursorPosition.origin.y) {
-    //    CCLOG("DOWN");
+    //          CCLOG("DOWN");
     move = new Move(MoveType::CURSOR_DOWN);
   } else if (touchPointDown.y > cursorPosition.origin.y + cursorPosition.size.height) {
-    //    CCLOG("UP");
+    //          CCLOG("UP");
     move = new Move(MoveType::CURSOR_UP);
-  } else {
-    //    CCLOG("NOTHING");
-    if (move != nullptr) {
-      delete move;
-      move = nullptr;
-    }
   }
-}
-
-Move *Player::onMoveRequest() {
   return move;
 }
