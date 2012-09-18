@@ -8,7 +8,7 @@ private:
 protected:
 public:
   static constexpr int32_t BLOCK_LOGICALHEIGHT = 16;
-  static constexpr int32_t BLOCK_SWITCHINGTIME = 4;
+  static constexpr int32_t BLOCK_SWITCHINGTIME = 1;
   static constexpr int32_t BLOCK_HOVERINGTIME = 8;
   static constexpr int32_t BLOCK_AIRBOUNCINGTIME = 16;
   static constexpr int32_t BLOCK_BLINKINGTIME = 46;

@@ -185,9 +185,9 @@ bool PanelScene::init() {
   }
 
   // Cursor
-  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
-  cursor->setAnchorPoint(ccp(0, 0));
-  batch->addChild(cursor);
+  //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
+  //  cursor->setAnchorPoint(ccp(0, 0));
+  //  batch->addChild(cursor);
 
   // Game initialization
   core = new FuriousBlocksCore(0);
@@ -227,7 +227,7 @@ void PanelScene::update(float dt) {
         continue;
       }
       grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
-      CCSpriteFrame *frame = getBlockFrame(current, tick, false, true);
+      CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
       if (frame != nullptr) {
         grid[x][y]->setDisplayFrame(frame);
         grid[x][y]->setVisible(true);
@@ -238,8 +238,8 @@ void PanelScene::update(float dt) {
   }
 
   // Cursor
-  cursor->setPosition(ccp(ps->cursorPosition.x * TILE_SIZE + xOffset - 16, ps->cursorPosition.y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT - 8 + yOffset - 8));
-  cursor->setDisplayFrame(CURSOR->getKeyFrame(tick, true));
+  //  cursor->setPosition(ccp(ps->cursorPosition.x * TILE_SIZE + xOffset - 16, ps->cursorPosition.y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT - 8 + yOffset - 8));
+  //  cursor->setDisplayFrame(CURSOR->getKeyFrame(tick, true));
 
   tick++;
 }
