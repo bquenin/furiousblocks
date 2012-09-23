@@ -171,8 +171,8 @@ bool PanelScene::init() {
 
   // Background
   CCSprite *bgMiddle = CCSprite::createWithSpriteFrameName("bg-middle.png");
-  bgMiddle ->setAnchorPoint(ccp(0, 0));
-  bgMiddle ->setPosition(ccp(0, 9));
+  bgMiddle->setAnchorPoint(ccp(0, 0));
+  bgMiddle->setPosition(ccp(0, 10));
   batch->addChild(bgMiddle);
 
   // Initialize the grid
@@ -186,15 +186,32 @@ bool PanelScene::init() {
   }
 
   CCSprite *bgBottom = CCSprite::createWithSpriteFrameName("bg-bottom.png");
-  bgBottom ->setAnchorPoint(ccp(0, 0));
-  bgBottom ->setPosition(ccp(0, 0));
+  bgBottom->setAnchorPoint(ccp(0, 0));
+  bgBottom->setPosition(ccp(0, 1));
   batch->addChild(bgBottom);
 
   CCSprite *bgTop = CCSprite::createWithSpriteFrameName("bg-top.png");
-  bgTop ->setAnchorPoint(ccp(0, 0));
-  bgTop ->setPosition(ccp(0, 441));
+  bgTop->setAnchorPoint(ccp(0, 0));
+  bgTop->setPosition(ccp(0, 442));
   batch->addChild(bgTop);
 
+  //  CCLabelTTF *scoreLabel = CCLabelTTF::create("score", "SkaterDudes", 24);
+  //scoreLabel->setAnchorPoint(ccp(0, 0));
+  //batch->addChild(scoreLabel);
+
+  //  CCLabelTTF *center = CCLabelTTF::create("word wrap \"testing\" (bla0) bla1 'bla2' [bla3] (bla4) {bla5} {bla6} [bla7] (bla8) [bla9] 'bla0' \"bla1\"",
+  //                                          "SkaterDudes",
+  //                                          32,
+  //                                          CCSizeMake(200,200),
+  //                                          kCCTextAlignmentCenter,
+  //                                          kCCVerticalTextAlignmentTop);
+  //  addChild(center);
+
+  CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "font.fnt");
+  // testing anchors
+  scoreLabel->setAnchorPoint(ccp(0, 0));
+  scoreLabel->setPosition(ccp(10, 455));
+  addChild(scoreLabel);
 
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
@@ -243,6 +260,9 @@ void PanelScene::update(float dt) {
       if (frame != nullptr) {
         grid[x][y]->setDisplayFrame(frame);
         grid[x][y]->setVisible(true);
+        if (y == 0) {
+          grid[x][y]->setColor(ccc3(0x50, 0x50, 0x50));
+        }
       } else {
         grid[x][y]->setVisible(false);
       }
