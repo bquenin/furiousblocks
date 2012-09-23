@@ -36,7 +36,7 @@ public:
   TitleScene();
   virtual ~TitleScene();
 
-//  void openTest(const char *pCCBFileName, const char *pCCNodeName = NULL, cocos2d::extension::CCNodeLoader *pCCNodeLoader = NULL);
+  //  void openTest(const char *pCCBFileName, const char *pCCNodeName = NULL, cocos2d::extension::CCNodeLoader *pCCNodeLoader = NULL);
 
   virtual cocos2d::SEL_MenuHandler onResolveCCBCCMenuItemSelector(cocos2d::CCObject *pTarget, cocos2d::CCString *pSelectorName);
   virtual cocos2d::extension::SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject *pTarget, cocos2d::CCString *pSelectorName);
@@ -46,8 +46,8 @@ public:
   void onArcadeClicked(cocos2d::CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
 
 private:
-//  cocos2d::CCSprite *mBurstSprite;
-//  cocos2d::CCLabelTTF *mTestTitleLabelTTF;
+  //  cocos2d::CCSprite *mBurstSprite;
+  //  cocos2d::CCLabelTTF *mTestTitleLabelTTF;
 };
 
 

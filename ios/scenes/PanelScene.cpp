@@ -170,9 +170,10 @@ bool PanelScene::init() {
   CURSOR = new Animation(16, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 
   // Background
-  //  CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
-  //  background->setAnchorPoint(ccp(0, 0));
-  //  batch->addChild(background);
+  CCSprite *bgMiddle = CCSprite::createWithSpriteFrameName("bg-middle.png");
+  bgMiddle ->setAnchorPoint(ccp(0, 0));
+  bgMiddle ->setPosition(ccp(0, 9));
+  batch->addChild(bgMiddle);
 
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
@@ -183,6 +184,17 @@ bool PanelScene::init() {
       batch->addChild(grid[x][y]);
     }
   }
+
+  CCSprite *bgBottom = CCSprite::createWithSpriteFrameName("bg-bottom.png");
+  bgBottom ->setAnchorPoint(ccp(0, 0));
+  bgBottom ->setPosition(ccp(0, 0));
+  batch->addChild(bgBottom);
+
+  CCSprite *bgTop = CCSprite::createWithSpriteFrameName("bg-top.png");
+  bgTop ->setAnchorPoint(ccp(0, 0));
+  bgTop ->setPosition(ccp(0, 441));
+  batch->addChild(bgTop);
+
 
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
@@ -427,48 +439,3 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t
 
   return nullptr;
 }
-
-//void PanelScene::onEnter() {
-//  CCDirector *pDirector = CCDirector::sharedDirector();
-//  pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-//  CCLayer::onEnter();
-//}
-//
-//void PanelScene::onExit() {
-//  CCDirector *pDirector = CCDirector::sharedDirector();
-//  pDirector->getTouchDispatcher()->removeDelegate(this);
-//  CCLayer::onExit();
-//}
-//
-//bool PanelScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
-//  //  if (!containsTouchLocation(touch)) {
-//  //    return false;
-//  //  }
-//  //
-//  CCLOG("ccTouchBegan");
-//  return true;
-//}
-//
-//
-//void PanelScene::ccTouchMoved(CCTouch *touch, CCEvent *event) {
-//  // If it weren't for the TouchDispatcher, you would need to keep a reference
-//  // to the touch from touchBegan and check that the current touch is the same
-//  // as that one.
-//  // Actually, it would be even more complicated since in the Cocos dispatcher
-//  // you get CCSets instead of 1 UITouch, so you'd need to loop through the set
-//  // in each touchXXX method.
-//
-//  //  CCAssert(m_state == kPaddleStateGrabbed, L"Paddle - Unexpected state!");
-//  CCPoint touchPoint = touch->getLocation();
-//
-//  CCLOG("x/y = %f/%f", touchPoint.x, touchPoint.y);
-//
-//  //  setPosition(CCPointMake(touchPoint.x, getPosition().y));
-//}
-//
-//void PanelScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
-//  //  CCAssert(m_state == kPaddleStateGrabbed, L"Paddle - Unexpected state!");
-//  //
-//  //  m_state = kPaddleStateUngrabbed;
-//  CCLOG("ccTouchEnded");
-//}

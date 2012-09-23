@@ -11,8 +11,8 @@ USING_NS_CC;
 class PanelScene : public CCLayer {
 public:
   static constexpr int32_t TILE_SIZE = 48;
-  static constexpr int32_t xOffset = 0; // 17
-  static constexpr int32_t yOffset = 0; // 10
+  static constexpr int32_t xOffset = 17; // 17
+  static constexpr int32_t yOffset = 10; // 10
 
   PanelScene();
   //  static void *game_draw_thread_callback(void *);
@@ -23,13 +23,6 @@ public:
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
-
-  //  virtual void onEnter();
-  //  virtual void onExit();
-  //
-  //  bool ccTouchBegan(CCTouch *touch, CCEvent *event);
-  //  void ccTouchMoved(CCTouch *touch, CCEvent *event);
-  //  void ccTouchEnded(CCTouch *touch, CCEvent *event);
 
   // Implement the "static node()" method manually
   CREATE_FUNC(PanelScene);
@@ -44,7 +37,11 @@ public:
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
   //  float stateTime;
 
-  CCSprite *cursor;
+  //  CCSprite *cursor;
+
+  //  CCSprite *bgTop;
+  //  CCSprite *bgMiddle;
+  //  CCSprite *bgBottom;
 
   // Assets
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
