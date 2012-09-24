@@ -21,11 +21,6 @@ CCScene *PanelScene::scene() {
   return scene;
 }
 
-//void *PanelScene::game_draw_thread_callback(void *pVoid) {
-//  std::cout << "Hello, World" << std::endl;
-//  return nullptr;
-//}
-
 // on "init" you need to initialize your instance
 bool PanelScene::init() {
   if (!CCLayer::init()) {
@@ -195,23 +190,15 @@ bool PanelScene::init() {
   bgTop->setPosition(ccp(0, 442));
   batch->addChild(bgTop);
 
-  //  CCLabelTTF *scoreLabel = CCLabelTTF::create("score", "SkaterDudes", 24);
-  //scoreLabel->setAnchorPoint(ccp(0, 0));
-  //batch->addChild(scoreLabel);
-
-  //  CCLabelTTF *center = CCLabelTTF::create("word wrap \"testing\" (bla0) bla1 'bla2' [bla3] (bla4) {bla5} {bla6} [bla7] (bla8) [bla9] 'bla0' \"bla1\"",
-  //                                          "SkaterDudes",
-  //                                          32,
-  //                                          CCSizeMake(200,200),
-  //                                          kCCTextAlignmentCenter,
-  //                                          kCCVerticalTextAlignmentTop);
-  //  addChild(center);
-
   CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "font.fnt");
-  // testing anchors
   scoreLabel->setAnchorPoint(ccp(0, 0));
   scoreLabel->setPosition(ccp(10, 455));
   addChild(scoreLabel);
+
+  score = CCLabelBMFont::create("0", "font.fnt");
+  score->setAnchorPoint(ccp(0, 0));
+  score->setPosition(ccp(10, 435));
+  addChild(score);
 
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
@@ -242,7 +229,27 @@ bool PanelScene::init() {
   return true;
 }
 
+inline std::string format(const char *fmt, ...) {
+  int size = 512;
+  char *buffer = 0;
+  buffer = new char [size];
+  va_list vl;
+  va_start(vl, fmt);
+  int nsize = vsnprintf(buffer, size, fmt, vl);
+  if (size <= nsize) {//fail delete buffer and try again
+    delete buffer;
+    buffer = 0;
+    buffer = new char [nsize + 1];//+1 for /0
+    nsize = vsnprintf(buffer, size, fmt, vl);
+  }
+  std::string ret(buffer);
+  va_end(vl);
+  delete buffer;
+  return ret;
+}
+
 void PanelScene::update(float dt) {
+  stateTime += dt;
   core->onTick(tick);
   std::shared_ptr<GameSituation> gs(core->gameSituation);
   auto ps = gs->playerIdToPanelSituation[123];
@@ -255,23 +262,27 @@ void PanelScene::update(float dt) {
         grid[x][y]->setVisible(false);
         continue;
       }
-      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+
       CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
-      if (frame != nullptr) {
-        grid[x][y]->setDisplayFrame(frame);
-        grid[x][y]->setVisible(true);
-        if (y == 0) {
-          grid[x][y]->setColor(ccc3(0x50, 0x50, 0x50));
-        }
-      } else {
+      if (frame == nullptr) {
         grid[x][y]->setVisible(false);
+        continue;
       }
+
+      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+      grid[x][y]->setDisplayFrame(frame);
+      grid[x][y]->setVisible(true);
+      if (y == 0) {
+        grid[x][y]->setColor(ccc3(0x50, 0x50, 0x50));
+      }
+
     }
   }
 
-  // Cursor
-  //  cursor->setPosition(ccp(ps->cursorPosition.x * TILE_SIZE + xOffset - 16, ps->cursorPosition.y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT - 8 + yOffset - 8));
-  //  cursor->setDisplayFrame(CURSOR->getKeyFrame(tick, true));
+  std::string minutes = format("%02d", static_cast<int32_t>(stateTime / 60));
+  std::string seconds = format("%02d", static_cast<int32_t>(stateTime) % 60);
+  std::string centisecs = format("%02d", static_cast<int32_t>(stateTime * 100) % 100);
+  score->setString(seconds.c_str());
 
   tick++;
 }

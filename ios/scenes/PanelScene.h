@@ -27,6 +27,10 @@ public:
   // Implement the "static node()" method manually
   CREATE_FUNC(PanelScene);
 
+  // Labels
+  CCLabelBMFont *score;
+  CCLabelBMFont *time;
+
   // Core
   FuriousBlocksCore *core;
   Player *player;
@@ -35,13 +39,7 @@ public:
   // Renderer
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
-  //  float stateTime;
-
-  //  CCSprite *cursor;
-
-  //  CCSprite *bgTop;
-  //  CCSprite *bgMiddle;
-  //  CCSprite *bgBottom;
+  float stateTime;
 
   // Assets
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
