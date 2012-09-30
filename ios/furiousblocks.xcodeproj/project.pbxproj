@@ -176,6 +176,9 @@
 		7969EA9D3983DF11655A3DC5 /* ComboProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EF398AF4831EAFCDF782 /* ComboProcessor.cpp */; };
 		D240547315F3D02D00908779 /* CCTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D240547215F3D02D00908779 /* CCTouch.cpp */; };
 		D240547715F3D0F800908779 /* CCNotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D240547515F3D0F800908779 /* CCNotificationCenter.cpp */; };
+		D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D27631BC16188BA80084CB09 /* Default-568h@2x.png */; };
+		D27631C116188C5D0084CB09 /* font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = D27631BF16188C5D0084CB09 /* font.fnt */; };
+		D27631C216188C5D0084CB09 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = D27631C016188C5D0084CB09 /* font.png */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D2BD39A215C5D0A90038E59C /* BlockSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */; };
 		D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
@@ -583,6 +586,9 @@
 		D240547215F3D02D00908779 /* CCTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTouch.cpp; sourceTree = "<group>"; };
 		D240547515F3D0F800908779 /* CCNotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNotificationCenter.cpp; sourceTree = "<group>"; };
 		D240547615F3D0F800908779 /* CCNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNotificationCenter.h; sourceTree = "<group>"; };
+		D27631BC16188BA80084CB09 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D27631BF16188C5D0084CB09 /* font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = font.fnt; sourceTree = "<group>"; };
+		D27631C016188C5D0084CB09 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
 		D2BD396815C5D0A90038E59C /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
 		D2BD396915C5D0A90038E59C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockSituation.cpp; sourceTree = "<group>"; };
@@ -1362,6 +1368,7 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
+				D27631BC16188BA80084CB09 /* Default-568h@2x.png */,
 				0250A3F615A36D3F0087AC45 /* builder */,
 				2E211F1159E493100CB0B18 /* scenes */,
 				2E211F1159E493100CB0B19 /* blocks-hd.zwd */,
@@ -1448,6 +1455,8 @@
 		7969E75D1854DA1DCC2BE82E /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				D27631BF16188C5D0084CB09 /* font.fnt */,
+				D27631C016188C5D0084CB09 /* font.png */,
 				D2E1CD0D15D7D81400D844D0 /* SkaterDudes.ttf */,
 			);
 			name = fonts;
@@ -1720,6 +1729,9 @@
 				D2E1CD0B15D7D80B00D844D0 /* iphone.png in Resources */,
 				D2E1CD0C15D7D80B00D844D0 /* title.png in Resources */,
 				D2E1CD0E15D7D81400D844D0 /* SkaterDudes.ttf in Resources */,
+				D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */,
+				D27631C116188C5D0084CB09 /* font.fnt in Resources */,
+				D27631C216188C5D0084CB09 /* font.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

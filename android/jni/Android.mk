@@ -10,6 +10,8 @@ LOCAL_CPPFLAGS = -DCOCOS2D_DEBUG -std=gnu++0x
 
 LOCAL_SRC_FILES := \
 bootstrap/main.cpp \
+../../generic/animation/Animation.cpp \
+../../generic/animation/NonLoopingAnimation.cpp \
 ../../generic/wip/AppDelegate.cpp \
 ../../generic/wip/Block.cpp \
 ../../generic/wip/BlockSituation.cpp \
@@ -36,12 +38,12 @@ bootstrap/main.cpp \
 ../../generic/wip/Player.cpp \
 ../../generic/wip/Point.cpp \
 ../../generic/wip/SimpleRNG.cpp \
-renderer/Animation.cpp \
-renderer/NonLoopingAnimation.cpp \
-renderer/PanelScene.cpp \
-                   
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../generic/wip \
-                    $(LOCAL_PATH)/renderer
+scenes/PanelScene.cpp
+
+LOCAL_C_INCLUDES := \
+$(LOCAL_PATH)/../../generic/wip \
+$(LOCAL_PATH)/../../generic/animation \
+$(LOCAL_PATH)/scenes
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
             

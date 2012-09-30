@@ -4,8 +4,7 @@
 USING_NS_CC;
 
 PanelScene::PanelScene()
-: tick(0)
-, stateTime(0) {
+: tick(0) {
 }
 
 CCScene *PanelScene::scene() {
@@ -20,11 +19,6 @@ CCScene *PanelScene::scene() {
 
   // return the scene
   return scene;
-}
-
-void *PanelScene::game_draw_thread_callback(void *pVoid) {
-  CCLOG("Hello World!");
-  return nullptr;
 }
 
 // on "init" you need to initialize your instance
@@ -149,31 +143,32 @@ bool PanelScene::init() {
   BLOCKS_BLUE_COMPRESSED_02 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("blocks-blue-compressed-02.png");
   BLOCKS_BLUE_LAND_01 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("blocks-blue-land-01.png");
 
-  YELLOW_PANICKING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_YELLOW_PANIC_01, BLOCKS_YELLOW_PANIC_02, BLOCKS_YELLOW_PANIC_03, BLOCKS_YELLOW_PANIC_04, BLOCKS_YELLOW_PANIC_03, BLOCKS_YELLOW_PANIC_02, BLOCKS_YELLOW_PANIC_01});
-  BLUE_PANICKING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_BLUE_PANIC_01, BLOCKS_BLUE_PANIC_02, BLOCKS_BLUE_PANIC_03, BLOCKS_BLUE_PANIC_04, BLOCKS_BLUE_PANIC_03, BLOCKS_BLUE_PANIC_02, BLOCKS_BLUE_PANIC_01});
-  RED_PANICKING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_RED_PANIC_01, BLOCKS_RED_PANIC_02, BLOCKS_RED_PANIC_03, BLOCKS_RED_PANIC_04, BLOCKS_RED_PANIC_03, BLOCKS_RED_PANIC_02, BLOCKS_RED_PANIC_01});
-  GREEN_PANICKING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_GREEN_PANIC_01, BLOCKS_GREEN_PANIC_02, BLOCKS_GREEN_PANIC_03, BLOCKS_GREEN_PANIC_04, BLOCKS_GREEN_PANIC_03, BLOCKS_GREEN_PANIC_02, BLOCKS_GREEN_PANIC_01});
-  PURPLE_PANICKING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_PURPLE_PANIC_01, BLOCKS_PURPLE_PANIC_02, BLOCKS_PURPLE_PANIC_03, BLOCKS_PURPLE_PANIC_04, BLOCKS_PURPLE_PANIC_03, BLOCKS_PURPLE_PANIC_02, BLOCKS_PURPLE_PANIC_01});
+  YELLOW_PANICKING = new Animation(4, {BLOCKS_YELLOW_PANIC_01, BLOCKS_YELLOW_PANIC_02, BLOCKS_YELLOW_PANIC_03, BLOCKS_YELLOW_PANIC_04, BLOCKS_YELLOW_PANIC_03, BLOCKS_YELLOW_PANIC_02, BLOCKS_YELLOW_PANIC_01});
+  BLUE_PANICKING = new Animation(4, {BLOCKS_BLUE_PANIC_01, BLOCKS_BLUE_PANIC_02, BLOCKS_BLUE_PANIC_03, BLOCKS_BLUE_PANIC_04, BLOCKS_BLUE_PANIC_03, BLOCKS_BLUE_PANIC_02, BLOCKS_BLUE_PANIC_01});
+  RED_PANICKING = new Animation(4, {BLOCKS_RED_PANIC_01, BLOCKS_RED_PANIC_02, BLOCKS_RED_PANIC_03, BLOCKS_RED_PANIC_04, BLOCKS_RED_PANIC_03, BLOCKS_RED_PANIC_02, BLOCKS_RED_PANIC_01});
+  GREEN_PANICKING = new Animation(4, {BLOCKS_GREEN_PANIC_01, BLOCKS_GREEN_PANIC_02, BLOCKS_GREEN_PANIC_03, BLOCKS_GREEN_PANIC_04, BLOCKS_GREEN_PANIC_03, BLOCKS_GREEN_PANIC_02, BLOCKS_GREEN_PANIC_01});
+  PURPLE_PANICKING = new Animation(4, {BLOCKS_PURPLE_PANIC_01, BLOCKS_PURPLE_PANIC_02, BLOCKS_PURPLE_PANIC_03, BLOCKS_PURPLE_PANIC_04, BLOCKS_PURPLE_PANIC_03, BLOCKS_PURPLE_PANIC_02, BLOCKS_PURPLE_PANIC_01});
 
-  YELLOW_COMPRESSING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_YELLOW_COMPRESSED_01, BLOCKS_YELLOW_COMPRESSED_02, BLOCKS_YELLOW_COMPRESSED_03, BLOCKS_YELLOW_COMPRESSED_04});
-  BLUE_COMPRESSING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_BLUE_COMPRESSED_01, BLOCKS_BLUE_COMPRESSED_02, BLOCKS_BLUE_COMPRESSED_03, BLOCKS_BLUE_COMPRESSED_04});
-  RED_COMPRESSING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_RED_COMPRESSED_01, BLOCKS_RED_COMPRESSED_02, BLOCKS_RED_COMPRESSED_03, BLOCKS_RED_COMPRESSED_04});
-  GREEN_COMPRESSING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_GREEN_COMPRESSED_01, BLOCKS_GREEN_COMPRESSED_02, BLOCKS_GREEN_COMPRESSED_03, BLOCKS_GREEN_COMPRESSED_04});
-  PURPLE_COMPRESSING = new Animation(4.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_PURPLE_COMPRESSED_01, BLOCKS_PURPLE_COMPRESSED_02, BLOCKS_PURPLE_COMPRESSED_03, BLOCKS_PURPLE_COMPRESSED_04});
+  YELLOW_COMPRESSING = new Animation(4, {BLOCKS_YELLOW_COMPRESSED_01, BLOCKS_YELLOW_COMPRESSED_02, BLOCKS_YELLOW_COMPRESSED_03, BLOCKS_YELLOW_COMPRESSED_04});
+  BLUE_COMPRESSING = new Animation(4, {BLOCKS_BLUE_COMPRESSED_01, BLOCKS_BLUE_COMPRESSED_02, BLOCKS_BLUE_COMPRESSED_03, BLOCKS_BLUE_COMPRESSED_04});
+  RED_COMPRESSING = new Animation(4, {BLOCKS_RED_COMPRESSED_01, BLOCKS_RED_COMPRESSED_02, BLOCKS_RED_COMPRESSED_03, BLOCKS_RED_COMPRESSED_04});
+  GREEN_COMPRESSING = new Animation(4, {BLOCKS_GREEN_COMPRESSED_01, BLOCKS_GREEN_COMPRESSED_02, BLOCKS_GREEN_COMPRESSED_03, BLOCKS_GREEN_COMPRESSED_04});
+  PURPLE_COMPRESSING = new Animation(4, {BLOCKS_PURPLE_COMPRESSED_01, BLOCKS_PURPLE_COMPRESSED_02, BLOCKS_PURPLE_COMPRESSED_03, BLOCKS_PURPLE_COMPRESSED_04});
 
-  YELLOW_BLINKING = new Animation(1.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_YELLOW_FLASH, BLOCKS_YELLOW_IDLE});
-  BLUE_BLINKING = new Animation(1.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_BLUE_FLASH, BLOCKS_BLUE_IDLE});
-  RED_BLINKING = new Animation(1.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_RED_FLASH, BLOCKS_RED_IDLE});
-  GREEN_BLINKING = new Animation(1.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_GREEN_FLASH, BLOCKS_GREEN_IDLE});
-  PURPLE_BLINKING = new Animation(1.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_PURPLE_FLASH, BLOCKS_PURPLE_IDLE});
-  GARBAGE_BLINKING = new Animation(1.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {GARBAGE_BLINK, GARBAGE_PLAIN});
+  YELLOW_BLINKING = new Animation(1, {BLOCKS_YELLOW_FLASH, BLOCKS_YELLOW_IDLE});
+  BLUE_BLINKING = new Animation(1, {BLOCKS_BLUE_FLASH, BLOCKS_BLUE_IDLE});
+  RED_BLINKING = new Animation(1, {BLOCKS_RED_FLASH, BLOCKS_RED_IDLE});
+  GREEN_BLINKING = new Animation(1, {BLOCKS_GREEN_FLASH, BLOCKS_GREEN_IDLE});
+  PURPLE_BLINKING = new Animation(1, {BLOCKS_PURPLE_FLASH, BLOCKS_PURPLE_IDLE});
+  GARBAGE_BLINKING = new Animation(1, {GARBAGE_BLINK, GARBAGE_PLAIN});
 
-  CURSOR = new Animation(16.f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
+  CURSOR = new Animation(16, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 
   // Background
-  //  CCSprite *background = CCSprite::createWithSpriteFrameName("bg.png");
-  //  background->setAnchorPoint(ccp(0, 0));
-  //  batch->addChild(background);
+  CCSprite *bgMiddle = CCSprite::createWithSpriteFrameName("bg-middle.png");
+  bgMiddle->setAnchorPoint(ccp(0, 0));
+  bgMiddle->setPosition(ccp(0, 10));
+  batch->addChild(bgMiddle);
 
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
@@ -185,10 +180,30 @@ bool PanelScene::init() {
     }
   }
 
+  CCSprite *bgBottom = CCSprite::createWithSpriteFrameName("bg-bottom.png");
+  bgBottom->setAnchorPoint(ccp(0, 0));
+  bgBottom->setPosition(ccp(0, 1));
+  batch->addChild(bgBottom);
+
+  CCSprite *bgTop = CCSprite::createWithSpriteFrameName("bg-top.png");
+  bgTop->setAnchorPoint(ccp(0, 0));
+  bgTop->setPosition(ccp(0, 442));
+  batch->addChild(bgTop);
+
+  CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "font.fnt");
+  scoreLabel->setAnchorPoint(ccp(0, 0));
+  scoreLabel->setPosition(ccp(10, 455));
+  addChild(scoreLabel);
+
+  score = CCLabelBMFont::create("0", "font.fnt");
+  score->setAnchorPoint(ccp(0, 0));
+  score->setPosition(ccp(10, 435));
+  addChild(score);
+
   // Cursor
-  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
-  cursor->setAnchorPoint(ccp(0, 0));
-  batch->addChild(cursor);
+  //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
+  //  cursor->setAnchorPoint(ccp(0, 0));
+  //  batch->addChild(cursor);
 
   // Game initialization
   core = new FuriousBlocksCore(0);
@@ -197,9 +212,9 @@ bool PanelScene::init() {
   player = new Player();
   core->addPlayer(player);
 
-  pthread_t t1;
-  pthread_create(&t1, NULL, PanelScene::game_draw_thread_callback, this);
-  pthread_join(t1, NULL);
+  //  pthread_t t1;
+  //  pthread_create(&t1, NULL, PanelScene::game_draw_thread_callback, this);
+  //  pthread_join(t1, NULL);
 
   //  std::thread t1(call_from_thread);
   //  t1.join();
@@ -214,9 +229,28 @@ bool PanelScene::init() {
   return true;
 }
 
+inline std::string format(const char *fmt, ...) {
+  int size = 512;
+  char *buffer = 0;
+  buffer = new char [size];
+  va_list vl;
+  va_start(vl, fmt);
+  int nsize = vsnprintf(buffer, size, fmt, vl);
+  if (size <= nsize) {//fail delete buffer and try again
+    delete buffer;
+    buffer = 0;
+    buffer = new char [nsize + 1];//+1 for /0
+    nsize = vsnprintf(buffer, size, fmt, vl);
+  }
+  std::string ret(buffer);
+  va_end(vl);
+  delete buffer;
+  return ret;
+}
+
 void PanelScene::update(float dt) {
   stateTime += dt;
-  core->onTick(tick++);
+  core->onTick(tick);
   std::shared_ptr<GameSituation> gs(core->gameSituation);
   auto ps = gs->playerIdToPanelSituation[123];
 
@@ -228,24 +262,32 @@ void PanelScene::update(float dt) {
         grid[x][y]->setVisible(false);
         continue;
       }
-      grid[x][y]->setPosition(ccp(17 + x * 48, 10 + y * 48 + ps->scrollingOffset * 48 / 16));
-      CCSpriteFrame *frame = getBlockFrame(current, stateTime, false, true);
-      if (frame != nullptr) {
-        grid[x][y]->setDisplayFrame(frame);
-        grid[x][y]->setVisible(true);
-      } else {
+
+      CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
+      if (frame == nullptr) {
         grid[x][y]->setVisible(false);
+        continue;
       }
+
+      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+      grid[x][y]->setDisplayFrame(frame);
+      grid[x][y]->setVisible(true);
+      if (y == 0) {
+        grid[x][y]->setColor(ccc3(0x50, 0x50, 0x50));
+      }
+
     }
   }
 
-  // Cursor
-  cursor->setPosition(ccp(ps->cursorPosition.x * 48, ps->cursorPosition.y * 48 + ps->scrollingOffset * 48 / 16 - 8));
-  cursor->setDisplayFrame(CURSOR->getKeyFrame(stateTime, true));
+  std::string minutes = format("%02d", static_cast<int32_t>(stateTime / 60));
+  std::string seconds = format("%02d", static_cast<int32_t>(stateTime) % 60);
+  std::string centisecs = format("%02d", static_cast<int32_t>(stateTime * 100) % 100);
+  score->setString(seconds.c_str());
 
+  tick++;
 }
 
-CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float stateTime, bool compressed, bool panicking) {
+CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {
   NonLoopingAnimation *currentAnimation = animations[blockSituation->id];
   BlockState state = blockSituation->state;
   BlockType type = blockSituation->type;
@@ -277,23 +319,23 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float s
         NonLoopingAnimation *animation = nullptr;
         switch (type) {
           case BlockType::YELLOW:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_YELLOW_HOVER_01, BLOCKS_YELLOW_HOVER_02, BLOCKS_YELLOW_HOVER_03, BLOCKS_YELLOW_HOVER_04, BLOCKS_YELLOW_HOVER_03, BLOCKS_YELLOW_HOVER_02, BLOCKS_YELLOW_HOVER_01});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_YELLOW_HOVER_01, BLOCKS_YELLOW_HOVER_02, BLOCKS_YELLOW_HOVER_03, BLOCKS_YELLOW_HOVER_04, BLOCKS_YELLOW_HOVER_03, BLOCKS_YELLOW_HOVER_02, BLOCKS_YELLOW_HOVER_01});
             break;
           case BlockType:: BLUE:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_BLUE_HOVER_01, BLOCKS_BLUE_HOVER_02, BLOCKS_BLUE_HOVER_03, BLOCKS_BLUE_HOVER_04, BLOCKS_BLUE_HOVER_03, BLOCKS_BLUE_HOVER_02, BLOCKS_BLUE_HOVER_01});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_BLUE_HOVER_01, BLOCKS_BLUE_HOVER_02, BLOCKS_BLUE_HOVER_03, BLOCKS_BLUE_HOVER_04, BLOCKS_BLUE_HOVER_03, BLOCKS_BLUE_HOVER_02, BLOCKS_BLUE_HOVER_01});
             break;
           case BlockType:: PURPLE:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_PURPLE_HOVER_01, BLOCKS_PURPLE_HOVER_02, BLOCKS_PURPLE_HOVER_03, BLOCKS_PURPLE_HOVER_04, BLOCKS_PURPLE_HOVER_03, BLOCKS_PURPLE_HOVER_02, BLOCKS_PURPLE_HOVER_01});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_PURPLE_HOVER_01, BLOCKS_PURPLE_HOVER_02, BLOCKS_PURPLE_HOVER_03, BLOCKS_PURPLE_HOVER_04, BLOCKS_PURPLE_HOVER_03, BLOCKS_PURPLE_HOVER_02, BLOCKS_PURPLE_HOVER_01});
             break;
           case BlockType:: RED:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_RED_HOVER_01, BLOCKS_RED_HOVER_02, BLOCKS_RED_HOVER_03, BLOCKS_RED_HOVER_04, BLOCKS_RED_HOVER_03, BLOCKS_RED_HOVER_02, BLOCKS_RED_HOVER_01});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_RED_HOVER_01, BLOCKS_RED_HOVER_02, BLOCKS_RED_HOVER_03, BLOCKS_RED_HOVER_04, BLOCKS_RED_HOVER_03, BLOCKS_RED_HOVER_02, BLOCKS_RED_HOVER_01});
             break;
           case BlockType:: GREEN:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_GREEN_HOVER_01, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_04, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_01});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_GREEN_HOVER_01, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_04, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_01});
             break;
         }
         animations[blockSituation->id] = animation;
-        return animation->getKeyFrame(stateTime);
+        return animation->getKeyFrame(tick);
       }
       //$FALL-THROUGH$
 
@@ -312,79 +354,79 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float s
         NonLoopingAnimation *animation = nullptr;
         switch (type) {
           case BlockType:: YELLOW:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_YELLOW_LAND_01, BLOCKS_YELLOW_IDLE, BLOCKS_YELLOW_LAND_02, BLOCKS_YELLOW_IDLE});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_YELLOW_LAND_01, BLOCKS_YELLOW_IDLE, BLOCKS_YELLOW_LAND_02, BLOCKS_YELLOW_IDLE});
             break;
           case BlockType:: BLUE:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_BLUE_LAND_01, BLOCKS_BLUE_IDLE, BLOCKS_BLUE_LAND_02, BLOCKS_BLUE_IDLE});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_BLUE_LAND_01, BLOCKS_BLUE_IDLE, BLOCKS_BLUE_LAND_02, BLOCKS_BLUE_IDLE});
             break;
           case BlockType:: PURPLE:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_PURPLE_LAND_01, BLOCKS_PURPLE_IDLE, BLOCKS_PURPLE_LAND_02, BLOCKS_PURPLE_IDLE});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_PURPLE_LAND_01, BLOCKS_PURPLE_IDLE, BLOCKS_PURPLE_LAND_02, BLOCKS_PURPLE_IDLE});
             break;
           case BlockType:: RED:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_RED_LAND_01, BLOCKS_RED_IDLE, BLOCKS_RED_LAND_02, BLOCKS_RED_IDLE});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_RED_LAND_01, BLOCKS_RED_IDLE, BLOCKS_RED_LAND_02, BLOCKS_RED_IDLE});
             break;
           case BlockType:: GREEN:
-            animation = new NonLoopingAnimation(stateTime, 4.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY, {BLOCKS_GREEN_LAND_01, BLOCKS_GREEN_IDLE, BLOCKS_GREEN_LAND_02, BLOCKS_GREEN_IDLE});
+            animation = new NonLoopingAnimation(tick, 4, {BLOCKS_GREEN_LAND_01, BLOCKS_GREEN_IDLE, BLOCKS_GREEN_LAND_02, BLOCKS_GREEN_IDLE});
             break;
         }
         delete animations[blockSituation->id];
         animations[blockSituation->id] = animation;
-        return animation->getKeyFrame(stateTime);
+        return animation->getKeyFrame(tick);
       }
       if (currentAnimation != nullptr) {
-        if (currentAnimation->isAnimationFinished(stateTime)) {
+        if (currentAnimation->isAnimationFinished(tick)) {
           delete animations[blockSituation->id];
           animations.erase(blockSituation->id);
         } else {
-          return currentAnimation->getKeyFrame(stateTime);
+          return currentAnimation->getKeyFrame(tick);
         }
       }
       switch (type) {
         case BlockType::YELLOW:
           if (compressed && state == BlockState:: IDLE) {
-            return YELLOW_COMPRESSING->getKeyFrame(stateTime, true);
+            return YELLOW_COMPRESSING->getKeyFrame(tick, true);
           }
           if (panicking && state == BlockState:: IDLE) {
-            return YELLOW_PANICKING->getKeyFrame(stateTime, true);
+            return YELLOW_PANICKING->getKeyFrame(tick, true);
           }
-          return state == BlockState:: BLINKING ? YELLOW_BLINKING->getKeyFrame(stateTime, true) : BLOCKS_YELLOW_IDLE;
+          return state == BlockState:: BLINKING ? YELLOW_BLINKING->getKeyFrame(tick, true) : BLOCKS_YELLOW_IDLE;
 
         case BlockType:: GREEN:
           if (compressed && state == BlockState:: IDLE) {
-            return GREEN_COMPRESSING->getKeyFrame(stateTime, true);
+            return GREEN_COMPRESSING->getKeyFrame(tick, true);
           }
           if (panicking && state == BlockState:: IDLE) {
-            return GREEN_PANICKING->getKeyFrame(stateTime, true);
+            return GREEN_PANICKING->getKeyFrame(tick, true);
           }
-          return state == BlockState::BLINKING ? GREEN_BLINKING->getKeyFrame(stateTime, true) : BLOCKS_GREEN_IDLE;
+          return state == BlockState::BLINKING ? GREEN_BLINKING->getKeyFrame(tick, true) : BLOCKS_GREEN_IDLE;
         case BlockType:: RED:
           if (compressed && state == BlockState:: IDLE) {
-            return RED_COMPRESSING->getKeyFrame(stateTime, true);
+            return RED_COMPRESSING->getKeyFrame(tick, true);
           }
           if (panicking && state == BlockState::IDLE) {
-            return RED_PANICKING->getKeyFrame(stateTime, true);
+            return RED_PANICKING->getKeyFrame(tick, true);
           }
-          return state == BlockState::BLINKING ? RED_BLINKING->getKeyFrame(stateTime, true) : BLOCKS_RED_IDLE;
+          return state == BlockState::BLINKING ? RED_BLINKING->getKeyFrame(tick, true) : BLOCKS_RED_IDLE;
         case BlockType:: PURPLE:
           if (compressed && state == BlockState::IDLE) {
-            return PURPLE_COMPRESSING->getKeyFrame(stateTime, true);
+            return PURPLE_COMPRESSING->getKeyFrame(tick, true);
           }
           if (panicking && state == BlockState::IDLE) {
-            return PURPLE_PANICKING->getKeyFrame(stateTime, true);
+            return PURPLE_PANICKING->getKeyFrame(tick, true);
           }
-          return state == BlockState::BLINKING ? PURPLE_BLINKING->getKeyFrame(stateTime, true) : BLOCKS_PURPLE_IDLE;
+          return state == BlockState::BLINKING ? PURPLE_BLINKING->getKeyFrame(tick, true) : BLOCKS_PURPLE_IDLE;
         case BlockType:: BLUE:
           if (compressed && state == BlockState::IDLE) {
-            return BLUE_COMPRESSING->getKeyFrame(stateTime, true);
+            return BLUE_COMPRESSING->getKeyFrame(tick, true);
           }
           if (panicking && state == BlockState::IDLE) {
-            return BLUE_PANICKING->getKeyFrame(stateTime, true);
+            return BLUE_PANICKING->getKeyFrame(tick, true);
           }
-          return state == BlockState::BLINKING ? BLUE_BLINKING->getKeyFrame(stateTime, true) : BLOCKS_BLUE_IDLE;
+          return state == BlockState::BLINKING ? BLUE_BLINKING->getKeyFrame(tick, true) : BLOCKS_BLUE_IDLE;
         case BlockType::TUTORIAL:
           return GARBAGE_SINGLE;
         case BlockType::GARBAGE:
-          if (state == BlockState:: BLINKING && GARBAGE_BLINKING->getKeyFrame(stateTime, true) == GARBAGE_BLINK) {
+          if (state == BlockState:: BLINKING && GARBAGE_BLINKING->getKeyFrame(tick, true) == GARBAGE_BLINK) {
             return GARBAGE_BLINK;
           }
           switch (blockSituation->garbageBlockType) {
@@ -427,54 +469,4 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, float s
   }
 
   return nullptr;
-}
-
-void PanelScene::onEnter() {
-  CCDirector *pDirector = CCDirector::sharedDirector();
-  pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-  CCLayer::onEnter();
-}
-
-void PanelScene::onExit() {
-  CCDirector *pDirector = CCDirector::sharedDirector();
-  pDirector->getTouchDispatcher()->removeDelegate(this);
-  CCLayer::onExit();
-}
-
-bool PanelScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
-  //  if (m_state != kPaddleStateUngrabbed) {
-  //    return false;
-  //  }
-  //  if (!containsTouchLocation(touch)) {
-  //    return false;
-  //  }
-  //
-  //  m_state = kPaddleStateGrabbed;
-  CCLOG("began");
-  return true;
-}
-
-
-void PanelScene::ccTouchMoved(CCTouch *touch, CCEvent *event) {
-  // If it weren't for the TouchDispatcher, you would need to keep a reference
-  // to the touch from touchBegan and check that the current touch is the same
-  // as that one.
-  // Actually, it would be even more complicated since in the Cocos dispatcher
-  // you get CCSets instead of 1 UITouch, so you'd need to loop through the set
-  // in each touchXXX method.
-
-  //  CCAssert(m_state == kPaddleStateGrabbed, L"Paddle - Unexpected state!");
-
-  CCPoint touchPoint = touch->getLocation();
-
-  CCLOG("x/y = %f/%f", touchPoint.x, touchPoint.y);
-
-  //  setPosition(CCPointMake(touchPoint.x, getPosition().y));
-}
-
-void PanelScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
-  CCLOG("end");
-  //  CCAssert(m_state == kPaddleStateGrabbed, L"Paddle - Unexpected state!");
-  //
-  //  m_state = kPaddleStateUngrabbed;
 }
