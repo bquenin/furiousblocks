@@ -190,7 +190,7 @@ bool PanelScene::init() {
   bgTop->setPosition(ccp(0, 442));
   batch->addChild(bgTop);
 
-  CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "font.fnt");
+  CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
   scoreLabel->setAnchorPoint(ccp(0, 0));
   scoreLabel->setPosition(ccp(10, 455));
   addChild(scoreLabel);

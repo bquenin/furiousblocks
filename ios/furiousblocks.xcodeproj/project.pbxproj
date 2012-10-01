@@ -170,15 +170,15 @@
 		2E211F1159E493100CB0B8C /* btn-test-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8B /* btn-test-1.png */; };
 		2E211F1159E493100CB0B8E /* btn-test-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B8D /* btn-test-2.png */; };
 		7969E14277F92AAAC5EAD0A6 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */; };
+		7969E1712C84417C3F1578CA /* coopblack32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E8B0F366937D1A0C9569 /* coopblack32.png */; };
 		7969E2F5DA1276709612F52C /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1B1F4BE78AC5E68B104 /* Animation.cpp */; };
 		7969E57B761569B1AB1E09D2 /* BlockSituationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E5FF827BE79941A26858 /* BlockSituationEx.cpp */; };
+		7969E612FE03E636C97FF44A /* coopblack32.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969EDD6507D977DD579A17F /* coopblack32.fnt */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA9D3983DF11655A3DC5 /* ComboProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EF398AF4831EAFCDF782 /* ComboProcessor.cpp */; };
 		D240547315F3D02D00908779 /* CCTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D240547215F3D02D00908779 /* CCTouch.cpp */; };
 		D240547715F3D0F800908779 /* CCNotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D240547515F3D0F800908779 /* CCNotificationCenter.cpp */; };
 		D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D27631BC16188BA80084CB09 /* Default-568h@2x.png */; };
-		D27631C116188C5D0084CB09 /* font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = D27631BF16188C5D0084CB09 /* font.fnt */; };
-		D27631C216188C5D0084CB09 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = D27631C016188C5D0084CB09 /* font.png */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D2BD39A215C5D0A90038E59C /* BlockSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */; };
 		D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
@@ -580,15 +580,15 @@
 		7969E5FF827BE79941A26858 /* BlockSituationEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockSituationEx.cpp; sourceTree = "<group>"; };
 		7969E649D578804BFEB88638 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
+		7969E8B0F366937D1A0C9569 /* coopblack32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coopblack32.png; sourceTree = "<group>"; };
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		7969EB5019FDBE1DE0C27B89 /* BlockSituationEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockSituationEx.h; sourceTree = "<group>"; };
+		7969EDD6507D977DD579A17F /* coopblack32.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack32.fnt; sourceTree = "<group>"; };
 		7969EF398AF4831EAFCDF782 /* ComboProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComboProcessor.cpp; sourceTree = "<group>"; };
 		D240547215F3D02D00908779 /* CCTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTouch.cpp; sourceTree = "<group>"; };
 		D240547515F3D0F800908779 /* CCNotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNotificationCenter.cpp; sourceTree = "<group>"; };
 		D240547615F3D0F800908779 /* CCNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNotificationCenter.h; sourceTree = "<group>"; };
 		D27631BC16188BA80084CB09 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		D27631BF16188C5D0084CB09 /* font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = font.fnt; sourceTree = "<group>"; };
-		D27631C016188C5D0084CB09 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
 		D2BD396815C5D0A90038E59C /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
 		D2BD396915C5D0A90038E59C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockSituation.cpp; sourceTree = "<group>"; };
@@ -1455,8 +1455,8 @@
 		7969E75D1854DA1DCC2BE82E /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				D27631BF16188C5D0084CB09 /* font.fnt */,
-				D27631C016188C5D0084CB09 /* font.png */,
+				7969E8B0F366937D1A0C9569 /* coopblack32.png */,
+				7969EDD6507D977DD579A17F /* coopblack32.fnt */,
 				D2E1CD0D15D7D81400D844D0 /* SkaterDudes.ttf */,
 			);
 			name = fonts;
@@ -1730,8 +1730,8 @@
 				D2E1CD0C15D7D80B00D844D0 /* title.png in Resources */,
 				D2E1CD0E15D7D81400D844D0 /* SkaterDudes.ttf in Resources */,
 				D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */,
-				D27631C116188C5D0084CB09 /* font.fnt in Resources */,
-				D27631C216188C5D0084CB09 /* font.png in Resources */,
+				7969E612FE03E636C97FF44A /* coopblack32.fnt in Resources */,
+				7969E1712C84417C3F1578CA /* coopblack32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
