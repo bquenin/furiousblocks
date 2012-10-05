@@ -25,68 +25,62 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #include "CCTMXObjectGroup.h"
-#include "ccMacros.h"
 
 NS_CC_BEGIN
 
-//implementation CCTMXObjectGroup
+    //implementation CCTMXObjectGroup
 
-CCTMXObjectGroup::CCTMXObjectGroup()
+    CCTMXObjectGroup::CCTMXObjectGroup()
     :m_tPositionOffset(CCPointZero)
-    ,m_sGroupName("")        
-{
-    m_pObjects = CCArray::create();
-    m_pObjects->retain();
-    m_pProperties = new CCDictionary();
-}
-CCTMXObjectGroup::~CCTMXObjectGroup()
-{
-    CCLOGINFO( "cocos2d: deallocing.");
-    CC_SAFE_RELEASE(m_pObjects);
-    CC_SAFE_RELEASE(m_pProperties);
-}
-CCDictionary* CCTMXObjectGroup::objectNamed(const char *objectName)
-{
-    if (m_pObjects && m_pObjects->count() > 0)
-    {
-        CCObject* pObj = NULL;
-        CCARRAY_FOREACH(m_pObjects, pObj)
-        {
-            CCDictionary* pDict = (CCDictionary*)pObj;
-            CCString *name = (CCString*)pDict->objectForKey("name");
-            if (name && name->m_sString == objectName)
-            {
-                return pDict;
-            }
-        }
+    , m_sGroupName("") {
+      m_pObjects = CCArray::create();
+      m_pObjects->retain();
+      m_pProperties = new CCDictionary();
     }
-    // object not found
-    return NULL;    
-}
-CCString* CCTMXObjectGroup::propertyNamed(const char* propertyName)
-{
-    return (CCString*)m_pProperties->objectForKey(propertyName);
-}
 
-CCDictionary* CCTMXObjectGroup::getProperties()
-{ 
-    return m_pProperties;
-}
-void CCTMXObjectGroup::setProperties(CCDictionary * properties)
-{
-    CC_SAFE_RETAIN(properties);
-    CC_SAFE_RELEASE(m_pProperties);
-    m_pProperties = properties;
-}
-CCArray* CCTMXObjectGroup::getObjects()
-{
-    return m_pObjects;
-}
-void CCTMXObjectGroup::setObjects(CCArray* objects)
-{
-    CC_SAFE_RETAIN(objects);
-    CC_SAFE_RELEASE(m_pObjects);
-    m_pObjects = objects;
-}
+    CCTMXObjectGroup::~CCTMXObjectGroup() {
+      CCLOGINFO( "cocos2d: deallocing.");
+      CC_SAFE_RELEASE(m_pObjects);
+      CC_SAFE_RELEASE(m_pProperties);
+    }
 
-NS_CC_END
+    CCDictionary *CCTMXObjectGroup::objectNamed(const char *objectName) {
+      if (m_pObjects && m_pObjects->count() > 0) {
+        CCObject *pObj = NULL;
+        CCARRAY_FOREACH(m_pObjects, pObj){
+          CCDictionary *pDict = (CCDictionary *) pObj;
+          CCString *name = (CCString *) pDict->objectForKey("name");
+          if (name && name->m_sString == objectName) {
+            return pDict;
+          }
+        }
+      }
+      // object not found
+      return NULL;
+    }
+
+    CCString *CCTMXObjectGroup::propertyNamed(const char *propertyName) {
+      return (CCString *) m_pProperties->objectForKey(propertyName);
+    }
+
+    CCDictionary *CCTMXObjectGroup::getProperties() {
+      return m_pProperties;
+    }
+
+    void CCTMXObjectGroup::setProperties(CCDictionary *properties) {
+      CC_SAFE_RETAIN(properties);
+      CC_SAFE_RELEASE(m_pProperties);
+      m_pProperties = properties;
+    }
+
+    CCArray *CCTMXObjectGroup::getObjects() {
+      return m_pObjects;
+    }
+
+    void CCTMXObjectGroup::setObjects(CCArray *objects) {
+      CC_SAFE_RETAIN(objects);
+      CC_SAFE_RELEASE(m_pObjects);
+      m_pObjects = objects;
+    }
+
+    NS_CC_END

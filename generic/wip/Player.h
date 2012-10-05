@@ -20,8 +20,10 @@ public:
   int32_t id;
   bool rightTrend;
   bool leftTrend;
+  bool upTrend;
   bool switchOnRight;
   bool switchOnLeft;
+  bool lifted;
   CCPoint touchPointDown;
   CCPoint touchPointDragged;
 
@@ -30,6 +32,7 @@ public:
   void ccTouchMoved(CCTouch *touch, CCEvent *event);
   void ccTouchEnded(CCTouch *touch, CCEvent *event);
   Move *onMoveRequest(PanelSituation *const panelSituation);
+
 };
 
 #endif //__Player_H_

@@ -5,6 +5,12 @@
 
 Player::Player(int32_t id)
 : id(id)
+, switchOnLeft(false)
+, switchOnRight(false)
+, leftTrend(false)
+, rightTrend(false)
+, upTrend(false)
+, lifted(false)
 , inputState(InputState::untouched) {
   cocos2d::CCDirector *pDirector = cocos2d::CCDirector::sharedDirector();
   pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
@@ -23,22 +29,30 @@ bool Player::ccTouchBegan(CCTouch *touch, CCEvent *event) {
   switchOnRight = false;
   leftTrend = false;
   rightTrend = false;
+  upTrend = false;
 
   return true;
 }
 
 void Player::ccTouchMoved(CCTouch *touch, CCEvent *event) {
-  if (switchOnLeft || switchOnRight) {
+  if (switchOnLeft || switchOnRight || upTrend) {
     return;
   }
   touchPointDragged = touch->getLocation();
   if (touchPointDragged.x < touchPointDown.x) {
     leftTrend = true;
     rightTrend = false;
+    upTrend = false;
   } else if (touchPointDragged.x > touchPointDown.x) {
     leftTrend = false;
     rightTrend = true;
+    upTrend = false;
   }
+
+  if (touchPointDragged.y > touchPointDown.y + 32) {
+    upTrend = true;
+  }
+
   if ((touchPointDragged.x - PanelScene::xOffset) < (touchPointDown.x - PanelScene::xOffset) - ((static_cast<int32_t>(touchPointDown.x) - PanelScene::xOffset) % PanelScene::TILE_SIZE)) {
     switchOnLeft = true;
     switchOnRight = false;
@@ -54,9 +68,11 @@ void Player::ccTouchEnded(CCTouch *touch, CCEvent *event) {
   switchOnRight = false;
   leftTrend = false;
   rightTrend = false;
+  upTrend = false;
+  lifted = false;
 }
 
-Move *Player::onMoveRequest(PanelSituation * const panelSituation) {
+Move *Player::onMoveRequest(PanelSituation *const panelSituation) {
   Move *move = nullptr;
   if (inputState != InputState::touched) {
     return move;
@@ -66,7 +82,10 @@ Move *Player::onMoveRequest(PanelSituation * const panelSituation) {
   int32_t const y = static_cast<int32_t> (PanelScene::yOffset + (PanelScene::TILE_SIZE * panelSituation->cursorPosition.y) + ((panelSituation->scrollingOffset * PanelScene::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
   CCRect cursorPosition(x + (leftTrend ? PanelScene::TILE_SIZE : 0), y, PanelScene::TILE_SIZE, PanelScene::TILE_SIZE);
   CCPoint aPoint(touchPointDragged.x + (leftTrend ? PanelScene::TILE_SIZE : 0) - (rightTrend ? PanelScene::TILE_SIZE : 0), touchPointDragged.y);
-  if (cursorPosition.containsPoint(aPoint) && (switchOnLeft || switchOnRight)) {
+  if (upTrend && !lifted) {
+    move = new Move(MoveType::LIFT);
+    lifted = true;
+  } else if (cursorPosition.containsPoint(aPoint) && (switchOnLeft || switchOnRight)) {
     move = new Move(MoveType::BLOCK_SWITCH);
     //          camera.unproject(touchPointDown.set(Gdx.input.getX(), Gdx.input.getY(), 0));
     touchPointDown = touchPointDragged;
@@ -74,15 +93,11 @@ Move *Player::onMoveRequest(PanelSituation * const panelSituation) {
     switchOnRight = false;
   } else if (touchPointDown.x < cursorPosition.origin.x) {
     move = new Move(MoveType::CURSOR_LEFT);
-    //          CCLOG("LEFT");
   } else if (touchPointDown.x > cursorPosition.origin.x + cursorPosition.size.width) {
     move = new Move(MoveType::CURSOR_RIGHT);
-    //          CCLOG("RIGHT");
   } else if (touchPointDown.y < cursorPosition.origin.y) {
-    //          CCLOG("DOWN");
     move = new Move(MoveType::CURSOR_DOWN);
   } else if (touchPointDown.y > cursorPosition.origin.y + cursorPosition.size.height) {
-    //          CCLOG("UP");
     move = new Move(MoveType::CURSOR_UP);
   }
   return move;

@@ -24,7 +24,15 @@
 		</dict>
 		<dict>
 			<key>path</key>
-			<string>../graphics</string>
+			<string>../assets</string>
+		</dict>
+		<dict>
+			<key>path</key>
+			<string>../assets/graphics</string>
+		</dict>
+		<dict>
+			<key>path</key>
+			<string>../assets/fonts</string>
 		</dict>
 	</array>
 </dict>
