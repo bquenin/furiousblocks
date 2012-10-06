@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2009-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
 
@@ -31,49 +31,49 @@ THE SOFTWARE.
 
 NS_CC_BEGIN
 
-struct _ccArray;
+    struct _ccArray;
 
-/**
- * @addtogroup tilemap_parallax_nodes
- * @{
- */
-
-/** @brief CCParallaxNode: A node that simulates a parallax scroller
-
-The children will be moved faster / slower than the parent according the the parallax ratio.
-
-*/
-class CC_DLL CCParallaxNode : public CCNode 
-{
-    /** array that holds the offset / ratio of the children */
-    CC_SYNTHESIZE(struct _ccArray *, m_pParallaxArray, ParallaxArray)
-
-public:
-    /** Adds a child to the container with a z-order, a parallax ratio and a position offset
-    It returns self, so you can chain several addChilds.
-    @since v0.8
+    /**
+    * @addtogroup tilemap_parallax_nodes
+    * @{
     */
-    CCParallaxNode();
-    virtual ~CCParallaxNode();
-    //@deprecated: This interface will be deprecated sooner or later.
-    CC_DEPRECATED_ATTRIBUTE static CCParallaxNode * node();
-    static CCParallaxNode * create();
-    virtual void addChild(CCNode * child, unsigned int z, const CCPoint& parallaxRatio, const CCPoint& positionOffset);
-    // super methods
-    virtual void addChild(CCNode * child, unsigned int zOrder, int tag);
-    virtual void removeChild(CCNode* child, bool cleanup);
-    virtual void removeAllChildrenWithCleanup(bool cleanup);
-    virtual void visit(void);
-private:
-    CCPoint absolutePosition();
-protected:
-    CCPoint    m_tLastPosition;
-};
 
-// end of tilemap_parallax_nodes group
-/// @}
+    /** @brief CCParallaxNode: A node that simulates a parallax scroller
 
-NS_CC_END
+    The children will be moved faster / slower than the parent according the the parallax ratio.
+
+    */
+    class CC_DLL CCParallaxNode : public CCNode {
+      /** array that holds the offset / ratio of the children */
+      CC_SYNTHESIZE(struct _ccArray *, m_pParallaxArray, ParallaxArray)
+
+    public:
+      /** Adds a child to the container with a z-order, a parallax ratio and a position offset
+      It returns self, so you can chain several addChilds.
+      @since v0.8
+      */
+      CCParallaxNode();
+      virtual ~CCParallaxNode();
+      //@deprecated: This interface will be deprecated sooner or later.
+      CC_DEPRECATED_ATTRIBUTE
+      static CCParallaxNode *node();
+      static CCParallaxNode *create();
+      virtual void addChild(CCNode *child, unsigned int z, const CCPoint& parallaxRatio, const CCPoint& positionOffset);
+      // super methods
+      virtual void addChild(CCNode *child, unsigned int zOrder, int tag);
+      virtual void removeChild(CCNode *child, bool cleanup);
+      virtual void removeAllChildrenWithCleanup(bool cleanup);
+      virtual void visit(void);
+    private:
+      CCPoint absolutePosition();
+    protected:
+      CCPoint m_tLastPosition;
+    };
+
+    // end of tilemap_parallax_nodes group
+    /// @}
+
+    NS_CC_END
 
 #endif //__CCPARALLAX_NODE_H__
 
