@@ -8,7 +8,7 @@ Combo::Combo(int32_t owner)
 }
 
 void Combo::addBlock(Block *block) {
-  blocks.insert(block);
+  blocks.push_back(block);
 }
 
 int32_t Combo::size() {
@@ -24,5 +24,10 @@ ComboSituation *Combo::getSituation() {
 }
 
 bool Combo::contains(Block *block) {
-  return blocks.find(block) != blocks.end();
+  for (Block *b : blocks) {
+    if (b == block) {
+      return true;
+    }
+  }
+  return false;
 }

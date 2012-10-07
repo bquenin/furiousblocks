@@ -11,10 +11,11 @@
 #include "cocos2d.h"
 #include "CCBReader/CCBReader.h"
 #include "PanelScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
-//using namespace CocosDenshion;
+using namespace CocosDenshion;
 
 AppDelegate::AppDelegate() {
 }
@@ -36,8 +37,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
 
-  // SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
-
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
   //  /* Create an autorelease CCNodeLoaderLibrary. */
   //  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
   //
@@ -74,7 +74,7 @@ void AppDelegate::applicationDidEnterBackground() {
   CCDirector::sharedDirector()->pause();
 
   // if you use SimpleAudioEngine, it must be pause
-  // SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+  SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
@@ -82,5 +82,5 @@ void AppDelegate::applicationWillEnterForeground() {
   CCDirector::sharedDirector()->resume();
 
   // if you use SimpleAudioEngine, it must resume here
-  // SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+  SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }

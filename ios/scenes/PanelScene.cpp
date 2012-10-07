@@ -2,26 +2,19 @@
 #include "GarbageBlockType.h"
 
 USING_NS_CC;
+using namespace CocosDenshion;
 
 PanelScene::PanelScene()
 : tick(0) {
 }
 
 CCScene *PanelScene::scene() {
-  // 'scene' is an autorelease object
   CCScene *scene = CCScene::create();
-
-  // 'layer' is an autorelease object
   PanelScene *layer = PanelScene::create();
-
-  // add layer as a child to scene
   scene->addChild(layer);
-
-  // return the scene
   return scene;
 }
 
-// on "init" you need to initialize your instance
 bool PanelScene::init() {
   if (!CCLayer::init()) {
     return false;
@@ -195,9 +188,15 @@ bool PanelScene::init() {
   scoreLabel->setPosition(ccp(10, 455));
   addChild(scoreLabel);
 
-  score = CCLabelBMFont::create("0", "font.fnt");
-  score->setAnchorPoint(ccp(0, 0));
-  score->setPosition(ccp(10, 435));
+  star = CCSprite::createWithSpriteFrameName("star.png");
+  //  star->setAnchorPoint(ccp(0.5, 0.5));
+  star->setPosition(ccp(200, 200));
+  star->setColor(ccORANGE);
+  batch->addChild(star);
+
+  score = CCLabelBMFont::create("font.fnt", "coopblack32.fnt");
+  score->setAnchorPoint(ccp(0.5, 0.5));
+  score->setPosition(ccp(200, 200));
   addChild(score);
 
   // Cursor
@@ -225,7 +224,7 @@ bool PanelScene::init() {
 
   // Start rendering
   schedule(schedule_selector(PanelScene::update));
-
+  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3");
   return true;
 }
 
@@ -238,9 +237,8 @@ inline std::string format(const char *fmt, ...) {
   int nsize = vsnprintf(buffer, size, fmt, vl);
   if (size <= nsize) {//fail delete buffer and try again
     delete buffer;
-    buffer = 0;
     buffer = new char [nsize + 1];//+1 for /0
-    nsize = vsnprintf(buffer, size, fmt, vl);
+    vsnprintf(buffer, size, fmt, vl);
   }
   std::string ret(buffer);
   va_end(vl);
@@ -280,9 +278,12 @@ void PanelScene::update(float dt) {
   }
 
   std::string minutes = format("%02d", static_cast<int32_t>(stateTime / 60));
-  std::string seconds = format("%02d", static_cast<int32_t>(stateTime) % 60);
+  std::string seconds = format("%d", static_cast<int32_t>(stateTime) % 60);
   std::string centisecs = format("%02d", static_cast<int32_t>(stateTime * 100) % 100);
   score->setString(seconds.c_str());
+
+  star->setRotation(stateTime * 50);
+  //  score->setRotation(stateTime * 50);
 
   tick++;
 }

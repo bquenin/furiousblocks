@@ -10,9 +10,12 @@ USING_NS_CC;
 
 class PanelScene : public CCLayer {
 public:
-  static constexpr int32_t TILE_SIZE = 48;
-  static constexpr int32_t xOffset = 17; // 17
-  static constexpr int32_t yOffset = -38; // 10
+  static constexpr int32_t
+  TILE_SIZE = 48;
+  static constexpr int32_t
+  xOffset = 17; // 17
+  static constexpr int32_t
+  yOffset = -38; // 10
 
   PanelScene();
   //  static void *game_draw_thread_callback(void *);
@@ -38,6 +41,7 @@ public:
 
   // Renderer
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
+  CCSprite *star;
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
   float stateTime;
 
@@ -149,6 +153,8 @@ public:
   CCSpriteFrame *BLOCKS_PURPLE_HOVER_02;
   CCSpriteFrame *BLOCKS_BLUE_COMPRESSED_02;
   CCSpriteFrame *BLOCKS_BLUE_LAND_01;
+
+  CCSpriteFrame *STAR;
 
   Animation *YELLOW_PANICKING;
   Animation *BLUE_PANICKING;
