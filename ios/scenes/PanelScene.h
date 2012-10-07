@@ -40,7 +40,7 @@ public:
   int tick;
 
   // Renderer
-  CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
+  CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
   CCSprite *star;
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
   float stateTime;

@@ -2,7 +2,7 @@
 #include "GarbageBlockType.h"
 
 USING_NS_CC;
-using namespace CocosDenshion;
+//using namespace CocosDenshion;
 
 PanelScene::PanelScene()
 : tick(0) {
@@ -164,7 +164,7 @@ bool PanelScene::init() {
   batch->addChild(bgMiddle);
 
   // Initialize the grid
-  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       grid[x][y] = CCSprite::createWithSpriteFrame(GARBAGE_PLAIN);
       grid[x][y]->setAnchorPoint(ccp(0, 0));
@@ -189,14 +189,15 @@ bool PanelScene::init() {
   addChild(scoreLabel);
 
   star = CCSprite::createWithSpriteFrameName("star.png");
-  //  star->setAnchorPoint(ccp(0.5, 0.5));
   star->setPosition(ccp(200, 200));
-  star->setColor(ccORANGE);
+  star->setColor(ccc3(255, 110, 110));
+  star->setVisible(false);
   batch->addChild(star);
 
   score = CCLabelBMFont::create("font.fnt", "coopblack32.fnt");
   score->setAnchorPoint(ccp(0.5, 0.5));
   score->setPosition(ccp(200, 200));
+  score->setVisible(false);
   addChild(score);
 
   // Cursor
@@ -253,7 +254,7 @@ void PanelScene::update(float dt) {
   auto ps = gs->playerIdToPanelSituation[123];
 
   // Blocks
-  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       BlockSituation *current = ps->blockSituations[x][y];
       if (current == nullptr) {
@@ -277,10 +278,53 @@ void PanelScene::update(float dt) {
     }
   }
 
+  // Combo rendering
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
+    for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+      BlockSituation *current = ps->blockSituations[x][y];
+      if (current == nullptr) {
+        continue;
+      }
+
+      if (current->state != BlockState::BLINKING || current->poppingIndex != 0) {
+        continue;
+      }
+
+      star->setVisible(false);
+      score->setVisible(false);
+
+
+      ComboSituation *comboSituation = ps->getComboByBlock(current->id);
+      const int comboBlinkingTime = FuriousBlocksCoreDefaults::BLOCK_BLINKINGTIME;
+
+      if (comboSituation->size > 3) {
+        star->setVisible(true);
+        star->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE));
+        score->setVisible(true);
+        score->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE));
+        score->setString(format("%d", comboSituation->size).c_str());
+      }
+
+      //      CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
+      //      if (frame == nullptr) {
+      //        grid[x][y]->setVisible(false);
+      //        continue;
+      //      }
+      //
+      //      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+      //      grid[x][y]->setDisplayFrame(frame);
+      //      grid[x][y]->setVisible(true);
+      //      if (y == 0) {
+      //        grid[x][y]->setColor(ccc3(0x50, 0x50, 0x50));
+      //      }
+    }
+  }
+
+
   std::string minutes = format("%02d", static_cast<int32_t>(stateTime / 60));
   std::string seconds = format("%d", static_cast<int32_t>(stateTime) % 60);
   std::string centisecs = format("%02d", static_cast<int32_t>(stateTime * 100) % 100);
-  score->setString(seconds.c_str());
+  //  score->setString(seconds.c_str());
 
   star->setRotation(stateTime * 50);
   //  score->setRotation(stateTime * 50);
@@ -351,7 +395,7 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t
     case BlockState::HOVERING:
     case BlockState::DONE_AIRBOUNCING:
     case BlockState::IDLE:
-      if (blockSituation->justLand && state == BlockState:: IDLE && type != BlockType:: GARBAGE && type != BlockType:: TUTORIAL) {
+      if (blockSituation->justLand && state == BlockState::IDLE && type != BlockType::GARBAGE && type != BlockType::TUTORIAL) {
         NonLoopingAnimation *animation = nullptr;
         switch (type) {
           case BlockType:: YELLOW:

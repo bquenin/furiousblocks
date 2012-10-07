@@ -15,7 +15,6 @@ private:
   bool isLocked;
   PanelState state;
   int32_t stateTick;
-  std::set<ComboSituation *> comboSituations;
   std::set<GarbageSituation *> garbageSituations;
   std::set<GarbageSituation *> garbageStackSituation;
   int32_t skillChainLevel;
@@ -35,6 +34,7 @@ public:
   ComboSituation *getComboByBlock(int32_t blockId);
   int32_t scrollingOffset;
   furiousblocks::Point cursorPosition;
+  std::set<ComboSituation *> comboSituations;
 };
 
 #endif //__PanelSituation_H_
