@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 #include "FuriousBlocksCore.h"
 #include "NonLoopingAnimation.h"
+#include "StarNumber.h"
 
 USING_NS_CC;
 
@@ -43,9 +44,13 @@ public:
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
   CCSprite *star;
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
+  std::unordered_map<int32_t, StarNumber *> comboSizes;
+  std::unordered_map<int32_t, StarNumber *> chainSizes;
   float stateTime;
 
   // Assets
+  CCSpriteBatchNode *batch;
+
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
   CCSpriteFrame *BLOCKS_BLUE_HOVER_01;
   CCSpriteFrame *BLOCKS_GREEN_COMPRESSED_01;
@@ -153,8 +158,6 @@ public:
   CCSpriteFrame *BLOCKS_PURPLE_HOVER_02;
   CCSpriteFrame *BLOCKS_BLUE_COMPRESSED_02;
   CCSpriteFrame *BLOCKS_BLUE_LAND_01;
-
-  CCSpriteFrame *STAR;
 
   Animation *YELLOW_PANICKING;
   Animation *BLUE_PANICKING;

@@ -44,6 +44,7 @@
 		7969E0C76E12CD55D4CBF964 /* CCTMXLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EA797DFA9B80178DC88F /* CCTMXLayer.cpp */; };
 		7969E14277F92AAAC5EAD0A6 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */; };
 		7969E1712C84417C3F1578CA /* coopblack32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E8B0F366937D1A0C9569 /* coopblack32.png */; };
+		7969E1C44CF098B6830C6C77 /* StarNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E816E0F62AFD71245AEB /* StarNumber.cpp */; };
 		7969E2F5DA1276709612F52C /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1B1F4BE78AC5E68B104 /* Animation.cpp */; };
 		7969E57B761569B1AB1E09D2 /* BlockSituationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E5FF827BE79941A26858 /* BlockSituationEx.cpp */; };
 		7969E5B8D4351D3EB3BD3562 /* CCTMXTiledMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB25D981A4309B2D076C /* CCTMXTiledMap.cpp */; };
@@ -307,10 +308,12 @@
 		7969E649D578804BFEB88638 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		7969E6F5FD0E6DA25761AD84 /* CCTMXObjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXObjectGroup.h; sourceTree = "<group>"; };
 		7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
+		7969E816E0F62AFD71245AEB /* StarNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarNumber.cpp; sourceTree = "<group>"; };
 		7969E8B0F366937D1A0C9569 /* coopblack32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coopblack32.png; sourceTree = "<group>"; };
 		7969E8FB4781CFAD110C617E /* CCTileMapAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTileMapAtlas.h; sourceTree = "<group>"; };
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		7969EA797DFA9B80178DC88F /* CCTMXLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXLayer.cpp; sourceTree = "<group>"; };
+		7969EB094F0D03F0DF4F0D8C /* StarNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarNumber.h; sourceTree = "<group>"; };
 		7969EB25D981A4309B2D076C /* CCTMXTiledMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXTiledMap.cpp; sourceTree = "<group>"; };
 		7969EB5019FDBE1DE0C27B89 /* BlockSituationEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockSituationEx.h; sourceTree = "<group>"; };
 		7969EBDEEDCD4C34A3D352D7 /* CCTMXLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXLayer.h; sourceTree = "<group>"; };
@@ -888,6 +891,8 @@
 		2E211F1159E493100CB0B18 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7969EB094F0D03F0DF4F0D8C /* StarNumber.h */,
+				7969E816E0F62AFD71245AEB /* StarNumber.cpp */,
 				2E211F1159E493100CB0B23 /* TitleScene.h */,
 				2E211F1159E493100CB0B21 /* TitleScene.cpp */,
 				2E211F1159E493100CB0B20 /* TitleSceneLoader.h */,
@@ -2094,6 +2099,7 @@
 				7969E786C36C762638C2CDB6 /* CCTMXObjectGroup.cpp in Sources */,
 				7969E5B8D4351D3EB3BD3562 /* CCTMXTiledMap.cpp in Sources */,
 				7969E705D437677FEEF656A6 /* CCTMXXMLParser.cpp in Sources */,
+				7969E1C44CF098B6830C6C77 /* StarNumber.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

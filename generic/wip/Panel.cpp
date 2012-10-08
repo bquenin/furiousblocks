@@ -637,8 +637,7 @@ Combo *Panel::detectCombo() {
       }
       currentCombo->addBlock(blocks[x][y]);
       blocks[x][y]->combo = true;
-      int32_t poppingIndex1 = poppingIndex++;
-      blocks[x][y]->poppingIndex = poppingIndex1;
+      blocks[x][y]->poppingIndex = poppingIndex++;
     }
   }
   return currentCombo;

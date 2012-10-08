@@ -24,7 +24,7 @@ bool PanelScene::init() {
 
   // Sprite sheet
   CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
-  CCSpriteBatchNode *batch = CCSpriteBatchNode::create("blocks.png", 100);
+  batch = CCSpriteBatchNode::create("blocks.png", 100);
   addChild(batch);
 
   // Frame assets
@@ -188,18 +188,6 @@ bool PanelScene::init() {
   scoreLabel->setPosition(ccp(10, 455));
   addChild(scoreLabel);
 
-  star = CCSprite::createWithSpriteFrameName("star.png");
-  star->setPosition(ccp(200, 200));
-  star->setColor(ccc3(255, 110, 110));
-  star->setVisible(false);
-  batch->addChild(star);
-
-  score = CCLabelBMFont::create("font.fnt", "coopblack32.fnt");
-  score->setAnchorPoint(ccp(0.5, 0.5));
-  score->setPosition(ccp(200, 200));
-  score->setVisible(false);
-  addChild(score);
-
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
   //  cursor->setAnchorPoint(ccp(0, 0));
@@ -285,41 +273,47 @@ void PanelScene::update(float dt) {
       if (current == nullptr) {
         continue;
       }
+      if (current->poppingIndex != 0) {
+        continue;
+      }
+      if (current->state != BlockState::BLINKING) {
+        StarNumber *comboSize = comboSizes[current->id];
+        if (comboSize != nullptr) {
+          batch->removeChild(comboSize->ccSprite, true);
+          removeChild(comboSize->ccLabel, true);
+          delete comboSizes[current->id];
+          comboSizes.erase(current->id);
+        }
 
-      if (current->state != BlockState::BLINKING || current->poppingIndex != 0) {
+        StarNumber *chainSize = chainSizes[current->id];
+        if (chainSize != nullptr) {
+          batch->removeChild(chainSize->ccSprite, true);
+          removeChild(chainSize->ccLabel, true);
+          delete chainSizes[current->id];
+          chainSizes.erase(current->id);
+        }
         continue;
       }
 
-      star->setVisible(false);
-      score->setVisible(false);
-
-
       ComboSituation *comboSituation = ps->getComboByBlock(current->id);
-      const int comboBlinkingTime = FuriousBlocksCoreDefaults::BLOCK_BLINKINGTIME;
-
-      if (comboSituation->size > 3) {
-        star->setVisible(true);
-        star->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE));
-        score->setVisible(true);
-        score->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE));
-        score->setString(format("%d", comboSituation->size).c_str());
+      if (comboSizes[current->id] == nullptr) {
+        if (comboSituation->size > 3) {
+          StarNumber *starNumber = new StarNumber(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE, format("%d", comboSituation->size), ccORANGE);
+          batch->addChild(starNumber->ccSprite);
+          addChild(starNumber->ccLabel);
+          comboSizes[current->id] = starNumber;
+        }
       }
-
-      //      CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
-      //      if (frame == nullptr) {
-      //        grid[x][y]->setVisible(false);
-      //        continue;
-      //      }
-      //
-      //      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
-      //      grid[x][y]->setDisplayFrame(frame);
-      //      grid[x][y]->setVisible(true);
-      //      if (y == 0) {
-      //        grid[x][y]->setColor(ccc3(0x50, 0x50, 0x50));
-      //      }
+      if (chainSizes[current->id] == nullptr) {
+        if (comboSituation->skillChainLevel > 1) {
+          StarNumber *starNumber = new StarNumber(xOffset + x * TILE_SIZE, yOffset + (y + 1) * TILE_SIZE, format("x%d", comboSituation->skillChainLevel), ccc3(255, 128, 128));
+          batch->addChild(starNumber->ccSprite);
+          addChild(starNumber->ccLabel);
+          chainSizes[current->id] = starNumber;
+        }
+      }
     }
   }
-
 
   std::string minutes = format("%02d", static_cast<int32_t>(stateTime / 60));
   std::string seconds = format("%d", static_cast<int32_t>(stateTime) % 60);
