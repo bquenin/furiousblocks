@@ -320,9 +320,6 @@ void PanelScene::update(float dt) {
   std::string centisecs = format("%02d", static_cast<int32_t>(stateTime * 100) % 100);
   //  score->setString(seconds.c_str());
 
-  star->setRotation(stateTime * 50);
-  //  score->setRotation(stateTime * 50);
-
   tick++;
 }
 
