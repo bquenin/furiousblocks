@@ -37,7 +37,7 @@ public:
   void stop();
   void onTick(int64_t tick);
   void onCombo(Combo *combo);
-  void onEvent(int64_t playerId, PanelEvent *panelEvent);
+  void onEvent(int64_t playerId, PanelEvent panelEvent);
   //  std::set<Player *> getPlayers();
   void justATick();
   std::shared_ptr<GameSituation> gameSituation;

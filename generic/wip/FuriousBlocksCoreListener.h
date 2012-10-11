@@ -6,7 +6,7 @@
 
 class FuriousBlocksCoreListener {
 public:
-  virtual void onEvent(int64_t playerId, PanelEvent *panelEvent);
+  virtual void onEvent(int64_t playerId, PanelEvent panelEvent);
   virtual ~FuriousBlocksCoreListener();
 };
 

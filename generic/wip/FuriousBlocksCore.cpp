@@ -63,6 +63,7 @@ void FuriousBlocksCore::onTick(int64_t tick) {
     Move *move = player->onMoveRequest(panelSituation);
     if (move != nullptr) {
       panel->submitMove(move);
+      delete move;
     }
   }
 
@@ -85,7 +86,7 @@ void FuriousBlocksCore::onCombo(Combo *combo) {
   }
 }
 
-void FuriousBlocksCore::onEvent(int64_t playerId, PanelEvent *panelEvent) {
+void FuriousBlocksCore::onEvent(int64_t playerId, PanelEvent panelEvent) {
   if (listener != nullptr) {
     listener->onEvent(playerId, panelEvent);
   }

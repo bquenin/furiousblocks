@@ -205,7 +205,7 @@ void Panel::processMove() {
       src->switchForth();
       dst->switchBack();
       if (panelListener != nullptr) {
-        panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_SWAP));
+        panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_SWAP));
       }
     }
       break;
@@ -213,7 +213,7 @@ void Panel::processMove() {
       if (cursor->y != 1) {
         cursor->y--;
         if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_MOVE));
+          panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
         }
       }
       break;
@@ -221,7 +221,7 @@ void Panel::processMove() {
       if (cursor->x != 0) {
         cursor->x--;
         if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_MOVE));
+          panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
         }
       }
       break;
@@ -229,7 +229,7 @@ void Panel::processMove() {
       if (cursor->x != (Panel::X - 2)) {
         cursor->x++;
         if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_MOVE));
+          panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
         }
       }
       break;
@@ -237,7 +237,7 @@ void Panel::processMove() {
       if (cursor->y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
         cursor->y++;
         if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, new PanelEvent(PanelEventType::CURSOR_MOVE));
+          panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
         }
       }
       break;
@@ -249,6 +249,7 @@ void Panel::processMove() {
       }
       break;
   }
+  delete move;
   move = nullptr;
 }
 
@@ -383,7 +384,7 @@ void Panel::mechanics(int64_t tick) {
         event->data2 = current->poppingIndex;
         event->data3 = static_cast<int32_t>(tick);
         if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, event);
+          panelListener->onEvent(playerId, *event);
         }
         delete event;
       }
@@ -536,6 +537,7 @@ void Panel::mechanics(int64_t tick) {
                   block->toDelete();
                 }
                 combo->blocks.clear();
+                delete combo;
               }
             }
               break;
@@ -550,6 +552,7 @@ void Panel::mechanics(int64_t tick) {
           if (clearing->isDoneRevealing(tick)) {
             clearing->onDoneRevealing();
             clearings.erase(clearing);
+            delete clearing;
           }
         }
           break;
@@ -588,7 +591,6 @@ Panel::Garbage *Panel::getGarbageByBlock(Block *block) {
 
 Combo *Panel::detectCombo() {
   Combo *currentCombo = new Combo(playerId);
-  bool comboMask[Panel::X][Panel::Y];
 
   for (int32_t y = 0; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
@@ -658,7 +660,7 @@ void Panel::processCombo(Combo *combo) {
     skillChainLevel++;
     comboSkillChainLevel = skillChainLevel;
     if (panelListener != nullptr) {
-      panelListener->onEvent(playerId, new PanelEvent(PanelEventType::SKILL_COMBO));
+      panelListener->onEvent(playerId, PanelEvent(PanelEventType::SKILL_COMBO));
     }
     score += (1000 * skillChainLevel) + (combo->size() * 100);
   } else {
@@ -734,6 +736,8 @@ void Panel::processCombo(Combo *combo) {
   }
   if (!clearing->isEmpty()) {
     clearings.insert(clearing);
+  } else {
+    delete clearing;
   }
 }
 

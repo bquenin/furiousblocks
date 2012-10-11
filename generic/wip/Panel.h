@@ -156,6 +156,7 @@ public:
   void submitMove(Move *move);
   static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
   static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
+  bool comboMask[Panel::X][Panel::Y];
   Block *blocks[Panel::X][Panel::Y]; // std::array<std::array<Block *, Panel::Y>, Panel::X> blocks;
 };
 

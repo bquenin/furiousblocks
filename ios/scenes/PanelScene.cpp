@@ -2,7 +2,7 @@
 #include "GarbageBlockType.h"
 
 USING_NS_CC;
-//using namespace CocosDenshion;
+using namespace CocosDenshion;
 
 PanelScene::PanelScene()
 : tick(0) {
@@ -213,7 +213,7 @@ bool PanelScene::init() {
 
   // Start rendering
   schedule(schedule_selector(PanelScene::update));
-  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3");
+  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
   return true;
 }
 
@@ -465,6 +465,7 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t
           if (state == BlockState:: BLINKING && GARBAGE_BLINKING->getKeyFrame(tick, true) == GARBAGE_BLINK) {
             return GARBAGE_BLINK;
           }
+
           switch (blockSituation->garbageBlockType) {
             case GarbageBlockType::DOWN:
               return GARBAGE_BOTTOM;
