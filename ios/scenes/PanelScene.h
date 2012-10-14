@@ -33,12 +33,14 @@ public:
 
   // Labels
   CCLabelBMFont *score;
-  CCLabelBMFont *time;
+  CCLabelBMFont *minutes;
+  CCLabelBMFont *seconds;
+  CCLabelBMFont *centisecs;
 
   // Core
   FuriousBlocksCore *core;
   Player *player;
-  int tick;
+  int64_t tick;
 
   // Renderer
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];

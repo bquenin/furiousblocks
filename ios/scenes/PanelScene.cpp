@@ -2,7 +2,7 @@
 #include "GarbageBlockType.h"
 
 USING_NS_CC;
-using namespace CocosDenshion;
+//using namespace CocosDenshion;
 
 PanelScene::PanelScene()
 : tick(0) {
@@ -160,7 +160,7 @@ bool PanelScene::init() {
   // Background
   CCSprite *bgMiddle = CCSprite::createWithSpriteFrameName("bg-middle.png");
   bgMiddle->setAnchorPoint(ccp(0, 0));
-  bgMiddle->setPosition(ccp(0, 10));
+  bgMiddle->setPosition(ccp(0, 8));
   batch->addChild(bgMiddle);
 
   // Initialize the grid
@@ -175,18 +175,59 @@ bool PanelScene::init() {
 
   CCSprite *bgBottom = CCSprite::createWithSpriteFrameName("bg-bottom.png");
   bgBottom->setAnchorPoint(ccp(0, 0));
-  bgBottom->setPosition(ccp(0, 1));
+  bgBottom->setPosition(ccp(0, 0));
   batch->addChild(bgBottom);
 
   CCSprite *bgTop = CCSprite::createWithSpriteFrameName("bg-top.png");
   bgTop->setAnchorPoint(ccp(0, 0));
-  bgTop->setPosition(ccp(0, 442));
+  bgTop->setPosition(ccp(0, 440));
   batch->addChild(bgTop);
 
+  CCSize size = CCDirector::sharedDirector()->getWinSize();
+
   CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  scoreLabel->setAnchorPoint(ccp(0, 0));
-  scoreLabel->setPosition(ccp(10, 455));
+  scoreLabel->setAnchorPoint(ccp(0.5, 0.5));
+  scoreLabel->setPosition(ccp(size.width / 4, 470));
   addChild(scoreLabel);
+
+  score = CCLabelBMFont::create("Score", "coopblack32.fnt");
+  score->setAnchorPoint(ccp(0.5, 0.5));
+  score->setPosition(ccp(size.width / 4, 454));
+  score->setAlignment(kCCTextAlignmentCenter);
+  addChild(score);
+
+  CCLabelBMFont *timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  timeLabel->setAnchorPoint(ccp(0.5, 0.5));
+  timeLabel->setPosition(ccp(size.width * 3 / 4, 470));
+  addChild(timeLabel);
+
+  minutes = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  minutes->setAnchorPoint(ccp(0.5, 0.5));
+  minutes->setPosition(ccp(-32 + size.width * 3 / 4, 454));
+  minutes->setAlignment(kCCTextAlignmentCenter);
+  addChild(minutes);
+
+  CCLabelBMFont *colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
+  colon1->setAnchorPoint(ccp(0.5, 0.5));
+  colon1->setPosition(ccp(-16 + size.width * 3 / 4, 454));
+  addChild(colon1);
+
+  seconds = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  seconds->setAnchorPoint(ccp(0.5, 0.5));
+  seconds->setPosition(ccp(size.width * 3 / 4, 454));
+  seconds->setAlignment(kCCTextAlignmentCenter);
+  addChild(seconds);
+
+  CCLabelBMFont *colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
+  colon2->setAnchorPoint(ccp(0.5, 0.5));
+  colon2->setPosition(ccp(16 + size.width * 3 / 4, 454));
+  addChild(colon2);
+
+  centisecs = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  centisecs->setAnchorPoint(ccp(0.5, 0.5));
+  centisecs->setPosition(ccp(32 + size.width * 3 / 4, 454));
+  centisecs->setAlignment(kCCTextAlignmentCenter);
+  addChild(centisecs);
 
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
@@ -315,10 +356,13 @@ void PanelScene::update(float dt) {
     }
   }
 
-  std::string minutes = format("%02d", static_cast<int32_t>(stateTime / 60));
-  std::string seconds = format("%d", static_cast<int32_t>(stateTime) % 60);
-  std::string centisecs = format("%02d", static_cast<int32_t>(stateTime * 100) % 100);
-  //  score->setString(seconds.c_str());
+  // Score
+  score->setString(format("%d", ps->score).c_str());
+
+  // Time
+  minutes->setString(format("%02d", static_cast<int32_t>(stateTime / 60)).c_str());
+  seconds->setString(format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
+  centisecs->setString(format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
 
   tick++;
 }

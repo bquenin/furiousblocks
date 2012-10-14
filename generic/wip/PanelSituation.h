@@ -22,7 +22,6 @@ private:
   bool gameOver;
   int32_t wallOffset;
   bool gracing;
-  int32_t score;
 
 protected:
 public:
@@ -35,6 +34,7 @@ public:
   int32_t scrollingOffset;
   furiousblocks::Point cursorPosition;
   std::set<ComboSituation *> comboSituations;
+  int32_t score;
 };
 
 #endif //__PanelSituation_H_
