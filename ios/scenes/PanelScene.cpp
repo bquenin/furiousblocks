@@ -1,11 +1,13 @@
 #include "PanelScene.h"
 #include "GarbageBlockType.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
-//using namespace CocosDenshion;
+using namespace CocosDenshion;
 
 PanelScene::PanelScene()
-: tick(0) {
+: tick(0)
+, stateTime(0) {
 }
 
 CCScene *PanelScene::scene() {
@@ -254,7 +256,7 @@ bool PanelScene::init() {
 
   // Start rendering
   schedule(schedule_selector(PanelScene::update));
-  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
   return true;
 }
 

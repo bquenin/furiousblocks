@@ -43,11 +43,11 @@ public:
   int64_t tick;
 
   // Renderer
+  float stateTime;
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
   std::unordered_map<int32_t, StarNumber *> comboSizes;
   std::unordered_map<int32_t, StarNumber *> chainSizes;
-  float stateTime;
 
   // Assets
   CCSpriteBatchNode *batch;
