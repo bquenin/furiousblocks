@@ -50,7 +50,6 @@ public:
   std::unordered_map<int32_t, StarNumber *> comboSizes;
   std::unordered_map<int32_t, StarNumber *> chainSizes;
 
-
   // Assets
   CCSpriteBatchNode *batch;
 
