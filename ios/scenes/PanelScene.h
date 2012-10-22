@@ -1,6 +1,7 @@
 #ifndef __PANELSCENE_H_
 #define __PANELSCENE_H_
 
+#include <array>
 #include <unordered_map>
 #include "cocos2d.h"
 #include "FuriousBlocksCore.h"
@@ -48,6 +49,7 @@ public:
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
   std::unordered_map<int32_t, StarNumber *> comboSizes;
   std::unordered_map<int32_t, StarNumber *> chainSizes;
+
 
   // Assets
   CCSpriteBatchNode *batch;

@@ -257,6 +257,7 @@ bool PanelScene::init() {
   // Start rendering
   schedule(schedule_selector(PanelScene::update));
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
+
   return true;
 }
 
