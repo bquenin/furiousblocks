@@ -821,7 +821,7 @@
 			isa = PBXGroup;
 			children = (
 				D2714D2316068D1C00390FC4 /* animation */,
-				D2BD396715C5D0A90038E59C /* wip */,
+				D2BD396715C5D0A90038E59C /* core */,
 			);
 			name = generic;
 			path = ../generic;
@@ -1741,7 +1741,7 @@
 			path = network;
 			sourceTree = "<group>";
 		};
-		D2BD396715C5D0A90038E59C /* wip */ = {
+		D2BD396715C5D0A90038E59C /* core */ = {
 			isa = PBXGroup;
 			children = (
 				D2BD399C15C5D0A90038E59C /* Player.h */,
@@ -1785,8 +1785,8 @@
 				D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */,
 				D2BD39A015C5D0A90038E59C /* SimpleRNG.h */,
 			);
-			name = wip;
-			path = ../generic/wip;
+			name = core;
+			path = ../generic/core;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
