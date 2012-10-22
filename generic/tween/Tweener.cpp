@@ -8,6 +8,7 @@
 #include "Tweener.h"
 
 namespace tween {
+
   /***** LINEAR ****/
   float Linear::easeNone(float t, float b, float c, float d) {
     return c * t / d + b;
@@ -26,7 +27,6 @@ namespace tween {
   }
 
   /***** SINE ****/
-
   float Sine::easeIn(float t, float b, float c, float d) {
     return -c * cos(t / d * (PI/ 2)) + c + b;
   }
@@ -40,7 +40,6 @@ namespace tween {
   }
 
   /**** Quint ****/
-
   float Quint::easeIn(float t, float b, float c, float d) {
     return c * (t /= d) * t * t * t * t + b;
   }
