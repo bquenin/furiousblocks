@@ -52,7 +52,6 @@
 		7969E786C36C762638C2CDB6 /* CCTMXObjectGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E28230511461B8447857 /* CCTMXObjectGroup.cpp */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA86AF48218A3CB3A0A9 /* CCParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */; };
-		7969EC166621D41A231870D5 /* Tweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E15798428B7B6A306884 /* Tweener.cpp */; };
 		7969ECE4B3026C6FB0597C45 /* CCTileMapAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */; };
 		D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D27631BC16188BA80084CB09 /* Default-568h@2x.png */; };
 		D280C822161A3D94007EA377 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C65C161A3D94007EA377 /* CCAction.cpp */; };
@@ -226,6 +225,7 @@
 		D280C8D0161A3D94007EA377 /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C819161A3D94007EA377 /* CCTableView.cpp */; };
 		D280C8D1161A3D94007EA377 /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C81B161A3D94007EA377 /* CCTableViewCell.cpp */; };
 		D280C8D2161A3D94007EA377 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C81E161A3D94007EA377 /* HttpClient.cpp */; };
+		D28D01691636091E00E9989D /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28D01681636091E00E9989D /* boost.framework */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D2BD39A215C5D0A90038E59C /* BlockSituation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */; };
 		D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
@@ -295,7 +295,6 @@
 		2E211F1159E493100CB0B89 /* btn-test-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-0.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8B /* btn-test-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-1.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8D /* btn-test-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-2.png"; sourceTree = "<group>"; };
-		7969E15798428B7B6A306884 /* Tweener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tweener.cpp; sourceTree = "<group>"; };
 		7969E19975989EBD1C45A9B3 /* CCParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCParallaxNode.h; sourceTree = "<group>"; };
 		7969E1B1F4BE78AC5E68B104 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		7969E28230511461B8447857 /* CCTMXObjectGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXObjectGroup.cpp; sourceTree = "<group>"; };
@@ -311,7 +310,6 @@
 		7969E8FB4781CFAD110C617E /* CCTileMapAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTileMapAtlas.h; sourceTree = "<group>"; };
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		7969EA797DFA9B80178DC88F /* CCTMXLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXLayer.cpp; sourceTree = "<group>"; };
-		7969EAF88AAA7EF7D657E036 /* Tweener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweener.h; sourceTree = "<group>"; };
 		7969EB094F0D03F0DF4F0D8C /* StarNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarNumber.h; sourceTree = "<group>"; };
 		7969EB25D981A4309B2D076C /* CCTMXTiledMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXTiledMap.cpp; sourceTree = "<group>"; };
 		7969EBDEEDCD4C34A3D352D7 /* CCTMXLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXLayer.h; sourceTree = "<group>"; };
@@ -716,6 +714,7 @@
 		D280C81F161A3D94007EA377 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		D280C820161A3D94007EA377 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		D280C821161A3D94007EA377 /* HttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpResponse.h; sourceTree = "<group>"; };
+		D28D01681636091E00E9989D /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = "../../boost-ios/ios/framework/boost.framework"; sourceTree = "<group>"; };
 		D2BD396815C5D0A90038E59C /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
 		D2BD396915C5D0A90038E59C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		D2BD396A15C5D0A90038E59C /* BlockSituation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockSituation.cpp; sourceTree = "<group>"; };
@@ -768,6 +767,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D28D01691636091E00E9989D /* boost.framework in Frameworks */,
 				02BAEEB9159E5AAB00BCA0C3 /* QuartzCore.framework in Frameworks */,
 				02BAEEBA159E5AAB00BCA0C3 /* OpenGLES.framework in Frameworks */,
 				02BAEEBB159E5AAB00BCA0C3 /* OpenAL.framework in Frameworks */,
@@ -868,6 +868,7 @@
 				02E20FB0159E492E00CB0ADA /* UIKit.framework */,
 				02E20FB2159E492E00CB0ADA /* Foundation.framework */,
 				02E20FB4159E492E00CB0ADA /* CoreGraphics.framework */,
+				D28D01681636091E00E9989D /* boost.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1748,8 +1749,6 @@
 		D298746C1635C4B4006D7128 /* tween */ = {
 			isa = PBXGroup;
 			children = (
-				7969E15798428B7B6A306884 /* Tweener.cpp */,
-				7969EAF88AAA7EF7D657E036 /* Tweener.h */,
 			);
 			name = tween;
 			path = ../generic/tween;
@@ -2093,7 +2092,6 @@
 				7969E5B8D4351D3EB3BD3562 /* CCTMXTiledMap.cpp in Sources */,
 				7969E705D437677FEEF656A6 /* CCTMXXMLParser.cpp in Sources */,
 				7969E1C44CF098B6830C6C77 /* StarNumber.cpp in Sources */,
-				7969EC166621D41A231870D5 /* Tweener.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2105,6 +2103,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -2130,6 +2132,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";

@@ -19,6 +19,7 @@ public:
   StarNumber(int32_t x, int32_t y, std::string label, ccColor3B color);
   CCSprite *ccSprite;
   CCLabelBMFont *ccLabel;
+  //  tween::TweenerParam param;
 };
 
 #endif //__StarNumber_H_

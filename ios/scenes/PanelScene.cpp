@@ -280,8 +280,15 @@ inline std::string format(const char *fmt, ...) {
 }
 
 void PanelScene::update(float dt) {
+  // State time update
   stateTime += dt;
+
+  // Tweener
+
+  // Core tick
   core->onTick(tick);
+
+  // Situation rendering
   std::shared_ptr<GameSituation> gs(core->gameSituation);
   auto ps = gs->playerIdToPanelSituation[123];
 
@@ -346,14 +353,17 @@ void PanelScene::update(float dt) {
           batch->addChild(starNumber->ccSprite);
           addChild(starNumber->ccLabel);
           comboSizes[current->id] = starNumber;
+          //          tweener.addTween(starNumber->param);
         }
       }
+
       if (chainSizes[current->id] == nullptr) {
         if (comboSituation->skillChainLevel > 1) {
           StarNumber *starNumber = new StarNumber(xOffset + x * TILE_SIZE, yOffset + (y + 1) * TILE_SIZE, format("x%d", comboSituation->skillChainLevel), ccc3(255, 128, 128));
           batch->addChild(starNumber->ccSprite);
           addChild(starNumber->ccLabel);
           chainSizes[current->id] = starNumber;
+          //          tweener.addTween(starNumber->param);
         }
       }
     }
@@ -369,6 +379,18 @@ void PanelScene::update(float dt) {
 
   tick++;
 }
+
+//void PanelScene::onStart(tween::TweenerParam & param) {
+//  CCLog("tween on start");
+//}
+//
+//void PanelScene::onStep(tween::TweenerParam & param) {
+//  CCLog("tween on step: %d", param.timeCount);
+//}
+//
+//void PanelScene::onComplete(tween::TweenerParam & param) {
+//  CCLog("tween on complete");
+//}
 
 CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {
   NonLoopingAnimation *currentAnimation = animations[blockSituation->id];
