@@ -2,6 +2,9 @@
 #include "GarbageBlockType.h"
 #include "SimpleAudioEngine.h"
 
+#include "single_tweener.hpp"
+#include "easing_linear.hpp"
+
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -257,6 +260,9 @@ bool PanelScene::init() {
   // Start rendering
   schedule(schedule_selector(PanelScene::update));
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
+
+  double x(10);
+  claw::tween::single_tweener t(x, 15, 1, claw::tween::easing_linear::ease_in);
 
   return true;
 }
