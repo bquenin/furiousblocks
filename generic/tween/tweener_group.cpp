@@ -27,28 +27,29 @@
  * \author Julien Jorge
  */
 #include "tweener_group.hpp"
+#include "cocos2d.h"
+USING_NS_CC;
 
 /*----------------------------------------------------------------------------*/
 /**
  * \brief Add a tweener in the group.
  * \param t The tweener.
  */
-void claw::tween::tweener_group::insert( const tweener& t )
-{
+void claw::tween::tweener_group::insert(const tweener& t) {
   m_tweeners.push_back(t);
 
   m_tweeners.back().update(0); // force the initial position
 
-  if ( m_tweeners.back().is_finished() )
+  if (m_tweeners.back().is_finished()) {
     m_tweeners.pop_back();
+  }
 } // tweener_group::insert()
 
 /*----------------------------------------------------------------------------*/
 /**
  * \brief Remove all the tweeners from the group.
  */
-void claw::tween::tweener_group::clear()
-{
+void claw::tween::tweener_group::clear() {
   m_tweeners.clear();
 } // tweener_group::clear()
 
@@ -56,8 +57,7 @@ void claw::tween::tweener_group::clear()
 /**
  * \brief Create a copy of this, allocated with new.
  */
-claw::tween::tweener_group* claw::tween::tweener_group::do_clone() const
-{
+claw::tween::tweener_group *claw::tween::tweener_group::do_clone() const {
   return new tweener_group(*this);
 } // tweener_group::do_clone()
 
@@ -65,8 +65,7 @@ claw::tween::tweener_group* claw::tween::tweener_group::do_clone() const
 /**
  * \brief Tell if the tweener has reached his total duration.
  */
-bool claw::tween::tweener_group::do_is_finished() const
-{
+bool claw::tween::tweener_group::do_is_finished() const {
   return m_tweeners.empty();
 } // tweener_group::do_is_finished()
 
@@ -75,27 +74,27 @@ bool claw::tween::tweener_group::do_is_finished() const
  * \brief Update the tweeners by a given amount of time.
  * \param dt The duration of the update in time units since the last call.
  */
-double claw::tween::tweener_group::do_update( double dt )
-{
+double claw::tween::tweener_group::do_update(double dt) {
   typedef std::list<tweener>::iterator iterator_type;
   double result(dt);
 
   iterator_type it = m_tweeners.begin();
 
-  while ( it != m_tweeners.end() )
-    {
-      const double r = it->update(dt);
-      result = std::min(result, r);
+  while (it != m_tweeners.end()) {
+    const double r = it->update(dt);
+    result = std::min(result, r);
 
-      if ( it->is_finished() )
-        {
-          const iterator_type tmp(it);
-          ++it;
-          m_tweeners.erase(tmp);
-        }
-      else
-        ++it;
+    if (it->is_finished()) {
+      isFinished = true;
+      const iterator_type tmp(it);
+      ++it;
+      m_tweeners.erase(tmp);
     }
+    else {
+      ++it;
+    }
+
+  }
 
   return result;
 } // tweener_group::do_update()

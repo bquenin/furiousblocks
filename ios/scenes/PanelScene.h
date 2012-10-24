@@ -6,7 +6,7 @@
 #include "cocos2d.h"
 #include "FuriousBlocksCore.h"
 #include "NonLoopingAnimation.h"
-#include "StarNumber.h"
+#include "tweener_group.hpp"
 
 USING_NS_CC;
 
@@ -47,8 +47,10 @@ public:
   float stateTime;
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
-  std::unordered_map<int32_t, StarNumber *> comboSizes;
-  std::unordered_map<int32_t, StarNumber *> chainSizes;
+  //  std::unordered_map<int32_t, StarNumber *> comboSizes;
+  //  std::unordered_map<int32_t, StarNumber *> chainSizes;
+
+  claw::tween::tweener_group tweeners;
 
   // Assets
   CCSpriteBatchNode *batch;

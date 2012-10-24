@@ -51,11 +51,13 @@ namespace claw
       void insert( const tweener& t );
 
       void clear();
+      bool isFinished;
 
     private:
       tweener_group* do_clone() const;
       bool do_is_finished() const;
       double do_update( double dt );
+
 
     private:
       /** \brief The tweeners. */

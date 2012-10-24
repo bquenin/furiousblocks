@@ -1,9 +1,7 @@
 #include "PanelScene.h"
 #include "GarbageBlockType.h"
 #include "SimpleAudioEngine.h"
-
-#include "single_tweener.hpp"
-#include "easing_linear.hpp"
+#include "StarNumber.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -261,9 +259,6 @@ bool PanelScene::init() {
   schedule(schedule_selector(PanelScene::update));
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
 
-  double x(10);
-  claw::tween::single_tweener t(x, 15, 1, claw::tween::easing_linear::ease_in);
-
   return true;
 }
 
@@ -290,6 +285,7 @@ void PanelScene::update(float dt) {
   stateTime += dt;
 
   // Tweener
+  tweeners.update(dt);
 
   // Core tick
   core->onTick(tick);
@@ -333,43 +329,51 @@ void PanelScene::update(float dt) {
       if (current->poppingIndex != 0) {
         continue;
       }
-      if (current->state != BlockState::BLINKING) {
-        StarNumber *comboSize = comboSizes[current->id];
-        if (comboSize != nullptr) {
-          batch->removeChild(comboSize->ccSprite, true);
-          removeChild(comboSize->ccLabel, true);
-          delete comboSizes[current->id];
-          comboSizes.erase(current->id);
-        }
 
-        StarNumber *chainSize = chainSizes[current->id];
-        if (chainSize != nullptr) {
-          batch->removeChild(chainSize->ccSprite, true);
-          removeChild(chainSize->ccLabel, true);
-          delete chainSizes[current->id];
-          chainSizes.erase(current->id);
-        }
-        continue;
-      }
+      //      StarNumber *comboSize = comboSizes[current->id];
+      //      if (comboSize != nullptr) {
+      //        CCLog("tweener->finished = %d", comboSize->tweener.is_finished());
+      //        CCLog("tweener->isFinished = %d", comboSize->tweener.isFinished);
+      //      }
+      //
+      //      if (comboSize != nullptr && comboSize->tweener.is_finished()) {
+      //        CCLog("finished !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      //        batch->removeChild(comboSize->ccSprite, true);
+      //        removeChild(comboSize->ccLabel, true);
+      //        delete comboSizes[current->id];
+      //        comboSizes.erase(current->id);
+      //      }
+      //
+      //      StarNumber *chainSize = chainSizes[current->id];
+      //      if (chainSize != nullptr) {
+      //        CCLog("tweener->finished = %d", chainSize ->tweener.is_finished());
+      //        CCLog("tweener->isFinished = %d", chainSize->tweener.isFinished);
+      //      }
+      //
+      //      if (chainSize != nullptr && chainSize->tweener.is_finished()) {
+      //        CCLog("finished !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      //        batch->removeChild(chainSize->ccSprite, true);
+      //        removeChild(chainSize->ccLabel, true);
+      //        delete chainSizes[current->id];
+      //        chainSizes.erase(current->id);
+      //      }
 
-      ComboSituation *comboSituation = ps->getComboByBlock(current->id);
-      if (comboSizes[current->id] == nullptr) {
+      if (current->state == BlockState::BLINKING) {
+        ComboSituation *comboSituation = ps->getComboByBlock(current->id);
+        //        if (comboSizes[current->id] == nullptr) {
         if (comboSituation->size > 3) {
-          StarNumber *starNumber = new StarNumber(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE, format("%d", comboSituation->size), ccORANGE);
-          batch->addChild(starNumber->ccSprite);
-          addChild(starNumber->ccLabel);
-          comboSizes[current->id] = starNumber;
-          //          tweener.addTween(starNumber->param);
+          new StarNumber(this, xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE, format("%d", comboSituation->size), ccORANGE);
         }
-      }
+        //        }
 
-      if (chainSizes[current->id] == nullptr) {
+        //        if (chainSizes[current->id] == nullptr) {
         if (comboSituation->skillChainLevel > 1) {
-          StarNumber *starNumber = new StarNumber(xOffset + x * TILE_SIZE, yOffset + (y + 1) * TILE_SIZE, format("x%d", comboSituation->skillChainLevel), ccc3(255, 128, 128));
-          batch->addChild(starNumber->ccSprite);
-          addChild(starNumber->ccLabel);
-          chainSizes[current->id] = starNumber;
-          //          tweener.addTween(starNumber->param);
+          new StarNumber(this, xOffset + x * TILE_SIZE, yOffset + (y + 1) * TILE_SIZE, format("x%d", comboSituation->skillChainLevel), ccc3(255, 128, 128));
+          //            StarNumber *starNumber = new StarNumber(this, xOffset + x * TILE_SIZE, yOffset + (y + 1) * TILE_SIZE, format("x%d", comboSituation->skillChainLevel), ccc3(255, 128, 128));
+          //            batch->addChild(starNumber->ccSprite);
+          //            addChild(starNumber->ccLabel);
+          //            chainSizes[current->id] = starNumber;
+          //        }
         }
       }
     }
@@ -385,18 +389,6 @@ void PanelScene::update(float dt) {
 
   tick++;
 }
-
-//void PanelScene::onStart(tween::TweenerParam & param) {
-//  CCLog("tween on start");
-//}
-//
-//void PanelScene::onStep(tween::TweenerParam & param) {
-//  CCLog("tween on step: %d", param.timeCount);
-//}
-//
-//void PanelScene::onComplete(tween::TweenerParam & param) {
-//  CCLog("tween on complete");
-//}
 
 CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {
   NonLoopingAnimation *currentAnimation = animations[blockSituation->id];
