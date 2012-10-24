@@ -6,24 +6,17 @@ USING_NS_CC;
 using namespace CocosDenshion;
 
 PanelScene::PanelScene()
-: tick(0) {
+: tick(0)
+, stateTime(0) {
 }
 
 CCScene *PanelScene::scene() {
-  // 'scene' is an autorelease object
   CCScene *scene = CCScene::create();
-
-  // 'layer' is an autorelease object
   PanelScene *layer = PanelScene::create();
-
-  // add layer as a child to scene
   scene->addChild(layer);
-
-  // return the scene
   return scene;
 }
 
-// on "init" you need to initialize your instance
 bool PanelScene::init() {
   if (!CCLayer::init()) {
     return false;
@@ -33,7 +26,7 @@ bool PanelScene::init() {
 
   // Sprite sheet
   CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
-  CCSpriteBatchNode *batch = CCSpriteBatchNode::create("blocks.png", 100);
+  batch = CCSpriteBatchNode::create("blocks.png", 100);
   addChild(batch);
 
   // Frame assets
@@ -169,11 +162,11 @@ bool PanelScene::init() {
   // Background
   CCSprite *bgMiddle = CCSprite::createWithSpriteFrameName("bg-middle.png");
   bgMiddle->setAnchorPoint(ccp(0, 0));
-  bgMiddle->setPosition(ccp(0, 10));
+  bgMiddle->setPosition(ccp(0, 8));
   batch->addChild(bgMiddle);
 
   // Initialize the grid
-  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       grid[x][y] = CCSprite::createWithSpriteFrame(GARBAGE_PLAIN);
       grid[x][y]->setAnchorPoint(ccp(0, 0));
@@ -184,23 +177,59 @@ bool PanelScene::init() {
 
   CCSprite *bgBottom = CCSprite::createWithSpriteFrameName("bg-bottom.png");
   bgBottom->setAnchorPoint(ccp(0, 0));
-  bgBottom->setPosition(ccp(0, 1));
+  bgBottom->setPosition(ccp(0, 0));
   batch->addChild(bgBottom);
 
   CCSprite *bgTop = CCSprite::createWithSpriteFrameName("bg-top.png");
   bgTop->setAnchorPoint(ccp(0, 0));
-  bgTop->setPosition(ccp(0, 442));
+  bgTop->setPosition(ccp(0, 440));
   batch->addChild(bgTop);
 
-  CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "font.fnt");
-  scoreLabel->setAnchorPoint(ccp(0, 0));
-  scoreLabel->setPosition(ccp(10, 455));
+  CCSize size = CCDirector::sharedDirector()->getWinSize();
+
+  CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
+  scoreLabel->setAnchorPoint(ccp(0.5, 0.5));
+  scoreLabel->setPosition(ccp(size.width / 4, 470));
   addChild(scoreLabel);
 
-  score = CCLabelBMFont::create("0", "font.fnt");
-  score->setAnchorPoint(ccp(0, 0));
-  score->setPosition(ccp(10, 435));
+  score = CCLabelBMFont::create("Score", "coopblack32.fnt");
+  score->setAnchorPoint(ccp(0.5, 0.5));
+  score->setPosition(ccp(size.width / 4, 454));
+  score->setAlignment(kCCTextAlignmentCenter);
   addChild(score);
+
+  CCLabelBMFont *timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  timeLabel->setAnchorPoint(ccp(0.5, 0.5));
+  timeLabel->setPosition(ccp(size.width * 3 / 4, 470));
+  addChild(timeLabel);
+
+  minutes = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  minutes->setAnchorPoint(ccp(0.5, 0.5));
+  minutes->setPosition(ccp(-32 + size.width * 3 / 4, 454));
+  minutes->setAlignment(kCCTextAlignmentCenter);
+  addChild(minutes);
+
+  CCLabelBMFont *colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
+  colon1->setAnchorPoint(ccp(0.5, 0.5));
+  colon1->setPosition(ccp(-16 + size.width * 3 / 4, 454));
+  addChild(colon1);
+
+  seconds = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  seconds->setAnchorPoint(ccp(0.5, 0.5));
+  seconds->setPosition(ccp(size.width * 3 / 4, 454));
+  seconds->setAlignment(kCCTextAlignmentCenter);
+  addChild(seconds);
+
+  CCLabelBMFont *colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
+  colon2->setAnchorPoint(ccp(0.5, 0.5));
+  colon2->setPosition(ccp(16 + size.width * 3 / 4, 454));
+  addChild(colon2);
+
+  centisecs = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  centisecs->setAnchorPoint(ccp(0.5, 0.5));
+  centisecs->setPosition(ccp(32 + size.width * 3 / 4, 454));
+  centisecs->setAlignment(kCCTextAlignmentCenter);
+  addChild(centisecs);
 
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
@@ -227,7 +256,8 @@ bool PanelScene::init() {
 
   // Start rendering
   schedule(schedule_selector(PanelScene::update));
-  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3");
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
+
   return true;
 }
 
@@ -240,9 +270,8 @@ inline std::string format(const char *fmt, ...) {
   int nsize = vsnprintf(buffer, size, fmt, vl);
   if (size <= nsize) {//fail delete buffer and try again
     delete buffer;
-    buffer = 0;
     buffer = new char [nsize + 1];//+1 for /0
-    nsize = vsnprintf(buffer, size, fmt, vl);
+    vsnprintf(buffer, size, fmt, vl);
   }
   std::string ret(buffer);
   va_end(vl);
@@ -251,13 +280,20 @@ inline std::string format(const char *fmt, ...) {
 }
 
 void PanelScene::update(float dt) {
+  // State time update
   stateTime += dt;
+
+  // Tweener
+
+  // Core tick
   core->onTick(tick);
+
+  // Situation rendering
   std::shared_ptr<GameSituation> gs(core->gameSituation);
   auto ps = gs->playerIdToPanelSituation[123];
 
   // Blocks
-  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       BlockSituation *current = ps->blockSituations[x][y];
       if (current == nullptr) {
@@ -281,13 +317,80 @@ void PanelScene::update(float dt) {
     }
   }
 
-  std::string minutes = format("%02d", static_cast<int32_t>(stateTime / 60));
-  std::string seconds = format("%02d", static_cast<int32_t>(stateTime) % 60);
-  std::string centisecs = format("%02d", static_cast<int32_t>(stateTime * 100) % 100);
-  score->setString(seconds.c_str());
+  // Combo rendering
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
+    for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+      BlockSituation *current = ps->blockSituations[x][y];
+      if (current == nullptr) {
+        continue;
+      }
+      if (current->poppingIndex != 0) {
+        continue;
+      }
+      if (current->state != BlockState::BLINKING) {
+        StarNumber *comboSize = comboSizes[current->id];
+        if (comboSize != nullptr) {
+          batch->removeChild(comboSize->ccSprite, true);
+          removeChild(comboSize->ccLabel, true);
+          delete comboSizes[current->id];
+          comboSizes.erase(current->id);
+        }
+
+        StarNumber *chainSize = chainSizes[current->id];
+        if (chainSize != nullptr) {
+          batch->removeChild(chainSize->ccSprite, true);
+          removeChild(chainSize->ccLabel, true);
+          delete chainSizes[current->id];
+          chainSizes.erase(current->id);
+        }
+        continue;
+      }
+
+      ComboSituation *comboSituation = ps->getComboByBlock(current->id);
+      if (comboSizes[current->id] == nullptr) {
+        if (comboSituation->size > 3) {
+          StarNumber *starNumber = new StarNumber(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE, format("%d", comboSituation->size), ccORANGE);
+          batch->addChild(starNumber->ccSprite);
+          addChild(starNumber->ccLabel);
+          comboSizes[current->id] = starNumber;
+          //          tweener.addTween(starNumber->param);
+        }
+      }
+
+      if (chainSizes[current->id] == nullptr) {
+        if (comboSituation->skillChainLevel > 1) {
+          StarNumber *starNumber = new StarNumber(xOffset + x * TILE_SIZE, yOffset + (y + 1) * TILE_SIZE, format("x%d", comboSituation->skillChainLevel), ccc3(255, 128, 128));
+          batch->addChild(starNumber->ccSprite);
+          addChild(starNumber->ccLabel);
+          chainSizes[current->id] = starNumber;
+          //          tweener.addTween(starNumber->param);
+        }
+      }
+    }
+  }
+
+  // Score
+  score->setString(format("%d", ps->score).c_str());
+
+  // Time
+  minutes->setString(format("%02d", static_cast<int32_t>(stateTime / 60)).c_str());
+  seconds->setString(format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
+  centisecs->setString(format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
 
   tick++;
 }
+
+//void PanelScene::onStart(tween::TweenerParam & param) {
+//  CCLog("tween on start");
+//}
+//
+//void PanelScene::onStep(tween::TweenerParam & param) {
+//  CCLog("tween on step: %d", param.timeCount);
+//}
+//
+//void PanelScene::onComplete(tween::TweenerParam & param) {
+//  CCLog("tween on complete");
+//}
 
 CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {
   NonLoopingAnimation *currentAnimation = animations[blockSituation->id];
@@ -352,7 +455,7 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t
     case BlockState::HOVERING:
     case BlockState::DONE_AIRBOUNCING:
     case BlockState::IDLE:
-      if (blockSituation->justLand && state == BlockState:: IDLE && type != BlockType:: GARBAGE && type != BlockType:: TUTORIAL) {
+      if (blockSituation->justLand && state == BlockState::IDLE && type != BlockType::GARBAGE && type != BlockType::TUTORIAL) {
         NonLoopingAnimation *animation = nullptr;
         switch (type) {
           case BlockType:: YELLOW:
@@ -431,6 +534,7 @@ CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t
           if (state == BlockState:: BLINKING && GARBAGE_BLINKING->getKeyFrame(tick, true) == GARBAGE_BLINK) {
             return GARBAGE_BLINK;
           }
+
           switch (blockSituation->garbageBlockType) {
             case GarbageBlockType::DOWN:
               return GARBAGE_BOTTOM;

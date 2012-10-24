@@ -33,6 +33,6 @@ public class furiousblocks extends Cocos2dxActivity {
   }
 
   static {
-    System.loadLibrary("game");
+    System.loadLibrary("furiousblocks");
   }
 }

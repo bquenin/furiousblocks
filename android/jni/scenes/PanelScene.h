@@ -1,18 +1,23 @@
 #ifndef __PANELSCENE_H_
 #define __PANELSCENE_H_
 
+#include <array>
 #include <unordered_map>
 #include "cocos2d.h"
 #include "FuriousBlocksCore.h"
 #include "NonLoopingAnimation.h"
+#include "StarNumber.h"
 
 USING_NS_CC;
 
 class PanelScene : public CCLayer {
 public:
-  static constexpr int32_t TILE_SIZE = 96;
-  static constexpr int32_t xOffset = 17; // 17
-  static constexpr int32_t yOffset = -38; // 10
+  static constexpr int32_t
+  TILE_SIZE = 96;
+  static constexpr int32_t
+  xOffset = 17; // 17
+  static constexpr int32_t
+  yOffset = -38; // 10
 
   PanelScene();
   //  static void *game_draw_thread_callback(void *);
@@ -29,19 +34,25 @@ public:
 
   // Labels
   CCLabelBMFont *score;
-  CCLabelBMFont *time;
+  CCLabelBMFont *minutes;
+  CCLabelBMFont *seconds;
+  CCLabelBMFont *centisecs;
 
   // Core
   FuriousBlocksCore *core;
   Player *player;
-  int tick;
+  int64_t tick;
 
   // Renderer
-  CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
-  std::unordered_map<int32_t, NonLoopingAnimation *> animations;
   float stateTime;
+  CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
+  std::unordered_map<int32_t, NonLoopingAnimation *> animations;
+  std::unordered_map<int32_t, StarNumber *> comboSizes;
+  std::unordered_map<int32_t, StarNumber *> chainSizes;
 
   // Assets
+  CCSpriteBatchNode *batch;
+
   CCSpriteFrame *BLOCKS_RED_PANIC_01;
   CCSpriteFrame *BLOCKS_BLUE_HOVER_01;
   CCSpriteFrame *BLOCKS_GREEN_COMPRESSED_01;
@@ -173,3 +184,4 @@ public:
 };
 
 #endif // __PANELSCENE_H_
+
