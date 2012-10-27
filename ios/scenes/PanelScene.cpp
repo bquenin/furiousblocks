@@ -319,49 +319,6 @@ void PanelScene::update(float dt) {
     }
   }
 
-  // Combo rendering
-  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
-    for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-      BlockSituation *current = ps->blockSituations[x][y];
-      if (current == nullptr) {
-        continue;
-      }
-      if (current->poppingIndex != 0) {
-        continue;
-      }
-
-      //      StarNumber *comboSize = comboSizes[current->id];
-      //      if (comboSize != nullptr) {
-      //        CCLog("tweener->finished = %d", comboSize->tweener.is_finished());
-      //        CCLog("tweener->isFinished = %d", comboSize->tweener.isFinished);
-      //      }
-      //
-      //      if (comboSize != nullptr && comboSize->tweener.is_finished()) {
-      //        CCLog("finished !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      //        batch->removeChild(comboSize->ccSprite, true);
-      //        removeChild(comboSize->ccLabel, true);
-      //        delete comboSizes[current->id];
-      //        comboSizes.erase(current->id);
-      //      }
-      //
-      //      StarNumber *chainSize = chainSizes[current->id];
-      //      if (chainSize != nullptr) {
-      //        CCLog("tweener->finished = %d", chainSize ->tweener.is_finished());
-      //        CCLog("tweener->isFinished = %d", chainSize->tweener.isFinished);
-      //      }
-      //
-      //      if (chainSize != nullptr && chainSize->tweener.is_finished()) {
-      //        CCLog("finished !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      //        batch->removeChild(chainSize->ccSprite, true);
-      //        removeChild(chainSize->ccLabel, true);
-      //        delete chainSizes[current->id];
-      //        chainSizes.erase(current->id);
-      //      }
-
-
-    }
-  }
-
   // Score
   score->setString(format("%d", ps->score).c_str());
 
