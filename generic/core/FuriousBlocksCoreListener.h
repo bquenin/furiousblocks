@@ -2,12 +2,13 @@
 #define __FuriousBlocksCoreListener_H_
 
 #include <cstdint>
-#include "PanelEvent.h"
+#include "Combo.h"
 
 class FuriousBlocksCoreListener {
 public:
-  virtual void onEvent(int64_t playerId, PanelEvent panelEvent);
-  virtual ~FuriousBlocksCoreListener();
+  virtual void onCombo(Combo *combo) = 0;
+//  virtual void onEvent(int64_t playerId, PanelEvent panelEvent) = 0;
+  virtual ~FuriousBlocksCoreListener() {};
 };
 
 #endif //__FuriousBlocksCoreListener_H_

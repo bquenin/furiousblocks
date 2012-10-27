@@ -13,6 +13,8 @@ public:
   std::vector<Block *> blocks;
   int32_t owner;
   int32_t skillChainLevel;
+  int32_t x;
+  int32_t y;
   Combo(int32_t owner);
   void addBlock(Block *block);
   int32_t size();

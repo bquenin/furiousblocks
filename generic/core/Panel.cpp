@@ -637,6 +637,10 @@ Combo *Panel::detectCombo() {
       if (!comboMask[x][y]) {
         continue;
       }
+      if (poppingIndex == 0) {
+        currentCombo->x = x;
+        currentCombo->y = y;
+      }
       currentCombo->addBlock(blocks[x][y]);
       blocks[x][y]->combo = true;
       blocks[x][y]->poppingIndex = poppingIndex++;

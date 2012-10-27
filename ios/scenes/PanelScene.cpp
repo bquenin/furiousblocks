@@ -238,7 +238,7 @@ bool PanelScene::init() {
   //  batch->addChild(cursor);
 
   // Game initialization
-  core = new FuriousBlocksCore(0);
+  core = new FuriousBlocksCore(0, this);
 
   // Player initialization
   player = new Player();
@@ -358,24 +358,7 @@ void PanelScene::update(float dt) {
       //        chainSizes.erase(current->id);
       //      }
 
-      if (current->state == BlockState::BLINKING) {
-        ComboSituation *comboSituation = ps->getComboByBlock(current->id);
-        //        if (comboSizes[current->id] == nullptr) {
-        if (comboSituation->size > 3) {
-          new StarNumber(this, xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE, format("%d", comboSituation->size), ccORANGE);
-        }
-        //        }
 
-        //        if (chainSizes[current->id] == nullptr) {
-        if (comboSituation->skillChainLevel > 1) {
-          new StarNumber(this, xOffset + x * TILE_SIZE, yOffset + (y + 1) * TILE_SIZE, format("x%d", comboSituation->skillChainLevel), ccc3(255, 128, 128));
-          //            StarNumber *starNumber = new StarNumber(this, xOffset + x * TILE_SIZE, yOffset + (y + 1) * TILE_SIZE, format("x%d", comboSituation->skillChainLevel), ccc3(255, 128, 128));
-          //            batch->addChild(starNumber->ccSprite);
-          //            addChild(starNumber->ccLabel);
-          //            chainSizes[current->id] = starNumber;
-          //        }
-        }
-      }
     }
   }
 
@@ -388,6 +371,15 @@ void PanelScene::update(float dt) {
   centisecs->setString(format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
 
   tick++;
+}
+
+void PanelScene::onCombo(Combo *combo) {
+  if (combo->size() > 3) {
+    new StarNumber(this, xOffset + combo->x * TILE_SIZE, yOffset + combo->y * TILE_SIZE, format("%d", combo->size()), ccORANGE);
+  }
+  if (combo->skillChainLevel > 1) {
+    new StarNumber(this, xOffset + combo->x * TILE_SIZE, yOffset + (combo->y + 1) * TILE_SIZE, format("x%d", combo->skillChainLevel), ccc3(255, 128, 128));
+  }
 }
 
 CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {

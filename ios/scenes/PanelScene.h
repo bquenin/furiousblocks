@@ -10,7 +10,7 @@
 
 USING_NS_CC;
 
-class PanelScene : public CCLayer {
+class PanelScene : public CCLayer, FuriousBlocksCoreListener {
 public:
   static constexpr int32_t
   TILE_SIZE = 48;
@@ -24,6 +24,7 @@ public:
   // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
   virtual bool init();
   void update(float d);
+  void onCombo(Combo *combo);
   CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
@@ -31,6 +32,7 @@ public:
 
   // Implement the "static node()" method manually
   CREATE_FUNC(PanelScene);
+
 
   // Labels
   CCLabelBMFont *score;
@@ -186,4 +188,3 @@ public:
 };
 
 #endif // __PANELSCENE_H_
-

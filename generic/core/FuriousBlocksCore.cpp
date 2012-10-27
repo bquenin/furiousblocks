@@ -75,6 +75,7 @@ void FuriousBlocksCore::onTick(int64_t tick) {
 }
 
 void FuriousBlocksCore::onCombo(Combo *combo) {
+  listener->onCombo(combo);
   for (const auto & entry: playerToPanel) {
     Player *player = entry.first;
     Panel *panel = entry.second;
@@ -87,9 +88,9 @@ void FuriousBlocksCore::onCombo(Combo *combo) {
 }
 
 void FuriousBlocksCore::onEvent(int64_t playerId, PanelEvent panelEvent) {
-  if (listener != nullptr) {
-    listener->onEvent(playerId, panelEvent);
-  }
+//  if (listener != nullptr) {
+//    listener->onEvent(playerId, panelEvent);
+//  }
 }
 
 //std::set<Player *> FuriousBlocksCore::getPlayers() {
