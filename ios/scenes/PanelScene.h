@@ -33,7 +33,6 @@ public:
   // Implement the "static node()" method manually
   CREATE_FUNC(PanelScene);
 
-
   // Labels
   CCLabelBMFont *score;
   CCLabelBMFont *minutes;
