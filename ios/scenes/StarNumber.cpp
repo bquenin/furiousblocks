@@ -29,4 +29,5 @@ StarNumber::StarNumber(PanelScene *panelScene, int32_t x, int32_t y, std::string
 void StarNumber::onTweenFinished() {
   panelScene->batch->removeChild(ccSprite, true);
   panelScene->removeChild(ccLabel, true);
+  delete this;
 }
