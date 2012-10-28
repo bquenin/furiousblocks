@@ -6,6 +6,7 @@
 #include "PanelSituation.h"
 #include "Move.h"
 #include "cocos2d.h"
+#include "Panel.h"
 
 USING_NS_CC;
 
@@ -31,8 +32,7 @@ public:
   bool ccTouchBegan(CCTouch *touch, CCEvent *event);
   void ccTouchMoved(CCTouch *touch, CCEvent *event);
   void ccTouchEnded(CCTouch *touch, CCEvent *event);
-  Move *onMoveRequest(PanelSituation *const panelSituation);
-
+  Move *onMoveRequest(const Panel &panel);
 };
 
 #endif //__Player_H_

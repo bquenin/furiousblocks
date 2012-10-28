@@ -51,23 +51,24 @@ void FuriousBlocksCore::stop() {
 }
 
 void FuriousBlocksCore::onTick(int64_t tick) {
-  std::unordered_map<int32_t, PanelSituation *> panelSituations;
+//  std::unordered_map<int32_t, PanelSituation *> panelSituations;
   for (const auto &entry: playerToPanel) {
     Player *player = entry.first;
     Panel *panel = entry.second;
-    PanelSituation *panelSituation = panel->onTick(tick);
-    panelSituations[player->id] = panelSituation;
+//    PanelSituation *panelSituation = panel->onTick(tick);
+    panel->onTick(tick);
+//    panelSituations[player->id] = panelSituation;
     if (panel->isGameOver()) {
       continue;
     }
-    Move *move = player->onMoveRequest(panelSituation);
+    Move *move = player->onMoveRequest(*panel);
     if (move != nullptr) {
       panel->submitMove(move);
       delete move;
     }
   }
 
-  gameSituation.reset(new GameSituation(panelSituations));
+//  gameSituation.reset(new GameSituation(panelSituations));
 
   //  if (oldSituation != nullptr) {
   //    delete oldSituation;

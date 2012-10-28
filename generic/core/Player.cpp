@@ -72,14 +72,14 @@ void Player::ccTouchEnded(CCTouch *touch, CCEvent *event) {
   lifted = false;
 }
 
-Move *Player::onMoveRequest(PanelSituation *const panelSituation) {
+Move *Player::onMoveRequest(const Panel &panel) {
   Move *move = nullptr;
   if (inputState != InputState::touched) {
     return move;
   }
   //      CCLOG("touchPointDown = %f/%f", touchPointDown.x, touchPointDown.y);
-  int32_t const x = static_cast<int32_t> (PanelScene::xOffset + (PanelScene::TILE_SIZE * panelSituation->cursorPosition.x));
-  int32_t const y = static_cast<int32_t> (PanelScene::yOffset + (PanelScene::TILE_SIZE * panelSituation->cursorPosition.y) + ((panelSituation->scrollingOffset * PanelScene::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+  int32_t const x = static_cast<int32_t> (PanelScene::xOffset + (PanelScene::TILE_SIZE * panel.cursor->x));
+  int32_t const y = static_cast<int32_t> (PanelScene::yOffset + (PanelScene::TILE_SIZE * panel.cursor->y) + ((panel.scrollingDelta * PanelScene::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
   CCRect cursorPosition(x + (leftTrend ? PanelScene::TILE_SIZE : 0), y, PanelScene::TILE_SIZE, PanelScene::TILE_SIZE);
   CCPoint aPoint(touchPointDragged.x + (leftTrend ? PanelScene::TILE_SIZE : 0) - (rightTrend ? PanelScene::TILE_SIZE : 0), touchPointDragged.y);
   if (upTrend && !lifted) {

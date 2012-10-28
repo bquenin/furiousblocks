@@ -24,7 +24,6 @@ private:
   FuriousBlocksCoreListener *listener;
 
 protected:
-  std::unordered_map<Player *, Panel *> playerToPanel;
 
 public:
   BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
@@ -40,7 +39,8 @@ public:
   void onEvent(int64_t playerId, PanelEvent panelEvent);
   //  std::set<Player *> getPlayers();
   void justATick();
-  std::shared_ptr<GameSituation> gameSituation;
+//  std::shared_ptr<GameSituation> gameSituation;
+  std::unordered_map<Player *, Panel *> playerToPanel;
 };
 
 #endif //__FuriousBlocksCore_H_

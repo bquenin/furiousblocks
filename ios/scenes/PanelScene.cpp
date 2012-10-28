@@ -28,7 +28,8 @@ inline std::string format(const char *fmt, ...) {
 
 PanelScene::PanelScene()
 : tick(0)
-, stateTime(0) {
+, stateTime(0)
+, gameRunning(false) {
 }
 
 CCScene *PanelScene::scene() {
@@ -274,42 +275,34 @@ bool PanelScene::init() {
   player = new Player();
   core->addPlayer(player);
 
-  //  pthread_t t1;
-  //  pthread_create(&t1, NULL, PanelScene::game_draw_thread_callback, this);
-  //  pthread_join(t1, NULL);
-
-  //  std::thread t1(call_from_thread);
-  //  t1.join();
-
-  // Start the core
-  //  ThreadExecutor<FuriousBlocksCore> executor;
-  //  tbb::tbb_thread t(executor, core);
-
-  // Start rendering
+  // Start scheduling
   schedule(schedule_selector(PanelScene::update));
-  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
 
   return true;
 }
 
 void PanelScene::update(float dt) {
+  // Tweeners update
+  tweeners.update(dt);
+
+  if (!gameRunning) {
+    return;
+  }
+
   // State time update
   stateTime += dt;
-
-  // Tweener
-  tweeners.update(dt);
 
   // Core tick
   core->onTick(tick);
 
   // Situation rendering
-  std::shared_ptr<GameSituation> gs(core->gameSituation);
-  auto ps = gs->playerIdToPanelSituation[123];
+  //  std::shared_ptr<GameSituation> gs(core->gameSituation);
+  Panel const &panel = *core->playerToPanel[player];
 
   // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-      BlockSituation *current = ps->blockSituations[x][y];
+      Block *current = panel.blocks[x][y];
       if (current == nullptr) {
         grid[x][y]->setVisible(false);
         continue;
@@ -321,7 +314,7 @@ void PanelScene::update(float dt) {
         continue;
       }
 
-      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + ps->scrollingOffset * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
       grid[x][y]->setDisplayFrame(frame);
       grid[x][y]->setVisible(true);
       if (y == 0) {
@@ -332,7 +325,7 @@ void PanelScene::update(float dt) {
   }
 
   // Score
-  score->setString(format("%d", ps->score).c_str());
+  score->setString(format("%d", panel.score).c_str());
 
   // Time
   minutes->setString(format("%02d", static_cast<int32_t>(stateTime / 60)).c_str());
@@ -352,18 +345,21 @@ void PanelScene::onCombo(Combo *combo) {
 }
 
 void PanelScene::onTweenFinished(void) {
-  if (countdown > 0) {
+  if (countdown > 1) {
     countdown--;
     countdownLabel->setCString(format("%d", countdown).c_str());
     claw::tween::single_tweener cdTweener(0, 2, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
     cdTweener.on_finished(boost::bind(&PanelScene::onTweenFinished, this));
     tweeners.insert(cdTweener);
   } else {
+    // Start music
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
+    gameRunning = true;
     removeChild(countdownLabel, true);
   }
 }
 
-CCSpriteFrame *PanelScene::getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking) {
+CCSpriteFrame *PanelScene::getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking) {
   NonLoopingAnimation *currentAnimation = animations[blockSituation->id];
   BlockState state = blockSituation->state;
   BlockType type = blockSituation->type;

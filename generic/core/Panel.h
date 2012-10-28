@@ -2,20 +2,17 @@
 #define __Panel_H_
 
 #include <cstdint>
-#include <set>
 #include <list>
 #include <set>
 #include <array>
 #include "Block.h"
 #include "Combo.h"
-#include "GarbageSituation.h"
 #include "FuriousBlocksCoreDefaults.h"
 #include "SimpleRNG.h"
 #include "BlockType.h"
 #include "PanelListener.h"
 #include "Move.h"
 #include "PanelState.h"
-#include "PanelSituation.h"
 #include "Point.h"
 
 class Panel {
@@ -80,7 +77,7 @@ private:
     int32_t getOwner();
     int32_t blink(int32_t poppingIndex, Combo *combo);
     int32_t reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing *parentClearing);
-    GarbageSituation *getSituation();
+//    GarbageSituation *getSituation();
   };
 
   class BlockLine : public BlockBar {
@@ -101,7 +98,6 @@ private:
   SimpleRNG *random;
   int64_t localTick;
   int32_t playerId;
-  furiousblocks::Point *cursor;
   std::set<Combo *> combos;
   std::set<Panel::Garbage *> garbages;
   std::set<Clearing *> clearings;
@@ -110,7 +106,6 @@ private:
   int32_t stateTick;
   int32_t levelScrollingSpeed;
   int32_t scrollingSpeed;
-  int32_t scrollingDelta;
   int32_t freezingTime;
   int32_t bonusFreezingTime;
   int32_t skillChainLevel;
@@ -120,7 +115,6 @@ private:
   bool gracing;
   bool gameOver;
   int32_t wallOffset;
-  int32_t score;
   PanelListener *panelListener;
   Block *newRandom(BlockType excludedType = static_cast<BlockType>(-1), int32_t poppingIndex = 0, int32_t skillChainLevel = 0);
   Block *newBlock(BlockType blockType, int32_t index = 0, int32_t skillChainLevel = 0);
@@ -136,7 +130,7 @@ private:
   Panel::Garbage *getGarbageByBlock(Block *block);
   Combo *detectCombo();
   void processCombo(Combo *combo);
-  PanelSituation *getSituation();
+//  PanelSituation *getSituation();
 
 protected:
   static const int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
@@ -147,7 +141,7 @@ public:
   Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener = nullptr);
   void reset();
   void setTransposedBlocks(BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT]);
-  PanelSituation *onTick(int64_t tick);
+  void onTick(int64_t tick);
   void stackGarbage(Panel::Garbage *garbage);
   Panel::Garbage *newGarbage(int32_t width, int32_t height, int32_t owner, bool skill);
   int64_t getLocalTick();
@@ -158,6 +152,9 @@ public:
   static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
   bool comboMask[Panel::X][Panel::Y];
   Block *blocks[Panel::X][Panel::Y]; // std::array<std::array<Block *, Panel::Y>, Panel::X> blocks;
+  furiousblocks::Point *cursor;
+  int32_t scrollingDelta;
+  int32_t score;
 };
 
 #endif //__Panel_H_

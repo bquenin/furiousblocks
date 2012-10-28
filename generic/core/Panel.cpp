@@ -92,7 +92,7 @@ Block *Panel::newBlock(BlockType blockType, int32_t index, int32_t skillChainLev
   return new Block(random->nextInt(), blockType, index, skillChainLevel);
 }
 
-PanelSituation *Panel::onTick(int64_t tick) {
+void Panel::onTick(int64_t tick) {
   if (stateTick > 0) {
     stateTick--;
   }
@@ -159,7 +159,7 @@ PanelSituation *Panel::onTick(int64_t tick) {
     default:
       break;
   }
-  return getSituation();
+//  return getSituation();
 }
 
 void Panel::processMove() {
@@ -745,29 +745,29 @@ void Panel::processCombo(Combo *combo) {
   }
 }
 
-PanelSituation *Panel::getSituation() {
-  BlockSituation ***blockSituations = new BlockSituation **[FuriousBlocksCoreDefaults::PANEL_WIDTH];
-  for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-    blockSituations[x] = new BlockSituation *[FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
-    for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
-      blockSituations[x][y] = blocks[x][y] == NULL ? NULL : blocks[x][y]->getSituation();
-    }
-  }
-
-  std::set<ComboSituation *> comboSituations;
-  for (auto combo: combos) {
-    comboSituations.insert(combo->getSituation());
-  }
-  std::set<GarbageSituation *> garbageSituations;
-  for (auto garbage: garbages) {
-    garbageSituations.insert(garbage->getSituation());
-  }
-  std::set<GarbageSituation *> garbageStackSituation;
-  for (auto garbage: garbageStack) {
-    garbageStackSituation.insert(garbage->getSituation());
-  }
-  return new PanelSituation(blockSituations, locked, comboSituations, cursor, scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, !clearings.empty());
-}
+//PanelSituation *Panel::getSituation() {
+//  BlockSituation ***blockSituations = new BlockSituation **[FuriousBlocksCoreDefaults::PANEL_WIDTH];
+//  for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+//    blockSituations[x] = new BlockSituation *[FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
+//    for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
+//      blockSituations[x][y] = blocks[x][y] == NULL ? NULL : blocks[x][y]->getSituation();
+//    }
+//  }
+//
+//  std::set<ComboSituation *> comboSituations;
+//  for (auto combo: combos) {
+//    comboSituations.insert(combo->getSituation());
+//  }
+//  std::set<GarbageSituation *> garbageSituations;
+//  for (auto garbage: garbages) {
+//    garbageSituations.insert(garbage->getSituation());
+//  }
+//  std::set<GarbageSituation *> garbageStackSituation;
+//  for (auto garbage: garbageStack) {
+//    garbageStackSituation.insert(garbage->getSituation());
+//  }
+//  return new PanelSituation(blockSituations, locked, comboSituations, cursor, scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, !clearings.empty());
+//}
 
 Panel::Garbage *Panel::newGarbage(int32_t width, int32_t height, int32_t owner, bool skill) {
   return new Panel::Garbage(this, width, height, owner, skill);
@@ -958,13 +958,13 @@ void Panel::Garbage::onDoneRevealing() {
   }
 }
 
-GarbageSituation *Panel::Garbage::getSituation() {
-  std::unordered_set<int32_t> blockIds;
-  for (auto barBlock: barBlocks) {
-    blockIds.insert(barBlock->id);
-  }
-  return new GarbageSituation(width, height, owner, blockIds);
-}
+//GarbageSituation *Panel::Garbage::getSituation() {
+//  std::unordered_set<int32_t> blockIds;
+//  for (auto barBlock: barBlocks) {
+//    blockIds.insert(barBlock->id);
+//  }
+//  return new GarbageSituation(width, height, owner, blockIds);
+//}
 
 Panel::BlockLine::BlockLine(Panel *__parent, int32_t width, int32_t owner)
 : BlockBar(__parent, width, 1, owner) {

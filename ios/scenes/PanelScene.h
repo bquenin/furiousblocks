@@ -26,7 +26,7 @@ public:
   virtual bool init();
   void update(float d);
   void onCombo(Combo *combo);
-  CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
+  CCSpriteFrame *getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking);
   void onTweenFinished(void);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
@@ -47,6 +47,7 @@ public:
 
   // Core
   FuriousBlocksCore *core;
+  bool gameRunning;
   Player *player;
   int64_t tick;
 
@@ -190,7 +191,6 @@ public:
   Animation *GARBAGE_BLINKING;
 
   Animation *CURSOR;
-
 };
 
 #endif // __PANELSCENE_H_
