@@ -21,8 +21,8 @@ StarNumber::StarNumber(PanelScene *panelScene, int32_t x, int32_t y, std::string
   panelScene->batch->addChild(ccSprite);
   panelScene->addChild(ccLabel);
 
-  tweener.insert(claw::tween::single_tweener(y, y + PanelScene::TILE_SIZE, 1.5, boost::bind(&CCNode::setPositionY, ccSprite, _1), claw::tween::easing_quart::ease_out));
-  tweener.insert(claw::tween::single_tweener(y, y + PanelScene::TILE_SIZE, 1.5, boost::bind(&CCNode::setPositionY, ccLabel, _1), claw::tween::easing_quart::ease_out));
+  tweener.insert(claw::tween::single_tweener(y, y + PanelScene::TILE_SIZE, 1, boost::bind(&CCNode::setPositionY, ccSprite, _1), claw::tween::easing_quart::ease_out));
+  tweener.insert(claw::tween::single_tweener(y, y + PanelScene::TILE_SIZE, 1, boost::bind(&CCNode::setPositionY, ccLabel, _1), claw::tween::easing_quart::ease_out));
   tweener.on_finished(boost::bind(&StarNumber::onTweenFinished, this));
   panelScene->tweeners.insert(tweener);
 }

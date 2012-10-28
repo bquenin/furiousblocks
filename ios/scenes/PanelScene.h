@@ -38,6 +38,7 @@ public:
   CCLabelBMFont *minutes;
   CCLabelBMFont *seconds;
   CCLabelBMFont *centisecs;
+  CCLabelBMFont *countdown;
 
   // Core
   FuriousBlocksCore *core;

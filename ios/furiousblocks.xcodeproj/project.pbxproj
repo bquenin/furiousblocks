@@ -50,9 +50,11 @@
 		7969E612FE03E636C97FF44A /* coopblack32.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969EDD6507D977DD579A17F /* coopblack32.fnt */; };
 		7969E705D437677FEEF656A6 /* CCTMXXMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E64228F22F096AD1288B /* CCTMXXMLParser.cpp */; };
 		7969E786C36C762638C2CDB6 /* CCTMXObjectGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E28230511461B8447857 /* CCTMXObjectGroup.cpp */; };
+		7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E33F030A2BE935A7CEFE /* coopblack64.fnt */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA86AF48218A3CB3A0A9 /* CCParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */; };
 		7969ECE4B3026C6FB0597C45 /* CCTileMapAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */; };
+		7969EF6C374262C7EADCBFFA /* coopblack64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA05ED8AFDB1F6A8EEF8 /* coopblack64.png */; };
 		D224B749163892780056F752 /* base_tweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B729163892780056F752 /* base_tweener.cpp */; };
 		D224B74A163892780056F752 /* easing_back.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B72B163892780056F752 /* easing_back.cpp */; };
 		D224B74B163892780056F752 /* easing_bounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B72D163892780056F752 /* easing_bounce.cpp */; };
@@ -316,6 +318,7 @@
 		7969E1B1F4BE78AC5E68B104 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		7969E28230511461B8447857 /* CCTMXObjectGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXObjectGroup.cpp; sourceTree = "<group>"; };
 		7969E3309233EBE3275C923E /* CCTMXXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXXMLParser.h; sourceTree = "<group>"; };
+		7969E33F030A2BE935A7CEFE /* coopblack64.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack64.fnt; sourceTree = "<group>"; };
 		7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTileMapAtlas.cpp; sourceTree = "<group>"; };
 		7969E4AE20C9DF31145E4E9A /* tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener.hpp; sourceTree = "<group>"; };
 		7969E51CC9169D96809A8B46 /* single_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = single_tweener.hpp; sourceTree = "<group>"; };
@@ -329,6 +332,7 @@
 		7969E8B0F366937D1A0C9569 /* coopblack32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coopblack32.png; sourceTree = "<group>"; };
 		7969E8FB4781CFAD110C617E /* CCTileMapAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTileMapAtlas.h; sourceTree = "<group>"; };
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
+		7969EA05ED8AFDB1F6A8EEF8 /* coopblack64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coopblack64.png; sourceTree = "<group>"; };
 		7969EA797DFA9B80178DC88F /* CCTMXLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXLayer.cpp; sourceTree = "<group>"; };
 		7969EB094F0D03F0DF4F0D8C /* StarNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarNumber.h; sourceTree = "<group>"; };
 		7969EB25D981A4309B2D076C /* CCTMXTiledMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXTiledMap.cpp; sourceTree = "<group>"; };
@@ -973,6 +977,8 @@
 				7969E8B0F366937D1A0C9569 /* coopblack32.png */,
 				7969EDD6507D977DD579A17F /* coopblack32.fnt */,
 				D2E1CD0D15D7D81400D844D0 /* SkaterDudes.ttf */,
+				7969E33F030A2BE935A7CEFE /* coopblack64.fnt */,
+				7969EA05ED8AFDB1F6A8EEF8 /* coopblack64.png */,
 			);
 			name = fonts;
 			path = assets/fonts;
@@ -1972,6 +1978,8 @@
 				7969E1712C84417C3F1578CA /* coopblack32.png in Resources */,
 				D280C844161A3D94007EA377 /* ChangeLog in Resources */,
 				D280C845161A3D94007EA377 /* CMakeLists.txt in Resources */,
+				7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */,
+				7969EF6C374262C7EADCBFFA /* coopblack64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

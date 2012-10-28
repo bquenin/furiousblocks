@@ -232,6 +232,13 @@ bool PanelScene::init() {
   centisecs->setAlignment(kCCTextAlignmentCenter);
   addChild(centisecs);
 
+  countdown = CCLabelBMFont::create("3", "coopblack32.fnt");
+  countdown->setAnchorPoint(ccp(0.5, 0.5));
+  countdown->setScale(3);
+  countdown->setPosition(ccp(size.width / 2, size.height / 2));
+  countdown->setAlignment(kCCTextAlignmentCenter);
+  addChild(countdown);
+
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
   //  cursor->setAnchorPoint(ccp(0, 0));
