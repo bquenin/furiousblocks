@@ -7,6 +7,7 @@
 #include "FuriousBlocksCore.h"
 #include "NonLoopingAnimation.h"
 #include "tweener_group.hpp"
+#include "single_tweener.hpp"
 
 USING_NS_CC;
 
@@ -26,6 +27,7 @@ public:
   void update(float d);
   void onCombo(Combo *combo);
   CCSpriteFrame *getBlockFrame(BlockSituation *blockSituation, int64_t tick, bool compressed, bool panicking);
+  void onTweenFinished(void);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
@@ -38,7 +40,10 @@ public:
   CCLabelBMFont *minutes;
   CCLabelBMFont *seconds;
   CCLabelBMFont *centisecs;
-  CCLabelBMFont *countdown;
+
+  // Countdown
+  int countdown = 3;
+  CCLabelBMFont *countdownLabel;
 
   // Core
   FuriousBlocksCore *core;
@@ -185,6 +190,7 @@ public:
   Animation *GARBAGE_BLINKING;
 
   Animation *CURSOR;
+
 };
 
 #endif // __PANELSCENE_H_

@@ -2,9 +2,29 @@
 #include "GarbageBlockType.h"
 #include "SimpleAudioEngine.h"
 #include "StarNumber.h"
+#include "easing_back.hpp"
+#include <boost/bind.hpp>
 
 USING_NS_CC;
 using namespace CocosDenshion;
+
+inline std::string format(const char *fmt, ...) {
+  int size = 512;
+  char *buffer = 0;
+  buffer = new char [size];
+  va_list vl;
+  va_start(vl, fmt);
+  int nsize = vsnprintf(buffer, size, fmt, vl);
+  if (size <= nsize) {//fail delete buffer and try again
+    delete buffer;
+    buffer = new char [nsize + 1];//+1 for /0
+    vsnprintf(buffer, size, fmt, vl);
+  }
+  std::string ret(buffer);
+  va_end(vl);
+  delete buffer;
+  return ret;
+}
 
 PanelScene::PanelScene()
 : tick(0)
@@ -232,12 +252,15 @@ bool PanelScene::init() {
   centisecs->setAlignment(kCCTextAlignmentCenter);
   addChild(centisecs);
 
-  countdown = CCLabelBMFont::create("3", "coopblack32.fnt");
-  countdown->setAnchorPoint(ccp(0.5, 0.5));
-  countdown->setScale(3);
-  countdown->setPosition(ccp(size.width / 2, size.height / 2));
-  countdown->setAlignment(kCCTextAlignmentCenter);
-  addChild(countdown);
+  countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
+  countdownLabel->setAnchorPoint(ccp(0.5, 0.5));
+  countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
+  countdownLabel->setAlignment(kCCTextAlignmentCenter);
+  addChild(countdownLabel);
+
+  claw::tween::single_tweener cdTweener(0, 2, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
+  cdTweener.on_finished(boost::bind(&PanelScene::onTweenFinished, this));
+  tweeners.insert(cdTweener);
 
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
@@ -267,24 +290,6 @@ bool PanelScene::init() {
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
 
   return true;
-}
-
-inline std::string format(const char *fmt, ...) {
-  int size = 512;
-  char *buffer = 0;
-  buffer = new char [size];
-  va_list vl;
-  va_start(vl, fmt);
-  int nsize = vsnprintf(buffer, size, fmt, vl);
-  if (size <= nsize) {//fail delete buffer and try again
-    delete buffer;
-    buffer = new char [nsize + 1];//+1 for /0
-    vsnprintf(buffer, size, fmt, vl);
-  }
-  std::string ret(buffer);
-  va_end(vl);
-  delete buffer;
-  return ret;
 }
 
 void PanelScene::update(float dt) {
@@ -343,6 +348,18 @@ void PanelScene::onCombo(Combo *combo) {
   }
   if (combo->skillChainLevel > 1) {
     new StarNumber(this, xOffset + combo->x * TILE_SIZE, yOffset + (combo->y + 1) * TILE_SIZE, format("x%d", combo->skillChainLevel), ccc3(255, 128, 128));
+  }
+}
+
+void PanelScene::onTweenFinished(void) {
+  if (countdown > 0) {
+    countdown--;
+    countdownLabel->setCString(format("%d", countdown).c_str());
+    claw::tween::single_tweener cdTweener(0, 2, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
+    cdTweener.on_finished(boost::bind(&PanelScene::onTweenFinished, this));
+    tweeners.insert(cdTweener);
+  } else {
+    removeChild(countdownLabel, true);
   }
 }
 
