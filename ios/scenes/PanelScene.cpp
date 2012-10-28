@@ -287,7 +287,7 @@ void PanelScene::update(float dt) {
         continue;
       }
 
-      CCSpriteFrame *frame = getBlockFrame(current, tick, false, false);
+      CCSpriteFrame *frame = getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
       if (frame == nullptr) {
         grid[x][y]->setVisible(false);
         continue;
