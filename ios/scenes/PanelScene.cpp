@@ -285,15 +285,8 @@ void PanelScene::update(float dt) {
   // Tweeners update
   tweeners.update(dt);
 
-  if (!gameRunning) {
-    return;
-  }
-
   // State time update
   stateTime += dt;
-
-  // Core tick
-  core->onTick(tick);
 
   // Situation rendering
   //  std::shared_ptr<GameSituation> gs(core->gameSituation);
@@ -332,7 +325,12 @@ void PanelScene::update(float dt) {
   seconds->setString(format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
   centisecs->setString(format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
 
-  tick++;
+  if (!gameRunning) {
+    return;
+  }
+
+  // Core tick
+  core->onTick(tick++);
 }
 
 void PanelScene::onCombo(Combo *combo) {
