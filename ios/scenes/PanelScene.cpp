@@ -3,6 +3,7 @@
 #include "SimpleAudioEngine.h"
 #include "StarNumber.h"
 #include "easing_back.hpp"
+#include "easing_bounce.hpp"
 #include <boost/bind.hpp>
 
 USING_NS_CC;
@@ -193,65 +194,99 @@ bool PanelScene::init() {
       grid[x][y] = CCSprite::createWithSpriteFrame(GARBAGE_PLAIN);
       grid[x][y]->setAnchorPoint(ccp(0, 0));
       grid[x][y]->setVisible(false);
+      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE));
+      if (y > 0) {
+        tweeners.insert(claw::tween::single_tweener(random() % 350 + 500 + yOffset + y * TILE_SIZE, yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_out));
+      }
       batch->addChild(grid[x][y]);
     }
   }
 
   CCSprite *bgBottom = CCSprite::createWithSpriteFrameName("bg-bottom.png");
-  bgBottom->setAnchorPoint(ccp(0, 0));
-  bgBottom->setPosition(ccp(0, 0));
+  bgBottom->
+      setAnchorPoint(ccp(0, 0)
+  );
+  bgBottom->
+      setPosition(ccp(0, 0)
+  );
   batch->addChild(bgBottom);
 
   CCSprite *bgTop = CCSprite::createWithSpriteFrameName("bg-top.png");
-  bgTop->setAnchorPoint(ccp(0, 0));
-  bgTop->setPosition(ccp(0, 440));
+  bgTop->
+      setAnchorPoint(ccp(0, 0)
+  );
+  bgTop->
+      setPosition(ccp(0, 440)
+  );
   batch->addChild(bgTop);
 
   CCSize size = CCDirector::sharedDirector()->getWinSize();
 
   youLose = CCSprite::createWithSpriteFrameName("lose.png");
-  youLose->setPosition(ccp(size.width / 2, size.height / 2));
+  youLose->
+      setPosition(ccp(size.width / 2, size.height / 2)
+  );
   youLose->setVisible(false);
   batch->addChild(youLose);
 
   CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  scoreLabel->setPosition(ccp(size.width / 4, 470));
+  scoreLabel->
+      setPosition(ccp(size.width / 4, 470)
+  );
   addChild(scoreLabel);
 
   score = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  score->setPosition(ccp(size.width / 4, 454));
+  score->
+      setPosition(ccp(size.width / 4, 454)
+  );
   addChild(score);
 
   CCLabelBMFont *timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  timeLabel->setPosition(ccp(size.width * 3 / 4, 470));
+  timeLabel->
+      setPosition(ccp(size.width * 3 / 4, 470)
+  );
   addChild(timeLabel);
 
   minutes = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  minutes->setPosition(ccp(-32 + size.width * 3 / 4, 454));
+  minutes->
+      setPosition(ccp(-32 + size.width * 3 / 4, 454)
+  );
   addChild(minutes);
 
   CCLabelBMFont *colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon1->setPosition(ccp(-16 + size.width * 3 / 4, 454));
+  colon1->
+      setPosition(ccp(-16 + size.width * 3 / 4, 454)
+  );
   addChild(colon1);
 
   seconds = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  seconds->setPosition(ccp(size.width * 3 / 4, 454));
+  seconds->
+      setPosition(ccp(size.width * 3 / 4, 454)
+  );
   addChild(seconds);
 
   CCLabelBMFont *colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon2->setPosition(ccp(16 + size.width * 3 / 4, 454));
+  colon2->
+      setPosition(ccp(16 + size.width * 3 / 4, 454)
+  );
   addChild(colon2);
 
   centisecs = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  centisecs->setPosition(ccp(32 + size.width * 3 / 4, 454));
+  centisecs->
+      setPosition(ccp(32 + size.width * 3 / 4, 454)
+  );
   addChild(centisecs);
 
   countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
-  countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
+  countdownLabel->
+      setPosition(ccp(size.width / 2, size.height / 2)
+  );
   addChild(countdownLabel);
 
-  claw::tween::single_tweener cdTweener(0, 3, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
-  cdTweener.on_finished(boost::bind(&PanelScene::onTweenFinished, this));
+  claw::tween::single_tweener cdTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
+  cdTweener.
+      on_finished(boost::bind(
+      &PanelScene::onTweenFinished, this));
   tweeners.insert(cdTweener);
 
   // Cursor
@@ -273,9 +308,6 @@ bool PanelScene::init() {
 }
 
 void PanelScene::update(float dt) {
-  // Tweeners update
-  tweeners.update(dt);
-
   // Situation rendering
   //  std::shared_ptr<GameSituation> gs(core->gameSituation);
   Panel const &panel = *core->playerToPanel[player];
@@ -304,6 +336,9 @@ void PanelScene::update(float dt) {
 
     }
   }
+
+  // Tweeners update
+  tweeners.update(dt);
 
   // Score
   score->setString(format("%d", panel.score).c_str());
@@ -337,7 +372,7 @@ void PanelScene::onTweenFinished(void) {
   if (countdown > 1) {
     countdown--;
     countdownLabel->setCString(format("%d", countdown).c_str());
-    claw::tween::single_tweener cdTweener(0, 3, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
+    claw::tween::single_tweener cdTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
     cdTweener.on_finished(boost::bind(&PanelScene::onTweenFinished, this));
     tweeners.insert(cdTweener);
   } else {
