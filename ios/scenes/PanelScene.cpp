@@ -210,53 +210,39 @@ bool PanelScene::init() {
   CCSize size = CCDirector::sharedDirector()->getWinSize();
 
   CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  scoreLabel->setAnchorPoint(ccp(0.5, 0.5));
   scoreLabel->setPosition(ccp(size.width / 4, 470));
   addChild(scoreLabel);
 
   score = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  score->setAnchorPoint(ccp(0.5, 0.5));
   score->setPosition(ccp(size.width / 4, 454));
-  score->setAlignment(kCCTextAlignmentCenter);
   addChild(score);
 
   CCLabelBMFont *timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  timeLabel->setAnchorPoint(ccp(0.5, 0.5));
   timeLabel->setPosition(ccp(size.width * 3 / 4, 470));
   addChild(timeLabel);
 
   minutes = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  minutes->setAnchorPoint(ccp(0.5, 0.5));
   minutes->setPosition(ccp(-32 + size.width * 3 / 4, 454));
-  minutes->setAlignment(kCCTextAlignmentCenter);
   addChild(minutes);
 
   CCLabelBMFont *colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon1->setAnchorPoint(ccp(0.5, 0.5));
   colon1->setPosition(ccp(-16 + size.width * 3 / 4, 454));
   addChild(colon1);
 
   seconds = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  seconds->setAnchorPoint(ccp(0.5, 0.5));
   seconds->setPosition(ccp(size.width * 3 / 4, 454));
-  seconds->setAlignment(kCCTextAlignmentCenter);
   addChild(seconds);
 
   CCLabelBMFont *colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon2->setAnchorPoint(ccp(0.5, 0.5));
   colon2->setPosition(ccp(16 + size.width * 3 / 4, 454));
   addChild(colon2);
 
   centisecs = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  centisecs->setAnchorPoint(ccp(0.5, 0.5));
   centisecs->setPosition(ccp(32 + size.width * 3 / 4, 454));
-  centisecs->setAlignment(kCCTextAlignmentCenter);
   addChild(centisecs);
 
   countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
-  countdownLabel->setAnchorPoint(ccp(0.5, 0.5));
   countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
-  countdownLabel->setAlignment(kCCTextAlignmentCenter);
   addChild(countdownLabel);
 
   claw::tween::single_tweener cdTweener(0, 2, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
