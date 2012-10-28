@@ -12,7 +12,6 @@
 #include "BlockType.h"
 #include "PanelListener.h"
 #include "Move.h"
-#include "PanelState.h"
 #include "Point.h"
 
 class Panel {
@@ -93,7 +92,7 @@ private:
   };
 
   static const int32_t INITIAL_SCROLLING_SPEED = static_cast<int32_t>(FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  static const int64_t NEXT_LEVEL = static_cast<int64_t>((FuriousBlocksCoreDefaults::CORE_FREQUENCY * 60));
+  static const int64_t NEXT_LEVEL = static_cast<int64_t>((FuriousBlocksCoreDefaults::CORE_FREQUENCY * 120));
   int32_t lastIndex;
   SimpleRNG *random;
   int64_t localTick;
@@ -102,8 +101,6 @@ private:
   std::set<Panel::Garbage *> garbages;
   std::set<Clearing *> clearings;
   std::set<Panel::Garbage *> garbageStack;
-  PanelState state;
-  int32_t stateTick;
   int32_t levelScrollingSpeed;
   int32_t scrollingSpeed;
   int32_t freezingTime;
@@ -124,13 +121,11 @@ private:
   void gracePeriod();
   void freeze(int32_t freezingTime);
   void newLine();
-  void quake();
   void mechanics(int64_t tick);
   Combo *getComboByBlock(Block *block);
   Panel::Garbage *getGarbageByBlock(Block *block);
   Combo *detectCombo();
   void processCombo(Combo *combo);
-//  PanelSituation *getSituation();
 
 protected:
   static const int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
@@ -146,7 +141,7 @@ public:
   Panel::Garbage *newGarbage(int32_t width, int32_t height, int32_t owner, bool skill);
   int64_t getLocalTick();
   void setLocalTick(int64_t localTick);
-  bool isGameOver();
+  bool isGameOver() const;
   void submitMove(Move *move);
   static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
   static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);

@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <vector>
 #include "Block.h"
-#include "ComboSituation.h"
 
 class Combo {
 private:
@@ -18,7 +17,6 @@ public:
   Combo(int32_t owner);
   void addBlock(Block *block);
   int32_t size();
-  ComboSituation *getSituation();
   bool contains(Block *block);
 };
 

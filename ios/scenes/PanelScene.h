@@ -45,6 +45,9 @@ public:
   int countdown = 3;
   CCLabelBMFont *countdownLabel;
 
+  // Gameover
+  CCSprite *youLose;
+
   // Core
   FuriousBlocksCore *core;
   bool gameRunning;

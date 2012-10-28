@@ -11,8 +11,6 @@ Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[F
 , localTick(0)
 , playerId(playerId)
 , cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2) - 1))
-, state (PanelState::IDLE)
-, stateTick(0)
 , levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED)
 , scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED)
 , scrollingDelta(0)
@@ -59,8 +57,6 @@ void Panel::reset() {
   garbages.clear();
   clearings.clear();
   garbageStack.clear();
-  stateTick = 0;
-  state = PanelState::IDLE;
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
       blocks[x][y] = nullptr;
@@ -93,73 +89,17 @@ Block *Panel::newBlock(BlockType blockType, int32_t index, int32_t skillChainLev
 }
 
 void Panel::onTick(int64_t tick) {
-  if (stateTick > 0) {
-    stateTick--;
+  processMove();
+  mechanics(tick);
+  Combo *currentCombo = detectCombo();
+  if (currentCombo->size() > 0) {
+    processCombo(currentCombo);
+  } else {
+    delete currentCombo;
   }
-  if (stateTick == 0) {
-    switch (state) {
-      case PanelState::QUAKING:
-        state = PanelState::IDLE;
-        break;
-      case PanelState::GAMEOVER_PHASE1:
-        state = PanelState::GAMEOVER_PHASE2;
-        stateTick = FuriousBlocksCoreDefaults::PANEL_QUAKINGTIME - 1;
-        break;
-      case PanelState::GAMEOVER_PHASE2:
-        state = PanelState::GAMEOVER_PHASE3;
-        stateTick = static_cast<int32_t>((2 * FuriousBlocksCoreDefaults::CORE_FREQUENCY));
-        break;
-      case PanelState::GAMEOVER_PHASE3:
-        break;
-      default:
-        break;
-    }
-  }
-  switch (state) {
-    case PanelState::QUAKING:
-    case PanelState::IDLE: {
-      processMove();
-      mechanics(tick);
-      Combo *currentCombo = detectCombo();
-      if (currentCombo->size() > 0) {
-        processCombo(currentCombo);
-      } else {
-        delete currentCombo;
-      }
-      scrolling(tick);
-      dropGarbages();
-    }
-      break;
-    case PanelState::GAMEOVER_PHASE1:
-      if ((stateTick % 4) == 0) {
-        for (int32_t i = 0; i < Panel::X; i++) {
-          if (blocks[i][Panel::Y_DISPLAY] == nullptr) {
-            continue;
-          }
-          for (int32_t j = Panel::Y_DISPLAY; j > 0; j--) {
-            Block *current = blocks[i][j];
-            if (!Block::isComputable(current)) {
-              continue;
-            }
-            current->explode(-1);
-            break;
-          }
-        }
-      }
-      break;
-    case PanelState::GAMEOVER_PHASE2:
-      break;
-    case PanelState::GAMEOVER_PHASE3:
-      if ((stateTick % 2) == 0) {
-        if (wallOffset != Panel::Y_DISPLAY) {
-          wallOffset++;
-        }
-      }
-      break;
-    default:
-      break;
-  }
-//  return getSituation();
+  scrolling(tick);
+  dropGarbages();
+  //  return getSituation();
 }
 
 void Panel::processMove() {
@@ -315,8 +255,6 @@ void Panel::gracePeriod() {
     if (gracing) {
       garbageStack.clear();
       gameOver = true;
-      state = PanelState::GAMEOVER_PHASE1;
-      stateTick = FuriousBlocksCoreDefaults::PANEL_QUAKINGTIME - 1;
     } else {
       lifting = false;
       gracing = true;
@@ -358,11 +296,6 @@ void Panel::stackGarbage(Panel::Garbage *garbage) {
   //    }
   //  }
   //  garbageStack->add(garbage);
-}
-
-void Panel::quake() {
-  state = PanelState::QUAKING;
-  stateTick = FuriousBlocksCoreDefaults::PANEL_QUAKINGTIME - 1;
 }
 
 void Panel::mechanics(int64_t tick) {
@@ -477,7 +410,7 @@ void Panel::mechanics(int64_t tick) {
                 garbage->fall(x, y);
               } else {
                 garbage->idle();
-                quake();
+                // TODO: Send quake event here.
               }
               x += garbage->width - 1;
             }
@@ -781,7 +714,7 @@ void Panel::setLocalTick(int64_t localTick) {
   this->localTick = localTick;
 }
 
-bool Panel::isGameOver() {
+bool Panel::isGameOver() const {
   return gameOver;
 }
 

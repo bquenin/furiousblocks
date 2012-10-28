@@ -10,7 +10,6 @@
 #include "FuriousBlocksCoreDefaults.h"
 #include "Player.h"
 #include "Panel.h"
-#include "GameSituation.h"
 
 
 class FuriousBlocksCore : PanelListener {

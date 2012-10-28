@@ -5,7 +5,6 @@
 #include "BlockState.h"
 #include "BlockType.h"
 #include "PanelEvent.h"
-#include "BlockSituation.h"
 
 class Block {
 private:
@@ -38,7 +37,6 @@ public:
   void airBounce();
   void toDelete();
   PanelEvent *update();
-  BlockSituation *getSituation();
   static bool isComputable(Block *block);
   Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel);
 };

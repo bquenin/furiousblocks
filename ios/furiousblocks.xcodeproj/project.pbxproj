@@ -20,7 +20,6 @@
 		02BAF104159E5C0E00BCA0C3 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF101159E5C0E00BCA0C3 /* AppController.mm */; };
 		02BAF105159E5C0E00BCA0C3 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF102159E5C0E00BCA0C3 /* RootViewController.mm */; };
 		02BAF4B7159E5F5C00BCA0C3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */; };
-		02E03081159FB9E800C26BE0 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03074159FB9E800C26BE0 /* fps_images.png */; };
 		02E03083159FB9E800C26BE0 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03076159FB9E800C26BE0 /* Icon-72.png */; };
 		02E03084159FB9E800C26BE0 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03077159FB9E800C26BE0 /* Icon-Small-50.png */; };
 		02E03085159FB9E800C26BE0 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E03078159FB9E800C26BE0 /* Icon-Small.png */; };
@@ -28,8 +27,6 @@
 		02E03087159FB9E800C26BE0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E0307A159FB9E800C26BE0 /* Icon.png */; };
 		02E03088159FB9E800C26BE0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02E0307B159FB9E800C26BE0 /* Icon@2x.png */; };
 		02E0308A159FB9E800C26BE0 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 02E0307D159FB9E800C26BE0 /* iTunesArtwork */; };
-		2E211F1159E493100CB0ADC /* fps_images-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0ADB /* fps_images-hd.png */; };
-		2E211F1159E493100CB0ADE /* fps_images-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0ADD /* fps_images-ipadhd.png */; };
 		2E211F1159E493100CB0B22 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B21 /* TitleScene.cpp */; };
 		2E211F1159E493100CB0B70 /* TitleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B6F /* TitleScene.ccbi */; };
 		2E211F1159E493100CB0B78 /* btn-a-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E211F1159E493100CB0B77 /* btn-a-0.png */; };
@@ -107,8 +104,6 @@
 		D280C841161A3D94007EA377 /* CCGrabber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C69D161A3D94007EA377 /* CCGrabber.cpp */; };
 		D280C842161A3D94007EA377 /* CCGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C69F161A3D94007EA377 /* CCGrid.cpp */; };
 		D280C843161A3D94007EA377 /* aabb.c in Sources */ = {isa = PBXBuildFile; fileRef = D280C6BC161A3D94007EA377 /* aabb.c */; };
-		D280C844161A3D94007EA377 /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = D280C6BD161A3D94007EA377 /* ChangeLog */; };
-		D280C845161A3D94007EA377 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = D280C6BE161A3D94007EA377 /* CMakeLists.txt */; };
 		D280C846161A3D94007EA377 /* mat4stack.c in Sources */ = {isa = PBXBuildFile; fileRef = D280C6C0161A3D94007EA377 /* mat4stack.c */; };
 		D280C847161A3D94007EA377 /* matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = D280C6C1161A3D94007EA377 /* matrix.c */; };
 		D280C848161A3D94007EA377 /* mat3.c in Sources */ = {isa = PBXBuildFile; fileRef = D280C6C2161A3D94007EA377 /* mat3.c */; };
@@ -264,7 +259,6 @@
 /* Begin PBXFileReference section */
 		028D818515A064800057EFA4 /* PanelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelScene.h; sourceTree = "<group>"; };
 		028D818615A064800057EFA4 /* PanelScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PanelScene.cpp; sourceTree = "<group>"; };
-		028D818A15A064980057EFA4 /* iphone.zwd */ = {isa = PBXFileReference; lastKnownFileType = file; path = iphone.zwd; sourceTree = "<group>"; };
 		02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		02BAEC4A159E57C600BCA0C3 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		02BAEEB7159E5AAB00BCA0C3 /* furiousblocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = furiousblocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,7 +268,6 @@
 		02BAF101159E5C0E00BCA0C3 /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppController.mm; path = bootstrap/AppController.mm; sourceTree = SOURCE_ROOT; };
 		02BAF102159E5C0E00BCA0C3 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = bootstrap/RootViewController.mm; sourceTree = SOURCE_ROOT; };
 		02BAF106159E5C7200BCA0C3 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = bootstrap/Prefix.pch; sourceTree = SOURCE_ROOT; };
-		02E03074159FB9E800C26BE0 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = assets/fps_images.png; sourceTree = SOURCE_ROOT; };
 		02E03076159FB9E800C26BE0 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "assets/Icon-72.png"; sourceTree = SOURCE_ROOT; };
 		02E03077159FB9E800C26BE0 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "assets/Icon-Small-50.png"; sourceTree = SOURCE_ROOT; };
 		02E03078159FB9E800C26BE0 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "assets/Icon-Small.png"; sourceTree = SOURCE_ROOT; };
@@ -291,8 +284,6 @@
 		02E20FB0159E492E00CB0ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		02E20FB2159E492E00CB0ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02E20FB4159E492E00CB0ADA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2E211F1159E493100CB0ADB /* fps_images-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-hd.png"; sourceTree = "<group>"; };
-		2E211F1159E493100CB0ADD /* fps_images-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fps_images-ipadhd.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B19 /* blocks-hd.zwd */ = {isa = PBXFileReference; lastKnownFileType = file.zwd; path = "blocks-hd.zwd"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B20 /* TitleSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSceneLoader.h; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B21 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
@@ -454,8 +445,6 @@
 		D280C6B9161A3D94007EA377 /* vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
 		D280C6BA161A3D94007EA377 /* vec4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec4.h; sourceTree = "<group>"; };
 		D280C6BC161A3D94007EA377 /* aabb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aabb.c; sourceTree = "<group>"; };
-		D280C6BD161A3D94007EA377 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
-		D280C6BE161A3D94007EA377 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		D280C6C0161A3D94007EA377 /* mat4stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mat4stack.c; sourceTree = "<group>"; };
 		D280C6C1161A3D94007EA377 /* matrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = matrix.c; sourceTree = "<group>"; };
 		D280C6C2161A3D94007EA377 /* mat3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mat3.c; sourceTree = "<group>"; };
@@ -784,7 +773,6 @@
 		D2BD398E15C5D0A90038E59C /* PanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelEvent.h; sourceTree = "<group>"; };
 		D2BD399015C5D0A90038E59C /* PanelEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelEventType.h; sourceTree = "<group>"; };
 		D2BD399215C5D0A90038E59C /* PanelListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelListener.h; sourceTree = "<group>"; };
-		D2BD399815C5D0A90038E59C /* PanelState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelState.h; sourceTree = "<group>"; };
 		D2BD399B15C5D0A90038E59C /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		D2BD399C15C5D0A90038E59C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		D2BD399D15C5D0A90038E59C /* Point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
@@ -839,9 +827,6 @@
 				2E211F1159E493100CB0B7B /* btn-a-2.png */,
 				2E211F1159E493100CB0B79 /* btn-a-1.png */,
 				2E211F1159E493100CB0B77 /* btn-a-0.png */,
-				2E211F1159E493100CB0ADD /* fps_images-ipadhd.png */,
-				2E211F1159E493100CB0ADB /* fps_images-hd.png */,
-				02E03074159FB9E800C26BE0 /* fps_images.png */,
 				02E03076159FB9E800C26BE0 /* Icon-72.png */,
 				02E03077159FB9E800C26BE0 /* Icon-Small-50.png */,
 				02E03078159FB9E800C26BE0 /* Icon-Small.png */,
@@ -875,7 +860,6 @@
 				0250A3F615A36D3F0087AC45 /* builder */,
 				2E211F1159E493100CB0B18 /* scenes */,
 				2E211F1159E493100CB0B19 /* blocks-hd.zwd */,
-				028D818A15A064980057EFA4 /* iphone.zwd */,
 				02BAEA13159E577F00BCA0C3 /* assets */,
 				02BAEC48159E57C600BCA0C3 /* generic */,
 				02E20FB6159E492E00CB0ADA /* bootstrap */,
@@ -1238,8 +1222,6 @@
 			isa = PBXGroup;
 			children = (
 				D280C6BC161A3D94007EA377 /* aabb.c */,
-				D280C6BD161A3D94007EA377 /* ChangeLog */,
-				D280C6BE161A3D94007EA377 /* CMakeLists.txt */,
 				D280C6BF161A3D94007EA377 /* GL */,
 				D280C6C2161A3D94007EA377 /* mat3.c */,
 				D280C6C3161A3D94007EA377 /* mat4.c */,
@@ -1861,7 +1843,6 @@
 				D2BD398E15C5D0A90038E59C /* PanelEvent.h */,
 				D2BD399015C5D0A90038E59C /* PanelEventType.h */,
 				D2BD399215C5D0A90038E59C /* PanelListener.h */,
-				D2BD399815C5D0A90038E59C /* PanelState.h */,
 				D2BD399B15C5D0A90038E59C /* Player.cpp */,
 				D2BD399D15C5D0A90038E59C /* Point.cpp */,
 				D2BD399E15C5D0A90038E59C /* Point.h */,
@@ -1922,7 +1903,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02E03081159FB9E800C26BE0 /* fps_images.png in Resources */,
 				02E03083159FB9E800C26BE0 /* Icon-72.png in Resources */,
 				02E03084159FB9E800C26BE0 /* Icon-Small-50.png in Resources */,
 				02E03085159FB9E800C26BE0 /* Icon-Small.png in Resources */,
@@ -1930,8 +1910,6 @@
 				02E03087159FB9E800C26BE0 /* Icon.png in Resources */,
 				02E03088159FB9E800C26BE0 /* Icon@2x.png in Resources */,
 				02E0308A159FB9E800C26BE0 /* iTunesArtwork in Resources */,
-				2E211F1159E493100CB0ADC /* fps_images-hd.png in Resources */,
-				2E211F1159E493100CB0ADE /* fps_images-ipadhd.png in Resources */,
 				2E211F1159E493100CB0B70 /* TitleScene.ccbi in Resources */,
 				2E211F1159E493100CB0B78 /* btn-a-0.png in Resources */,
 				2E211F1159E493100CB0B7A /* btn-a-1.png in Resources */,
@@ -1951,8 +1929,6 @@
 				D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */,
 				7969E612FE03E636C97FF44A /* coopblack32.fnt in Resources */,
 				7969E1712C84417C3F1578CA /* coopblack32.png in Resources */,
-				D280C844161A3D94007EA377 /* ChangeLog in Resources */,
-				D280C845161A3D94007EA377 /* CMakeLists.txt in Resources */,
 				7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */,
 				7969EF6C374262C7EADCBFFA /* coopblack64.png in Resources */,
 			);
@@ -2194,6 +2170,7 @@
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = assets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2222,6 +2199,7 @@
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = assets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2266,7 +2244,7 @@
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
 				SDKROOT = iphoneos;
@@ -2299,7 +2277,7 @@
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";

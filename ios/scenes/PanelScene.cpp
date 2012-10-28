@@ -209,6 +209,11 @@ bool PanelScene::init() {
 
   CCSize size = CCDirector::sharedDirector()->getWinSize();
 
+  youLose = CCSprite::createWithSpriteFrameName("lose.png");
+  youLose->setPosition(ccp(size.width / 2, size.height / 2));
+  youLose->setVisible(false);
+  batch->addChild(youLose);
+
   CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
   scoreLabel->setPosition(ccp(size.width / 4, 470));
   addChild(scoreLabel);
@@ -245,7 +250,7 @@ bool PanelScene::init() {
   countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
   addChild(countdownLabel);
 
-  claw::tween::single_tweener cdTweener(0, 2, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
+  claw::tween::single_tweener cdTweener(0, 3, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
   cdTweener.on_finished(boost::bind(&PanelScene::onTweenFinished, this));
   tweeners.insert(cdTweener);
 
@@ -270,9 +275,6 @@ bool PanelScene::init() {
 void PanelScene::update(float dt) {
   // Tweeners update
   tweeners.update(dt);
-
-  // State time update
-  stateTime += dt;
 
   // Situation rendering
   //  std::shared_ptr<GameSituation> gs(core->gameSituation);
@@ -311,9 +313,12 @@ void PanelScene::update(float dt) {
   seconds->setString(format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
   centisecs->setString(format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
 
-  if (!gameRunning) {
+  if (!gameRunning || panel.isGameOver()) {
     return;
   }
+
+  // State time update
+  stateTime += dt;
 
   // Core tick
   core->onTick(tick++);
@@ -332,7 +337,7 @@ void PanelScene::onTweenFinished(void) {
   if (countdown > 1) {
     countdown--;
     countdownLabel->setCString(format("%d", countdown).c_str());
-    claw::tween::single_tweener cdTweener(0, 2, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
+    claw::tween::single_tweener cdTweener(0, 3, 0.5, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
     cdTweener.on_finished(boost::bind(&PanelScene::onTweenFinished, this));
     tweeners.insert(cdTweener);
   } else {

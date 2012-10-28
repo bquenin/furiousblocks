@@ -15,14 +15,6 @@ int32_t Combo::size() {
   return blocks.size();
 }
 
-ComboSituation *Combo::getSituation() {
-  std::set<int32_t> blockIds;
-  for (auto block: blocks) {
-    blockIds.insert(block->id);
-  }
-  return new ComboSituation(blocks.size(), skillChainLevel, blockIds);
-}
-
 bool Combo::contains(Block *block) {
   for (Block *b : blocks) {
     if (b == block) {

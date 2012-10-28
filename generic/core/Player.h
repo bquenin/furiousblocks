@@ -3,7 +3,6 @@
 
 #include <cstdint>
 #include <string>
-#include "PanelSituation.h"
 #include "Move.h"
 #include "cocos2d.h"
 #include "Panel.h"

@@ -135,10 +135,6 @@ PanelEvent *Block::update() {
   return event;
 }
 
-BlockSituation *Block::getSituation() {
-  return new BlockSituation(id, type, state, stateTick, garbageBlockType, garbageOwner, combo, justLand, fallingFromClearing, poppingIndex, movable, combinable);
-}
-
 bool Block::isComputable(Block *block) {
   return block != nullptr && block->movable && block->state == BlockState::IDLE;
 }
