@@ -26,6 +26,7 @@ public:
   virtual bool init();
   void update(float d);
   void onCombo(Combo *combo);
+  void onGameOver();
   CCSpriteFrame *getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking);
   void onBeginningTweenFinished(void);
 
@@ -58,8 +59,6 @@ public:
   float stateTime;
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
-  //  std::unordered_map<int32_t, StarNumber *> comboSizes;
-  //  std::unordered_map<int32_t, StarNumber *> chainSizes;
 
   claw::tween::tweener_group tweeners;
 
@@ -84,9 +83,9 @@ public:
   CCSpriteFrame *BLOCKS_PURPLE_HOVER_01;
   CCSpriteFrame *BLOCKS_YELLOW_HOVER_02;
   CCSpriteFrame *BLOCKS_GREEN_IDLE;
-  CCSpriteFrame *DRAW;
+  //  CCSpriteFrame *DRAW;
   CCSpriteFrame *BLOCKS_BLUE_PANIC_02;
-  CCSpriteFrame *WIN;
+  //  CCSpriteFrame *WIN;
   CCSpriteFrame *BLOCKS_GREEN_FLASH;
   CCSpriteFrame *BLOCKS_RED_HOVER_04;
   CCSpriteFrame *BLOCKS_RED_PANIC_04;
@@ -143,7 +142,7 @@ public:
   CCSpriteFrame *BLOCKS_GREEN_PANIC_03;
   CCSpriteFrame *GARBAGE_LEFT_BOTTOM;
   CCSpriteFrame *BLOCKS_BLUE_PANIC_03;
-  CCSpriteFrame *LOSE;
+  //  CCSpriteFrame *LOSE;
   CCSpriteFrame *BLOCKS_GREEN_HOVER_02;
   CCSpriteFrame *BLOCKS_YELLOW_PANIC_03;
   CCSpriteFrame *BLOCKS_PURPLE_FLASH;
@@ -194,7 +193,7 @@ public:
   Animation *GARBAGE_BLINKING;
 
   Animation *CURSOR;
-  virtual void onGameOver();
+
 };
 
 #endif // __PANELSCENE_H_

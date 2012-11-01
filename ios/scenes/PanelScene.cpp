@@ -5,6 +5,7 @@
 #include "easing_back.hpp"
 #include "easing_bounce.hpp"
 #include "easing_linear.hpp"
+#include "easing_quad.hpp"
 #include "tweener_sequence.hpp"
 #include <boost/bind.hpp>
 
@@ -205,90 +206,60 @@ bool PanelScene::init() {
   }
 
   CCSprite *bgBottom = CCSprite::createWithSpriteFrameName("bg-bottom.png");
-  bgBottom->
-      setAnchorPoint(ccp(0, 0)
-  );
-  bgBottom->
-      setPosition(ccp(0, 0)
-  );
+  bgBottom->setAnchorPoint(ccp(0, 0));
+  bgBottom->setPosition(ccp(0, 0));
   batch->addChild(bgBottom);
 
   CCSprite *bgTop = CCSprite::createWithSpriteFrameName("bg-top.png");
-  bgTop->
-      setAnchorPoint(ccp(0, 0)
-  );
-  bgTop->
-      setPosition(ccp(0, 440)
-  );
+  bgTop->setAnchorPoint(ccp(0, 0));
+  bgTop->setPosition(ccp(0, 440));
   batch->addChild(bgTop);
 
   CCSize size = CCDirector::sharedDirector()->getWinSize();
 
   youLose = CCSprite::createWithSpriteFrameName("lose.png");
-  youLose->
-      setPosition(ccp(size.width / 2, size.height / 2)
-  );
+  youLose->setPosition(ccp(size.width / 2, size.height / 2));
   youLose->setVisible(false);
   batch->addChild(youLose);
 
   CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  scoreLabel->
-      setPosition(ccp(size.width / 4, 470)
-  );
+  scoreLabel->setPosition(ccp(size.width / 4, 470));
   addChild(scoreLabel);
 
   score = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  score->
-      setPosition(ccp(size.width / 4, 454)
-  );
+  score->setPosition(ccp(size.width / 4, 454));
   addChild(score);
 
   CCLabelBMFont *timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  timeLabel->
-      setPosition(ccp(size.width * 3 / 4, 470)
-  );
+  timeLabel->setPosition(ccp(size.width * 3 / 4, 470));
   addChild(timeLabel);
 
   minutes = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  minutes->
-      setPosition(ccp(-32 + size.width * 3 / 4, 454)
-  );
+  minutes->setPosition(ccp(-32 + size.width * 3 / 4, 454));
   addChild(minutes);
 
   CCLabelBMFont *colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon1->
-      setPosition(ccp(-16 + size.width * 3 / 4, 454)
-  );
+  colon1->setPosition(ccp(-16 + size.width * 3 / 4, 454));
   addChild(colon1);
 
   seconds = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  seconds->
-      setPosition(ccp(size.width * 3 / 4, 454)
-  );
+  seconds->setPosition(ccp(size.width * 3 / 4, 454));
   addChild(seconds);
 
   CCLabelBMFont *colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon2->
-      setPosition(ccp(16 + size.width * 3 / 4, 454)
-  );
+  colon2->setPosition(ccp(16 + size.width * 3 / 4, 454));
   addChild(colon2);
 
   centisecs = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  centisecs->
-      setPosition(ccp(32 + size.width * 3 / 4, 454)
-  );
+  centisecs->setPosition(ccp(32 + size.width * 3 / 4, 454));
   addChild(centisecs);
 
   countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
-  countdownLabel->
-      setPosition(ccp(size.width / 2, size.height / 2)
-  );
+  countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
   addChild(countdownLabel);
 
   claw::tween::single_tweener cdTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
-  cdTweener.
-      on_finished(boost::bind(
-      &PanelScene::onBeginningTweenFinished, this));
+  cdTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));
   tweeners.insert(cdTweener);
 
   // Cursor
@@ -328,7 +299,9 @@ void PanelScene::update(float dt) {
         continue;
       }
 
-      grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+      if (!panel.isGameOver()) {
+        grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+      }
       grid[x][y]->setDisplayFrame(frame);
       grid[x][y]->setVisible(true);
       if (y == 0) {
@@ -370,13 +343,34 @@ void PanelScene::onCombo(Combo *combo) {
 }
 
 void PanelScene::onGameOver() {
-  claw::tween::tweener_sequence gameOverSequence;
-  gameOverSequence.insert(claw::tween::single_tweener(1.0, 0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in));
-  tweeners.insert(gameOverSequence);
-  //  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(false);
-  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("gameover.mp3", true);
-}
+  CCSize size = CCDirector::sharedDirector()->getWinSize();
+  youLose->setVisible(true);
 
+  // Initialize the grid
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
+    for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+      if (y > 0) {
+        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + 500 + yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
+      }
+    }
+  }
+
+  claw::tween::single_tweener musicFadeOut(1.0, 0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
+  musicFadeOut.on_finished([](){
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("gameover.mp3", true);
+  });
+
+  claw::tween::single_tweener musicFadeIn(0, 1.0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
+
+  claw::tween::tweener_group step2;
+  step2.insert(musicFadeIn);
+  step2.insert(claw::tween::single_tweener(500, size.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out));
+
+  claw::tween::tweener_sequence gameOverSequence;
+  gameOverSequence.insert(musicFadeOut);
+  gameOverSequence.insert(step2);
+  tweeners.insert(gameOverSequence);
+}
 
 void PanelScene::onBeginningTweenFinished(void) {
   if (countdown > 1) {
