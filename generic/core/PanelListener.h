@@ -11,6 +11,7 @@ protected:
 public:
   virtual void onCombo(Combo *combo) = 0;
   virtual void onEvent(int64_t playerId, PanelEvent panelEvent) = 0;
+  virtual void onGameOver() = 0;
   virtual ~PanelListener() {};
 };
 

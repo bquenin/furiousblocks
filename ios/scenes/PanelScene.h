@@ -27,7 +27,7 @@ public:
   void update(float d);
   void onCombo(Combo *combo);
   CCSpriteFrame *getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking);
-  void onTweenFinished(void);
+  void onBeginningTweenFinished(void);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
@@ -194,6 +194,7 @@ public:
   Animation *GARBAGE_BLINKING;
 
   Animation *CURSOR;
+  virtual void onGameOver();
 };
 
 #endif // __PANELSCENE_H_

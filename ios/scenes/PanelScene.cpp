@@ -4,6 +4,8 @@
 #include "StarNumber.h"
 #include "easing_back.hpp"
 #include "easing_bounce.hpp"
+#include "easing_linear.hpp"
+#include "tweener_sequence.hpp"
 #include <boost/bind.hpp>
 
 USING_NS_CC;
@@ -286,7 +288,7 @@ bool PanelScene::init() {
   claw::tween::single_tweener cdTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
   cdTweener.
       on_finished(boost::bind(
-      &PanelScene::onTweenFinished, this));
+      &PanelScene::onBeginningTweenFinished, this));
   tweeners.insert(cdTweener);
 
   // Cursor
@@ -309,7 +311,6 @@ bool PanelScene::init() {
 
 void PanelScene::update(float dt) {
   // Situation rendering
-  //  std::shared_ptr<GameSituation> gs(core->gameSituation);
   Panel const &panel = *core->playerToPanel[player];
 
   // Blocks
@@ -368,12 +369,21 @@ void PanelScene::onCombo(Combo *combo) {
   }
 }
 
-void PanelScene::onTweenFinished(void) {
+void PanelScene::onGameOver() {
+  claw::tween::tweener_sequence gameOverSequence;
+  gameOverSequence.insert(claw::tween::single_tweener(1.0, 0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in));
+  tweeners.insert(gameOverSequence);
+  //  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(false);
+  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("gameover.mp3", true);
+}
+
+
+void PanelScene::onBeginningTweenFinished(void) {
   if (countdown > 1) {
     countdown--;
     countdownLabel->setCString(format("%d", countdown).c_str());
     claw::tween::single_tweener cdTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
-    cdTweener.on_finished(boost::bind(&PanelScene::onTweenFinished, this));
+    cdTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));
     tweeners.insert(cdTweener);
   } else {
     // Start music

@@ -94,6 +94,11 @@ void FuriousBlocksCore::onEvent(int64_t playerId, PanelEvent panelEvent) {
 //  }
 }
 
+void FuriousBlocksCore::onGameOver() {
+                                  listener->onGameOver();
+}
+
+
 //std::set<Player *> FuriousBlocksCore::getPlayers() {
 //  return playerToPanel->keySet();
 //}

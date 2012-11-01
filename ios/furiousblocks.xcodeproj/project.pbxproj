@@ -47,6 +47,7 @@
 		7969E612FE03E636C97FF44A /* coopblack32.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969EDD6507D977DD579A17F /* coopblack32.fnt */; };
 		7969E705D437677FEEF656A6 /* CCTMXXMLParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E64228F22F096AD1288B /* CCTMXXMLParser.cpp */; };
 		7969E786C36C762638C2CDB6 /* CCTMXObjectGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E28230511461B8447857 /* CCTMXObjectGroup.cpp */; };
+		7969E80781B9E89C05307949 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969EF721F27D1097094F4E1 /* gameover.mp3 */; };
 		7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E33F030A2BE935A7CEFE /* coopblack64.fnt */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA86AF48218A3CB3A0A9 /* CCParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */; };
@@ -326,6 +327,7 @@
 		7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCParallaxNode.cpp; sourceTree = "<group>"; };
 		7969ED5C530B7CE42881DC33 /* CCTMXTiledMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXTiledMap.h; sourceTree = "<group>"; };
 		7969EDD6507D977DD579A17F /* coopblack32.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack32.fnt; sourceTree = "<group>"; };
+		7969EF721F27D1097094F4E1 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		D224B729163892780056F752 /* base_tweener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base_tweener.cpp; sourceTree = "<group>"; };
 		D224B72B163892780056F752 /* easing_back.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = easing_back.cpp; sourceTree = "<group>"; };
 		D224B72C163892780056F752 /* easing_back.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = easing_back.hpp; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 			children = (
 				D2E1CCFD15D7D7F700D844D0 /* harmonic.mp3 */,
 				D2E1CCFE15D7D7F700D844D0 /* voices.mp3 */,
+				7969EF721F27D1097094F4E1 /* gameover.mp3 */,
 			);
 			name = bgm;
 			path = assets/bgm;
@@ -1931,6 +1934,7 @@
 				7969E1712C84417C3F1578CA /* coopblack32.png in Resources */,
 				7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */,
 				7969EF6C374262C7EADCBFFA /* coopblack64.png in Resources */,
+				7969E80781B9E89C05307949 /* gameover.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

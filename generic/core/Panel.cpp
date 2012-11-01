@@ -255,6 +255,7 @@ void Panel::gracePeriod() {
     if (gracing) {
       garbageStack.clear();
       gameOver = true;
+      panelListener->onGameOver();
     } else {
       lifting = false;
       gracing = true;

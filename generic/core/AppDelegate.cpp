@@ -38,6 +38,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   pDirector->setAnimationInterval(1.0 / 60);
 
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
   //  /* Create an autorelease CCNodeLoaderLibrary. */
   //  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
   //
