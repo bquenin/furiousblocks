@@ -12,6 +12,7 @@
 #include "CCBReader/CCBReader.h"
 #include "PanelScene.h"
 #include "SimpleAudioEngine.h"
+#include "TutorialScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -39,6 +40,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
+
   //  /* Create an autorelease CCNodeLoaderLibrary. */
   //  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
   //
@@ -62,7 +65,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   //  pDirector->pushScene(pScene);
 
   // create a scene. it's an autorelease object
-  CCScene *pScene = PanelScene::scene();
+  CCScene *pScene = TutorialScene::scene();
 
   // run
   pDirector->runWithScene(pScene);

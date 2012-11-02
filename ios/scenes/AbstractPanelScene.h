@@ -28,11 +28,7 @@ public:
   AbstractPanelScene();
 
   bool init();
-  //  void update(float d);
-  //  void onCombo(Combo *combo);
-  //  void onGameOver();
   CCSpriteFrame *getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking);
-  //  void onBeginningTweenFinished(void);
   std::string format(char const *fmt, ...);
 
   // Labels
@@ -40,10 +36,6 @@ public:
   CCLabelBMFont *minutes;
   CCLabelBMFont *seconds;
   CCLabelBMFont *centisecs;
-
-  // Countdown
-  int countdown = 3;
-  CCLabelBMFont *countdownLabel;
 
   // Gameover
   CCSprite *youLose;

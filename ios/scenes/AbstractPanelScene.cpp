@@ -223,9 +223,9 @@ bool AbstractPanelScene::init() {
   centisecs->setPosition(ccp(32 + size.width * 3 / 4, 454));
   addChild(centisecs);
 
-  countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
-  countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
-  addChild(countdownLabel);
+  //  countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
+  //  countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
+  //  addChild(countdownLabel);
 
   return true;
 }

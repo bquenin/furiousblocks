@@ -1,4 +1,11 @@
-#include "PanelScene.h"
+//
+// Created by bquenin on 11/2/12.
+//
+// To change the template use AppCode | Preferences | File Templates.
+//
+
+
+#include "TutorialScene.h"
 #include "SimpleAudioEngine.h"
 #include "StarNumber.h"
 #include "easing_back.hpp"
@@ -10,37 +17,31 @@
 
 using namespace CocosDenshion;
 
-PanelScene::PanelScene() {
+TutorialScene::TutorialScene() {
+  gameRunning = true;
 }
 
-CCScene *PanelScene::scene() {
+CCScene *TutorialScene::scene() {
   CCScene *scene = CCScene::create();
-  PanelScene *layer = PanelScene::create();
+  TutorialScene *layer = TutorialScene::create();
   scene->addChild(layer);
   return scene;
 }
 
-bool PanelScene::init() {
+bool TutorialScene::init() {
   if (!CCLayer::init()) {
     return false;
   }
 
   AbstractPanelScene::init();
 
-  CCSize size = CCDirector::sharedDirector()->getWinSize();
-
-  countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
-  countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
-  addChild(countdownLabel);
-
   // Cursor
   //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
   //  cursor->setAnchorPoint(ccp(0, 0));
   //  batch->addChild(cursor);
 
-  claw::tween::single_tweener countDownTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
-  countDownTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));
-  tweeners.insert(countDownTweener);
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
+  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
 
   // Game initialization
   core = new FuriousBlocksCore(0, this);
@@ -50,12 +51,12 @@ bool PanelScene::init() {
   core->addPlayer(player);
 
   // Start scheduling
-  schedule(schedule_selector(PanelScene::update));
+  schedule(schedule_selector(TutorialScene::update));
 
   return true;
 }
 
-void PanelScene::update(float dt) {
+void TutorialScene::update(float dt) {
   // Situation rendering
   Panel const &panel = *core->playerToPanel[player];
 
@@ -108,7 +109,7 @@ void PanelScene::update(float dt) {
   core->onTick(tick++);
 }
 
-void PanelScene::onCombo(Combo *combo) {
+void TutorialScene::onCombo(Combo *combo) {
   if (combo->size() > 3) {
     new StarNumber(this, xOffset + combo->x * TILE_SIZE, yOffset + combo->y * TILE_SIZE, format("%d", combo->size()), ccORANGE);
   }
@@ -117,7 +118,7 @@ void PanelScene::onCombo(Combo *combo) {
   }
 }
 
-void PanelScene::onGameOver() {
+void TutorialScene::onGameOver() {
   CCSize size = CCDirector::sharedDirector()->getWinSize();
   youLose->setVisible(true);
 
@@ -145,19 +146,4 @@ void PanelScene::onGameOver() {
   gameOverSequence.insert(musicFadeOut);
   gameOverSequence.insert(step2);
   tweeners.insert(gameOverSequence);
-}
-
-void PanelScene::onBeginningTweenFinished(void) {
-  if (countdown > 1) {
-    countdown--;
-    countdownLabel->setCString(format("%d", countdown).c_str());
-    claw::tween::single_tweener cdTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
-    cdTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));
-    tweeners.insert(cdTweener);
-  } else {
-    // Start music
-    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
-    gameRunning = true;
-    removeChild(countdownLabel, true);
-  }
 }

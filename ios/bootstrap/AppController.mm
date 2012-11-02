@@ -36,7 +36,8 @@ static AppDelegate s_sharedApplication;
   viewController.view = __glView;
 
   // Set RootViewController to window
-  [window addSubview:viewController.view];
+  //  [window addSubview:viewController.view];
+  [window setRootViewController:viewController];
   [window makeKeyAndVisible];
 
   [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -96,6 +97,8 @@ static AppDelegate s_sharedApplication;
 
 
 - (void)dealloc {
+  [viewController release];
+  [window release];
   [super dealloc];
 }
 

@@ -53,6 +53,8 @@
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA86AF48218A3CB3A0A9 /* CCParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */; };
 		7969ECE4B3026C6FB0597C45 /* CCTileMapAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */; };
+		7969EF258688B109A5B0B50A /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E64E79ECBC9A8C1560BF /* tutorial.mp3 */; };
+		7969EF327126378A40C37EA5 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E151D1E33D24D022D163 /* TutorialScene.cpp */; };
 		7969EF6C374262C7EADCBFFA /* coopblack64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA05ED8AFDB1F6A8EEF8 /* coopblack64.png */; };
 		D224B749163892780056F752 /* base_tweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B729163892780056F752 /* base_tweener.cpp */; };
 		D224B74A163892780056F752 /* easing_back.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B72B163892780056F752 /* easing_back.cpp */; };
@@ -302,6 +304,7 @@
 		2E211F1159E493100CB0B8D /* btn-test-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-2.png"; sourceTree = "<group>"; };
 		7969E02DDA82DF59CC23416D /* AbstractPanelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractPanelScene.h; sourceTree = "<group>"; };
 		7969E11EB835FA716FB07849 /* tweener_group.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener_group.hpp; sourceTree = "<group>"; };
+		7969E151D1E33D24D022D163 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TutorialScene.cpp; sourceTree = "<group>"; };
 		7969E1626F321D4397B1083E /* base_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base_tweener.hpp; sourceTree = "<group>"; };
 		7969E19975989EBD1C45A9B3 /* CCParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCParallaxNode.h; sourceTree = "<group>"; };
 		7969E1B1F4BE78AC5E68B104 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
@@ -315,6 +318,7 @@
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
 		7969E64228F22F096AD1288B /* CCTMXXMLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXXMLParser.cpp; sourceTree = "<group>"; };
 		7969E649D578804BFEB88638 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		7969E64E79ECBC9A8C1560BF /* tutorial.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tutorial.mp3; sourceTree = "<group>"; };
 		7969E6F5FD0E6DA25761AD84 /* CCTMXObjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXObjectGroup.h; sourceTree = "<group>"; };
 		7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
 		7969E7DBB59486ED8F0855E9 /* tweener_sequence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener_sequence.hpp; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 		7969EB094F0D03F0DF4F0D8C /* StarNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarNumber.h; sourceTree = "<group>"; };
 		7969EB25D981A4309B2D076C /* CCTMXTiledMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXTiledMap.cpp; sourceTree = "<group>"; };
 		7969EBDEEDCD4C34A3D352D7 /* CCTMXLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXLayer.h; sourceTree = "<group>"; };
+		7969ECDF4D730E0E0CE90280 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
 		7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCParallaxNode.cpp; sourceTree = "<group>"; };
 		7969ED5C530B7CE42881DC33 /* CCTMXTiledMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXTiledMap.h; sourceTree = "<group>"; };
 		7969EDD6507D977DD579A17F /* coopblack32.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack32.fnt; sourceTree = "<group>"; };
@@ -853,6 +858,8 @@
 				D298746C1635C4B4006D7128 /* tween */,
 				D2714D2316068D1C00390FC4 /* animation */,
 				D2BD396715C5D0A90038E59C /* core */,
+				02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */,
+				02BAEC4A159E57C600BCA0C3 /* AppDelegate.h */,
 			);
 			name = generic;
 			path = ../generic;
@@ -924,6 +931,8 @@
 				028D818615A064800057EFA4 /* PanelScene.cpp */,
 				7969E3A11039995352982F58 /* AbstractPanelScene.cpp */,
 				7969E02DDA82DF59CC23416D /* AbstractPanelScene.h */,
+				7969E151D1E33D24D022D163 /* TutorialScene.cpp */,
+				7969ECDF4D730E0E0CE90280 /* TutorialScene.h */,
 			);
 			path = scenes;
 			sourceTree = SOURCE_ROOT;
@@ -985,6 +994,7 @@
 				D2E1CCFD15D7D7F700D844D0 /* harmonic.mp3 */,
 				D2E1CCFE15D7D7F700D844D0 /* voices.mp3 */,
 				7969EF721F27D1097094F4E1 /* gameover.mp3 */,
+				7969E64E79ECBC9A8C1560BF /* tutorial.mp3 */,
 			);
 			name = bgm;
 			path = assets/bgm;
@@ -1828,8 +1838,6 @@
 			isa = PBXGroup;
 			children = (
 				D2BD399C15C5D0A90038E59C /* Player.h */,
-				02BAEC4A159E57C600BCA0C3 /* AppDelegate.h */,
-				02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */,
 				D2BD396815C5D0A90038E59C /* Block.cpp */,
 				D2BD396915C5D0A90038E59C /* Block.h */,
 				D2BD396D15C5D0A90038E59C /* BlockState.h */,
@@ -1940,6 +1948,7 @@
 				7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */,
 				7969EF6C374262C7EADCBFFA /* coopblack64.png in Resources */,
 				7969E80781B9E89C05307949 /* gameover.mp3 in Resources */,
+				7969EF258688B109A5B0B50A /* tutorial.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2160,6 +2169,7 @@
 				D224B758163892780056F752 /* tweener_sequence.cpp in Sources */,
 				D224B759163892780056F752 /* tweener.cpp in Sources */,
 				7969E6A0A9B6D1A7E5D995B7 /* AbstractPanelScene.cpp in Sources */,
+				7969EF327126378A40C37EA5 /* TutorialScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

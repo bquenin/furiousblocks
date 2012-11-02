@@ -3,11 +3,11 @@
 
 #include <array>
 #include <unordered_map>
+#include "AbstractPanelScene.h"
 #include "FuriousBlocksCore.h"
 #include "NonLoopingAnimation.h"
 #include "tweener_group.hpp"
 #include "single_tweener.hpp"
-#include "AbstractPanelScene.h"
 
 class PanelScene : public AbstractPanelScene, FuriousBlocksCoreListener {
 private:
@@ -26,6 +26,10 @@ public:
 
   // Implement the "static node()" method manually
   CREATE_FUNC(PanelScene);
+
+  // Countdown
+  int countdown = 3;
+  CCLabelBMFont *countdownLabel;
 };
 
 #endif // __PANELSCENE_H_
