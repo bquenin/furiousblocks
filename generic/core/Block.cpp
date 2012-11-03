@@ -88,8 +88,8 @@ void Block::toDelete() {
   state = BlockState::TO_DELETE;
 }
 
-PanelEvent *Block::update() {
-  PanelEvent *event = nullptr;
+std::unique_ptr<PanelEvent> Block::update() {
+  std::unique_ptr<PanelEvent> event(nullptr);
   if (stateTick > 0) {
     stateTick--;
   }
@@ -105,12 +105,12 @@ PanelEvent *Block::update() {
         state = BlockState::DONE_HOVERING;
         break;
       case BlockState::EXPLODING:
-        event = new PanelEvent(PanelEventType::BLOCK_POP);
+        event.reset(new PanelEvent(PanelEventType::BLOCK_POP));
         state = BlockState::DONE_EXPLODING;
         break;
       case BlockState::REVEALING:
         if (stateTick == 0) {
-          event = new PanelEvent(PanelEventType::BLOCK_POP);
+          event.reset(new PanelEvent(PanelEventType::BLOCK_POP));
         }
         state = BlockState::DONE_REVEALING;
         break;

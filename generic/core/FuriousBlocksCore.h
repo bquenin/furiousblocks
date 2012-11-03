@@ -22,8 +22,6 @@ private:
   bool singleTick;
   FuriousBlocksCoreListener *listener;
 
-protected:
-
 public:
   BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
   FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener = nullptr);

@@ -2,6 +2,7 @@
 #define __Block_H_
 
 #include <cstdint>
+#include <memory>
 #include "BlockState.h"
 #include "BlockType.h"
 #include "PanelEvent.h"
@@ -36,7 +37,7 @@ public:
   void reveal(int32_t revealingTime);
   void airBounce();
   void toDelete();
-  PanelEvent *update();
+  std::unique_ptr<PanelEvent> update();
   static bool isComputable(Block *block);
   Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel);
 };

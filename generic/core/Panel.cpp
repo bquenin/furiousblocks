@@ -311,7 +311,7 @@ void Panel::mechanics(int64_t tick) {
         current->justLand = false;
         current->fallingFromClearing = false;
       }
-      PanelEvent *event = current->update();
+      std::unique_ptr<PanelEvent> event = current->update();
       if (event != nullptr) {
         event->data1 = current->poppingSkillChainLevel;
         event->data2 = current->poppingIndex;
@@ -319,7 +319,6 @@ void Panel::mechanics(int64_t tick) {
         if (panelListener != nullptr) {
           panelListener->onEvent(playerId, *event);
         }
-        delete event;
       }
       BlockType type = current->type;
       BlockState state = current->state;
