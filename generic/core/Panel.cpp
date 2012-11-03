@@ -64,10 +64,10 @@ void Panel::reset() {
   }
 }
 
-void Panel::setTransposedBlocks(BlockType *initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT]) {
-  for (int32_t y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
-    for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-      blocks[y][x] = initialBlockTypes[x][y] == nullptr ? nullptr : newBlock(*initialBlockTypes[x][y]);
+void Panel::setTransposedBlocks(BlockType **blockTypes, size_t xLen, size_t yLen) {
+  for (int32_t y = 0; y < yLen; y++) {
+    for (int32_t x = 0; x < xLen; x++) {
+      blocks[y][x] = blockTypes[x][y] == static_cast<BlockType>(-1) ? nullptr : newBlock(blockTypes[x][y]);
     }
   }
   for (int32_t x = 0; x < Panel::X; x++) {

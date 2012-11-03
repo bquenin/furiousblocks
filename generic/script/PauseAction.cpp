@@ -1,7 +1,7 @@
 #include "PauseAction.h"
 
-PauseAction::PauseAction(float timeStep) {
-  this->timeStep = timeStep;
+PauseAction::PauseAction(float timeStep)
+: Action(timeStep) {
 }
 
 bool PauseAction::execute(float stateTime) {

@@ -4,16 +4,17 @@
 #include "Action.h"
 #include "Panel.h"
 
-class SetBlocksAction : Action
-{
+class SetBlocksAction : public Action {
 private:
-    Panel* panel = nullptr;
-    BlockType*** blockTypes = nullptr;
+  Panel *panel;
+  BlockType **blockTypes;
+  size_t xLen;
+  size_t yLen;
 
 protected:
 public:
-    SetBlocksAction(float timeStep, Panel* panel, BlockType*** blockTypes);
-    bool execute(float stateTime);
+  SetBlocksAction(float timeStep, Panel *panel, BlockType **blockTypes, size_t xLen, size_t yLen);
+  bool execute(float stateTime);
 };
 
 #endif //__SetBlocksAction_H_

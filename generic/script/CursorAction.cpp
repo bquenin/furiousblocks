@@ -1,10 +1,10 @@
 #include <cstdint>
 #include "CursorAction.h"
 
-CursorAction::CursorAction(float timeStep, TutorialPlayer *player, int8_t moveType) {
-  this->player = player;
-  this->moveType = moveType;
-  this->timeStep = timeStep;
+CursorAction::CursorAction(float timeStep, TutorialPlayer *player, int8_t moveType)
+: Action(timeStep)
+, player(player)
+, moveType(moveType) {
 }
 
 bool CursorAction::execute(float stateTime) {
