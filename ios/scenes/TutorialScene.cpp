@@ -51,6 +51,10 @@ bool TutorialScene::init() {
   player = new TouchPlayer();
   core->addPlayer(player);
 
+  Panel &panel = *core->playerToPanel[player];
+
+  panel.setTransposedBlocks(combo4and5);
+
   // Start scheduling
   schedule(schedule_selector(TutorialScene::update));
 

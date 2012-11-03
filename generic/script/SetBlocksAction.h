@@ -7,13 +7,11 @@
 class SetBlocksAction : public Action {
 private:
   Panel *panel;
-  BlockType **blockTypes;
-  size_t xLen;
-  size_t yLen;
+  const std::vector<const std::vector<BlockType>> blockTypes;
 
 protected:
 public:
-  SetBlocksAction(float timeStep, Panel *panel, BlockType **blockTypes, size_t xLen, size_t yLen);
+  SetBlocksAction(float timeStep, Panel *panel, const std::vector<const std::vector<BlockType>> &&blockTypes);
   bool execute(float stateTime);
 };
 
