@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include "Action.h"
+#include "TutorialPlayer.h"
 
 class CursorAction : Action
 {

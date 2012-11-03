@@ -1,3 +1,5 @@
+#include "Action.h"
+
 #ifndef __PauseAction_H_
 #define __PauseAction_H_
 

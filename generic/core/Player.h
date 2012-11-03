@@ -12,7 +12,7 @@ public:
   int32_t id;
   Player(int32_t id = 123) : id(id) {
   };
-  virtual Move *onMoveRequest(const Panel &panel) = 0;
+  virtual std::unique_ptr<Move> onMoveRequest(const Panel &panel) = 0;
   virtual ~Player() {
   };
 };

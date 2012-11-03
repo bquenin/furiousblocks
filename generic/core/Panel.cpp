@@ -189,8 +189,7 @@ void Panel::processMove() {
       }
       break;
   }
-  delete move;
-  move = nullptr;
+  move.release();
 }
 
 void Panel::dropGarbages() {
@@ -719,8 +718,8 @@ bool Panel::isGameOver() const {
   return gameOver;
 }
 
-void Panel::submitMove(Move *move) {
-  this->move = new Move(move);
+void Panel::submitMove(std::unique_ptr<Move> move) {
+  this->move = std::move(move);
 }
 
 Panel::BlockBar::BlockBar(Panel *__parent, int32_t width, int32_t height, int32_t owner)

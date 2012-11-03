@@ -106,15 +106,13 @@ private:
   int32_t freezingTime;
   int32_t bonusFreezingTime;
   int32_t skillChainLevel;
-  Move *move;
+  std::unique_ptr<Move> move;
   bool locked;
   bool lifting;
   bool gracing;
   bool gameOver;
   int32_t wallOffset;
   PanelListener *panelListener;
-  Block *newRandom(BlockType excludedType = static_cast<BlockType>(-1), int32_t poppingIndex = 0, int32_t skillChainLevel = 0);
-  Block *newBlock(BlockType blockType, int32_t index = 0, int32_t skillChainLevel = 0);
   void processMove();
   void dropGarbages();
   void scrolling(int64_t tick);
@@ -130,6 +128,8 @@ private:
 protected:
   static const int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
 
+  Block *newBlock(BlockType blockType, int32_t index = 0, int32_t skillChainLevel = 0);
+  Block *newRandom(BlockType excludedType = static_cast<BlockType>(-1), int32_t poppingIndex = 0, int32_t skillChainLevel = 0);
 public:
   static const int32_t numberOfRegularBlocks = 5;
   bool scrollingEnabled;
@@ -142,7 +142,7 @@ public:
   int64_t getLocalTick();
   void setLocalTick(int64_t localTick);
   bool isGameOver() const;
-  void submitMove(Move *move);
+  void submitMove(std::unique_ptr<Move> move);
   static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
   static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
   bool comboMask[Panel::X][Panel::Y];

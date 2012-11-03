@@ -1,6 +1,4 @@
 #include <cstdint>
-#include <set>
-#include <unordered_map>
 #include "FuriousBlocksCore.h"
 
 FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
@@ -49,28 +47,15 @@ void FuriousBlocksCore::stop() {
 }
 
 void FuriousBlocksCore::onTick(int64_t tick) {
-//  std::unordered_map<int32_t, PanelSituation *> panelSituations;
   for (const auto &entry: playerToPanel) {
     Player *player = entry.first;
     Panel *panel = entry.second;
-//    PanelSituation *panelSituation = panel->onTick(tick);
-    panel->onTick(tick);
-//    panelSituations[player->id] = panelSituation;
     if (panel->isGameOver()) {
       continue;
     }
-    Move *move = player->onMoveRequest(*panel);
-    if (move != nullptr) {
-      panel->submitMove(move);
-      delete move;
-    }
+    panel->submitMove(std::move(player->onMoveRequest(*panel)));
+    panel->onTick(tick);
   }
-
-//  gameSituation.reset(new GameSituation(panelSituations));
-
-  //  if (oldSituation != nullptr) {
-  //    delete oldSituation;
-  //  }
 }
 
 void FuriousBlocksCore::onCombo(Combo *combo) {
@@ -87,13 +72,13 @@ void FuriousBlocksCore::onCombo(Combo *combo) {
 }
 
 void FuriousBlocksCore::onEvent(int64_t playerId, PanelEvent panelEvent) {
-//  if (listener != nullptr) {
-//    listener->onEvent(playerId, panelEvent);
-//  }
+  //  if (listener != nullptr) {
+  //    listener->onEvent(playerId, panelEvent);
+  //  }
 }
 
 void FuriousBlocksCore::onGameOver() {
-                                  listener->onGameOver();
+  listener->onGameOver();
 }
 
 
