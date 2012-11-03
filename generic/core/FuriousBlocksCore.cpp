@@ -63,10 +63,8 @@ void FuriousBlocksCore::onCombo(Combo *combo) {
   for (const auto & entry: playerToPanel) {
     Player *player = entry.first;
     Panel *panel = entry.second;
-    if ((player->id != combo->owner) && !panel->isGameOver()) {
-      if (combo->skillChainLevel > 1) {
-        panel->stackGarbage(panel->newGarbage(FuriousBlocksCoreDefaults::PANEL_WIDTH, (combo->skillChainLevel - 1), combo->owner, true));
-      }
+    if ((player->id != combo->owner) && !panel->isGameOver() && combo->skillChainLevel > 1) {
+      panel->stackGarbage(panel->newGarbage(FuriousBlocksCoreDefaults::PANEL_WIDTH, (combo->skillChainLevel - 1), combo->owner, true));
     }
   }
 }
