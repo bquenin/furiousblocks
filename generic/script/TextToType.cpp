@@ -1,15 +1,12 @@
 #include "TextToType.h"
 
-TextToType::TextToType()
-{
+TextToType::TextToType() {
 }
 
-String* TextToType::getText()
-{
-    return text;
+std::string TextToType::getText() {
+  return text;
 }
 
-void TextToType::setText(String* text)
-{
-    this->text = text;
+void TextToType::setText(std::string text) {
+  this->text = text;
 }

@@ -7,7 +7,7 @@
 class Script
 {
 private:
-  std::vector<Action*>* actions;
+  std::vector<Action*> actions;
 
 protected:
 public:

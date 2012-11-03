@@ -75,6 +75,13 @@
 		D224B757163892780056F752 /* tweener_group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B746163892780056F752 /* tweener_group.cpp */; };
 		D224B758163892780056F752 /* tweener_sequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B747163892780056F752 /* tweener_sequence.cpp */; };
 		D224B759163892780056F752 /* tweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B748163892780056F752 /* tweener.cpp */; };
+		D25B370D164583B600496D14 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B36FF164583B600496D14 /* Action.cpp */; };
+		D25B370E164583B600496D14 /* CursorAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3701164583B600496D14 /* CursorAction.cpp */; };
+		D25B370F164583B600496D14 /* PauseAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3703164583B600496D14 /* PauseAction.cpp */; };
+		D25B3710164583B600496D14 /* Script.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3705164583B600496D14 /* Script.cpp */; };
+		D25B3711164583B600496D14 /* SetBlocksAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3707164583B600496D14 /* SetBlocksAction.cpp */; };
+		D25B3712164583B600496D14 /* TextToType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3709164583B600496D14 /* TextToType.cpp */; };
+		D25B3713164583B600496D14 /* TypeTextAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B370B164583B600496D14 /* TypeTextAction.cpp */; };
 		D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D27631BC16188BA80084CB09 /* Default-568h@2x.png */; };
 		D280C822161A3D94007EA377 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C65C161A3D94007EA377 /* CCAction.cpp */; };
 		D280C823161A3D94007EA377 /* CCActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C65E161A3D94007EA377 /* CCActionCamera.cpp */; };
@@ -371,6 +378,20 @@
 		D224B746163892780056F752 /* tweener_group.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tweener_group.cpp; sourceTree = "<group>"; };
 		D224B747163892780056F752 /* tweener_sequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tweener_sequence.cpp; sourceTree = "<group>"; };
 		D224B748163892780056F752 /* tweener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tweener.cpp; sourceTree = "<group>"; };
+		D25B36FF164583B600496D14 /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Action.cpp; sourceTree = "<group>"; };
+		D25B3700164583B600496D14 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		D25B3701164583B600496D14 /* CursorAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CursorAction.cpp; sourceTree = "<group>"; };
+		D25B3702164583B600496D14 /* CursorAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CursorAction.h; sourceTree = "<group>"; };
+		D25B3703164583B600496D14 /* PauseAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseAction.cpp; sourceTree = "<group>"; };
+		D25B3704164583B600496D14 /* PauseAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseAction.h; sourceTree = "<group>"; };
+		D25B3705164583B600496D14 /* Script.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Script.cpp; sourceTree = "<group>"; };
+		D25B3706164583B600496D14 /* Script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Script.h; sourceTree = "<group>"; };
+		D25B3707164583B600496D14 /* SetBlocksAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SetBlocksAction.cpp; sourceTree = "<group>"; };
+		D25B3708164583B600496D14 /* SetBlocksAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetBlocksAction.h; sourceTree = "<group>"; };
+		D25B3709164583B600496D14 /* TextToType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextToType.cpp; sourceTree = "<group>"; };
+		D25B370A164583B600496D14 /* TextToType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextToType.h; sourceTree = "<group>"; };
+		D25B370B164583B600496D14 /* TypeTextAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TypeTextAction.cpp; sourceTree = "<group>"; };
+		D25B370C164583B600496D14 /* TypeTextAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeTextAction.h; sourceTree = "<group>"; };
 		D27631BC16188BA80084CB09 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D280C65C161A3D94007EA377 /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
 		D280C65D161A3D94007EA377 /* CCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAction.h; sourceTree = "<group>"; };
@@ -859,6 +880,7 @@
 		02BAEC48159E57C600BCA0C3 /* generic */ = {
 			isa = PBXGroup;
 			children = (
+				D25B36FE164583B600496D14 /* script */,
 				D298746C1635C4B4006D7128 /* tween */,
 				D2714D2316068D1C00390FC4 /* animation */,
 				D2BD396715C5D0A90038E59C /* core */,
@@ -1038,6 +1060,27 @@
 				D224B744163892780056F752 /* symmetric_easing.hpp */,
 			);
 			path = easing;
+			sourceTree = "<group>";
+		};
+		D25B36FE164583B600496D14 /* script */ = {
+			isa = PBXGroup;
+			children = (
+				D25B36FF164583B600496D14 /* Action.cpp */,
+				D25B3700164583B600496D14 /* Action.h */,
+				D25B3701164583B600496D14 /* CursorAction.cpp */,
+				D25B3702164583B600496D14 /* CursorAction.h */,
+				D25B3703164583B600496D14 /* PauseAction.cpp */,
+				D25B3704164583B600496D14 /* PauseAction.h */,
+				D25B3705164583B600496D14 /* Script.cpp */,
+				D25B3706164583B600496D14 /* Script.h */,
+				D25B3707164583B600496D14 /* SetBlocksAction.cpp */,
+				D25B3708164583B600496D14 /* SetBlocksAction.h */,
+				D25B3709164583B600496D14 /* TextToType.cpp */,
+				D25B370A164583B600496D14 /* TextToType.h */,
+				D25B370B164583B600496D14 /* TypeTextAction.cpp */,
+				D25B370C164583B600496D14 /* TypeTextAction.h */,
+			);
+			path = script;
 			sourceTree = "<group>";
 		};
 		D2714D2316068D1C00390FC4 /* animation */ = {
@@ -2178,6 +2221,13 @@
 				7969EF327126378A40C37EA5 /* TutorialScene.cpp in Sources */,
 				7969EB777A506C91C95020FB /* TouchPlayer.cpp in Sources */,
 				7969E3D7232FF1FFE801C7B8 /* TutorialPlayer.cpp in Sources */,
+				D25B370D164583B600496D14 /* Action.cpp in Sources */,
+				D25B370E164583B600496D14 /* CursorAction.cpp in Sources */,
+				D25B370F164583B600496D14 /* PauseAction.cpp in Sources */,
+				D25B3710164583B600496D14 /* Script.cpp in Sources */,
+				D25B3711164583B600496D14 /* SetBlocksAction.cpp in Sources */,
+				D25B3712164583B600496D14 /* TextToType.cpp in Sources */,
+				D25B3713164583B600496D14 /* TypeTextAction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,18 +2,20 @@
 #define __TypeTextAction_H_
 
 #include <cstdint>
+#include <string>
+#include "Action.h"
+#include "TextToType.h"
 
-class TypeTextAction : Action
-{
+class TypeTextAction : Action {
 private:
-    String* text = nullptr;
-    TextToType* out = nullptr;
-    int32_t index = 0;
+  std::string text = nullptr;
+  TextToType *out = nullptr;
+  size_t index = 0;
 
 protected:
 public:
-    TypeTextAction(float timeStep, String* text, TextToType* out);
-    bool execute(float stateTime);
+  TypeTextAction(float timeStep, std::string text, TextToType *out);
+  bool execute(float stateTime);
 };
 
 #endif //__TypeTextAction_H_

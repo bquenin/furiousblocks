@@ -9,7 +9,7 @@ SetBlocksAction::SetBlocksAction(float timeStep, Panel *panel, BlockType ***bloc
 bool SetBlocksAction::execute(float stateTime) {
   if (stateTime > nextStep) {
     panel->reset();
-    panel->setTransposedBlocks(lockTypes);
+    panel->setTransposedBlocks(blockTypes);
     nextStep = stateTime + timeStep;
     return true;
   }

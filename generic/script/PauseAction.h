@@ -4,13 +4,12 @@
 #define __PauseAction_H_
 
 
-class PauseAction : Action
-{
+class PauseAction : Action {
 private:
 protected:
 public:
-    PauseAction(float timeStep);
-    bool execute(float stateTime);
+  PauseAction(float timeStep);
+  bool execute(float stateTime);
 };
 
 #endif //__PauseAction_H_

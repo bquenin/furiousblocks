@@ -1,17 +1,17 @@
 #ifndef __TextToType_H_
 #define __TextToType_H_
 
+#include <string>
 
-class TextToType
-{
+class TextToType {
 private:
-    String* text = "";
+  std::string text;
 
 protected:
 public:
-    TextToType();
-    String* getText();
-    void setText(String* text);
+  TextToType();
+  std::string getText();
+  void setText(std::string text);
 };
 
 #endif //__TextToType_H_
