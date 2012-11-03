@@ -29,7 +29,7 @@ public:
 
   // Countdown
   int countdown = 3;
-  CCLabelBMFont *countdownLabel;
+  cocos2d::CCLabelBMFont *countdownLabel;
 };
 
 #endif // __PANELSCENE_H_

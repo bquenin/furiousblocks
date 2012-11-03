@@ -3,8 +3,6 @@
 #include <unordered_map>
 #include "FuriousBlocksCore.h"
 
-USING_NS_CC;
-
 FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
 : seed(seed)
 , tick (0)

@@ -1,22 +1,26 @@
-#include <cstdint>
-#include "Player.h"
-#include "PanelScene.h"
+//
+// Created by bquenin on 11/3/12.
+//
+// To change the template use AppCode | Preferences | File Templates.
+//
+
+
+#include "TouchPlayer.h"
+#include "AbstractPanelScene.h"
 #include "MoveType.h"
 
-Player::Player(int32_t id)
-: id(id)
-, switchOnLeft(false)
+TouchPlayer::TouchPlayer()
+: switchOnLeft(false)
 , switchOnRight(false)
 , leftTrend(false)
 , rightTrend(false)
 , upTrend(false)
 , lifted(false)
 , inputState(InputState::untouched) {
-  cocos2d::CCDirector *pDirector = cocos2d::CCDirector::sharedDirector();
-  pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+  cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
-bool Player::ccTouchBegan(CCTouch *touch, CCEvent *event) {
+bool TouchPlayer::ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) {
   if (inputState != InputState::untouched) {
     return false;
   }
@@ -34,7 +38,7 @@ bool Player::ccTouchBegan(CCTouch *touch, CCEvent *event) {
   return true;
 }
 
-void Player::ccTouchMoved(CCTouch *touch, CCEvent *event) {
+void TouchPlayer::ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) {
   if (switchOnLeft || switchOnRight || upTrend) {
     return;
   }
@@ -53,16 +57,16 @@ void Player::ccTouchMoved(CCTouch *touch, CCEvent *event) {
     upTrend = true;
   }
 
-  if ((touchPointDragged.x - PanelScene::xOffset) < (touchPointDown.x - PanelScene::xOffset) - ((static_cast<int32_t>(touchPointDown.x) - PanelScene::xOffset) % PanelScene::TILE_SIZE)) {
+  if ((touchPointDragged.x - AbstractPanelScene::xOffset) < (touchPointDown.x - AbstractPanelScene::xOffset) - ((static_cast<int32_t>(touchPointDown.x) - AbstractPanelScene::xOffset) % AbstractPanelScene::TILE_SIZE)) {
     switchOnLeft = true;
     switchOnRight = false;
-  } else if ((touchPointDragged.x - PanelScene::xOffset) > (touchPointDown.x - PanelScene::xOffset) + (PanelScene::TILE_SIZE - (static_cast<int32_t>(touchPointDown.x - PanelScene::xOffset) % PanelScene::TILE_SIZE))) {
+  } else if ((touchPointDragged.x - AbstractPanelScene::xOffset) > (touchPointDown.x - AbstractPanelScene::xOffset) + (AbstractPanelScene::TILE_SIZE - (static_cast<int32_t>(touchPointDown.x - AbstractPanelScene::xOffset) % AbstractPanelScene::TILE_SIZE))) {
     switchOnLeft = false;
     switchOnRight = true;
   }
 }
 
-void Player::ccTouchEnded(CCTouch *touch, CCEvent *event) {
+void TouchPlayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) {
   inputState = InputState::untouched;
   switchOnLeft = false;
   switchOnRight = false;
@@ -72,16 +76,16 @@ void Player::ccTouchEnded(CCTouch *touch, CCEvent *event) {
   lifted = false;
 }
 
-Move *Player::onMoveRequest(const Panel &panel) {
+Move *TouchPlayer::onMoveRequest(const Panel &panel) {
   Move *move = nullptr;
   if (inputState != InputState::touched) {
     return move;
   }
   //      CCLOG("touchPointDown = %f/%f", touchPointDown.x, touchPointDown.y);
-  int32_t const x = static_cast<int32_t> (PanelScene::xOffset + (PanelScene::TILE_SIZE * panel.cursor->x));
-  int32_t const y = static_cast<int32_t> (PanelScene::yOffset + (PanelScene::TILE_SIZE * panel.cursor->y) + ((panel.scrollingDelta * PanelScene::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
-  CCRect cursorPosition(x + (leftTrend ? PanelScene::TILE_SIZE : 0), y, PanelScene::TILE_SIZE, PanelScene::TILE_SIZE);
-  CCPoint aPoint(touchPointDragged.x + (leftTrend ? PanelScene::TILE_SIZE : 0) - (rightTrend ? PanelScene::TILE_SIZE : 0), touchPointDragged.y);
+  int32_t const x = static_cast<int32_t> (AbstractPanelScene::xOffset + (AbstractPanelScene::TILE_SIZE * panel.cursor->x));
+  int32_t const y = static_cast<int32_t> (AbstractPanelScene::yOffset + (AbstractPanelScene::TILE_SIZE * panel.cursor->y) + ((panel.scrollingDelta * AbstractPanelScene::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+  cocos2d::CCRect cursorPosition(x + (leftTrend ? AbstractPanelScene::TILE_SIZE : 0), y, AbstractPanelScene::TILE_SIZE, AbstractPanelScene::TILE_SIZE);
+  cocos2d::CCPoint aPoint(touchPointDragged.x + (leftTrend ? AbstractPanelScene::TILE_SIZE : 0) - (rightTrend ? AbstractPanelScene::TILE_SIZE : 0), touchPointDragged.y);
   if (upTrend && !lifted) {
     move = new Move(MoveType::LIFT);
     lifted = true;

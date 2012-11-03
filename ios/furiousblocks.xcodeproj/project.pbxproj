@@ -52,6 +52,7 @@
 		7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E33F030A2BE935A7CEFE /* coopblack64.fnt */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA86AF48218A3CB3A0A9 /* CCParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */; };
+		7969EB777A506C91C95020FB /* TouchPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E0146F47EB712A998AF4 /* TouchPlayer.cpp */; };
 		7969ECE4B3026C6FB0597C45 /* CCTileMapAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */; };
 		7969EF258688B109A5B0B50A /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E64E79ECBC9A8C1560BF /* tutorial.mp3 */; };
 		7969EF327126378A40C37EA5 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E151D1E33D24D022D163 /* TutorialScene.cpp */; };
@@ -249,7 +250,6 @@
 		D2BD39AE15C5D0A90038E59C /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398315C5D0A90038E59C /* Move.cpp */; };
 		D2BD39B215C5D0A90038E59C /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398B15C5D0A90038E59C /* Panel.cpp */; };
 		D2BD39B315C5D0A90038E59C /* PanelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398D15C5D0A90038E59C /* PanelEvent.cpp */; };
-		D2BD39BA15C5D0A90038E59C /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399B15C5D0A90038E59C /* Player.cpp */; };
 		D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
 		D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */; };
 		D2E1CCFF15D7D7F700D844D0 /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CCFD15D7D7F700D844D0 /* harmonic.mp3 */; };
@@ -302,6 +302,7 @@
 		2E211F1159E493100CB0B89 /* btn-test-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-0.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8B /* btn-test-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-1.png"; sourceTree = "<group>"; };
 		2E211F1159E493100CB0B8D /* btn-test-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-test-2.png"; sourceTree = "<group>"; };
+		7969E0146F47EB712A998AF4 /* TouchPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchPlayer.cpp; sourceTree = "<group>"; };
 		7969E02DDA82DF59CC23416D /* AbstractPanelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractPanelScene.h; sourceTree = "<group>"; };
 		7969E11EB835FA716FB07849 /* tweener_group.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener_group.hpp; sourceTree = "<group>"; };
 		7969E151D1E33D24D022D163 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TutorialScene.cpp; sourceTree = "<group>"; };
@@ -320,6 +321,7 @@
 		7969E649D578804BFEB88638 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		7969E64E79ECBC9A8C1560BF /* tutorial.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tutorial.mp3; sourceTree = "<group>"; };
 		7969E6F5FD0E6DA25761AD84 /* CCTMXObjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXObjectGroup.h; sourceTree = "<group>"; };
+		7969E73C4BED841EEBA5C58F /* TouchPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchPlayer.h; sourceTree = "<group>"; };
 		7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
 		7969E7DBB59486ED8F0855E9 /* tweener_sequence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener_sequence.hpp; sourceTree = "<group>"; };
 		7969E816E0F62AFD71245AEB /* StarNumber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarNumber.cpp; sourceTree = "<group>"; };
@@ -783,7 +785,6 @@
 		D2BD398E15C5D0A90038E59C /* PanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelEvent.h; sourceTree = "<group>"; };
 		D2BD399015C5D0A90038E59C /* PanelEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelEventType.h; sourceTree = "<group>"; };
 		D2BD399215C5D0A90038E59C /* PanelListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelListener.h; sourceTree = "<group>"; };
-		D2BD399B15C5D0A90038E59C /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		D2BD399C15C5D0A90038E59C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		D2BD399D15C5D0A90038E59C /* Point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
 		D2BD399E15C5D0A90038E59C /* Point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point.h; sourceTree = "<group>"; };
@@ -933,6 +934,8 @@
 				7969E02DDA82DF59CC23416D /* AbstractPanelScene.h */,
 				7969E151D1E33D24D022D163 /* TutorialScene.cpp */,
 				7969ECDF4D730E0E0CE90280 /* TutorialScene.h */,
+				7969E0146F47EB712A998AF4 /* TouchPlayer.cpp */,
+				7969E73C4BED841EEBA5C58F /* TouchPlayer.h */,
 			);
 			path = scenes;
 			sourceTree = SOURCE_ROOT;
@@ -1859,7 +1862,6 @@
 				D2BD398E15C5D0A90038E59C /* PanelEvent.h */,
 				D2BD399015C5D0A90038E59C /* PanelEventType.h */,
 				D2BD399215C5D0A90038E59C /* PanelListener.h */,
-				D2BD399B15C5D0A90038E59C /* Player.cpp */,
 				D2BD399D15C5D0A90038E59C /* Point.cpp */,
 				D2BD399E15C5D0A90038E59C /* Point.h */,
 				D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */,
@@ -1970,7 +1972,6 @@
 				D2BD39AE15C5D0A90038E59C /* Move.cpp in Sources */,
 				D2BD39B215C5D0A90038E59C /* Panel.cpp in Sources */,
 				D2BD39B315C5D0A90038E59C /* PanelEvent.cpp in Sources */,
-				D2BD39BA15C5D0A90038E59C /* Player.cpp in Sources */,
 				D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */,
 				D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */,
 				7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */,
@@ -2170,6 +2171,7 @@
 				D224B759163892780056F752 /* tweener.cpp in Sources */,
 				7969E6A0A9B6D1A7E5D995B7 /* AbstractPanelScene.cpp in Sources */,
 				7969EF327126378A40C37EA5 /* TutorialScene.cpp in Sources */,
+				7969EB777A506C91C95020FB /* TouchPlayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,7 @@
 #include "easing_linear.hpp"
 #include "easing_quad.hpp"
 #include "tweener_sequence.hpp"
+#include "TouchPlayer.h"
 #include <boost/bind.hpp>
 
 using namespace CocosDenshion;
@@ -27,6 +28,15 @@ bool PanelScene::init() {
 
   AbstractPanelScene::init();
 
+  // Initialize the grid
+  for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
+    for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
+      if (y > 0) {
+        tweeners.insert(claw::tween::single_tweener(random() % 350 + 500 + yOffset + y * TILE_SIZE, yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_out));
+      }
+    }
+  }
+
   CCSize size = CCDirector::sharedDirector()->getWinSize();
 
   countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
@@ -46,7 +56,7 @@ bool PanelScene::init() {
   core = new FuriousBlocksCore(0, this);
 
   // Player initialization
-  player = new Player();
+  player = new TouchPlayer();
   core->addPlayer(player);
 
   // Start scheduling

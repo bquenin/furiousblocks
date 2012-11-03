@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include <vector>
-#include "cocos2d.h"
+#include "CCSpriteFrame.h"
 
 class Animation {
 public:

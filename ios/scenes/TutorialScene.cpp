@@ -13,6 +13,7 @@
 #include "easing_linear.hpp"
 #include "easing_quad.hpp"
 #include "tweener_sequence.hpp"
+#include "TouchPlayer.h"
 #include <boost/bind.hpp>
 
 using namespace CocosDenshion;
@@ -47,7 +48,7 @@ bool TutorialScene::init() {
   core = new FuriousBlocksCore(0, this);
 
   // Player initialization
-  player = new Player();
+  player = new TouchPlayer();
   core->addPlayer(player);
 
   // Start scheduling

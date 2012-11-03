@@ -2,6 +2,7 @@
 #define __SetBlocksAction_H_
 
 #include "Action.h"
+#include "Panel.h"
 
 class SetBlocksAction : Action
 {
