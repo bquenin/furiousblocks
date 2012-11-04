@@ -3,7 +3,6 @@
 
 FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
 : seed(seed)
-, tick (0)
 , running(false)
 , paused(false)
 , singleTick(false)

@@ -102,7 +102,7 @@ private:
   std::set<Clearing *> clearings;
   std::set<Panel::Garbage *> garbageStack;
   int32_t levelScrollingSpeed;
-  int32_t scrollingSpeed;
+  int64_t scrollingSpeed;
   int32_t freezingTime;
   int32_t bonusFreezingTime;
   int32_t skillChainLevel;
@@ -111,7 +111,6 @@ private:
   bool lifting;
   bool gracing;
   bool gameOver;
-  int32_t wallOffset;
   PanelListener *panelListener;
   void processMove();
   void dropGarbages();

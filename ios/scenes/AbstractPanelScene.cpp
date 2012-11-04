@@ -9,7 +9,7 @@
 #include "GarbageBlockType.h"
 
 AbstractPanelScene::AbstractPanelScene()
-: tick(0)
+: tick(1)
 , stateTime(0)
 , gameRunning(false) {
 }

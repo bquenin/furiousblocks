@@ -52,7 +52,7 @@ bool TutorialScene::init() {
   core->addPlayer(player);
 
   Panel &panel = *core->playerToPanel[player];
-
+  panel.scrollingEnabled = false;
   panel.setTransposedBlocks(combo4and5);
 
   // Start scheduling

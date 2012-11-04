@@ -11,12 +11,10 @@
 #include "Player.h"
 #include "Panel.h"
 
-
 class FuriousBlocksCore : PanelListener {
 private:
-  static constexpr int64_t nanoPeriod = static_cast<int64_t>((1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY * 1000000000));
+//  static constexpr int64_t nanoPeriod = static_cast<int64_t>((1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY * 1000000000));
   int32_t seed;
-  int64_t tick;
   volatile bool running;
   volatile bool paused;
   bool singleTick;

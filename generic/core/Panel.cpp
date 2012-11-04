@@ -4,6 +4,7 @@
 #include "Panel.h"
 #include "MoveType.h"
 #include "GarbageBlockType.h"
+#include "CCCommon.h"
 
 Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener)
 : lastIndex(-1)
@@ -22,7 +23,6 @@ Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[F
 , lifting(false)
 , gracing(false)
 , gameOver(false)
-, wallOffset(0)
 , score(0)
 , panelListener(panelListener)
 , scrollingEnabled(true) {
@@ -52,7 +52,6 @@ void Panel::reset() {
   lifting = false;
   gracing = false;
   gameOver = false;
-  wallOffset = 0;
   combos.clear();
   garbages.clear();
   clearings.clear();
@@ -223,7 +222,7 @@ void Panel::scrolling(int64_t tick) {
   if (gracing) {
     return;
   }
-  scrollingSpeed = lifting ? 1 : scrollingEnabled ? levelScrollingSpeed : INT32_MAX;
+  scrollingSpeed = lifting ? 1 : scrollingEnabled ? levelScrollingSpeed : INT64_MAX;
   bool needNewLine = false;
   if (tick % scrollingSpeed == 0) {
     scrollingDelta++;
