@@ -2,13 +2,14 @@
 #define __Move_H_
 
 #include <cstdint>
+#include "MoveType.h"
 
 class Move {
 private:
 protected:
 public:
-  int8_t type;
-  Move(int8_t type);
+  MoveType type;
+  Move(MoveType type);
   Move(Move *move);
 };
 

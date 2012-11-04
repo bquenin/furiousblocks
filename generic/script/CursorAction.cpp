@@ -1,7 +1,6 @@
-#include <cstdint>
 #include "CursorAction.h"
 
-CursorAction::CursorAction(float timeStep, TutorialPlayer *player, int8_t moveType)
+CursorAction::CursorAction(float timeStep, TutorialPlayer *player, MoveType moveType)
 : Action(timeStep)
 , player(player)
 , moveType(moveType) {

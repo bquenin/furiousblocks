@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "Player.h"
+#include "MoveType.h"
 
 
 class TutorialPlayer : public Player {
@@ -18,7 +19,7 @@ public:
   std::unique_ptr<Move> move;
 
   std::unique_ptr<Move> onMoveRequest(Panel const & panel);
-  void setMove(int8_t moveType);
+  void setMove(MoveType moveType);
 };
 
 #endif //__TutorialPlayer_H_

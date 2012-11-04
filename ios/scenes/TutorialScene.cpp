@@ -13,7 +13,9 @@
 #include "easing_linear.hpp"
 #include "easing_quad.hpp"
 #include "tweener_sequence.hpp"
-#include "TouchPlayer.h"
+#include "TypeTextAction.h"
+#include "PauseAction.h"
+#include "CursorAction.h"
 #include <boost/bind.hpp>
 
 using namespace CocosDenshion;
@@ -41,19 +43,41 @@ bool TutorialScene::init() {
   //  cursor->setAnchorPoint(ccp(0, 0));
   //  batch->addChild(cursor);
 
-  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
-  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
+  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
+  //  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
+
+  cocos2d::CCSize size = cocos2d::CCDirector::sharedDirector()->getWinSize();
+
+  textBox = cocos2d::CCLabelBMFont::create("textToType", "coopblack32.fnt", 200, kCCTextAlignmentLeft);
+  textBox->setAnchorPoint(ccp(0, 1));
+  textBox->setPosition(ccp(16, 414));
+  addChild(textBox);
 
   // Game initialization
-  core = new FuriousBlocksCore(0, this);
+  core = new FuriousBlocksCore(2064, this);
+  core->initialBlockTypes[5][2] = static_cast<BlockType >(-1);
+  core->initialBlockTypes[5][3] = static_cast<BlockType >(-1);
+  core->initialBlockTypes[4][3] = static_cast<BlockType >(-1);
 
   // Player initialization
-  player = new TouchPlayer();
-  core->addPlayer(player);
+  tutorialPlayer = new TutorialPlayer();
+  core->addPlayer(tutorialPlayer);
 
-  Panel &panel = *core->playerToPanel[player];
+  Panel &panel = *core->playerToPanel[tutorialPlayer];
   panel.scrollingEnabled = false;
-  panel.setTransposedBlocks(combo4and5);
+
+  // Tutorial script
+  script.add(new TypeTextAction(.1f, "Hi!\nYou have to clear these blocks.", textToType));
+  script.add(new PauseAction(1));
+  script.add(new TypeTextAction(.1f, "It's made of blocks you can move horizontally.", textToType));
+  script.add(new CursorAction(1.0f, tutorialPlayer, MoveType::CURSOR_DOWN));
+  script.add(new TypeTextAction(.1f, "Slide horizontally with your finger to move them.", textToType));
+  script.add(new CursorAction(.5f, tutorialPlayer, MoveType::BLOCK_SWITCH));
+  script.add(new CursorAction(.5f, tutorialPlayer, MoveType::BLOCK_SWITCH));
+  script.add(new CursorAction(.5f, tutorialPlayer, MoveType::BLOCK_SWITCH));
+  script.add(new CursorAction(.5f, tutorialPlayer, MoveType::BLOCK_SWITCH));
+  script.add(new CursorAction(.5f, tutorialPlayer, MoveType::BLOCK_SWITCH));
+  script.add(new CursorAction(.5f, tutorialPlayer, MoveType::BLOCK_SWITCH));
 
   // Start scheduling
   schedule(schedule_selector(TutorialScene::update));
@@ -63,7 +87,7 @@ bool TutorialScene::init() {
 
 void TutorialScene::update(float dt) {
   // Situation rendering
-  Panel const &panel = *core->playerToPanel[player];
+  Panel const &panel = *core->playerToPanel[tutorialPlayer];
 
   // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
@@ -110,8 +134,12 @@ void TutorialScene::update(float dt) {
   // State time update
   stateTime += dt;
 
+  textBox->setString(textToType.getText().c_str());
+
   // Core tick
   core->onTick(tick++);
+
+  script.execute(stateTime);
 }
 
 void TutorialScene::onCombo(Combo *combo) {

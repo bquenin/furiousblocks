@@ -4,15 +4,16 @@
 #include <cstdint>
 #include "Action.h"
 #include "TutorialPlayer.h"
+#include "MoveType.h"
 
-class CursorAction : Action {
+class CursorAction : public Action {
 private:
-  TutorialPlayer *player = nullptr;
-  int8_t moveType = 0;
+  TutorialPlayer *player;
+  MoveType moveType;
 
 protected:
 public:
-  CursorAction(float timeStep, TutorialPlayer *player, int8_t moveType);
+  CursorAction(float timeStep, TutorialPlayer *player, MoveType moveType);
   bool execute(float stateTime);
 };
 

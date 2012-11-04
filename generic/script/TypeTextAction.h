@@ -6,15 +6,15 @@
 #include "Action.h"
 #include "TextToType.h"
 
-class TypeTextAction : Action {
+class TypeTextAction : public Action {
 private:
-  std::string text = nullptr;
-  TextToType *out = nullptr;
-  size_t index = 0;
+  std::string text;
+  TextToType &out;
+  size_t index;
 
 protected:
 public:
-  TypeTextAction(float timeStep, std::string text, TextToType *out);
+  TypeTextAction(float timeStep, std::string text, TextToType &out);
   bool execute(float stateTime);
 };
 

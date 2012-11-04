@@ -4,7 +4,7 @@
 #define __PauseAction_H_
 
 
-class PauseAction : Action {
+class PauseAction : public Action {
 private:
 protected:
 public:

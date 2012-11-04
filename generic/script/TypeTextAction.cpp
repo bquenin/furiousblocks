@@ -1,10 +1,11 @@
 #include <cstdint>
 #include "TypeTextAction.h"
 
-TypeTextAction::TypeTextAction(float timeStep, std::string text, TextToType *out)
+TypeTextAction::TypeTextAction(float timeStep, std::string text, TextToType &out)
 : Action(timeStep)
 , text(text)
-, out(out) {
+, out(out)
+, index(0) {
 }
 
 bool TypeTextAction::execute(float stateTime) {
@@ -13,7 +14,7 @@ bool TypeTextAction::execute(float stateTime) {
       return true;
     } else {
       index++;
-      out->setText(text.substr(0, index));
+      out.setText(text.substr(0, index));
     }
     nextStep = stateTime + timeStep;
   }

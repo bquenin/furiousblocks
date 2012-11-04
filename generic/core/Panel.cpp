@@ -104,7 +104,7 @@ void Panel::processMove() {
   if (move == nullptr) {
     return;
   }
-  int32_t type = move->type;
+  MoveType type = move->type;
   switch (type) {
     case MoveType::BLOCK_SWITCH: {
       Block *src = blocks[cursor->x][cursor->y];

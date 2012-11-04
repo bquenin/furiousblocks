@@ -7,7 +7,7 @@
 
 #include "TutorialPlayer.h"
 
-void TutorialPlayer::setMove(int8_t moveType) {
+void TutorialPlayer::setMove(MoveType moveType) {
   move.reset(new Move(moveType));
 }
 

@@ -1,7 +1,6 @@
-#include <cstdint>
 #include "Move.h"
 
-Move::Move(int8_t type)
+Move::Move(MoveType type)
 :type(type) {
 }
 
