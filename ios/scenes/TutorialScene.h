@@ -23,6 +23,7 @@ private:
   TutorialPlayer *tutorialPlayer;
   TextToType textToType;
   cocos2d::CCLabelBMFont *textBox;
+  cocos2d::CCSprite *cursor;
 
   const std::vector<const std::vector<BlockType>> empty = {
       {BlockType::TUTORIAL, BlockType::TUTORIAL, BlockType::TUTORIAL, BlockType::TUTORIAL, BlockType::TUTORIAL, BlockType::TUTORIAL}
@@ -83,6 +84,7 @@ public:
 
   // Implement the "static node()" method manually
   CREATE_FUNC(TutorialScene);
+
 };
 
 #endif //__TutorialScene_H_

@@ -40,9 +40,9 @@ bool TutorialScene::init() {
   AbstractPanelScene::init();
 
   // Cursor
-  //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
-  //  cursor->setAnchorPoint(ccp(0, 0));
-  //  batch->addChild(cursor);
+  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
+  cursor->setAnchorPoint(ccp(0, 0));
+  batch->addChild(cursor);
 
   //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
   //  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
@@ -116,10 +116,6 @@ bool TutorialScene::init() {
   script.add(new PauseAction(.5f));
   script.add(new CursorAction(.1f, tutorialPlayer, MoveType::LIFT));
   script.add(new PauseAction(.5f));
-  script.add(new CursorAction(.1f, tutorialPlayer, MoveType::LIFT));
-  script.add(new PauseAction(.5f));
-  script.add(new CursorAction(.1f, tutorialPlayer, MoveType::LIFT));
-  script.add(new PauseAction(.5f));
   script.add(new TypeTextAction(.1f, "... blocks start panicking ...", textToType));
   script.add(new CursorAction(.1f, tutorialPlayer, MoveType::LIFT));
   script.add(new PauseAction(1));
@@ -187,7 +183,6 @@ bool TutorialScene::init() {
   script.add(new TypeTextAction(.1f, "This closes the tutorial.\nGo play to practice!", textToType));
   script.add(new PauseAction(1));
 
-
   // Start scheduling
   schedule(schedule_selector(TutorialScene::update));
 
@@ -225,6 +220,8 @@ void TutorialScene::update(float dt) {
     }
   }
 
+  cursor->setPosition(ccp(panel.cursor->x * TILE_SIZE, -6 + (panel.cursor->y - 1) * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+
   // Tweeners update
   tweeners.update(dt);
 
@@ -236,9 +233,9 @@ void TutorialScene::update(float dt) {
   seconds->setString(format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
   centisecs->setString(format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
 
-  if (!gameRunning || panel.isGameOver()) {
-    return;
-  }
+  //  if (!gameRunning || panel.isGameOver()) {
+  //    return;
+  //  }
 
   // State time update
   stateTime += dt;
