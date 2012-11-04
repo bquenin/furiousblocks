@@ -32,15 +32,6 @@ public:
   cocos2d::CCSpriteFrame *getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking);
   std::string format(char const *fmt, ...);
 
-  // Labels
-  cocos2d::CCLabelBMFont *score;
-  cocos2d::CCLabelBMFont *minutes;
-  cocos2d::CCLabelBMFont *seconds;
-  cocos2d::CCLabelBMFont *centisecs;
-
-  // Gameover
-  cocos2d::CCSprite *youLose;
-
   // Core
   FuriousBlocksCore *core;
   bool gameRunning;

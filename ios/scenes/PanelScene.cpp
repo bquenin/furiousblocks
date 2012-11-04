@@ -43,10 +43,42 @@ bool PanelScene::init() {
   countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
   addChild(countdownLabel);
 
-  // Cursor
-  //  cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
-  //  cursor->setAnchorPoint(ccp(0, 0));
-  //  batch->addChild(cursor);
+  cocos2d::CCLabelBMFont *scoreLabel = cocos2d::CCLabelBMFont::create("Score", "coopblack32.fnt");
+  scoreLabel->setPosition(ccp(size.width / 4, 470));
+  addChild(scoreLabel);
+
+  score = cocos2d::CCLabelBMFont::create("Score", "coopblack32.fnt");
+  score->setPosition(ccp(size.width / 4, 454));
+  addChild(score);
+
+  cocos2d::CCLabelBMFont *timeLabel = cocos2d::CCLabelBMFont::create("Time", "coopblack32.fnt");
+  timeLabel->setPosition(ccp(size.width * 3 / 4, 470));
+  addChild(timeLabel);
+
+  minutes = cocos2d::CCLabelBMFont::create("Time", "coopblack32.fnt");
+  minutes->setPosition(ccp(-32 + size.width * 3 / 4, 454));
+  addChild(minutes);
+
+  cocos2d::CCLabelBMFont *colon1 = cocos2d::CCLabelBMFont::create(":", "coopblack32.fnt");
+  colon1->setPosition(ccp(-16 + size.width * 3 / 4, 454));
+  addChild(colon1);
+
+  seconds = cocos2d::CCLabelBMFont::create("Time", "coopblack32.fnt");
+  seconds->setPosition(ccp(size.width * 3 / 4, 454));
+  addChild(seconds);
+
+  cocos2d::CCLabelBMFont *colon2 = cocos2d::CCLabelBMFont::create(":", "coopblack32.fnt");
+  colon2->setPosition(ccp(16 + size.width * 3 / 4, 454));
+  addChild(colon2);
+
+  centisecs = cocos2d::CCLabelBMFont::create("Time", "coopblack32.fnt");
+  centisecs->setPosition(ccp(32 + size.width * 3 / 4, 454));
+  addChild(centisecs);
+
+  youLose = cocos2d::CCSprite::createWithSpriteFrameName("lose.png");
+  youLose->setPosition(ccp(size.width / 2, size.height / 2));
+  youLose->setVisible(false);
+  batch->addChild(youLose);
 
   claw::tween::single_tweener countDownTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
   countDownTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));

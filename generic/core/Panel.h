@@ -110,7 +110,6 @@ private:
   bool locked;
   bool lifting;
   bool gracing;
-  bool gameOver;
   PanelListener *panelListener;
   void processMove();
   void dropGarbages();
@@ -149,6 +148,7 @@ public:
   furiousblocks::Point *cursor;
   int32_t scrollingDelta;
   int32_t score;
+  bool gameOver;
 };
 
 #endif //__Panel_H_

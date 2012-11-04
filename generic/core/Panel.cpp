@@ -54,16 +54,19 @@ void Panel::reset() {
   garbages.clear();
   clearings.clear();
   garbageStack.clear();
-  for (int32_t y = 1; y < Panel::Y; y++) {
+  for (int32_t y = 0; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
+      if (blocks[x][y] != nullptr) {
+        delete blocks[x][y];
+      }
       blocks[x][y] = nullptr;
     }
   }
 }
 
 void Panel::setTransposedBlocks(const std::vector<const std::vector<BlockType>> & blockTypes) {
-  for (int32_t y = 0; y < blockTypes.size(); y++) {
-    for (int32_t x = 0; x < blockTypes[0].size(); x++) {
+  for (int32_t y = 0; y < blockTypes[0].size(); y++) {
+    for (int32_t x = 0; x < blockTypes.size(); x++) {
       blocks[y][x] = blockTypes[x][y] == static_cast<BlockType>(-1) ? nullptr : newBlock(blockTypes[x][y]);
     }
   }

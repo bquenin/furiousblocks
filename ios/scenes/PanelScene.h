@@ -12,6 +12,14 @@
 class PanelScene : public AbstractPanelScene, FuriousBlocksCoreListener {
 private:
   Player *player;
+  // Labels
+  cocos2d::CCLabelBMFont *score;
+  cocos2d::CCLabelBMFont *minutes;
+  cocos2d::CCLabelBMFont *seconds;
+  cocos2d::CCLabelBMFont *centisecs;
+
+  // Gameover
+  cocos2d::CCSprite *youLose;
 
 public:
   PanelScene();

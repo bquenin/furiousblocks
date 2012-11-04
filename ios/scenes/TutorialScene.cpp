@@ -6,7 +6,6 @@
 
 
 #include "TutorialScene.h"
-#include "SimpleAudioEngine.h"
 #include "StarNumber.h"
 #include "easing_back.hpp"
 #include "easing_bounce.hpp"
@@ -17,9 +16,8 @@
 #include "PauseAction.h"
 #include "CursorAction.h"
 #include "SetBlocksAction.h"
+#include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
-
-using namespace CocosDenshion;
 
 TutorialScene::TutorialScene() {
   gameRunning = true;
@@ -44,8 +42,8 @@ bool TutorialScene::init() {
   cursor->setAnchorPoint(ccp(0, 0));
   batch->addChild(cursor);
 
-  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
-  //  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
 
   cocos2d::CCSize size = cocos2d::CCDirector::sharedDirector()->getWinSize();
 
@@ -126,8 +124,6 @@ bool TutorialScene::init() {
   script.add(new TypeTextAction(.1f, "Now let's have a look at combos and chains.", textToType));
   script.add(new SetBlocksAction(1, tutorialPanel, combo4and5));
   script.add(new TypeTextAction(.1f, "A combo is triggered when you clear at least 4 blocks.", textToType));
-  script.add(new CursorAction(.02f, tutorialPlayer, MoveType::CURSOR_DOWN));
-  script.add(new CursorAction(.02f, tutorialPlayer, MoveType::CURSOR_DOWN));
   script.add(new CursorAction(.02f, tutorialPlayer, MoveType::CURSOR_DOWN));
   script.add(new CursorAction(.02f, tutorialPlayer, MoveType::CURSOR_DOWN));
   script.add(new CursorAction(.02f, tutorialPlayer, MoveType::CURSOR_DOWN));
@@ -225,18 +221,6 @@ void TutorialScene::update(float dt) {
   // Tweeners update
   tweeners.update(dt);
 
-  // Score
-  score->setString(format("%d", panel.score).c_str());
-
-  // Time
-  minutes->setString(format("%02d", static_cast<int32_t>(stateTime / 60)).c_str());
-  seconds->setString(format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
-  centisecs->setString(format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
-
-  //  if (!gameRunning || panel.isGameOver()) {
-  //    return;
-  //  }
-
   // State time update
   stateTime += dt;
 
@@ -258,10 +242,7 @@ void TutorialScene::onCombo(Combo *combo) {
 }
 
 void TutorialScene::onGameOver() {
-  CCSize size = CCDirector::sharedDirector()->getWinSize();
-  youLose->setVisible(true);
-
-  // Initialize the grid
+  // Initialize tweeners
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
@@ -269,20 +250,4 @@ void TutorialScene::onGameOver() {
       }
     }
   }
-
-  claw::tween::single_tweener musicFadeOut(1.0, 0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
-  musicFadeOut.on_finished([](){
-    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("gameover.mp3", true);
-  });
-
-  claw::tween::single_tweener musicFadeIn(0, 1.0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
-
-  claw::tween::tweener_group step2;
-  step2.insert(musicFadeIn);
-  step2.insert(claw::tween::single_tweener(500, size.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out));
-
-  claw::tween::tweener_sequence gameOverSequence;
-  gameOverSequence.insert(musicFadeOut);
-  gameOverSequence.insert(step2);
-  tweeners.insert(gameOverSequence);
 }
