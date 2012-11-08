@@ -16,7 +16,6 @@
 #include "PauseAction.h"
 #include "CursorAction.h"
 #include "SetBlocksAction.h"
-#include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
 
 TutorialScene::TutorialScene() {
@@ -42,8 +41,8 @@ bool TutorialScene::init() {
   cursor->setAnchorPoint(ccp(0, 0));
   batch->addChild(cursor);
 
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
+  //  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
+  //  CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
 
   cocos2d::CCSize size = cocos2d::CCDirector::sharedDirector()->getWinSize();
 

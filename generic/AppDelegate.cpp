@@ -10,9 +10,9 @@
 
 #include "cocos2d.h"
 #include "CCBReader/CCBReader.h"
-#include "PanelScene.h"
 #include "SimpleAudioEngine.h"
-#include "TutorialScene.h"
+#include "CCNodeLoaderLibrary.h"
+#include "TitleSceneLoader.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -42,33 +42,33 @@ bool AppDelegate::applicationDidFinishLaunching() {
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
 
-  //  /* Create an autorelease CCNodeLoaderLibrary. */
-  //  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
-  //
-  //  ccNodeLoaderLibrary->registerCCNodeLoader("TitleScene", TitleSceneLoader::loader());
-  //
-  //  /* Create an autorelease CCBReader. */
-  //  cocos2d::extension::CCBReader *ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-  //  ccbReader->autorelease();
-  //
-  //  // create a scene. it's an autorelease object
-  //  CCScene *pScene = CCScene::create();
-  //
-  //  /* Read the ccbi file. */
-  //  CCNode *node = ccbReader->readNodeGraphFromFile("./", "TitleScene.ccbi", pScene);
-  //
-  //  if (node != NULL) {
-  //    pScene->addChild(node);
-  //  }
-  //
-  //  // run
-  //  pDirector->pushScene(pScene);
+  /* Create an autorelease CCNodeLoaderLibrary. */
+  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
+
+  ccNodeLoaderLibrary->registerCCNodeLoader("TitleScene", TitleSceneLoader::loader());
+
+  /* Create an autorelease CCBReader. */
+  cocos2d::extension::CCBReader *ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+  ccbReader->autorelease();
 
   // create a scene. it's an autorelease object
-  CCScene *pScene = TutorialScene::scene();
+  CCScene *pScene = CCScene::create();
+
+  /* Read the ccbi file. */
+  CCNode *node = ccbReader->readNodeGraphFromFile("./TitleScene.ccbi", pScene);
+
+  if (node != NULL) {
+    pScene->addChild(node);
+  }
 
   // run
-  pDirector->runWithScene(pScene);
+  pDirector->pushScene(pScene);
+
+  //  // create a scene. it's an autorelease object
+  //  CCScene *pScene = TutorialScene::scene();
+  //
+  //  // run
+  //  pDirector->runWithScene(pScene);
 
   return true;
 }

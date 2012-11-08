@@ -51,6 +51,7 @@
 		7969E786C36C762638C2CDB6 /* CCTMXObjectGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E28230511461B8447857 /* CCTMXObjectGroup.cpp */; };
 		7969E80781B9E89C05307949 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969EF721F27D1097094F4E1 /* gameover.mp3 */; };
 		7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E33F030A2BE935A7CEFE /* coopblack64.fnt */; };
+		7969E98821960FCBC54A40AD /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E50FD38FEFF4D2FA62A7 /* title.png */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA86AF48218A3CB3A0A9 /* CCParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */; };
 		7969EB777A506C91C95020FB /* TouchPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E0146F47EB712A998AF4 /* TouchPlayer.cpp */; };
@@ -264,7 +265,6 @@
 		D2E1CD0015D7D7F700D844D0 /* voices.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CCFE15D7D7F700D844D0 /* voices.mp3 */; };
 		D2E1CD0815D7D80B00D844D0 /* blocks.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CD0215D7D80B00D844D0 /* blocks.plist */; };
 		D2E1CD0915D7D80B00D844D0 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CD0315D7D80B00D844D0 /* blocks.png */; };
-		D2E1CD0C15D7D80B00D844D0 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CD0615D7D80B00D844D0 /* title.png */; };
 		D2E1CD0E15D7D81400D844D0 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2E1CD0D15D7D81400D844D0 /* SkaterDudes.ttf */; };
 /* End PBXBuildFile section */
 
@@ -323,6 +323,7 @@
 		7969E3A11039995352982F58 /* AbstractPanelScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractPanelScene.cpp; sourceTree = "<group>"; };
 		7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTileMapAtlas.cpp; sourceTree = "<group>"; };
 		7969E4AE20C9DF31145E4E9A /* tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener.hpp; sourceTree = "<group>"; };
+		7969E50FD38FEFF4D2FA62A7 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		7969E51CC9169D96809A8B46 /* single_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = single_tweener.hpp; sourceTree = "<group>"; };
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
 		7969E64228F22F096AD1288B /* CCTMXXMLParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTMXXMLParser.cpp; sourceTree = "<group>"; };
@@ -818,7 +819,6 @@
 		D2E1CCFE15D7D7F700D844D0 /* voices.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = voices.mp3; path = assets/bgm/voices.mp3; sourceTree = SOURCE_ROOT; };
 		D2E1CD0215D7D80B00D844D0 /* blocks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = blocks.plist; path = assets/graphics/blocks.plist; sourceTree = SOURCE_ROOT; };
 		D2E1CD0315D7D80B00D844D0 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = assets/graphics/blocks.png; sourceTree = SOURCE_ROOT; };
-		D2E1CD0615D7D80B00D844D0 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = assets/graphics/title.png; sourceTree = SOURCE_ROOT; };
 		D2E1CD0D15D7D81400D844D0 /* SkaterDudes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SkaterDudes.ttf; path = assets/fonts/SkaterDudes.ttf; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -980,7 +980,7 @@
 			children = (
 				D2E1CD0215D7D80B00D844D0 /* blocks.plist */,
 				D2E1CD0315D7D80B00D844D0 /* blocks.png */,
-				D2E1CD0615D7D80B00D844D0 /* title.png */,
+				7969E50FD38FEFF4D2FA62A7 /* title.png */,
 			);
 			name = graphics;
 			path = assets/graphics;
@@ -1990,7 +1990,6 @@
 				D2E1CD0015D7D7F700D844D0 /* voices.mp3 in Resources */,
 				D2E1CD0815D7D80B00D844D0 /* blocks.plist in Resources */,
 				D2E1CD0915D7D80B00D844D0 /* blocks.png in Resources */,
-				D2E1CD0C15D7D80B00D844D0 /* title.png in Resources */,
 				D2E1CD0E15D7D81400D844D0 /* SkaterDudes.ttf in Resources */,
 				D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */,
 				7969E612FE03E636C97FF44A /* coopblack32.fnt in Resources */,
@@ -1999,6 +1998,7 @@
 				7969EF6C374262C7EADCBFFA /* coopblack64.png in Resources */,
 				7969E80781B9E89C05307949 /* gameover.mp3 in Resources */,
 				7969EF258688B109A5B0B50A /* tutorial.mp3 in Resources */,
+				7969E98821960FCBC54A40AD /* title.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
