@@ -83,7 +83,6 @@
 		D25B3711164583B600496D14 /* SetBlocksAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3707164583B600496D14 /* SetBlocksAction.cpp */; };
 		D25B3712164583B600496D14 /* TextToType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3709164583B600496D14 /* TextToType.cpp */; };
 		D25B3713164583B600496D14 /* TypeTextAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B370B164583B600496D14 /* TypeTextAction.cpp */; };
-		D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D27631BC16188BA80084CB09 /* Default-568h@2x.png */; };
 		D280C822161A3D94007EA377 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C65C161A3D94007EA377 /* CCAction.cpp */; };
 		D280C823161A3D94007EA377 /* CCActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C65E161A3D94007EA377 /* CCActionCamera.cpp */; };
 		D280C824161A3D94007EA377 /* CCActionCatmullRom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C660161A3D94007EA377 /* CCActionCatmullRom.cpp */; };
@@ -163,11 +162,6 @@
 		D280C870161A3D94007EA377 /* CCLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C717161A3D94007EA377 /* CCLock.cpp */; };
 		D280C871161A3D94007EA377 /* CCThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = D280C71B161A3D94007EA377 /* CCThread.mm */; };
 		D280C872161A3D94007EA377 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D280C71D161A3D94007EA377 /* EAGLView.mm */; };
-		D280C873161A3D94007EA377 /* FontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D280C720161A3D94007EA377 /* FontLabel.m */; };
-		D280C874161A3D94007EA377 /* FontLabelStringDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = D280C722161A3D94007EA377 /* FontLabelStringDrawing.m */; };
-		D280C875161A3D94007EA377 /* FontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D280C724161A3D94007EA377 /* FontManager.m */; };
-		D280C876161A3D94007EA377 /* ZAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = D280C726161A3D94007EA377 /* ZAttributedString.m */; };
-		D280C877161A3D94007EA377 /* ZFont.m in Sources */ = {isa = PBXBuildFile; fileRef = D280C729161A3D94007EA377 /* ZFont.m */; };
 		D280C878161A3D94007EA377 /* AccelerometerSimulation.m in Sources */ = {isa = PBXBuildFile; fileRef = D280C72D161A3D94007EA377 /* AccelerometerSimulation.m */; };
 		D280C879161A3D94007EA377 /* platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D280C72E161A3D94007EA377 /* platform.cpp */; };
 		D280C87A161A3D94007EA377 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D280C73E161A3D94007EA377 /* libcurl.a */; };
@@ -393,7 +387,6 @@
 		D25B370A164583B600496D14 /* TextToType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextToType.h; sourceTree = "<group>"; };
 		D25B370B164583B600496D14 /* TypeTextAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TypeTextAction.cpp; sourceTree = "<group>"; };
 		D25B370C164583B600496D14 /* TypeTextAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeTextAction.h; sourceTree = "<group>"; };
-		D27631BC16188BA80084CB09 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D280C65C161A3D94007EA377 /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
 		D280C65D161A3D94007EA377 /* CCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAction.h; sourceTree = "<group>"; };
 		D280C65E161A3D94007EA377 /* CCActionCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCActionCamera.cpp; sourceTree = "<group>"; };
@@ -568,17 +561,6 @@
 		D280C71B161A3D94007EA377 /* CCThread.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCThread.mm; sourceTree = "<group>"; };
 		D280C71C161A3D94007EA377 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		D280C71D161A3D94007EA377 /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
-		D280C71F161A3D94007EA377 /* FontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontLabel.h; sourceTree = "<group>"; };
-		D280C720161A3D94007EA377 /* FontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontLabel.m; sourceTree = "<group>"; };
-		D280C721161A3D94007EA377 /* FontLabelStringDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontLabelStringDrawing.h; sourceTree = "<group>"; };
-		D280C722161A3D94007EA377 /* FontLabelStringDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontLabelStringDrawing.m; sourceTree = "<group>"; };
-		D280C723161A3D94007EA377 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
-		D280C724161A3D94007EA377 /* FontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontManager.m; sourceTree = "<group>"; };
-		D280C725161A3D94007EA377 /* ZAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAttributedString.h; sourceTree = "<group>"; };
-		D280C726161A3D94007EA377 /* ZAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZAttributedString.m; sourceTree = "<group>"; };
-		D280C727161A3D94007EA377 /* ZAttributedStringPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZAttributedStringPrivate.h; sourceTree = "<group>"; };
-		D280C728161A3D94007EA377 /* ZFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFont.h; sourceTree = "<group>"; };
-		D280C729161A3D94007EA377 /* ZFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFont.m; sourceTree = "<group>"; };
 		D280C72A161A3D94007EA377 /* OpenGL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGL_Internal.h; sourceTree = "<group>"; };
 		D280C72C161A3D94007EA377 /* AccelerometerSimulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerSimulation.h; sourceTree = "<group>"; };
 		D280C72D161A3D94007EA377 /* AccelerometerSimulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerometerSimulation.m; sourceTree = "<group>"; };
@@ -894,7 +876,6 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
-				D27631BC16188BA80084CB09 /* Default-568h@2x.png */,
 				0250A3F615A36D3F0087AC45 /* builder */,
 				2E211F1159E493100CB0B18 /* scenes */,
 				2E211F1159E493100CB0B19 /* blocks-hd.zwd */,
@@ -1445,29 +1426,10 @@
 				D280C71B161A3D94007EA377 /* CCThread.mm */,
 				D280C71C161A3D94007EA377 /* EAGLView.h */,
 				D280C71D161A3D94007EA377 /* EAGLView.mm */,
-				D280C71E161A3D94007EA377 /* FontLabel */,
 				D280C72A161A3D94007EA377 /* OpenGL_Internal.h */,
 				D280C72B161A3D94007EA377 /* Simulation */,
 			);
 			path = ios;
-			sourceTree = "<group>";
-		};
-		D280C71E161A3D94007EA377 /* FontLabel */ = {
-			isa = PBXGroup;
-			children = (
-				D280C71F161A3D94007EA377 /* FontLabel.h */,
-				D280C720161A3D94007EA377 /* FontLabel.m */,
-				D280C721161A3D94007EA377 /* FontLabelStringDrawing.h */,
-				D280C722161A3D94007EA377 /* FontLabelStringDrawing.m */,
-				D280C723161A3D94007EA377 /* FontManager.h */,
-				D280C724161A3D94007EA377 /* FontManager.m */,
-				D280C725161A3D94007EA377 /* ZAttributedString.h */,
-				D280C726161A3D94007EA377 /* ZAttributedString.m */,
-				D280C727161A3D94007EA377 /* ZAttributedStringPrivate.h */,
-				D280C728161A3D94007EA377 /* ZFont.h */,
-				D280C729161A3D94007EA377 /* ZFont.m */,
-			);
-			path = FontLabel;
 			sourceTree = "<group>";
 		};
 		D280C72B161A3D94007EA377 /* Simulation */ = {
@@ -1991,7 +1953,6 @@
 				D2E1CD0815D7D80B00D844D0 /* blocks.plist in Resources */,
 				D2E1CD0915D7D80B00D844D0 /* blocks.png in Resources */,
 				D2E1CD0E15D7D81400D844D0 /* SkaterDudes.ttf in Resources */,
-				D27631BD16188BA80084CB09 /* Default-568h@2x.png in Resources */,
 				7969E612FE03E636C97FF44A /* coopblack32.fnt in Resources */,
 				7969E1712C84417C3F1578CA /* coopblack32.png in Resources */,
 				7969E813D41CF0DF7B688B11 /* coopblack64.fnt in Resources */,
@@ -2104,11 +2065,6 @@
 				D280C870161A3D94007EA377 /* CCLock.cpp in Sources */,
 				D280C871161A3D94007EA377 /* CCThread.mm in Sources */,
 				D280C872161A3D94007EA377 /* EAGLView.mm in Sources */,
-				D280C873161A3D94007EA377 /* FontLabel.m in Sources */,
-				D280C874161A3D94007EA377 /* FontLabelStringDrawing.m in Sources */,
-				D280C875161A3D94007EA377 /* FontManager.m in Sources */,
-				D280C876161A3D94007EA377 /* ZAttributedString.m in Sources */,
-				D280C877161A3D94007EA377 /* ZFont.m in Sources */,
 				D280C878161A3D94007EA377 /* AccelerometerSimulation.m in Sources */,
 				D280C879161A3D94007EA377 /* platform.cpp in Sources */,
 				D280C87B161A3D94007EA377 /* CCScriptSupport.cpp in Sources */,

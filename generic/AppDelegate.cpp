@@ -29,18 +29,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
   CCDirector *pDirector = CCDirector::sharedDirector();
   pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
-  // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
-  pDirector->enableRetinaDisplay(true);
-
   // turn on display FPS
   pDirector->setDisplayStats(true);
 
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
-
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
 
   /* Create an autorelease CCNodeLoaderLibrary. */
   CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
@@ -63,6 +56,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
   // run
   pDirector->pushScene(pScene);
+
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
 
   //  // create a scene. it's an autorelease object
   //  CCScene *pScene = TutorialScene::scene();
