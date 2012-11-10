@@ -1,9 +1,9 @@
 #include "SetBlocksAction.h"
 
-SetBlocksAction::SetBlocksAction(float timeStep, Panel &panel, const std::vector<const std::vector<BlockType>> &blockTypes)
+SetBlocksAction::SetBlocksAction(float timeStep, Panel &panel, std::vector<std::vector<BlockType>> &blockTypes)
 : Action(timeStep)
 , panel(panel)
-, blockTypes(std::move(blockTypes)) {
+, blockTypes(blockTypes) {
 }
 
 bool SetBlocksAction::execute(float stateTime) {

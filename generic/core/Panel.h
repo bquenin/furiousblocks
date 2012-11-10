@@ -2,9 +2,8 @@
 #define __Panel_H_
 
 #include <cstdint>
-#include <list>
 #include <set>
-#include <array>
+#include <vector>
 #include "Block.h"
 #include "Combo.h"
 #include "FuriousBlocksCoreDefaults.h"
@@ -133,7 +132,7 @@ public:
   bool scrollingEnabled;
   Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener = nullptr);
   void reset();
-  void setTransposedBlocks(const std::vector<const std::vector<BlockType>>  & blockTypes);
+  void setTransposedBlocks(std::vector<std::vector<BlockType>> & blockTypes);
   void onTick(int64_t tick);
   void stackGarbage(Panel::Garbage *garbage);
   Panel::Garbage *newGarbage(int32_t width, int32_t height, int32_t owner, bool skill);

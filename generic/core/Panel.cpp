@@ -1,6 +1,4 @@
 #include <cstdint>
-#include <unordered_set>
-#include <list>
 #include "Panel.h"
 #include "GarbageBlockType.h"
 
@@ -64,7 +62,7 @@ void Panel::reset() {
   }
 }
 
-void Panel::setTransposedBlocks(const std::vector<const std::vector<BlockType>> & blockTypes) {
+void Panel::setTransposedBlocks(std::vector<std::vector<BlockType>> & blockTypes) {
   for (int32_t y = 0; y < blockTypes[0].size(); y++) {
     for (int32_t x = 0; x < blockTypes.size(); x++) {
       blocks[y][x] = blockTypes[x][y] == static_cast<BlockType>(-1) ? nullptr : newBlock(blockTypes[x][y]);

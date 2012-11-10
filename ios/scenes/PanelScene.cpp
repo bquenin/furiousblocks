@@ -11,7 +11,9 @@
 
 using namespace CocosDenshion;
 
-PanelScene::PanelScene() {
+PanelScene::PanelScene()
+: AbstractPanelScene()
+, countdown(3) {
 }
 
 CCScene *PanelScene::scene() {

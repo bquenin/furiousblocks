@@ -12,6 +12,7 @@
 class PanelScene : public AbstractPanelScene, FuriousBlocksCoreListener {
 private:
   Player *player;
+
   // Labels
   cocos2d::CCLabelBMFont *score;
   cocos2d::CCLabelBMFont *minutes;
@@ -36,7 +37,7 @@ public:
   CREATE_FUNC(PanelScene);
 
   // Countdown
-  int countdown = 3;
+  int countdown;
   cocos2d::CCLabelBMFont *countdownLabel;
 };
 

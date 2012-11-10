@@ -6,7 +6,7 @@ class Action {
 private:
 protected:
   float timeStep;
-  float nextStep = 0;
+  float nextStep;
 
 public:
   Action(float timeStep);

@@ -11,15 +11,22 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "tweener_group.hpp"
+#include "single_tweener.hpp"
 
 using namespace cocos2d;
 
+class AbstractPanelScene;
+
 class StarNumber {
 public:
-  StarNumber(int32_t x, int32_t y, std::string label, ccColor3B color);
+  StarNumber(AbstractPanelScene *panelScene, int32_t x, int32_t y, std::string label, ccColor3B color);
+  void onTweenFinished();
+
+  AbstractPanelScene *panelScene;
   CCSprite *ccSprite;
   CCLabelBMFont *ccLabel;
-  //  tween::TweenerParam param;
+  claw::tween::tweener_group tweener;
 };
 
 #endif //__StarNumber_H_
