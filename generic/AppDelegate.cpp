@@ -48,7 +48,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   CCScene *pScene = CCScene::create();
 
   /* Read the ccbi file. */
-  CCNode *node = ccbReader->readNodeGraphFromFile("./TitleScene.ccbi", pScene);
+  CCNode *node = ccbReader->readNodeGraphFromFile("TitleScene.ccbi", pScene);
 
   if (node != NULL) {
     pScene->addChild(node);
