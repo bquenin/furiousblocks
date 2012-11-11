@@ -28,14 +28,10 @@ $(LOCAL_PATH)/../../generic/tween \
 $(LOCAL_PATH)/scenes
 
 LOCAL_SRC_FILES := \
-\
 bootstrap/main.cpp \
-\
 ../../generic/AppDelegate.cpp \
-\
 ../../generic/animation/Animation.cpp \
 ../../generic/animation/NonLoopingAnimation.cpp \
-\
 ../../generic/core/Block.cpp \
 ../../generic/core/Combo.cpp \
 ../../generic/core/FuriousBlocksCore.cpp \
@@ -44,7 +40,6 @@ bootstrap/main.cpp \
 ../../generic/core/PanelEvent.cpp \
 ../../generic/core/Point.cpp \
 ../../generic/core/SimpleRNG.cpp \
-\
 ../../generic/script/Action.cpp \
 ../../generic/script/CursorAction.cpp \
 ../../generic/script/PauseAction.cpp \
@@ -52,7 +47,6 @@ bootstrap/main.cpp \
 ../../generic/script/SetBlocksAction.cpp \
 ../../generic/script/TextToType.cpp \
 ../../generic/script/TypeTextAction.cpp \
-\
 ../../generic/tween/easing/easing_back.cpp \
 ../../generic/tween/easing/easing_bounce.cpp \
 ../../generic/tween/easing/easing_circ.cpp \
@@ -70,7 +64,6 @@ bootstrap/main.cpp \
 ../../generic/tween/tweener.cpp \
 ../../generic/tween/tweener_group.cpp \
 ../../generic/tween/tweener_sequence.cpp \
-\
 ../../generic/scenes/AbstractPanelScene.cpp \
 ../../generic/scenes/PanelScene.cpp \
 ../../generic/scenes/StarNumber.cpp \
