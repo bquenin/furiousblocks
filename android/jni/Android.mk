@@ -40,6 +40,14 @@ bootstrap/main.cpp \
 ../../generic/core/PanelEvent.cpp \
 ../../generic/core/Point.cpp \
 ../../generic/core/SimpleRNG.cpp \
+../../generic/scenes/AbstractPanelScene.cpp \
+../../generic/scenes/PanelScene.cpp \
+../../generic/scenes/SceneConstants.cpp \
+../../generic/scenes/StarNumber.cpp \
+../../generic/scenes/TitleScene.cpp \
+../../generic/scenes/TouchPlayer.cpp \
+../../generic/scenes/TutorialPlayer.cpp \
+../../generic/scenes/TutorialScene.cpp \
 ../../generic/script/Action.cpp \
 ../../generic/script/CursorAction.cpp \
 ../../generic/script/PauseAction.cpp \
@@ -63,14 +71,7 @@ bootstrap/main.cpp \
 ../../generic/tween/single_tweener.cpp \
 ../../generic/tween/tweener.cpp \
 ../../generic/tween/tweener_group.cpp \
-../../generic/tween/tweener_sequence.cpp \
-../../generic/scenes/AbstractPanelScene.cpp \
-../../generic/scenes/PanelScene.cpp \
-../../generic/scenes/StarNumber.cpp \
-../../generic/scenes/TitleScene.cpp \
-../../generic/scenes/TouchPlayer.cpp \
-../../generic/scenes/TutorialPlayer.cpp \
-../../generic/scenes/TutorialScene.cpp
+../../generic/tween/tweener_sequence.cpp
 
 # LOCAL_STATIC_LIBRARIES := libboost_thread
 

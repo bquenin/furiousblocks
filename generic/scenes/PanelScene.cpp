@@ -7,6 +7,7 @@
 #include "easing_quad.hpp"
 #include "tweener_sequence.hpp"
 #include "TouchPlayer.h"
+#include "SceneConstants.h"
 #include <boost/bind.hpp>
 
 using namespace CocosDenshion;
@@ -34,51 +35,49 @@ bool PanelScene::init() {
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(random() % 350 + 500 + yOffset + y * TILE_SIZE, yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_out));
+        tweeners.insert(claw::tween::single_tweener(random() % 350 + SceneConstants::designResolutionSize.height + yOffset + y * TILE_SIZE, yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_out));
       }
     }
   }
 
-  CCSize size = CCDirector::sharedDirector()->getWinSize();
-
   countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
-  countdownLabel->setPosition(ccp(size.width / 2, size.height / 2));
+  countdownLabel->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2));
   addChild(countdownLabel);
 
   cocos2d::CCLabelBMFont *scoreLabel = cocos2d::CCLabelBMFont::create("Score", "coopblack32.fnt");
-  scoreLabel->setPosition(ccp(size.width / 4, 470));
+  scoreLabel->setPosition(ccp(SceneConstants::designResolutionSize.width / 4, SceneConstants::designResolutionSize.height - 16 ));
   addChild(scoreLabel);
 
   score = cocos2d::CCLabelBMFont::create("Score", "coopblack32.fnt");
-  score->setPosition(ccp(size.width / 4, 454));
+  score->setPosition(ccp(SceneConstants::designResolutionSize.width / 4, SceneConstants::designResolutionSize.height - 48));
   addChild(score);
 
   cocos2d::CCLabelBMFont *timeLabel = cocos2d::CCLabelBMFont::create("Time", "coopblack32.fnt");
-  timeLabel->setPosition(ccp(size.width * 3 / 4, 470));
+  timeLabel->setPosition(ccp(SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 16 ));
   addChild(timeLabel);
 
   minutes = cocos2d::CCLabelBMFont::create("Time", "coopblack32.fnt");
-  minutes->setPosition(ccp(-32 + size.width * 3 / 4, 454));
+  minutes->setPosition(ccp(-64 + SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
   addChild(minutes);
 
   cocos2d::CCLabelBMFont *colon1 = cocos2d::CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon1->setPosition(ccp(-16 + size.width * 3 / 4, 454));
+  colon1->setPosition(ccp(-32 + SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
   addChild(colon1);
 
   seconds = cocos2d::CCLabelBMFont::create("Time", "coopblack32.fnt");
-  seconds->setPosition(ccp(size.width * 3 / 4, 454));
+  seconds->setPosition(ccp(SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
   addChild(seconds);
 
   cocos2d::CCLabelBMFont *colon2 = cocos2d::CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon2->setPosition(ccp(16 + size.width * 3 / 4, 454));
+  colon2->setPosition(ccp(32 + SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
   addChild(colon2);
 
   centisecs = cocos2d::CCLabelBMFont::create("Time", "coopblack32.fnt");
-  centisecs->setPosition(ccp(32 + size.width * 3 / 4, 454));
+  centisecs->setPosition(ccp(64 + SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
   addChild(centisecs);
 
   youLose = cocos2d::CCSprite::createWithSpriteFrameName("lose.png");
-  youLose->setPosition(ccp(size.width / 2, size.height / 2));
+  youLose->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2));
   youLose->setVisible(false);
   batch->addChild(youLose);
 
@@ -162,14 +161,13 @@ void PanelScene::onCombo(Combo *combo) {
 }
 
 void PanelScene::onGameOver() {
-  CCSize size = CCDirector::sharedDirector()->getWinSize();
   youLose->setVisible(true);
 
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + 500 + yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
+        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + SceneConstants::designResolutionSize.height + yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
       }
     }
   }
@@ -183,7 +181,7 @@ void PanelScene::onGameOver() {
 
   claw::tween::tweener_group step2;
   step2.insert(musicFadeIn);
-  step2.insert(claw::tween::single_tweener(500, size.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out));
+  step2.insert(claw::tween::single_tweener(SceneConstants::designResolutionSize.height + 100, SceneConstants::designResolutionSize.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out));
 
   claw::tween::tweener_sequence gameOverSequence;
   gameOverSequence.insert(musicFadeOut);

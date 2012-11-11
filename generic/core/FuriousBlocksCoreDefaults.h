@@ -4,8 +4,6 @@
 #include <cstdint>
 
 class FuriousBlocksCoreDefaults {
-private:
-protected:
 public:
   static constexpr int32_t BLOCK_LOGICALHEIGHT = 16;
   static constexpr int32_t BLOCK_SWITCHINGTIME = 1;
@@ -16,7 +14,6 @@ public:
   static constexpr int32_t BLOCK_REVEALINGTIMEINCREMENT = 10;
   static constexpr int32_t PANEL_WIDTH = 6;
   static constexpr int32_t PANEL_HEIGHT = 9;
-  static constexpr int32_t PANEL_QUAKINGTIME = 64;
   static constexpr float CORE_FREQUENCY = 60;
 };
 

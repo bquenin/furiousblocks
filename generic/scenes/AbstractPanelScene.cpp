@@ -7,6 +7,7 @@
 #include <boost/bind.hpp>
 #include "AbstractPanelScene.h"
 #include "GarbageBlockType.h"
+#include "SceneConstants.h"
 
 AbstractPanelScene::AbstractPanelScene()
 : tick(1)
@@ -176,7 +177,7 @@ bool AbstractPanelScene::init() {
 
   cocos2d::CCSprite *bgTop = cocos2d::CCSprite::createWithSpriteFrameName("bg-top.png");
   bgTop->setAnchorPoint(ccp(0, 0));
-  bgTop->setPosition(ccp(0, 960 - 79));
+  bgTop->setPosition(ccp(0, SceneConstants::designResolutionSize.height - 79));
   batch->addChild(bgTop);
 
   return true;

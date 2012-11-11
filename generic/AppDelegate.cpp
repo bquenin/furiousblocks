@@ -13,7 +13,8 @@
 #include "SimpleAudioEngine.h"
 #include "CCNodeLoaderLibrary.h"
 #include "TitleSceneLoader.h"
-#include "TutorialScene.h"
+#include "PanelScene.h"
+#include "SceneConstants.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -32,10 +33,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
   pDirector->setOpenGLView(pEGLView);
 
-  cocos2d::CCSize designResolutionSize = cocos2d::CCSizeMake(640, 960);
-
   // Set the design resolution
-  pEGLView->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionExactFit);
+  pEGLView->setDesignResolutionSize(SceneConstants::designResolutionSize.width, SceneConstants::designResolutionSize.height, kResolutionExactFit);
 
   // turn on display FPS
   pDirector->setDisplayStats(true);
@@ -66,7 +65,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   //  pDirector->pushScene(pScene);
 
   // create a scene. it's an autorelease object
-  CCScene *pScene = TutorialScene::scene();
+  CCScene *pScene = PanelScene::scene();
 
   // run
   pDirector->runWithScene(pScene);
