@@ -13,6 +13,7 @@
 #include "SimpleAudioEngine.h"
 #include "CCNodeLoaderLibrary.h"
 #include "TitleSceneLoader.h"
+#include "TutorialScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -27,7 +28,14 @@ AppDelegate::~AppDelegate() {
 bool AppDelegate::applicationDidFinishLaunching() {
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
-  pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
+  CCEGLView *pEGLView = CCEGLView::sharedOpenGLView();
+
+  pDirector->setOpenGLView(pEGLView);
+
+  cocos2d::CCSize designResolutionSize = cocos2d::CCSizeMake(640, 960);
+
+  // Set the design resolution
+  pEGLView->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionExactFit);
 
   // turn on display FPS
   pDirector->setDisplayStats(true);
@@ -35,37 +43,37 @@ bool AppDelegate::applicationDidFinishLaunching() {
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
 
-  /* Create an autorelease CCNodeLoaderLibrary. */
-  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
-
-  ccNodeLoaderLibrary->registerCCNodeLoader("TitleScene", TitleSceneLoader::loader());
-
-  /* Create an autorelease CCBReader. */
-  cocos2d::extension::CCBReader *ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-  ccbReader->autorelease();
+  //    /* Create an autorelease CCNodeLoaderLibrary. */
+  //  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
+  //
+  //  ccNodeLoaderLibrary->registerCCNodeLoader("TitleScene", TitleSceneLoader::loader());
+  //
+  //  /* Create an autorelease CCBReader. */
+  //  cocos2d::extension::CCBReader *ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
+  //  ccbReader->autorelease();
+  //
+  //  // create a scene. it's an autorelease object
+  //  CCScene *pScene = CCScene::create();
+  //
+  //  /* Read the ccbi file. */
+  //  CCNode *node = ccbReader->readNodeGraphFromFile("TitleScene.ccbi", pScene);
+  //
+  //  if (node != NULL) {
+  //    pScene->addChild(node);
+  //  }
+  //
+  //  // run
+  //  pDirector->pushScene(pScene);
 
   // create a scene. it's an autorelease object
-  CCScene *pScene = CCScene::create();
-
-  /* Read the ccbi file. */
-  CCNode *node = ccbReader->readNodeGraphFromFile("TitleScene.ccbi", pScene);
-
-  if (node != NULL) {
-    pScene->addChild(node);
-  }
+  CCScene *pScene = TutorialScene::scene();
 
   // run
-  pDirector->pushScene(pScene);
+  pDirector->runWithScene(pScene);
 
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
-
-  //  // create a scene. it's an autorelease object
-  //  CCScene *pScene = TutorialScene::scene();
-  //
-  //  // run
-  //  pDirector->runWithScene(pScene);
 
   return true;
 }

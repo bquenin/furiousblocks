@@ -19,12 +19,9 @@
 
 class AbstractPanelScene : public cocos2d::CCLayer {
 public:
-  static constexpr int32_t
-  TILE_SIZE = 48;
-  static constexpr int32_t
-  xOffset = 17; // 17
-  static constexpr int32_t
-  yOffset = -38; // 10
+  static constexpr int32_t TILE_SIZE = 96;
+  static constexpr int32_t xOffset = 34;
+  static constexpr int32_t yOffset = -76;
 
   AbstractPanelScene();
 
