@@ -2,7 +2,7 @@
 //  testAppController.h
 //  test
 //
-//  Created by Bertrand Quenin on 01/07/12.
+//  Created by Bertrand Quenin on 11/11/12.
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 
@@ -34,12 +34,21 @@
 }
  
 */
-// Override to allow orientations other than the default landscape orientation.
+// Override to allow orientations other than the default portrait orientation.
+// This method is deprecated on ios6
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return UIInterfaceOrientationIsPortrait( interfaceOrientation );
+}
 
-  // switch to this line if you want to set portrait view
-  // return UIInterfaceOrientationIsPortrait( interfaceOrientation );
+// For ios6, use supportedInterfaceOrientations & shouldAutorotate instead
+- (NSUInteger) supportedInterfaceOrientations{
+#ifdef __IPHONE_6_0
+  return UIInterfaceOrientationMaskPortrait;
+#endif
+}
+
+- (BOOL) shouldAutorotate {
+  return YES;
 }
 
 - (void)didReceiveMemoryWarning {
