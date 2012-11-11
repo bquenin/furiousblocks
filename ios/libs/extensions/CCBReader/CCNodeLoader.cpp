@@ -660,6 +660,11 @@ CCString * CCNodeLoader::parsePropTypeText(CCNode * pNode, CCNode * pParent, CCB
 CCString * CCNodeLoader::parsePropTypeFontTTF(CCNode * pNode, CCNode * pParent, CCBReader * pCCBReader) {
     CCString * fontTTF = pCCBReader->readCachedString();
 
+    std::string tmp(fontTTF->getCString());
+    if (tmp.find_last_of(".ttf") > 0) {
+      return CCString::create(tmp.substr(0, tmp.find_last_of(".ttf") - 3));
+    }
+
     // CCString * ttfEnding = CCString::create(".ttf");
 
     // TODO Fix me if it is wrong

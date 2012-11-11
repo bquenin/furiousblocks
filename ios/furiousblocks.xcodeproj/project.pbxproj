@@ -45,7 +45,6 @@
 		7969EA86AF48218A3CB3A0A9 /* CCParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969ED1E748C10D985EC2A70 /* CCParallaxNode.cpp */; };
 		7969EACB2CF570960D037656 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E79960EAF9FDDBA0C804 /* blocks.png */; };
 		7969ECE4B3026C6FB0597C45 /* CCTileMapAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */; };
-		7969EDBB930F0B5F19549CC9 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969E746D099DED4DFD00C9A /* SkaterDudes.ttf */; };
 		7969EDE3C9FD7BDE1BCBAB53 /* SceneConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E697E17DB0573C30BB6D /* SceneConstants.cpp */; };
 		7969EE8A943653E43E23ABD2 /* coopblack32.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E190E9B4C07482F4316E /* coopblack32.fnt */; };
 		7969EFBE63F5CA04AD591F2D /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E619F03DD57B616F1DD3 /* gameover.mp3 */; };
@@ -70,6 +69,7 @@
 		D224B757163892780056F752 /* tweener_group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B746163892780056F752 /* tweener_group.cpp */; };
 		D224B758163892780056F752 /* tweener_sequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B747163892780056F752 /* tweener_sequence.cpp */; };
 		D224B759163892780056F752 /* tweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B748163892780056F752 /* tweener.cpp */; };
+		D236C13C1650585500F77612 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D236C13B1650585500F77612 /* SkaterDudes.ttf */; };
 		D23E7DA0164FCB71003B565D /* AbstractPanelScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D91164FCB71003B565D /* AbstractPanelScene.cpp */; };
 		D23E7DA1164FCB71003B565D /* PanelScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D93164FCB71003B565D /* PanelScene.cpp */; };
 		D23E7DA2164FCB71003B565D /* StarNumber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D95164FCB71003B565D /* StarNumber.cpp */; };
@@ -310,7 +310,6 @@
 		7969E697E17DB0573C30BB6D /* SceneConstants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneConstants.cpp; sourceTree = "<group>"; };
 		7969E6F5FD0E6DA25761AD84 /* CCTMXObjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXObjectGroup.h; sourceTree = "<group>"; };
 		7969E7237904D92983195353 /* tutorial.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tutorial.mp3; sourceTree = "<group>"; };
-		7969E746D099DED4DFD00C9A /* SkaterDudes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = SkaterDudes.ttf; sourceTree = "<group>"; };
 		7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
 		7969E79960EAF9FDDBA0C804 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blocks.png; sourceTree = "<group>"; };
 		7969E7B07737D9B1B3FE8297 /* coopblack32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coopblack32.png; sourceTree = "<group>"; };
@@ -379,6 +378,7 @@
 		D224B746163892780056F752 /* tweener_group.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tweener_group.cpp; sourceTree = "<group>"; };
 		D224B747163892780056F752 /* tweener_sequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tweener_sequence.cpp; sourceTree = "<group>"; };
 		D224B748163892780056F752 /* tweener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tweener.cpp; sourceTree = "<group>"; };
+		D236C13B1650585500F77612 /* SkaterDudes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SkaterDudes.ttf; sourceTree = "<group>"; };
 		D23E7D91164FCB71003B565D /* AbstractPanelScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractPanelScene.cpp; sourceTree = "<group>"; };
 		D23E7D92164FCB71003B565D /* AbstractPanelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractPanelScene.h; sourceTree = "<group>"; };
 		D23E7D93164FCB71003B565D /* PanelScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelScene.cpp; sourceTree = "<group>"; };
@@ -832,6 +832,7 @@
 		02BAEA13159E577F00BCA0C3 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				D236C13B1650585500F77612 /* SkaterDudes.ttf */,
 				D2CCD355164F1A1C00F68F98 /* ccbResources */,
 				02E03076159FB9E800C26BE0 /* Icon-72.png */,
 				02E03077159FB9E800C26BE0 /* Icon-Small-50.png */,
@@ -849,7 +850,6 @@
 				7969E518EF278100D9336944 /* coopblack64.png */,
 				7969E619F03DD57B616F1DD3 /* gameover.mp3 */,
 				7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */,
-				7969E746D099DED4DFD00C9A /* SkaterDudes.ttf */,
 				7969E2675367549D058DC9A8 /* title.png */,
 				7969E7237904D92983195353 /* tutorial.mp3 */,
 				7969E7F9A6066AE2418BF9C1 /* voices.mp3 */,
@@ -1918,7 +1918,6 @@
 				7969E04620129B98CD3557CA /* coopblack64.png in Resources */,
 				7969EFBE63F5CA04AD591F2D /* gameover.mp3 in Resources */,
 				7969E8FDA05207335D97FEBB /* harmonic.mp3 in Resources */,
-				7969EDBB930F0B5F19549CC9 /* SkaterDudes.ttf in Resources */,
 				7969E7BAE1B4A79122DBE153 /* title.png in Resources */,
 				7969E316900662224CE10922 /* tutorial.mp3 in Resources */,
 				7969E44E27EE3DC7B7C442A8 /* voices.mp3 in Resources */,
@@ -1933,6 +1932,7 @@
 				D2CCD367164F1A1C00F68F98 /* ccbParticleSmoke.png in Resources */,
 				D2CCD368164F1A1C00F68F98 /* ccbParticleSnow.png in Resources */,
 				D2CCD369164F1A1C00F68F98 /* ccbParticleStars.png in Resources */,
+				D236C13C1650585500F77612 /* SkaterDudes.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
