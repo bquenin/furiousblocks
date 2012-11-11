@@ -155,7 +155,7 @@ bool AbstractPanelScene::init() {
   // Background
   cocos2d::CCSprite *bgMiddle = cocos2d::CCSprite::createWithSpriteFrameName("bg-middle.png");
   bgMiddle->setAnchorPoint(ccp(0, 0));
-  bgMiddle->setPosition(ccp(0, 8));
+  bgMiddle->setPosition(ccp(0, 18));
   batch->addChild(bgMiddle);
 
   // Initialize the grid
@@ -176,7 +176,7 @@ bool AbstractPanelScene::init() {
 
   cocos2d::CCSprite *bgTop = cocos2d::CCSprite::createWithSpriteFrameName("bg-top.png");
   bgTop->setAnchorPoint(ccp(0, 0));
-  bgTop->setPosition(ccp(0, 440));
+  bgTop->setPosition(ccp(0, 960 - 79));
   batch->addChild(bgTop);
 
   return true;

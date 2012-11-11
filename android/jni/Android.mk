@@ -3,10 +3,10 @@ LOCAL_PATH := $(call my-dir)
 #
 # libboost_system-gcc-mt-1_49.a
 #
-include $(CLEAR_VARS)
-LOCAL_MODULE    := libboost_thread
-LOCAL_SRC_FILES := boost/lib/libboost_system-gcc-mt-1_49.a
-include $(PREBUILT_STATIC_LIBRARY)
+#include $(CLEAR_VARS)
+#LOCAL_MODULE    := libboost_thread
+#LOCAL_SRC_FILES := boost/lib/libboost_system-gcc-mt-1_49.a
+#include $(PREBUILT_STATIC_LIBRARY)
 
 #
 # libgame
@@ -14,12 +14,18 @@ include $(PREBUILT_STATIC_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := furiousblocks_shared
-
 LOCAL_MODULE_FILENAME := libfuriousblocks
+LOCAL_CPPFLAGS = -DCOCOS2D_DEBUG -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
 
-LOCAL_CPPFLAGS = -DCOCOS2D_DEBUG -std=gnu++0x -fexceptions -frtti
-
-LOCAL_CPPFLAGS += -I$(LOCAL_PATH)/boost/include/boost-1_49
+LOCAL_C_INCLUDES := \
+$(LOCAL_PATH)/../../generic \
+$(LOCAL_PATH)/../../generic/animation \
+$(LOCAL_PATH)/../../generic/core \
+$(LOCAL_PATH)/../../generic/scenes \
+$(LOCAL_PATH)/../../generic/script \
+$(LOCAL_PATH)/../../generic/tween/easing \
+$(LOCAL_PATH)/../../generic/tween \
+$(LOCAL_PATH)/scenes
 
 LOCAL_SRC_FILES := \
 \
@@ -65,24 +71,15 @@ bootstrap/main.cpp \
 ../../generic/tween/tweener_group.cpp \
 ../../generic/tween/tweener_sequence.cpp \
 \
-scenes/AbstractPanelScene.cpp \
-scenes/PanelScene.cpp \
-scenes/StarNumber.cpp \
-scenes/TitleScene.cpp \
-scenes/TouchPlayer.cpp \
-scenes/TutorialPlayer.cpp \
-scenes/TutorialScene.cpp
+../../generic/scenes/AbstractPanelScene.cpp \
+../../generic/scenes/PanelScene.cpp \
+../../generic/scenes/StarNumber.cpp \
+../../generic/scenes/TitleScene.cpp \
+../../generic/scenes/TouchPlayer.cpp \
+../../generic/scenes/TutorialPlayer.cpp \
+../../generic/scenes/TutorialScene.cpp
 
-LOCAL_C_INCLUDES := \
-$(LOCAL_PATH)/../../generic \
-$(LOCAL_PATH)/../../generic/animation \
-$(LOCAL_PATH)/../../generic/core \
-$(LOCAL_PATH)/../../generic/script \
-$(LOCAL_PATH)/../../generic/tween/easing \
-$(LOCAL_PATH)/../../generic/tween \
-$(LOCAL_PATH)/scenes
-
-LOCAL_STATIC_LIBRARIES := libboost_thread
+# LOCAL_STATIC_LIBRARIES := libboost_thread
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
 
