@@ -172,12 +172,12 @@ void PanelScene::onGameOver() {
     }
   }
 
-  claw::tween::single_tweener musicFadeOut(1.0, 0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
+  claw::tween::single_tweener musicFadeOut(SimpleAudioEngine::sharedEngine()->getBackgroundMusicVolume(), 0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
   musicFadeOut.on_finished([](){
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic("gameover.mp3", true);
   });
 
-  claw::tween::single_tweener musicFadeIn(0, 1.0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
+  claw::tween::single_tweener musicFadeIn(0, SimpleAudioEngine::sharedEngine()->getBackgroundMusicVolume(), 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
 
   claw::tween::tweener_group step2;
   step2.insert(musicFadeIn);
