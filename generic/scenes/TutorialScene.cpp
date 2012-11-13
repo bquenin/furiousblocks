@@ -16,6 +16,7 @@
 #include "PauseAction.h"
 #include "CursorAction.h"
 #include "SetBlocksAction.h"
+#include "QuitOverlay.h"
 #include <boost/bind.hpp>
 
 std::vector<std::vector<BlockType>> TutorialScene::empty = {
@@ -72,6 +73,8 @@ CCScene *TutorialScene::scene() {
   CCScene *scene = CCScene::create();
   TutorialScene *layer = TutorialScene::create();
   scene->addChild(layer);
+  QuitOverlay *quitOverlay = QuitOverlay::create();
+  scene->addChild(quitOverlay);
   return scene;
 }
 

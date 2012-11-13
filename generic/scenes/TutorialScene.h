@@ -35,10 +35,9 @@ private:
 public:
   TutorialScene();
   bool init();
-  void update(float d);
+  void update(float dt);
   void onCombo(Combo *combo);
   void onGameOver();
-  //  void onBeginningTweenFinished(void);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();

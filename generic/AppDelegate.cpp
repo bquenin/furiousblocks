@@ -13,6 +13,7 @@
 #include "SimpleAudioEngine.h"
 #include "SceneConstants.h"
 #include "PanelScene.h"
+#include "TutorialScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -60,7 +61,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   //  }
 
   // create a scene. it's an autorelease object
-  CCScene *pScene = PanelScene::scene();
+  CCScene *pScene = TutorialScene::scene();
 
   // run
   pDirector->runWithScene(pScene);
