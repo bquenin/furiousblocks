@@ -17,6 +17,7 @@
 #include "CursorAction.h"
 #include "SetBlocksAction.h"
 #include "QuitOverlay.h"
+#include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
 
 std::vector<std::vector<BlockType>> TutorialScene::empty = {
@@ -85,13 +86,12 @@ bool TutorialScene::init() {
 
   AbstractPanelScene::init();
 
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
+
   // Cursor
   cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
   cursor->setAnchorPoint(ccp(0, 0));
   batch->addChild(cursor);
-
-  //  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
-  //  CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
 
   cocos2d::CCSize size = cocos2d::CCDirector::sharedDirector()->getWinSize();
 

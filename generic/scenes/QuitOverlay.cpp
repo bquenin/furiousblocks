@@ -23,7 +23,7 @@ bool QuitOverlay::init() {
   /** Creates and return a button with a default background and title color. */
   CCScale9Sprite *skipBackgroundButton = CCScale9Sprite::create("button.png");
   CCScale9Sprite *skipBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  skipButton = CCControlButton::create(CCLabelTTF::create("Skip tutorial", "SkaterDudes", 32), skipBackgroundButton);
+  skipButton = CCControlButton::create(CCLabelTTF::create("Skip tutorial", "SkaterDudes.ttf", 32), skipBackgroundButton);
   skipButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
   skipButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   skipButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 + 40));
@@ -32,7 +32,7 @@ bool QuitOverlay::init() {
 
   CCScale9Sprite *resumeBackgroundButton = CCScale9Sprite::create("button.png");
   CCScale9Sprite *resumeBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  resumeButton = CCControlButton::create(CCLabelTTF::create("Resume", "SkaterDudes", 32), resumeBackgroundButton);
+  resumeButton = CCControlButton::create(CCLabelTTF::create("Resume", "SkaterDudes.ttf", 32), resumeBackgroundButton);
   resumeButton->setBackgroundSpriteForState(resumeBackgroundHighlightedButton, CCControlStateHighlighted);
   resumeButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   resumeButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 - 40));

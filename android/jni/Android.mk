@@ -42,6 +42,7 @@ bootstrap/main.cpp \
 ../../generic/core/SimpleRNG.cpp \
 ../../generic/scenes/AbstractPanelScene.cpp \
 ../../generic/scenes/PanelScene.cpp \
+../../generic/scenes/QuitOverlay.cpp \
 ../../generic/scenes/SceneConstants.cpp \
 ../../generic/scenes/StarNumber.cpp \
 ../../generic/scenes/TitleScene.cpp \

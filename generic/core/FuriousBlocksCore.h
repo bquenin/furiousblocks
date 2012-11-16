@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <set>
 #include <unordered_map>
-#include <atomic>
 #include <memory>
 #include "FuriousBlocksCoreListener.h"
 #include "FuriousBlocksCoreDefaults.h"

@@ -26,6 +26,13 @@ AppDelegate::~AppDelegate() {
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+  // Initialize Audio Engine
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
+  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
+  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0f);
+
+
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
   CCEGLView *pEGLView = CCEGLView::sharedOpenGLView();
@@ -65,11 +72,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
   // run
   pDirector->runWithScene(pScene);
-
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
-  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1);
 
   return true;
 }
