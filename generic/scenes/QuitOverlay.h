@@ -24,7 +24,8 @@ private:
 public:
   QuitOverlay();
   bool init();
-  void update(float dt);
+  void skipAction(CCObject *sender);
+  void resumeAction(CCObject *sender);
 
   // Implement the "static node()" method manually
   CREATE_FUNC(QuitOverlay);

@@ -30,7 +30,7 @@ bool PanelScene::init() {
   }
 
   AbstractPanelScene::init();
-
+  setTouchEnabled(true);
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {

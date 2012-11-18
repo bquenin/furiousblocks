@@ -16,8 +16,6 @@ AbstractPanelScene::AbstractPanelScene()
 }
 
 bool AbstractPanelScene::init() {
-  setTouchEnabled(true);
-
   // Sprite sheet
   cocos2d::CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
   batch = cocos2d::CCSpriteBatchNode::create("blocks.png", 100);

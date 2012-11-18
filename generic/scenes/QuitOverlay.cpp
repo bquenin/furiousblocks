@@ -28,22 +28,28 @@ bool QuitOverlay::init() {
   skipButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   skipButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 + 40));
   skipButton->setPreferredSize(CCSizeMake(skipButton->getContentSize().width + 20, 60));
+  skipButton->addTargetWithActionForControlEvents(this, cccontrol_selector(QuitOverlay::skipAction), CCControlEventTouchUpInside);
   addChild(skipButton);
 
   CCScale9Sprite *resumeBackgroundButton = CCScale9Sprite::create("button.png");
   CCScale9Sprite *resumeBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  resumeButton = CCControlButton::create(CCLabelTTF::create("Resume", "SkaterDudes.ttf", 32), resumeBackgroundButton);
+  resumeButton = CCControlButton::create(CCLabelTTF::create("Continue", "SkaterDudes.ttf", 32), resumeBackgroundButton);
   resumeButton->setBackgroundSpriteForState(resumeBackgroundHighlightedButton, CCControlStateHighlighted);
   resumeButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   resumeButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 - 40));
   resumeButton->setPreferredSize(CCSizeMake(resumeButton->getContentSize().width + 20, 60));
+  resumeButton->addTargetWithActionForControlEvents(this, cccontrol_selector(QuitOverlay::resumeAction), CCControlEventTouchUpInside);
   addChild(resumeButton);
 
-  // Start scheduling
-  schedule(schedule_selector(QuitOverlay::update));
+  setVisible(false);
 
   return true;
 }
 
-void QuitOverlay::update(float dt) {
+void QuitOverlay::skipAction(CCObject *sender) {
+
+}
+
+void QuitOverlay::resumeAction(CCObject *sender) {
+  setVisible(false);
 }

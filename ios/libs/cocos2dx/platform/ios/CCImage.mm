@@ -204,9 +204,14 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
     do 
     {
         CC_BREAK_IF(! pText || ! pInfo);
-        
+
+        std::string fixed(pFontName);
+        if (fixed.find_last_of(".ttf") > 0) {
+          fixed = fixed.substr(0, fixed.find_last_of(".ttf") - 3);
+        }
+
         NSString * str  = [NSString stringWithUTF8String:pText];
-        NSString * fntName = [NSString stringWithUTF8String:pFontName];
+        NSString * fntName = [NSString stringWithUTF8String:fixed.c_str()];
         CGSize dim, constrainSize;
         constrainSize.width = pInfo->width;
         constrainSize.height = pInfo->height;

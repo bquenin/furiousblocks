@@ -16,7 +16,6 @@
 #include "PauseAction.h"
 #include "CursorAction.h"
 #include "SetBlocksAction.h"
-#include "QuitOverlay.h"
 #include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
 
@@ -66,8 +65,14 @@ std::vector<std::vector<BlockType>> TutorialScene::etc4ChainsPanel = { //
     {BlockType::TUTORIAL, BlockType::PURPLE, BlockType::RED, BlockType::PURPLE, BlockType::TUTORIAL, BlockType::TUTORIAL} //
 };
 
-TutorialScene::TutorialScene() {
+TutorialScene::TutorialScene()
+: inputState (InputState::untouched)
+, overlayEnabled (false) {
   gameRunning = true;
+}
+
+void TutorialScene::setOverlay(QuitOverlay *quitOverlay) {
+  this->quitOverlay = quitOverlay;
 }
 
 CCScene *TutorialScene::scene() {
@@ -76,6 +81,7 @@ CCScene *TutorialScene::scene() {
   scene->addChild(layer);
   QuitOverlay *quitOverlay = QuitOverlay::create();
   scene->addChild(quitOverlay);
+  layer->setOverlay(quitOverlay);
   return scene;
 }
 
@@ -85,6 +91,8 @@ bool TutorialScene::init() {
   }
 
   AbstractPanelScene::init();
+
+  setTouchEnabled(true);
 
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("tutorial.mp3", true);
 
@@ -298,4 +306,24 @@ void TutorialScene::onGameOver() {
       }
     }
   }
+}
+
+void TutorialScene::registerWithTouchDispatcher() {
+  cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+}
+
+bool TutorialScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
+  if (inputState != InputState::untouched || quitOverlay->isVisible()) {
+    return false;
+  }
+  inputState = InputState::touched;
+  return true;
+}
+
+void TutorialScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
+  inputState = InputState::untouched;
+  quitOverlay->setVisible(true);
+}
+
+void TutorialScene::ccTouchMoved(CCTouch *touch, CCEvent *event) {
 }

@@ -16,6 +16,12 @@
 #include "Script.h"
 #include "TextToType.h"
 #include "TutorialPlayer.h"
+#include "QuitOverlay.h"
+
+enum class InputState {
+  untouched,
+  touched
+};
 
 class TutorialScene : public AbstractPanelScene, FuriousBlocksCoreListener {
 private:
@@ -32,12 +38,21 @@ private:
   cocos2d::CCLabelBMFont *textBox;
   cocos2d::CCSprite *cursor;
 
+  QuitOverlay *quitOverlay;
+  bool overlayEnabled;
+  InputState inputState;
+  void registerWithTouchDispatcher();
+  bool ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
+  void ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
+  void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
+
 public:
   TutorialScene();
   bool init();
   void update(float dt);
   void onCombo(Combo *combo);
   void onGameOver();
+  void setOverlay(QuitOverlay *quitOverlay);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
