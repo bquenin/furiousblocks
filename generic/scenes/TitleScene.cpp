@@ -9,6 +9,9 @@
 #include "SceneConstants.h"
 #include "TutorialScene.h"
 #include "PanelScene.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 TitleScene::TitleScene() {
 }
@@ -24,6 +27,9 @@ bool TitleScene::init() {
   if (!CCLayer::init()) {
     return false;
   }
+
+  // Start music
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
 
   // Background
   cocos2d::CCSprite *bg = cocos2d::CCSprite::create("title.png");
@@ -52,7 +58,10 @@ bool TitleScene::init() {
   tutorialButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::tutorialAction), CCControlEventTouchUpInside);
   addChild(tutorialButton);
 
-//  setVisible(false);
+  CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
+  copyright->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 16 ));
+  copyright->setColor(ccc3(10, 10, 10));
+  addChild(copyright);
 
   return true;
 }

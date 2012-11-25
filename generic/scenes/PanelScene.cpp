@@ -197,8 +197,6 @@ void PanelScene::onBeginningTweenFinished(void) {
     cdTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));
     tweeners.insert(cdTweener);
   } else {
-    // Start music
-    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
     gameRunning = true;
     removeChild(countdownLabel, true);
   }
