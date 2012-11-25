@@ -67,9 +67,9 @@ bool TitleScene::init() {
 }
 
 void TitleScene::endlessGameAction(CCObject *sender) {
-  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(2.0f, PanelScene::scene(), kOrientationUpOver));
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(SceneConstants::transitionDuration, PanelScene::scene(), kOrientationUpOver));
 }
 
 void TitleScene::tutorialAction(CCObject *sender) {
-  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(2.0f, TutorialScene::scene(), kOrientationUpOver));
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(SceneConstants::transitionDuration, TutorialScene::scene(), kOrientationUpOver));
 }

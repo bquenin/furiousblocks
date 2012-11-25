@@ -15,6 +15,8 @@
 class SceneConstants {
 public:
   static const cocos2d::CCSize designResolutionSize;
+  static bool musicOn;
+  static constexpr float transitionDuration = 0.5f;
 };
 
 #endif //__SceneConstants_H_

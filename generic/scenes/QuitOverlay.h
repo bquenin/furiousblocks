@@ -16,7 +16,7 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class QuitOverlay : public cocos2d::CCLayerColor {
+class QuitOverlay : public CCLayerColor {
 private:
   CCControlButton *skipButton;
   CCControlButton *resumeButton;

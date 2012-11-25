@@ -24,7 +24,7 @@ bool QuitOverlay::init() {
   /** Creates and return a button with a default background and title color. */
   CCScale9Sprite *skipBackgroundButton = CCScale9Sprite::create("button.png");
   CCScale9Sprite *skipBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  skipButton = CCControlButton::create(CCLabelTTF::create("Skip tutorial", "SkaterDudes.ttf", 32), skipBackgroundButton);
+  skipButton = CCControlButton::create(CCLabelTTF::create("End tutorial", "SkaterDudes.ttf", 32), skipBackgroundButton);
   skipButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
   skipButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   skipButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 + 40));
@@ -48,7 +48,7 @@ bool QuitOverlay::init() {
 }
 
 void QuitOverlay::skipAction(CCObject *sender) {
-  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(2.0f, TitleScene::scene(), kOrientationUpOver));
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(SceneConstants::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }
 
 void QuitOverlay::resumeAction(CCObject *sender) {

@@ -149,7 +149,7 @@ bool CCControlSwitchSprite::initWithMaskSprite(
 
 void CCControlSwitchSprite::updateTweenAction(float value, const char* key)
 {
-    CCLOG("key = %s, value = %f", key, value);
+//    CCLOG("key = %s, value = %f", key, value);
     setSliderXPosition(value);
 }
 

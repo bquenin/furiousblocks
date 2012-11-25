@@ -8,3 +8,4 @@
 #include "SceneConstants.h"
 
 const cocos2d::CCSize SceneConstants::designResolutionSize = cocos2d::CCSize(640, 960);
+bool SceneConstants::musicOn = true;

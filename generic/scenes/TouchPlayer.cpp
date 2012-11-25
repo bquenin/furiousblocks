@@ -17,7 +17,7 @@ TouchPlayer::TouchPlayer()
 , upTrend(false)
 , lifted(false)
 , inputState(InputState::untouched) {
-  cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+  cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -128, false);
 }
 
 bool TouchPlayer::ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) {
