@@ -15,6 +15,7 @@
 #include "PanelScene.h"
 #include "TutorialScene.h"
 #include "TitleScene.h"
+#include "LogoScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -49,7 +50,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   pDirector->setAnimationInterval(1.0 / 60);
 
   // run
-  pDirector->runWithScene(TitleScene::scene());
+  pDirector->runWithScene(LogoScene::scene());
 
   return true;
 }

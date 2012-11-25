@@ -440,7 +440,7 @@ void CCRepeat::stop(void)
     CCActionInterval::stop();
 }
 
-// issue #80. Instead of hooking step:, hook update: since it can be called by any 
+// issue #80. Instead of hooking step:, hook update: since it can be called by any
 // container action like CCRepeat, CCSequence, CCEase, etc..
 void CCRepeat::update(float dt)
 {
@@ -1356,7 +1356,7 @@ void CCJumpTo::startWithTarget(CCNode *pTarget)
 
 // Bezier cubic formula:
 //    ((1 - t) + t)3 = 1 
-// Expands to¡­ 
+// Expands toï¿½ï¿½ 
 //   (1 - t)3 + 3t(1-t)2 + 3t2(1 - t) + t3 = 1 
 static inline float bezierat( float a, float b, float c, float d, float t )
 {

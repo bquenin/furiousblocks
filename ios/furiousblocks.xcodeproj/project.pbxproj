@@ -52,6 +52,7 @@
 		7969EACB2CF570960D037656 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E79960EAF9FDDBA0C804 /* blocks.png */; };
 		7969EB5B6731F7C45B0759CD /* switch-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA93B5AA00ACA20BAF39 /* switch-off.png */; };
 		7969EB6B704E1575488BAE35 /* PanelMenuOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E91E3CB9CC20A36C6447 /* PanelMenuOverlay.cpp */; };
+		7969EC1BA8599857CDD54648 /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969E50135B2630C7CE0BE60 /* Joystix.ttf */; };
 		7969ECE4B3026C6FB0597C45 /* CCTileMapAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */; };
 		7969EDE3C9FD7BDE1BCBAB53 /* SceneConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E697E17DB0573C30BB6D /* SceneConstants.cpp */; };
 		7969EE0B72DD5902D633346A /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E0A3A7B96B0347359069 /* LogoScene.cpp */; };
@@ -261,6 +262,7 @@
 		D2BD39B315C5D0A90038E59C /* PanelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398D15C5D0A90038E59C /* PanelEvent.cpp */; };
 		D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
 		D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */; };
+		D2DE72D31662D2F300724790 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -305,6 +307,7 @@
 		7969E3309233EBE3275C923E /* CCTMXXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTMXXMLParser.h; sourceTree = "<group>"; };
 		7969E436D94C498EA577D203 /* CCTileMapAtlas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTileMapAtlas.cpp; sourceTree = "<group>"; };
 		7969E4AE20C9DF31145E4E9A /* tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener.hpp; sourceTree = "<group>"; };
+		7969E50135B2630C7CE0BE60 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Joystix.ttf; sourceTree = "<group>"; };
 		7969E50DE8F9108C9784CBBB /* Scenes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scenes.h; sourceTree = "<group>"; };
 		7969E518EF278100D9336944 /* coopblack64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coopblack64.png; sourceTree = "<group>"; };
 		7969E51CC9169D96809A8B46 /* single_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = single_tweener.hpp; sourceTree = "<group>"; };
@@ -807,6 +810,8 @@
 		D2BD399E15C5D0A90038E59C /* Point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point.h; sourceTree = "<group>"; };
 		D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleRNG.cpp; sourceTree = "<group>"; };
 		D2BD39A015C5D0A90038E59C /* SimpleRNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleRNG.h; sourceTree = "<group>"; };
+		D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
+		D2DE72D21662D2F300724790 /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2DMutable.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -859,6 +864,7 @@
 				7969EA93B5AA00ACA20BAF39 /* switch-off.png */,
 				7969E3242757D544E6B28255 /* switch-on.png */,
 				7969E7EC5D0EAC836EEF9900 /* switch-thumb.png */,
+				7969E50135B2630C7CE0BE60 /* Joystix.ttf */,
 			);
 			path = assets;
 			sourceTree = SOURCE_ROOT;
@@ -866,6 +872,7 @@
 		02BAEC48159E57C600BCA0C3 /* generic */ = {
 			isa = PBXGroup;
 			children = (
+				D2DE72D01662D2F300724790 /* ext */,
 				D23E7D90164FCB71003B565D /* scenes */,
 				D25B36FE164583B600496D14 /* script */,
 				D298746C1635C4B4006D7128 /* tween */,
@@ -1847,6 +1854,15 @@
 			path = ../generic/core;
 			sourceTree = SOURCE_ROOT;
 		};
+		D2DE72D01662D2F300724790 /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */,
+				D2DE72D21662D2F300724790 /* CCTexture2DMutable.h */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1922,6 +1938,7 @@
 				7969EB5B6731F7C45B0759CD /* switch-off.png in Resources */,
 				7969E293160448AA6553AD9A /* switch-on.png in Resources */,
 				7969E5CBA2C968990E2B168A /* switch-thumb.png in Resources */,
+				7969EC1BA8599857CDD54648 /* Joystix.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2151,6 +2168,7 @@
 				7969E040AED7B94501B50802 /* Scenes.cpp in Sources */,
 				7969EB6B704E1575488BAE35 /* PanelMenuOverlay.cpp in Sources */,
 				7969EE0B72DD5902D633346A /* LogoScene.cpp in Sources */,
+				D2DE72D31662D2F300724790 /* CCTexture2DMutable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
