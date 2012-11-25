@@ -17,6 +17,7 @@
 #include "CursorAction.h"
 #include "SetBlocksAction.h"
 #include "SimpleAudioEngine.h"
+#include "SceneConstants.h"
 #include <boost/bind.hpp>
 
 std::vector<std::vector<BlockType>> TutorialScene::empty = {
@@ -103,9 +104,9 @@ bool TutorialScene::init() {
 
   cocos2d::CCSize size = cocos2d::CCDirector::sharedDirector()->getWinSize();
 
-  textBox = cocos2d::CCLabelBMFont::create("textToType", "coopblack32.fnt", 200, kCCTextAlignmentLeft);
+  textBox = cocos2d::CCLabelBMFont::create("textToType", "coopblack32.fnt", 500, kCCTextAlignmentLeft);
   textBox->setAnchorPoint(ccp(0, 1));
-  textBox->setPosition(ccp(16, 414));
+  textBox->setPosition(ccp(64, 800));
   addChild(textBox);
 
   // Game initialization
@@ -272,7 +273,7 @@ void TutorialScene::update(float dt) {
     }
   }
 
-  cursor->setPosition(ccp(panel.cursor->x * TILE_SIZE, -6 + (panel.cursor->y - 1) * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+  cursor->setPosition(ccp(panel.cursor->x * TILE_SIZE, -16 + (panel.cursor->y - 1) * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
 
   // Tweeners update
   tweeners.update(dt);
@@ -302,7 +303,7 @@ void TutorialScene::onGameOver() {
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + 500 + yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
+        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + SceneConstants::designResolutionSize.height + yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
       }
     }
   }
