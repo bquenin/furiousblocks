@@ -14,6 +14,7 @@
 #include "SceneConstants.h"
 #include "PanelScene.h"
 #include "TutorialScene.h"
+#include "TitleScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -32,7 +33,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
   SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0f);
 
-
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
   CCEGLView *pEGLView = CCEGLView::sharedOpenGLView();
@@ -48,30 +48,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
 
-  //  /* Create an autorelease CCNodeLoaderLibrary. */
-  //  CCNodeLoaderLibrary *ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
-  //
-  //  ccNodeLoaderLibrary->registerCCNodeLoader("TitleScene", TitleSceneLoader::loader());
-  //
-  //  /* Create an autorelease CCBReader. */
-  //  cocos2d::extension::CCBReader *ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-  //  ccbReader->autorelease();
-  //
-  //  // create a scene. it's an autorelease object
-  //  CCScene *pScene = CCScene::create();
-  //
-  //  /* Read the ccbi file. */
-  //  CCNode *node = ccbReader->readNodeGraphFromFile("TitleScene.ccbi", pScene);
-  //
-  //  if (node != NULL) {
-  //    pScene->addChild(node);
-  //  }
-
-  // create a scene. it's an autorelease object
-  CCScene *pScene = TutorialScene::scene();
-
   // run
-  pDirector->runWithScene(pScene);
+  pDirector->runWithScene(TitleScene::scene());
 
   return true;
 }

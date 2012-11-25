@@ -10,44 +10,27 @@
 #define __TitleScene_H_
 
 #include "cocos2d.h"
-#include "CCBReader/CCNodeLoader.h"
-#include "CCBReader/CCNodeLoaderListener.h"
-#include "CCBReader/CCBSelectorResolver.h"
-#include "CCBReader/CCBMemberVariableAssigner.h"
+#include "cocos-ext.h"
 
-/*
- * Note: for some pretty hard fucked up reason, the order of inheritance is important!
- * When CCLayer is the 'first' inherited object:
- * During runtime the method call to the (pure virtual) 'interfaces' fails jumping into a bogus method or just doing nothing:
- *  #0    0x000cf840 in non-virtual thunk to HelloCocos....
- *  #1    ....
- *
- * This thread describes the problem:
- * http://www.cocoabuilder.com/archive/xcode/265549-crash-in-virtual-method-call.html
- */
-class TitleScene
-    : public cocos2d::CCLayer
-    , public cocos2d::extension::CCBSelectorResolver
-    , public cocos2d::extension::CCBMemberVariableAssigner
-    , public cocos2d::extension::CCNodeLoaderListener {
-public:
-  CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(TitleScene, create);
+using namespace cocos2d;
+using namespace cocos2d::extension;
 
-  TitleScene();
-  virtual ~TitleScene();
-
-  //  void openTest(const char *pCCBFileName, const char *pCCNodeName = NULL, cocos2d::extension::CCNodeLoader *pCCNodeLoader = NULL);
-
-  virtual cocos2d::SEL_MenuHandler onResolveCCBCCMenuItemSelector(cocos2d::CCObject *pTarget, cocos2d::CCString *pSelectorName);
-  virtual cocos2d::extension::SEL_CCControlHandler onResolveCCBCCControlSelector(cocos2d::CCObject *pTarget, cocos2d::CCString *pSelectorName);
-  virtual bool onAssignCCBMemberVariable(cocos2d::CCObject *pTarget, cocos2d::CCString *pMemberVariableName, cocos2d::CCNode *pNode);
-  virtual void onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNodeLoader *pNodeLoader);
-
-  void onArcadeClicked(cocos2d::CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent);
-
+class TitleScene : public cocos2d::CCLayer {
 private:
-  //  cocos2d::CCSprite *mBurstSprite;
-  //  cocos2d::CCLabelTTF *mTestTitleLabelTTF;
+  CCControlButton *endlessButton;
+  CCControlButton *tutorialButton;
+
+public:
+  TitleScene();
+  bool init();
+  void endlessGameAction(CCObject *sender);
+  void tutorialAction(CCObject *sender);
+
+  // there's no 'id' in cpp, so we recommend to return the exactly class pointer
+  static cocos2d::CCScene *scene();
+
+  // Implement the "static node()" method manually
+  CREATE_FUNC(TitleScene);
 };
 
 

@@ -6,89 +6,61 @@
 
 
 #include "TitleScene.h"
+#include "SceneConstants.h"
+#include "TutorialScene.h"
+#include "PanelScene.h"
 
-USING_NS_CC;
-USING_NS_CC_EXT;
-// using namespace CocosDenshion;
-
-TitleScene::TitleScene()
-//: mBurstSprite(NULL)
-//, mTestTitleLabelTTF(NULL)
-{
+TitleScene::TitleScene() {
 }
 
-TitleScene::~TitleScene() {
-  //  CC_SAFE_RELEASE(mBurstSprite);
-  //  CC_SAFE_RELEASE(mTestTitleLabelTTF);
+CCScene *TitleScene::scene() {
+  CCScene *scene = CCScene::create();
+  TitleScene *layer = TitleScene::create();
+  scene->addChild(layer);
+  return scene;
 }
 
-//void TitleScene::openTest(const char * pCCBFileName, const char * pCCNodeName, CCNodeLoader * pCCNodeLoader) {
-//  /* Create an autorelease CCNodeLoaderLibrary. */
-//  CCNodeLoaderLibrary * ccNodeLoaderLibrary = CCNodeLoaderLibrary::newDefaultCCNodeLoaderLibrary();
-//
-//  ccNodeLoaderLibrary->registerCCNodeLoader("TestHeaderLayer", TestHeaderLayerLoader::loader());
-//  if(pCCNodeName != NULL && pCCNodeLoader != NULL) {
-//    ccNodeLoaderLibrary->registerCCNodeLoader(pCCNodeName, pCCNodeLoader);
-//  }
-//
-//  /* Create an autorelease CCBReader. */
-//  cocos2d::extension::CCBReader * ccbReader = new cocos2d::extension::CCBReader(ccNodeLoaderLibrary);
-//  ccbReader->autorelease();
-//
-//  /* Read a ccbi file. */
-//  // Load the scene from the ccbi-file, setting this class as
-//  // the owner will cause lblTestTitle to be set by the CCBReader.
-//  // lblTestTitle is in the TestHeader.ccbi, which is referenced
-//  // from each of the test scenes.
-//  CCNode * node = ccbReader->readNodeGraphFromFile("ccb/official/pub/", pCCBFileName, this);
-//
-//  this->mTestTitleLabelTTF->setString(pCCBFileName);
-//
-//  CCScene * scene = CCScene::create();
-//  if(node != NULL) {
-//    scene->addChild(node);
-//  }
-//
-//  /* Push the new scene with a fancy transition. */
-//  ccColor3B transitionColor;
-//  transitionColor.r = 0;
-//  transitionColor.g = 0;
-//  transitionColor.b = 0;
-//
-//  CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5f, scene, transitionColor));
-//}
+bool TitleScene::init() {
+  if (!CCLayer::init()) {
+    return false;
+  }
 
+  // Background
+  cocos2d::CCSprite *bg = cocos2d::CCSprite::create("title.png");
+  bg->setAnchorPoint(ccp(0, 0));
+  bg->setPosition(ccp(0, 18));
+  addChild(bg);
 
-void TitleScene::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNodeLoader *pNodeLoader) {
-  //  CCRotateBy * ccRotateBy = CCRotateBy::create(0.5f, 10);
-  //  CCRepeatForever * ccRepeatForever = CCRepeatForever::create(ccRotateBy);
-  //  this->mBurstSprite->runAction(ccRepeatForever);
-  //  SimpleAudioEngine::sharedEngine()->playBackgroundMusic(std::string(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3")).c_str(), true);
-  //  CCLOG("Playing bg music");
+    /** Creates and return a button with a default background and title color. */
+  CCScale9Sprite *skipBackgroundButton = CCScale9Sprite::create("button.png");
+  CCScale9Sprite *skipBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  endlessButton = CCControlButton::create(CCLabelTTF::create("Endless Game", "SkaterDudes.ttf", 32), skipBackgroundButton);
+  endlessButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
+  endlessButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  endlessButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 + 40));
+  endlessButton->setPreferredSize(CCSizeMake(endlessButton->getContentSize().width + 20, 60));
+  endlessButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::endlessGameAction), CCControlEventTouchUpInside);
+  addChild(endlessButton);
+
+  CCScale9Sprite *resumeBackgroundButton = CCScale9Sprite::create("button.png");
+  CCScale9Sprite *resumeBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  tutorialButton = CCControlButton::create(CCLabelTTF::create("Tutorial", "SkaterDudes.ttf", 32), resumeBackgroundButton);
+  tutorialButton->setBackgroundSpriteForState(resumeBackgroundHighlightedButton, CCControlStateHighlighted);
+  tutorialButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  tutorialButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 - 40));
+  tutorialButton->setPreferredSize(CCSizeMake(tutorialButton->getContentSize().width + 20, 60));
+  tutorialButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::tutorialAction), CCControlEventTouchUpInside);
+  addChild(tutorialButton);
+
+//  setVisible(false);
+
+  return true;
 }
 
-
-SEL_MenuHandler TitleScene::onResolveCCBCCMenuItemSelector(CCObject *pTarget, CCString *pSelectorName) {
-  return NULL;
+void TitleScene::endlessGameAction(CCObject *sender) {
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(2.0f, PanelScene::scene(), kOrientationUpOver));
 }
 
-SEL_CCControlHandler TitleScene::onResolveCCBCCControlSelector(CCObject *pTarget, CCString *pSelectorName) {
-  CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "onArcade", TitleScene::onArcadeClicked);
-
-  return NULL;
+void TitleScene::tutorialAction(CCObject *sender) {
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(2.0f, TutorialScene::scene(), kOrientationUpOver));
 }
-
-bool TitleScene::onAssignCCBMemberVariable(CCObject *pTarget, CCString *pMemberVariableName, CCNode *pNode) {
-  //  CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mBurstSprite", CCSprite *, this->mBurstSprite);
-  //  CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "mTestTitleLabelTTF", CCLabelTTF *, this->mTestTitleLabelTTF);
-
-  return false;
-}
-
-
-void TitleScene::onArcadeClicked(CCObject *pSender, cocos2d::extension::CCControlEvent pCCControlEvent) {
-  //this->openTest("ccb/MenuTest.ccbi", "MenuTestLayer", MenuTestLayerLoader::loader());
-  CCLOG("Arcade clicked!");
-  //  void *ptr = malloc(1048576);
-}
-

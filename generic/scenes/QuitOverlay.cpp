@@ -7,6 +7,7 @@
 
 #include "QuitOverlay.h"
 #include "SceneConstants.h"
+#include "TitleScene.h"
 
 using namespace cocos2d;
 
@@ -47,7 +48,7 @@ bool QuitOverlay::init() {
 }
 
 void QuitOverlay::skipAction(CCObject *sender) {
-
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(2.0f, TitleScene::scene(), kOrientationUpOver));
 }
 
 void QuitOverlay::resumeAction(CCObject *sender) {
