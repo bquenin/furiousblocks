@@ -41,6 +41,7 @@ bootstrap/main.cpp \
 ../../generic/core/Point.cpp \
 ../../generic/core/SimpleRNG.cpp \
 ../../generic/scenes/AbstractPanelScene.cpp \
+../../generic/scenes/PanelMenuOverlay.cpp \
 ../../generic/scenes/PanelScene.cpp \
 ../../generic/scenes/QuitOverlay.cpp \
 ../../generic/scenes/SceneConstants.cpp \
