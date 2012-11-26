@@ -21,6 +21,7 @@ LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/../../generic \
 $(LOCAL_PATH)/../../generic/animation \
 $(LOCAL_PATH)/../../generic/core \
+$(LOCAL_PATH)/../../generic/ext \
 $(LOCAL_PATH)/../../generic/scenes \
 $(LOCAL_PATH)/../../generic/script \
 $(LOCAL_PATH)/../../generic/tween/easing \
@@ -40,7 +41,9 @@ bootstrap/main.cpp \
 ../../generic/core/PanelEvent.cpp \
 ../../generic/core/Point.cpp \
 ../../generic/core/SimpleRNG.cpp \
+../../generic/ext/CCTexture2DMutable.cpp \
 ../../generic/scenes/AbstractPanelScene.cpp \
+../../generic/scenes/LogoScene.cpp \
 ../../generic/scenes/PanelMenuOverlay.cpp \
 ../../generic/scenes/PanelScene.cpp \
 ../../generic/scenes/QuitOverlay.cpp \

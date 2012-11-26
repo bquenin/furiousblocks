@@ -35,7 +35,7 @@ bool LogoScene::init() {
   CCSize texSize = CCSizeMake(LogoScene::width, LogoScene::height);
   size_t bytes = static_cast<size_t>(texSize.width * texSize.height * 4);
   void *textureData = malloc(bytes);
-  memset(textureData, INT32_MAX, bytes);
+  memset(textureData, 0, bytes);
 
   texture = new CCTexture2DMutable();
   if (!texture->initWithData(textureData, kCCTexture2DPixelFormat_RGBA8888, texSize.width, texSize.height, texSize)) {
