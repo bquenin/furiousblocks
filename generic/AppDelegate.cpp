@@ -28,6 +28,12 @@ AppDelegate::~AppDelegate() {
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+  // Pre-loading textures
+  CCTextureCache::sharedTextureCache()->addImage("blocks.png");
+  CCTextureCache::sharedTextureCache()->addImage("coopblack32.png");
+  CCTextureCache::sharedTextureCache()->addImage("coopblack64.png");
+  CCTextureCache::sharedTextureCache()->addImage("title.png");
+
   // Initialize Audio Engine
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
