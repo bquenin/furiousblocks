@@ -5,10 +5,11 @@
 #include "easing_linear.hpp"
 #include "easing_quad.hpp"
 #include "TouchPlayer.h"
-#include "SceneConstants.h"
 #include "single_tweener.hpp"
 #include "tweener_sequence.hpp"
 #include "StarNumber.h"
+#include "Assets.h"
+#include "AppDelegate.h"
 #include <boost/bind.hpp>
 
 using namespace CocosDenshion;
@@ -41,49 +42,49 @@ bool PanelScene::init() {
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(random() % 350 + SceneConstants::designResolutionSize.height + yOffset + y * TILE_SIZE, yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_out));
+        tweeners.insert(claw::tween::single_tweener(random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_out));
       }
     }
   }
 
-  countdownLabel = CCLabelBMFont::create(format("%d", countdown).c_str(), "coopblack64.fnt");
-  countdownLabel->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2));
+  countdownLabel = CCLabelBMFont::create(Assets::format("%d", countdown).c_str(), "coopblack64.fnt");
+  countdownLabel->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   addChild(countdownLabel);
 
   CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  scoreLabel->setPosition(ccp(SceneConstants::designResolutionSize.width / 4, SceneConstants::designResolutionSize.height - 16 ));
+  scoreLabel->setPosition(ccp(Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 16 ));
   addChild(scoreLabel);
 
   score = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  score->setPosition(ccp(SceneConstants::designResolutionSize.width / 4, SceneConstants::designResolutionSize.height - 48));
+  score->setPosition(ccp(Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(score);
 
   CCLabelBMFont *timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  timeLabel->setPosition(ccp(SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 16 ));
+  timeLabel->setPosition(ccp(Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 16 ));
   addChild(timeLabel);
 
   minutes = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  minutes->setPosition(ccp(-64 + SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
+  minutes->setPosition(ccp(-64 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
   addChild(minutes);
 
   CCLabelBMFont *colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon1->setPosition(ccp(-32 + SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
+  colon1->setPosition(ccp(-32 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
   addChild(colon1);
 
   seconds = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  seconds->setPosition(ccp(SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
+  seconds->setPosition(ccp(Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
   addChild(seconds);
 
   CCLabelBMFont *colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon2->setPosition(ccp(32 + SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
+  colon2->setPosition(ccp(32 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
   addChild(colon2);
 
   centisecs = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  centisecs->setPosition(ccp(64 + SceneConstants::designResolutionSize.width * 3 / 4, SceneConstants::designResolutionSize.height - 48));
+  centisecs->setPosition(ccp(64 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
   addChild(centisecs);
 
   youLose = CCSprite::createWithSpriteFrameName("lose.png");
-  youLose->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2));
+  youLose->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   youLose->setVisible(false);
   batch->addChild(youLose);
 
@@ -92,7 +93,7 @@ bool PanelScene::init() {
   menuButton = CCControlButton::create(CCLabelTTF::create("Menu", "SkaterDudes.ttf", 24), backgroundButton);
   menuButton->setBackgroundSpriteForState(backgroundHighlightedButton, CCControlStateHighlighted);
   menuButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  menuButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height - 40));
+  menuButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height - 40));
   menuButton->setPreferredSize(CCSizeMake(menuButton->getContentSize().width + 10, 60));
   menuButton->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelScene::menuAction), CCControlEventTouchUpInside);
   menuButton->setDefaultTouchPriority(-64);
@@ -128,14 +129,14 @@ void PanelScene::update(float dt) {
         continue;
       }
 
-      CCSpriteFrame *frame = getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
+      CCSpriteFrame *frame = AppDelegate::assets.getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
       if (frame == nullptr) {
         grid[x][y]->setVisible(false);
         continue;
       }
 
       if (!panel.isGameOver()) {
-        grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+        grid[x][y]->setPosition(ccp(xOffset + x * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
       }
       grid[x][y]->setDisplayFrame(frame);
       grid[x][y]->setVisible(true);
@@ -150,12 +151,12 @@ void PanelScene::update(float dt) {
   tweeners.update(dt);
 
   // Score
-  score->setString(format("%d", panel.score).c_str());
+  score->setString(Assets::format("%d", panel.score).c_str());
 
   // Time
-  minutes->setString(format("%02d", static_cast<int32_t>(stateTime / 60)).c_str());
-  seconds->setString(format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
-  centisecs->setString(format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
+  minutes->setString(Assets::format("%02d", static_cast<int32_t>(stateTime / 60)).c_str());
+  seconds->setString(Assets::format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
+  centisecs->setString(Assets::format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
 
   if (!gameRunning || panel.isGameOver()) {
     return;
@@ -170,10 +171,10 @@ void PanelScene::update(float dt) {
 
 void PanelScene::onCombo(Combo *combo) {
   if (combo->size() > 3) {
-    new StarNumber(this, xOffset + combo->x * TILE_SIZE, yOffset + combo->y * TILE_SIZE, format("%d", combo->size()), ccORANGE);
+    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + combo->y * Assets::TILE_SIZE, Assets::format("%d", combo->size()), ccORANGE);
   }
   if (combo->skillChainLevel > 1) {
-    new StarNumber(this, xOffset + combo->x * TILE_SIZE, yOffset + (combo->y + 1) * TILE_SIZE, format("x%d", combo->skillChainLevel), ccc3(255, 128, 128));
+    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + (combo->y + 1) * Assets::TILE_SIZE, Assets::format("x%d", combo->skillChainLevel), ccc3(255, 128, 128));
   }
 }
 
@@ -184,7 +185,7 @@ void PanelScene::onGameOver() {
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + SceneConstants::designResolutionSize.height + yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
+        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
       }
     }
   }
@@ -198,7 +199,7 @@ void PanelScene::onGameOver() {
 
   claw::tween::tweener_group step2;
   step2.insert(musicFadeIn);
-  step2.insert(claw::tween::single_tweener(SceneConstants::designResolutionSize.height + 100, SceneConstants::designResolutionSize.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out));
+  step2.insert(claw::tween::single_tweener(Assets::designResolutionSize.height + 100, Assets::designResolutionSize.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out));
 
   claw::tween::tweener_sequence gameOverSequence;
   gameOverSequence.insert(musicFadeOut);
@@ -209,7 +210,7 @@ void PanelScene::onGameOver() {
 void PanelScene::onBeginningTweenFinished(void) {
   if (countdown > 1) {
     countdown--;
-    countdownLabel->setCString(format("%d", countdown).c_str());
+    countdownLabel->setCString(Assets::format("%d", countdown).c_str());
     claw::tween::single_tweener cdTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
     cdTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));
     tweeners.insert(cdTweener);

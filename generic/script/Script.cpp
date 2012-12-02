@@ -5,6 +5,10 @@ Script *Script::add(Action *action) {
   return this;
 }
 
+void Script::empty() {
+  actions.erase(actions.begin(), actions.end());
+}
+
 void Script::execute(float stateTime) {
   if (actions.empty()) {
     return;

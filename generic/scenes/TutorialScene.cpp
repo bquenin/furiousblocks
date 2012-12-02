@@ -17,7 +17,8 @@
 #include "CursorAction.h"
 #include "SetBlocksAction.h"
 #include "SimpleAudioEngine.h"
-#include "SceneConstants.h"
+#include "Assets.h"
+#include "AppDelegate.h"
 #include <boost/bind.hpp>
 
 std::vector<std::vector<BlockType>> TutorialScene::empty = {
@@ -72,6 +73,10 @@ TutorialScene::TutorialScene()
   gameRunning = true;
 }
 
+TutorialScene::~TutorialScene() {
+  script.empty();
+}
+
 void TutorialScene::setOverlay(QuitOverlay *quitOverlay) {
   this->quitOverlay = quitOverlay;
 }
@@ -99,12 +104,14 @@ bool TutorialScene::init() {
 
   // Cursor
   cursor = CCSprite::createWithSpriteFrameName("cursor-01.png");
+  cursor->autorelease();
   cursor->setAnchorPoint(ccp(0, 0));
   batch->addChild(cursor);
 
   cocos2d::CCSize size = cocos2d::CCDirector::sharedDirector()->getWinSize();
 
   textBox = cocos2d::CCLabelBMFont::create("textToType", "coopblack32.fnt", 500, kCCTextAlignmentLeft);
+  textBox->autorelease();
   textBox->setAnchorPoint(ccp(0, 1));
   textBox->setPosition(ccp(64, 800));
   addChild(textBox);
@@ -255,14 +262,14 @@ void TutorialScene::update(float dt) {
         continue;
       }
 
-      CCSpriteFrame *frame = getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
+      CCSpriteFrame *frame = AppDelegate::assets.getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
       if (frame == nullptr) {
         grid[x][y]->setVisible(false);
         continue;
       }
 
       if (!panel.isGameOver()) {
-        grid[x][y]->setPosition(ccp(xOffset + x * TILE_SIZE, yOffset + y * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+        grid[x][y]->setPosition(ccp(xOffset + x * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
       }
       grid[x][y]->setDisplayFrame(frame);
       grid[x][y]->setVisible(true);
@@ -273,7 +280,7 @@ void TutorialScene::update(float dt) {
     }
   }
 
-  cursor->setPosition(ccp(panel.cursor->x * TILE_SIZE, -16 + (panel.cursor->y - 1) * TILE_SIZE + panel.scrollingDelta * TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+  cursor->setPosition(ccp(panel.cursor->x * Assets::TILE_SIZE, -16 + (panel.cursor->y - 1) * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
 
   // Tweeners update
   tweeners.update(dt);
@@ -291,10 +298,10 @@ void TutorialScene::update(float dt) {
 
 void TutorialScene::onCombo(Combo *combo) {
   if (combo->size() > 3) {
-    new StarNumber(this, xOffset + combo->x * TILE_SIZE, yOffset + combo->y * TILE_SIZE, format("%d", combo->size()), ccORANGE);
+    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + combo->y * Assets::TILE_SIZE, Assets::format("%d", combo->size()), ccORANGE);
   }
   if (combo->skillChainLevel > 1) {
-    new StarNumber(this, xOffset + combo->x * TILE_SIZE, yOffset + (combo->y + 1) * TILE_SIZE, format("x%d", combo->skillChainLevel), ccc3(255, 128, 128));
+    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + (combo->y + 1) * Assets::TILE_SIZE, Assets::format("x%d", combo->skillChainLevel), ccc3(255, 128, 128));
   }
 }
 
@@ -303,7 +310,7 @@ void TutorialScene::onGameOver() {
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + SceneConstants::designResolutionSize.height + yOffset + y * TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
+        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
       }
     }
   }

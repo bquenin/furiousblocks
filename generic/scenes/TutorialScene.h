@@ -48,6 +48,7 @@ private:
 
 public:
   TutorialScene();
+  ~TutorialScene();
   bool init();
   void update(float dt);
   void onCombo(Combo *combo);

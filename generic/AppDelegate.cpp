@@ -8,18 +8,12 @@
 
 #include "AppDelegate.h"
 
-#include "cocos2d.h"
-#include "CCBReader/CCBReader.h"
-#include "SimpleAudioEngine.h"
-#include "SceneConstants.h"
-#include "PanelScene.h"
-#include "TutorialScene.h"
-#include "TitleScene.h"
 #include "LogoScene.h"
 
-USING_NS_CC;
-USING_NS_CC_EXT;
 using namespace CocosDenshion;
+
+bool AppDelegate::musicOn = true;
+Assets AppDelegate::assets;
 
 AppDelegate::AppDelegate() {
 }
@@ -28,18 +22,6 @@ AppDelegate::~AppDelegate() {
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-  // Pre-loading textures
-  CCTextureCache::sharedTextureCache()->addImage("blocks.png");
-  CCTextureCache::sharedTextureCache()->addImage("coopblack32.png");
-  CCTextureCache::sharedTextureCache()->addImage("coopblack64.png");
-  CCTextureCache::sharedTextureCache()->addImage("title.png");
-
-  // Initialize Audio Engine
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("gameover.mp3"));
-  SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("tutorial.mp3"));
-  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0f);
-
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
   CCEGLView *pEGLView = CCEGLView::sharedOpenGLView();
@@ -47,13 +29,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
   pDirector->setOpenGLView(pEGLView);
 
   // Set the design resolution
-  pEGLView->setDesignResolutionSize(SceneConstants::designResolutionSize.width, SceneConstants::designResolutionSize.height, kResolutionExactFit);
+  pEGLView->setDesignResolutionSize(Assets::designResolutionSize.width, Assets::designResolutionSize.height, kResolutionExactFit);
 
   // turn on display FPS
-  pDirector->setDisplayStats(true);
+  // pDirector->setDisplayStats(true);
 
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
+
+  // Loading assets
+  assets.load();
 
   // run
   pDirector->runWithScene(LogoScene::scene());

@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <memory>
 #include "FuriousBlocksCore.h"
 
 FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
@@ -52,7 +53,7 @@ void FuriousBlocksCore::onTick(int64_t tick) {
     if (panel->isGameOver()) {
       continue;
     }
-    panel->submitMove(std::move(player->onMoveRequest(*panel)));
+    panel->submitMove(player->onMoveRequest(*panel));
     panel->onTick(tick);
   }
 }

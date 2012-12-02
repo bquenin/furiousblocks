@@ -4,15 +4,15 @@
 #include <vector>
 #include "Action.h"
 
-class Script
-{
+class Script {
 private:
-  std::vector<Action*> actions;
+  std::vector<Action *> actions;
 
 protected:
 public:
-    Script* add(Action* action);
-    void execute(float stateTime);
+  Script *add(Action *action);
+  void execute(float stateTime);
+  void empty();
 };
 
 #endif //__Script_H_

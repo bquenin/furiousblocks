@@ -7,10 +7,10 @@
 
 #include "PanelMenuOverlay.h"
 
-#include "QuitOverlay.h"
-#include "SceneConstants.h"
 #include "TitleScene.h"
 #include "SimpleAudioEngine.h"
+#include "Assets.h"
+#include "AppDelegate.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -31,7 +31,7 @@ bool PanelMenuOverlay::init() {
   EndGameButton = CCControlButton::create(CCLabelTTF::create("Back to Title", "SkaterDudes.ttf", 32), skipBackgroundButton);
   EndGameButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
   EndGameButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  EndGameButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 + 40));
+  EndGameButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
   EndGameButton->setPreferredSize(CCSizeMake(EndGameButton->getContentSize().width + 20, 60));
   EndGameButton->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::endGameAction), CCControlEventTouchUpInside);
   addChild(EndGameButton);
@@ -41,7 +41,7 @@ bool PanelMenuOverlay::init() {
   resumeButton = CCControlButton::create(CCLabelTTF::create("Continue", "SkaterDudes.ttf", 32), resumeBackgroundButton);
   resumeButton->setBackgroundSpriteForState(resumeBackgroundHighlightedButton, CCControlStateHighlighted);
   resumeButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  resumeButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 - 40));
+  resumeButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 40));
   resumeButton->setPreferredSize(CCSizeMake(resumeButton->getContentSize().width + 20, 60));
   resumeButton->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::resumeAction), CCControlEventTouchUpInside);
   addChild(resumeButton);
@@ -56,8 +56,8 @@ bool PanelMenuOverlay::init() {
           CCLabelTTF::create("On", "SkaterDudes.ttf", 16),
           CCLabelTTF::create("Off", "SkaterDudes.ttf", 16)
       );
-  musicSwitch->setPosition(ccp(SceneConstants::designResolutionSize.width / 2 + 60 , SceneConstants::designResolutionSize.height / 2 - 120));
-  musicSwitch->setOn(SceneConstants::musicOn);
+  musicSwitch->setPosition(ccp(Assets::designResolutionSize.width / 2 + 60, Assets::designResolutionSize.height / 2 - 120));
+  musicSwitch->setOn(AppDelegate::musicOn);
   addChild(musicSwitch);
 
   musicSwitch->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::valueChanged), CCControlEventValueChanged);
@@ -68,7 +68,7 @@ bool PanelMenuOverlay::init() {
 }
 
 void PanelMenuOverlay::endGameAction(CCObject *sender) {
-  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(SceneConstants::transitionDuration, TitleScene::scene(), kOrientationUpOver));
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }
 
 void PanelMenuOverlay::resumeAction(CCObject *sender) {
@@ -77,10 +77,10 @@ void PanelMenuOverlay::resumeAction(CCObject *sender) {
 
 void PanelMenuOverlay::valueChanged(CCObject *sender, CCControlEvent controlEvent) {
   CCControlSwitch *pSwitch = (CCControlSwitch *) sender;
-  SceneConstants::musicOn = pSwitch->isOn();
-  if (SceneConstants::musicOn) {
+  AppDelegate::musicOn = pSwitch->isOn();
+  if (AppDelegate::musicOn) {
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1);
-  } else{
+  } else {
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0);
   }
 }

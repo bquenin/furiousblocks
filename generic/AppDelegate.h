@@ -10,6 +10,8 @@
 #define  _APP_DELEGATE_H_
 
 #include "CCApplication.h"
+#include "Animation.h"
+#include "Assets.h"
 
 /**
 @brief    The cocos2d Application.
@@ -18,6 +20,9 @@ The reason for implement as private inheritance is to hide some interface call b
 */
 class AppDelegate : private cocos2d::CCApplication {
 public:
+  static bool musicOn;
+  static Assets assets;
+
   AppDelegate();
   virtual ~AppDelegate();
 

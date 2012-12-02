@@ -8,6 +8,7 @@
 #include "TouchPlayer.h"
 #include "AbstractPanelScene.h"
 #include "MoveType.h"
+#include "Assets.h"
 
 TouchPlayer::TouchPlayer()
 : switchOnLeft(false)
@@ -57,10 +58,10 @@ void TouchPlayer::ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
     upTrend = true;
   }
 
-  if ((touchPointDragged.x - AbstractPanelScene::xOffset) < (touchPointDown.x - AbstractPanelScene::xOffset) - ((static_cast<int32_t>(touchPointDown.x) - AbstractPanelScene::xOffset) % AbstractPanelScene::TILE_SIZE)) {
+  if ((touchPointDragged.x - AbstractPanelScene::xOffset) < (touchPointDown.x - AbstractPanelScene::xOffset) - ((static_cast<int32_t>(touchPointDown.x) - AbstractPanelScene::xOffset) % Assets::TILE_SIZE)) {
     switchOnLeft = true;
     switchOnRight = false;
-  } else if ((touchPointDragged.x - AbstractPanelScene::xOffset) > (touchPointDown.x - AbstractPanelScene::xOffset) + (AbstractPanelScene::TILE_SIZE - (static_cast<int32_t>(touchPointDown.x - AbstractPanelScene::xOffset) % AbstractPanelScene::TILE_SIZE))) {
+  } else if ((touchPointDragged.x - AbstractPanelScene::xOffset) > (touchPointDown.x - AbstractPanelScene::xOffset) + (Assets::TILE_SIZE - (static_cast<int32_t>(touchPointDown.x - AbstractPanelScene::xOffset) % Assets::TILE_SIZE))) {
     switchOnLeft = false;
     switchOnRight = true;
   }
@@ -77,10 +78,10 @@ void TouchPlayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
 }
 
 std::unique_ptr<Move> TouchPlayer::onMoveRequest(const Panel &panel) {
-  int32_t const x = static_cast<int32_t> (AbstractPanelScene::xOffset + (AbstractPanelScene::TILE_SIZE * panel.cursor->x));
-  int32_t const y = static_cast<int32_t> (AbstractPanelScene::yOffset + (AbstractPanelScene::TILE_SIZE * panel.cursor->y) + ((panel.scrollingDelta * AbstractPanelScene::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
-  cocos2d::CCRect cursorPosition(x + (leftTrend ? AbstractPanelScene::TILE_SIZE : 0), y, AbstractPanelScene::TILE_SIZE, AbstractPanelScene::TILE_SIZE);
-  cocos2d::CCPoint aPoint(touchPointDragged.x + (leftTrend ? AbstractPanelScene::TILE_SIZE : 0) - (rightTrend ? AbstractPanelScene::TILE_SIZE : 0), touchPointDragged.y);
+  int32_t const x = static_cast<int32_t> (AbstractPanelScene::xOffset + (Assets::TILE_SIZE * panel.cursor->x));
+  int32_t const y = static_cast<int32_t> (AbstractPanelScene::yOffset + (Assets::TILE_SIZE * panel.cursor->y) + ((panel.scrollingDelta * Assets::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+  cocos2d::CCRect cursorPosition(x + (leftTrend ? Assets::TILE_SIZE : 0), y, Assets::TILE_SIZE, Assets::TILE_SIZE);
+  cocos2d::CCPoint aPoint(touchPointDragged.x + (leftTrend ? Assets::TILE_SIZE : 0) - (rightTrend ? Assets::TILE_SIZE : 0), touchPointDragged.y);
   if (upTrend && !lifted) {
     lifted = true;
     return std::unique_ptr<Move>(new Move(MoveType::LIFT));

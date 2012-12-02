@@ -6,10 +6,10 @@
 
 
 #include "TitleScene.h"
-#include "SceneConstants.h"
 #include "TutorialScene.h"
 #include "PanelScene.h"
 #include "SimpleAudioEngine.h"
+#include "Assets.h"
 
 using namespace CocosDenshion;
 
@@ -43,7 +43,7 @@ bool TitleScene::init() {
   endlessButton = CCControlButton::create(CCLabelTTF::create("Endless Game", "SkaterDudes.ttf", 32), skipBackgroundButton);
   endlessButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
   endlessButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  endlessButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 + 40));
+  endlessButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
   endlessButton->setPreferredSize(CCSizeMake(endlessButton->getContentSize().width + 20, 60));
   endlessButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::endlessGameAction), CCControlEventTouchUpInside);
   addChild(endlessButton);
@@ -53,13 +53,13 @@ bool TitleScene::init() {
   tutorialButton = CCControlButton::create(CCLabelTTF::create("Tutorial", "SkaterDudes.ttf", 32), resumeBackgroundButton);
   tutorialButton->setBackgroundSpriteForState(resumeBackgroundHighlightedButton, CCControlStateHighlighted);
   tutorialButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  tutorialButton->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2 - 40));
+  tutorialButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 40));
   tutorialButton->setPreferredSize(CCSizeMake(tutorialButton->getContentSize().width + 20, 60));
   tutorialButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::tutorialAction), CCControlEventTouchUpInside);
   addChild(tutorialButton);
 
   CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
-  copyright->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 16 ));
+  copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 16 ));
   copyright->setColor(ccc3(10, 10, 10));
   addChild(copyright);
 
@@ -67,9 +67,9 @@ bool TitleScene::init() {
 }
 
 void TitleScene::endlessGameAction(CCObject *sender) {
-  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(SceneConstants::transitionDuration, PanelScene::scene(), kOrientationUpOver));
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, PanelScene::scene(), kOrientationUpOver));
 }
 
 void TitleScene::tutorialAction(CCObject *sender) {
-  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(SceneConstants::transitionDuration, TutorialScene::scene(), kOrientationUpOver));
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TutorialScene::scene(), kOrientationUpOver));
 }

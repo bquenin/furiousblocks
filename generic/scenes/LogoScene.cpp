@@ -7,8 +7,8 @@
 
 #include <algorithm>
 #include "LogoScene.h"
-#include "SceneConstants.h"
 #include "TitleScene.h"
+#include "Assets.h"
 
 LogoScene::LogoScene() {
   for (int i = 0; i < num_blobs; i++) {
@@ -48,14 +48,14 @@ bool LogoScene::init() {
 
   CCSprite *sprite = CCSprite::createWithTexture(texture);
   sprite->setAnchorPoint(ccp(0, 0));
-  sprite->setScaleX(SceneConstants::designResolutionSize.width / LogoScene::width);
-  sprite->setScaleY(SceneConstants::designResolutionSize.height / LogoScene::height);
+  sprite->setScaleX(Assets::designResolutionSize.width / LogoScene::width);
+  sprite->setScaleY(Assets::designResolutionSize.height / LogoScene::height);
   addChild(sprite);
 
   texture->autorelease();
 
   CCLabelTTF *copyright = CCLabelTTF::create("PixodromE", "Joystix.ttf", 32);
-  copyright->setPosition(ccp(SceneConstants::designResolutionSize.width / 2, SceneConstants::designResolutionSize.height / 2));
+  copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   copyright->setColor(ccc3(0, 0, 0));
   copyright->setScale(2);
   addChild(copyright);
@@ -120,7 +120,7 @@ void LogoScene::registerWithTouchDispatcher() {
 }
 
 bool LogoScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
-  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(SceneConstants::transitionDuration, TitleScene::scene(), kOrientationUpOver));
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
   return true;
 }
 
