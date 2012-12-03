@@ -32,7 +32,7 @@
 
 
 namespace cocos2d { class CCSprite; }
-namespace cocos2d { class CCLabelTTF; }
+namespace cocos2d { class CCLabelBMFont; }
 
 NS_CC_EXT_BEGIN
 
@@ -64,15 +64,15 @@ public:
 
 
     /** Initializes a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels. */
-    bool initWithMaskSprite(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelTTF* onLabel, CCLabelTTF* offLabel);
+    bool initWithMaskSprite(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelBMFont* onLabel, CCLabelBMFont * offLabel);
 
     /** Creates a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels.
     @deprecated: This interface will be deprecated sooner or later.
     */
-    CC_DEPRECATED_ATTRIBUTE static CCControlSwitch* switchWithMaskSprite(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelTTF* onLabel, CCLabelTTF* offLabel);
+    CC_DEPRECATED_ATTRIBUTE static CCControlSwitch* switchWithMaskSprite(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelBMFont* onLabel, CCLabelBMFont* offLabel);
 
     /** Creates a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels. */
-    static CCControlSwitch* create(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelTTF* onLabel, CCLabelTTF* offLabel);
+    static CCControlSwitch* create(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelBMFont* onLabel, CCLabelBMFont* offLabel);
 
 
     /**

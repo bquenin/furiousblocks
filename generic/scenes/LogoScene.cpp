@@ -54,7 +54,7 @@ bool LogoScene::init() {
 
   texture->autorelease();
 
-  copyright = CCLabelTTF::create("PixodromE", "Joystix.ttf", 32);
+  copyright = CCLabelBMFont::create("PixodromE", "Joystix.fnt");
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   copyright->setColor(ccc3(0, 0, 0));
   copyright->setScale(2);

@@ -15,18 +15,6 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-TitleScene::~TitleScene() {
-  //  bg->release();
-  //  endlessBackgroundButton->release();
-  //  endlessBackgroundHighlightedButton->release();
-  //  endlessButton->release();
-  //  tutorialBackgroundButton->release();
-  //  tutorialBackgroundHighlightedButton->release();
-  //  tutorialButton->release();
-  //  copyright->release();
-  CCLOG("Releasing TitleScene");
-}
-
 CCScene *TitleScene::scene() {
   CCScene *scene = CCScene::create();
   scene->addChild(TitleScene::create());
@@ -50,7 +38,7 @@ bool TitleScene::init() {
   /** Creates and return a button with a default background and title color. */
   endlessBackgroundButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTON);
   endlessBackgroundHighlightedButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTONHIGHLIGHTED);
-  endlessButtonLabel = CCLabelTTF::create("Endless Game", "SkaterDudes.ttf", 32);
+  endlessButtonLabel = CCLabelBMFont::create("Endless Game", "SkaterDudes.fnt");
   endlessButton = CCControlButton::create(endlessButtonLabel, endlessBackgroundButton);
   endlessButton->setBackgroundSpriteForState(endlessBackgroundHighlightedButton, CCControlStateHighlighted);
   endlessButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
@@ -61,7 +49,7 @@ bool TitleScene::init() {
 
   tutorialBackgroundButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTON);
   tutorialBackgroundHighlightedButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTONHIGHLIGHTED);
-  tutorialButtonLabel = CCLabelTTF::create("Tutorial", "SkaterDudes.ttf", 32);
+  tutorialButtonLabel = CCLabelBMFont::create("Tutorial", "SkaterDudes.fnt");
   tutorialButton = CCControlButton::create(tutorialButtonLabel, tutorialBackgroundButton);
   tutorialButton->setBackgroundSpriteForState(tutorialBackgroundHighlightedButton, CCControlStateHighlighted);
   tutorialButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
@@ -70,7 +58,7 @@ bool TitleScene::init() {
   tutorialButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::tutorialAction), CCControlEventTouchUpInside);
   addChild(tutorialButton);
 
-  copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
+  copyright = CCLabelBMFont::create("Copyright 2012 PixodromE", "SkaterDudes.fnt");
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 16 ));
   copyright->setColor(ccc3(10, 10, 10));
   addChild(copyright);

@@ -16,9 +16,6 @@ const cocos2d::CCSize Assets::designResolutionSize = cocos2d::CCSize(640, 960);
 void Assets::load() {
   // Pre-loading textures
   CCTextureCache::sharedTextureCache()->addImage("blocks.png");
-  CCTextureCache::sharedTextureCache()->addImage("coopblack32.png");
-  CCTextureCache::sharedTextureCache()->addImage("coopblack64.png");
-  CCTextureCache::sharedTextureCache()->addImage("title.png");
 
   // Initialize Audio Engine
   SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("harmonic.mp3"));

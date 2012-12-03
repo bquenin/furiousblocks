@@ -17,22 +17,21 @@ using namespace cocos2d::extension;
 
 class TitleScene : public cocos2d::CCLayer {
 private:
-  CCLabelTTF *endlessButtonLabel;
+  CCLabelBMFont *endlessButtonLabel;
   CCControlButton *endlessButton;
   CCScale9Sprite *endlessBackgroundButton;
   CCScale9Sprite *endlessBackgroundHighlightedButton;
 
-  CCLabelTTF *tutorialButtonLabel;
+  CCLabelBMFont *tutorialButtonLabel;
   CCControlButton *tutorialButton;
   CCScale9Sprite *tutorialBackgroundButton;
   CCScale9Sprite *tutorialBackgroundHighlightedButton;
 
   CCSprite *bg;
 
-  CCLabelTTF *copyright;
+  CCLabelBMFont *copyright;
 
 public:
-  ~TitleScene();
   bool init();
   void endlessGameAction(CCObject *sender);
   void tutorialAction(CCObject *sender);

@@ -41,8 +41,8 @@ public:
         CCSprite *onSprite, 
         CCSprite *offSprite,
         CCSprite *thumbSprite,
-        CCLabelTTF* onLabel, 
-        CCLabelTTF* offLabel);
+        CCLabelBMFont* onLabel,
+        CCLabelBMFont* offLabel);
     void draw();
     void needsLayout();
     void setSliderXPosition(float sliderXPosition);
@@ -62,8 +62,8 @@ public:
     CC_SYNTHESIZE_RETAIN(CCSprite*, m_pOnSprite, OnSprite)
     CC_SYNTHESIZE_RETAIN(CCSprite*, m_pOffSprite, OffSprite)
     CC_SYNTHESIZE_RETAIN(CCSprite*, m_ThumbSprite, ThumbSprite)
-    CC_SYNTHESIZE_RETAIN(CCLabelTTF*, m_pOnLabel, OnLabel)
-    CC_SYNTHESIZE_RETAIN(CCLabelTTF*, m_pOffLabel, OffLabel)
+    CC_SYNTHESIZE_RETAIN(CCLabelBMFont*, m_pOnLabel, OnLabel)
+    CC_SYNTHESIZE_RETAIN(CCLabelBMFont*, m_pOffLabel, OffLabel)
 };
 
 CCControlSwitchSprite::CCControlSwitchSprite()
@@ -97,8 +97,8 @@ bool CCControlSwitchSprite::initWithMaskSprite(
     CCSprite *onSprite, 
     CCSprite *offSprite,
     CCSprite *thumbSprite,
-    CCLabelTTF* onLabel, 
-    CCLabelTTF* offLabel)
+    CCLabelBMFont* onLabel,
+    CCLabelBMFont* offLabel)
 {
     if (CCSprite::initWithTexture(maskSprite->getTexture()))
     {
@@ -298,7 +298,7 @@ CCControlSwitch* CCControlSwitch::create(CCSprite *maskSprite, CCSprite * onSpri
     return pRet;
 }
 
-bool CCControlSwitch::initWithMaskSprite(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelTTF* onLabel, CCLabelTTF* offLabel)
+bool CCControlSwitch::initWithMaskSprite(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelBMFont* onLabel, CCLabelBMFont* offLabel)
 {
     if (CCControl::init())
     {
@@ -328,12 +328,12 @@ bool CCControlSwitch::initWithMaskSprite(CCSprite *maskSprite, CCSprite * onSpri
     return false;
 }
 
-CCControlSwitch* CCControlSwitch::switchWithMaskSprite(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelTTF* onLabel, CCLabelTTF* offLabel)
+CCControlSwitch* CCControlSwitch::switchWithMaskSprite(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelBMFont* onLabel, CCLabelBMFont* offLabel)
 {
     return CCControlSwitch::create(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
 }
 
-CCControlSwitch* CCControlSwitch::create(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelTTF* onLabel, CCLabelTTF* offLabel)
+CCControlSwitch* CCControlSwitch::create(CCSprite *maskSprite, CCSprite * onSprite, CCSprite * offSprite, CCSprite * thumbSprite, CCLabelBMFont* onLabel, CCLabelBMFont* offLabel)
 {
     CCControlSwitch* pRet = new CCControlSwitch();
     if (pRet && pRet->initWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel))

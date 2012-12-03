@@ -94,7 +94,9 @@ bool PanelScene::init() {
 
   CCScale9Sprite *backgroundButton = CCScale9Sprite::create("button.png");
   CCScale9Sprite *backgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  menuButton = CCControlButton::create(CCLabelTTF::create("Menu", "SkaterDudes.ttf", 24), backgroundButton);
+  CCLabelBMFont *menu = CCLabelBMFont::create("Menu", "SkaterDudes.fnt");
+  menu->setScale(0.75);
+  menuButton = CCControlButton::create(menu, backgroundButton);
   menuButton->setBackgroundSpriteForState(backgroundHighlightedButton, CCControlStateHighlighted);
   menuButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   menuButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height - 40));
