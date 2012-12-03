@@ -3,14 +3,22 @@
 
 #include <cstdint>
 #include "MoveType.h"
+#include "cocos2d.h"
 
 class Move {
-private:
-protected:
 public:
-  MoveType type;
+
   Move(MoveType type);
   Move(Move *move);
+
+  MoveType type;
+};
+
+struct MoveDeleter {
+  void operator() (Move* p) {
+    CCLOG("Calling delete for Move object...");
+    delete p;
+  }
 };
 
 #endif //__Move_H_

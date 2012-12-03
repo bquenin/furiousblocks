@@ -105,7 +105,7 @@ private:
   int32_t freezingTime;
   int32_t bonusFreezingTime;
   int32_t skillChainLevel;
-  std::unique_ptr<Move> move;
+  std::unique_ptr<Move, MoveDeleter> move;
   bool locked;
   bool lifting;
   bool gracing;
@@ -139,7 +139,7 @@ public:
   int64_t getLocalTick();
   void setLocalTick(int64_t localTick);
   bool isGameOver() const;
-  void submitMove(std::unique_ptr<Move>&& move);
+  void submitMove(std::unique_ptr<Move, MoveDeleter>&& move);
   static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
   static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
   bool comboMask[Panel::X][Panel::Y];

@@ -6,13 +6,13 @@
 
 class Script {
 private:
-  std::vector<Action *> actions;
+  std::vector<std::unique_ptr<Action>> actions;
 
 protected:
 public:
-  Script *add(Action *action);
+  Script *add(std::unique_ptr<Action>&& action);
   void execute(float stateTime);
-  void empty();
+  void clear();
 };
 
 #endif //__Script_H_

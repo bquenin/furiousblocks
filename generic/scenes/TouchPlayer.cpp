@@ -77,27 +77,27 @@ void TouchPlayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
   lifted = false;
 }
 
-std::unique_ptr<Move> TouchPlayer::onMoveRequest(const Panel &panel) {
+std::unique_ptr<Move, MoveDeleter> TouchPlayer::onMoveRequest(const Panel &panel) {
   int32_t const x = static_cast<int32_t> (AbstractPanelScene::xOffset + (Assets::TILE_SIZE * panel.cursor->x));
   int32_t const y = static_cast<int32_t> (AbstractPanelScene::yOffset + (Assets::TILE_SIZE * panel.cursor->y) + ((panel.scrollingDelta * Assets::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
   cocos2d::CCRect cursorPosition(x + (leftTrend ? Assets::TILE_SIZE : 0), y, Assets::TILE_SIZE, Assets::TILE_SIZE);
   cocos2d::CCPoint aPoint(touchPointDragged.x + (leftTrend ? Assets::TILE_SIZE : 0) - (rightTrend ? Assets::TILE_SIZE : 0), touchPointDragged.y);
   if (upTrend && !lifted) {
     lifted = true;
-    return std::unique_ptr<Move>(new Move(MoveType::LIFT));
+    return std::unique_ptr<Move, MoveDeleter>(new Move(MoveType::LIFT));
   } else if (cursorPosition.containsPoint(aPoint) && (switchOnLeft || switchOnRight)) {
     touchPointDown = touchPointDragged;
     switchOnLeft = false;
     switchOnRight = false;
-    return std::unique_ptr<Move>(new Move(MoveType::BLOCK_SWITCH));
+    return std::unique_ptr<Move, MoveDeleter>(new Move(MoveType::BLOCK_SWITCH));
   } else if (touchPointDown.x < cursorPosition.origin.x) {
-    return std::unique_ptr<Move>(new Move(MoveType::CURSOR_LEFT));
+    return std::unique_ptr<Move, MoveDeleter>(new Move(MoveType::CURSOR_LEFT));
   } else if (touchPointDown.x > cursorPosition.origin.x + cursorPosition.size.width) {
-    return std::unique_ptr<Move>(new Move(MoveType::CURSOR_RIGHT));
+    return std::unique_ptr<Move, MoveDeleter>(new Move(MoveType::CURSOR_RIGHT));
   } else if (touchPointDown.y < cursorPosition.origin.y) {
-    return std::unique_ptr<Move>(new Move(MoveType::CURSOR_DOWN));
+    return std::unique_ptr<Move, MoveDeleter>(new Move(MoveType::CURSOR_DOWN));
   } else if (touchPointDown.y > cursorPosition.origin.y + cursorPosition.size.height) {
-    return std::unique_ptr<Move>(new Move(MoveType::CURSOR_UP));
+    return std::unique_ptr<Move, MoveDeleter>(new Move(MoveType::CURSOR_UP));
   }
-  return std::unique_ptr<Move>(nullptr);
+  return std::unique_ptr<Move, MoveDeleter>(nullptr);
 }

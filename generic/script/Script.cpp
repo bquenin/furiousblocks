@@ -1,12 +1,12 @@
 #include "Script.h"
 
-Script *Script::add(Action *action) {
-  actions.push_back(action);
+Script *Script::add(std::unique_ptr<Action>&& action) {
+  actions.push_back(std::move(action));
   return this;
 }
 
-void Script::empty() {
-  actions.erase(actions.begin(), actions.end());
+void Script::clear() {
+  actions.clear();
 }
 
 void Script::execute(float stateTime) {

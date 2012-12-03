@@ -186,7 +186,7 @@ void Panel::processMove() {
       }
       break;
   }
-  move.release();
+  move.reset(nullptr);
 }
 
 void Panel::dropGarbages() {
@@ -714,7 +714,7 @@ bool Panel::isGameOver() const {
   return gameOver;
 }
 
-void Panel::submitMove(std::unique_ptr<Move>&& move) {
+void Panel::submitMove(std::unique_ptr<Move, MoveDeleter>&& move) {
   this->move = std::move(move);
 }
 
