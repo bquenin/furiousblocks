@@ -53,8 +53,8 @@ bool PanelMenuOverlay::init() {
           CCSprite::create("switch-on.png"),
           CCSprite::create("switch-off.png"),
           CCSprite::create("switch-thumb.png"),
-          CCLabelTTF::create("On", "SkaterDudes.ttf", 16),
-          CCLabelTTF::create("Off", "SkaterDudes.ttf", 16)
+          CCLabelTTF::create("On", "SkaterDudes.ttf", 32),
+          CCLabelTTF::create("Off", "SkaterDudes.ttf", 32)
       );
   musicSwitch->setPosition(ccp(Assets::designResolutionSize.width / 2 + 60, Assets::designResolutionSize.height / 2 - 120));
   musicSwitch->setOn(AppDelegate::musicOn);

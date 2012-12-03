@@ -19,6 +19,10 @@ PanelScene::PanelScene()
 , countdown(3) {
 }
 
+PanelScene::~PanelScene() {
+  cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+}
+
 CCScene *PanelScene::scene() {
   CCScene *scene = CCScene::create();
   PanelScene *layer = PanelScene::create();

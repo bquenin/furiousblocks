@@ -40,6 +40,7 @@ public:
   static cocos2d::CCScene *scene();
 
   PanelScene();
+  ~PanelScene();
   bool init();
   void update(float d);
   void onCombo(Combo *combo);

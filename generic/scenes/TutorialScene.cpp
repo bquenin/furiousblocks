@@ -74,6 +74,7 @@ TutorialScene::TutorialScene()
 }
 
 TutorialScene::~TutorialScene() {
+  cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
   script.clear();
 }
 
