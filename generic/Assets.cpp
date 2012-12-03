@@ -13,12 +13,6 @@ using namespace extension;
 
 const cocos2d::CCSize Assets::designResolutionSize = cocos2d::CCSize(640, 960);
 
-Assets::Assets() {
-}
-
-Assets::~Assets() {
-}
-
 void Assets::load() {
   // Pre-loading textures
   CCTextureCache::sharedTextureCache()->addImage("blocks.png");

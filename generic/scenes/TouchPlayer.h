@@ -13,16 +13,16 @@
 #include "Player.h"
 #include "cocos2d.h"
 
-enum class InputState {
-  untouched,
-  touched
-};
-
 class TouchPlayer : public Player, public cocos2d::CCObject, public cocos2d::CCTouchDelegate {
 public:
   TouchPlayer();
 
 private:
+  enum class InputState {
+    untouched,
+    touched
+  };
+
   bool ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
   void ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
   void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);

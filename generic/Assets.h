@@ -30,8 +30,6 @@ public:
   static constexpr float transitionDuration = 0.5f;
   static constexpr int32_t TILE_SIZE = 96;
 
-  Assets();
-  ~Assets();
   void load();
 
   CCSpriteFrame *getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking);

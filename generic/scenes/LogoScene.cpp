@@ -46,15 +46,15 @@ bool LogoScene::init() {
 
   texture->setAliasTexParameters();
 
-  CCSprite *sprite = CCSprite::createWithTexture(texture);
-  sprite->setAnchorPoint(ccp(0, 0));
-  sprite->setScaleX(Assets::designResolutionSize.width / LogoScene::width);
-  sprite->setScaleY(Assets::designResolutionSize.height / LogoScene::height);
-  addChild(sprite);
+  canvas = CCSprite::createWithTexture(texture);
+  canvas->setAnchorPoint(ccp(0, 0));
+  canvas->setScaleX(Assets::designResolutionSize.width / LogoScene::width);
+  canvas->setScaleY(Assets::designResolutionSize.height / LogoScene::height);
+  addChild(canvas);
 
   texture->autorelease();
 
-  CCLabelTTF *copyright = CCLabelTTF::create("PixodromE", "Joystix.ttf", 32);
+  copyright = CCLabelTTF::create("PixodromE", "Joystix.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   copyright->setColor(ccc3(0, 0, 0));
   copyright->setScale(2);

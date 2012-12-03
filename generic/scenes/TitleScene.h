@@ -18,7 +18,14 @@ using namespace cocos2d::extension;
 class TitleScene : public cocos2d::CCLayer {
 private:
   CCControlButton *endlessButton;
+  CCScale9Sprite *endlessBackgroundButton;
+  CCScale9Sprite *endlessBackgroundHighlightedButton;
+
   CCControlButton *tutorialButton;
+  CCScale9Sprite *tutorialBackgroundButton;
+  CCScale9Sprite *tutorialBackgroundHighlightedButton;
+
+  CCSprite *bg;
 
 public:
   TitleScene();

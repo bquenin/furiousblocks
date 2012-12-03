@@ -33,6 +33,8 @@ private:
   int vy[LogoScene::num_blobs][LogoScene::height];
 
   CCTexture2DMutable *texture;
+  CCSprite *canvas;
+  CCLabelTTF *copyright;
 
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer

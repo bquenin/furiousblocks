@@ -19,7 +19,12 @@ using namespace cocos2d::extension;
 class QuitOverlay : public CCLayerColor {
 private:
   CCControlButton *skipButton;
+  CCScale9Sprite *skipBackgroundButton;
+  CCScale9Sprite *skipBackgroundHighlightedButton;
+
   CCControlButton *resumeButton;
+  CCScale9Sprite *resumeBackgroundButton;
+  CCScale9Sprite *resumeBackgroundHighlightedButton;
 
 public:
   QuitOverlay();

@@ -11,6 +11,7 @@
 #include "SimpleAudioEngine.h"
 #include "Assets.h"
 
+using namespace cocos2d;
 using namespace CocosDenshion;
 
 TitleScene::TitleScene() {
@@ -18,8 +19,7 @@ TitleScene::TitleScene() {
 
 CCScene *TitleScene::scene() {
   CCScene *scene = CCScene::create();
-  TitleScene *layer = TitleScene::create();
-  scene->addChild(layer);
+  scene->addChild(TitleScene::create());
   return scene;
 }
 
@@ -32,26 +32,26 @@ bool TitleScene::init() {
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
 
   // Background
-  cocos2d::CCSprite *bg = cocos2d::CCSprite::create("title.png");
+  bg = CCSprite::create("title.png");
   bg->setAnchorPoint(ccp(0, 0));
   bg->setPosition(ccp(0, 18));
   addChild(bg);
 
     /** Creates and return a button with a default background and title color. */
-  CCScale9Sprite *skipBackgroundButton = CCScale9Sprite::create("button.png");
-  CCScale9Sprite *skipBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  endlessButton = CCControlButton::create(CCLabelTTF::create("Endless Game", "SkaterDudes.ttf", 32), skipBackgroundButton);
-  endlessButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
+  endlessBackgroundButton = CCScale9Sprite::create("button.png");
+  endlessBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  endlessButton = CCControlButton::create(CCLabelTTF::create("Endless Game", "SkaterDudes.ttf", 32), endlessBackgroundButton);
+  endlessButton->setBackgroundSpriteForState(endlessBackgroundHighlightedButton, CCControlStateHighlighted);
   endlessButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   endlessButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
   endlessButton->setPreferredSize(CCSizeMake(endlessButton->getContentSize().width + 20, 60));
   endlessButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::endlessGameAction), CCControlEventTouchUpInside);
   addChild(endlessButton);
 
-  CCScale9Sprite *resumeBackgroundButton = CCScale9Sprite::create("button.png");
-  CCScale9Sprite *resumeBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  tutorialButton = CCControlButton::create(CCLabelTTF::create("Tutorial", "SkaterDudes.ttf", 32), resumeBackgroundButton);
-  tutorialButton->setBackgroundSpriteForState(resumeBackgroundHighlightedButton, CCControlStateHighlighted);
+  tutorialBackgroundButton = CCScale9Sprite::create("button.png");
+  tutorialBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  tutorialButton = CCControlButton::create(CCLabelTTF::create("Tutorial", "SkaterDudes.ttf", 32), tutorialBackgroundButton);
+  tutorialButton->setBackgroundSpriteForState(tutorialBackgroundHighlightedButton, CCControlStateHighlighted);
   tutorialButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   tutorialButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 40));
   tutorialButton->setPreferredSize(CCSizeMake(tutorialButton->getContentSize().width + 20, 60));

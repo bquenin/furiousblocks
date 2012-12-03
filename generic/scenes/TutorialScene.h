@@ -18,13 +18,13 @@
 #include "TutorialPlayer.h"
 #include "QuitOverlay.h"
 
-enum class InputState {
-  untouched,
-  touched
-};
-
 class TutorialScene : public AbstractPanelScene, FuriousBlocksCoreListener {
 private:
+  enum class InputState {
+    untouched,
+    touched
+  };
+
   static std::vector<std::vector<BlockType> > empty;
   static std::vector<std::vector<BlockType> > combo4and5;
   static std::vector<std::vector<BlockType> > combo6and10;
