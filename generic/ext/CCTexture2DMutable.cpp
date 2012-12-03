@@ -8,7 +8,7 @@
 //
 
 
-#import "CCTexture2DMutable.h"
+#include "CCTexture2DMutable.h"
 #include "SimpleAudioEngine.h"
 
 

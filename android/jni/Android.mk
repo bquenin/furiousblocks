@@ -31,6 +31,7 @@ $(LOCAL_PATH)/scenes
 LOCAL_SRC_FILES := \
 bootstrap/main.cpp \
 ../../generic/AppDelegate.cpp \
+../../generic/Assets.cpp \
 ../../generic/animation/Animation.cpp \
 ../../generic/animation/NonLoopingAnimation.cpp \
 ../../generic/core/Block.cpp \
@@ -47,7 +48,6 @@ bootstrap/main.cpp \
 ../../generic/scenes/PanelMenuOverlay.cpp \
 ../../generic/scenes/PanelScene.cpp \
 ../../generic/scenes/QuitOverlay.cpp \
-../../generic/scenes/SceneConstants.cpp \
 ../../generic/scenes/StarNumber.cpp \
 ../../generic/scenes/TitleScene.cpp \
 ../../generic/scenes/TouchPlayer.cpp \
