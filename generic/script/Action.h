@@ -10,6 +10,7 @@ protected:
 
 public:
   Action(float timeStep);
+  virtual ~Action() {};
 
   void setNextStep(float nextStep);
   float getTimeStep();

@@ -8,7 +8,7 @@
 
 class TypeTextAction : public Action {
 private:
-  std::string text;
+  const std::string text;
   TextToType &out;
   size_t index;
 

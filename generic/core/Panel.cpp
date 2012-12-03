@@ -2,12 +2,12 @@
 #include "Panel.h"
 #include "GarbageBlockType.h"
 
-Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener)
+Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener &panelListener)
 : lastIndex(-1)
-, random(new SimpleRNG(seed))
+, random(SimpleRNG(seed))
 , localTick(0)
 , playerId(playerId)
-, cursor(new furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2)))
+, cursor(furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2)))
 , levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED)
 , scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED)
 , scrollingDelta(0)
@@ -78,7 +78,7 @@ void Panel::setTransposedBlocks(std::vector<std::vector<BlockType>> & blockTypes
 }
 
 Block *Panel::newRandom(BlockType excludedType, int32_t poppingIndex, int32_t skillChainLevel) {
-  int32_t randomIndex = random->nextInt() % Panel::numberOfRegularBlocks;
+  int32_t randomIndex = random.nextInt() % Panel::numberOfRegularBlocks;
   int32_t index = randomIndex == lastIndex ? (randomIndex + 1) % Panel::numberOfRegularBlocks : randomIndex;
   if (index == static_cast<int32_t>(excludedType)) {
     index = (index + 1) % Panel::numberOfRegularBlocks;
@@ -87,7 +87,7 @@ Block *Panel::newRandom(BlockType excludedType, int32_t poppingIndex, int32_t sk
 }
 
 Block *Panel::newBlock(BlockType blockType, int32_t index, int32_t skillChainLevel) {
-  return new Block(random->nextInt(), blockType, index, skillChainLevel);
+  return new Block(random.nextInt(), blockType, index, skillChainLevel);
 }
 
 void Panel::onTick(int64_t tick) {
@@ -110,10 +110,10 @@ void Panel::processMove() {
   MoveType type = move->type;
   switch (type) {
     case MoveType::BLOCK_SWITCH: {
-      Block *src = blocks[cursor->x][cursor->y];
-      Block *dst = blocks[cursor->x + 1][cursor->y];
-      Block *aboveSrc = blocks[cursor->x][cursor->y + 1];
-      Block *aboveDst = blocks[cursor->x + 1][cursor->y + 1];
+      Block *src = blocks[cursor.x][cursor.y];
+      Block *dst = blocks[cursor.x + 1][cursor.y];
+      Block *aboveSrc = blocks[cursor.x][cursor.y + 1];
+      Block *aboveDst = blocks[cursor.x + 1][cursor.y + 1];
       if ((src == nullptr) && (dst == nullptr)) {
         break;
       }
@@ -138,48 +138,38 @@ void Panel::processMove() {
         }
       }
       if (src == nullptr) {
-        src = blocks[cursor->x][cursor->y] = newBlock(BlockType::INVISIBLE);
+        src = blocks[cursor.x][cursor.y] = newBlock(BlockType::INVISIBLE);
       }
       if (dst == nullptr) {
-        dst = blocks[cursor->x + 1][cursor->y] = newBlock(BlockType::INVISIBLE);
+        dst = blocks[cursor.x + 1][cursor.y] = newBlock(BlockType::INVISIBLE);
       }
       src->switchForth();
       dst->switchBack();
-      if (panelListener != nullptr) {
-        panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_SWAP));
-      }
+      panelListener.onEvent(playerId, PanelEvent(PanelEventType::CURSOR_SWAP));
     }
       break;
     case MoveType::CURSOR_DOWN:
-      if (cursor->y != 1) {
-        cursor->y--;
-        if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
-        }
+      if (cursor.y != 1) {
+        cursor.y--;
+        panelListener.onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
       }
       break;
     case MoveType::CURSOR_LEFT:
-      if (cursor->x != 0) {
-        cursor->x--;
-        if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
-        }
+      if (cursor.x != 0) {
+        cursor.x--;
+        panelListener.onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
       }
       break;
     case MoveType::CURSOR_RIGHT:
-      if (cursor->x != (Panel::X - 2)) {
-        cursor->x++;
-        if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
-        }
+      if (cursor.x != (Panel::X - 2)) {
+        cursor.x++;
+        panelListener.onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
       }
       break;
     case MoveType::CURSOR_UP:
-      if (cursor->y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
-        cursor->y++;
-        if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
-        }
+      if (cursor.y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
+        cursor.y++;
+        panelListener.onEvent(playerId, PanelEvent(PanelEventType::CURSOR_MOVE));
       }
       break;
     case MoveType::LIFT:
@@ -205,7 +195,7 @@ void Panel::dropGarbages() {
       }
     }
     garbageStack.erase(garbage);
-    int32_t xPos = garbage->width < Panel::X ? random->nextInt() % (Panel::X - garbage->width) : 0;
+    int32_t xPos = garbage->width < Panel::X ? random.nextInt() % (Panel::X - garbage->width) : 0;
     garbage->inject(xPos, y);
   }
 }
@@ -237,8 +227,8 @@ void Panel::scrolling(int64_t tick) {
   if (needNewLine) {
     newLine();
     gracePeriod();
-    if (cursor->y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
-      cursor->y++;
+    if (cursor.y != (gracing ? Panel::Y_DISPLAY : Panel::Y_DISPLAY - 1)) {
+      cursor.y++;
     }
   }
 }
@@ -255,7 +245,7 @@ void Panel::gracePeriod() {
     if (gracing) {
       garbageStack.clear();
       gameOver = true;
-      panelListener->onGameOver();
+      panelListener.onGameOver();
     } else {
       lifting = false;
       gracing = true;
@@ -317,9 +307,7 @@ void Panel::mechanics(int64_t tick) {
         event->data1 = current->poppingSkillChainLevel;
         event->data2 = current->poppingIndex;
         event->data3 = static_cast<int32_t>(tick);
-        if (panelListener != nullptr) {
-          panelListener->onEvent(playerId, *event);
-        }
+        panelListener.onEvent(playerId, *event);
       }
       BlockType type = current->type;
       BlockState state = current->state;
@@ -596,9 +584,7 @@ void Panel::processCombo(Combo *combo) {
   if (isSkillCombo) {
     skillChainLevel++;
     comboSkillChainLevel = skillChainLevel;
-    if (panelListener != nullptr) {
-      panelListener->onEvent(playerId, PanelEvent(PanelEventType::SKILL_COMBO));
-    }
+    panelListener.onEvent(playerId, PanelEvent(PanelEventType::SKILL_COMBO));
     score += (1000 * skillChainLevel) + (combo->size() * 100);
   } else {
     if (clearings.empty()) {
@@ -613,9 +599,7 @@ void Panel::processCombo(Combo *combo) {
   for (auto block: combo->blocks) {
     block->blink();
   }
-  if (panelListener != nullptr) {
-    panelListener->onCombo(combo);
-  }
+  panelListener.onCombo(combo);
   if ((combo->size() >= 4) || (combo->skillChainLevel > 1)) {
     if (combo->size() >= 4) {
       bonusFreezingTime = static_cast<int32_t>(((combo->size() / 2) * FuriousBlocksCoreDefaults::CORE_FREQUENCY));
@@ -724,7 +708,7 @@ void Panel::submitMove(std::unique_ptr<Move, MoveDeleter>&& move) {
 
 Panel::BlockBar::BlockBar(Panel *__parent, int32_t width, int32_t height, int32_t owner)
 : __parent (__parent) {
-  this->id = __parent->random->nextInt();
+  this->id = __parent->random.nextInt();
   this->width = width;
   this->height = height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height;
   this->owner = owner;

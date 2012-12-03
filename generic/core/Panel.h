@@ -93,7 +93,7 @@ private:
   static const int32_t INITIAL_SCROLLING_SPEED = static_cast<int32_t>(FuriousBlocksCoreDefaults::CORE_FREQUENCY);
   static const int64_t NEXT_LEVEL = static_cast<int64_t>((FuriousBlocksCoreDefaults::CORE_FREQUENCY * 120));
   int32_t lastIndex;
-  SimpleRNG *random;
+  SimpleRNG random;
   int64_t localTick;
   int32_t playerId;
   std::set<Combo *> combos;
@@ -109,7 +109,7 @@ private:
   bool locked;
   bool lifting;
   bool gracing;
-  PanelListener *panelListener;
+  PanelListener &panelListener;
   void processMove();
   void dropGarbages();
   void scrolling(int64_t tick);
@@ -134,12 +134,12 @@ public:
   static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
   bool comboMask[Panel::X][Panel::Y];
   Block *blocks[Panel::X][Panel::Y]; // std::array<std::array<Block *, Panel::Y>, Panel::X> blocks;
-  furiousblocks::Point *cursor;
+  furiousblocks::Point cursor;
   int32_t scrollingDelta;
   int32_t score;
   bool gameOver;
 
-  Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener = nullptr);
+  Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener &panelListener);
   ~Panel();
   void reset();
   void setTransposedBlocks(std::vector<std::vector<BlockType>> & blockTypes);

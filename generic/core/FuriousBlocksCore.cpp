@@ -36,7 +36,7 @@ void FuriousBlocksCore::addPlayer(Player *newPlayer) {
 }
 
 void FuriousBlocksCore::addPlayer(Player *newPlayer, Panel *panel) {
-  playerToPanel[newPlayer] = panel == nullptr ? new Panel(seed + newPlayer->id, newPlayer->id, initialBlockTypes, this) : panel;
+  playerToPanel[newPlayer] = panel == nullptr ? new Panel(seed + newPlayer->id, newPlayer->id, initialBlockTypes, *this) : panel;
 }
 
 void FuriousBlocksCore::run() {

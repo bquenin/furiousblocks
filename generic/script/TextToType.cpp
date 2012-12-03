@@ -3,10 +3,10 @@
 TextToType::TextToType() {
 }
 
-std::string TextToType::getText() {
+std::string TextToType::getText() const {
   return text;
 }
 
-void TextToType::setText(std::string&& text) {
-  this->text = std::move(text);
+void TextToType::setText(std::string text) {
+  this->text = text;
 }

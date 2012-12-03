@@ -10,8 +10,8 @@ private:
 protected:
 public:
   TextToType();
-  std::string getText();
-  void setText(std::string&& text);
+  std::string getText() const;
+  void setText(std::string text);
 };
 
 #endif //__TextToType_H_
