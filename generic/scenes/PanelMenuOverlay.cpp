@@ -26,18 +26,18 @@ bool PanelMenuOverlay::init() {
   initWithColor(ccc4(0, 0, 0, 80));
 
   /** Creates and return a button with a default background and title color. */
-  CCScale9Sprite *skipBackgroundButton = CCScale9Sprite::create("button.png");
-  CCScale9Sprite *skipBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  EndGameButton = CCControlButton::create(CCLabelTTF::create("Back to Title", "SkaterDudes.ttf", 32), skipBackgroundButton);
-  EndGameButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
-  EndGameButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  EndGameButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
-  EndGameButton->setPreferredSize(CCSizeMake(EndGameButton->getContentSize().width + 20, 60));
-  EndGameButton->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::endGameAction), CCControlEventTouchUpInside);
-  addChild(EndGameButton);
+  CCScale9Sprite *skipBackgroundButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTON);
+  CCScale9Sprite *skipBackgroundHighlightedButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTONHIGHLIGHTED);
+  endGameButton = CCControlButton::create(CCLabelTTF::create("Back to Title", "SkaterDudes.ttf", 32), skipBackgroundButton);
+  endGameButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
+  endGameButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  endGameButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
+  endGameButton->setPreferredSize(CCSizeMake(endGameButton->getContentSize().width + 20, 60));
+  endGameButton->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::endGameAction), CCControlEventTouchUpInside);
+  addChild(endGameButton);
 
-  CCScale9Sprite *resumeBackgroundButton = CCScale9Sprite::create("button.png");
-  CCScale9Sprite *resumeBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  CCScale9Sprite *resumeBackgroundButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTON);
+  CCScale9Sprite *resumeBackgroundHighlightedButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTONHIGHLIGHTED);
   resumeButton = CCControlButton::create(CCLabelTTF::create("Continue", "SkaterDudes.ttf", 32), resumeBackgroundButton);
   resumeButton->setBackgroundSpriteForState(resumeBackgroundHighlightedButton, CCControlStateHighlighted);
   resumeButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
@@ -68,6 +68,7 @@ bool PanelMenuOverlay::init() {
 }
 
 void PanelMenuOverlay::endGameAction(CCObject *sender) {
+  setVisible(false);
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }
 

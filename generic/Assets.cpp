@@ -30,9 +30,20 @@ void Assets::load() {
   CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
 
   // Frame assets
+  SWITCH_MASK = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("switch-mask.png");
+  SWITCH_ON = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("switch-on.png");
+  SWITCH_OFF = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("switch-off.png");
+  SWITCH_THUMB = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("switch-thumb.png");
+
+  BUTTON = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("button.png");
+  BUTTONHIGHLIGHTED = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("buttonHighlighted.png");
+
+  TITLE = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("title.png");
+
   BG_TOP = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("bg-top.png");
   BG_MIDDLE = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("bg-middle.png");
   BG_BOTTOM = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("bg-bottom.png");
+
   BLOCKS_RED_PANIC_01 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("blocks-red-panic-01.png");
   BLOCKS_BLUE_HOVER_01 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("blocks-blue-hover-01.png");
   BLOCKS_GREEN_COMPRESSED_01 = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("blocks-green-compressed-01.png");

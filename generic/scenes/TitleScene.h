@@ -17,18 +17,22 @@ using namespace cocos2d::extension;
 
 class TitleScene : public cocos2d::CCLayer {
 private:
+  CCLabelTTF *endlessButtonLabel;
   CCControlButton *endlessButton;
   CCScale9Sprite *endlessBackgroundButton;
   CCScale9Sprite *endlessBackgroundHighlightedButton;
 
+  CCLabelTTF *tutorialButtonLabel;
   CCControlButton *tutorialButton;
   CCScale9Sprite *tutorialBackgroundButton;
   CCScale9Sprite *tutorialBackgroundHighlightedButton;
 
   CCSprite *bg;
 
+  CCLabelTTF *copyright;
+
 public:
-  TitleScene();
+  ~TitleScene();
   bool init();
   void endlessGameAction(CCObject *sender);
   void tutorialAction(CCObject *sender);
@@ -38,6 +42,7 @@ public:
 
   // Implement the "static node()" method manually
   CREATE_FUNC(TitleScene);
+
 };
 
 

@@ -74,6 +74,9 @@ TutorialScene::TutorialScene()
 }
 
 TutorialScene::~TutorialScene() {
+//  cursor->release();
+//  textBox->release();
+
   cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
   script.clear();
 }
@@ -284,7 +287,6 @@ void TutorialScene::update(float dt) {
   // State time update
   stateTime += dt;
 
-  CCLOG("String to type = %s", textToType.getText().c_str());
   textBox->setString(textToType.getText().c_str());
 
   // Core tick

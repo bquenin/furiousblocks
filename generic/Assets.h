@@ -36,6 +36,16 @@ public:
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
 
   // Assets
+  CCSpriteFrame *SWITCH_MASK;
+  CCSpriteFrame *SWITCH_ON;
+  CCSpriteFrame *SWITCH_OFF;
+  CCSpriteFrame *SWITCH_THUMB;
+
+  CCSpriteFrame *BUTTON;
+  CCSpriteFrame *BUTTONHIGHLIGHTED;
+
+  CCSpriteFrame *TITLE;
+
   CCSpriteFrame *BG_TOP;
   CCSpriteFrame *BG_MIDDLE;
   CCSpriteFrame *BG_BOTTOM;

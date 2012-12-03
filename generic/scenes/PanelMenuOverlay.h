@@ -18,7 +18,7 @@ using namespace cocos2d::extension;
 
 class PanelMenuOverlay : public CCLayerColor {
 private:
-  CCControlButton *EndGameButton;
+  CCControlButton *endGameButton;
   CCControlButton *resumeButton;
 
 public:
