@@ -11,7 +11,7 @@ protected:
 public:
   TextToType();
   std::string getText();
-  void setText(std::string text);
+  void setText(std::string&& text);
 };
 
 #endif //__TextToType_H_

@@ -10,6 +10,7 @@ protected:
 
 public:
   Action(float timeStep);
+
   void setNextStep(float nextStep);
   float getTimeStep();
   virtual bool execute(float stateTime) = 0;

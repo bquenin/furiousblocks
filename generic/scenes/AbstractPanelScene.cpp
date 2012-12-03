@@ -14,6 +14,10 @@ AbstractPanelScene::AbstractPanelScene()
 , gameRunning(false) {
 }
 
+AbstractPanelScene::~AbstractPanelScene() {
+  delete core;
+}
+
 bool AbstractPanelScene::init() {
   batch = CCSpriteBatchNode::create("blocks.png", 100);
   addChild(batch);

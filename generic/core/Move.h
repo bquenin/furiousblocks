@@ -3,7 +3,6 @@
 
 #include <cstdint>
 #include "MoveType.h"
-#include "cocos2d.h"
 
 class Move {
 public:
@@ -16,7 +15,6 @@ public:
 
 struct MoveDeleter {
   void operator() (Move* p) {
-    CCLOG("Calling delete for Move object...");
     delete p;
   }
 };

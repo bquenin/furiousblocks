@@ -26,6 +26,7 @@ public:
   static constexpr int32_t yOffset = -76;
 
   AbstractPanelScene();
+  ~AbstractPanelScene();
   bool init();
 
   // Core

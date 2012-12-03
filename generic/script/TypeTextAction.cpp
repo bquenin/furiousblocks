@@ -1,9 +1,12 @@
 #include <cstdint>
 #include "TypeTextAction.h"
+#include "cocos2d.h"
 
-TypeTextAction::TypeTextAction(float timeStep, std::string text, TextToType &out)
+using namespace cocos2d;
+
+TypeTextAction::TypeTextAction(float timeStep, const std::string&& text, TextToType &out)
 : Action(timeStep)
-, text(text)
+, text(std::move(text))
 , out(out)
 , index(0) {
 }

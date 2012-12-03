@@ -14,7 +14,7 @@ private:
 
 protected:
 public:
-  TypeTextAction(float timeStep, std::string text, TextToType &out);
+  TypeTextAction(float timeStep, const std::string&& text, TextToType &out);
   bool execute(float stateTime);
 };
 

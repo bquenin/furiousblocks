@@ -22,6 +22,15 @@ FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *li
   }
 }
 
+FuriousBlocksCore::~FuriousBlocksCore() {
+  for (auto &entry: playerToPanel) {
+    Player *player = entry.first;
+    Panel *panel = entry.second;
+    delete player;
+    delete panel;
+  }
+}
+
 void FuriousBlocksCore::addPlayer(Player *newPlayer) {
   addPlayer(newPlayer, nullptr);
 }

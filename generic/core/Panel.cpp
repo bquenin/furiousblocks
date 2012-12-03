@@ -39,6 +39,10 @@ Panel::Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[F
   }
 }
 
+Panel::~Panel() {
+  reset();
+}
+
 void Panel::reset() {
   freezingTime = 0;
   bonusFreezingTime = 0;

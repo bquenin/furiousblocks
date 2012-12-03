@@ -130,7 +130,17 @@ protected:
 public:
   static const int32_t numberOfRegularBlocks = 5;
   bool scrollingEnabled;
+  static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
+  static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
+  bool comboMask[Panel::X][Panel::Y];
+  Block *blocks[Panel::X][Panel::Y]; // std::array<std::array<Block *, Panel::Y>, Panel::X> blocks;
+  furiousblocks::Point *cursor;
+  int32_t scrollingDelta;
+  int32_t score;
+  bool gameOver;
+
   Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener *panelListener = nullptr);
+  ~Panel();
   void reset();
   void setTransposedBlocks(std::vector<std::vector<BlockType>> & blockTypes);
   void onTick(int64_t tick);
@@ -140,14 +150,6 @@ public:
   void setLocalTick(int64_t localTick);
   bool isGameOver() const;
   void submitMove(std::unique_ptr<Move, MoveDeleter>&& move);
-  static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
-  static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
-  bool comboMask[Panel::X][Panel::Y];
-  Block *blocks[Panel::X][Panel::Y]; // std::array<std::array<Block *, Panel::Y>, Panel::X> blocks;
-  furiousblocks::Point *cursor;
-  int32_t scrollingDelta;
-  int32_t score;
-  bool gameOver;
 };
 
 #endif //__Panel_H_

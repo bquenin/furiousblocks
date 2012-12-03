@@ -12,7 +12,6 @@
 
 class FuriousBlocksCore : PanelListener {
 private:
-//  static constexpr int64_t nanoPeriod = static_cast<int64_t>((1.0f / FuriousBlocksCoreDefaults::CORE_FREQUENCY * 1000000000));
   int32_t seed;
   volatile bool running;
   volatile bool paused;
@@ -21,8 +20,10 @@ private:
 
 public:
   BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
-  FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener = nullptr);
   std::unordered_map<Player *, Panel *> playerToPanel;
+
+  FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener = nullptr);
+  ~FuriousBlocksCore();
 
   void addPlayer(Player *newPlayer);
   void addPlayer(Player *newPlayer, Panel *panel);

@@ -8,12 +8,12 @@
 
 class CursorAction : public Action {
 private:
-  TutorialPlayer *player;
+  TutorialPlayer &player;
   MoveType moveType;
 
 protected:
 public:
-  CursorAction(float timeStep, TutorialPlayer *player, MoveType moveType);
+  CursorAction(float timeStep, TutorialPlayer &player, MoveType moveType);
   bool execute(float stateTime);
 };
 
