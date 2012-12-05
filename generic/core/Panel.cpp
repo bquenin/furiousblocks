@@ -69,10 +69,16 @@ void Panel::reset() {
 void Panel::setTransposedBlocks(std::vector<std::vector<BlockType>> & blockTypes) {
   for (int32_t y = 0; y < blockTypes[0].size(); y++) {
     for (int32_t x = 0; x < blockTypes.size(); x++) {
+      if (blocks[y][x] != nullptr) {
+        delete blocks[y][x];
+      }
       blocks[y][x] = blockTypes[x][y] == static_cast<BlockType>(-1) ? nullptr : newBlock(blockTypes[x][y]);
     }
   }
   for (int32_t x = 0; x < Panel::X; x++) {
+    if (blocks[x][0] != nullptr) {
+      delete blocks[x][0];
+    }
     blocks[x][0] = blocks[x][1] == nullptr ? newRandom(static_cast<BlockType>(-1)) : newRandom(blocks[x][1]->type);
   }
 }

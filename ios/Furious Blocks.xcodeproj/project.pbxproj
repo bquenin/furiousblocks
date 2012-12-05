@@ -253,6 +253,7 @@
 		D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
 		D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */; };
 		D2DE72D31662D2F300724790 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */; };
+		D2E931C9166FDBFE0029D28E /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E931C8166FDBFE0029D28E /* boost.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -791,6 +792,7 @@
 		D2BD39A015C5D0A90038E59C /* SimpleRNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleRNG.h; sourceTree = "<group>"; };
 		D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
 		D2DE72D21662D2F300724790 /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2DMutable.h; sourceTree = "<group>"; };
+		D2E931C8166FDBFE0029D28E /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = "../../boost-ios/ios/framework/boost.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -808,6 +810,7 @@
 				02BAEEBF159E5AAB00BCA0C3 /* Foundation.framework in Frameworks */,
 				02BAEEC0159E5AAB00BCA0C3 /* CoreGraphics.framework in Frameworks */,
 				D280C87A161A3D94007EA377 /* libcurl.a in Frameworks */,
+				D2E931C9166FDBFE0029D28E /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +883,7 @@
 		02E20FA5159E492E00CB0ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2E931C8166FDBFE0029D28E /* boost.framework */,
 				02E20FA6159E492E00CB0ADA /* QuartzCore.framework */,
 				02E20FA8159E492E00CB0ADA /* OpenGLES.framework */,
 				02E20FAA159E492E00CB0ADA /* OpenAL.framework */,
@@ -2136,7 +2140,7 @@
 		02BAF0FC159E5AAD00BCA0C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2158,7 +2162,7 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "Furious Blocks";
-				PROVISIONING_PROFILE = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2167,7 +2171,7 @@
 		02BAF0FD159E5AAD00BCA0C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bertrand Quenin (NMG4L2C4Y2)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2187,7 +2191,7 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "Furious Blocks";
-				PROVISIONING_PROFILE = "288EA2D8-F6FA-448C-A411-6C38C908CDF7";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
