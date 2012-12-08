@@ -16,6 +16,7 @@
 class TouchPlayer : public Player, public cocos2d::CCObject, public cocos2d::CCTouchDelegate {
 public:
   TouchPlayer();
+  ~TouchPlayer();
 
 private:
   enum class InputState {

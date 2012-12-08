@@ -47,10 +47,12 @@ public:
   bool init();
   void update(float dt);
 
-  void registerWithTouchDispatcher();
-  bool ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
-  void ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
-  void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
+//  void registerWithTouchDispatcher();
+//  bool ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
+//  void ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
+//  void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
+
+  void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
 };
 
 

@@ -227,7 +227,6 @@ void PanelScene::onBeginningTweenFinished(void) {
 }
 
 void PanelScene::menuAction(CCObject *sender) {
-  CCLOG("PanelScene::menuAction");
   panelMenuOverlay->setVisible(true);
 }
 
