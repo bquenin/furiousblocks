@@ -22,6 +22,9 @@ AppDelegate::~AppDelegate() {
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+  // seed for random
+  srand(time(NULL));
+
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
   CCEGLView *pEGLView = CCEGLView::sharedOpenGLView();

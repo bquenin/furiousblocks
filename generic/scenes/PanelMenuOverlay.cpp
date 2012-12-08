@@ -46,6 +46,11 @@ bool PanelMenuOverlay::init() {
   resumeButton->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::resumeAction), CCControlEventTouchUpInside);
   addChild(resumeButton);
 
+
+  CCLabelBMFont *musicLabel = CCLabelBMFont::create("Music", "SkaterDudes.fnt");
+  musicLabel->setPosition(ccp(Assets::designResolutionSize.width / 2 - 60, Assets::designResolutionSize.height / 2 - 120));
+  addChild(musicLabel);
+
   CCLabelBMFont *on = CCLabelBMFont::create("On", "SkaterDudes.fnt");
   on->setScale(0.5);
   CCLabelBMFont *off = CCLabelBMFont::create("Off", "SkaterDudes.fnt");

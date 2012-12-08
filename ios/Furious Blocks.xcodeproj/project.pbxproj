@@ -253,7 +253,6 @@
 		D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
 		D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */; };
 		D2DE72D31662D2F300724790 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */; };
-		D2E931C9166FDBFE0029D28E /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E931C8166FDBFE0029D28E /* boost.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -810,7 +809,6 @@
 				02BAEEBF159E5AAB00BCA0C3 /* Foundation.framework in Frameworks */,
 				02BAEEC0159E5AAB00BCA0C3 /* CoreGraphics.framework in Frameworks */,
 				D280C87A161A3D94007EA377 /* libcurl.a in Frameworks */,
-				D2E931C9166FDBFE0029D28E /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1861,7 +1859,7 @@
 		02E20F99159E492E00CB0ADA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 02E20F9C159E492E00CB0ADA /* Build configuration list for PBXProject "Furious Blocks" */;
 			compatibilityVersion = "Xcode 3.2";

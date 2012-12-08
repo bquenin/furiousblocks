@@ -110,7 +110,7 @@ bool PanelScene::init() {
   tweeners.insert(countDownTweener);
 
   // Game initialization
-  core = new FuriousBlocksCore(0, this);
+  core = new FuriousBlocksCore(rand(), this);
 
   // Player initialization
   player = new TouchPlayer();
