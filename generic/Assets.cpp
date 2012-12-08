@@ -27,14 +27,6 @@ void Assets::load() {
   CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
 
   // Frame assets
-  SWITCH_MASK = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("switch-mask.png");
-  SWITCH_ON = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("switch-on.png");
-  SWITCH_OFF = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("switch-off.png");
-  SWITCH_THUMB = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("switch-thumb.png");
-
-  BUTTON = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("button.png");
-  BUTTONHIGHLIGHTED = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("buttonHighlighted.png");
-
   TITLE = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("title.png");
 
   BG_TOP = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("bg-top.png");

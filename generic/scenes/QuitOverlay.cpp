@@ -23,9 +23,9 @@ bool QuitOverlay::init() {
   initWithColor(ccc4(0, 0, 0, 80));
 
   /** Creates and return a button with a default background and title color. */
-  skipBackgroundButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTON);
-  skipBackgroundHighlightedButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTONHIGHLIGHTED);
-  skipButton = CCControlButton::create(CCLabelBMFont::create("End tutorial", "SkaterDudes.fnt"), skipBackgroundButton);
+  skipBackgroundButton = CCScale9Sprite::create("button.png");
+  skipBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  skipButton = CCControlButton::create(CCLabelTTF::create("End tutorial", "SkaterDudes.ttf", 32), skipBackgroundButton);
   skipButton->setBackgroundSpriteForState(skipBackgroundHighlightedButton, CCControlStateHighlighted);
   skipButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   skipButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
@@ -33,9 +33,9 @@ bool QuitOverlay::init() {
   skipButton->addTargetWithActionForControlEvents(this, cccontrol_selector(QuitOverlay::skipAction), CCControlEventTouchUpInside);
   addChild(skipButton);
 
-  resumeBackgroundButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTON);
-  resumeBackgroundHighlightedButton = CCScale9Sprite::createWithSpriteFrame(AppDelegate::assets.BUTTONHIGHLIGHTED);
-  resumeButton = CCControlButton::create(CCLabelBMFont::create("Continue", "SkaterDudes.fnt", 32), resumeBackgroundButton);
+  resumeBackgroundButton = CCScale9Sprite::create("button.png");
+  resumeBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  resumeButton = CCControlButton::create(CCLabelTTF::create("Continue", "SkaterDudes.ttf", 32), resumeBackgroundButton);
   resumeButton->setBackgroundSpriteForState(resumeBackgroundHighlightedButton, CCControlStateHighlighted);
   resumeButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   resumeButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 40));

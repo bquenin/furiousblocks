@@ -38,17 +38,17 @@ NS_CC_EXT_BEGIN
 
         class CCInvocation;
 
-        /**
-         * @addtogroup GUI
-         * @{
-         * @addtogroup control_extension
-         * @{
-         */
+/**
+ * @addtogroup GUI
+ * @{
+ * @addtogroup control_extension
+ * @{
+ */
 
-        /** Number of kinds of control event. */
+/** Number of kinds of control event. */
 #define kControlEventTotalNumber 9
 
-        /** Kinds of possible events for the control objects. */
+/** Kinds of possible events for the control objects. */
         enum {
           CCControlEventTouchDown = 1 << 0,    // A touch-down event in the control.
           CCControlEventTouchDragInside = 1 << 1,    // An event where a finger is dragged inside the bounds of the control.
@@ -62,7 +62,7 @@ NS_CC_EXT_BEGIN
         };
         typedef unsigned int CCControlEvent;
 
-        /** The possible state for a control.  */
+/** The possible state for a control.  */
         enum {
           CCControlStateNormal = 1 << 0, // The normal, or default state of a control��that is, enabled but neither selected nor highlighted.
           CCControlStateHighlighted = 1 << 1, // Highlighted state of a control. A control enters this state when a touch down, drag inside or drag enter is performed. You can retrieve and set this value through the highlighted property.
@@ -71,25 +71,27 @@ NS_CC_EXT_BEGIN
         };
         typedef unsigned int CCControlState;
 
-        /*
-         * @class
-         * CCControl is inspired by the UIControl API class from the UIKit library of
-         * CocoaTouch. It provides a base class for control CCSprites such as CCButton
-         * or CCSlider that convey user intent to the application.
-         *
-         * The goal of CCControl is to define an interface and base implementation for
-         * preparing action messages and initially dispatching them to their targets when
-         * certain events occur.
-         *
-         * To use the CCControl you have to subclass it.
-         */
+/*
+ * @class
+ * CCControl is inspired by the UIControl API class from the UIKit library of 
+ * CocoaTouch. It provides a base class for control CCSprites such as CCButton 
+ * or CCSlider that convey user intent to the application.
+ *
+ * The goal of CCControl is to define an interface and base implementation for 
+ * preparing action messages and initially dispatching them to their targets when
+ * certain events occur.
+ *
+ * To use the CCControl you have to subclass it.
+ */
         class CCControl : public CCLayer, public CCRGBAProtocol {
 
           //CCRGBAProtocol
           CC_PROPERTY(GLubyte, m_cOpacity, Opacity);
           CC_PROPERTY_PASS_BY_REF(ccColor3B, m_tColor, Color);
           bool m_bIsOpacityModifyRGB;
+
           bool isOpacityModifyRGB();
+
           void setOpacityModifyRGB(bool bOpacityModifyRGB);
 
           /** Changes the priority of the button. The lower the number, the higher the priority. */
@@ -102,16 +104,24 @@ NS_CC_EXT_BEGIN
           bool m_hasVisibleParents;
 
         public:
+
           /** Tells whether the control is enabled. */
           virtual void setEnabled(bool bEnabled);
+
           virtual bool isEnabled();
+
           /** A Boolean value that determines the control selected state. */
           virtual void setSelected(bool bSelected);
+
           virtual bool isSelected();
+
           /** A Boolean value that determines whether the control is highlighted. */
           virtual void setHighlighted(bool bHighlighted);
+
           virtual bool isHighlighted();
+
           bool hasVisibleParents();
+
           /**
            * Updates the control layout using its current internal state.
            */
@@ -130,13 +140,18 @@ NS_CC_EXT_BEGIN
           CCDictionary *m_pDispatchTable;
 
         public:
+
           CCControl();
+
           virtual bool init(void);
+
           virtual ~CCControl();
 
 
           virtual void onEnter();
+
           virtual void onExit();
+
           virtual void registerWithTouchDispatcher();
 
           /**
@@ -196,6 +211,7 @@ NS_CC_EXT_BEGIN
 
 
         protected:
+
           /**
            * Returns an CCInvocation object able to construct messages using a given
            * target-action pair. (The invocation may optionnaly include the sender and
@@ -223,6 +239,7 @@ NS_CC_EXT_BEGIN
           */
           //<CCInvocation*>
           CCArray *dispatchListforControlEvent(CCControlEvent controlEvent);
+
           /**
            * Adds a target and action for a particular event to an internal dispatch
            * table.
@@ -256,9 +273,9 @@ NS_CC_EXT_BEGIN
 
         };
 
-        // end of GUI group
-        /// @}
-        /// @}
+// end of GUI group
+/// @}
+/// @}
 
         NS_CC_EXT_END
 

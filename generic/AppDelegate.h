@@ -10,7 +10,7 @@
 #define  _APP_DELEGATE_H_
 
 #include "CCApplication.h"
-#include "Animation.h"
+
 #include "Assets.h"
 
 /**

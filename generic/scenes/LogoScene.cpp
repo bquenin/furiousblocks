@@ -54,10 +54,9 @@ bool LogoScene::init() {
 
   texture->autorelease();
 
-  copyright = CCLabelBMFont::create("PixodromE", "Joystix.fnt");
+  copyright = CCLabelTTF::create("PixodromE", "Joystix", 64);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   copyright->setColor(ccc3(0, 0, 0));
-  copyright->setScale(2);
   addChild(copyright);
 
   // Start scheduling
@@ -120,7 +119,7 @@ void LogoScene::update(float dt) {
 //}
 //
 //bool LogoScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
-//  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
+//  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kCCTransitionOrientationUpOver));
 //  return true;
 //}
 //

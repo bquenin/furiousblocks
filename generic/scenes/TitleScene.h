@@ -17,19 +17,17 @@ using namespace cocos2d::extension;
 
 class TitleScene : public cocos2d::CCLayer {
 private:
-  CCLabelBMFont *endlessButtonLabel;
   CCControlButton *endlessButton;
   CCScale9Sprite *endlessBackgroundButton;
   CCScale9Sprite *endlessBackgroundHighlightedButton;
 
-  CCLabelBMFont *tutorialButtonLabel;
   CCControlButton *tutorialButton;
   CCScale9Sprite *tutorialBackgroundButton;
   CCScale9Sprite *tutorialBackgroundHighlightedButton;
 
   CCSprite *bg;
 
-  CCLabelBMFont *copyright;
+  CCLabelTTF *copyright;
 
 public:
   bool init();

@@ -8,8 +8,10 @@
 
 #include "AppDelegate.h"
 
-#include "LogoScene.h"
+#include "cocos2d.h"
+#include "PanelScene.h"
 
+using namespace cocos2d;
 using namespace CocosDenshion;
 
 bool AppDelegate::musicOn = true;
@@ -27,12 +29,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
-  CCEGLView *pEGLView = CCEGLView::sharedOpenGLView();
-
-  pDirector->setOpenGLView(pEGLView);
+  pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
   // Set the design resolution
-  pEGLView->setDesignResolutionSize(Assets::designResolutionSize.width, Assets::designResolutionSize.height, kResolutionExactFit);
+  pDirector->getOpenGLView()->setDesignResolutionSize(Assets::designResolutionSize.width, Assets::designResolutionSize.height, kResolutionExactFit);
 
   // turn on display FPS
   // pDirector->setDisplayStats(true);
@@ -44,7 +44,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   assets.load();
 
   // run
-  pDirector->runWithScene(LogoScene::scene());
+  pDirector->runWithScene(PanelScene::scene());
 
   return true;
 }
