@@ -17,13 +17,13 @@ using namespace cocos2d::extension;
 
 class TitleScene : public cocos2d::CCLayer {
 private:
-  CCControlButton *endlessButton;
-  CCScale9Sprite *endlessBackgroundButton;
-  CCScale9Sprite *endlessBackgroundHighlightedButton;
+  CCControlButton *playButton;
+  CCScale9Sprite *playBackgroundButton;
+  CCScale9Sprite *playBackgroundHighlightedButton;
 
-  CCControlButton *tutorialButton;
-  CCScale9Sprite *tutorialBackgroundButton;
-  CCScale9Sprite *tutorialBackgroundHighlightedButton;
+  CCControlButton *howToPlaylButton;
+  CCScale9Sprite *howToPlayBackgroundButton;
+  CCScale9Sprite *howToPlayBackgroundHighlightedButton;
 
   CCSprite *bg;
 
@@ -31,8 +31,8 @@ private:
 
 public:
   bool init();
-  void endlessGameAction(CCObject *sender);
-  void tutorialAction(CCObject *sender);
+  void playAction(CCObject *sender);
+  void howToPlayAction(CCObject *sender);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();

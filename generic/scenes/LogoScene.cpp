@@ -114,21 +114,6 @@ void LogoScene::update(float dt) {
   texture->apply();
 }
 
-//void LogoScene::registerWithTouchDispatcher() {
-//  cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-//}
-//
-//bool LogoScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
-//  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kCCTransitionOrientationUpOver));
-//  return true;
-//}
-//
-//void LogoScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
-//}
-//
-//void LogoScene::ccTouchMoved(CCTouch *touch, CCEvent *event) {
-//}
-
 void LogoScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }

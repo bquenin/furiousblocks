@@ -36,25 +36,25 @@ bool TitleScene::init() {
   addChild(bg);
 
     /** Creates and return a button with a default background and title color. */
-  endlessBackgroundButton = CCScale9Sprite::create("button.png");
-  endlessBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  endlessButton = CCControlButton::create(CCLabelTTF::create("Endless Game", "SkaterDudes.ttf", 32), endlessBackgroundButton);
-  endlessButton->setBackgroundSpriteForState(endlessBackgroundHighlightedButton, CCControlStateHighlighted);
-  endlessButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  endlessButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
-  endlessButton->setPreferredSize(CCSizeMake(endlessButton->getContentSize().width + 20, 60));
-  endlessButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::endlessGameAction), CCControlEventTouchUpInside);
-  addChild(endlessButton);
+  playBackgroundButton = CCScale9Sprite::create("button.png");
+  playBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  playButton = CCControlButton::create(CCLabelTTF::create("Play!", "SkaterDudes.ttf", 32), playBackgroundButton);
+  playButton->setBackgroundSpriteForState(playBackgroundHighlightedButton, CCControlStateHighlighted);
+  playButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  playButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
+  playButton->setPreferredSize(CCSizeMake(playButton->getContentSize().width + 20, 60));
+  playButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::playAction), CCControlEventTouchUpInside);
+  addChild(playButton);
 
-  tutorialBackgroundButton = CCScale9Sprite::create("button.png");
-  tutorialBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  tutorialButton = CCControlButton::create(CCLabelTTF::create("Tutorial", "SkaterDudes.ttf", 32), tutorialBackgroundButton);
-  tutorialButton->setBackgroundSpriteForState(tutorialBackgroundHighlightedButton, CCControlStateHighlighted);
-  tutorialButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  tutorialButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 40));
-  tutorialButton->setPreferredSize(CCSizeMake(tutorialButton->getContentSize().width + 20, 60));
-  tutorialButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::tutorialAction), CCControlEventTouchUpInside);
-  addChild(tutorialButton);
+  howToPlayBackgroundButton = CCScale9Sprite::create("button.png");
+  howToPlayBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  howToPlaylButton = CCControlButton::create(CCLabelTTF::create("How to play", "SkaterDudes.ttf", 32), howToPlayBackgroundButton);
+  howToPlaylButton->setBackgroundSpriteForState(howToPlayBackgroundHighlightedButton, CCControlStateHighlighted);
+  howToPlaylButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  howToPlaylButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 40));
+  howToPlaylButton->setPreferredSize(CCSizeMake(howToPlaylButton->getContentSize().width + 20, 60));
+  howToPlaylButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
+  addChild(howToPlaylButton);
 
   copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 16 ));
@@ -64,10 +64,10 @@ bool TitleScene::init() {
   return true;
 }
 
-void TitleScene::endlessGameAction(CCObject *sender) {
+void TitleScene::playAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, PanelScene::scene(), kOrientationUpOver));
 }
 
-void TitleScene::tutorialAction(CCObject *sender) {
+void TitleScene::howToPlayAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TutorialScene::scene(), kOrientationUpOver));
 }

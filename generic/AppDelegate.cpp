@@ -8,8 +8,6 @@
 
 #include "AppDelegate.h"
 
-#include "cocos2d.h"
-#include "PanelScene.h"
 #include "LogoScene.h"
 
 using namespace cocos2d;
@@ -26,7 +24,7 @@ AppDelegate::~AppDelegate() {
 
 bool AppDelegate::applicationDidFinishLaunching() {
   // seed for random
-  srand(time(NULL));
+  srand(static_cast<unsigned int>(time(NULL)));
 
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
