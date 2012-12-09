@@ -25,13 +25,10 @@ public:
   CREATE_FUNC(CreditsScene);
 
   bool init();
-
   void codeAction(CCObject *sender);
-
   void musicAction(CCObject *sender);
-
   void graphicsAction(CCObject *sender);
-
+  void backToTitleAction(CCObject *sender);
 };
 
 

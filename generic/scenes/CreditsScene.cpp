@@ -7,6 +7,7 @@
 
 #include "CreditsScene.h"
 #include "Assets.h"
+#include "TitleScene.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/jni/JniHelper.h"
 #endif
@@ -53,6 +54,14 @@ bool CreditsScene::init() {
   musicButton->setPreferredSize(CCSizeMake(musicButton->getContentSize().width + 20, musicButton->getContentSize().height + 20));
   musicButton->addTargetWithActionForControlEvents(this, cccontrol_selector(CreditsScene::musicAction), CCControlEventTouchUpInside);
   addChild(musicButton);
+
+  CCControlButton *backToTitleButton = CCControlButton::create(CCLabelTTF::create("Back to Title", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  backToTitleButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  backToTitleButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  backToTitleButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 8));
+  backToTitleButton->setPreferredSize(CCSizeMake(backToTitleButton->getContentSize().width + 20, 60));
+  backToTitleButton->addTargetWithActionForControlEvents(this, cccontrol_selector(CreditsScene::backToTitleAction), CCControlEventTouchUpInside);
+  addChild(backToTitleButton);
 
   return true;
 }
@@ -116,3 +125,8 @@ void CreditsScene::musicAction(CCObject *sender) {
     }
 #endif
 }
+
+void CreditsScene::backToTitleAction(CCObject *sender) {
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
+}
+
