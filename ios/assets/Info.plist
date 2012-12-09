@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
     <dict>
-        <key>UIAppFonts</key>
-        <array>
-            <string>Joystix.ttf</string>
-            <string>SkaterDudes.ttf</string>
-        </array>
         <key>CFBundleDevelopmentRegion</key>
         <string>English</string>
         <key>CFBundleDisplayName</key>
@@ -17,10 +12,9 @@
         <string>Icon.png</string>
         <key>CFBundleIconFiles</key>
         <array>
-            <string>icon-57.png</string>
-            <string>icon-72.png</string>
-            <string>icon-114.png</string>
-            <string>icon-144.png</string>
+            <string>Icon-72.png</string>
+            <string>Icon.png</string>
+            <string>Icon@2x.png</string>
         </array>
         <key>CFBundleIcons</key>
         <dict>
@@ -28,17 +22,16 @@
             <dict>
                 <key>CFBundleIconFiles</key>
                 <array>
-                    <string>icon-57.png</string>
-                    <string>icon-72.png</string>
-                    <string>icon-114.png</string>
-                    <string>icon-144.png</string>
+                    <string>Icon-72.png</string>
+                    <string>Icon.png</string>
+                    <string>Icon@2x.png</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
             </dict>
         </dict>
         <key>CFBundleIdentifier</key>
-        <string>me.pixodro.${PRODUCT_NAME:rfc1034identifier}</string>
+        <string>me.pixodro.furiousblocks.free</string>
         <key>CFBundleInfoDictionaryVersion</key>
         <string>6.0</string>
         <key>CFBundleName</key>
@@ -53,6 +46,11 @@
         <string>1.0</string>
         <key>LSRequiresIPhoneOS</key>
         <true/>
+        <key>UIAppFonts</key>
+        <array>
+            <string>Joystix.ttf</string>
+            <string>SkaterDudes.ttf</string>
+        </array>
         <key>UIPrerenderedIcon</key>
         <true/>
         <key>UIRequiredDeviceCapabilities</key>
