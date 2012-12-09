@@ -6,8 +6,8 @@
 
 
 
-#ifndef __TitleScene_H_
-#define __TitleScene_H_
+#ifndef __AdScene_H_
+#define __AdScene_H_
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
@@ -15,20 +15,19 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class TitleScene : public cocos2d::CCLayer {
+class AdScene : public cocos2d::CCLayer {
 
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
 
   // Implement the "static node()" method manually
-  CREATE_FUNC(TitleScene);
+  CREATE_FUNC(AdScene);
 
   bool init();
-  void playAction(CCObject *sender);
-  void howToPlayAction(CCObject *sender);
-  void creditsAction(CCObject *sender);
+  void backToTitleAction(CCObject *sender);
+  void buyAction(CCObject *sender);
 };
 
 
-#endif //__TitleScene_H_
+#endif //__AdScene_H_

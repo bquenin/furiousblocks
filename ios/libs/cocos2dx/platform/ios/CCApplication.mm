@@ -24,103 +24,95 @@
 
 #import "CCApplication.h"
 
-#import <UIKit/UIKit.h>
-
-#import "CCGeometry.h"
 #import "CCDirectorCaller.h"
 
 NS_CC_BEGIN
 
-CCApplication* CCApplication::sm_pSharedApplication = 0;
+    CCApplication *CCApplication::sm_pSharedApplication = 0;
 
-CCApplication::CCApplication()
-{
-    CC_ASSERT(! sm_pSharedApplication);
-    sm_pSharedApplication = this;
-}
-
-CCApplication::~CCApplication()
-{
-    CC_ASSERT(this == sm_pSharedApplication);
-    sm_pSharedApplication = 0;
-}
-
-int CCApplication::run()
-{
-    if (applicationDidFinishLaunching()) 
-    {
-        [[CCDirectorCaller sharedDirectorCaller] startMainLoop];
+    CCApplication::CCApplication() {
+      CC_ASSERT(!sm_pSharedApplication);
+      sm_pSharedApplication = this;
     }
-    return 0;
-}
 
-void CCApplication::setAnimationInterval(double interval)
-{
-    [[CCDirectorCaller sharedDirectorCaller] setAnimationInterval: interval ];
-}
+    CCApplication::~CCApplication() {
+      CC_ASSERT(this == sm_pSharedApplication);
+      sm_pSharedApplication = 0;
+    }
+
+    int CCApplication::run() {
+      if (applicationDidFinishLaunching()) {
+        [[CCDirectorCaller sharedDirectorCaller] startMainLoop];
+      }
+      return 0;
+    }
+
+    void CCApplication::setAnimationInterval(double interval) {
+      [[CCDirectorCaller sharedDirectorCaller] setAnimationInterval:interval];
+    }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // static member function
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-CCApplication* CCApplication::sharedApplication()
-{
-    CC_ASSERT(sm_pSharedApplication);
-    return sm_pSharedApplication;
-}
+    CCApplication *CCApplication::sharedApplication() {
+      CC_ASSERT(sm_pSharedApplication);
+      return sm_pSharedApplication;
+    }
 
-ccLanguageType CCApplication::getCurrentLanguage()
-{
-    // get the current language and country config
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
-    NSString *currentLanguage = [languages objectAtIndex:0];
+    void CCApplication::openURL(char const *pszUrl) {
+      NSString *msg = [NSString stringWithCString:pszUrl encoding:NSASCIIStringEncoding];
+      NSURL *nsUrl = [NSURL URLWithString:msg];
+      [[UIApplication sharedApplication] openURL:nsUrl];
+    }
 
-    // get the current language code.(such as English is "en", Chinese is "zh" and so on)
-    NSDictionary* temp = [NSLocale componentsFromLocaleIdentifier:currentLanguage];
-    NSString * languageCode = [temp objectForKey:NSLocaleLanguageCode];
+    ccLanguageType CCApplication::getCurrentLanguage() {
+      // get the current language and country config
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+      NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
+      NSString *currentLanguage = [languages objectAtIndex:0];
 
-    ccLanguageType ret = kLanguageEnglish;
-    if ([languageCode isEqualToString:@"zh"])
-    {
+      // get the current language code.(such as English is "en", Chinese is "zh" and so on)
+      NSDictionary *temp = [NSLocale componentsFromLocaleIdentifier:currentLanguage];
+      NSString *languageCode = [temp objectForKey:NSLocaleLanguageCode];
+
+      ccLanguageType ret = kLanguageEnglish;
+      if ([languageCode isEqualToString:@"zh"]) {
         ret = kLanguageChinese;
-    }
-    else if ([languageCode isEqualToString:@"en"])
-    {
+      }
+      else if ([languageCode isEqualToString:@"en"]) {
         ret = kLanguageEnglish;
-    }
-    else if ([languageCode isEqualToString:@"fr"]){
+      }
+      else if ([languageCode isEqualToString:@"fr"]) {
         ret = kLanguageFrench;
-    }
-    else if ([languageCode isEqualToString:@"it"]){
+      }
+      else if ([languageCode isEqualToString:@"it"]) {
         ret = kLanguageItalian;
-    }
-    else if ([languageCode isEqualToString:@"de"]){
+      }
+      else if ([languageCode isEqualToString:@"de"]) {
         ret = kLanguageGerman;
-    }
-    else if ([languageCode isEqualToString:@"es"]){
+      }
+      else if ([languageCode isEqualToString:@"es"]) {
         ret = kLanguageSpanish;
-    }
-    else if ([languageCode isEqualToString:@"ru"]){
+      }
+      else if ([languageCode isEqualToString:@"ru"]) {
         ret = kLanguageRussian;
-    }
-    else if ([languageCode isEqualToString:@"ko"]){
+      }
+      else if ([languageCode isEqualToString:@"ko"]) {
         ret = kLanguageKorean;
+      }
+
+      return ret;
     }
 
-    return ret;
-}
-
-TargetPlatform CCApplication::getTargetPlatform()
-{
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) // idiom for iOS <= 3.2, otherwise: [UIDevice userInterfaceIdiom] is faster.
-    {
+    TargetPlatform CCApplication::getTargetPlatform() {
+      if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) // idiom for iOS <= 3.2, otherwise: [UIDevice userInterfaceIdiom] is faster.
+      {
         return kTargetIpad;
-    }
-    else 
-    {
+      }
+      else {
         return kTargetIphone;
+      }
     }
-}
 
-NS_CC_END
+    NS_CC_END

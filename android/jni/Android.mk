@@ -15,7 +15,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := furiousblocks_shared
 LOCAL_MODULE_FILENAME := libfuriousblocks
-LOCAL_CPPFLAGS = -DCOCOS2D_DEBUG -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
+LOCAL_CPPFLAGS = -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
 
 LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/../../generic \
@@ -44,6 +44,8 @@ bootstrap/main.cpp \
 ../../generic/core/SimpleRNG.cpp \
 ../../generic/ext/CCTexture2DMutable.cpp \
 ../../generic/scenes/AbstractPanelScene.cpp \
+../../generic/scenes/AdScene.cpp \
+../../generic/scenes/CreditsScene.cpp \
 ../../generic/scenes/LogoScene.cpp \
 ../../generic/scenes/PanelMenuOverlay.cpp \
 ../../generic/scenes/PanelScene.cpp \

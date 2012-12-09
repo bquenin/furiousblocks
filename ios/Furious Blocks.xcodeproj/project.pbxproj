@@ -22,6 +22,7 @@
 		02E0308A159FB9E800C26BE0 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 02E0307D159FB9E800C26BE0 /* iTunesArtwork */; };
 		7969E0271C075CFC4079C6EA /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0625B1BD26D3BF757DF /* icon-144.png */; };
 		7969E14277F92AAAC5EAD0A6 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */; };
+		7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E142A99775EF929E1886 /* CreditsScene.cpp */; };
 		7969E18B489A6D4E3EEA6C23 /* coopblack64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E80C20BD83237A8A5BC8 /* coopblack64.png */; };
 		7969E2F5DA1276709612F52C /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1B1F4BE78AC5E68B104 /* Animation.cpp */; };
 		7969E316900662224CE10922 /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E7237904D92983195353 /* tutorial.mp3 */; };
@@ -64,6 +65,7 @@
 		D23E7DA4164FCB71003B565D /* TouchPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9A164FCB71003B565D /* TouchPlayer.cpp */; };
 		D23E7DA5164FCB71003B565D /* TutorialPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9C164FCB71003B565D /* TutorialPlayer.cpp */; };
 		D23E7DA6164FCB71003B565D /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9E164FCB71003B565D /* TutorialScene.cpp */; };
+		D254FDEA1674BE200072CE69 /* AdScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D254FDE91674BE200072CE69 /* AdScene.cpp */; };
 		D25893531673C763003E3F59 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258918D1673C763003E3F59 /* CCAction.cpp */; };
 		D25893541673C763003E3F59 /* CCActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258918F1673C763003E3F59 /* CCActionCamera.cpp */; };
 		D25893551673C763003E3F59 /* CCActionCatmullRom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25891911673C763003E3F59 /* CCActionCatmullRom.cpp */; };
@@ -286,8 +288,10 @@
 		7969E0625B1BD26D3BF757DF /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-144.png"; sourceTree = "<group>"; };
 		7969E06309C54DF53182E0F3 /* blocks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = blocks.plist; sourceTree = "<group>"; };
 		7969E0705F45DB90A8CF4DEE /* PanelMenuOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelMenuOverlay.h; sourceTree = "<group>"; };
+		7969E07A55A52B798339DCD4 /* CreditsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsScene.h; sourceTree = "<group>"; };
 		7969E0A3A7B96B0347359069 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
 		7969E11EB835FA716FB07849 /* tweener_group.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener_group.hpp; sourceTree = "<group>"; };
+		7969E142A99775EF929E1886 /* CreditsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreditsScene.cpp; sourceTree = "<group>"; };
 		7969E1626F321D4397B1083E /* base_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base_tweener.hpp; sourceTree = "<group>"; };
 		7969E190E9B4C07482F4316E /* coopblack32.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack32.fnt; sourceTree = "<group>"; };
 		7969E1B1F4BE78AC5E68B104 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 		D23E7D9D164FCB71003B565D /* TutorialPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPlayer.h; sourceTree = "<group>"; };
 		D23E7D9E164FCB71003B565D /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TutorialScene.cpp; sourceTree = "<group>"; };
 		D23E7D9F164FCB71003B565D /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
+		D254FDE91674BE200072CE69 /* AdScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdScene.cpp; sourceTree = "<group>"; };
+		D254FDEC1674BE7C0072CE69 /* AdScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdScene.h; sourceTree = "<group>"; };
 		D258918D1673C763003E3F59 /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
 		D258918E1673C763003E3F59 /* CCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAction.h; sourceTree = "<group>"; };
 		D258918F1673C763003E3F59 /* CCActionCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCActionCamera.cpp; sourceTree = "<group>"; };
@@ -961,6 +967,8 @@
 		D23E7D90164FCB71003B565D /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D254FDEC1674BE7C0072CE69 /* AdScene.h */,
+				D254FDE91674BE200072CE69 /* AdScene.cpp */,
 				D23E7D91164FCB71003B565D /* AbstractPanelScene.cpp */,
 				D23E7D92164FCB71003B565D /* AbstractPanelScene.h */,
 				D23E7D93164FCB71003B565D /* PanelScene.cpp */,
@@ -981,6 +989,8 @@
 				7969E0705F45DB90A8CF4DEE /* PanelMenuOverlay.h */,
 				7969E0A3A7B96B0347359069 /* LogoScene.cpp */,
 				7969E01F329B16F39A497D9B /* LogoScene.h */,
+				7969E142A99775EF929E1886 /* CreditsScene.cpp */,
+				7969E07A55A52B798339DCD4 /* CreditsScene.h */,
 			);
 			path = scenes;
 			sourceTree = "<group>";
@@ -2169,6 +2179,8 @@
 				D25893FE1673C764003E3F59 /* CCTableView.cpp in Sources */,
 				D25893FF1673C764003E3F59 /* CCTableViewCell.cpp in Sources */,
 				D25894001673C764003E3F59 /* HttpClient.cpp in Sources */,
+				D254FDEA1674BE200072CE69 /* AdScene.cpp in Sources */,
+				7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

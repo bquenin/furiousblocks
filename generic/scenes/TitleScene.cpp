@@ -11,6 +11,7 @@
 #include "SimpleAudioEngine.h"
 #include "Assets.h"
 #include "AppDelegate.h"
+#include "CreditsScene.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -30,34 +31,40 @@ bool TitleScene::init() {
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
 
   // Background
-  bg = CCSprite::createWithSpriteFrame(AppDelegate::assets.TITLE);
+  CCSprite *bg = CCSprite::createWithSpriteFrame(AppDelegate::assets.TITLE);
   bg->setAnchorPoint(ccp(0, 0));
-  bg->setPosition(ccp(0, 18));
   addChild(bg);
 
-    /** Creates and return a button with a default background and title color. */
-  playBackgroundButton = CCScale9Sprite::create("button.png");
-  playBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  playButton = CCControlButton::create(CCLabelTTF::create("Play!", "SkaterDudes.ttf", 32), playBackgroundButton);
-  playButton->setBackgroundSpriteForState(playBackgroundHighlightedButton, CCControlStateHighlighted);
+#ifdef FREEMIUM
+  CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Play! (%d left)", AppDelegate::getGamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+#else
+  CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create("Play!", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+#endif
+  playButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   playButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   playButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
   playButton->setPreferredSize(CCSizeMake(playButton->getContentSize().width + 20, 60));
   playButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::playAction), CCControlEventTouchUpInside);
   addChild(playButton);
 
-  howToPlayBackgroundButton = CCScale9Sprite::create("button.png");
-  howToPlayBackgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
-  howToPlaylButton = CCControlButton::create(CCLabelTTF::create("How to play", "SkaterDudes.ttf", 32), howToPlayBackgroundButton);
-  howToPlaylButton->setBackgroundSpriteForState(howToPlayBackgroundHighlightedButton, CCControlStateHighlighted);
+  CCControlButton *howToPlaylButton = CCControlButton::create(CCLabelTTF::create("How to play", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  howToPlaylButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   howToPlaylButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   howToPlaylButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 40));
   howToPlaylButton->setPreferredSize(CCSizeMake(howToPlaylButton->getContentSize().width + 20, 60));
   howToPlaylButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
   addChild(howToPlaylButton);
 
-  copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
-  copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 16 ));
+  CCControlButton *creditsButton = CCControlButton::create(CCLabelTTF::create("Credits", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  creditsButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  creditsButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  creditsButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 120));
+  creditsButton->setPreferredSize(CCSizeMake(creditsButton->getContentSize().width + 20, 60));
+  creditsButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::creditsAction), CCControlEventTouchUpInside);
+  addChild(creditsButton);
+
+  CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
+  copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));
   copyright->setColor(ccc3(10, 10, 10));
   addChild(copyright);
 
@@ -70,4 +77,8 @@ void TitleScene::playAction(CCObject *sender) {
 
 void TitleScene::howToPlayAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TutorialScene::scene(), kOrientationUpOver));
+}
+
+void TitleScene::creditsAction(CCObject *sender) {
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, CreditsScene::scene(), kOrientationUpOver));
 }

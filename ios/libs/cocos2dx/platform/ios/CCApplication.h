@@ -30,46 +30,49 @@ THE SOFTWARE.
 
 NS_CC_BEGIN
 
-class CCRect;
+    class CCRect;
 
-class CC_DLL CCApplication : public CCApplicationProtocol
-{
-public:
-    CCApplication();
-    virtual ~CCApplication();
-        
-    /**
-    @brief    Run the message loop.
-    */
-    int run();
-        
-    /**
-    @brief    Get the current application instance.
-    @return Current application instance pointer.
-    */
-    static CCApplication* sharedApplication();
-    
-    /**
-     @brief    Callback by CCDirector for limit FPS.
-     @interval       The time, expressed in seconds, between current frame and next. 
-     */
-    virtual void setAnimationInterval(double interval);
+    class CC_DLL CCApplication : public CCApplicationProtocol {
+    public:
 
-    /**
-    @brief Get current language config
-    @return Current language config
-    */
-    virtual ccLanguageType getCurrentLanguage();
-    
-    /**
-     @brief Get target platform
-     */
-    virtual TargetPlatform getTargetPlatform();
+      CCApplication();
 
-protected:
-    static CCApplication * sm_pSharedApplication;
-};
+      virtual ~CCApplication();
 
-NS_CC_END
+      /**
+      @brief    Run the message loop.
+      */
+      int run();
+
+      /**
+      @brief    Get the current application instance.
+      @return Current application instance pointer.
+      */
+      static CCApplication *sharedApplication();
+
+      /**
+       @brief    Callback by CCDirector for limit FPS.
+       @interval       The time, expressed in seconds, between current frame and next.
+       */
+      virtual void setAnimationInterval(double interval);
+
+      /**
+      @brief Get current language config
+      @return Current language config
+      */
+      virtual ccLanguageType getCurrentLanguage();
+
+      /**
+       @brief Get target platform
+       */
+      virtual TargetPlatform getTargetPlatform();
+
+      void openURL(const char *pszUrl);
+
+    protected:
+      static CCApplication *sm_pSharedApplication;
+    };
+
+    NS_CC_END
 
 #endif    // end of __CC_APPLICATION_IOS_H__

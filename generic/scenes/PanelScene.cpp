@@ -10,6 +10,7 @@
 #include "StarNumber.h"
 #include "Assets.h"
 #include "AppDelegate.h"
+#include "AdScene.h"
 #include <boost/bind.hpp>
 
 using namespace CocosDenshion;
@@ -24,6 +25,20 @@ PanelScene::~PanelScene() {
 }
 
 CCScene *PanelScene::scene() {
+#ifdef FREEMIUM
+  // Check games left
+  int32_t gamesLeft = AppDelegate::getGamesLeft();
+
+  if (gamesLeft <= 0 || gamesLeft > 5) {
+    CCScene *scene = CCScene::create();
+    scene->addChild(AdScene::create());
+    return scene;
+  }
+
+  // Decrease games left
+  AppDelegate::setGamesLeft(gamesLeft - 1);
+#endif
+
   CCScene *scene = CCScene::create();
   PanelScene *layer = PanelScene::create();
   scene->addChild(layer);

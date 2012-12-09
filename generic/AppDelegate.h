@@ -26,6 +26,9 @@ public:
   AppDelegate();
   virtual ~AppDelegate();
 
+  static int32_t getGamesLeft();
+  static void setGamesLeft(int32_t gamesLeft);
+
   /**
   @brief    Implement CCDirector and CCScene init code here.
   @return true    Initialize success, app continue.
