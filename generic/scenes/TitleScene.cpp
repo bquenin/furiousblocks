@@ -63,6 +63,26 @@ bool TitleScene::init() {
   creditsButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::creditsAction), CCControlEventTouchUpInside);
   addChild(creditsButton);
 
+  CCLabelTTF *musicLabel = CCLabelTTF::create("Music", "SkaterDudes.ttf", 32);
+  musicLabel->setPosition(ccp(Assets::designResolutionSize.width / 2 - 60, Assets::designResolutionSize.height / 2 - 200));
+  addChild(musicLabel);
+
+  CCControlSwitch *musicSwitch = CCControlSwitch::create
+      (
+          CCSprite::create("switch-mask.png"),
+          CCSprite::create("switch-on.png"),
+          CCSprite::create("switch-off.png"),
+          CCSprite::create("switch-thumb.png"),
+          CCLabelTTF::create("On", "SkaterDudes.ttf", 16),
+          CCLabelTTF::create("Off", "SkaterDudes.ttf", 16)
+      );
+  musicSwitch->setScale(1.5);
+  musicSwitch->setPosition(ccp(Assets::designResolutionSize.width / 2 + 60 , Assets::designResolutionSize.height / 2 - 200));
+  musicSwitch->setOn(AppDelegate::musicOn);
+  addChild(musicSwitch);
+
+  musicSwitch->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::musicSwitchChanged), CCControlEventValueChanged);
+
   CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));
   copyright->setColor(ccc3(10, 10, 10));
@@ -82,3 +102,14 @@ void TitleScene::howToPlayAction(CCObject *sender) {
 void TitleScene::creditsAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, CreditsScene::scene(), kOrientationUpOver));
 }
+
+void TitleScene::musicSwitchChanged(CCObject *sender, CCControlEvent controlEvent) {
+  CCControlSwitch *pSwitch = (CCControlSwitch *) sender;
+  AppDelegate::musicOn = pSwitch->isOn();
+  if (AppDelegate::musicOn) {
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1);
+  } else {
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0);
+  }
+}
+

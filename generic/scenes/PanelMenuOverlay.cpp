@@ -73,7 +73,7 @@ bool PanelMenuOverlay::init() {
   musicSwitch->setOn(AppDelegate::musicOn);
   addChild(musicSwitch);
 
-  musicSwitch->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::valueChanged), CCControlEventValueChanged);
+  musicSwitch->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::musicSwitchChanged), CCControlEventValueChanged);
 
   setVisible(false);
 
@@ -94,7 +94,7 @@ void PanelMenuOverlay::endGameAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }
 
-void PanelMenuOverlay::valueChanged(CCObject *sender, CCControlEvent controlEvent) {
+void PanelMenuOverlay::musicSwitchChanged(CCObject *sender, CCControlEvent controlEvent) {
   CCControlSwitch *pSwitch = (CCControlSwitch *) sender;
   AppDelegate::musicOn = pSwitch->isOn();
   if (AppDelegate::musicOn) {

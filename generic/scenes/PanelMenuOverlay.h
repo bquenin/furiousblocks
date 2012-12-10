@@ -32,7 +32,8 @@ public:
   void continueAction(CCObject *sender);
   void restartAction(CCObject *sender);
   void endGameAction(CCObject *sender);
-  void valueChanged(CCObject *sender, CCControlEvent controlEvent);
+  void musicSwitchChanged(CCObject *sender, CCControlEvent controlEvent);
+
 };
 
 #endif //__PanelMenuOverlay_H_

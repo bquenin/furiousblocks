@@ -28,6 +28,7 @@ public:
   void playAction(CCObject *sender);
   void howToPlayAction(CCObject *sender);
   void creditsAction(CCObject *sender);
+  void musicSwitchChanged(CCObject *sender, CCControlEvent controlEvent);
 };
 
 
