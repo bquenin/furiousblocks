@@ -36,8 +36,8 @@ public class FuriousBlocks extends Cocos2dxActivity {
     }
 
     public static void openURL(String url) {
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        me.startActivity(i);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        me.startActivity(intent);
     }
 }

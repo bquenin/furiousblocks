@@ -1012,7 +1012,6 @@
 				D25891B31673C763003E3F59 /* CCScheduler.h */,
 				D25891B41673C763003E3F59 /* cocoa */,
 				D25891CA1673C763003E3F59 /* cocos2d.cpp */,
-				D25891CB1673C763003E3F59 /* draw_nodes */,
 				D25891D01673C763003E3F59 /* effects */,
 				D25891D51673C763003E3F59 /* include */,
 				D25891DD1673C763003E3F59 /* kazmath */,
@@ -1105,13 +1104,6 @@
 				D25891C91673C763003E3F59 /* CCZone.h */,
 			);
 			path = cocoa;
-			sourceTree = "<group>";
-		};
-		D25891CB1673C763003E3F59 /* draw_nodes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = draw_nodes;
 			sourceTree = "<group>";
 		};
 		D25891D01673C763003E3F59 /* effects */ = {
