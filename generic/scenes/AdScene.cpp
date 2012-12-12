@@ -9,6 +9,9 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "TitleScene.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "platform/android/jni/JniHelper.h"
+#endif
 
 #define ADTEXT "You ran out of games for today!\n\nHelp a small studio by buying the full version!"
 
@@ -54,7 +57,23 @@ bool AdScene::init() {
 }
 
 void AdScene::buyAction(CCObject *sender) {
-  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  CCApplication::sharedApplication()->openURL("https://play.google.com/store/apps/details?id=me.pixodro.furiousblocks.commercial");
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo minfo;
+
+    if(JniHelper::getStaticMethodInfo(minfo,
+        "me/pixodro/FuriousBlocks",
+        "openURL",
+        "(Ljava/lang/String;)V"))
+    {
+        jstring StringArg1 = minfo.env->NewStringUTF("https://play.google.com/store/apps/details?id=me.pixodro.furiousblocks.commercial");
+        minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID, StringArg1);
+        minfo.env->DeleteLocalRef(StringArg1);
+        minfo.env->DeleteLocalRef(minfo.classID);
+    }
+#endif
 }
 
 void AdScene::backToTitleAction(CCObject *sender) {
