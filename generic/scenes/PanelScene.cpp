@@ -1,3 +1,4 @@
+#include <boost/bind.hpp>
 #include "PanelScene.h"
 #include "SimpleAudioEngine.h"
 #include "easing_back.hpp"
@@ -10,8 +11,10 @@
 #include "StarNumber.h"
 #include "Assets.h"
 #include "AppDelegate.h"
+
+#ifdef FREEMIUM
 #include "AdScene.h"
-#include <boost/bind.hpp>
+#endif
 
 using namespace CocosDenshion;
 
@@ -219,13 +222,15 @@ void PanelScene::onGameOver() {
 
   claw::tween::single_tweener musicFadeIn(0, SimpleAudioEngine::sharedEngine()->getBackgroundMusicVolume(), 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
 
-  claw::tween::tweener_group step2;
-  step2.insert(musicFadeIn);
-  step2.insert(claw::tween::single_tweener(Assets::designResolutionSize.height + 100, Assets::designResolutionSize.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out));
+  claw::tween::tweener_group musicFadeInAndDisplayMenu;
+  musicFadeInAndDisplayMenu.insert(musicFadeIn);
+  claw::tween::single_tweener lastStep(Assets::designResolutionSize.height + 100, Assets::designResolutionSize.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out);
+  lastStep.on_finished(boost::bind(&PanelScene::onLastStepFinished, this));
+  musicFadeInAndDisplayMenu.insert(lastStep);
 
   claw::tween::tweener_sequence gameOverSequence;
   gameOverSequence.insert(musicFadeOut);
-  gameOverSequence.insert(step2);
+  gameOverSequence.insert(musicFadeInAndDisplayMenu);
   tweeners.insert(gameOverSequence);
 }
 
@@ -241,6 +246,11 @@ void PanelScene::onBeginningTweenFinished(void) {
     removeChild(countdownLabel, true);
   }
 }
+
+void PanelScene::onLastStepFinished() {
+  panelMenuOverlay->setVisible(true);
+}
+
 
 void PanelScene::menuAction(CCObject *sender) {
   panelMenuOverlay->setVisible(true);

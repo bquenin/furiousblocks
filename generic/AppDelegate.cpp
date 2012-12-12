@@ -54,6 +54,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 void AppDelegate::applicationDidEnterBackground() {
   CCDirector::sharedDirector()->pause();
 
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+
   // if you use SimpleAudioEngine, it must be pause
   SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 }
@@ -64,13 +66,15 @@ void AppDelegate::applicationWillEnterForeground() {
 
   CCDirector::sharedDirector()->resume();
 
+  CCTextureCache::sharedTextureCache()->reloadAllTextures();
+
   // if you use SimpleAudioEngine, it must resume here
   SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }
 
 int32_t AppDelegate::getGamesLeft() {
   // Set number of games to 5 by default
-  int32_t gamesLeft = CCUserDefault::sharedUserDefault()->getIntegerForKey("left", 5);
+  int32_t gamesLeft = CCUserDefault::sharedUserDefault()->getIntegerForKey("left", 0);
 
   // Cheating ?
   if (gamesLeft > 5) {

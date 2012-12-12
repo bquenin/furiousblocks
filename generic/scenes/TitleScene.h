@@ -16,8 +16,13 @@ using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class TitleScene : public cocos2d::CCLayer {
+private:
+  // Ugly but convenient
+  CCControlButton *musicSwitchOn;
+  CCControlButton *musicSwitchOff;
 
 public:
+
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
 
@@ -28,7 +33,8 @@ public:
   void playAction(CCObject *sender);
   void howToPlayAction(CCObject *sender);
   void creditsAction(CCObject *sender);
-  void musicSwitchChanged(CCObject *sender, CCControlEvent controlEvent);
+  void musicSwitchAction(CCObject *sender);
+  void quitAction(CCObject *sender);
 };
 
 

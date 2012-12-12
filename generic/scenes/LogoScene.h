@@ -12,6 +12,8 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "CCTexture2DMutable.h"
+#include "single_tweener.hpp"
+#include "tweener_group.hpp"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -34,6 +36,9 @@ private:
 
   CCTexture2DMutable *texture;
 
+  double timer;
+  claw::tween::tweener_group tweeners;
+
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
@@ -45,12 +50,9 @@ public:
   bool init();
   void update(float dt);
 
-//  void registerWithTouchDispatcher();
-//  bool ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
-//  void ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
-//  void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
-
   void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+
+  void onTimerFinished(void);
 };
 
 

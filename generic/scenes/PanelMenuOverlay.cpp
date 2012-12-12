@@ -54,31 +54,34 @@ bool PanelMenuOverlay::init() {
   endGameButton->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::endGameAction), CCControlEventTouchUpInside);
   addChild(endGameButton);
 
-  CCLabelTTF *musicLabel = CCLabelTTF::create("Music", "SkaterDudes.ttf", 32);
-  musicLabel->setPosition(ccp(Assets::designResolutionSize.width / 2 - 60, Assets::designResolutionSize.height / 2 - 120));
-  addChild(musicLabel);
+  musicSwitchOn = CCControlButton::create(CCLabelTTF::create("Music: On", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  musicSwitchOn->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  musicSwitchOn->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  musicSwitchOn->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 120));
+  musicSwitchOn->setPreferredSize(CCSizeMake(musicSwitchOn->getContentSize().width + 20, 60));
+  musicSwitchOn->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::musicSwitchAction), CCControlEventTouchUpInside);
+  musicSwitchOn->setVisible(AppDelegate::musicOn);
+  addChild(musicSwitchOn);
 
-  // Create the switch
-  CCControlSwitch *musicSwitch = CCControlSwitch::create
-      (
-          CCSprite::create("switch-mask.png"),
-          CCSprite::create("switch-on.png"),
-          CCSprite::create("switch-off.png"),
-          CCSprite::create("switch-thumb.png"),
-          CCLabelTTF::create("On", "SkaterDudes.ttf", 16),
-          CCLabelTTF::create("Off", "SkaterDudes.ttf", 16)
-      );
-  musicSwitch->setScale(1.5);
-  musicSwitch->setPosition(ccp(Assets::designResolutionSize.width / 2 + 60 , Assets::designResolutionSize.height / 2 - 120));
-  musicSwitch->setOn(AppDelegate::musicOn);
-  addChild(musicSwitch);
-
-  musicSwitch->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::musicSwitchChanged), CCControlEventValueChanged);
+  musicSwitchOff = CCControlButton::create(CCLabelTTF::create("Music: Off", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  musicSwitchOff->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  musicSwitchOff->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  musicSwitchOff->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 120));
+  musicSwitchOff->setPreferredSize(CCSizeMake(musicSwitchOff->getContentSize().width + 20, 60));
+  musicSwitchOff->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::musicSwitchAction), CCControlEventTouchUpInside);
+  musicSwitchOff->setVisible(!AppDelegate::musicOn);
+  addChild(musicSwitchOff);
 
   setVisible(false);
 
   return true;
 }
+
+void PanelScene::setVisible(bool visible) {
+  CCNode::setVisible(visible);
+
+}
+
 
 void PanelMenuOverlay::continueAction(CCObject *sender) {
   setVisible(false);
@@ -94,9 +97,10 @@ void PanelMenuOverlay::endGameAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }
 
-void PanelMenuOverlay::musicSwitchChanged(CCObject *sender, CCControlEvent controlEvent) {
-  CCControlSwitch *pSwitch = (CCControlSwitch *) sender;
-  AppDelegate::musicOn = pSwitch->isOn();
+void PanelMenuOverlay::musicSwitchAction(CCObject *sender) {
+  AppDelegate::musicOn = !AppDelegate::musicOn;
+  musicSwitchOn->setVisible(AppDelegate::musicOn);
+  musicSwitchOff->setVisible(!AppDelegate::musicOn);
   if (AppDelegate::musicOn) {
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1);
   } else {

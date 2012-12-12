@@ -6,9 +6,11 @@
 
 
 #include <algorithm>
+#include <boost/bind.hpp>
 #include "LogoScene.h"
 #include "TitleScene.h"
 #include "Assets.h"
+#include "easing_linear.hpp"
 
 LogoScene::LogoScene() {
   for (int i = 0; i < num_blobs; i++) {
@@ -45,6 +47,10 @@ bool LogoScene::init() {
   }
 
   texture->setAliasTexParameters();
+
+  claw::tween::single_tweener timerTweener(timer, 0, 5, claw::tween::easing_linear::ease_out);
+  timerTweener.on_finished(boost::bind(&LogoScene::onTimerFinished, this));
+  tweeners.insert(timerTweener);
 
   CCSprite *canvas = CCSprite::createWithTexture(texture);
   canvas->setAnchorPoint(ccp(0, 0));
@@ -101,17 +107,18 @@ void LogoScene::update(float dt) {
         // increase this number to make your blobs bigger
         m += 6000 / (vy[i][y] + vx[i][x] + 1);
       }
-      //            CCLOG("color = %d:%d:%d", m + y, m + x, m + x + y);
-      int r = std::min(m + y, 255);
-      int g = std::min(m + x, 255);
-      int b = std::min(m + x + y, 255);
-
-      texture->setPixelAt(CCPointMake(x, y), ccc4(r, g, b, 255));
+      texture->setPixelAt(CCPointMake(x, y), ccc4(std::min(m + y, 255), std::min(m + x, 255), std::min(m + x + y, 255), 255));
     }
   }
+  tweeners.update(dt);
+
   texture->apply();
 }
 
 void LogoScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent) {
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
+}
+
+void LogoScene::onTimerFinished(void) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }

@@ -19,12 +19,12 @@ LOCAL_MODULE_FILENAME := libfuriousblocks
 #
 # Build flags for the FREEMIUM version
 #
-LOCAL_CPPFLAGS = -DFREEMIUM -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
+# LOCAL_CPPFLAGS = -DFREEMIUM -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
 
 #
 # Build flags for the COMMERCIAL version
 #
-# LOCAL_CPPFLAGS = -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
+LOCAL_CPPFLAGS = -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
 
 LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/../../generic \

@@ -22,6 +22,8 @@ private:
   CCControlButton *continueButton;
   CCControlButton *restartButton;
   CCControlButton *endGameButton;
+  CCControlButton *musicSwitchOn;
+  CCControlButton *musicSwitchOff;
 
 public:
   // Implement the "static node()" method manually
@@ -32,8 +34,7 @@ public:
   void continueAction(CCObject *sender);
   void restartAction(CCObject *sender);
   void endGameAction(CCObject *sender);
-  void musicSwitchChanged(CCObject *sender, CCControlEvent controlEvent);
-
+  void musicSwitchAction(CCObject *sender);
 };
 
 #endif //__PanelMenuOverlay_H_

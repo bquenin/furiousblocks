@@ -48,10 +48,12 @@ public:
   void onBeginningTweenFinished(void);
   void menuAction(CCObject *sender);
   void setOverlay(PanelMenuOverlay *panelMenuOverlay);
+  void onLastStepFinished(void);
 
   void registerWithTouchDispatcher();
   bool ccTouchBegan(CCTouch *touch, CCEvent *event);
   void ccTouchEnded(CCTouch *touch, CCEvent *event);
+  virtual void setVisible(bool visible);
 };
 
 #endif // __PANELSCENE_H_

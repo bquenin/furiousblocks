@@ -63,25 +63,51 @@ bool TitleScene::init() {
   creditsButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::creditsAction), CCControlEventTouchUpInside);
   addChild(creditsButton);
 
-  CCLabelTTF *musicLabel = CCLabelTTF::create("Music", "SkaterDudes.ttf", 32);
-  musicLabel->setPosition(ccp(Assets::designResolutionSize.width / 2 - 60, Assets::designResolutionSize.height / 2 - 200));
-  addChild(musicLabel);
+  musicSwitchOn = CCControlButton::create(CCLabelTTF::create("Music: On", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  musicSwitchOn->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  musicSwitchOn->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  musicSwitchOn->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 200));
+  musicSwitchOn->setPreferredSize(CCSizeMake(musicSwitchOn->getContentSize().width + 20, 60));
+  musicSwitchOn->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::musicSwitchAction), CCControlEventTouchUpInside);
+  musicSwitchOn->setVisible(AppDelegate::musicOn);
+  addChild(musicSwitchOn);
 
-  CCControlSwitch *musicSwitch = CCControlSwitch::create
-      (
-          CCSprite::create("switch-mask.png"),
-          CCSprite::create("switch-on.png"),
-          CCSprite::create("switch-off.png"),
-          CCSprite::create("switch-thumb.png"),
-          CCLabelTTF::create("On", "SkaterDudes.ttf", 16),
-          CCLabelTTF::create("Off", "SkaterDudes.ttf", 16)
-      );
-  musicSwitch->setScale(1.5);
-  musicSwitch->setPosition(ccp(Assets::designResolutionSize.width / 2 + 60 , Assets::designResolutionSize.height / 2 - 200));
-  musicSwitch->setOn(AppDelegate::musicOn);
-  addChild(musicSwitch);
+  musicSwitchOff = CCControlButton::create(CCLabelTTF::create("Music: Off", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  musicSwitchOff->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  musicSwitchOff->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  musicSwitchOff->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 200));
+  musicSwitchOff->setPreferredSize(CCSizeMake(musicSwitchOff->getContentSize().width + 20, 60));
+  musicSwitchOff->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::musicSwitchAction), CCControlEventTouchUpInside);
+  musicSwitchOff->setVisible(!AppDelegate::musicOn);
+  addChild(musicSwitchOff);
 
-  musicSwitch->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::musicSwitchChanged), CCControlEventValueChanged);
+  CCControlButton *quitButton = CCControlButton::create(CCLabelTTF::create("Quit", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  quitButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  quitButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  quitButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 280));
+  quitButton->setPreferredSize(CCSizeMake(quitButton->getContentSize().width + 20, 60));
+  quitButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::quitAction), CCControlEventTouchUpInside);
+  addChild(quitButton);
+
+//  CCLabelTTF *musicLabel = CCLabelTTF::create("Music", "SkaterDudes.ttf", 32);
+//  musicLabel->setPosition(ccp(Assets::designResolutionSize.width / 2 - 60, Assets::designResolutionSize.height / 2 - 200));
+//  addChild(musicLabel);
+//
+//  CCControlSwitch *musicSwitch = CCControlSwitch::create
+//      (
+//          CCSprite::create("switch-mask.png"),
+//          CCSprite::create("switch-on.png"),
+//          CCSprite::create("switch-off.png"),
+//          CCSprite::create("switch-thumb.png"),
+//          CCLabelTTF::create("On", "SkaterDudes.ttf", 16),
+//          CCLabelTTF::create("Off", "SkaterDudes.ttf", 16)
+//      );
+//  musicSwitch->setScale(1.5);
+//  musicSwitch->setPosition(ccp(Assets::designResolutionSize.width / 2 + 60 , Assets::designResolutionSize.height / 2 - 200));
+//  musicSwitch->setOn(AppDelegate::musicOn);
+//  addChild(musicSwitch);
+//
+//  musicSwitch->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::musicSwitchChanged), CCControlEventValueChanged);
 
   CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));
@@ -103,9 +129,10 @@ void TitleScene::creditsAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, CreditsScene::scene(), kOrientationUpOver));
 }
 
-void TitleScene::musicSwitchChanged(CCObject *sender, CCControlEvent controlEvent) {
-  CCControlSwitch *pSwitch = (CCControlSwitch *) sender;
-  AppDelegate::musicOn = pSwitch->isOn();
+void TitleScene::musicSwitchAction(CCObject *sender) {
+  AppDelegate::musicOn = !AppDelegate::musicOn;
+  musicSwitchOn->setVisible(AppDelegate::musicOn);
+  musicSwitchOff->setVisible(!AppDelegate::musicOn);
   if (AppDelegate::musicOn) {
     SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1);
   } else {
@@ -113,3 +140,6 @@ void TitleScene::musicSwitchChanged(CCObject *sender, CCControlEvent controlEven
   }
 }
 
+void TitleScene::quitAction(CCObject *sender) {
+  exit(0);
+}

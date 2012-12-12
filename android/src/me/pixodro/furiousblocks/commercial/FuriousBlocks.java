@@ -1,4 +1,4 @@
-package me.pixodro;
+package me.pixodro.furiousblocks.commercial;
 
 import android.app.Activity;
 import android.content.Context;
