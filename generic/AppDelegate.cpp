@@ -15,7 +15,6 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-bool AppDelegate::musicOn = true;
 Assets AppDelegate::assets;
 
 AppDelegate::AppDelegate() {
@@ -39,7 +38,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
   pDirector->setAnimationInterval(1.0 / 60);
 
   // Set volume
-  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0f);
+  if (AppDelegate::isMusicOn()) {
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1);
+  } else {
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0);
+  }
 
   // Loading assets
   assets.load();
@@ -73,7 +76,6 @@ void AppDelegate::applicationWillEnterForeground() {
 }
 
 int32_t AppDelegate::getGamesLeft() {
-  // Set number of games to 5 by default
   int32_t gamesLeft = CCUserDefault::sharedUserDefault()->getIntegerForKey("left", 0);
 
   // Cheating ?
@@ -99,3 +101,13 @@ void AppDelegate::setGamesLeft(int32_t gamesLeft) {
   CCUserDefault::sharedUserDefault()->setIntegerForKey("left", gamesLeft);
   CCUserDefault::sharedUserDefault()->flush();
 }
+
+bool AppDelegate::isMusicOn() {
+  return CCUserDefault::sharedUserDefault()->getBoolForKey("musicOn", true);
+}
+
+void AppDelegate::setMusicOn(bool musicOn) {
+  CCUserDefault::sharedUserDefault()->setBoolForKey("musicOn", musicOn);
+  CCUserDefault::sharedUserDefault()->flush();
+}
+
