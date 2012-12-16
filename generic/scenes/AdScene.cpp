@@ -58,7 +58,7 @@ bool AdScene::init() {
 
 void AdScene::buyAction(CCObject *sender) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  CCApplication::sharedApplication()->openURL("https://play.google.com/store/apps/details?id=me.pixodro.furiousblocks.commercial");
+  CCApplication::sharedApplication()->openURL("https://itunes.apple.com/us/app/furious-blocks/id586104129");
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     JniMethodInfo minfo;
@@ -68,7 +68,7 @@ void AdScene::buyAction(CCObject *sender) {
         "openURL",
         "(Ljava/lang/String;)V"))
     {
-        jstring StringArg1 = minfo.env->NewStringUTF("https://itunes.apple.com/us/app/furious-blocks/id586104129");
+        jstring StringArg1 = minfo.env->NewStringUTF("https://play.google.com/store/apps/details?id=me.pixodro.furiousblocks.commercial");
         minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID, StringArg1);
         minfo.env->DeleteLocalRef(StringArg1);
         minfo.env->DeleteLocalRef(minfo.classID);
