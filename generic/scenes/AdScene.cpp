@@ -68,7 +68,7 @@ void AdScene::buyAction(CCObject *sender) {
         "openURL",
         "(Ljava/lang/String;)V"))
     {
-        jstring StringArg1 = minfo.env->NewStringUTF("https://play.google.com/store/apps/details?id=me.pixodro.furiousblocks.commercial");
+        jstring StringArg1 = minfo.env->NewStringUTF("https://itunes.apple.com/us/app/furious-blocks/id586104129");
         minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID, StringArg1);
         minfo.env->DeleteLocalRef(StringArg1);
         minfo.env->DeleteLocalRef(minfo.classID);
