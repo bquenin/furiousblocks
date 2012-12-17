@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D261DB17167DF531008C6503"
-            BuildableName = "Furious Blocks Commercial Distribution.app"
+            BuildableName = "FuriousBlocksCommercialDistribution.app"
             BlueprintName = "Furious Blocks Commercial Distribution"
             ReferencedContainer = "container:Furious Blocks.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D261DB17167DF531008C6503"
-            BuildableName = "Furious Blocks Commercial Distribution.app"
+            BuildableName = "FuriousBlocksCommercialDistribution.app"
             BlueprintName = "Furious Blocks Commercial Distribution"
             ReferencedContainer = "container:Furious Blocks.xcodeproj">
          </BuildableReference>
