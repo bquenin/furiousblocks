@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 
 #import "RootViewController.h"
+#import "Appirater.h"
 
 @implementation AppController
 
@@ -28,14 +29,10 @@ static AppDelegate s_sharedApplication;
   // Override point for customization after application launch.
 
   // Add the view controller's view to the window and display.
-  window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
-  EAGLView *__glView = [EAGLView viewWithFrame: [window bounds]
-                                   pixelFormat: kEAGLColorFormatRGBA8
-                                   depthFormat: GL_DEPTH_COMPONENT16
-                            preserveBackbuffer: NO
-                                    sharegroup: nil
-                                 multiSampling: NO
-                               numberOfSamples:0 ];
+  window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  EAGLView *__glView = [EAGLView viewWithFrame:[window bounds]
+                                   pixelFormat:kEAGLColorFormatRGBA8
+                                   depthFormat:GL_DEPTH_COMPONENT16 preserveBackbuffer:NO sharegroup:nil multiSampling:NO numberOfSamples:0];
 
   // Use RootViewController manage EAGLView
   viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
@@ -43,22 +40,30 @@ static AppDelegate s_sharedApplication;
   viewController.view = __glView;
 
   // Set RootViewController to window
-  if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
-  {
+  if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0) {
     // warning: addSubView doesn't work on iOS6
-    [window addSubview: viewController.view];
+    [window addSubview:viewController.view];
   }
-  else
-  {
+  else {
     // use this method on ios6
     [window setRootViewController:viewController];
   }
 
   [window makeKeyAndVisible];
 
-  [[UIApplication sharedApplication] setStatusBarHidden: YES];
+  [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
   cocos2d::CCApplication::sharedApplication()->run();
+
+  [Appirater setAppId:@"586087328"];
+  [Appirater setDaysUntilPrompt:1];
+  [Appirater setUsesUntilPrompt:10];
+  [Appirater setSignificantEventsUntilPrompt:-1];
+  [Appirater setTimeBeforeReminding:2];
+  [Appirater setDebug:YES];
+
+  [Appirater appLaunched:YES];
+
   return YES;
 }
 
@@ -87,6 +92,7 @@ static AppDelegate s_sharedApplication;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+  [Appirater appEnteredForeground:YES];
   /*
    Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
    */
