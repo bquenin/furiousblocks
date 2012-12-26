@@ -564,7 +564,6 @@
 		D261DBF2167DF531008C6503 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258934A1673C763003E3F59 /* HttpClient.cpp */; };
 		D261DBF3167DF531008C6503 /* AdScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D254FDE91674BE200072CE69 /* AdScene.cpp */; };
 		D261DBF4167DF531008C6503 /* CreditsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E142A99775EF929E1886 /* CreditsScene.cpp */; };
-		D261DBF6167DF531008C6503 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28D01681636091E00E9989D /* boost.framework */; };
 		D261DBF7167DF531008C6503 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FA6159E492E00CB0ADA /* QuartzCore.framework */; };
 		D261DBF8167DF531008C6503 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FA8159E492E00CB0ADA /* OpenGLES.framework */; };
 		D261DBF9167DF531008C6503 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FAA159E492E00CB0ADA /* OpenAL.framework */; };
@@ -815,7 +814,6 @@
 		D261DCF7167DF54D008C6503 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258934A1673C763003E3F59 /* HttpClient.cpp */; };
 		D261DCF8167DF54D008C6503 /* AdScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D254FDE91674BE200072CE69 /* AdScene.cpp */; };
 		D261DCF9167DF54D008C6503 /* CreditsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E142A99775EF929E1886 /* CreditsScene.cpp */; };
-		D261DCFB167DF54D008C6503 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28D01681636091E00E9989D /* boost.framework */; };
 		D261DCFC167DF54D008C6503 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FA6159E492E00CB0ADA /* QuartzCore.framework */; };
 		D261DCFD167DF54D008C6503 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FA8159E492E00CB0ADA /* OpenGLES.framework */; };
 		D261DCFE167DF54D008C6503 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FAA159E492E00CB0ADA /* OpenAL.framework */; };
@@ -1066,7 +1064,6 @@
 		D261DDFC167DF558008C6503 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258934A1673C763003E3F59 /* HttpClient.cpp */; };
 		D261DDFD167DF558008C6503 /* AdScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D254FDE91674BE200072CE69 /* AdScene.cpp */; };
 		D261DDFE167DF558008C6503 /* CreditsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E142A99775EF929E1886 /* CreditsScene.cpp */; };
-		D261DE00167DF558008C6503 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28D01681636091E00E9989D /* boost.framework */; };
 		D261DE01167DF558008C6503 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FA6159E492E00CB0ADA /* QuartzCore.framework */; };
 		D261DE02167DF558008C6503 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FA8159E492E00CB0ADA /* OpenGLES.framework */; };
 		D261DE03167DF558008C6503 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E20FAA159E492E00CB0ADA /* OpenAL.framework */; };
@@ -1097,7 +1094,6 @@
 		D261DE1D167DF558008C6503 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956392167550A60034C630 /* Icon.png */; };
 		D261DE1E167DF558008C6503 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956396167551270034C630 /* Icon-72.png */; };
 		D261DE1F167DF558008C6503 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29563981675516B0034C630 /* Icon@2x.png */; };
-		D28D01691636091E00E9989D /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28D01681636091E00E9989D /* boost.framework */; };
 		D28E6A421673CED400318956 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3B1673CED400318956 /* button.png */; };
 		D28E6A441673CED400318956 /* buttonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3D1673CED400318956 /* buttonHighlighted.png */; };
 		D28E6A451673CED400318956 /* switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3E1673CED400318956 /* switch-mask.png */; };
@@ -1107,6 +1103,10 @@
 		D2956393167550A60034C630 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956392167550A60034C630 /* Icon.png */; };
 		D2956397167551270034C630 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956396167551270034C630 /* Icon-72.png */; };
 		D29563991675516B0034C630 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29563981675516B0034C630 /* Icon@2x.png */; };
+		D2B791DA168B744D009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
+		D2B791DB168B7475009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
+		D2B791DC168B7484009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
+		D2B791DD168B7494009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
 		D2BD39AE15C5D0A90038E59C /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398315C5D0A90038E59C /* Move.cpp */; };
@@ -1655,7 +1655,6 @@
 		D261DD1E167DF54D008C6503 /* FuriousBlocksFreeDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriousBlocksFreeDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D261DE23167DF558008C6503 /* FuriousBlocksCommercialDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriousBlocksCommercialDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D261DE25167DF559008C6503 /* Furious Blocks Commercial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Furious Blocks Commercial-Info.plist"; path = "/Users/bquenin/workspace/furiousblocks/ios/Furious Blocks Commercial-Info.plist"; sourceTree = "<absolute>"; };
-		D28D01681636091E00E9989D /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = "../../boost-ios/ios/framework/boost.framework"; sourceTree = "<group>"; };
 		D28E6A3B1673CED400318956 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		D28E6A3D1673CED400318956 /* buttonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHighlighted.png; sourceTree = "<group>"; };
 		D28E6A3E1673CED400318956 /* switch-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch-mask.png"; sourceTree = "<group>"; };
@@ -1665,6 +1664,7 @@
 		D2956392167550A60034C630 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		D2956396167551270034C630 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		D29563981675516B0034C630 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		D2B791D9168B744D009769E2 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = boost/framework/boost.framework; sourceTree = "<group>"; };
 		D2BD396815C5D0A90038E59C /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
 		D2BD396915C5D0A90038E59C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		D2BD396D15C5D0A90038E59C /* BlockState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockState.h; sourceTree = "<group>"; };
@@ -1692,7 +1692,6 @@
 		D2BD39A015C5D0A90038E59C /* SimpleRNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleRNG.h; sourceTree = "<group>"; };
 		D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
 		D2DE72D21662D2F300724790 /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2DMutable.h; sourceTree = "<group>"; };
-		D2E931C8166FDBFE0029D28E /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = "../../boost-ios/ios/framework/boost.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1700,9 +1699,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B791DC168B7484009769E2 /* boost.framework in Frameworks */,
 				D203E32C16886C1C00FC317B /* CFNetwork.framework in Frameworks */,
 				D203E32D16886C1C00FC317B /* SystemConfiguration.framework in Frameworks */,
-				D28D01691636091E00E9989D /* boost.framework in Frameworks */,
 				02BAEEB9159E5AAB00BCA0C3 /* QuartzCore.framework in Frameworks */,
 				02BAEEBA159E5AAB00BCA0C3 /* OpenGLES.framework in Frameworks */,
 				02BAEEBB159E5AAB00BCA0C3 /* OpenAL.framework in Frameworks */,
@@ -1719,9 +1718,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B791DD168B7494009769E2 /* boost.framework in Frameworks */,
 				D203E32E16886C2700FC317B /* CFNetwork.framework in Frameworks */,
 				D203E32F16886C2700FC317B /* SystemConfiguration.framework in Frameworks */,
-				D261DBF6167DF531008C6503 /* boost.framework in Frameworks */,
 				D261DBF7167DF531008C6503 /* QuartzCore.framework in Frameworks */,
 				D261DBF8167DF531008C6503 /* OpenGLES.framework in Frameworks */,
 				D261DBF9167DF531008C6503 /* OpenAL.framework in Frameworks */,
@@ -1738,9 +1737,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B791DA168B744D009769E2 /* boost.framework in Frameworks */,
 				D203E32916886BEF00FC317B /* SystemConfiguration.framework in Frameworks */,
 				D203E32716886BE400FC317B /* CFNetwork.framework in Frameworks */,
-				D261DCFB167DF54D008C6503 /* boost.framework in Frameworks */,
 				D261DCFC167DF54D008C6503 /* QuartzCore.framework in Frameworks */,
 				D261DCFD167DF54D008C6503 /* OpenGLES.framework in Frameworks */,
 				D261DCFE167DF54D008C6503 /* OpenAL.framework in Frameworks */,
@@ -1757,9 +1756,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B791DB168B7475009769E2 /* boost.framework in Frameworks */,
 				D203E32A16886C0F00FC317B /* CFNetwork.framework in Frameworks */,
 				D203E32B16886C0F00FC317B /* SystemConfiguration.framework in Frameworks */,
-				D261DE00167DF558008C6503 /* boost.framework in Frameworks */,
 				D261DE01167DF558008C6503 /* QuartzCore.framework in Frameworks */,
 				D261DE02167DF558008C6503 /* OpenGLES.framework in Frameworks */,
 				D261DE03167DF558008C6503 /* OpenAL.framework in Frameworks */,
@@ -1850,9 +1849,9 @@
 		02E20FA5159E492E00CB0ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2B791D9168B744D009769E2 /* boost.framework */,
 				D203E32816886BEF00FC317B /* SystemConfiguration.framework */,
 				D203E32616886BE400FC317B /* CFNetwork.framework */,
-				D2E931C8166FDBFE0029D28E /* boost.framework */,
 				02E20FA6159E492E00CB0ADA /* QuartzCore.framework */,
 				02E20FA8159E492E00CB0ADA /* OpenGLES.framework */,
 				02E20FAA159E492E00CB0ADA /* OpenAL.framework */,
@@ -1861,7 +1860,6 @@
 				02E20FB0159E492E00CB0ADA /* UIKit.framework */,
 				02E20FB2159E492E00CB0ADA /* Foundation.framework */,
 				02E20FB4159E492E00CB0ADA /* CoreGraphics.framework */,
-				D28D01681636091E00E9989D /* boost.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4432,6 +4430,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+					"\"$(SRCROOT)/boost/framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -4463,6 +4462,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+					"\"$(SRCROOT)/boost/framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -4550,6 +4550,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+					"\"$(SRCROOT)/boost/framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -4574,6 +4575,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+					"\"$(SRCROOT)/boost/framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -4598,6 +4600,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+					"\"$(SRCROOT)/boost/framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -4629,6 +4632,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+					"\"$(SRCROOT)/boost/framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -4659,6 +4663,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+					"\"$(SRCROOT)/boost/framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -4683,6 +4688,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
+					"\"$(SRCROOT)/boost/framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
