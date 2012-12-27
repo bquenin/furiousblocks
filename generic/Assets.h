@@ -36,6 +36,8 @@ public:
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
 
   // Assets
+  CCSpriteFrame *FLOGO;
+
   CCSpriteFrame *TITLE;
 
   CCSpriteFrame *BG_TOP;

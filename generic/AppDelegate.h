@@ -31,6 +31,9 @@ public:
   static void setMusicOn(bool musicOn);
   static bool isMusicOn();
 
+  static void setLoggedIn(bool loggedIn);
+  static bool isLoggedIn();
+
   /**
   @brief    Implement CCDirector and CCScene init code here.
   @return true    Initialize success, app continue.

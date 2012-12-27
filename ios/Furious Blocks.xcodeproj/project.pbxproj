@@ -586,10 +586,6 @@
 		D261DC0B167DF531008C6503 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25894031673CB44003E3F59 /* SkaterDudes.ttf */; };
 		D261DC0C167DF531008C6503 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3B1673CED400318956 /* button.png */; };
 		D261DC0D167DF531008C6503 /* buttonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3D1673CED400318956 /* buttonHighlighted.png */; };
-		D261DC0E167DF531008C6503 /* switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3E1673CED400318956 /* switch-mask.png */; };
-		D261DC0F167DF531008C6503 /* switch-off.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3F1673CED400318956 /* switch-off.png */; };
-		D261DC10167DF531008C6503 /* switch-on.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A401673CED400318956 /* switch-on.png */; };
-		D261DC11167DF531008C6503 /* switch-thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A411673CED400318956 /* switch-thumb.png */; };
 		D261DC12167DF531008C6503 /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969EB7ABA416427D5DE3C32 /* Joystix.ttf */; };
 		D261DC13167DF531008C6503 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956392167550A60034C630 /* Icon.png */; };
 		D261DC14167DF531008C6503 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956396167551270034C630 /* Icon-72.png */; };
@@ -836,10 +832,6 @@
 		D261DD10167DF54D008C6503 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25894031673CB44003E3F59 /* SkaterDudes.ttf */; };
 		D261DD11167DF54D008C6503 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3B1673CED400318956 /* button.png */; };
 		D261DD12167DF54D008C6503 /* buttonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3D1673CED400318956 /* buttonHighlighted.png */; };
-		D261DD13167DF54D008C6503 /* switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3E1673CED400318956 /* switch-mask.png */; };
-		D261DD14167DF54D008C6503 /* switch-off.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3F1673CED400318956 /* switch-off.png */; };
-		D261DD15167DF54D008C6503 /* switch-on.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A401673CED400318956 /* switch-on.png */; };
-		D261DD16167DF54D008C6503 /* switch-thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A411673CED400318956 /* switch-thumb.png */; };
 		D261DD17167DF54D008C6503 /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969EB7ABA416427D5DE3C32 /* Joystix.ttf */; };
 		D261DD18167DF54D008C6503 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956392167550A60034C630 /* Icon.png */; };
 		D261DD19167DF54D008C6503 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956396167551270034C630 /* Icon-72.png */; };
@@ -1086,20 +1078,12 @@
 		D261DE15167DF558008C6503 /* SkaterDudes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25894031673CB44003E3F59 /* SkaterDudes.ttf */; };
 		D261DE16167DF558008C6503 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3B1673CED400318956 /* button.png */; };
 		D261DE17167DF558008C6503 /* buttonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3D1673CED400318956 /* buttonHighlighted.png */; };
-		D261DE18167DF558008C6503 /* switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3E1673CED400318956 /* switch-mask.png */; };
-		D261DE19167DF558008C6503 /* switch-off.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3F1673CED400318956 /* switch-off.png */; };
-		D261DE1A167DF558008C6503 /* switch-on.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A401673CED400318956 /* switch-on.png */; };
-		D261DE1B167DF558008C6503 /* switch-thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A411673CED400318956 /* switch-thumb.png */; };
 		D261DE1C167DF558008C6503 /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969EB7ABA416427D5DE3C32 /* Joystix.ttf */; };
 		D261DE1D167DF558008C6503 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956392167550A60034C630 /* Icon.png */; };
 		D261DE1E167DF558008C6503 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956396167551270034C630 /* Icon-72.png */; };
 		D261DE1F167DF558008C6503 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29563981675516B0034C630 /* Icon@2x.png */; };
 		D28E6A421673CED400318956 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3B1673CED400318956 /* button.png */; };
 		D28E6A441673CED400318956 /* buttonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3D1673CED400318956 /* buttonHighlighted.png */; };
-		D28E6A451673CED400318956 /* switch-mask.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3E1673CED400318956 /* switch-mask.png */; };
-		D28E6A461673CED400318956 /* switch-off.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A3F1673CED400318956 /* switch-off.png */; };
-		D28E6A471673CED400318956 /* switch-on.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A401673CED400318956 /* switch-on.png */; };
-		D28E6A481673CED400318956 /* switch-thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = D28E6A411673CED400318956 /* switch-thumb.png */; };
 		D2956393167550A60034C630 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956392167550A60034C630 /* Icon.png */; };
 		D2956397167551270034C630 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956396167551270034C630 /* Icon-72.png */; };
 		D29563991675516B0034C630 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29563981675516B0034C630 /* Icon@2x.png */; };
@@ -1657,10 +1641,6 @@
 		D261DE25167DF559008C6503 /* Furious Blocks Commercial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Furious Blocks Commercial-Info.plist"; path = "/Users/bquenin/workspace/furiousblocks/ios/Furious Blocks Commercial-Info.plist"; sourceTree = "<absolute>"; };
 		D28E6A3B1673CED400318956 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		D28E6A3D1673CED400318956 /* buttonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHighlighted.png; sourceTree = "<group>"; };
-		D28E6A3E1673CED400318956 /* switch-mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch-mask.png"; sourceTree = "<group>"; };
-		D28E6A3F1673CED400318956 /* switch-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch-off.png"; sourceTree = "<group>"; };
-		D28E6A401673CED400318956 /* switch-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch-on.png"; sourceTree = "<group>"; };
-		D28E6A411673CED400318956 /* switch-thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch-thumb.png"; sourceTree = "<group>"; };
 		D2956392167550A60034C630 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		D2956396167551270034C630 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		D29563981675516B0034C630 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -1782,10 +1762,6 @@
 				D2956392167550A60034C630 /* Icon.png */,
 				D28E6A3B1673CED400318956 /* button.png */,
 				D28E6A3D1673CED400318956 /* buttonHighlighted.png */,
-				D28E6A3E1673CED400318956 /* switch-mask.png */,
-				D28E6A3F1673CED400318956 /* switch-off.png */,
-				D28E6A401673CED400318956 /* switch-on.png */,
-				D28E6A411673CED400318956 /* switch-thumb.png */,
 				7969E06309C54DF53182E0F3 /* blocks.plist */,
 				7969E79960EAF9FDDBA0C804 /* blocks.png */,
 				7969E619F03DD57B616F1DD3 /* gameover.mp3 */,
@@ -2774,7 +2750,6 @@
 				D258931C1673C763003E3F59 /* ExtensionMacros.h */,
 				D258931D1673C763003E3F59 /* GUI */,
 				D25893491673C763003E3F59 /* network */,
-				D258934E1673C763003E3F59 /* physics_nodes */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -2918,13 +2893,6 @@
 				D258934D1673C763003E3F59 /* HttpResponse.h */,
 			);
 			path = network;
-			sourceTree = "<group>";
-		};
-		D258934E1673C763003E3F59 /* physics_nodes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = physics_nodes;
 			sourceTree = "<group>";
 		};
 		D25B36FE164583B600496D14 /* script */ = {
@@ -3139,10 +3107,6 @@
 				D25894041673CB44003E3F59 /* SkaterDudes.ttf in Resources */,
 				D28E6A421673CED400318956 /* button.png in Resources */,
 				D28E6A441673CED400318956 /* buttonHighlighted.png in Resources */,
-				D28E6A451673CED400318956 /* switch-mask.png in Resources */,
-				D28E6A461673CED400318956 /* switch-off.png in Resources */,
-				D28E6A471673CED400318956 /* switch-on.png in Resources */,
-				D28E6A481673CED400318956 /* switch-thumb.png in Resources */,
 				7969EB7560835402674ABD3F /* Joystix.ttf in Resources */,
 				D2956393167550A60034C630 /* Icon.png in Resources */,
 				D2956397167551270034C630 /* Icon-72.png in Resources */,
@@ -3190,10 +3154,6 @@
 				D261DC0B167DF531008C6503 /* SkaterDudes.ttf in Resources */,
 				D261DC0C167DF531008C6503 /* button.png in Resources */,
 				D261DC0D167DF531008C6503 /* buttonHighlighted.png in Resources */,
-				D261DC0E167DF531008C6503 /* switch-mask.png in Resources */,
-				D261DC0F167DF531008C6503 /* switch-off.png in Resources */,
-				D261DC10167DF531008C6503 /* switch-on.png in Resources */,
-				D261DC11167DF531008C6503 /* switch-thumb.png in Resources */,
 				D261DC12167DF531008C6503 /* Joystix.ttf in Resources */,
 				D261DC13167DF531008C6503 /* Icon.png in Resources */,
 				D261DC14167DF531008C6503 /* Icon-72.png in Resources */,
@@ -3241,10 +3201,6 @@
 				D261DD10167DF54D008C6503 /* SkaterDudes.ttf in Resources */,
 				D261DD11167DF54D008C6503 /* button.png in Resources */,
 				D261DD12167DF54D008C6503 /* buttonHighlighted.png in Resources */,
-				D261DD13167DF54D008C6503 /* switch-mask.png in Resources */,
-				D261DD14167DF54D008C6503 /* switch-off.png in Resources */,
-				D261DD15167DF54D008C6503 /* switch-on.png in Resources */,
-				D261DD16167DF54D008C6503 /* switch-thumb.png in Resources */,
 				D261DD17167DF54D008C6503 /* Joystix.ttf in Resources */,
 				D261DD18167DF54D008C6503 /* Icon.png in Resources */,
 				D261DD19167DF54D008C6503 /* Icon-72.png in Resources */,
@@ -3292,10 +3248,6 @@
 				D261DE15167DF558008C6503 /* SkaterDudes.ttf in Resources */,
 				D261DE16167DF558008C6503 /* button.png in Resources */,
 				D261DE17167DF558008C6503 /* buttonHighlighted.png in Resources */,
-				D261DE18167DF558008C6503 /* switch-mask.png in Resources */,
-				D261DE19167DF558008C6503 /* switch-off.png in Resources */,
-				D261DE1A167DF558008C6503 /* switch-on.png in Resources */,
-				D261DE1B167DF558008C6503 /* switch-thumb.png in Resources */,
 				D261DE1C167DF558008C6503 /* Joystix.ttf in Resources */,
 				D261DE1D167DF558008C6503 /* Icon.png in Resources */,
 				D261DE1E167DF558008C6503 /* Icon-72.png in Resources */,

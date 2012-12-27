@@ -35,6 +35,37 @@ bool TitleScene::init() {
   bg->setAnchorPoint(ccp(0, 0));
   addChild(bg);
 
+  CCControlButton *logIn = CCControlButton::create(CCLabelTTF::create("   Log in", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  logIn->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  logIn->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  logIn->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 120));
+  logIn->setPreferredSize(CCSizeMake(logIn->getContentSize().width + 20, 60));
+  logIn->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
+  logIn->setVisible(!AppDelegate::isLoggedIn());
+  addChild(logIn);
+
+  CCSprite *logoLogin = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
+  logoLogin->setAnchorPoint(ccp(0, 0));
+  logoLogin->setPosition(ccp(8, 6));
+  logIn->addChild(logoLogin);
+
+  CCControlButton *logOut = CCControlButton::create(CCLabelTTF::create("Log out", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  logOut->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  logOut->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  logOut->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 120));
+  logOut->setPreferredSize(CCSizeMake(logOut->getContentSize().width + 20, 60));
+  logOut->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
+  logOut->setVisible(AppDelegate::isLoggedIn());
+
+
+  addChild(logOut);
+
+  CCSprite *logoLogout = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
+  logoLogout->setAnchorPoint(ccp(1, 1));
+  logoLogout->setPosition(ccp(0, 0));
+  logOut->addChild(logoLogout);
+
+
 #ifdef FREEMIUM
   CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Play! (%d left)", AppDelegate::getGamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #else

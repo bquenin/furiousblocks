@@ -111,3 +111,12 @@ void AppDelegate::setMusicOn(bool musicOn) {
   CCUserDefault::sharedUserDefault()->flush();
 }
 
+bool AppDelegate::isLoggedIn() {
+  return CCUserDefault::sharedUserDefault()->getBoolForKey("loggedIn", false);
+}
+
+void AppDelegate::setLoggedIn(bool loggedIn) {
+  CCUserDefault::sharedUserDefault()->setBoolForKey("loggedIn", loggedIn);
+  CCUserDefault::sharedUserDefault()->flush();
+}
+
