@@ -37,7 +37,7 @@ private:
   CCTexture2DMutable *texture;
 
   double timer;
-  claw::tween::tweener_group tweeners;
+//  claw::tween::tweener_group tweeners;
 
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer

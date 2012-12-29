@@ -19,12 +19,12 @@ LOCAL_MODULE_FILENAME := libfuriousblocks
 #
 # Build flags for the FREEMIUM version
 #
-LOCAL_CPPFLAGS = -DFREEMIUM -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
+LOCAL_CPPFLAGS = -DFREEMIUM -std=gnu++0x -fexceptions -frtti
 
 #
 # Build flags for the COMMERCIAL version
 #
-# LOCAL_CPPFLAGS = -std=gnu++0x -fexceptions -frtti -I$(LOCAL_PATH)/boost/include/boost-1_49
+# LOCAL_CPPFLAGS = -std=gnu++0x -fexceptions -frtti
 
 LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/../../generic \
@@ -34,8 +34,7 @@ $(LOCAL_PATH)/../../generic/ext \
 $(LOCAL_PATH)/../../generic/scenes \
 $(LOCAL_PATH)/../../generic/script \
 $(LOCAL_PATH)/../../generic/tween/easing \
-$(LOCAL_PATH)/../../generic/tween \
-$(LOCAL_PATH)/scenes
+$(LOCAL_PATH)/../../generic/tween
 
 LOCAL_SRC_FILES := \
 bootstrap/main.cpp \

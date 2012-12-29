@@ -35,7 +35,7 @@
  * \brief Default constructor.
  */
 claw::tween::tweener::tweener()
-  : m_impl(NULL)
+  : m_impl(nullptr)
 {
 
 } // tweener::tweener()
@@ -46,7 +46,7 @@ claw::tween::tweener::tweener()
  * \param that The instance to copy from.
  */
 claw::tween::tweener::tweener( const tweener& that )
-  : m_impl( that.m_impl == NULL ? NULL : that.m_impl->clone() )
+  : m_impl( that.m_impl == nullptr ? nullptr : that.m_impl->clone() )
 {
 
 } // tweener::tweener()
@@ -99,7 +99,7 @@ void claw::tween::tweener::swap( tweener& that ) throw()
  */
 bool claw::tween::tweener::is_finished() const
 {
-  if ( m_impl == NULL )
+  if ( m_impl == nullptr )
     return true;
   else
     return m_impl->is_finished();
@@ -112,7 +112,7 @@ bool claw::tween::tweener::is_finished() const
  */
 double claw::tween::tweener::update( double dt )
 {
-  if ( m_impl == NULL )
+  if ( m_impl == nullptr )
     return dt;
   else
     return m_impl->update(dt);
@@ -124,7 +124,7 @@ double claw::tween::tweener::update( double dt )
  */
 void claw::tween::tweener::on_finished( finish_callback f )
 {
-  if ( m_impl != NULL )
+  if ( m_impl != nullptr )
     m_impl->on_finished(f);
 } // tweener::on_finished()
 

@@ -1087,8 +1087,6 @@
 		D2956393167550A60034C630 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956392167550A60034C630 /* Icon.png */; };
 		D2956397167551270034C630 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956396167551270034C630 /* Icon-72.png */; };
 		D29563991675516B0034C630 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29563981675516B0034C630 /* Icon@2x.png */; };
-		D2B791DA168B744D009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
-		D2B791DB168B7475009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
 		D2B791DC168B7484009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
 		D2B791DD168B7494009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
@@ -1717,7 +1715,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B791DA168B744D009769E2 /* boost.framework in Frameworks */,
 				D203E32916886BEF00FC317B /* SystemConfiguration.framework in Frameworks */,
 				D203E32716886BE400FC317B /* CFNetwork.framework in Frameworks */,
 				D261DCFC167DF54D008C6503 /* QuartzCore.framework in Frameworks */,
@@ -1736,7 +1733,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B791DB168B7475009769E2 /* boost.framework in Frameworks */,
 				D203E32A16886C0F00FC317B /* CFNetwork.framework in Frameworks */,
 				D203E32B16886C0F00FC317B /* SystemConfiguration.framework in Frameworks */,
 				D261DE01167DF558008C6503 /* QuartzCore.framework in Frameworks */,
@@ -1799,6 +1795,7 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
+				7969E721138AA870B8616529 /* appirater-master */,
 				02BAEA13159E577F00BCA0C3 /* assets */,
 				D258918A1673C763003E3F59 /* libs */,
 				02BAEC48159E57C600BCA0C3 /* generic */,
@@ -1807,7 +1804,6 @@
 				02E20FA3159E492E00CB0ADA /* Products */,
 				D261DC1B167DF532008C6503 /* Furious Blocks Free-Info.plist */,
 				D261DE25167DF559008C6503 /* Furious Blocks Commercial-Info.plist */,
-				7969E721138AA870B8616529 /* appirater-master */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4379,11 +4375,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bertrand Quenin";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
-					"\"$(SRCROOT)/boost/framework\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4394,14 +4385,6 @@
 					FREEMIUM,
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
 				PRODUCT_NAME = FuriousBlocksFreeDistribution;
 				PROVISIONING_PROFILE = "2491854E-B902-4AC4-BF2D-AF59FB3E2DC4";
 			};
@@ -4411,11 +4394,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bertrand Quenin";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
-					"\"$(SRCROOT)/boost/framework\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4425,14 +4403,6 @@
 					FREEMIUM,
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
 				PRODUCT_NAME = FuriousBlocksFreeDistribution;
 				PROVISIONING_PROFILE = "2491854E-B902-4AC4-BF2D-AF59FB3E2DC4";
 			};
@@ -4462,7 +4432,12 @@
 					"\"libs/cocos2dx/platform/ios\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lz",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4489,7 +4464,12 @@
 					"\"libs/cocos2dx/platform/ios\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lz",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4499,22 +4479,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bertrand Quenin";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
-					"\"$(SRCROOT)/boost/framework\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
 				PRODUCT_NAME = FuriousBlocksCommercialDistribution;
 				PROVISIONING_PROFILE = "F26BEBE9-D4DE-470F-B37C-30C930DAA4E0";
 			};
@@ -4524,22 +4491,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bertrand Quenin";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
-					"\"$(SRCROOT)/boost/framework\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
 				PRODUCT_NAME = FuriousBlocksCommercialDistribution;
 				PROVISIONING_PROFILE = "F26BEBE9-D4DE-470F-B37C-30C930DAA4E0";
 			};
@@ -4549,11 +4503,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
-					"\"$(SRCROOT)/boost/framework\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4564,14 +4513,6 @@
 					FREEMIUM,
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
 			};
@@ -4581,11 +4522,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
-					"\"$(SRCROOT)/boost/framework\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4595,14 +4531,6 @@
 					FREEMIUM,
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
 			};
@@ -4612,22 +4540,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
-					"\"$(SRCROOT)/boost/framework\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
 				PRODUCT_NAME = FuriousBlocksCommercialDevelopment;
 				PROVISIONING_PROFILE = "";
 			};
@@ -4637,22 +4552,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../boost-ios/ios/framework\"",
-					"\"$(SRCROOT)/boost/framework\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lxml2",
-					"-lz",
-				);
 				PRODUCT_NAME = FuriousBlocksCommercialDevelopment;
 				PROVISIONING_PROFILE = "";
 			};

@@ -30,8 +30,8 @@
 #ifndef __CLAW_TWEEN_TWEENER_HPP__
 #define __CLAW_TWEEN_TWEENER_HPP__
 
-#include <algorithm>
-#include <boost/function.hpp>
+#include <utility>
+#include <functional>
 
 namespace claw
 {
@@ -52,7 +52,7 @@ namespace claw
        * \brief The type of the function called to notify the end of the
        *        tweener.
        */
-      typedef boost::function<void ()> finish_callback;
+      typedef std::function<void ()> finish_callback;
 
     public:
       tweener();

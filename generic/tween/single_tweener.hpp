@@ -30,54 +30,49 @@
 #ifndef __CLAW_TWEEN_SINGLE_TWEENER_HPP__
 #define __CLAW_TWEEN_SINGLE_TWEENER_HPP__
 
-#include <boost/function.hpp>
+
 #include "base_tweener.hpp"
 #include "easing_none.hpp"
+#include <functional>
 
-namespace claw
-{
-  namespace tween
-  {
+namespace claw {
+  namespace tween {
     /**
      * \brief A single_tweener makes a value to evolve through time from a
      *        initial value to an end value according to a given function.
      * \author Julien Jorge
      * \sa \ref tweeners
      */
-    class single_tweener:
-      public base_tweener
-    {
+    class single_tweener :
+    public base_tweener {
     public:
       /** \brief The type of the function called when the single_tweener is
           updated. */
-      typedef boost::function<void (double)> update_function;
+      typedef std::function<void (double)> update_function;
 
       /** \brief The type of the function used to compute the new value. */
-      typedef boost::function<double (double)> easing_function;
+      typedef std::function<double (double)> easing_function;
 
     public:
       single_tweener();
-      single_tweener
-      ( double init, double end, double duration, update_function callback,
-        easing_function e );
-      single_tweener
-      ( double& val, double end, double duration, easing_function e );
+      single_tweener(double init, double end, double duration, update_function callback, easing_function e);
+      single_tweener(double &val, double end, double duration, easing_function e);
 
-      void set_init( double v );
-      void set_end( double v );
-      void set_duration( double v );
-      void set_callback( update_function f );
-      void set_easing( easing_function f );
+      void set_init(double v);
+      void set_end(double v);
+      void set_duration(double v);
+      void set_callback(update_function f);
+      void set_easing(easing_function f);
 
     private:
-      single_tweener* do_clone() const;
+      single_tweener *do_clone() const;
       bool do_is_finished() const;
-      double do_update( double dt );
+      double do_update(double dt);
 
     private:
       /** \brief The initial value. */
       double m_init;
-      
+
       /** \brief The final value. */
       double m_end;
 
@@ -92,9 +87,8 @@ namespace claw
 
       /** \brief The function used to compute the new value. */
       easing_function m_easing;
-      
-    }; // class single_tweener
 
+    }; // class single_tweener
   } // namespace tween
 } // namespace claw
 

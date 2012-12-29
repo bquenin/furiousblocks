@@ -1,4 +1,4 @@
-#include <boost/bind.hpp>
+#include <functional>
 #include "PanelScene.h"
 #include "SimpleAudioEngine.h"
 #include "easing_back.hpp"
@@ -17,6 +17,7 @@
 #endif
 
 using namespace CocosDenshion;
+using namespace std::placeholders;
 
 PanelScene::PanelScene()
 : AbstractPanelScene()
@@ -67,7 +68,7 @@ bool PanelScene::init() {
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_out));
+        tweeners.insert(claw::tween::single_tweener(random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE, 2, std::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_out));
       }
     }
   }
@@ -124,8 +125,8 @@ bool PanelScene::init() {
   menuButton->setDefaultTouchPriority(-64);
   addChild(menuButton);
 
-  claw::tween::single_tweener countDownTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
-  countDownTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));
+  claw::tween::single_tweener countDownTweener(0, 3, 1, std::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
+  countDownTweener.on_finished(std::bind(&PanelScene::onBeginningTweenFinished, this));
   tweeners.insert(countDownTweener);
 
   // Game initialization
@@ -148,7 +149,7 @@ void PanelScene::update(float dt) {
   // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-      Block *current = panel.blocks[x][y];
+      fb::Block *current = panel.blocks[x][y];
       if (current == nullptr) {
         grid[x][y]->setVisible(false);
         continue;
@@ -210,22 +211,22 @@ void PanelScene::onGameOver() {
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
+        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, 2, std::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
       }
     }
   }
 
-  claw::tween::single_tweener musicFadeOut(SimpleAudioEngine::sharedEngine()->getBackgroundMusicVolume(), 0, 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
+  claw::tween::single_tweener musicFadeOut(SimpleAudioEngine::sharedEngine()->getBackgroundMusicVolume(), 0, 2, std::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
   musicFadeOut.on_finished([](){
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic("gameover.mp3", true);
   });
 
-  claw::tween::single_tweener musicFadeIn(0, SimpleAudioEngine::sharedEngine()->getBackgroundMusicVolume(), 2, boost::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
+  claw::tween::single_tweener musicFadeIn(0, SimpleAudioEngine::sharedEngine()->getBackgroundMusicVolume(), 2, std::bind(&SimpleAudioEngine::setBackgroundMusicVolume, SimpleAudioEngine::sharedEngine(), _1), claw::tween::easing_linear::ease_in);
 
   claw::tween::tweener_group musicFadeInAndDisplayMenu;
   musicFadeInAndDisplayMenu.insert(musicFadeIn);
-  claw::tween::single_tweener lastStep(Assets::designResolutionSize.height + 100, Assets::designResolutionSize.height / 2, 2, boost::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out);
-  lastStep.on_finished(boost::bind(&PanelScene::onLastStepFinished, this));
+  claw::tween::single_tweener lastStep(Assets::designResolutionSize.height + 100, Assets::designResolutionSize.height / 2, 2, std::bind(&CCNode::setPositionY, youLose, _1), claw::tween::easing_bounce::ease_out);
+  lastStep.on_finished(std::bind(&PanelScene::onLastStepFinished, this));
   musicFadeInAndDisplayMenu.insert(lastStep);
 
   claw::tween::tweener_sequence gameOverSequence;
@@ -238,8 +239,8 @@ void PanelScene::onBeginningTweenFinished(void) {
   if (countdown > 1) {
     countdown--;
     countdownLabel->setCString(Assets::format("%d", countdown).c_str());
-    claw::tween::single_tweener cdTweener(0, 3, 1, boost::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
-    cdTweener.on_finished(boost::bind(&PanelScene::onBeginningTweenFinished, this));
+    claw::tween::single_tweener cdTweener(0, 3, 1, std::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
+    cdTweener.on_finished(std::bind(&PanelScene::onBeginningTweenFinished, this));
     tweeners.insert(cdTweener);
   } else {
     gameRunning = true;

@@ -12,6 +12,9 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "CreditsScene.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "platform/android/jni/JniHelper.h"
+#endif
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -40,31 +43,28 @@ bool TitleScene::init() {
   logIn->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   logIn->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 120));
   logIn->setPreferredSize(CCSizeMake(logIn->getContentSize().width + 20, 60));
-  logIn->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
+  logIn->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::logInAction), CCControlEventTouchUpInside);
   logIn->setVisible(!AppDelegate::isLoggedIn());
   addChild(logIn);
-
-  CCSprite *logoLogin = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
-  logoLogin->setAnchorPoint(ccp(0, 0));
-  logoLogin->setPosition(ccp(8, 6));
-  logIn->addChild(logoLogin);
 
   CCControlButton *logOut = CCControlButton::create(CCLabelTTF::create("Log out", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   logOut->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   logOut->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   logOut->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 120));
   logOut->setPreferredSize(CCSizeMake(logOut->getContentSize().width + 20, 60));
-  logOut->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
+  logOut->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::logOutAction), CCControlEventTouchUpInside);
   logOut->setVisible(AppDelegate::isLoggedIn());
-
-
   addChild(logOut);
 
-  CCSprite *logoLogout = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
-  logoLogout->setAnchorPoint(ccp(1, 1));
-  logoLogout->setPosition(ccp(0, 0));
-  logOut->addChild(logoLogout);
+  CCSprite *logoLogin = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
+  logoLogin->setAnchorPoint(ccp(0, 0));
+  logoLogin->setPosition(ccp(8, 6));
+  logIn->addChild(logoLogin);
 
+  CCSprite *logoLogout = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
+  logoLogout->setAnchorPoint(ccp(0, 0));
+  logoLogout->setPosition(ccp(8, 6));
+  logOut->addChild(logoLogout);
 
 #ifdef FREEMIUM
   CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Play! (%d left)", AppDelegate::getGamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
@@ -174,3 +174,38 @@ void TitleScene::musicSwitchAction(CCObject *sender) {
 void TitleScene::quitAction(CCObject *sender) {
   exit(0);
 }
+
+void TitleScene::logInAction(CCObject *sender) {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo minfo;
+
+    if(JniHelper::getStaticMethodInfo(minfo,
+        "me/pixodro/FuriousBlocks",
+        "onClickLogin",
+        "()V"))
+    {
+        minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
+        minfo.env->DeleteLocalRef(minfo.classID);
+    }
+#endif
+}
+
+void TitleScene::logOutAction(CCObject *sender) {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    JniMethodInfo minfo;
+
+    if(JniHelper::getStaticMethodInfo(minfo,
+        "me/pixodro/FuriousBlocks",
+        "onClickLogout",
+        "()V"))
+    {
+        minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
+        minfo.env->DeleteLocalRef(minfo.classID);
+    }
+#endif
+}
+

@@ -7,7 +7,7 @@ Combo::Combo(int32_t owner)
 , skillChainLevel(1) {
 }
 
-void Combo::addBlock(Block *block) {
+void Combo::addBlock(fb::Block *block) {
   blocks.push_back(block);
 }
 
@@ -15,8 +15,8 @@ int32_t Combo::size() {
   return blocks.size();
 }
 
-bool Combo::contains(Block *block) {
-  for (Block *b : blocks) {
+bool Combo::contains(fb::Block *block) {
+  for (fb::Block *b : blocks) {
     if (b == block) {
       return true;
     }

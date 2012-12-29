@@ -6,7 +6,7 @@
 
 
 #include <algorithm>
-#include <boost/bind.hpp>
+#include <functional>
 #include "LogoScene.h"
 #include "TitleScene.h"
 #include "Assets.h"
@@ -48,9 +48,9 @@ bool LogoScene::init() {
 
   texture->setAliasTexParameters();
 
-  claw::tween::single_tweener timerTweener(timer, 0, 5, claw::tween::easing_linear::ease_out);
-  timerTweener.on_finished(boost::bind(&LogoScene::onTimerFinished, this));
-  tweeners.insert(timerTweener);
+//  claw::tween::single_tweener timerTweener(timer, 0, 5, claw::tween::easing_linear::ease_out);
+//  timerTweener.on_finished(std::bind(&LogoScene::onTimerFinished, this));
+//  tweeners.insert(timerTweener);
 
   CCSprite *canvas = CCSprite::createWithTexture(texture);
   canvas->setAnchorPoint(ccp(0, 0));
@@ -110,7 +110,8 @@ void LogoScene::update(float dt) {
       texture->setPixelAt(CCPointMake(x, y), ccc4(std::min(m + y, 255), std::min(m + x, 255), std::min(m + x + y, 255), 255));
     }
   }
-  tweeners.update(dt);
+
+//  tweeners.update(dt);
 
   texture->apply();
 }

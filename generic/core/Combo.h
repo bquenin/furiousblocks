@@ -9,15 +9,15 @@ class Combo {
 private:
 protected:
 public:
-  std::vector<Block *> blocks;
+    std::vector<fb::Block *> blocks;
   int32_t owner;
   int32_t skillChainLevel;
   int32_t x;
   int32_t y;
   Combo(int32_t owner);
-  void addBlock(Block *block);
+  void addBlock(fb::Block *block);
   int32_t size();
-  bool contains(Block *block);
+  bool contains(fb::Block *block);
 };
 
 #endif //__Combo_H_

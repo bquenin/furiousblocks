@@ -35,6 +35,8 @@ public:
   void creditsAction(CCObject *sender);
   void musicSwitchAction(CCObject *sender);
   void quitAction(CCObject *sender);
+  void logInAction(CCObject *sender);
+  void logOutAction(CCObject *sender);
 };
 
 

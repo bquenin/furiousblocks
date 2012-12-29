@@ -19,7 +19,9 @@
 #include "SimpleAudioEngine.h"
 #include "Assets.h"
 #include "AppDelegate.h"
-#include <boost/bind.hpp>
+#include <functional>
+
+using namespace std::placeholders;
 
 std::vector<std::vector<BlockType>> TutorialScene::empty = {
     {BlockType::TUTORIAL, BlockType::TUTORIAL, BlockType::TUTORIAL, BlockType::TUTORIAL, BlockType::TUTORIAL, BlockType::TUTORIAL}
@@ -256,7 +258,7 @@ void TutorialScene::update(float dt) {
   // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-      Block *current = panel.blocks[x][y];
+        fb::Block *current = panel.blocks[x][y];
       if (current == nullptr) {
         grid[x][y]->setVisible(false);
         continue;
@@ -309,7 +311,7 @@ void TutorialScene::onGameOver() {
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       if (y > 0) {
-        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, 2, boost::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
+        tweeners.insert(claw::tween::single_tweener(grid[x][y]->getPositionY(), random() % 350 + Assets::designResolutionSize.height + yOffset + y * Assets::TILE_SIZE, 2, std::bind(&CCNode::setPositionY, grid[x][y], _1), claw::tween::easing_bounce::ease_in));
       }
     }
   }

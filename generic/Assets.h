@@ -15,7 +15,7 @@
 #include "cocos-ext.h"
 #include "SimpleAudioEngine.h"
 #include "Animation.h"
-#include "Block.h"
+#include "core/Block.h"
 #include "NonLoopingAnimation.h"
 
 using namespace cocos2d;
@@ -32,7 +32,7 @@ public:
 
   void load();
 
-  CCSpriteFrame *getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking);
+  CCSpriteFrame *getBlockFrame(fb::Block *blockSituation, int64_t tick, bool compressed, bool panicking);
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
 
   // Assets

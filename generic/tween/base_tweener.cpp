@@ -27,6 +27,7 @@
  * \author Julien Jorge
  */
 #include "base_tweener.hpp"
+#include <cassert>
 
 /*----------------------------------------------------------------------------*/
 /**

@@ -165,7 +165,7 @@ void Assets::load() {
   CURSOR = new Animation(16, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 }
 
-CCSpriteFrame *Assets::getBlockFrame(Block *blockSituation, int64_t tick, bool compressed, bool panicking) {
+CCSpriteFrame *Assets::getBlockFrame(fb::Block *blockSituation, int64_t tick, bool compressed, bool panicking) {
   NonLoopingAnimation *currentAnimation = animations[blockSituation->id];
   BlockState state = blockSituation->state;
   BlockType type = blockSituation->type;
