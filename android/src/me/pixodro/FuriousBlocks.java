@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
-import com.facebook.LoggingBehavior;
 import com.facebook.Session;
 import com.facebook.SessionState;
-import com.facebook.Settings;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 public class FuriousBlocks extends Cocos2dxActivity {
   private static FuriousBlocks me = null;
+
   static {
     System.loadLibrary("furiousblocks");
   }
@@ -24,13 +23,15 @@ public class FuriousBlocks extends Cocos2dxActivity {
   private PowerManager.WakeLock wakeLock;
 
   protected void onCreate(Bundle savedInstanceState) {
-    me = this;
     super.onCreate(savedInstanceState);
+    me = this;
+
+    // Wake lock
     PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
     wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "WakeLock Tag");
 
-    Settings.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
-
+    // Facebook
+//    Settings.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
     Session session = Session.getActiveSession();
     if (session == null) {
       if (savedInstanceState != null) {
@@ -83,6 +84,19 @@ public class FuriousBlocks extends Cocos2dxActivity {
     Session.saveSession(session, outState);
   }
 
+  private class SessionStatusCallback implements Session.StatusCallback {
+    @Override
+    public void call(Session session, SessionState state, Exception exception) {
+      facebookSessionStatusCallback(state.toString(), session.getAccessToken());
+    }
+  }
+
+  public static void openURL(String url) {
+    Intent intent = new Intent(Intent.ACTION_VIEW);
+    intent.setData(Uri.parse(url));
+    me.startActivity(intent);
+  }
+
   public static void onClickLogin() {
     Session session = Session.getActiveSession();
     if (!session.isOpened() && !session.isClosed()) {
@@ -99,15 +113,5 @@ public class FuriousBlocks extends Cocos2dxActivity {
     }
   }
 
-  private class SessionStatusCallback implements Session.StatusCallback {
-    @Override
-    public void call(Session session, SessionState state, Exception exception) {
-    }
-  }
-
-  public static void openURL(String url) {
-    Intent intent = new Intent(Intent.ACTION_VIEW);
-    intent.setData(Uri.parse(url));
-    me.startActivity(intent);
-  }
+  private native void facebookSessionStatusCallback(String sessionStatus, String accessToken);
 }

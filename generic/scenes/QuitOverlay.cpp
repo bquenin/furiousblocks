@@ -8,7 +8,6 @@
 #include "QuitOverlay.h"
 #include "TitleScene.h"
 #include "Assets.h"
-#include "AppDelegate.h"
 
 using namespace cocos2d;
 

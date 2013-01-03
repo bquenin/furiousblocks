@@ -11,7 +11,6 @@
 #include "CCTexture2DMutable.h"
 #include "SimpleAudioEngine.h"
 
-
 using namespace cocos2d;
 using namespace CocosDenshion;
 

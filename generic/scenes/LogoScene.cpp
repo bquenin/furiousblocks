@@ -10,7 +10,6 @@
 #include "LogoScene.h"
 #include "TitleScene.h"
 #include "Assets.h"
-#include "easing_linear.hpp"
 
 LogoScene::LogoScene() {
   for (int i = 0; i < num_blobs; i++) {

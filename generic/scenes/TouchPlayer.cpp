@@ -7,7 +7,6 @@
 
 #include "TouchPlayer.h"
 #include "AbstractPanelScene.h"
-#include "MoveType.h"
 #include "Assets.h"
 
 TouchPlayer::TouchPlayer()

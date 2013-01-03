@@ -1087,8 +1087,6 @@
 		D2956393167550A60034C630 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956392167550A60034C630 /* Icon.png */; };
 		D2956397167551270034C630 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D2956396167551270034C630 /* Icon-72.png */; };
 		D29563991675516B0034C630 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D29563981675516B0034C630 /* Icon@2x.png */; };
-		D2B791DC168B7484009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
-		D2B791DD168B7494009769E2 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B791D9168B744D009769E2 /* boost.framework */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
 		D2BD39AE15C5D0A90038E59C /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398315C5D0A90038E59C /* Move.cpp */; };
@@ -1642,7 +1640,6 @@
 		D2956392167550A60034C630 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		D2956396167551270034C630 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		D29563981675516B0034C630 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		D2B791D9168B744D009769E2 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = boost/framework/boost.framework; sourceTree = "<group>"; };
 		D2BD396815C5D0A90038E59C /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
 		D2BD396915C5D0A90038E59C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		D2BD396D15C5D0A90038E59C /* BlockState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockState.h; sourceTree = "<group>"; };
@@ -1677,7 +1674,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B791DC168B7484009769E2 /* boost.framework in Frameworks */,
 				D203E32C16886C1C00FC317B /* CFNetwork.framework in Frameworks */,
 				D203E32D16886C1C00FC317B /* SystemConfiguration.framework in Frameworks */,
 				02BAEEB9159E5AAB00BCA0C3 /* QuartzCore.framework in Frameworks */,
@@ -1696,7 +1692,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B791DD168B7494009769E2 /* boost.framework in Frameworks */,
 				D203E32E16886C2700FC317B /* CFNetwork.framework in Frameworks */,
 				D203E32F16886C2700FC317B /* SystemConfiguration.framework in Frameworks */,
 				D261DBF7167DF531008C6503 /* QuartzCore.framework in Frameworks */,
@@ -1821,7 +1816,6 @@
 		02E20FA5159E492E00CB0ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D2B791D9168B744D009769E2 /* boost.framework */,
 				D203E32816886BEF00FC317B /* SystemConfiguration.framework */,
 				D203E32616886BE400FC317B /* CFNetwork.framework */,
 				02E20FA6159E492E00CB0ADA /* QuartzCore.framework */,
@@ -4430,9 +4424,22 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
+					"/Users/bquenin/poco-1.5.0/Foundation/include",
+					"/Users/bquenin/poco-1.5.0/JSON/include",
+					"/Users/bquenin/poco-1.5.0/Net/include",
+					"/Users/bquenin/poco-1.5.0/XML/include",
+					"/Users/bquenin/poco-1.5.0/Util/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"";
+				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*][arch=armv7]" = (
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/bquenin/poco-1.5.0/lib/iPhoneOS/armv7",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/bquenin/poco-1.5.0/lib/iPhoneSimulator/i686",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -4462,9 +4469,22 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
+					"/Users/bquenin/poco-1.5.0/Foundation/include",
+					"/Users/bquenin/poco-1.5.0/JSON/include",
+					"/Users/bquenin/poco-1.5.0/Net/include",
+					"/Users/bquenin/poco-1.5.0/XML/include",
+					"/Users/bquenin/poco-1.5.0/Util/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"";
+				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*][arch=armv7]" = (
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/bquenin/poco-1.5.0/lib/iPhoneOS/armv7",
+				);
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/bquenin/poco-1.5.0/lib/iPhoneSimulator/i686",
+				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-lxml2",

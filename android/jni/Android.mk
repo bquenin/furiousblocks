@@ -17,16 +17,28 @@ LOCAL_MODULE := furiousblocks_shared
 LOCAL_MODULE_FILENAME := libfuriousblocks
 
 #
+# Build flags
+#
+# LOCAL_CPPFLAGS := -std=gnu++0x -fexceptions -frtti
+#
+LOCAL_CPPFLAGS := -fexceptions
+LOCAL_CPPFLAGS += -frtti
+LOCAL_CPPFLAGS += -std=gnu++0x
+#LOCAL_CPPFLAGS += -Wall
+#LOCAL_CPPFLAGS += -pedantic
+
+#
 # Build flags for the FREEMIUM version
 #
-LOCAL_CPPFLAGS = -DFREEMIUM -std=gnu++0x -fexceptions -frtti
+LOCAL_CPPFLAGS += -DFREEMIUM
 
 #
-# Build flags for the COMMERCIAL version
+# Build flags for the DEBUG version
 #
-# LOCAL_CPPFLAGS = -std=gnu++0x -fexceptions -frtti
+LOCAL_CPPFLAGS += -DCOCOS2D_DEBUG=1
 
 LOCAL_C_INCLUDES := \
+$(LOCAL_PATH)/bootstrap \
 $(LOCAL_PATH)/../../generic \
 $(LOCAL_PATH)/../../generic/animation \
 $(LOCAL_PATH)/../../generic/core \

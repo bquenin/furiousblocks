@@ -9,8 +9,6 @@
 #include "AppDelegate.h"
 
 #include "LogoScene.h"
-#include "AdScene.h"
-#include "TitleScene.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -119,4 +117,3 @@ void AppDelegate::setLoggedIn(bool loggedIn) {
   CCUserDefault::sharedUserDefault()->setBoolForKey("loggedIn", loggedIn);
   CCUserDefault::sharedUserDefault()->flush();
 }
-

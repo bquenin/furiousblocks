@@ -12,8 +12,11 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "CreditsScene.h"
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/jni/JniHelper.h"
+#include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
+#include "me_pixodro_FuriousBlocks.h"
 #endif
 
 using namespace cocos2d;
@@ -172,7 +175,12 @@ void TitleScene::musicSwitchAction(CCObject *sender) {
 }
 
 void TitleScene::quitAction(CCObject *sender) {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
   exit(0);
+#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    terminateProcessJNI();
+#endif
 }
 
 void TitleScene::logInAction(CCObject *sender) {
@@ -209,3 +217,16 @@ void TitleScene::logOutAction(CCObject *sender) {
 #endif
 }
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+extern "C" {
+  std::string g_sessionStatus("no session status");
+  std::string g_accessToken("no access token");
+
+  JNIEXPORT void JNICALL Java_me_pixodro_FuriousBlocks_facebookSessionStatusCallback(JNIEnv *env, jobject thiz, jstring sessionStatus, jstring accessToken) {
+    g_sessionStatus = JniHelper::jstring2string(sessionStatus);
+    g_accessToken = JniHelper::jstring2string(accessToken);
+    CCLOG("sessionStatus = %s", g_sessionStatus.c_str());
+    CCLOG("accessToken= %s", g_accessToken.c_str());
+  }
+}
+#endif

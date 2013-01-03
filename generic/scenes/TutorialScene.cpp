@@ -19,7 +19,6 @@
 #include "SimpleAudioEngine.h"
 #include "Assets.h"
 #include "AppDelegate.h"
-#include <functional>
 
 using namespace std::placeholders;
 

@@ -1,3 +1,9 @@
+//
+// Created by bquenin on 11/12/12.
+//
+// To change the template use AppCode | Preferences | File Templates.
+//
+
 #include <functional>
 #include "PanelScene.h"
 #include "SimpleAudioEngine.h"
