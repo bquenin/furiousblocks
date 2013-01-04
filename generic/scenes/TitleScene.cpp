@@ -41,7 +41,7 @@ bool TitleScene::init() {
   bg->setAnchorPoint(ccp(0, 0));
   addChild(bg);
 
-  CCControlButton *logIn = CCControlButton::create(CCLabelTTF::create("   Log in", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  logIn = CCControlButton::create(CCLabelTTF::create("   Log in", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   logIn->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   logIn->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   logIn->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 120));
@@ -50,7 +50,7 @@ bool TitleScene::init() {
   logIn->setVisible(!AppDelegate::isLoggedIn());
   addChild(logIn);
 
-  CCControlButton *logOut = CCControlButton::create(CCLabelTTF::create("Log out", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  logOut = CCControlButton::create(CCLabelTTF::create("   Log out", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   logOut->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   logOut->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   logOut->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 120));
@@ -123,32 +123,20 @@ bool TitleScene::init() {
   quitButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::quitAction), CCControlEventTouchUpInside);
   addChild(quitButton);
 
-//  CCLabelTTF *musicLabel = CCLabelTTF::create("Music", "SkaterDudes.ttf", 32);
-//  musicLabel->setPosition(ccp(Assets::designResolutionSize.width / 2 - 60, Assets::designResolutionSize.height / 2 - 200));
-//  addChild(musicLabel);
-//
-//  CCControlSwitch *musicSwitch = CCControlSwitch::create
-//      (
-//          CCSprite::create("switch-mask.png"),
-//          CCSprite::create("switch-on.png"),
-//          CCSprite::create("switch-off.png"),
-//          CCSprite::create("switch-thumb.png"),
-//          CCLabelTTF::create("On", "SkaterDudes.ttf", 16),
-//          CCLabelTTF::create("Off", "SkaterDudes.ttf", 16)
-//      );
-//  musicSwitch->setScale(1.5);
-//  musicSwitch->setPosition(ccp(Assets::designResolutionSize.width / 2 + 60 , Assets::designResolutionSize.height / 2 - 200));
-//  musicSwitch->setOn(AppDelegate::musicOn);
-//  addChild(musicSwitch);
-//
-//  musicSwitch->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::musicSwitchChanged), CCControlEventValueChanged);
-
   CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));
   copyright->setColor(ccc3(10, 10, 10));
   addChild(copyright);
 
+  // Start scheduling
+  schedule(schedule_selector(TitleScene::update));
+
   return true;
+}
+
+void TitleScene::update(float dt) {
+  logIn->setVisible(!AppDelegate::isLoggedIn());
+  logOut->setVisible(AppDelegate::isLoggedIn());
 }
 
 void TitleScene::playAction(CCObject *sender) {
@@ -225,6 +213,8 @@ extern "C" {
   JNIEXPORT void JNICALL Java_me_pixodro_FuriousBlocks_facebookSessionStatusCallback(JNIEnv *env, jobject thiz, jstring sessionStatus, jstring accessToken) {
     g_sessionStatus = JniHelper::jstring2string(sessionStatus);
     g_accessToken = JniHelper::jstring2string(accessToken);
+    std::string OPENED("OPENED");
+    AppDelegate::setLoggedIn(g_sessionStatus == OPENED);
     CCLOG("sessionStatus = %s", g_sessionStatus.c_str());
     CCLOG("accessToken= %s", g_accessToken.c_str());
   }

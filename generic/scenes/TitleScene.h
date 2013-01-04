@@ -18,6 +18,8 @@ using namespace cocos2d::extension;
 class TitleScene : public cocos2d::CCLayer {
 private:
   // Ugly but convenient
+  CCControlButton *logIn;
+  CCControlButton *logOut;
   CCControlButton *musicSwitchOn;
   CCControlButton *musicSwitchOff;
 
@@ -30,6 +32,7 @@ public:
   CREATE_FUNC(TitleScene);
 
   bool init();
+  void update(float dt);
   void playAction(CCObject *sender);
   void howToPlayAction(CCObject *sender);
   void creditsAction(CCObject *sender);
