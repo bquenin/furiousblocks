@@ -1,7 +1,7 @@
 NDK_ROOT=/Users/bquenin/android-ndk-r8c
 COCOS2DX_ROOT=/Users/bquenin/cocos2d-2.0-x-2.0.4
-APP_ROOT=..
-APP_ANDROID_ROOT=$APP_ROOT/android
+APP_ROOT=../..
+APP_ANDROID_ROOT=$APP_ROOT/android/commercial
 
 echo "NDK_ROOT = $NDK_ROOT"
 echo "COCOS2DX_ROOT = $COCOS2DX_ROOT"
