@@ -167,41 +167,43 @@ void TitleScene::quitAction(CCObject *sender) {
   exit(0);
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    terminateProcessJNI();
+  terminateProcessJNI();
 #endif
 }
 
 void TitleScene::logInAction(CCObject *sender) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  CCApplication::sharedApplication()->onClickLogin();
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo minfo;
+  JniMethodInfo minfo;
 
-    if(JniHelper::getStaticMethodInfo(minfo,
-        "me/pixodro/FuriousBlocks",
-        "onClickLogin",
-        "()V"))
-    {
-        minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
-        minfo.env->DeleteLocalRef(minfo.classID);
-    }
+  if(JniHelper::getStaticMethodInfo(minfo,
+    "me/pixodro/FuriousBlocks",
+    "onClickLogin",
+    "()V"))
+  {
+    minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
+    minfo.env->DeleteLocalRef(minfo.classID);
+  }
 #endif
 }
 
 void TitleScene::logOutAction(CCObject *sender) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+  CCApplication::sharedApplication()->onClickLogout();
 #endif
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    JniMethodInfo minfo;
+  JniMethodInfo minfo;
 
-    if(JniHelper::getStaticMethodInfo(minfo,
-        "me/pixodro/FuriousBlocks",
-        "onClickLogout",
-        "()V"))
-    {
-        minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
-        minfo.env->DeleteLocalRef(minfo.classID);
-    }
+  if(JniHelper::getStaticMethodInfo(minfo,
+    "me/pixodro/FuriousBlocks",
+    "onClickLogout",
+    "()V"))
+  {
+    minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
+    minfo.env->DeleteLocalRef(minfo.classID);
+  }
 #endif
 }
 
@@ -215,8 +217,8 @@ extern "C" {
     g_accessToken = JniHelper::jstring2string(accessToken);
     std::string OPENED("OPENED");
     AppDelegate::setLoggedIn(g_sessionStatus == OPENED);
-    CCLOG("sessionStatus = %s", g_sessionStatus.c_str());
-    CCLOG("accessToken= %s", g_accessToken.c_str());
+//    CCLOG("sessionStatus = %s", g_sessionStatus.c_str());
+//    CCLOG("accessToken= %s", g_accessToken.c_str());
   }
 }
 #endif

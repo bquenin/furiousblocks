@@ -68,6 +68,8 @@ NS_CC_BEGIN
       virtual TargetPlatform getTargetPlatform();
 
       void openURL(const char *pszUrl);
+      void onClickLogin();
+      void onClickLogout();
 
     protected:
       static CCApplication *sm_pSharedApplication;

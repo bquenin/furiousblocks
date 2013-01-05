@@ -22,9 +22,11 @@
  THE SOFTWARE.
  ****************************************************************************/
 
+#import <FacebookSDK/FacebookSDK.h>
 #import "CCApplication.h"
 
 #import "CCDirectorCaller.h"
+#import "AppController.h"
 
 NS_CC_BEGIN
 
@@ -64,6 +66,17 @@ NS_CC_BEGIN
       NSString *msg = [NSString stringWithCString:pszUrl encoding:NSASCIIStringEncoding];
       NSURL *nsUrl = [NSURL URLWithString:msg];
       [[UIApplication sharedApplication] openURL:nsUrl];
+    }
+
+    void CCApplication::onClickLogin() {
+      // FBSample logic
+      // The user has initiated a login, so call the openSession method.
+      id <UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
+      [appDelegate openSessionWithAllowLoginUI:YES];
+    }
+
+    void CCApplication::onClickLogout() {
+      [FBSession.activeSession closeAndClearTokenInformation];
     }
 
     ccLanguageType CCApplication::getCurrentLanguage() {
