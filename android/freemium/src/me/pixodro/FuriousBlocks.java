@@ -13,6 +13,7 @@ public class FuriousBlocks extends Cocos2dxActivity {
   private static FuriousBlocks me = null;
 
   static {
+    System.loadLibrary("gnustl_shared");
     System.loadLibrary("furiousblocks");
   }
 

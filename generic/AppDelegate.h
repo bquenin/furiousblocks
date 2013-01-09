@@ -34,6 +34,9 @@ public:
   static void setLoggedIn(bool loggedIn);
   static bool isLoggedIn();
 
+  static std::string getAccessToken();
+  static void setAccessToken(const std::string accessToken);
+
   /**
   @brief    Implement CCDirector and CCScene init code here.
   @return true    Initialize success, app continue.
@@ -52,6 +55,7 @@ public:
   @param  the pointer of the application
   */
   virtual void applicationWillEnterForeground();
+
 };
 
 #endif // _APP_DELEGATE_H_

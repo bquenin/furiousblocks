@@ -9,6 +9,7 @@
 #include "AppDelegate.h"
 
 #include "LogoScene.h"
+#include "Poco/Net/SSLManager.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -22,6 +23,8 @@ AppDelegate::~AppDelegate() {
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+  Poco::Net::initializeSSL();
+
   // seed for random
   srand(static_cast<unsigned int>(time(NULL)));
 
@@ -83,7 +86,7 @@ int32_t AppDelegate::getGamesLeft() {
 
   // New day ? If so, reset the number of left games
   time_t t = time(0); // get time now
-  struct tm * now = localtime( & t );
+  struct tm *now = localtime(&t);
   if (CCUserDefault::sharedUserDefault()->getIntegerForKey("lastDay", 1) != now->tm_yday) {
     // Update the last day
     CCUserDefault::sharedUserDefault()->setIntegerForKey("lastDay", now->tm_yday);
@@ -117,3 +120,13 @@ void AppDelegate::setLoggedIn(bool loggedIn) {
   CCUserDefault::sharedUserDefault()->setBoolForKey("loggedIn", loggedIn);
   CCUserDefault::sharedUserDefault()->flush();
 }
+
+std::string AppDelegate::getAccessToken() {
+  return CCUserDefault::sharedUserDefault()->getStringForKey("accessToken", "none");
+}
+
+void AppDelegate::setAccessToken(const std::string accessToken) {
+  CCUserDefault::sharedUserDefault()->setStringForKey("accessToken", accessToken);
+  CCUserDefault::sharedUserDefault()->flush();
+}
+

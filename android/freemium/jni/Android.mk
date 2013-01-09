@@ -1,4 +1,5 @@
 LOCAL_PATH := $(call my-dir)
+POCO_ROOT = /Users/bquenin/poco-1.5.0
 
 #
 # libgame
@@ -11,12 +12,17 @@ LOCAL_MODULE_FILENAME := libfuriousblocks
 #
 # Build flags
 #
-# LOCAL_CPPFLAGS := -std=gnu++0x -fexceptions -frtti
-#
-LOCAL_CPPFLAGS := -fexceptions
-LOCAL_CPPFLAGS += -frtti
-LOCAL_CPPFLAGS += -std=gnu++0x
+LOCAL_CPPFLAGS := -fexceptions -frtti -std=gnu++0x
 LOCAL_CPPFLAGS += -DFREEMIUM
+#LOCAL_CPPFLAGS += -O2 -DNDEBUG -fomit-frame-pointer
+LOCAL_CPPFLAGS += -DCOCOS2D_DEBUG -DDEBUG
+
+LOCAL_CFLAGS := -DPOCO_ANDROID -DPOCO_NO_FPENVIRONMENT -DPOCO_NO_WSTRING -DPOCO_NO_SHAREDMEMORY
+
+LOCAL_LDFLAGS := $(POCO_ROOT)/lib/Android/armeabi/libPocoUtil.a \
+$(POCO_ROOT)/lib/Android/armeabi/libPocoNet.a \
+$(POCO_ROOT)/lib/Android/armeabi/libPocoFoundation.a \
+$(POCO_ROOT)/lib/Android/armeabi/libPocoXML.a
 
 LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/bootstrap \
@@ -27,7 +33,13 @@ $(LOCAL_PATH)/../../../generic/ext \
 $(LOCAL_PATH)/../../../generic/scenes \
 $(LOCAL_PATH)/../../../generic/script \
 $(LOCAL_PATH)/../../../generic/tween/easing \
-$(LOCAL_PATH)/../../../generic/tween
+$(LOCAL_PATH)/../../../generic/tween \
+
+LOCAL_C_INCLUDES += $(POCO_ROOT)/Foundation/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/JSON/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/Net/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/XML/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/Util/include
 
 LOCAL_SRC_FILES := \
 bootstrap/main.cpp \

@@ -35,6 +35,7 @@ static AppDelegate s_sharedApplication;
   switch (state) {
     case FBSessionStateOpen: {
       AppDelegate::setLoggedIn(true);
+      AppDelegate::setAccessToken(std::string([[FBSession.activeSession accessToken] cStringUsingEncoding:NSUTF8StringEncoding]));
 
       // FBSample logic
       // Pre-fetch and cache the friends for the friend picker as soon as possible to improve
@@ -47,6 +48,7 @@ static AppDelegate s_sharedApplication;
 
     case FBSessionStateClosed: {
       AppDelegate::setLoggedIn(false);
+      AppDelegate::setAccessToken("none");
       // FBSample logic
       // Once the user has logged out, we want them to be looking at the root view.
       [FBSession.activeSession closeAndClearTokenInformation];
@@ -55,6 +57,7 @@ static AppDelegate s_sharedApplication;
 
     case FBSessionStateClosedLoginFailed: {
       AppDelegate::setLoggedIn(false);
+      AppDelegate::setAccessToken("none");
       // if the token goes invalid we want to switch right back to
       // the login view, however we do it with a slight delay in order to
       // account for a race between this and the login view disappearing

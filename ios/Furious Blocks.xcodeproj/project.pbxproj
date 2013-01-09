@@ -76,6 +76,7 @@
 		7969E7D5632E663CDF20EFC1 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEDC331FA70113F17F87 /* AppiraterLocalizable.strings */; };
 		7969E7F08F735EE42D26221C /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E91111763AEDA6679CC5 /* AppiraterLocalizable.strings */; };
 		7969E8578005E112FFF0E8A7 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1FE0DC7CFBDAFC520A0 /* Appirater.m */; };
+		7969E86718637B161B33382F /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969E8FDA05207335D97FEBB /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */; };
 		7969E92B47BA9F805A21F4F4 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E37AB5E85853A5EE3CF6 /* AppiraterLocalizable.strings */; };
 		7969E948EBF2E6778AD7B251 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E37AB5E85853A5EE3CF6 /* AppiraterLocalizable.strings */; };
@@ -84,6 +85,7 @@
 		7969E9F9DD015373C2282362 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEC1B6D9FE57016FBB07 /* AppiraterLocalizable.strings */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA84AF4E61959739ACEE /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0960FB1143A3D5EDA2A /* AppiraterLocalizable.strings */; };
+		7969EAA65F7587E0386426FE /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EACB2CF570960D037656 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E79960EAF9FDDBA0C804 /* blocks.png */; };
 		7969EAD027BF3A024ED76CC5 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969ED7A658A4EA08E48CD90 /* AppiraterLocalizable.strings */; };
 		7969EAF9563583C85B6E3778 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2EF12BEFAF83FBFD574 /* AppiraterLocalizable.strings */; };
@@ -100,6 +102,7 @@
 		7969EB7560835402674ABD3F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969EB7ABA416427D5DE3C32 /* Joystix.ttf */; };
 		7969EB922E97113CC9F2E8CF /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EBC399AF966B0FC39887 /* AppiraterLocalizable.strings */; };
 		7969EBD459348DD1E919094F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7969EFF58FD8EAB0592CEB0B /* README.md */; };
+		7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EC397CD44E44CFAE77D2 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E988765D856E383CF91C /* AppiraterLocalizable.strings */; };
 		7969EC64447A72014E071C04 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E5C65B2183AB69EEDD63 /* AppiraterLocalizable.strings */; };
 		7969EC91558C6C6690006AE8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7969EFF58FD8EAB0592CEB0B /* README.md */; };
@@ -112,6 +115,7 @@
 		7969ED57E7AFBCA8634F3778 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E91111763AEDA6679CC5 /* AppiraterLocalizable.strings */; };
 		7969ED6BA771DA9B399CB9FE /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1FE0DC7CFBDAFC520A0 /* Appirater.m */; };
 		7969ED8ECD5725C623A46A55 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E3FAFA1973E52F707840 /* AppiraterLocalizable.strings */; };
+		7969EDD992FFE86272E82942 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EDDE5E2C3B8DE8D46A12 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E790064CD16D49330DD4 /* AppiraterLocalizable.strings */; };
 		7969EE07DEAC710B86AF67AF /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEC1B6D9FE57016FBB07 /* AppiraterLocalizable.strings */; };
 		7969EE0B72DD5902D633346A /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E0A3A7B96B0347359069 /* LogoScene.cpp */; };
@@ -166,6 +170,42 @@
 		D23E7DA4164FCB71003B565D /* TouchPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9A164FCB71003B565D /* TouchPlayer.cpp */; };
 		D23E7DA5164FCB71003B565D /* TutorialPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9C164FCB71003B565D /* TutorialPlayer.cpp */; };
 		D23E7DA6164FCB71003B565D /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9E164FCB71003B565D /* TutorialScene.cpp */; };
+		D2522C1C169B7B1200C846AB /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C15169B7B1200C846AB /* libPocoCrypto.a */; };
+		D2522C1D169B7B1200C846AB /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C15169B7B1200C846AB /* libPocoCrypto.a */; };
+		D2522C1E169B7B1200C846AB /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C15169B7B1200C846AB /* libPocoCrypto.a */; };
+		D2522C1F169B7B1200C846AB /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C15169B7B1200C846AB /* libPocoCrypto.a */; };
+		D2522C20169B7B1200C846AB /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C16169B7B1200C846AB /* libPocoFoundation.a */; };
+		D2522C21169B7B1200C846AB /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C16169B7B1200C846AB /* libPocoFoundation.a */; };
+		D2522C22169B7B1200C846AB /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C16169B7B1200C846AB /* libPocoFoundation.a */; };
+		D2522C23169B7B1200C846AB /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C16169B7B1200C846AB /* libPocoFoundation.a */; };
+		D2522C24169B7B1200C846AB /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C17169B7B1200C846AB /* libPocoJSON.a */; };
+		D2522C25169B7B1200C846AB /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C17169B7B1200C846AB /* libPocoJSON.a */; };
+		D2522C26169B7B1200C846AB /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C17169B7B1200C846AB /* libPocoJSON.a */; };
+		D2522C27169B7B1200C846AB /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C17169B7B1200C846AB /* libPocoJSON.a */; };
+		D2522C28169B7B1200C846AB /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C18169B7B1200C846AB /* libPocoNet.a */; };
+		D2522C29169B7B1200C846AB /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C18169B7B1200C846AB /* libPocoNet.a */; };
+		D2522C2A169B7B1200C846AB /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C18169B7B1200C846AB /* libPocoNet.a */; };
+		D2522C2B169B7B1200C846AB /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C18169B7B1200C846AB /* libPocoNet.a */; };
+		D2522C2C169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C19169B7B1200C846AB /* libPocoNetSSL.a */; };
+		D2522C2D169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C19169B7B1200C846AB /* libPocoNetSSL.a */; };
+		D2522C2E169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C19169B7B1200C846AB /* libPocoNetSSL.a */; };
+		D2522C2F169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C19169B7B1200C846AB /* libPocoNetSSL.a */; };
+		D2522C30169B7B1200C846AB /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1A169B7B1200C846AB /* libPocoUtil.a */; };
+		D2522C31169B7B1200C846AB /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1A169B7B1200C846AB /* libPocoUtil.a */; };
+		D2522C32169B7B1200C846AB /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1A169B7B1200C846AB /* libPocoUtil.a */; };
+		D2522C33169B7B1200C846AB /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1A169B7B1200C846AB /* libPocoUtil.a */; };
+		D2522C34169B7B1200C846AB /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1B169B7B1200C846AB /* libPocoXML.a */; };
+		D2522C35169B7B1200C846AB /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1B169B7B1200C846AB /* libPocoXML.a */; };
+		D2522C36169B7B1200C846AB /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1B169B7B1200C846AB /* libPocoXML.a */; };
+		D2522C37169B7B1200C846AB /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1B169B7B1200C846AB /* libPocoXML.a */; };
+		D2522C44169B7D0800C846AB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C42169B7D0800C846AB /* libcrypto.a */; };
+		D2522C45169B7D0800C846AB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C42169B7D0800C846AB /* libcrypto.a */; };
+		D2522C46169B7D0800C846AB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C42169B7D0800C846AB /* libcrypto.a */; };
+		D2522C47169B7D0800C846AB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C42169B7D0800C846AB /* libcrypto.a */; };
+		D2522C48169B7D0800C846AB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C43169B7D0800C846AB /* libssl.a */; };
+		D2522C49169B7D0800C846AB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C43169B7D0800C846AB /* libssl.a */; };
+		D2522C4A169B7D0800C846AB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C43169B7D0800C846AB /* libssl.a */; };
+		D2522C4B169B7D0800C846AB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C43169B7D0800C846AB /* libssl.a */; };
 		D254FDEA1674BE200072CE69 /* AdScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D254FDE91674BE200072CE69 /* AdScene.cpp */; };
 		D25893531673C763003E3F59 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258918D1673C763003E3F59 /* CCAction.cpp */; };
 		D25893541673C763003E3F59 /* CCActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258918F1673C763003E3F59 /* CCActionCamera.cpp */; };
@@ -1174,6 +1214,7 @@
 		7969E9A8F6D56F40491EC91A /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		7969E9C7392FD52EA5A9C52B /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		7969EA45FDA5B84C72EBAC72 /* rootcert.pem */ = {isa = PBXFileReference; lastKnownFileType = file.pem; path = rootcert.pem; sourceTree = "<group>"; };
 		7969EAE2E463C92DB705A83A /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuitOverlay.cpp; sourceTree = "<group>"; };
 		7969EB7ABA416427D5DE3C32 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Joystix.ttf; sourceTree = "<group>"; };
@@ -1238,6 +1279,15 @@
 		D23E7D9D164FCB71003B565D /* TutorialPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPlayer.h; sourceTree = "<group>"; };
 		D23E7D9E164FCB71003B565D /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TutorialScene.cpp; sourceTree = "<group>"; };
 		D23E7D9F164FCB71003B565D /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
+		D2522C15169B7B1200C846AB /* libPocoCrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoCrypto.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoCrypto.a"; sourceTree = "<group>"; };
+		D2522C16169B7B1200C846AB /* libPocoFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoFoundation.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoFoundation.a"; sourceTree = "<group>"; };
+		D2522C17169B7B1200C846AB /* libPocoJSON.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoJSON.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoJSON.a"; sourceTree = "<group>"; };
+		D2522C18169B7B1200C846AB /* libPocoNet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoNet.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoNet.a"; sourceTree = "<group>"; };
+		D2522C19169B7B1200C846AB /* libPocoNetSSL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoNetSSL.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoNetSSL.a"; sourceTree = "<group>"; };
+		D2522C1A169B7B1200C846AB /* libPocoUtil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoUtil.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoUtil.a"; sourceTree = "<group>"; };
+		D2522C1B169B7B1200C846AB /* libPocoXML.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoXML.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoXML.a"; sourceTree = "<group>"; };
+		D2522C42169B7D0800C846AB /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../ios-openssl/lib/libcrypto.a"; sourceTree = "<group>"; };
+		D2522C43169B7D0800C846AB /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../ios-openssl/lib/libssl.a"; sourceTree = "<group>"; };
 		D254FDE91674BE200072CE69 /* AdScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdScene.cpp; sourceTree = "<group>"; };
 		D254FDEC1674BE7C0072CE69 /* AdScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdScene.h; sourceTree = "<group>"; };
 		D258918D1673C763003E3F59 /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -1714,6 +1764,15 @@
 				02BAEEBF159E5AAB00BCA0C3 /* Foundation.framework in Frameworks */,
 				02BAEEC0159E5AAB00BCA0C3 /* CoreGraphics.framework in Frameworks */,
 				D25893A81673C763003E3F59 /* libcurl.a in Frameworks */,
+				D2522C1E169B7B1200C846AB /* libPocoCrypto.a in Frameworks */,
+				D2522C22169B7B1200C846AB /* libPocoFoundation.a in Frameworks */,
+				D2522C26169B7B1200C846AB /* libPocoJSON.a in Frameworks */,
+				D2522C2A169B7B1200C846AB /* libPocoNet.a in Frameworks */,
+				D2522C2E169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */,
+				D2522C32169B7B1200C846AB /* libPocoUtil.a in Frameworks */,
+				D2522C36169B7B1200C846AB /* libPocoXML.a in Frameworks */,
+				D2522C46169B7D0800C846AB /* libcrypto.a in Frameworks */,
+				D2522C4A169B7D0800C846AB /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1736,6 +1795,15 @@
 				D261DBFD167DF531008C6503 /* Foundation.framework in Frameworks */,
 				D261DBFE167DF531008C6503 /* CoreGraphics.framework in Frameworks */,
 				D261DBFF167DF531008C6503 /* libcurl.a in Frameworks */,
+				D2522C1F169B7B1200C846AB /* libPocoCrypto.a in Frameworks */,
+				D2522C23169B7B1200C846AB /* libPocoFoundation.a in Frameworks */,
+				D2522C27169B7B1200C846AB /* libPocoJSON.a in Frameworks */,
+				D2522C2B169B7B1200C846AB /* libPocoNet.a in Frameworks */,
+				D2522C2F169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */,
+				D2522C33169B7B1200C846AB /* libPocoUtil.a in Frameworks */,
+				D2522C37169B7B1200C846AB /* libPocoXML.a in Frameworks */,
+				D2522C47169B7D0800C846AB /* libcrypto.a in Frameworks */,
+				D2522C4B169B7D0800C846AB /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1758,6 +1826,15 @@
 				D261DD02167DF54D008C6503 /* Foundation.framework in Frameworks */,
 				D261DD03167DF54D008C6503 /* CoreGraphics.framework in Frameworks */,
 				D261DD04167DF54D008C6503 /* libcurl.a in Frameworks */,
+				D2522C1C169B7B1200C846AB /* libPocoCrypto.a in Frameworks */,
+				D2522C20169B7B1200C846AB /* libPocoFoundation.a in Frameworks */,
+				D2522C24169B7B1200C846AB /* libPocoJSON.a in Frameworks */,
+				D2522C28169B7B1200C846AB /* libPocoNet.a in Frameworks */,
+				D2522C2C169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */,
+				D2522C30169B7B1200C846AB /* libPocoUtil.a in Frameworks */,
+				D2522C34169B7B1200C846AB /* libPocoXML.a in Frameworks */,
+				D2522C44169B7D0800C846AB /* libcrypto.a in Frameworks */,
+				D2522C48169B7D0800C846AB /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1780,6 +1857,15 @@
 				D261DE07167DF558008C6503 /* Foundation.framework in Frameworks */,
 				D261DE08167DF558008C6503 /* CoreGraphics.framework in Frameworks */,
 				D261DE09167DF558008C6503 /* libcurl.a in Frameworks */,
+				D2522C1D169B7B1200C846AB /* libPocoCrypto.a in Frameworks */,
+				D2522C21169B7B1200C846AB /* libPocoFoundation.a in Frameworks */,
+				D2522C25169B7B1200C846AB /* libPocoJSON.a in Frameworks */,
+				D2522C29169B7B1200C846AB /* libPocoNet.a in Frameworks */,
+				D2522C2D169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */,
+				D2522C31169B7B1200C846AB /* libPocoUtil.a in Frameworks */,
+				D2522C35169B7B1200C846AB /* libPocoXML.a in Frameworks */,
+				D2522C45169B7D0800C846AB /* libcrypto.a in Frameworks */,
+				D2522C49169B7D0800C846AB /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1806,6 +1892,7 @@
 				7969E80C20BD83237A8A5BC8 /* coopblack64.png */,
 				7969EB7ABA416427D5DE3C32 /* Joystix.ttf */,
 				D25894031673CB44003E3F59 /* SkaterDudes.ttf */,
+				7969EA45FDA5B84C72EBAC72 /* rootcert.pem */,
 			);
 			path = assets;
 			sourceTree = SOURCE_ROOT;
@@ -1857,6 +1944,15 @@
 		02E20FA5159E492E00CB0ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2522C42169B7D0800C846AB /* libcrypto.a */,
+				D2522C43169B7D0800C846AB /* libssl.a */,
+				D2522C15169B7B1200C846AB /* libPocoCrypto.a */,
+				D2522C16169B7B1200C846AB /* libPocoFoundation.a */,
+				D2522C17169B7B1200C846AB /* libPocoJSON.a */,
+				D2522C18169B7B1200C846AB /* libPocoNet.a */,
+				D2522C19169B7B1200C846AB /* libPocoNetSSL.a */,
+				D2522C1A169B7B1200C846AB /* libPocoUtil.a */,
+				D2522C1B169B7B1200C846AB /* libPocoXML.a */,
 				D2E53EBA169736BC0064BD3C /* Accounts.framework */,
 				D2E53EBB169736BC0064BD3C /* AdSupport.framework */,
 				D2E53EBC169736BC0064BD3C /* Social.framework */,
@@ -3171,6 +3267,7 @@
 				7969E583D8E9EC07C5A67BBF /* AppiraterLocalizable.strings in Resources */,
 				7969E64ACCCCA15AE65EDB73 /* AppiraterLocalizable.strings in Resources */,
 				D2E53EB71697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
+				7969E86718637B161B33382F /* rootcert.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3219,6 +3316,7 @@
 				7969E9F9DD015373C2282362 /* AppiraterLocalizable.strings in Resources */,
 				7969E61F0F7147A340F701C7 /* AppiraterLocalizable.strings in Resources */,
 				D2E53EB81697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
+				7969EDD992FFE86272E82942 /* rootcert.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3267,6 +3365,7 @@
 				7969EE07DEAC710B86AF67AF /* AppiraterLocalizable.strings in Resources */,
 				7969EA84AF4E61959739ACEE /* AppiraterLocalizable.strings in Resources */,
 				D2E53EB51697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
+				7969EAA65F7587E0386426FE /* rootcert.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3315,6 +3414,7 @@
 				7969E78ABAC91726449FCD40 /* AppiraterLocalizable.strings in Resources */,
 				7969EFCF6EAE89991B40D45E /* AppiraterLocalizable.strings in Resources */,
 				D2E53EB61697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
+				7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4433,6 +4533,13 @@
 					FREEMIUM,
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../poco-1.5.0/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
+					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = FuriousBlocksFreeDistribution;
 				PROVISIONING_PROFILE = "2491854E-B902-4AC4-BF2D-AF59FB3E2DC4";
 			};
@@ -4455,6 +4562,13 @@
 					FREEMIUM,
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../poco-1.5.0/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
+					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = FuriousBlocksFreeDistribution;
 				PROVISIONING_PROFILE = "2491854E-B902-4AC4-BF2D-AF59FB3E2DC4";
 			};
@@ -4482,17 +4596,20 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
-					"/Users/bquenin/poco-1.5.0/Foundation/include",
-					"/Users/bquenin/poco-1.5.0/JSON/include",
-					"/Users/bquenin/poco-1.5.0/Net/include",
-					"/Users/bquenin/poco-1.5.0/XML/include",
-					"/Users/bquenin/poco-1.5.0/Util/include",
+					"/Users/bquenin/poco-1.5.0-all/Foundation/include",
+					"/Users/bquenin/poco-1.5.0-all/JSON/include",
+					"/Users/bquenin/poco-1.5.0-all/Net/include",
+					"/Users/bquenin/poco-1.5.0-all/XML/include",
+					"/Users/bquenin/poco-1.5.0-all/Util/include",
+					"/Users/bquenin/poco-1.5.0-all/NetSSL_OpenSSL/include",
+					"/Users/bquenin/poco-1.5.0-all/Crypto/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"";
 				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*][arch=armv7]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/poco-1.5.0/lib/iPhoneOS/armv7",
+					"/Users/bquenin/poco-1.5.0-all/lib/iPhoneOS/armv7",
+					"/Users/bquenin/workspace/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -4528,17 +4645,20 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
-					"/Users/bquenin/poco-1.5.0/Foundation/include",
-					"/Users/bquenin/poco-1.5.0/JSON/include",
-					"/Users/bquenin/poco-1.5.0/Net/include",
-					"/Users/bquenin/poco-1.5.0/XML/include",
-					"/Users/bquenin/poco-1.5.0/Util/include",
+					"/Users/bquenin/poco-1.5.0-all/Foundation/include",
+					"/Users/bquenin/poco-1.5.0-all/JSON/include",
+					"/Users/bquenin/poco-1.5.0-all/Net/include",
+					"/Users/bquenin/poco-1.5.0-all/XML/include",
+					"/Users/bquenin/poco-1.5.0-all/Util/include",
+					"/Users/bquenin/poco-1.5.0-all/NetSSL_OpenSSL/include",
+					"/Users/bquenin/poco-1.5.0-all/Crypto/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"";
 				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*][arch=armv7]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/poco-1.5.0/lib/iPhoneOS/armv7",
+					"/Users/bquenin/poco-1.5.0-all/lib/iPhoneOS/armv7",
+					"/Users/bquenin/workspace/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -4566,6 +4686,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../poco-1.5.0/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
+					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = FuriousBlocksCommercialDistribution;
 				PROVISIONING_PROFILE = "F26BEBE9-D4DE-470F-B37C-30C930DAA4E0";
 			};
@@ -4582,6 +4709,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../poco-1.5.0/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
+					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = FuriousBlocksCommercialDistribution;
 				PROVISIONING_PROFILE = "F26BEBE9-D4DE-470F-B37C-30C930DAA4E0";
 			};
@@ -4605,6 +4739,13 @@
 					FREEMIUM,
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../poco-1.5.0/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
+					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
 			};
@@ -4627,6 +4768,13 @@
 					FREEMIUM,
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../poco-1.5.0/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
+					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
 			};
@@ -4643,6 +4791,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../poco-1.5.0/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
+					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = FuriousBlocksCommercialDevelopment;
 				PROVISIONING_PROFILE = "";
 			};
@@ -4659,6 +4814,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../poco-1.5.0/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
+					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = FuriousBlocksCommercialDevelopment;
 				PROVISIONING_PROFILE = "";
 			};

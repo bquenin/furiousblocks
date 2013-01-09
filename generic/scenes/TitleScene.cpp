@@ -12,6 +12,16 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "CreditsScene.h"
+#include "Poco/Net/HTTPSClientSession.h"
+#include "Poco/Net/HTTPRequest.h"
+#include "Poco/Net/HTTPResponse.h"
+#include "Poco/URI.h"
+#include "Poco/StreamCopier.h"
+#include "Poco/NullStream.h"
+#include "Poco/Net/SSLManager.h"
+#include "Poco/JSON/Parser.h"
+#include "Poco/JSON/DefaultHandler.h"
+#include "Poco/JSON/JSONException.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/jni/JniHelper.h"
@@ -21,6 +31,10 @@
 
 using namespace cocos2d;
 using namespace CocosDenshion;
+
+const std::string TitleScene::FACEBOOK_URI(
+"https://graph.facebook.com/me/");
+//friends?access_token=%
 
 CCScene *TitleScene::scene() {
   CCScene *scene = CCScene::create();
@@ -123,6 +137,14 @@ bool TitleScene::init() {
   quitButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::quitAction), CCControlEventTouchUpInside);
   addChild(quitButton);
 
+  CCControlButton *testButton = CCControlButton::create(CCLabelTTF::create("test", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  testButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  testButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  testButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 360));
+  testButton->setPreferredSize(CCSizeMake(testButton->getContentSize().width + 20, 60));
+  testButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::testAction), CCControlEventTouchUpInside);
+  addChild(testButton);
+
   CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));
   copyright->setColor(ccc3(10, 10, 10));
@@ -222,3 +244,71 @@ extern "C" {
   }
 }
 #endif
+
+void TitleScene::testAction(CCObject *sender) {
+  // Create the request URI.
+  // We use the XML version of the Twitter API.
+  try {
+    // Target URI
+    Poco::URI uri("https://graph.facebook.com/me/friends?access_token=" + AppDelegate::getAccessToken());
+    std::string path(uri.getPathEtc());
+
+    // SSL Context
+    const Poco::Net::Context::Ptr context(new Poco::Net::Context(Poco::Net::Context::CLIENT_USE, "", "", "", Poco::Net::Context::VERIFY_NONE, 9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
+
+    // HTTP Session
+    Poco::Net::HTTPSClientSession session(uri.getHost(), uri.getPort(), context);
+
+    // Request
+    Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, path, Poco::Net::HTTPMessage::HTTP_1_1);
+    session.sendRequest(request);
+
+    // Response
+    Poco::Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+    std::cout << response.getStatus() << " " << response.getReason() << std::endl;
+    for (auto response_header: response) {
+      std::cout << response_header.first << " = " << response_header.second << std::endl;
+    }
+
+    std::ostringstream responseBody;
+    if (response.getStatus() != Poco::Net::HTTPResponse::HTTP_UNAUTHORIZED) {
+//      Poco::StreamCopier::copyStream(rs, responseBody);
+      Poco::StreamCopier::copyStream(rs, std::cout);
+    } else {
+      Poco::NullOutputStream null;
+      Poco::StreamCopier::copyStream(rs, null);
+      return;
+    }
+
+//    // Parsing JSON response
+//    Poco::JSON::DefaultHandler handler;
+//    Poco::JSON::Parser parser;
+//
+//    parser.setHandler(&handler);
+//    parser.parse(responseBody.str());
+//    Poco::DynamicAny result = handler.result();
+//
+//    Poco::JSON::Object::Ptr obj;
+//    //if (result.type() == typeid(Poco::JSON::Object::Ptr)) {
+//      obj = result.extract<Poco::JSON::Object::Ptr>();
+//    //}
+//
+//    // Serialize to string
+//      std::ostringstream out;
+//    obj->stringify(out);
+  } catch (Poco::Exception& exc) {
+    CCLOG("error =  %s", exc.displayText().c_str());
+  }
+
+//  char ch;
+//
+//  while (rs) { // in will be false when eof is reached
+//    rs.get(ch);
+//    if (rs) {
+//      std::cout << ch;
+//    }
+//  }
+
+}
+
