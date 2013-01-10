@@ -1,5 +1,6 @@
 LOCAL_PATH := $(call my-dir)
-POCO_ROOT = /Users/bquenin/poco-1.5.0
+POCO_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all
+OPENSSL_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/android-external-openssl-ndk-static
 
 #
 # libgame
@@ -10,6 +11,34 @@ LOCAL_MODULE := furiousblocks_shared
 LOCAL_MODULE_FILENAME := libfuriousblocks
 
 #
+# OpenSSL
+#
+
+LOCAL_C_INCLUDES += $(OPENSSL_ROOT)/include
+
+LOCAL_LDFLAGS += $(OPENSSL_ROOT)/obj/local/armeabi/libcrypto.a
+LOCAL_LDFLAGS += $(OPENSSL_ROOT)/obj/local/armeabi/libssl.a
+
+#
+# POCO lib
+#
+LOCAL_CFLAGS := -DPOCO_ANDROID -DPOCO_NO_FPENVIRONMENT -DPOCO_NO_WSTRING -DPOCO_NO_SHAREDMEMORY
+
+LOCAL_C_INCLUDES += $(POCO_ROOT)/Foundation/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/Util/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/Crypto/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/Net/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/NetSSL_OpenSSL/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/JSON/include
+
+LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoUtil.a
+LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoCrypto.a
+LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoNet.a
+LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoNetSSL.a
+LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoJSON.a
+LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoFoundation.a
+
+#
 # Build flags
 #
 LOCAL_CPPFLAGS := -fexceptions -frtti -std=gnu++0x
@@ -17,29 +46,15 @@ LOCAL_CPPFLAGS += -DFREEMIUM
 #LOCAL_CPPFLAGS += -O2 -DNDEBUG -fomit-frame-pointer
 LOCAL_CPPFLAGS += -DCOCOS2D_DEBUG -DDEBUG
 
-LOCAL_CFLAGS := -DPOCO_ANDROID -DPOCO_NO_FPENVIRONMENT -DPOCO_NO_WSTRING -DPOCO_NO_SHAREDMEMORY
-
-LOCAL_LDFLAGS := $(POCO_ROOT)/lib/Android/armeabi/libPocoUtil.a \
-$(POCO_ROOT)/lib/Android/armeabi/libPocoNet.a \
-$(POCO_ROOT)/lib/Android/armeabi/libPocoFoundation.a \
-$(POCO_ROOT)/lib/Android/armeabi/libPocoXML.a
-
-LOCAL_C_INCLUDES := \
-$(LOCAL_PATH)/bootstrap \
-$(LOCAL_PATH)/../../../generic \
-$(LOCAL_PATH)/../../../generic/animation \
-$(LOCAL_PATH)/../../../generic/core \
-$(LOCAL_PATH)/../../../generic/ext \
-$(LOCAL_PATH)/../../../generic/scenes \
-$(LOCAL_PATH)/../../../generic/script \
-$(LOCAL_PATH)/../../../generic/tween/easing \
-$(LOCAL_PATH)/../../../generic/tween \
-
-LOCAL_C_INCLUDES += $(POCO_ROOT)/Foundation/include
-LOCAL_C_INCLUDES += $(POCO_ROOT)/JSON/include
-LOCAL_C_INCLUDES += $(POCO_ROOT)/Net/include
-LOCAL_C_INCLUDES += $(POCO_ROOT)/XML/include
-LOCAL_C_INCLUDES += $(POCO_ROOT)/Util/include
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/bootstrap
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/animation
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/core
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/ext
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/scenes
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/script
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/tween/easing
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/tween
 
 LOCAL_SRC_FILES := \
 bootstrap/main.cpp \
@@ -93,7 +108,7 @@ bootstrap/main.cpp \
 ../../../generic/tween/tweener_group.cpp \
 ../../../generic/tween/tweener_sequence.cpp
 
-LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
+LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static ssl crypto
 
 include $(BUILD_SHARED_LIBRARY)
 

@@ -32,10 +32,6 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-const std::string TitleScene::FACEBOOK_URI(
-"https://graph.facebook.com/me/");
-//friends?access_token=%
-
 CCScene *TitleScene::scene() {
   CCScene *scene = CCScene::create();
   scene->addChild(TitleScene::create());
@@ -246,8 +242,6 @@ extern "C" {
 #endif
 
 void TitleScene::testAction(CCObject *sender) {
-  // Create the request URI.
-  // We use the XML version of the Twitter API.
   try {
     // Target URI
     Poco::URI uri("https://graph.facebook.com/me/friends?access_token=" + AppDelegate::getAccessToken());

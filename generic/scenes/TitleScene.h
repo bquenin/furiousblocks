@@ -23,8 +23,6 @@ private:
   CCControlButton *musicSwitchOn;
   CCControlButton *musicSwitchOff;
 
-  static const std::string FACEBOOK_URI;
-
 public:
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
