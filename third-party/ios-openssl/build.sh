@@ -40,7 +40,7 @@ build()
    perl -i -pe 's|static volatile sig_atomic_t intr_signal|static volatile int intr_signal|' crypto/ui/ui_openssl.c
    perl -i -pe "s|^CC= gcc|CC= ${GCC} -arch ${ARCH}|g" Makefile
    perl -i -pe "s|^CFLAG= (.*)|CFLAG= -isysroot ${SDK} \$1|g" Makefile
-   make &> "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}.log"
+   make -j16 &> "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}.log"
    make install &> "/tmp/openssl-${OPENSSL_VERSION}-${ARCH}.log"
    popd
    rm -rf "openssl-${OPENSSL_VERSION}"

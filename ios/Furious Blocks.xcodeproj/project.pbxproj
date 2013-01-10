@@ -19,125 +19,29 @@
 		02BAF104159E5C0E00BCA0C3 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF101159E5C0E00BCA0C3 /* AppController.mm */; };
 		02BAF105159E5C0E00BCA0C3 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF102159E5C0E00BCA0C3 /* RootViewController.mm */; };
 		02BAF4B7159E5F5C00BCA0C3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */; };
-		7969E003CB313A4EA70E091F /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E67CDD24EC625E249A6E /* AppiraterLocalizable.strings */; };
-		7969E06385DDB242E8C3E40C /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2C475B7792DC8B096EF /* AppiraterLocalizable.strings */; };
-		7969E0A06A0214DEEA2E181D /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2C475B7792DC8B096EF /* AppiraterLocalizable.strings */; };
-		7969E0A7DED6FF0FC8D1119E /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E485196670962F11B087 /* AppiraterLocalizable.strings */; };
-		7969E0B227023A9358AAE436 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E37AB5E85853A5EE3CF6 /* AppiraterLocalizable.strings */; };
-		7969E0E28A081366F77D34A0 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEDC331FA70113F17F87 /* AppiraterLocalizable.strings */; };
 		7969E14277F92AAAC5EAD0A6 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */; };
-		7969E15258DE99B4291DAA38 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E67CDD24EC625E249A6E /* AppiraterLocalizable.strings */; };
 		7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E142A99775EF929E1886 /* CreditsScene.cpp */; };
 		7969E18B489A6D4E3EEA6C23 /* coopblack64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E80C20BD83237A8A5BC8 /* coopblack64.png */; };
-		7969E196D1AF4ED47170A337 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E1C5E0DE57837440365F /* AppiraterLocalizable.strings */; };
-		7969E1D682F30B2605727B37 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EDD631561BBABA5500EB /* AppiraterLocalizable.strings */; };
-		7969E1DD319AF784FE030B87 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EDD631561BBABA5500EB /* AppiraterLocalizable.strings */; };
-		7969E219B4A959FE4B17CC69 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E67CDD24EC625E249A6E /* AppiraterLocalizable.strings */; };
-		7969E25F38D277B316D0F9E3 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E790064CD16D49330DD4 /* AppiraterLocalizable.strings */; };
-		7969E2A60FBE43FC68075232 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E09235E91D10EB83348F /* AppiraterLocalizable.strings */; };
-		7969E2BFE55842B307D268E4 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0CA4CA484C14C4DEE9B /* AppiraterLocalizable.strings */; };
-		7969E2CD2FE06844E6B5C9F2 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E37AB5E85853A5EE3CF6 /* AppiraterLocalizable.strings */; };
 		7969E2F5DA1276709612F52C /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1B1F4BE78AC5E68B104 /* Animation.cpp */; };
-		7969E306EABC7687C3BAACAF /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E3FAFA1973E52F707840 /* AppiraterLocalizable.strings */; };
 		7969E316900662224CE10922 /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E7237904D92983195353 /* tutorial.mp3 */; };
-		7969E323A0C3554BE48F95EA /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969ED7A658A4EA08E48CD90 /* AppiraterLocalizable.strings */; };
-		7969E3F24B5F5906AD8A7B57 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EBC399AF966B0FC39887 /* AppiraterLocalizable.strings */; };
-		7969E3FCAF72CD4BDC1374F3 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E996E4DD352519F2F63D /* AppiraterLocalizable.strings */; };
 		7969E417E51B0E4A7782424D /* blocks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7969E06309C54DF53182E0F3 /* blocks.plist */; };
-		7969E44CDD1060C0F68B2080 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2AAFCBC4282296A4973 /* AppiraterLocalizable.strings */; };
 		7969E44E27EE3DC7B7C442A8 /* voices.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E7F9A6066AE2418BF9C1 /* voices.mp3 */; };
-		7969E4502AB9B662E6CB87B2 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E97ACB4426EA959EB366 /* AppiraterLocalizable.strings */; };
 		7969E4619693C1A40587587D /* coopblack64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E93AF6D39B4F7DDFA839 /* coopblack64.fnt */; };
-		7969E464B16FC6E326A524DA /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969ED7A658A4EA08E48CD90 /* AppiraterLocalizable.strings */; };
-		7969E46B60136E1A3DB55E75 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E996E4DD352519F2F63D /* AppiraterLocalizable.strings */; };
-		7969E4D8082000E7DF3F4E47 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7969EFF58FD8EAB0592CEB0B /* README.md */; };
-		7969E4FF7DEC759BB3328AA1 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E485196670962F11B087 /* AppiraterLocalizable.strings */; };
-		7969E519ECF742CDD31D7901 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0CA4CA484C14C4DEE9B /* AppiraterLocalizable.strings */; };
-		7969E525AE1BFB5B96A28372 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEDC331FA70113F17F87 /* AppiraterLocalizable.strings */; };
-		7969E5313B736A4D81782C90 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E97ACB4426EA959EB366 /* AppiraterLocalizable.strings */; };
-		7969E54416979C13EEC4A61E /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EDD631561BBABA5500EB /* AppiraterLocalizable.strings */; };
-		7969E54CB3D13CD199B4AB1A /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E485196670962F11B087 /* AppiraterLocalizable.strings */; };
-		7969E566E3B34EEAB7BFCFD3 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E988765D856E383CF91C /* AppiraterLocalizable.strings */; };
-		7969E583D8E9EC07C5A67BBF /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEC1B6D9FE57016FBB07 /* AppiraterLocalizable.strings */; };
-		7969E5CBDE2ADD6553C31FCA /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2EF12BEFAF83FBFD574 /* AppiraterLocalizable.strings */; };
 		7969E5F1EFCBB5B41BE16CAB /* QuitOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */; };
-		7969E61F0F7147A340F701C7 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0960FB1143A3D5EDA2A /* AppiraterLocalizable.strings */; };
-		7969E63B6DA81FF5C3F89CB2 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E996E4DD352519F2F63D /* AppiraterLocalizable.strings */; };
-		7969E64ACCCCA15AE65EDB73 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0960FB1143A3D5EDA2A /* AppiraterLocalizable.strings */; };
-		7969E67ACA78FFDAE7F49279 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EBC399AF966B0FC39887 /* AppiraterLocalizable.strings */; };
-		7969E67CA39CCA170A1C8DCE /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEDC331FA70113F17F87 /* AppiraterLocalizable.strings */; };
-		7969E6A4D02DCB11A0EA7E9F /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E1C5E0DE57837440365F /* AppiraterLocalizable.strings */; };
-		7969E6AE34368E3B4BCC7B8F /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2AAFCBC4282296A4973 /* AppiraterLocalizable.strings */; };
-		7969E7057224D4B3ED6F1355 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969ED7A658A4EA08E48CD90 /* AppiraterLocalizable.strings */; };
-		7969E78ABAC91726449FCD40 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEC1B6D9FE57016FBB07 /* AppiraterLocalizable.strings */; };
-		7969E799F2DB4B1F902AB610 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1FE0DC7CFBDAFC520A0 /* Appirater.m */; };
-		7969E7B293E039047AC380C8 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E3FAFA1973E52F707840 /* AppiraterLocalizable.strings */; };
-		7969E7CBCB44D6A5FD689E59 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E1C5E0DE57837440365F /* AppiraterLocalizable.strings */; };
-		7969E7D5632E663CDF20EFC1 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEDC331FA70113F17F87 /* AppiraterLocalizable.strings */; };
-		7969E7F08F735EE42D26221C /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E91111763AEDA6679CC5 /* AppiraterLocalizable.strings */; };
-		7969E8578005E112FFF0E8A7 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1FE0DC7CFBDAFC520A0 /* Appirater.m */; };
 		7969E86718637B161B33382F /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969E8FDA05207335D97FEBB /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */; };
-		7969E92B47BA9F805A21F4F4 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E37AB5E85853A5EE3CF6 /* AppiraterLocalizable.strings */; };
-		7969E948EBF2E6778AD7B251 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E37AB5E85853A5EE3CF6 /* AppiraterLocalizable.strings */; };
-		7969E9584CBDC202EC6ECBE7 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2EF12BEFAF83FBFD574 /* AppiraterLocalizable.strings */; };
-		7969E9F8BCD9CD58CFF06291 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E485196670962F11B087 /* AppiraterLocalizable.strings */; };
-		7969E9F9DD015373C2282362 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEC1B6D9FE57016FBB07 /* AppiraterLocalizable.strings */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
-		7969EA84AF4E61959739ACEE /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0960FB1143A3D5EDA2A /* AppiraterLocalizable.strings */; };
 		7969EAA65F7587E0386426FE /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EACB2CF570960D037656 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E79960EAF9FDDBA0C804 /* blocks.png */; };
-		7969EAD027BF3A024ED76CC5 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969ED7A658A4EA08E48CD90 /* AppiraterLocalizable.strings */; };
-		7969EAF9563583C85B6E3778 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2EF12BEFAF83FBFD574 /* AppiraterLocalizable.strings */; };
-		7969EAFF9FDA919DDA3399B9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E1C5E0DE57837440365F /* AppiraterLocalizable.strings */; };
 		7969EB0FE3EE9780D34DDB5B /* Assets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EFFB0CFE2764A66CDC54 /* Assets.cpp */; };
-		7969EB156DE9918C29458C74 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E09235E91D10EB83348F /* AppiraterLocalizable.strings */; };
-		7969EB171477D52A8CF52E3C /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2AAFCBC4282296A4973 /* AppiraterLocalizable.strings */; };
-		7969EB1D38C84D7CCD61C5F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7969EFF58FD8EAB0592CEB0B /* README.md */; };
-		7969EB2B4E672C994C96A086 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E5C65B2183AB69EEDD63 /* AppiraterLocalizable.strings */; };
-		7969EB33730A1565CDA844CA /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E91111763AEDA6679CC5 /* AppiraterLocalizable.strings */; };
-		7969EB487BD5974586836072 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E97ACB4426EA959EB366 /* AppiraterLocalizable.strings */; };
 		7969EB4EDA9F405BF32954AE /* coopblack32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E73F4EAD29E22CAA37AD /* coopblack32.png */; };
 		7969EB6B704E1575488BAE35 /* PanelMenuOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E91E3CB9CC20A36C6447 /* PanelMenuOverlay.cpp */; };
 		7969EB7560835402674ABD3F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969EB7ABA416427D5DE3C32 /* Joystix.ttf */; };
-		7969EB922E97113CC9F2E8CF /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EBC399AF966B0FC39887 /* AppiraterLocalizable.strings */; };
-		7969EBD459348DD1E919094F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7969EFF58FD8EAB0592CEB0B /* README.md */; };
 		7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
-		7969EC397CD44E44CFAE77D2 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E988765D856E383CF91C /* AppiraterLocalizable.strings */; };
-		7969EC64447A72014E071C04 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E5C65B2183AB69EEDD63 /* AppiraterLocalizable.strings */; };
-		7969EC91558C6C6690006AE8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7969EFF58FD8EAB0592CEB0B /* README.md */; };
-		7969ECA2BBB1145A775EBA5A /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E91111763AEDA6679CC5 /* AppiraterLocalizable.strings */; };
-		7969ECAEE18588C4C90FA221 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E97ACB4426EA959EB366 /* AppiraterLocalizable.strings */; };
-		7969ECC65C92F8618D0EA9CA /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E09235E91D10EB83348F /* AppiraterLocalizable.strings */; };
-		7969ECE9B11B1312F46D9BF8 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2AAFCBC4282296A4973 /* AppiraterLocalizable.strings */; };
-		7969ECF39574C24F38BC1118 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2C475B7792DC8B096EF /* AppiraterLocalizable.strings */; };
-		7969ED21F029322B655AE024 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E988765D856E383CF91C /* AppiraterLocalizable.strings */; };
-		7969ED57E7AFBCA8634F3778 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E91111763AEDA6679CC5 /* AppiraterLocalizable.strings */; };
-		7969ED6BA771DA9B399CB9FE /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1FE0DC7CFBDAFC520A0 /* Appirater.m */; };
-		7969ED8ECD5725C623A46A55 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E3FAFA1973E52F707840 /* AppiraterLocalizable.strings */; };
 		7969EDD992FFE86272E82942 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
-		7969EDDE5E2C3B8DE8D46A12 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E790064CD16D49330DD4 /* AppiraterLocalizable.strings */; };
-		7969EE07DEAC710B86AF67AF /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EEC1B6D9FE57016FBB07 /* AppiraterLocalizable.strings */; };
 		7969EE0B72DD5902D633346A /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E0A3A7B96B0347359069 /* LogoScene.cpp */; };
-		7969EE1C486F4B7ABC3BCD54 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EBC399AF966B0FC39887 /* AppiraterLocalizable.strings */; };
-		7969EE272DE6E11335A0CEAB /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E790064CD16D49330DD4 /* AppiraterLocalizable.strings */; };
-		7969EE3E270B95EF08BE909E /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E3FAFA1973E52F707840 /* AppiraterLocalizable.strings */; };
-		7969EE40D731F0B75214AC36 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E09235E91D10EB83348F /* AppiraterLocalizable.strings */; };
-		7969EE4D9B8E3321B5479750 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0CA4CA484C14C4DEE9B /* AppiraterLocalizable.strings */; };
 		7969EE8A943653E43E23ABD2 /* coopblack32.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E190E9B4C07482F4316E /* coopblack32.fnt */; };
-		7969EEEDBE534585D68423B5 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E67CDD24EC625E249A6E /* AppiraterLocalizable.strings */; };
-		7969EF0B5E30AB07D7122EC8 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E790064CD16D49330DD4 /* AppiraterLocalizable.strings */; };
-		7969EF40738311DFFA8DD0A5 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E5C65B2183AB69EEDD63 /* AppiraterLocalizable.strings */; };
-		7969EF5E66FA47AB3D85EAD2 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2EF12BEFAF83FBFD574 /* AppiraterLocalizable.strings */; };
-		7969EF8ED7B35AA169649987 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E996E4DD352519F2F63D /* AppiraterLocalizable.strings */; };
-		7969EFBA0FE313DBE4711FD8 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E5C65B2183AB69EEDD63 /* AppiraterLocalizable.strings */; };
-		7969EFBC8BC0022082C50713 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E2C475B7792DC8B096EF /* AppiraterLocalizable.strings */; };
 		7969EFBE63F5CA04AD591F2D /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E619F03DD57B616F1DD3 /* gameover.mp3 */; };
-		7969EFC694AA07982AFF5C75 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0CA4CA484C14C4DEE9B /* AppiraterLocalizable.strings */; };
-		7969EFC6C65DF6AD398690D5 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E988765D856E383CF91C /* AppiraterLocalizable.strings */; };
-		7969EFCF6EAE89991B40D45E /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969E0960FB1143A3D5EDA2A /* AppiraterLocalizable.strings */; };
-		7969EFD5D5013AEA1B935A4E /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1FE0DC7CFBDAFC520A0 /* Appirater.m */; };
-		7969EFE7B3DA5EC0472CD5CB /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7969EDD631561BBABA5500EB /* AppiraterLocalizable.strings */; };
 		D203E32716886BE400FC317B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203E32616886BE400FC317B /* CFNetwork.framework */; };
 		D203E32916886BEF00FC317B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203E32816886BEF00FC317B /* SystemConfiguration.framework */; };
 		D203E32A16886C0F00FC317B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203E32616886BE400FC317B /* CFNetwork.framework */; };
@@ -170,42 +74,6 @@
 		D23E7DA4164FCB71003B565D /* TouchPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9A164FCB71003B565D /* TouchPlayer.cpp */; };
 		D23E7DA5164FCB71003B565D /* TutorialPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9C164FCB71003B565D /* TutorialPlayer.cpp */; };
 		D23E7DA6164FCB71003B565D /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D23E7D9E164FCB71003B565D /* TutorialScene.cpp */; };
-		D2522C1C169B7B1200C846AB /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C15169B7B1200C846AB /* libPocoCrypto.a */; };
-		D2522C1D169B7B1200C846AB /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C15169B7B1200C846AB /* libPocoCrypto.a */; };
-		D2522C1E169B7B1200C846AB /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C15169B7B1200C846AB /* libPocoCrypto.a */; };
-		D2522C1F169B7B1200C846AB /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C15169B7B1200C846AB /* libPocoCrypto.a */; };
-		D2522C20169B7B1200C846AB /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C16169B7B1200C846AB /* libPocoFoundation.a */; };
-		D2522C21169B7B1200C846AB /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C16169B7B1200C846AB /* libPocoFoundation.a */; };
-		D2522C22169B7B1200C846AB /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C16169B7B1200C846AB /* libPocoFoundation.a */; };
-		D2522C23169B7B1200C846AB /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C16169B7B1200C846AB /* libPocoFoundation.a */; };
-		D2522C24169B7B1200C846AB /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C17169B7B1200C846AB /* libPocoJSON.a */; };
-		D2522C25169B7B1200C846AB /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C17169B7B1200C846AB /* libPocoJSON.a */; };
-		D2522C26169B7B1200C846AB /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C17169B7B1200C846AB /* libPocoJSON.a */; };
-		D2522C27169B7B1200C846AB /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C17169B7B1200C846AB /* libPocoJSON.a */; };
-		D2522C28169B7B1200C846AB /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C18169B7B1200C846AB /* libPocoNet.a */; };
-		D2522C29169B7B1200C846AB /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C18169B7B1200C846AB /* libPocoNet.a */; };
-		D2522C2A169B7B1200C846AB /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C18169B7B1200C846AB /* libPocoNet.a */; };
-		D2522C2B169B7B1200C846AB /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C18169B7B1200C846AB /* libPocoNet.a */; };
-		D2522C2C169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C19169B7B1200C846AB /* libPocoNetSSL.a */; };
-		D2522C2D169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C19169B7B1200C846AB /* libPocoNetSSL.a */; };
-		D2522C2E169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C19169B7B1200C846AB /* libPocoNetSSL.a */; };
-		D2522C2F169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C19169B7B1200C846AB /* libPocoNetSSL.a */; };
-		D2522C30169B7B1200C846AB /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1A169B7B1200C846AB /* libPocoUtil.a */; };
-		D2522C31169B7B1200C846AB /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1A169B7B1200C846AB /* libPocoUtil.a */; };
-		D2522C32169B7B1200C846AB /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1A169B7B1200C846AB /* libPocoUtil.a */; };
-		D2522C33169B7B1200C846AB /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1A169B7B1200C846AB /* libPocoUtil.a */; };
-		D2522C34169B7B1200C846AB /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1B169B7B1200C846AB /* libPocoXML.a */; };
-		D2522C35169B7B1200C846AB /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1B169B7B1200C846AB /* libPocoXML.a */; };
-		D2522C36169B7B1200C846AB /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1B169B7B1200C846AB /* libPocoXML.a */; };
-		D2522C37169B7B1200C846AB /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C1B169B7B1200C846AB /* libPocoXML.a */; };
-		D2522C44169B7D0800C846AB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C42169B7D0800C846AB /* libcrypto.a */; };
-		D2522C45169B7D0800C846AB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C42169B7D0800C846AB /* libcrypto.a */; };
-		D2522C46169B7D0800C846AB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C42169B7D0800C846AB /* libcrypto.a */; };
-		D2522C47169B7D0800C846AB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C42169B7D0800C846AB /* libcrypto.a */; };
-		D2522C48169B7D0800C846AB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C43169B7D0800C846AB /* libssl.a */; };
-		D2522C49169B7D0800C846AB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C43169B7D0800C846AB /* libssl.a */; };
-		D2522C4A169B7D0800C846AB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C43169B7D0800C846AB /* libssl.a */; };
-		D2522C4B169B7D0800C846AB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2522C43169B7D0800C846AB /* libssl.a */; };
 		D254FDEA1674BE200072CE69 /* AdScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D254FDE91674BE200072CE69 /* AdScene.cpp */; };
 		D25893531673C763003E3F59 /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258918D1673C763003E3F59 /* CCAction.cpp */; };
 		D25893541673C763003E3F59 /* CCActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D258918F1673C763003E3F59 /* CCActionCamera.cpp */; };
@@ -384,6 +252,46 @@
 		D25B3711164583B600496D14 /* SetBlocksAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3707164583B600496D14 /* SetBlocksAction.cpp */; };
 		D25B3712164583B600496D14 /* TextToType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B3709164583B600496D14 /* TextToType.cpp */; };
 		D25B3713164583B600496D14 /* TypeTextAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25B370B164583B600496D14 /* TypeTextAction.cpp */; };
+		D25CA393169E39E800C3F774 /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38B169E39E800C3F774 /* libPocoCrypto.a */; };
+		D25CA394169E39E800C3F774 /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38B169E39E800C3F774 /* libPocoCrypto.a */; };
+		D25CA395169E39E800C3F774 /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38B169E39E800C3F774 /* libPocoCrypto.a */; };
+		D25CA396169E39E800C3F774 /* libPocoCrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38B169E39E800C3F774 /* libPocoCrypto.a */; };
+		D25CA397169E39E800C3F774 /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38C169E39E800C3F774 /* libPocoFoundation.a */; };
+		D25CA398169E39E800C3F774 /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38C169E39E800C3F774 /* libPocoFoundation.a */; };
+		D25CA399169E39E800C3F774 /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38C169E39E800C3F774 /* libPocoFoundation.a */; };
+		D25CA39A169E39E800C3F774 /* libPocoFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38C169E39E800C3F774 /* libPocoFoundation.a */; };
+		D25CA39B169E39E800C3F774 /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38D169E39E800C3F774 /* libPocoJSON.a */; };
+		D25CA39C169E39E800C3F774 /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38D169E39E800C3F774 /* libPocoJSON.a */; };
+		D25CA39D169E39E800C3F774 /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38D169E39E800C3F774 /* libPocoJSON.a */; };
+		D25CA39E169E39E800C3F774 /* libPocoJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38D169E39E800C3F774 /* libPocoJSON.a */; };
+		D25CA39F169E39E800C3F774 /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38E169E39E800C3F774 /* libPocoNet.a */; };
+		D25CA3A0169E39E800C3F774 /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38E169E39E800C3F774 /* libPocoNet.a */; };
+		D25CA3A1169E39E800C3F774 /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38E169E39E800C3F774 /* libPocoNet.a */; };
+		D25CA3A2169E39E800C3F774 /* libPocoNet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38E169E39E800C3F774 /* libPocoNet.a */; };
+		D25CA3A3169E39E800C3F774 /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38F169E39E800C3F774 /* libPocoNetSSL.a */; };
+		D25CA3A4169E39E800C3F774 /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38F169E39E800C3F774 /* libPocoNetSSL.a */; };
+		D25CA3A5169E39E800C3F774 /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38F169E39E800C3F774 /* libPocoNetSSL.a */; };
+		D25CA3A6169E39E800C3F774 /* libPocoNetSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA38F169E39E800C3F774 /* libPocoNetSSL.a */; };
+		D25CA3A7169E39E800C3F774 /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA390169E39E800C3F774 /* libPocoUtil.a */; };
+		D25CA3A8169E39E800C3F774 /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA390169E39E800C3F774 /* libPocoUtil.a */; };
+		D25CA3A9169E39E800C3F774 /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA390169E39E800C3F774 /* libPocoUtil.a */; };
+		D25CA3AA169E39E800C3F774 /* libPocoUtil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA390169E39E800C3F774 /* libPocoUtil.a */; };
+		D25CA3AB169E39E800C3F774 /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA391169E39E800C3F774 /* libPocoXML.a */; };
+		D25CA3AC169E39E800C3F774 /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA391169E39E800C3F774 /* libPocoXML.a */; };
+		D25CA3AD169E39E800C3F774 /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA391169E39E800C3F774 /* libPocoXML.a */; };
+		D25CA3AE169E39E800C3F774 /* libPocoXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA391169E39E800C3F774 /* libPocoXML.a */; };
+		D25CA3AF169E39E800C3F774 /* libPocoZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA392169E39E800C3F774 /* libPocoZip.a */; };
+		D25CA3B0169E39E800C3F774 /* libPocoZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA392169E39E800C3F774 /* libPocoZip.a */; };
+		D25CA3B1169E39E800C3F774 /* libPocoZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA392169E39E800C3F774 /* libPocoZip.a */; };
+		D25CA3B2169E39E800C3F774 /* libPocoZip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA392169E39E800C3F774 /* libPocoZip.a */; };
+		D25CA3B5169E3BAE00C3F774 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA3B3169E3BAE00C3F774 /* libcrypto.a */; };
+		D25CA3B6169E3BAE00C3F774 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA3B3169E3BAE00C3F774 /* libcrypto.a */; };
+		D25CA3B7169E3BAE00C3F774 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA3B3169E3BAE00C3F774 /* libcrypto.a */; };
+		D25CA3B8169E3BAE00C3F774 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA3B3169E3BAE00C3F774 /* libcrypto.a */; };
+		D25CA3B9169E3BAE00C3F774 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA3B4169E3BAE00C3F774 /* libssl.a */; };
+		D25CA3BA169E3BAE00C3F774 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA3B4169E3BAE00C3F774 /* libssl.a */; };
+		D25CA3BB169E3BAE00C3F774 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA3B4169E3BAE00C3F774 /* libssl.a */; };
+		D25CA3BC169E3BAE00C3F774 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D25CA3B4169E3BAE00C3F774 /* libssl.a */; };
 		D261DB19167DF531008C6503 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */; };
 		D261DB1A167DF531008C6503 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF100159E5C0E00BCA0C3 /* main.m */; };
 		D261DB1B167DF531008C6503 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF101159E5C0E00BCA0C3 /* AppController.mm */; };
@@ -1176,28 +1084,18 @@
 		02E20FB2159E492E00CB0ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02E20FB4159E492E00CB0ADA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7969E01F329B16F39A497D9B /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
-		7969E03D89354C84A44417A3 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969E06309C54DF53182E0F3 /* blocks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = blocks.plist; sourceTree = "<group>"; };
 		7969E0705F45DB90A8CF4DEE /* PanelMenuOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelMenuOverlay.h; sourceTree = "<group>"; };
 		7969E07A55A52B798339DCD4 /* CreditsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsScene.h; sourceTree = "<group>"; };
 		7969E0A3A7B96B0347359069 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogoScene.cpp; sourceTree = "<group>"; };
-		7969E0F27F413EA9D244D158 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969E11EB835FA716FB07849 /* tweener_group.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener_group.hpp; sourceTree = "<group>"; };
 		7969E142A99775EF929E1886 /* CreditsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CreditsScene.cpp; sourceTree = "<group>"; };
 		7969E1626F321D4397B1083E /* base_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base_tweener.hpp; sourceTree = "<group>"; };
 		7969E190E9B4C07482F4316E /* coopblack32.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack32.fnt; sourceTree = "<group>"; };
 		7969E1B1F4BE78AC5E68B104 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
-		7969E1FE0DC7CFBDAFC520A0 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
-		7969E205B7B2777139405DB1 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppiraterDelegate.h; sourceTree = "<group>"; };
-		7969E27864353389E6294745 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969E2D6CB50DE830DD6FD46 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969E3EC1D31C5AFCF094947 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969E3FB9C1A61AFB2BE41CA /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969E4AE20C9DF31145E4E9A /* tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener.hpp; sourceTree = "<group>"; };
-		7969E519C0DF4271B21C36DA /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969E51CC9169D96809A8B46 /* single_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = single_tweener.hpp; sourceTree = "<group>"; };
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
-		7969E602FEA94D9330FA8CC2 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969E619F03DD57B616F1DD3 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		7969E649D578804BFEB88638 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		7969E7237904D92983195353 /* tutorial.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tutorial.mp3; sourceTree = "<group>"; };
@@ -1207,31 +1105,15 @@
 		7969E7DBB59486ED8F0855E9 /* tweener_sequence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener_sequence.hpp; sourceTree = "<group>"; };
 		7969E7F9A6066AE2418BF9C1 /* voices.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voices.mp3; sourceTree = "<group>"; };
 		7969E80C20BD83237A8A5BC8 /* coopblack64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coopblack64.png; sourceTree = "<group>"; };
-		7969E8325B07CE013603128D /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969E8F9ECC47080359F0959 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969E91E3CB9CC20A36C6447 /* PanelMenuOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelMenuOverlay.cpp; sourceTree = "<group>"; };
 		7969E93AF6D39B4F7DDFA839 /* coopblack64.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack64.fnt; sourceTree = "<group>"; };
-		7969E9A8F6D56F40491EC91A /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
-		7969E9C7392FD52EA5A9C52B /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969EA45FDA5B84C72EBAC72 /* rootcert.pem */ = {isa = PBXFileReference; lastKnownFileType = file.pem; path = rootcert.pem; sourceTree = "<group>"; };
-		7969EAE2E463C92DB705A83A /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuitOverlay.cpp; sourceTree = "<group>"; };
 		7969EB7ABA416427D5DE3C32 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Joystix.ttf; sourceTree = "<group>"; };
-		7969EB944531FA42C2D1E3F9 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969EBC3E45C99137CEEAB43 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969EC0E7B519C7A23FFB983 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
 		7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = harmonic.mp3; sourceTree = "<group>"; };
-		7969ECC66911D417F2038312 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969ED0BBBBE20CA8F99B776 /* Assets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assets.h; sourceTree = "<group>"; };
-		7969ED688E6310918260E4DC /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969EE00A6979C99AE424400 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969EE5BBFAAA478B81A1B25 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969EEBDF83E98A85E5AB337 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		7969EEE7713FD576BF94381B /* QuitOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuitOverlay.h; sourceTree = "<group>"; };
-		7969EF0C7E180190BA6557E0 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969EF3B7440AA8E1DC0E0B5 /* AppiraterLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AppiraterLocalizable.strings; sourceTree = "<group>"; };
-		7969EFF58FD8EAB0592CEB0B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
 		7969EFFB0CFE2764A66CDC54 /* Assets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assets.cpp; sourceTree = "<group>"; };
 		D203E32616886BE400FC317B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D203E32816886BEF00FC317B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1279,15 +1161,6 @@
 		D23E7D9D164FCB71003B565D /* TutorialPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPlayer.h; sourceTree = "<group>"; };
 		D23E7D9E164FCB71003B565D /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TutorialScene.cpp; sourceTree = "<group>"; };
 		D23E7D9F164FCB71003B565D /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
-		D2522C15169B7B1200C846AB /* libPocoCrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoCrypto.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoCrypto.a"; sourceTree = "<group>"; };
-		D2522C16169B7B1200C846AB /* libPocoFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoFoundation.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoFoundation.a"; sourceTree = "<group>"; };
-		D2522C17169B7B1200C846AB /* libPocoJSON.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoJSON.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoJSON.a"; sourceTree = "<group>"; };
-		D2522C18169B7B1200C846AB /* libPocoNet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoNet.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoNet.a"; sourceTree = "<group>"; };
-		D2522C19169B7B1200C846AB /* libPocoNetSSL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoNetSSL.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoNetSSL.a"; sourceTree = "<group>"; };
-		D2522C1A169B7B1200C846AB /* libPocoUtil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoUtil.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoUtil.a"; sourceTree = "<group>"; };
-		D2522C1B169B7B1200C846AB /* libPocoXML.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoXML.a; path = "../../../poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoXML.a"; sourceTree = "<group>"; };
-		D2522C42169B7D0800C846AB /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../ios-openssl/lib/libcrypto.a"; sourceTree = "<group>"; };
-		D2522C43169B7D0800C846AB /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../ios-openssl/lib/libssl.a"; sourceTree = "<group>"; };
 		D254FDE91674BE200072CE69 /* AdScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdScene.cpp; sourceTree = "<group>"; };
 		D254FDEC1674BE7C0072CE69 /* AdScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdScene.h; sourceTree = "<group>"; };
 		D258918D1673C763003E3F59 /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -1700,6 +1573,16 @@
 		D25B370A164583B600496D14 /* TextToType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextToType.h; sourceTree = "<group>"; };
 		D25B370B164583B600496D14 /* TypeTextAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TypeTextAction.cpp; sourceTree = "<group>"; };
 		D25B370C164583B600496D14 /* TypeTextAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeTextAction.h; sourceTree = "<group>"; };
+		D25CA38B169E39E800C3F774 /* libPocoCrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoCrypto.a; path = "../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoCrypto.a"; sourceTree = "<group>"; };
+		D25CA38C169E39E800C3F774 /* libPocoFoundation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoFoundation.a; path = "../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoFoundation.a"; sourceTree = "<group>"; };
+		D25CA38D169E39E800C3F774 /* libPocoJSON.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoJSON.a; path = "../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoJSON.a"; sourceTree = "<group>"; };
+		D25CA38E169E39E800C3F774 /* libPocoNet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoNet.a; path = "../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoNet.a"; sourceTree = "<group>"; };
+		D25CA38F169E39E800C3F774 /* libPocoNetSSL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoNetSSL.a; path = "../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoNetSSL.a"; sourceTree = "<group>"; };
+		D25CA390169E39E800C3F774 /* libPocoUtil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoUtil.a; path = "../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoUtil.a"; sourceTree = "<group>"; };
+		D25CA391169E39E800C3F774 /* libPocoXML.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoXML.a; path = "../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoXML.a"; sourceTree = "<group>"; };
+		D25CA392169E39E800C3F774 /* libPocoZip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPocoZip.a; path = "../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7/libPocoZip.a"; sourceTree = "<group>"; };
+		D25CA3B3169E3BAE00C3F774 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../third-party/ios-openssl/lib/libcrypto.a"; sourceTree = "<group>"; };
+		D25CA3B4169E3BAE00C3F774 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../third-party/ios-openssl/lib/libssl.a"; sourceTree = "<group>"; };
 		D261DC19167DF531008C6503 /* FuriousBlocksCommercialDistribution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriousBlocksCommercialDistribution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D261DC1B167DF532008C6503 /* Furious Blocks Free-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Furious Blocks Free-Info.plist"; path = "/Users/bquenin/workspace/furiousblocks/ios/Furious Blocks Free-Info.plist"; sourceTree = "<absolute>"; };
 		D261DD1E167DF54D008C6503 /* FuriousBlocksFreeDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriousBlocksFreeDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1764,15 +1647,16 @@
 				02BAEEBF159E5AAB00BCA0C3 /* Foundation.framework in Frameworks */,
 				02BAEEC0159E5AAB00BCA0C3 /* CoreGraphics.framework in Frameworks */,
 				D25893A81673C763003E3F59 /* libcurl.a in Frameworks */,
-				D2522C1E169B7B1200C846AB /* libPocoCrypto.a in Frameworks */,
-				D2522C22169B7B1200C846AB /* libPocoFoundation.a in Frameworks */,
-				D2522C26169B7B1200C846AB /* libPocoJSON.a in Frameworks */,
-				D2522C2A169B7B1200C846AB /* libPocoNet.a in Frameworks */,
-				D2522C2E169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */,
-				D2522C32169B7B1200C846AB /* libPocoUtil.a in Frameworks */,
-				D2522C36169B7B1200C846AB /* libPocoXML.a in Frameworks */,
-				D2522C46169B7D0800C846AB /* libcrypto.a in Frameworks */,
-				D2522C4A169B7D0800C846AB /* libssl.a in Frameworks */,
+				D25CA395169E39E800C3F774 /* libPocoCrypto.a in Frameworks */,
+				D25CA399169E39E800C3F774 /* libPocoFoundation.a in Frameworks */,
+				D25CA39D169E39E800C3F774 /* libPocoJSON.a in Frameworks */,
+				D25CA3A1169E39E800C3F774 /* libPocoNet.a in Frameworks */,
+				D25CA3A5169E39E800C3F774 /* libPocoNetSSL.a in Frameworks */,
+				D25CA3A9169E39E800C3F774 /* libPocoUtil.a in Frameworks */,
+				D25CA3AD169E39E800C3F774 /* libPocoXML.a in Frameworks */,
+				D25CA3B1169E39E800C3F774 /* libPocoZip.a in Frameworks */,
+				D25CA3B7169E3BAE00C3F774 /* libcrypto.a in Frameworks */,
+				D25CA3BB169E3BAE00C3F774 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1795,15 +1679,16 @@
 				D261DBFD167DF531008C6503 /* Foundation.framework in Frameworks */,
 				D261DBFE167DF531008C6503 /* CoreGraphics.framework in Frameworks */,
 				D261DBFF167DF531008C6503 /* libcurl.a in Frameworks */,
-				D2522C1F169B7B1200C846AB /* libPocoCrypto.a in Frameworks */,
-				D2522C23169B7B1200C846AB /* libPocoFoundation.a in Frameworks */,
-				D2522C27169B7B1200C846AB /* libPocoJSON.a in Frameworks */,
-				D2522C2B169B7B1200C846AB /* libPocoNet.a in Frameworks */,
-				D2522C2F169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */,
-				D2522C33169B7B1200C846AB /* libPocoUtil.a in Frameworks */,
-				D2522C37169B7B1200C846AB /* libPocoXML.a in Frameworks */,
-				D2522C47169B7D0800C846AB /* libcrypto.a in Frameworks */,
-				D2522C4B169B7D0800C846AB /* libssl.a in Frameworks */,
+				D25CA396169E39E800C3F774 /* libPocoCrypto.a in Frameworks */,
+				D25CA39A169E39E800C3F774 /* libPocoFoundation.a in Frameworks */,
+				D25CA39E169E39E800C3F774 /* libPocoJSON.a in Frameworks */,
+				D25CA3A2169E39E800C3F774 /* libPocoNet.a in Frameworks */,
+				D25CA3A6169E39E800C3F774 /* libPocoNetSSL.a in Frameworks */,
+				D25CA3AA169E39E800C3F774 /* libPocoUtil.a in Frameworks */,
+				D25CA3AE169E39E800C3F774 /* libPocoXML.a in Frameworks */,
+				D25CA3B2169E39E800C3F774 /* libPocoZip.a in Frameworks */,
+				D25CA3B8169E3BAE00C3F774 /* libcrypto.a in Frameworks */,
+				D25CA3BC169E3BAE00C3F774 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1826,15 +1711,16 @@
 				D261DD02167DF54D008C6503 /* Foundation.framework in Frameworks */,
 				D261DD03167DF54D008C6503 /* CoreGraphics.framework in Frameworks */,
 				D261DD04167DF54D008C6503 /* libcurl.a in Frameworks */,
-				D2522C1C169B7B1200C846AB /* libPocoCrypto.a in Frameworks */,
-				D2522C20169B7B1200C846AB /* libPocoFoundation.a in Frameworks */,
-				D2522C24169B7B1200C846AB /* libPocoJSON.a in Frameworks */,
-				D2522C28169B7B1200C846AB /* libPocoNet.a in Frameworks */,
-				D2522C2C169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */,
-				D2522C30169B7B1200C846AB /* libPocoUtil.a in Frameworks */,
-				D2522C34169B7B1200C846AB /* libPocoXML.a in Frameworks */,
-				D2522C44169B7D0800C846AB /* libcrypto.a in Frameworks */,
-				D2522C48169B7D0800C846AB /* libssl.a in Frameworks */,
+				D25CA393169E39E800C3F774 /* libPocoCrypto.a in Frameworks */,
+				D25CA397169E39E800C3F774 /* libPocoFoundation.a in Frameworks */,
+				D25CA39B169E39E800C3F774 /* libPocoJSON.a in Frameworks */,
+				D25CA39F169E39E800C3F774 /* libPocoNet.a in Frameworks */,
+				D25CA3A3169E39E800C3F774 /* libPocoNetSSL.a in Frameworks */,
+				D25CA3A7169E39E800C3F774 /* libPocoUtil.a in Frameworks */,
+				D25CA3AB169E39E800C3F774 /* libPocoXML.a in Frameworks */,
+				D25CA3AF169E39E800C3F774 /* libPocoZip.a in Frameworks */,
+				D25CA3B5169E3BAE00C3F774 /* libcrypto.a in Frameworks */,
+				D25CA3B9169E3BAE00C3F774 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1857,15 +1743,16 @@
 				D261DE07167DF558008C6503 /* Foundation.framework in Frameworks */,
 				D261DE08167DF558008C6503 /* CoreGraphics.framework in Frameworks */,
 				D261DE09167DF558008C6503 /* libcurl.a in Frameworks */,
-				D2522C1D169B7B1200C846AB /* libPocoCrypto.a in Frameworks */,
-				D2522C21169B7B1200C846AB /* libPocoFoundation.a in Frameworks */,
-				D2522C25169B7B1200C846AB /* libPocoJSON.a in Frameworks */,
-				D2522C29169B7B1200C846AB /* libPocoNet.a in Frameworks */,
-				D2522C2D169B7B1200C846AB /* libPocoNetSSL.a in Frameworks */,
-				D2522C31169B7B1200C846AB /* libPocoUtil.a in Frameworks */,
-				D2522C35169B7B1200C846AB /* libPocoXML.a in Frameworks */,
-				D2522C45169B7D0800C846AB /* libcrypto.a in Frameworks */,
-				D2522C49169B7D0800C846AB /* libssl.a in Frameworks */,
+				D25CA394169E39E800C3F774 /* libPocoCrypto.a in Frameworks */,
+				D25CA398169E39E800C3F774 /* libPocoFoundation.a in Frameworks */,
+				D25CA39C169E39E800C3F774 /* libPocoJSON.a in Frameworks */,
+				D25CA3A0169E39E800C3F774 /* libPocoNet.a in Frameworks */,
+				D25CA3A4169E39E800C3F774 /* libPocoNetSSL.a in Frameworks */,
+				D25CA3A8169E39E800C3F774 /* libPocoUtil.a in Frameworks */,
+				D25CA3AC169E39E800C3F774 /* libPocoXML.a in Frameworks */,
+				D25CA3B0169E39E800C3F774 /* libPocoZip.a in Frameworks */,
+				D25CA3B6169E3BAE00C3F774 /* libcrypto.a in Frameworks */,
+				D25CA3BA169E3BAE00C3F774 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1918,7 +1805,6 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
-				7969E721138AA870B8616529 /* appirater-master */,
 				02BAEA13159E577F00BCA0C3 /* assets */,
 				D258918A1673C763003E3F59 /* libs */,
 				02BAEC48159E57C600BCA0C3 /* generic */,
@@ -1944,15 +1830,16 @@
 		02E20FA5159E492E00CB0ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D2522C42169B7D0800C846AB /* libcrypto.a */,
-				D2522C43169B7D0800C846AB /* libssl.a */,
-				D2522C15169B7B1200C846AB /* libPocoCrypto.a */,
-				D2522C16169B7B1200C846AB /* libPocoFoundation.a */,
-				D2522C17169B7B1200C846AB /* libPocoJSON.a */,
-				D2522C18169B7B1200C846AB /* libPocoNet.a */,
-				D2522C19169B7B1200C846AB /* libPocoNetSSL.a */,
-				D2522C1A169B7B1200C846AB /* libPocoUtil.a */,
-				D2522C1B169B7B1200C846AB /* libPocoXML.a */,
+				D25CA3B3169E3BAE00C3F774 /* libcrypto.a */,
+				D25CA3B4169E3BAE00C3F774 /* libssl.a */,
+				D25CA38B169E39E800C3F774 /* libPocoCrypto.a */,
+				D25CA38C169E39E800C3F774 /* libPocoFoundation.a */,
+				D25CA38D169E39E800C3F774 /* libPocoJSON.a */,
+				D25CA38E169E39E800C3F774 /* libPocoNet.a */,
+				D25CA38F169E39E800C3F774 /* libPocoNetSSL.a */,
+				D25CA390169E39E800C3F774 /* libPocoUtil.a */,
+				D25CA391169E39E800C3F774 /* libPocoXML.a */,
+				D25CA392169E39E800C3F774 /* libPocoZip.a */,
 				D2E53EBA169736BC0064BD3C /* Accounts.framework */,
 				D2E53EBB169736BC0064BD3C /* AdSupport.framework */,
 				D2E53EBC169736BC0064BD3C /* Social.framework */,
@@ -1984,215 +1871,6 @@
 			);
 			path = bootstrap;
 			sourceTree = SOURCE_ROOT;
-		};
-		7969E3507369CA739992AA51 /* cs.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E67CDD24EC625E249A6E /* AppiraterLocalizable.strings */,
-			);
-			path = cs.lproj;
-			sourceTree = "<group>";
-		};
-		7969E370A4FEEDA8F543B2D0 /* nl.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E485196670962F11B087 /* AppiraterLocalizable.strings */,
-			);
-			path = nl.lproj;
-			sourceTree = "<group>";
-		};
-		7969E4377187C08805FACEED /* nb.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E37AB5E85853A5EE3CF6 /* AppiraterLocalizable.strings */,
-			);
-			path = nb.lproj;
-			sourceTree = "<group>";
-		};
-		7969E45EE1CB008F60BD8F94 /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E91111763AEDA6679CC5 /* AppiraterLocalizable.strings */,
-			);
-			path = en.lproj;
-			sourceTree = "<group>";
-		};
-		7969E4B254A3AC087A4E38F4 /* ca.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E3FAFA1973E52F707840 /* AppiraterLocalizable.strings */,
-			);
-			path = ca.lproj;
-			sourceTree = "<group>";
-		};
-		7969E5857E3239F84D9A3FB8 /* he.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969ED7A658A4EA08E48CD90 /* AppiraterLocalizable.strings */,
-			);
-			path = he.lproj;
-			sourceTree = "<group>";
-		};
-		7969E5A1F98BBF8BFE2C6F34 /* it.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969EDD631561BBABA5500EB /* AppiraterLocalizable.strings */,
-			);
-			path = it.lproj;
-			sourceTree = "<group>";
-		};
-		7969E6F7A79EB6BE346B5B7B /* fi.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E1C5E0DE57837440365F /* AppiraterLocalizable.strings */,
-			);
-			path = fi.lproj;
-			sourceTree = "<group>";
-		};
-		7969E70373637DF574F75F4F /* sk.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E97ACB4426EA959EB366 /* AppiraterLocalizable.strings */,
-			);
-			path = sk.lproj;
-			sourceTree = "<group>";
-		};
-		7969E721138AA870B8616529 /* appirater-master */ = {
-			isa = PBXGroup;
-			children = (
-				7969EFF58FD8EAB0592CEB0B /* README.md */,
-				7969EC0E7B519C7A23FFB983 /* Appirater.h */,
-				7969E1FE0DC7CFBDAFC520A0 /* Appirater.m */,
-				7969E205B7B2777139405DB1 /* AppiraterDelegate.h */,
-				7969E4B254A3AC087A4E38F4 /* ca.lproj */,
-				7969E3507369CA739992AA51 /* cs.lproj */,
-				7969EF86E5D7F3F62DDE0F0D /* da.lproj */,
-				7969E8B1775AABB7FF31776A /* de.lproj */,
-				7969E45EE1CB008F60BD8F94 /* en.lproj */,
-				7969EA93C7B0EF89E6AF27F9 /* es.lproj */,
-				7969E6F7A79EB6BE346B5B7B /* fi.lproj */,
-				7969EB35D3EC175951C484BF /* fr.lproj */,
-				7969E5857E3239F84D9A3FB8 /* he.lproj */,
-				7969E97C99750717F9CD918A /* hu.lproj */,
-				7969E5A1F98BBF8BFE2C6F34 /* it.lproj */,
-				7969EFDD07453AC76047E00B /* ja.lproj */,
-				7969EF64FD30D9DD0B20AD3B /* ko.lproj */,
-				7969E4377187C08805FACEED /* nb.lproj */,
-				7969E370A4FEEDA8F543B2D0 /* nl.lproj */,
-				7969E9419435975393E776F9 /* pl.lproj */,
-				7969EEDD655553421A824165 /* pt.lproj */,
-				7969E8142FA418914B92D727 /* ru.lproj */,
-				7969E70373637DF574F75F4F /* sk.lproj */,
-				7969E93B9517085E5693D2D8 /* sv.lproj */,
-				7969EB45D5805472876CEA1F /* zh-Hans.lproj */,
-				7969EFC137572F889CC84506 /* zh-Hant.lproj */,
-			);
-			path = "appirater-master";
-			sourceTree = "<group>";
-		};
-		7969E8142FA418914B92D727 /* ru.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E5C65B2183AB69EEDD63 /* AppiraterLocalizable.strings */,
-			);
-			path = ru.lproj;
-			sourceTree = "<group>";
-		};
-		7969E8B1775AABB7FF31776A /* de.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E988765D856E383CF91C /* AppiraterLocalizable.strings */,
-			);
-			path = de.lproj;
-			sourceTree = "<group>";
-		};
-		7969E93B9517085E5693D2D8 /* sv.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E0CA4CA484C14C4DEE9B /* AppiraterLocalizable.strings */,
-			);
-			path = sv.lproj;
-			sourceTree = "<group>";
-		};
-		7969E9419435975393E776F9 /* pl.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E996E4DD352519F2F63D /* AppiraterLocalizable.strings */,
-			);
-			path = pl.lproj;
-			sourceTree = "<group>";
-		};
-		7969E97C99750717F9CD918A /* hu.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E2AAFCBC4282296A4973 /* AppiraterLocalizable.strings */,
-			);
-			path = hu.lproj;
-			sourceTree = "<group>";
-		};
-		7969EA93C7B0EF89E6AF27F9 /* es.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E2C475B7792DC8B096EF /* AppiraterLocalizable.strings */,
-			);
-			path = es.lproj;
-			sourceTree = "<group>";
-		};
-		7969EB35D3EC175951C484BF /* fr.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E790064CD16D49330DD4 /* AppiraterLocalizable.strings */,
-			);
-			path = fr.lproj;
-			sourceTree = "<group>";
-		};
-		7969EB45D5805472876CEA1F /* zh-Hans.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969EEC1B6D9FE57016FBB07 /* AppiraterLocalizable.strings */,
-			);
-			path = "zh-Hans.lproj";
-			sourceTree = "<group>";
-		};
-		7969EEDD655553421A824165 /* pt.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969EBC399AF966B0FC39887 /* AppiraterLocalizable.strings */,
-			);
-			path = pt.lproj;
-			sourceTree = "<group>";
-		};
-		7969EF64FD30D9DD0B20AD3B /* ko.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E2EF12BEFAF83FBFD574 /* AppiraterLocalizable.strings */,
-			);
-			path = ko.lproj;
-			sourceTree = "<group>";
-		};
-		7969EF86E5D7F3F62DDE0F0D /* da.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E09235E91D10EB83348F /* AppiraterLocalizable.strings */,
-			);
-			path = da.lproj;
-			sourceTree = "<group>";
-		};
-		7969EFC137572F889CC84506 /* zh-Hant.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969E0960FB1143A3D5EDA2A /* AppiraterLocalizable.strings */,
-			);
-			path = "zh-Hant.lproj";
-			sourceTree = "<group>";
-		};
-		7969EFDD07453AC76047E00B /* ja.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				7969EEDC331FA70113F17F87 /* AppiraterLocalizable.strings */,
-			);
-			path = ja.lproj;
-			sourceTree = "<group>";
 		};
 		D224B72A163892780056F752 /* easing */ = {
 			isa = PBXGroup;
@@ -3243,29 +2921,6 @@
 				D2956393167550A60034C630 /* Icon.png in Resources */,
 				D2956397167551270034C630 /* Icon-72.png in Resources */,
 				D29563991675516B0034C630 /* Icon@2x.png in Resources */,
-				7969E7B293E039047AC380C8 /* AppiraterLocalizable.strings in Resources */,
-				7969E003CB313A4EA70E091F /* AppiraterLocalizable.strings in Resources */,
-				7969ECC65C92F8618D0EA9CA /* AppiraterLocalizable.strings in Resources */,
-				7969EC397CD44E44CFAE77D2 /* AppiraterLocalizable.strings in Resources */,
-				7969EB33730A1565CDA844CA /* AppiraterLocalizable.strings in Resources */,
-				7969E0A06A0214DEEA2E181D /* AppiraterLocalizable.strings in Resources */,
-				7969E7CBCB44D6A5FD689E59 /* AppiraterLocalizable.strings in Resources */,
-				7969E25F38D277B316D0F9E3 /* AppiraterLocalizable.strings in Resources */,
-				7969E323A0C3554BE48F95EA /* AppiraterLocalizable.strings in Resources */,
-				7969ECE9B11B1312F46D9BF8 /* AppiraterLocalizable.strings in Resources */,
-				7969E1D682F30B2605727B37 /* AppiraterLocalizable.strings in Resources */,
-				7969E67CA39CCA170A1C8DCE /* AppiraterLocalizable.strings in Resources */,
-				7969E5CBDE2ADD6553C31FCA /* AppiraterLocalizable.strings in Resources */,
-				7969E2CD2FE06844E6B5C9F2 /* AppiraterLocalizable.strings in Resources */,
-				7969E0A7DED6FF0FC8D1119E /* AppiraterLocalizable.strings in Resources */,
-				7969E46B60136E1A3DB55E75 /* AppiraterLocalizable.strings in Resources */,
-				7969E3F24B5F5906AD8A7B57 /* AppiraterLocalizable.strings in Resources */,
-				7969EB1D38C84D7CCD61C5F3 /* README.md in Resources */,
-				7969EB2B4E672C994C96A086 /* AppiraterLocalizable.strings in Resources */,
-				7969E5313B736A4D81782C90 /* AppiraterLocalizable.strings in Resources */,
-				7969E519ECF742CDD31D7901 /* AppiraterLocalizable.strings in Resources */,
-				7969E583D8E9EC07C5A67BBF /* AppiraterLocalizable.strings in Resources */,
-				7969E64ACCCCA15AE65EDB73 /* AppiraterLocalizable.strings in Resources */,
 				D2E53EB71697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969E86718637B161B33382F /* rootcert.pem in Resources */,
 			);
@@ -3292,29 +2947,6 @@
 				D261DC13167DF531008C6503 /* Icon.png in Resources */,
 				D261DC14167DF531008C6503 /* Icon-72.png in Resources */,
 				D261DC15167DF531008C6503 /* Icon@2x.png in Resources */,
-				7969E306EABC7687C3BAACAF /* AppiraterLocalizable.strings in Resources */,
-				7969E219B4A959FE4B17CC69 /* AppiraterLocalizable.strings in Resources */,
-				7969E2A60FBE43FC68075232 /* AppiraterLocalizable.strings in Resources */,
-				7969ED21F029322B655AE024 /* AppiraterLocalizable.strings in Resources */,
-				7969E7F08F735EE42D26221C /* AppiraterLocalizable.strings in Resources */,
-				7969EFBC8BC0022082C50713 /* AppiraterLocalizable.strings in Resources */,
-				7969EAFF9FDA919DDA3399B9 /* AppiraterLocalizable.strings in Resources */,
-				7969EF0B5E30AB07D7122EC8 /* AppiraterLocalizable.strings in Resources */,
-				7969EAD027BF3A024ED76CC5 /* AppiraterLocalizable.strings in Resources */,
-				7969E6AE34368E3B4BCC7B8F /* AppiraterLocalizable.strings in Resources */,
-				7969E1DD319AF784FE030B87 /* AppiraterLocalizable.strings in Resources */,
-				7969E0E28A081366F77D34A0 /* AppiraterLocalizable.strings in Resources */,
-				7969EAF9563583C85B6E3778 /* AppiraterLocalizable.strings in Resources */,
-				7969E948EBF2E6778AD7B251 /* AppiraterLocalizable.strings in Resources */,
-				7969E4FF7DEC759BB3328AA1 /* AppiraterLocalizable.strings in Resources */,
-				7969E3FCAF72CD4BDC1374F3 /* AppiraterLocalizable.strings in Resources */,
-				7969EE1C486F4B7ABC3BCD54 /* AppiraterLocalizable.strings in Resources */,
-				7969EBD459348DD1E919094F /* README.md in Resources */,
-				7969EF40738311DFFA8DD0A5 /* AppiraterLocalizable.strings in Resources */,
-				7969EB487BD5974586836072 /* AppiraterLocalizable.strings in Resources */,
-				7969EE4D9B8E3321B5479750 /* AppiraterLocalizable.strings in Resources */,
-				7969E9F9DD015373C2282362 /* AppiraterLocalizable.strings in Resources */,
-				7969E61F0F7147A340F701C7 /* AppiraterLocalizable.strings in Resources */,
 				D2E53EB81697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EDD992FFE86272E82942 /* rootcert.pem in Resources */,
 			);
@@ -3341,29 +2973,6 @@
 				D261DD18167DF54D008C6503 /* Icon.png in Resources */,
 				D261DD19167DF54D008C6503 /* Icon-72.png in Resources */,
 				D261DD1A167DF54D008C6503 /* Icon@2x.png in Resources */,
-				7969ED8ECD5725C623A46A55 /* AppiraterLocalizable.strings in Resources */,
-				7969E15258DE99B4291DAA38 /* AppiraterLocalizable.strings in Resources */,
-				7969EE40D731F0B75214AC36 /* AppiraterLocalizable.strings in Resources */,
-				7969E566E3B34EEAB7BFCFD3 /* AppiraterLocalizable.strings in Resources */,
-				7969ECA2BBB1145A775EBA5A /* AppiraterLocalizable.strings in Resources */,
-				7969E06385DDB242E8C3E40C /* AppiraterLocalizable.strings in Resources */,
-				7969E6A4D02DCB11A0EA7E9F /* AppiraterLocalizable.strings in Resources */,
-				7969EE272DE6E11335A0CEAB /* AppiraterLocalizable.strings in Resources */,
-				7969E464B16FC6E326A524DA /* AppiraterLocalizable.strings in Resources */,
-				7969EB171477D52A8CF52E3C /* AppiraterLocalizable.strings in Resources */,
-				7969EFE7B3DA5EC0472CD5CB /* AppiraterLocalizable.strings in Resources */,
-				7969E525AE1BFB5B96A28372 /* AppiraterLocalizable.strings in Resources */,
-				7969E9584CBDC202EC6ECBE7 /* AppiraterLocalizable.strings in Resources */,
-				7969E92B47BA9F805A21F4F4 /* AppiraterLocalizable.strings in Resources */,
-				7969E54CB3D13CD199B4AB1A /* AppiraterLocalizable.strings in Resources */,
-				7969EF8ED7B35AA169649987 /* AppiraterLocalizable.strings in Resources */,
-				7969EB922E97113CC9F2E8CF /* AppiraterLocalizable.strings in Resources */,
-				7969E4D8082000E7DF3F4E47 /* README.md in Resources */,
-				7969EC64447A72014E071C04 /* AppiraterLocalizable.strings in Resources */,
-				7969ECAEE18588C4C90FA221 /* AppiraterLocalizable.strings in Resources */,
-				7969EFC694AA07982AFF5C75 /* AppiraterLocalizable.strings in Resources */,
-				7969EE07DEAC710B86AF67AF /* AppiraterLocalizable.strings in Resources */,
-				7969EA84AF4E61959739ACEE /* AppiraterLocalizable.strings in Resources */,
 				D2E53EB51697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EAA65F7587E0386426FE /* rootcert.pem in Resources */,
 			);
@@ -3390,29 +2999,6 @@
 				D261DE1D167DF558008C6503 /* Icon.png in Resources */,
 				D261DE1E167DF558008C6503 /* Icon-72.png in Resources */,
 				D261DE1F167DF558008C6503 /* Icon@2x.png in Resources */,
-				7969EE3E270B95EF08BE909E /* AppiraterLocalizable.strings in Resources */,
-				7969EEEDBE534585D68423B5 /* AppiraterLocalizable.strings in Resources */,
-				7969EB156DE9918C29458C74 /* AppiraterLocalizable.strings in Resources */,
-				7969EFC6C65DF6AD398690D5 /* AppiraterLocalizable.strings in Resources */,
-				7969ED57E7AFBCA8634F3778 /* AppiraterLocalizable.strings in Resources */,
-				7969ECF39574C24F38BC1118 /* AppiraterLocalizable.strings in Resources */,
-				7969E196D1AF4ED47170A337 /* AppiraterLocalizable.strings in Resources */,
-				7969EDDE5E2C3B8DE8D46A12 /* AppiraterLocalizable.strings in Resources */,
-				7969E7057224D4B3ED6F1355 /* AppiraterLocalizable.strings in Resources */,
-				7969E44CDD1060C0F68B2080 /* AppiraterLocalizable.strings in Resources */,
-				7969E54416979C13EEC4A61E /* AppiraterLocalizable.strings in Resources */,
-				7969E7D5632E663CDF20EFC1 /* AppiraterLocalizable.strings in Resources */,
-				7969EF5E66FA47AB3D85EAD2 /* AppiraterLocalizable.strings in Resources */,
-				7969E0B227023A9358AAE436 /* AppiraterLocalizable.strings in Resources */,
-				7969E9F8BCD9CD58CFF06291 /* AppiraterLocalizable.strings in Resources */,
-				7969E63B6DA81FF5C3F89CB2 /* AppiraterLocalizable.strings in Resources */,
-				7969E67ACA78FFDAE7F49279 /* AppiraterLocalizable.strings in Resources */,
-				7969EC91558C6C6690006AE8 /* README.md in Resources */,
-				7969EFBA0FE313DBE4711FD8 /* AppiraterLocalizable.strings in Resources */,
-				7969E4502AB9B662E6CB87B2 /* AppiraterLocalizable.strings in Resources */,
-				7969E2BFE55842B307D268E4 /* AppiraterLocalizable.strings in Resources */,
-				7969E78ABAC91726449FCD40 /* AppiraterLocalizable.strings in Resources */,
-				7969EFCF6EAE89991B40D45E /* AppiraterLocalizable.strings in Resources */,
 				D2E53EB61697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */,
 			);
@@ -3645,7 +3231,6 @@
 				D25894001673C764003E3F59 /* HttpClient.cpp in Sources */,
 				D254FDEA1674BE200072CE69 /* AdScene.cpp in Sources */,
 				7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */,
-				7969E799F2DB4B1F902AB610 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3873,7 +3458,6 @@
 				D261DBF2167DF531008C6503 /* HttpClient.cpp in Sources */,
 				D261DBF3167DF531008C6503 /* AdScene.cpp in Sources */,
 				D261DBF4167DF531008C6503 /* CreditsScene.cpp in Sources */,
-				7969E8578005E112FFF0E8A7 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4101,7 +3685,6 @@
 				D261DCF7167DF54D008C6503 /* HttpClient.cpp in Sources */,
 				D261DCF8167DF54D008C6503 /* AdScene.cpp in Sources */,
 				D261DCF9167DF54D008C6503 /* CreditsScene.cpp in Sources */,
-				7969ED6BA771DA9B399CB9FE /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4329,190 +3912,10 @@
 				D261DDFC167DF558008C6503 /* HttpClient.cpp in Sources */,
 				D261DDFD167DF558008C6503 /* AdScene.cpp in Sources */,
 				D261DDFE167DF558008C6503 /* CreditsScene.cpp in Sources */,
-				7969EFD5D5013AEA1B935A4E /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		7969E09235E91D10EB83348F /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E03D89354C84A44417A3 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E0960FB1143A3D5EDA2A /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E3EC1D31C5AFCF094947 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E0CA4CA484C14C4DEE9B /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E8325B07CE013603128D /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E1C5E0DE57837440365F /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969ECC66911D417F2038312 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E2AAFCBC4282296A4973 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E27864353389E6294745 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E2C475B7792DC8B096EF /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969EE5BBFAAA478B81A1B25 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E2EF12BEFAF83FBFD574 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E602FEA94D9330FA8CC2 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E37AB5E85853A5EE3CF6 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969EAE2E463C92DB705A83A /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E3FAFA1973E52F707840 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E519C0DF4271B21C36DA /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E485196670962F11B087 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E9A8F6D56F40491EC91A /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E5C65B2183AB69EEDD63 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E0F27F413EA9D244D158 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E67CDD24EC625E249A6E /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E3FB9C1A61AFB2BE41CA /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E790064CD16D49330DD4 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969EBC3E45C99137CEEAB43 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E91111763AEDA6679CC5 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E9C7392FD52EA5A9C52B /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E97ACB4426EA959EB366 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969EF3B7440AA8E1DC0E0B5 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E988765D856E383CF91C /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969ED688E6310918260E4DC /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969E996E4DD352519F2F63D /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E2D6CB50DE830DD6FD46 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969EBC399AF966B0FC39887 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969E8F9ECC47080359F0959 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969ED7A658A4EA08E48CD90 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969EF0C7E180190BA6557E0 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969EDD631561BBABA5500EB /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969EE00A6979C99AE424400 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969EEC1B6D9FE57016FBB07 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969EB944531FA42C2D1E3F9 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-		7969EEDC331FA70113F17F87 /* AppiraterLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7969EEBDF83E98A85E5AB337 /* AppiraterLocalizable.strings */,
-			);
-			name = AppiraterLocalizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		02BAF0FC159E5AAD00BCA0C3 /* Debug */ = {
@@ -4539,6 +3942,8 @@
 					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
 					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
 					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+					"\"$(SRCROOT)/../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/ios-openssl/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksFreeDistribution;
 				PROVISIONING_PROFILE = "2491854E-B902-4AC4-BF2D-AF59FB3E2DC4";
@@ -4568,6 +3973,8 @@
 					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
 					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
 					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+					"\"$(SRCROOT)/../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/ios-openssl/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksFreeDistribution;
 				PROVISIONING_PROFILE = "2491854E-B902-4AC4-BF2D-AF59FB3E2DC4";
@@ -4596,20 +4003,20 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
-					"/Users/bquenin/poco-1.5.0-all/Foundation/include",
-					"/Users/bquenin/poco-1.5.0-all/JSON/include",
-					"/Users/bquenin/poco-1.5.0-all/Net/include",
-					"/Users/bquenin/poco-1.5.0-all/XML/include",
-					"/Users/bquenin/poco-1.5.0-all/Util/include",
-					"/Users/bquenin/poco-1.5.0-all/NetSSL_OpenSSL/include",
-					"/Users/bquenin/poco-1.5.0-all/Crypto/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/Foundation/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/JSON/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/Net/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/XML/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/Util/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/NetSSL_OpenSSL/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/Crypto/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"";
 				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*][arch=armv7]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/poco-1.5.0-all/lib/iPhoneOS/armv7",
-					"/Users/bquenin/workspace/ios-openssl/lib",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/lib/iPhoneOS/armv7",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -4645,20 +4052,20 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
-					"/Users/bquenin/poco-1.5.0-all/Foundation/include",
-					"/Users/bquenin/poco-1.5.0-all/JSON/include",
-					"/Users/bquenin/poco-1.5.0-all/Net/include",
-					"/Users/bquenin/poco-1.5.0-all/XML/include",
-					"/Users/bquenin/poco-1.5.0-all/Util/include",
-					"/Users/bquenin/poco-1.5.0-all/NetSSL_OpenSSL/include",
-					"/Users/bquenin/poco-1.5.0-all/Crypto/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/Foundation/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/JSON/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/Net/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/XML/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/Util/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/NetSSL_OpenSSL/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/Crypto/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"";
 				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*][arch=armv7]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/poco-1.5.0-all/lib/iPhoneOS/armv7",
-					"/Users/bquenin/workspace/ios-openssl/lib",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all/lib/iPhoneOS/armv7",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -4692,6 +4099,8 @@
 					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
 					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
 					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+					"\"$(SRCROOT)/../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/ios-openssl/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksCommercialDistribution;
 				PROVISIONING_PROFILE = "F26BEBE9-D4DE-470F-B37C-30C930DAA4E0";
@@ -4715,6 +4124,8 @@
 					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
 					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
 					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+					"\"$(SRCROOT)/../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/ios-openssl/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksCommercialDistribution;
 				PROVISIONING_PROFILE = "F26BEBE9-D4DE-470F-B37C-30C930DAA4E0";
@@ -4745,6 +4156,8 @@
 					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
 					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
 					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+					"\"$(SRCROOT)/../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/ios-openssl/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
@@ -4774,6 +4187,8 @@
 					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
 					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
 					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+					"\"$(SRCROOT)/../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/ios-openssl/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
@@ -4797,6 +4212,8 @@
 					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
 					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
 					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+					"\"$(SRCROOT)/../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/ios-openssl/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksCommercialDevelopment;
 				PROVISIONING_PROFILE = "";
@@ -4820,6 +4237,8 @@
 					"\"$(SRCROOT)/../../../poco-1.5.0-all/lib/iPhoneOS/armv7\"",
 					"\"$(SRCROOT)/../../android-external-openssl-ndk-static/obj/local/armeabi\"",
 					"\"$(SRCROOT)/../../ios-openssl/lib\"",
+					"\"$(SRCROOT)/../third-party/poco-1.5.0-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/ios-openssl/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksCommercialDevelopment;
 				PROVISIONING_PROFILE = "";

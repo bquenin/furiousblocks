@@ -96,4 +96,4 @@ SYSFLAGS = -DPOCO_HAVE_IPv6 -DPOCO_NO_FPENVIRONMENT -DPOCO_NO_STAT64 -DPOCO_NO_S
 #
 # System Specific Libraries
 #
-SYSLIBS  = -ldl
+SYSLIBS  = -ldl -lc++
