@@ -1,5 +1,5 @@
 LOCAL_PATH := $(call my-dir)
-POCO_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.0-all
+POCO_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all
 OPENSSL_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/android-external-openssl-ndk-static
 
 #
@@ -9,15 +9,6 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := furiousblocks_shared
 LOCAL_MODULE_FILENAME := libfuriousblocks
-
-#
-# OpenSSL
-#
-
-LOCAL_C_INCLUDES += $(OPENSSL_ROOT)/include
-
-LOCAL_LDFLAGS += $(OPENSSL_ROOT)/obj/local/armeabi/libcrypto.a
-LOCAL_LDFLAGS += $(OPENSSL_ROOT)/obj/local/armeabi/libssl.a
 
 #
 # POCO lib
@@ -30,13 +21,28 @@ LOCAL_C_INCLUDES += $(POCO_ROOT)/Crypto/include
 LOCAL_C_INCLUDES += $(POCO_ROOT)/Net/include
 LOCAL_C_INCLUDES += $(POCO_ROOT)/NetSSL_OpenSSL/include
 LOCAL_C_INCLUDES += $(POCO_ROOT)/JSON/include
+LOCAL_C_INCLUDES += $(POCO_ROOT)/XML/include
 
-LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoUtil.a
-LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoCrypto.a
-LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoNet.a
-LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoNetSSL.a
-LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoJSON.a
-LOCAL_LDFLAGS += $(POCO_ROOT)/lib/Android/armeabi/libPocoFoundation.a
+LOCAL_LDFLAGS += -L $(POCO_ROOT)/lib/Android/armeabi
+
+LOCAL_LDLIBS += -lPocoNetSSL
+LOCAL_LDLIBS += -lPocoNet
+LOCAL_LDLIBS += -lPocoUtil
+LOCAL_LDLIBS += -lPocoXML
+LOCAL_LDLIBS += -lPocoCrypto
+LOCAL_LDLIBS += -lPocoJSON
+LOCAL_LDLIBS += -lPocoFoundation
+
+#
+# OpenSSL
+#
+
+LOCAL_C_INCLUDES += $(OPENSSL_ROOT)/include
+
+LOCAL_LDFLAGS += -L $(OPENSSL_ROOT)/obj/local/armeabi
+
+LOCAL_LDLIBS += -lssl
+LOCAL_LDLIBS += -lcrypto
 
 #
 # Build flags
@@ -108,7 +114,7 @@ bootstrap/main.cpp \
 ../../../generic/tween/tweener_group.cpp \
 ../../../generic/tween/tweener_sequence.cpp
 
-LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static ssl crypto
+LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
 
 include $(BUILD_SHARED_LIBRARY)
 
