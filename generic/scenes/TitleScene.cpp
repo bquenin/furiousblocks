@@ -181,6 +181,9 @@ void TitleScene::musicSwitchAction(CCObject *sender) {
 }
 
 void TitleScene::quitAction(CCObject *sender) {
+  // Unnitialize SSL
+  Poco::Net::uninitializeSSL();
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
   exit(0);
 #endif
@@ -242,23 +245,24 @@ extern "C" {
 #endif
 
 void TitleScene::testAction(CCObject *sender) {
+  using namespace Poco;
   try {
     // Target URI
-    Poco::URI uri("https://graph.facebook.com/me/friends?access_token=" + AppDelegate::getAccessToken());
+    URI uri("https://graph.facebook.com/me/friends?access_token=" + AppDelegate::getAccessToken());
     std::string path(uri.getPathEtc());
 
     // SSL Context
-    const Poco::Net::Context::Ptr context(new Poco::Net::Context(Poco::Net::Context::CLIENT_USE, "", "", "", Poco::Net::Context::VERIFY_NONE, 9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
+    const Net::Context::Ptr context(new Net::Context(Net::Context::CLIENT_USE, "", "", "", Net::Context::VERIFY_NONE, 9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
 
     // HTTP Session
-    Poco::Net::HTTPSClientSession session(uri.getHost(), uri.getPort(), context);
+    Net::HTTPSClientSession session(uri.getHost(), uri.getPort(), context);
 
     // Request
-    Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, path, Poco::Net::HTTPMessage::HTTP_1_1);
+    Net::HTTPRequest request(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
     session.sendRequest(request);
 
     // Response
-    Poco::Net::HTTPResponse response;
+    Net::HTTPResponse response;
     std::istream& rs = session.receiveResponse(response);
 //    std::cout << response.getStatus() << " " << response.getReason() << std::endl;
 //    for (auto response_header : response) {
@@ -266,34 +270,27 @@ void TitleScene::testAction(CCObject *sender) {
 //    }
 
     std::ostringstream responseBody;
-    if (response.getStatus() != Poco::Net::HTTPResponse::HTTP_UNAUTHORIZED) {
-      Poco::StreamCopier::copyStream(rs, responseBody);
-//      Poco::StreamCopier::copyStream(rs, std::cout);
+    if (response.getStatus() != Net::HTTPResponse::HTTP_UNAUTHORIZED) {
+      StreamCopier::copyStream(rs, responseBody);
+//      StreamCopier::copyStream(rs, std::cout);
     } else {
-      Poco::NullOutputStream null;
-      Poco::StreamCopier::copyStream(rs, null);
+      NullOutputStream null;
+      StreamCopier::copyStream(rs, null);
       return;
     }
 
     // Parsing JSON response
-    Poco::JSON::DefaultHandler handler;
-    Poco::JSON::Parser parser;
+    JSON::DefaultHandler handler;
+    JSON::Parser parser;
 
     parser.setHandler(&handler);
     parser.parse(responseBody.str());
-    Poco::DynamicAny result = handler.result();
 
-    Poco::JSON::Object::Ptr jsonResponse = result.extract<Poco::JSON::Object::Ptr>();
-    jsonResponse->stringify(std::cout);
+    JSON::Object::Ptr jsonResponse = handler.result().extract<JSON::Object::Ptr>();
+    jsonResponse->stringify(std::cout, 2);
 
-//    std::vector<std::string> names;
-//    obj->getNames(names);
-//
-//    for (auto name : names) {
-//      std::cout << "name = " << name << std::endl;
-//    }
-//
-//    Poco::JSON::Array::Ptr data = obj->getArray("data");
+    JSON::Array::Ptr data = jsonResponse->getArray("data");
+
 //    std::cout << "array size = " << data->size() << std::endl;
 //    for (unsigned int i = 0; i < data->size(); i++) {
 //      std::cout << "value[" << i << "] = " << data->getElement<std::string>(i) << std::endl;
@@ -304,7 +301,7 @@ void TitleScene::testAction(CCObject *sender) {
 //    std::cout << "test4" << std::endl;
 
 //    std::cout << "output = " << out.str() << std::endl << "done." << std::endl;
-  } catch (Poco::Exception& exc) {
+  } catch (Exception& exc) {
     CCLOG("error =  %s", exc.displayText().c_str());
   }
 

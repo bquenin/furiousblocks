@@ -23,6 +23,7 @@ AppDelegate::~AppDelegate() {
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+  // Initialize SSL
   Poco::Net::initializeSSL();
 
   // seed for random
