@@ -260,37 +260,50 @@ void TitleScene::testAction(CCObject *sender) {
     // Response
     Poco::Net::HTTPResponse response;
     std::istream& rs = session.receiveResponse(response);
-    std::cout << response.getStatus() << " " << response.getReason() << std::endl;
-    for (auto response_header: response) {
-      std::cout << response_header.first << " = " << response_header.second << std::endl;
-    }
+//    std::cout << response.getStatus() << " " << response.getReason() << std::endl;
+//    for (auto response_header : response) {
+//      std::cout << response_header.first << " = " << response_header.second << std::endl;
+//    }
 
     std::ostringstream responseBody;
     if (response.getStatus() != Poco::Net::HTTPResponse::HTTP_UNAUTHORIZED) {
-//      Poco::StreamCopier::copyStream(rs, responseBody);
-      Poco::StreamCopier::copyStream(rs, std::cout);
+      Poco::StreamCopier::copyStream(rs, responseBody);
+//      Poco::StreamCopier::copyStream(rs, std::cout);
     } else {
       Poco::NullOutputStream null;
       Poco::StreamCopier::copyStream(rs, null);
       return;
     }
 
-//    // Parsing JSON response
-//    Poco::JSON::DefaultHandler handler;
-//    Poco::JSON::Parser parser;
+    // Parsing JSON response
+    Poco::JSON::DefaultHandler handler;
+    Poco::JSON::Parser parser;
+
+    parser.setHandler(&handler);
+    parser.parse(responseBody.str());
+    Poco::DynamicAny result = handler.result();
+
+    Poco::JSON::Object::Ptr jsonResponse = result.extract<Poco::JSON::Object::Ptr>();
+    jsonResponse->stringify(std::cout);
+
+//    std::vector<std::string> names;
+//    obj->getNames(names);
 //
-//    parser.setHandler(&handler);
-//    parser.parse(responseBody.str());
-//    Poco::DynamicAny result = handler.result();
+//    for (auto name : names) {
+//      std::cout << "name = " << name << std::endl;
+//    }
 //
-//    Poco::JSON::Object::Ptr obj;
-//    //if (result.type() == typeid(Poco::JSON::Object::Ptr)) {
-//      obj = result.extract<Poco::JSON::Object::Ptr>();
-//    //}
-//
+//    Poco::JSON::Array::Ptr data = obj->getArray("data");
+//    std::cout << "array size = " << data->size() << std::endl;
+//    for (unsigned int i = 0; i < data->size(); i++) {
+//      std::cout << "value[" << i << "] = " << data->getElement<std::string>(i) << std::endl;
+//    }
+
 //    // Serialize to string
-//      std::ostringstream out;
-//    obj->stringify(out);
+//    data->stringify(std::cout, 0);
+//    std::cout << "test4" << std::endl;
+
+//    std::cout << "output = " << out.str() << std::endl << "done." << std::endl;
   } catch (Poco::Exception& exc) {
     CCLOG("error =  %s", exc.displayText().c_str());
   }
