@@ -68,14 +68,14 @@ NS_CC_BEGIN
       [[UIApplication sharedApplication] openURL:nsUrl];
     }
 
-    void CCApplication::onClickLogin() {
+    void CCApplication::facebookLogin() {
       // FBSample logic
       // The user has initiated a login, so call the openSession method.
       id <UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
       [appDelegate openSessionWithAllowLoginUI:YES];
     }
 
-    void CCApplication::onClickLogout() {
+    void CCApplication::facebookLogout() {
       [FBSession.activeSession closeAndClearTokenInformation];
     }
 

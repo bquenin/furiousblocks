@@ -21,6 +21,7 @@ IPHONE_SDK_VERSION = 6.0
 
 # if IPHONE_SDK_VERSION_MIN is defined use that
 # Otherwise use the version found.
+IPHONE_SDK_VERSION_MIN = 5.0
 
 IPHONE_SDK             ?= iPhoneOS
 IPHONE_SDK_ROOT        ?= $(shell xcode-select -print-path)/Platforms/$(IPHONE_SDK).platform/Developer/SDKs
@@ -70,7 +71,7 @@ SHAREDLIBLINKEXT = .dylib
 CFLAGS          = $(OSFLAGS)
 CFLAGS32        =
 CFLAGS64        =
-CXXFLAGS        = $(OSFLAGS) -Wall -Wno-sign-compare -std=c++11 -stdlib=libc++
+CXXFLAGS        = $(OSFLAGS) -Wall -Wno-sign-compare -fvisibility=hidden -fvisibility-inlines-hidden -std=c++11 -stdlib=libc++
 CXXFLAGS32      =
 CXXFLAGS64      =
 LINKFLAGS       = $(OSFLAGS)

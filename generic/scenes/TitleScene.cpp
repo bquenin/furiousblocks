@@ -12,7 +12,7 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "CreditsScene.h"
-#include "Facebook.h"
+#include "Social.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
@@ -179,14 +179,13 @@ void TitleScene::quitAction(CCObject *sender) {
 }
 
 void TitleScene::logInAction(CCObject *sender) {
-  Facebook::logIn();
+  Social::facebookLogin();
 }
 
 void TitleScene::logOutAction(CCObject *sender) {
-  Facebook::logOut();
+  Social::facebookLogout();
 }
 
 void TitleScene::testAction(CCObject *sender) {
-  Facebook::getInfo();
+  Social::registerPlayer();
 }
-
