@@ -13,6 +13,7 @@
 #include "Poco/StreamCopier.h"
 #include "Poco/NullStream.h"
 #include "Poco/Net/SSLManager.h"
+#include "Poco/Net/MediaType.h"
 #include "Poco/JSON/Parser.h"
 #include "Poco/JSON/DefaultHandler.h"
 #include "Poco/JSON/JSONException.h"
@@ -117,7 +118,7 @@ void Social::registerPlayer() {
     // Get or create the player
     createOrUpdatePlayer(jsonResponse->get("id"), jsonResponse->get("first_name"), jsonResponse->get("last_name"), AppDelegate::getAccessToken());
   } catch (Exception& exc) {
-    CCLOG("error =  %s", exc.displayText().c_str());
+    CCLOG("error in registerPlayer = %s", exc.displayText().c_str());
   }
 }
 
@@ -134,28 +135,24 @@ void Social::createOrUpdatePlayer(const std::string& facebookId, const std::stri
     JSON::Object jsonRequest;
     jsonRequest.set("firstName", firstName);
     jsonRequest.set("lastName", lastName);
-    jsonRequest.set("accesToken", accessToken);
+    jsonRequest.set("accessToken", accessToken);
 
     Net::HTTPRequest request(Net::HTTPRequest::HTTP_POST, path, Net::HTTPMessage::HTTP_1_1);
+    request.setContentType("application/json");
+    request.setChunkedTransferEncoding(true);
     jsonRequest.stringify(session.sendRequest(request));
 
     // Response
     Net::HTTPResponse response;
     std::istream& rs = session.receiveResponse(response);
-    std::cout << response.getStatus() << " " << response.getReason() << std::endl;
-    for (auto response_header : response) {
-      std::cout << response_header.first << " = " << response_header.second << std::endl;
-    }
 
-    std::ostringstream responseBody;
     if (response.getStatus() == Net::HTTPResponse::HTTP_BAD_REQUEST) {
-//      throw SocialPlayerNotFoundException("Player not found");
-//      StreamCopier::copyStream(rs, std::cout);
+      StreamCopier::copyStream(rs, std::cout);
       CCLOG("error, bad request ...");
       return;
     }
+
   } catch (Exception& exc) {
-    CCLOG("error =  %s", exc.displayText().c_str());
+    CCLOG("error in createOrUpdatePlayer = %s", exc.displayText().c_str());
   }
 }
-
