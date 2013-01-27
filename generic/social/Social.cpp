@@ -20,6 +20,8 @@
 
 using namespace Poco;
 
+const std::string Social::PIXODROME_SERVER = "http://192.168.0.11:9000/";
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/jni/JniHelper.h"
 #include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
@@ -120,7 +122,7 @@ void Social::registerPlayer() {
 void Social::createOrUpdatePlayer(const std::string& facebookId, const std::string& firstName, const std::string& lastName, const std::string& accessToken) {
   try {
     // Target URI
-    URI uri("http://192.168.0.11:9000/players/" + facebookId);
+    URI uri(PIXODROME_SERVER + "players/" + facebookId);
     std::string path(uri.getPathEtc());
 
     // HTTP Session
@@ -152,10 +154,10 @@ void Social::createOrUpdatePlayer(const std::string& facebookId, const std::stri
   }
 }
 
-void Social::submitScore(const std::string& facebookId, uint64_t score) {
+void Social::submitScore(uint64_t score) {
   try {
     // Target URI
-    URI uri("http://192.168.0.11:9000/scores/" + facebookId);
+    URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
     std::string path(uri.getPathEtc());
 
     // HTTP Session
@@ -183,6 +185,84 @@ void Social::submitScore(const std::string& facebookId, uint64_t score) {
       CCLOG("Not found.");
       return;
     }
+  } catch (Exception& exc) {
+    CCLOG("%s", exc.displayText().c_str());
+  }
+}
+
+void Social::getMyScores() {
+  try {
+    // Target URI
+    URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+
+    // Request
+    JSON::Object jsonRequest;
+    jsonRequest.set("type", "mines");
+
+    Net::HTTPRequest request(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
+    request.setContentType("application/json");
+    request.setChunkedTransferEncoding(true);
+    jsonRequest.stringify(session.sendRequest(request));
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+
+    if (response.getStatus() == Net::HTTPResponse::HTTP_BAD_REQUEST) {
+      std::ostringstream error;
+      StreamCopier::copyStream(rs, error);
+      CCLOG("Bad request: %s", error.str().c_str());
+      return;
+    } else if (response.getStatus() == Net::HTTPResponse::HTTP_NOT_FOUND) {
+      CCLOG("Not found.");
+      return;
+    }
+    std::ostringstream responseBody;
+    StreamCopier::copyStream(rs, responseBody);
+    CCLOG("response body = %s", responseBody.str().c_str());
+  } catch (Exception& exc) {
+    CCLOG("%s", exc.displayText().c_str());
+  }
+}
+
+void Social::getFriendsScores() {
+  try {
+    // Target URI
+    URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+
+    // Request
+    JSON::Object jsonRequest;
+    jsonRequest.set("type", "friends");
+
+    Net::HTTPRequest request(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
+    request.setContentType("application/json");
+    request.setChunkedTransferEncoding(true);
+    jsonRequest.stringify(session.sendRequest(request));
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+
+    if (response.getStatus() == Net::HTTPResponse::HTTP_BAD_REQUEST) {
+      std::ostringstream error;
+      StreamCopier::copyStream(rs, error);
+      CCLOG("Bad request: %s", error.str().c_str());
+      return;
+    } else if (response.getStatus() == Net::HTTPResponse::HTTP_NOT_FOUND) {
+      CCLOG("Not found.");
+      return;
+    }
+    std::ostringstream responseBody;
+    StreamCopier::copyStream(rs, responseBody);
+    CCLOG("response body = %s", responseBody.str().c_str());
   } catch (Exception& exc) {
     CCLOG("%s", exc.displayText().c_str());
   }

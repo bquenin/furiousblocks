@@ -220,7 +220,7 @@ void PanelScene::onGameOver() {
   // Store the score
   if (AppDelegate::isLoggedIn()) {
     Social::registerPlayer();
-    Social::submitScore(AppDelegate::getFacebookId(), (*core->playerToPanel[player]).score);
+    Social::submitScore(core->playerToPanel[player]->score);
   }
 
   // Initialize the grid

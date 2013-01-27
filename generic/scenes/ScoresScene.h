@@ -16,7 +16,6 @@ using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class ScoresScene : public cocos2d::CCLayer {
-
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
@@ -26,6 +25,8 @@ public:
 
   bool init();
   void backToTitleAction(CCObject *sender);
+  void yoursAction(CCObject* sender);
+  void friendsAction(CCObject* sender);
 };
 
 

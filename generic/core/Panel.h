@@ -136,7 +136,7 @@ public:
   fb::Block *blocks[Panel::X][Panel::Y]; // std::array<std::array<Block *, Panel::Y>, Panel::X> blocks;
   furiousblocks::Point cursor;
   int32_t scrollingDelta;
-  int32_t score;
+  uint64_t score;
   bool gameOver;
 
   Panel(int32_t seed, int32_t playerId, const BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT], PanelListener &panelListener);

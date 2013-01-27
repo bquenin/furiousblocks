@@ -7,6 +7,7 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "TitleScene.h"
+#include "Social.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -44,7 +45,7 @@ bool ScoresScene::init() {
   yours->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   yours->setPosition(ccp(Assets::designResolutionSize.width * 1 / 4, Assets::designResolutionSize.height - 40));
   yours->setPreferredSize(CCSizeMake(yours->getContentSize().width + 10, 60));
-//  menuButton->addTargetWithActionForControlEvents(this, cccontrol_selector(ScoresScene::menuAction), CCControlEventTouchUpInside);
+  yours->addTargetWithActionForControlEvents(this, cccontrol_selector(ScoresScene::yoursAction), CCControlEventTouchUpInside);
   yours->setDefaultTouchPriority(-64);
   addChild(yours);
 
@@ -53,7 +54,7 @@ bool ScoresScene::init() {
   friends->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   friends->setPosition(ccp(Assets::designResolutionSize.width * 2 / 4, Assets::designResolutionSize.height - 40));
   friends->setPreferredSize(CCSizeMake(friends->getContentSize().width + 10, 60));
-//  menuButton->addTargetWithActionForControlEvents(this, cccontrol_selector(ScoresScene::menuAction), CCControlEventTouchUpInside);
+  friends->addTargetWithActionForControlEvents(this, cccontrol_selector(ScoresScene::friendsAction), CCControlEventTouchUpInside);
   friends->setDefaultTouchPriority(-64);
   addChild(friends);
 
@@ -75,6 +76,14 @@ bool ScoresScene::init() {
   addChild(endGameButton);
 
   return true;
+}
+
+void ScoresScene::yoursAction(CCObject* sender) {
+  Social::getMyScores();
+}
+
+void ScoresScene::friendsAction(CCObject* sender) {
+  Social::getFriendsScores();
 }
 
 void ScoresScene::backToTitleAction(CCObject* sender) {
