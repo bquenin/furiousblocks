@@ -49,8 +49,8 @@ LOCAL_LDLIBS += -lcrypto
 #
 LOCAL_CPPFLAGS := -fexceptions -frtti -std=gnu++0x
 LOCAL_CPPFLAGS += -DFREEMIUM
-#LOCAL_CPPFLAGS += -O2 -DNDEBUG -fomit-frame-pointer
-LOCAL_CPPFLAGS += -DCOCOS2D_DEBUG -DDEBUG
+LOCAL_CPPFLAGS += -O2 -DNDEBUG -fomit-frame-pointer
+#LOCAL_CPPFLAGS += -DCOCOS2D_DEBUG -DDEBUG
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/bootstrap
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic
@@ -85,6 +85,7 @@ bootstrap/main.cpp \
 ../../../generic/scenes/PanelMenuOverlay.cpp \
 ../../../generic/scenes/PanelScene.cpp \
 ../../../generic/scenes/QuitOverlay.cpp \
+../../../generic/scenes/ScoresScene.cpp \
 ../../../generic/scenes/StarNumber.cpp \
 ../../../generic/scenes/TitleScene.cpp \
 ../../../generic/scenes/TouchPlayer.cpp \
