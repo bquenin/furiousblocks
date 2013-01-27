@@ -40,8 +40,7 @@ public:
   void quitAction(CCObject *sender);
   void logInAction(CCObject *sender);
   void logOutAction(CCObject *sender);
-
-  void testAction(CCObject *sender);
+  void scoresAction(CCObject *sender);
 };
 
 

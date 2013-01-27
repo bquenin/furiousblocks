@@ -13,6 +13,7 @@
 #include "AppDelegate.h"
 #include "CreditsScene.h"
 #include "Social.h"
+#include "ScoresScene.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
@@ -88,10 +89,18 @@ bool TitleScene::init() {
   howToPlaylButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
   addChild(howToPlaylButton);
 
+  CCControlButton *scoresButton = CCControlButton::create(CCLabelTTF::create("Scores", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  scoresButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
+  scoresButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
+  scoresButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 120));
+  scoresButton->setPreferredSize(CCSizeMake(scoresButton->getContentSize().width + 20, 60));
+  scoresButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::scoresAction), CCControlEventTouchUpInside);
+  addChild(scoresButton);
+
   CCControlButton *creditsButton = CCControlButton::create(CCLabelTTF::create("Credits", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   creditsButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   creditsButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  creditsButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 120));
+  creditsButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 200));
   creditsButton->setPreferredSize(CCSizeMake(creditsButton->getContentSize().width + 20, 60));
   creditsButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::creditsAction), CCControlEventTouchUpInside);
   addChild(creditsButton);
@@ -99,7 +108,7 @@ bool TitleScene::init() {
   musicSwitchOn = CCControlButton::create(CCLabelTTF::create("Music: On", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   musicSwitchOn->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   musicSwitchOn->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  musicSwitchOn->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 200));
+  musicSwitchOn->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 280));
   musicSwitchOn->setPreferredSize(CCSizeMake(musicSwitchOn->getContentSize().width + 20, 60));
   musicSwitchOn->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::musicSwitchAction), CCControlEventTouchUpInside);
   musicSwitchOn->setVisible(AppDelegate::isMusicOn());
@@ -108,7 +117,7 @@ bool TitleScene::init() {
   musicSwitchOff = CCControlButton::create(CCLabelTTF::create("Music: Off", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   musicSwitchOff->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   musicSwitchOff->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  musicSwitchOff->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 200));
+  musicSwitchOff->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 280));
   musicSwitchOff->setPreferredSize(CCSizeMake(musicSwitchOff->getContentSize().width + 20, 60));
   musicSwitchOff->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::musicSwitchAction), CCControlEventTouchUpInside);
   musicSwitchOff->setVisible(!AppDelegate::isMusicOn());
@@ -117,20 +126,12 @@ bool TitleScene::init() {
   CCControlButton *quitButton = CCControlButton::create(CCLabelTTF::create("Quit", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   quitButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   quitButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  quitButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 280));
+  quitButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 360));
   quitButton->setPreferredSize(CCSizeMake(quitButton->getContentSize().width + 20, 60));
   quitButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::quitAction), CCControlEventTouchUpInside);
   addChild(quitButton);
 
-  CCControlButton *testButton = CCControlButton::create(CCLabelTTF::create("test", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
-  testButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
-  testButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
-  testButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 360));
-  testButton->setPreferredSize(CCSizeMake(testButton->getContentSize().width + 20, 60));
-  testButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::testAction), CCControlEventTouchUpInside);
-  addChild(testButton);
-
-  CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2012 PixodromE", "SkaterDudes.ttf", 32);
+  CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2013 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));
   copyright->setColor(ccc3(10, 10, 10));
   addChild(copyright);
@@ -146,12 +147,24 @@ void TitleScene::update(float dt) {
   logOut->setVisible(AppDelegate::isLoggedIn());
 }
 
+void TitleScene::logInAction(CCObject *sender) {
+  Social::facebookLogin();
+}
+
+void TitleScene::logOutAction(CCObject *sender) {
+  Social::facebookLogout();
+}
+
 void TitleScene::playAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, PanelScene::scene(), kOrientationUpOver));
 }
 
 void TitleScene::howToPlayAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TutorialScene::scene(), kOrientationUpOver));
+}
+
+void TitleScene::scoresAction(CCObject *sender) {
+  CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, ScoresScene::scene(), kOrientationUpOver));
 }
 
 void TitleScene::creditsAction(CCObject *sender) {
@@ -176,16 +189,4 @@ void TitleScene::quitAction(CCObject *sender) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
   terminateProcessJNI();
 #endif
-}
-
-void TitleScene::logInAction(CCObject *sender) {
-  Social::facebookLogin();
-}
-
-void TitleScene::logOutAction(CCObject *sender) {
-  Social::facebookLogout();
-}
-
-void TitleScene::testAction(CCObject *sender) {
-  Social::registerPlayer();
 }
