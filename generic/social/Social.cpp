@@ -108,6 +108,8 @@ void Social::registerPlayer() {
 
     JSON::Object::Ptr jsonResponse = handler.result().extract<JSON::Object::Ptr>();
 
+    AppDelegate::setFacebookId(jsonResponse->get("id"));
+
     // Get or create the player
     createOrUpdatePlayer(jsonResponse->get("id"), jsonResponse->get("first_name"), jsonResponse->get("last_name"), AppDelegate::getAccessToken());
   } catch (Exception& exc) {
@@ -140,12 +142,48 @@ void Social::createOrUpdatePlayer(const std::string& facebookId, const std::stri
     std::istream& rs = session.receiveResponse(response);
 
     if (response.getStatus() == Net::HTTPResponse::HTTP_BAD_REQUEST) {
-      StreamCopier::copyStream(rs, std::cout);
-      CCLOG("error, bad request ...");
+      std::ostringstream error;
+      StreamCopier::copyStream(rs, error);
+      CCLOG("Bad request: %s", error.str().c_str());
       return;
     }
-
   } catch (Exception& exc) {
-    CCLOG("error in createOrUpdatePlayer = %s", exc.displayText().c_str());
+    CCLOG("%s", exc.displayText().c_str());
+  }
+}
+
+void Social::submitScore(const std::string& facebookId, uint64_t score) {
+  try {
+    // Target URI
+    URI uri("http://192.168.0.11:9000/scores/" + facebookId);
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+
+    // Request
+    JSON::Object jsonRequest;
+    jsonRequest.set("score", score);
+
+    Net::HTTPRequest request(Net::HTTPRequest::HTTP_POST, path, Net::HTTPMessage::HTTP_1_1);
+    request.setContentType("application/json");
+    request.setChunkedTransferEncoding(true);
+    jsonRequest.stringify(session.sendRequest(request));
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+
+    if (response.getStatus() == Net::HTTPResponse::HTTP_BAD_REQUEST) {
+      std::ostringstream error;
+      StreamCopier::copyStream(rs, error);
+      CCLOG("Bad request: %s", error.str().c_str());
+      return;
+    } else if (response.getStatus() == Net::HTTPResponse::HTTP_NOT_FOUND) {
+      CCLOG("Not found.");
+      return;
+    }
+  } catch (Exception& exc) {
+    CCLOG("%s", exc.displayText().c_str());
   }
 }

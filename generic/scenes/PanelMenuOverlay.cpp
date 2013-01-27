@@ -26,6 +26,16 @@ bool PanelMenuOverlay::init() {
 
   initWithColor(ccc4(0, 0, 0, 80));
 
+  CCLabelBMFont *yourScore = CCLabelBMFont::create("Your score", "coopblack32.fnt");
+  yourScore ->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height - 170));
+//  score->setVisible(false);
+  addChild(yourScore);
+
+  score = CCLabelBMFont::create("Score", "coopblack64.fnt");
+  score->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height - 250));
+//  score->setVisible(false);
+  addChild(score);
+
   continueButton = CCControlButton::create(CCLabelTTF::create("Continue", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   continueButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   continueButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
@@ -76,12 +86,6 @@ bool PanelMenuOverlay::init() {
 
   return true;
 }
-
-void PanelScene::setVisible(bool visible) {
-  CCNode::setVisible(visible);
-
-}
-
 
 void PanelMenuOverlay::continueAction(CCObject *sender) {
   setVisible(false);

@@ -17,6 +17,7 @@
 #include "StarNumber.h"
 #include "Assets.h"
 #include "AppDelegate.h"
+#include "Social.h"
 
 #ifdef FREEMIUM
 #include "AdScene.h"
@@ -27,7 +28,8 @@ using namespace std::placeholders;
 
 PanelScene::PanelScene()
 : AbstractPanelScene()
-, countdown(3) {
+, countdown(3)
+, gameOver(false) {
 }
 
 PanelScene::~PanelScene() {
@@ -184,6 +186,7 @@ void PanelScene::update(float dt) {
 
   // Score
   score->setString(Assets::format("%d", panel.score).c_str());
+  panelMenuOverlay->score->setString(Assets::format("%d", panel.score).c_str());
 
   // Time
   minutes->setString(Assets::format("%02d", static_cast<int32_t>(stateTime / 60)).c_str());
@@ -211,7 +214,14 @@ void PanelScene::onCombo(Combo *combo) {
 }
 
 void PanelScene::onGameOver() {
+  panelMenuOverlay->continueButton->setVisible(false);
   youLose->setVisible(true);
+
+  // Store the score
+  if (AppDelegate::isLoggedIn()) {
+    Social::registerPlayer();
+    Social::submitScore(AppDelegate::getFacebookId(), (*core->playerToPanel[player]).score);
+  }
 
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
@@ -257,7 +267,6 @@ void PanelScene::onBeginningTweenFinished(void) {
 void PanelScene::onLastStepFinished() {
   panelMenuOverlay->setVisible(true);
 }
-
 
 void PanelScene::menuAction(CCObject *sender) {
   panelMenuOverlay->setVisible(true);

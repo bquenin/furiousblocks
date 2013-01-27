@@ -126,8 +126,17 @@ std::string AppDelegate::getAccessToken() {
   return CCUserDefault::sharedUserDefault()->getStringForKey("accessToken", "none");
 }
 
-void AppDelegate::setAccessToken(const std::string accessToken) {
+void AppDelegate::setAccessToken(const std::string& accessToken) {
   CCUserDefault::sharedUserDefault()->setStringForKey("accessToken", accessToken);
+  CCUserDefault::sharedUserDefault()->flush();
+}
+
+std::string AppDelegate::getFacebookId() {
+  return CCUserDefault::sharedUserDefault()->getStringForKey("facebookId", "none");
+}
+
+void AppDelegate::setFacebookId(const std::string& facebookId) {
+  CCUserDefault::sharedUserDefault()->setStringForKey("facebookId", facebookId);
   CCUserDefault::sharedUserDefault()->flush();
 }
 

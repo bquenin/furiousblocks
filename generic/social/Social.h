@@ -17,6 +17,7 @@ class Social {
   static void facebookLogout();
   static void registerPlayer();
   static void createOrUpdatePlayer(const std::string& facebookId, const std::string& firstName, const std::string& lastName, const std::string& accessToken);
+  static void submitScore(const std::string& facebookId, uint64_t score);
 };
 
 #endif //__Social_H_

@@ -21,17 +21,17 @@ private:
   Player *player;
 
   // Labels
-  cocos2d::CCLabelBMFont *score;
-  cocos2d::CCLabelBMFont *minutes;
-  cocos2d::CCLabelBMFont *seconds;
-  cocos2d::CCLabelBMFont *centisecs;
+  CCLabelBMFont *score;
+  CCLabelBMFont *minutes;
+  CCLabelBMFont *seconds;
+  CCLabelBMFont *centisecs;
 
   // Opening
   int countdown;
-  cocos2d::CCLabelBMFont *countdownLabel;
+  CCLabelBMFont *countdownLabel;
 
   // Gameover
-  cocos2d::CCSprite *youLose;
+  CCSprite *youLose;
 
   // Menu
 //  InputState inputState;
@@ -39,11 +39,12 @@ private:
   PanelMenuOverlay *panelMenuOverlay;
 
 public:
+  bool gameOver;
   // Implement the "static node()" method manually
   CREATE_FUNC(PanelScene);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
-  static cocos2d::CCScene *scene();
+  static CCScene *scene();
 
   PanelScene();
   ~PanelScene();
@@ -59,7 +60,6 @@ public:
   void registerWithTouchDispatcher();
   bool ccTouchBegan(CCTouch *touch, CCEvent *event);
   void ccTouchEnded(CCTouch *touch, CCEvent *event);
-  virtual void setVisible(bool visible);
 };
 
 #endif // __PANELSCENE_H_
