@@ -96,7 +96,7 @@ public class FuriousBlocks extends Cocos2dxActivity {
     me.startActivity(intent);
   }
 
-  public static void onClickLogin() {
+  public static void facebookLogin() {
     Session session = Session.getActiveSession();
     if (!session.isOpened() && !session.isClosed()) {
       session.openForRead(new Session.OpenRequest(me).setCallback(me.statusCallback));
@@ -105,7 +105,7 @@ public class FuriousBlocks extends Cocos2dxActivity {
     }
   }
 
-  public static void onClickLogout() {
+  public static void facebookLogout() {
     Session session = Session.getActiveSession();
     if (!session.isClosed()) {
       session.closeAndClearTokenInformation();

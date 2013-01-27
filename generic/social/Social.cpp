@@ -28,16 +28,9 @@ using namespace Poco;
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 extern "C" {
-  std::string g_sessionStatus("no session status");
-  std::string g_accessToken("no access token");
-
   JNIEXPORT void JNICALL Java_me_pixodro_FuriousBlocks_facebookSessionStatusCallback(JNIEnv *env, jobject thiz, jstring sessionStatus, jstring accessToken) {
-    g_sessionStatus = JniHelper::jstring2string(sessionStatus);
-    g_accessToken = JniHelper::jstring2string(accessToken);
-    std::string OPENED("OPENED");
-    AppDelegate::setLoggedIn(g_sessionStatus == OPENED);
-    CCLOG("sessionStatus = %s", g_sessionStatus.c_str());
-    CCLOG("accessToken= %s", g_accessToken.c_str());
+    AppDelegate::setLoggedIn(JniHelper::jstring2string(sessionStatus) == "OPENED");
+    AppDelegate::setAccessToken(JniHelper::jstring2string(accessToken));
   }
 }
 #endif
@@ -51,7 +44,7 @@ void Social::facebookLogin() {
 
   if(JniHelper::getStaticMethodInfo(minfo,
     "me/pixodro/FuriousBlocks",
-    facebookLogin,
+    "facebookLogin",
     "()V"))
   {
     minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
@@ -69,7 +62,7 @@ void Social::facebookLogout() {
 
   if(JniHelper::getStaticMethodInfo(minfo,
     "me/pixodro/FuriousBlocks",
-    facebookLogout,
+    "facebookLogout",
     "()V"))
   {
     minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
@@ -125,7 +118,7 @@ void Social::registerPlayer() {
 void Social::createOrUpdatePlayer(const std::string& facebookId, const std::string& firstName, const std::string& lastName, const std::string& accessToken) {
   try {
     // Target URI
-    URI uri("https://192.168.0.11:9000/players/" + facebookId);
+    URI uri("http://192.168.0.11:9000/players/" + facebookId);
     std::string path(uri.getPathEtc());
 
     // HTTP Session

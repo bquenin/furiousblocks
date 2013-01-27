@@ -59,6 +59,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/core
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/ext
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/scenes
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/script
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/social
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/tween/easing
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/tween
 
@@ -96,6 +97,8 @@ bootstrap/main.cpp \
 ../../../generic/script/SetBlocksAction.cpp \
 ../../../generic/script/TextToType.cpp \
 ../../../generic/script/TypeTextAction.cpp \
+../../../generic/social/Social.cpp \
+../../../generic/social/SocialPlayer.cpp \
 ../../../generic/tween/easing/easing_back.cpp \
 ../../../generic/tween/easing/easing_bounce.cpp \
 ../../../generic/tween/easing/easing_circ.cpp \

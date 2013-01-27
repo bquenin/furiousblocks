@@ -10,11 +10,6 @@
 #define __Social_H_
 
 #include <iostream>
-#include <MacTypes.h>
-#include <Poco/JSON/Object.h>
-#include "SocialPlayer.h"
-
-using namespace Poco;
 
 class Social {
   public:

@@ -22,9 +22,7 @@
 		7969E14277F92AAAC5EAD0A6 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */; };
 		7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E142A99775EF929E1886 /* CreditsScene.cpp */; };
 		7969E18B489A6D4E3EEA6C23 /* coopblack64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E80C20BD83237A8A5BC8 /* coopblack64.png */; };
-		7969E1B91F688CF9175BA7A8 /* SocialPlayerNotFoundException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EA8C60C33B1F43C48973 /* SocialPlayerNotFoundException.cpp */; };
 		7969E2F5DA1276709612F52C /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1B1F4BE78AC5E68B104 /* Animation.cpp */; };
-		7969E30B79607EE53465001F /* SocialPlayerNotFoundException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EA8C60C33B1F43C48973 /* SocialPlayerNotFoundException.cpp */; };
 		7969E316900662224CE10922 /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E7237904D92983195353 /* tutorial.mp3 */; };
 		7969E3BFBAE88E442A4C6DE0 /* Social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E7A92BDB7499BB8AA4A0 /* Social.cpp */; };
 		7969E417E51B0E4A7782424D /* blocks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7969E06309C54DF53182E0F3 /* blocks.plist */; };
@@ -33,7 +31,6 @@
 		7969E4619693C1A40587587D /* coopblack64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E93AF6D39B4F7DDFA839 /* coopblack64.fnt */; };
 		7969E5856CCB532A06436A24 /* Social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E7A92BDB7499BB8AA4A0 /* Social.cpp */; };
 		7969E5F1EFCBB5B41BE16CAB /* QuitOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */; };
-		7969E604D4E1E777D0B09338 /* SocialPlayerNotFoundException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EA8C60C33B1F43C48973 /* SocialPlayerNotFoundException.cpp */; };
 		7969E6E9343F06E2C8347A1C /* SocialPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */; };
 		7969E86718637B161B33382F /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969E8FDA05207335D97FEBB /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */; };
@@ -44,7 +41,6 @@
 		7969EAFE84FCC8ACB21D8066 /* Social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E7A92BDB7499BB8AA4A0 /* Social.cpp */; };
 		7969EB0FE3EE9780D34DDB5B /* Assets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EFFB0CFE2764A66CDC54 /* Assets.cpp */; };
 		7969EB4EDA9F405BF32954AE /* coopblack32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E73F4EAD29E22CAA37AD /* coopblack32.png */; };
-		7969EB654FB84C3A355EA363 /* SocialPlayerNotFoundException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EA8C60C33B1F43C48973 /* SocialPlayerNotFoundException.cpp */; };
 		7969EB6B704E1575488BAE35 /* PanelMenuOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E91E3CB9CC20A36C6447 /* PanelMenuOverlay.cpp */; };
 		7969EB7560835402674ABD3F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969EB7ABA416427D5DE3C32 /* Joystix.ttf */; };
 		7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
@@ -1123,13 +1119,11 @@
 		7969E93AF6D39B4F7DDFA839 /* coopblack64.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack64.fnt; sourceTree = "<group>"; };
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		7969EA45FDA5B84C72EBAC72 /* rootcert.pem */ = {isa = PBXFileReference; lastKnownFileType = file.pem; path = rootcert.pem; sourceTree = "<group>"; };
-		7969EA8C60C33B1F43C48973 /* SocialPlayerNotFoundException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocialPlayerNotFoundException.cpp; sourceTree = "<group>"; };
 		7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuitOverlay.cpp; sourceTree = "<group>"; };
 		7969EB3DE6AB332E7EA6C542 /* SocialPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialPlayer.h; sourceTree = "<group>"; };
 		7969EB7ABA416427D5DE3C32 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Joystix.ttf; sourceTree = "<group>"; };
 		7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocialPlayer.cpp; sourceTree = "<group>"; };
 		7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = harmonic.mp3; sourceTree = "<group>"; };
-		7969ECE0CE888223952DFBA5 /* SocialPlayerNotFoundException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialPlayerNotFoundException.h; sourceTree = "<group>"; };
 		7969ED0BBBBE20CA8F99B776 /* Assets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assets.h; sourceTree = "<group>"; };
 		7969EEE7713FD576BF94381B /* QuitOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuitOverlay.h; sourceTree = "<group>"; };
 		7969EFFB0CFE2764A66CDC54 /* Assets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assets.cpp; sourceTree = "<group>"; };
@@ -2783,8 +2777,6 @@
 				7969E251E1C511302A7B5E8B /* Social.h */,
 				7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */,
 				7969EB3DE6AB332E7EA6C542 /* SocialPlayer.h */,
-				7969EA8C60C33B1F43C48973 /* SocialPlayerNotFoundException.cpp */,
-				7969ECE0CE888223952DFBA5 /* SocialPlayerNotFoundException.h */,
 			);
 			path = social;
 			sourceTree = "<group>";
@@ -3265,7 +3257,6 @@
 				7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */,
 				7969EFC4157A674238364E23 /* Social.cpp in Sources */,
 				7969E4607E8582D129E6B8F5 /* SocialPlayer.cpp in Sources */,
-				7969E1B91F688CF9175BA7A8 /* SocialPlayerNotFoundException.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3495,7 +3486,6 @@
 				D261DBF4167DF531008C6503 /* CreditsScene.cpp in Sources */,
 				7969E3BFBAE88E442A4C6DE0 /* Social.cpp in Sources */,
 				7969E9C55BC5569229987932 /* SocialPlayer.cpp in Sources */,
-				7969E30B79607EE53465001F /* SocialPlayerNotFoundException.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3725,7 +3715,6 @@
 				D261DCF9167DF54D008C6503 /* CreditsScene.cpp in Sources */,
 				7969EAFE84FCC8ACB21D8066 /* Social.cpp in Sources */,
 				7969ED30F4AA1700F052A139 /* SocialPlayer.cpp in Sources */,
-				7969EB654FB84C3A355EA363 /* SocialPlayerNotFoundException.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3955,7 +3944,6 @@
 				D261DDFE167DF558008C6503 /* CreditsScene.cpp in Sources */,
 				7969E5856CCB532A06436A24 /* Social.cpp in Sources */,
 				7969E6E9343F06E2C8347A1C /* SocialPlayer.cpp in Sources */,
-				7969E604D4E1E777D0B09338 /* SocialPlayerNotFoundException.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
