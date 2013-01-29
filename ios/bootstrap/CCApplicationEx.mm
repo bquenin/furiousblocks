@@ -5,7 +5,7 @@
 //
 
 
-#include "CCApplicationEx.h"
+#import "CCApplicationEx.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "AppController.h"
 
