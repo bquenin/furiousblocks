@@ -48,7 +48,7 @@ NS_CC_BEGIN
       @brief    Get the current application instance.
       @return Current application instance pointer.
       */
-      static CCApplication *sharedApplication();
+      static CCApplication* sharedApplication();
 
       /**
        @brief    Callback by CCDirector for limit FPS.
@@ -67,12 +67,8 @@ NS_CC_BEGIN
        */
       virtual TargetPlatform getTargetPlatform();
 
-      void openURL(const char *pszUrl);
-      void facebookLogin();
-      void facebookLogout();
-
     protected:
-      static CCApplication *sm_pSharedApplication;
+      static CCApplication* sm_pSharedApplication;
     };
 
     NS_CC_END

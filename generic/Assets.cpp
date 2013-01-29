@@ -9,9 +9,9 @@
 #include "GarbageBlockType.h"
 
 using namespace cocos2d;
-using namespace extension;
+using namespace cocos2d::extension;
 
-const cocos2d::CCSize Assets::designResolutionSize = cocos2d::CCSize(640, 960);
+const CCSize Assets::designResolutionSize = CCSize(640, 960);
 
 void Assets::load() {
   // Pre-loading textures

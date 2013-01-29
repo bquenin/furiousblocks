@@ -22,15 +22,13 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#import <FacebookSDK/FacebookSDK.h>
 #import "CCApplication.h"
 
 #import "CCDirectorCaller.h"
-#import "AppController.h"
 
 NS_CC_BEGIN
 
-    CCApplication *CCApplication::sm_pSharedApplication = 0;
+    CCApplication* CCApplication::sm_pSharedApplication = 0;
 
     CCApplication::CCApplication() {
       CC_ASSERT(!sm_pSharedApplication);
@@ -57,37 +55,20 @@ NS_CC_BEGIN
 // static member function
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-    CCApplication *CCApplication::sharedApplication() {
+    CCApplication* CCApplication::sharedApplication() {
       CC_ASSERT(sm_pSharedApplication);
       return sm_pSharedApplication;
     }
 
-    void CCApplication::openURL(char const *pszUrl) {
-      NSString *msg = [NSString stringWithCString:pszUrl encoding:NSASCIIStringEncoding];
-      NSURL *nsUrl = [NSURL URLWithString:msg];
-      [[UIApplication sharedApplication] openURL:nsUrl];
-    }
-
-    void CCApplication::facebookLogin() {
-      // FBSample logic
-      // The user has initiated a login, so call the openSession method.
-      id <UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
-      [appDelegate openSessionWithAllowLoginUI:YES];
-    }
-
-    void CCApplication::facebookLogout() {
-      [FBSession.activeSession closeAndClearTokenInformation];
-    }
-
     ccLanguageType CCApplication::getCurrentLanguage() {
       // get the current language and country config
-      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-      NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
-      NSString *currentLanguage = [languages objectAtIndex:0];
+      NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+      NSArray* languages = [defaults objectForKey:@"AppleLanguages"];
+      NSString* currentLanguage = [languages objectAtIndex:0];
 
       // get the current language code.(such as English is "en", Chinese is "zh" and so on)
-      NSDictionary *temp = [NSLocale componentsFromLocaleIdentifier:currentLanguage];
-      NSString *languageCode = [temp objectForKey:NSLocaleLanguageCode];
+      NSDictionary* temp = [NSLocale componentsFromLocaleIdentifier:currentLanguage];
+      NSString* languageCode = [temp objectForKey:NSLocaleLanguageCode];
 
       ccLanguageType ret = kLanguageEnglish;
       if ([languageCode isEqualToString:@"zh"]) {

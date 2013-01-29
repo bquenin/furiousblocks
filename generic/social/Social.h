@@ -16,13 +16,12 @@ private:
   static const std::string PIXODROME_SERVER;
 
 public:
-  static void facebookLogin();
-  static void facebookLogout();
   static void registerPlayer();
   static void createOrUpdatePlayer(const std::string& facebookId, const std::string& firstName, const std::string& lastName, const std::string& accessToken);
   static void submitScore(uint64_t score);
   static void getMyScores();
   static void getFriendsScores();
+  static void getWorldScores();
 };
 
 #endif //__Social_H_

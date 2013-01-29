@@ -219,7 +219,6 @@ void PanelScene::onGameOver() {
 
   // Store the score
   if (AppDelegate::isLoggedIn()) {
-    Social::registerPlayer();
     Social::submitScore(core->playerToPanel[player]->score);
   }
 

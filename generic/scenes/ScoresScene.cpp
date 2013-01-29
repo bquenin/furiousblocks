@@ -8,6 +8,7 @@
 #include "AppDelegate.h"
 #include "TitleScene.h"
 #include "Social.h"
+#include "CustomTableViewCell.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -24,17 +25,17 @@ bool ScoresScene::init() {
   }
 
   // Background
-  CCSprite* bgMiddle = cocos2d::CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_MIDDLE);
+  CCSprite* bgMiddle = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_MIDDLE);
   bgMiddle->setAnchorPoint(ccp(0, 0));
   bgMiddle->setPosition(ccp(0, 18));
   addChild(bgMiddle);
 
-  CCSprite* bgBottom = cocos2d::CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_BOTTOM);
+  CCSprite* bgBottom = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_BOTTOM);
   bgBottom->setAnchorPoint(ccp(0, 0));
   bgBottom->setPosition(ccp(0, 0));
   addChild(bgBottom);
 
-  CCSprite* bgTop = cocos2d::CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_TOP);
+  CCSprite* bgTop = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_TOP);
   bgTop->setAnchorPoint(ccp(0, 0));
   bgTop->setPosition(ccp(0, Assets::designResolutionSize.height - 79));
   addChild(bgTop);
@@ -75,6 +76,23 @@ bool ScoresScene::init() {
   endGameButton->addTargetWithActionForControlEvents(this, cccontrol_selector(ScoresScene::backToTitleAction), CCControlEventTouchUpInside);
   addChild(endGameButton);
 
+  CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
+  CCTableView* tableView = CCTableView::create(this, CCSizeMake(250, 60));
+  tableView->setDirection(kCCScrollViewDirectionHorizontal);
+  tableView->setPosition(ccp(20, winSize.height / 2 - 30));
+  tableView->setDelegate(this);
+  this->addChild(tableView);
+  tableView->reloadData();
+
+  tableView = CCTableView::create(this, CCSizeMake(60, 280));
+  tableView->setDirection(kCCScrollViewDirectionVertical);
+  tableView->setPosition(ccp(winSize.width - 150, winSize.height / 2 - 120));
+  tableView->setDelegate(this);
+  tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
+  this->addChild(tableView);
+  tableView->reloadData();
+
   return true;
 }
 
@@ -88,4 +106,42 @@ void ScoresScene::friendsAction(CCObject* sender) {
 
 void ScoresScene::backToTitleAction(CCObject* sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
+}
+
+void ScoresScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell) {
+  CCLOG("cell touched at index: %i", cell->getIdx());
+}
+
+CCSize ScoresScene::cellSizeForTable(CCTableView* table) {
+  return CCSizeMake(60, 60);
+}
+
+CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int idx) {
+  CCString* string = CCString::createWithFormat("%d", idx);
+  CCTableViewCell* cell = table->dequeueCell();
+
+  if (!cell) {
+    cell = new CCTableViewCell();
+    cell->autorelease();
+    CCSprite* sprite = CCSprite::createWithSpriteFrame(AppDelegate::assets.CURSOR_01);
+    sprite->setAnchorPoint(CCPointZero);
+    sprite->setPosition(ccp(0, 0));
+    cell->addChild(sprite);
+
+    CCLabelTTF* label = CCLabelTTF::create(string->getCString(), "SkaterDudes.ttf", 24);
+    label->setPosition(CCPointZero);
+    label->setAnchorPoint(CCPointZero);
+    label->setTag(123);
+    cell->addChild(label);
+  }
+  else {
+    CCLabelTTF* label = (CCLabelTTF*) cell->getChildByTag(123);
+    label->setString(string->getCString());
+  }
+
+  return cell;
+}
+
+unsigned int ScoresScene::numberOfCellsInTableView(CCTableView* table) {
+  return 20;
 }

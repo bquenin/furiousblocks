@@ -22,57 +22,6 @@ using namespace Poco;
 
 const std::string Social::PIXODROME_SERVER = "http://192.168.0.11:9000/";
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include "platform/android/jni/JniHelper.h"
-#include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
-#include "me_pixodro_FuriousBlocks.h"
-#endif
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-extern "C" {
-  JNIEXPORT void JNICALL Java_me_pixodro_FuriousBlocks_facebookSessionStatusCallback(JNIEnv *env, jobject thiz, jstring sessionStatus, jstring accessToken) {
-    AppDelegate::setLoggedIn(JniHelper::jstring2string(sessionStatus) == "OPENED");
-    AppDelegate::setAccessToken(JniHelper::jstring2string(accessToken));
-  }
-}
-#endif
-
-void Social::facebookLogin() {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  CCApplication::sharedApplication()->facebookLogin();
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-  JniMethodInfo minfo;
-
-  if(JniHelper::getStaticMethodInfo(minfo,
-    "me/pixodro/FuriousBlocks",
-    "facebookLogin",
-    "()V"))
-  {
-    minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
-    minfo.env->DeleteLocalRef(minfo.classID);
-  }
-#endif
-}
-
-void Social::facebookLogout() {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  CCApplication::sharedApplication()->facebookLogout();
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-  JniMethodInfo minfo;
-
-  if(JniHelper::getStaticMethodInfo(minfo,
-    "me/pixodro/FuriousBlocks",
-    "facebookLogout",
-    "()V"))
-  {
-    minfo.env->CallStaticVoidMethod(minfo.classID, minfo.methodID);
-    minfo.env->DeleteLocalRef(minfo.classID);
-  }
-#endif
-}
-
 void Social::registerPlayer() {
   try {
     // SSL Context
@@ -267,3 +216,43 @@ void Social::getFriendsScores() {
     CCLOG("%s", exc.displayText().c_str());
   }
 }
+
+void Social::getWorldScores() {
+  try {
+    // Target URI
+    URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+
+    // Request
+    JSON::Object jsonRequest;
+    jsonRequest.set("type", "world");
+
+    Net::HTTPRequest request(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
+    request.setContentType("application/json");
+    request.setChunkedTransferEncoding(true);
+    jsonRequest.stringify(session.sendRequest(request));
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+
+    if (response.getStatus() == Net::HTTPResponse::HTTP_BAD_REQUEST) {
+      std::ostringstream error;
+      StreamCopier::copyStream(rs, error);
+      CCLOG("Bad request: %s", error.str().c_str());
+      return;
+    } else if (response.getStatus() == Net::HTTPResponse::HTTP_NOT_FOUND) {
+      CCLOG("Not found.");
+      return;
+    }
+    std::ostringstream responseBody;
+    StreamCopier::copyStream(rs, responseBody);
+    CCLOG("response body = %s", responseBody.str().c_str());
+  } catch (Exception& exc) {
+    CCLOG("%s", exc.displayText().c_str());
+  }
+}
+

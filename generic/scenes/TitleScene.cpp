@@ -12,12 +12,7 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "CreditsScene.h"
-#include "Social.h"
 #include "ScoresScene.h"
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include "jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h"
-#endif
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -148,11 +143,11 @@ void TitleScene::update(float dt) {
 }
 
 void TitleScene::logInAction(CCObject *sender) {
-  Social::facebookLogin();
+  AppDelegate::facebookLogin();
 }
 
 void TitleScene::logOutAction(CCObject *sender) {
-  Social::facebookLogout();
+  AppDelegate::facebookLogout();
 }
 
 void TitleScene::playAction(CCObject *sender) {
@@ -183,10 +178,5 @@ void TitleScene::musicSwitchAction(CCObject *sender) {
 }
 
 void TitleScene::quitAction(CCObject *sender) {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  exit(0);
-#endif
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-  terminateProcessJNI();
-#endif
+  AppDelegate::quit();
 }

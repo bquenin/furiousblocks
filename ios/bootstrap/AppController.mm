@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 
 #import "RootViewController.h"
-//#import "Appirater.h"
+#import "Social.h"
 
 @implementation AppController
 
@@ -25,79 +25,51 @@
 // cocos2d application instance
 static AppDelegate s_sharedApplication;
 
-- (void)sessionStateChanged:(FBSession *)session
+- (void)sessionStateChanged:(FBSession*)session
                       state:(FBSessionState)state
-                      error:(NSError *)error {
+                      error:(NSError*)error {
   // FBSample logic
   // Any time the session is closed, we want to display the login controller (the user
   // cannot use the application unless they are logged in to Facebook). When the session
   // is opened successfully, hide the login controller and show the main UI.
   switch (state) {
-    case FBSessionStateOpen: {
-      AppDelegate::setLoggedIn(true);
-      AppDelegate::setAccessToken(std::string([[FBSession.activeSession accessToken] cStringUsingEncoding:NSUTF8StringEncoding]));
-
-      // FBSample logic
-      // Pre-fetch and cache the friends for the friend picker as soon as possible to improve
-      // responsiveness when the user tags their friends.
-      //
-      // FBCacheDescriptor *cacheDescriptor = [FBFriendPickerViewController cacheDescriptor];
-      // [cacheDescriptor prefetchAndCacheForSession:session];
-    }
+    case FBSessionStateOpen:
+      s_sharedApplication.setLoggedIn(true);
+      s_sharedApplication.setAccessToken(std::string([[FBSession.activeSession accessToken] cStringUsingEncoding:NSUTF8StringEncoding]));
+      Social::registerPlayer();
       break;
 
-    case FBSessionStateClosed: {
-      AppDelegate::setLoggedIn(false);
-      AppDelegate::setAccessToken("none");
-      // FBSample logic
-      // Once the user has logged out, we want them to be looking at the root view.
+    case FBSessionStateClosed:
+      s_sharedApplication.setLoggedIn(false);
+      s_sharedApplication.setAccessToken("none");
       [FBSession.activeSession closeAndClearTokenInformation];
-    }
       break;
 
-    case FBSessionStateClosedLoginFailed: {
-      AppDelegate::setLoggedIn(false);
-      AppDelegate::setAccessToken("none");
-      // if the token goes invalid we want to switch right back to
-      // the login view, however we do it with a slight delay in order to
-      // account for a race between this and the login view disappearing
-      // a moment before
-    }
+    case FBSessionStateClosedLoginFailed:
+      s_sharedApplication.setLoggedIn(false);
+      s_sharedApplication.setAccessToken("none");
       break;
 
     default:
-      AppDelegate::setLoggedIn(false);
+      s_sharedApplication.setLoggedIn(false);
       break;
   }
-
-//  [[NSNotificationCenter defaultCenter] postNotificationName:SCSessionStateChangedNotification
-//                                                      object:session];
-//
-//  if (error) {
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Error: %@",
-//                                                                                           [SCAppDelegate FBErrorCodeDescription:error.code]]
-//                                                        message:error.localizedDescription
-//                                                       delegate:nil
-//                                              cancelButtonTitle:@"OK"
-//                                              otherButtonTitles:nil];
-//    [alertView show];
-//  }
 }
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
   return [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:allowLoginUI
-                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+                                       completionHandler:^(FBSession* session, FBSessionState state, NSError* error) {
                                          [self sessionStateChanged:session state:state error:error];
                                        }];
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
 
   // Override point for customization after application launch.
 
   // Add the view controller's view to the window and display.
   window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  EAGLView *__glView = [EAGLView viewWithFrame:[window bounds]
+  EAGLView* __glView = [EAGLView viewWithFrame:[window bounds]
                                    pixelFormat:kEAGLColorFormatRGBA8
                                    depthFormat:GL_DEPTH_COMPONENT16 preserveBackbuffer:NO sharegroup:nil multiSampling:NO numberOfSamples:0];
 
@@ -141,7 +113,7 @@ static AppDelegate s_sharedApplication;
   return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
+- (void)applicationWillResignActive:(UIApplication*)application {
   /*
    Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
    Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -149,7 +121,7 @@ static AppDelegate s_sharedApplication;
   cocos2d::CCDirector::sharedDirector()->pause();
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
+- (void)applicationDidBecomeActive:(UIApplication*)application {
   /*
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
@@ -161,7 +133,7 @@ static AppDelegate s_sharedApplication;
   [FBSession.activeSession handleDidBecomeActive];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
+- (void)applicationDidEnterBackground:(UIApplication*)application {
   /*
    Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
    If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
@@ -169,7 +141,7 @@ static AppDelegate s_sharedApplication;
   cocos2d::CCApplication::sharedApplication()->applicationDidEnterBackground();
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
+- (void)applicationWillEnterForeground:(UIApplication*)application {
   /*
    Called as part of transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
    */
@@ -178,7 +150,7 @@ static AppDelegate s_sharedApplication;
 //  [Appirater appEnteredForeground:YES];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
+- (void)applicationWillTerminate:(UIApplication*)application {
   /*
    Called when the application is about to terminate.
    See also applicationDidEnterBackground:.
@@ -193,7 +165,7 @@ static AppDelegate s_sharedApplication;
 #pragma mark -
 #pragma mark Memory management
 
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+- (void)applicationDidReceiveMemoryWarning:(UIApplication*)application {
   /*
    Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
    */

@@ -9,7 +9,7 @@
 #ifndef  _APP_DELEGATE_H_
 #define  _APP_DELEGATE_H_
 
-#include "CCApplication.h"
+#include "CCApplicationEx.h"
 
 #include "Assets.h"
 
@@ -18,7 +18,7 @@
 
 The reason for implement as private inheritance is to hide some interface call by CCDirector.
 */
-class AppDelegate : private cocos2d::CCApplication {
+class AppDelegate : public CCApplicationEx {
 public:
   static Assets assets;
 

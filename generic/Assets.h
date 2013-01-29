@@ -26,7 +26,7 @@ class Assets {
 public:
   static std::string format(char const *fmt, ...);
 
-  static const cocos2d::CCSize designResolutionSize;
+  static const CCSize designResolutionSize;
   static constexpr float transitionDuration = 0.5f;
   static constexpr int32_t TILE_SIZE = 96;
 

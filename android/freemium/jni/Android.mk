@@ -65,6 +65,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/tween
 
 LOCAL_SRC_FILES := \
 bootstrap/main.cpp \
+bootstrap/CCApplicationEx.cpp \
 ../../../generic/AppDelegate.cpp \
 ../../../generic/Assets.cpp \
 ../../../generic/animation/Animation.cpp \
