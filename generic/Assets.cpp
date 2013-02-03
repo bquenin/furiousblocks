@@ -165,8 +165,8 @@ void Assets::load() {
   CURSOR = new Animation(16, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 }
 
-CCSpriteFrame *Assets::getBlockFrame(fb::Block *blockSituation, int64_t tick, bool compressed, bool panicking) {
-  NonLoopingAnimation *currentAnimation = animations[blockSituation->id];
+CCSpriteFrame* Assets::getBlockFrame(fb::Block* blockSituation, int64_t tick, bool compressed, bool panicking) {
+  NonLoopingAnimation* currentAnimation = animations[blockSituation->id];
   BlockState state = blockSituation->state;
   BlockType type = blockSituation->type;
 
@@ -194,22 +194,28 @@ CCSpriteFrame *Assets::getBlockFrame(fb::Block *blockSituation, int64_t tick, bo
 
     case BlockState::AIRBOUNCING:
       if (currentAnimation == nullptr) {
-        NonLoopingAnimation *animation = nullptr;
+        NonLoopingAnimation* animation = nullptr;
         switch (type) {
           case BlockType::YELLOW:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_YELLOW_HOVER_01, BLOCKS_YELLOW_HOVER_02, BLOCKS_YELLOW_HOVER_03, BLOCKS_YELLOW_HOVER_04, BLOCKS_YELLOW_HOVER_03, BLOCKS_YELLOW_HOVER_02, BLOCKS_YELLOW_HOVER_01});
             break;
-          case BlockType:: BLUE:
+          case BlockType::BLUE:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_BLUE_HOVER_01, BLOCKS_BLUE_HOVER_02, BLOCKS_BLUE_HOVER_03, BLOCKS_BLUE_HOVER_04, BLOCKS_BLUE_HOVER_03, BLOCKS_BLUE_HOVER_02, BLOCKS_BLUE_HOVER_01});
             break;
-          case BlockType:: PURPLE:
+          case BlockType::PURPLE:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_PURPLE_HOVER_01, BLOCKS_PURPLE_HOVER_02, BLOCKS_PURPLE_HOVER_03, BLOCKS_PURPLE_HOVER_04, BLOCKS_PURPLE_HOVER_03, BLOCKS_PURPLE_HOVER_02, BLOCKS_PURPLE_HOVER_01});
             break;
-          case BlockType:: RED:
+          case BlockType::RED:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_RED_HOVER_01, BLOCKS_RED_HOVER_02, BLOCKS_RED_HOVER_03, BLOCKS_RED_HOVER_04, BLOCKS_RED_HOVER_03, BLOCKS_RED_HOVER_02, BLOCKS_RED_HOVER_01});
             break;
-          case BlockType:: GREEN:
+          case BlockType::GREEN:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_GREEN_HOVER_01, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_04, BLOCKS_GREEN_HOVER_03, BLOCKS_GREEN_HOVER_02, BLOCKS_GREEN_HOVER_01});
+            break;
+          case BlockType::GARBAGE:
+            break;
+          case BlockType::INVISIBLE:
+            break;
+          case BlockType::TUTORIAL:
             break;
         }
         animations[blockSituation->id] = animation;
@@ -229,22 +235,28 @@ CCSpriteFrame *Assets::getBlockFrame(fb::Block *blockSituation, int64_t tick, bo
     case BlockState::DONE_AIRBOUNCING:
     case BlockState::IDLE:
       if (blockSituation->justLand && state == BlockState::IDLE && type != BlockType::GARBAGE && type != BlockType::TUTORIAL) {
-        NonLoopingAnimation *animation = nullptr;
+        NonLoopingAnimation* animation = nullptr;
         switch (type) {
-          case BlockType:: YELLOW:
+          case BlockType::YELLOW:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_YELLOW_LAND_01, BLOCKS_YELLOW_IDLE, BLOCKS_YELLOW_LAND_02, BLOCKS_YELLOW_IDLE});
             break;
-          case BlockType:: BLUE:
+          case BlockType::BLUE:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_BLUE_LAND_01, BLOCKS_BLUE_IDLE, BLOCKS_BLUE_LAND_02, BLOCKS_BLUE_IDLE});
             break;
-          case BlockType:: PURPLE:
+          case BlockType::PURPLE:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_PURPLE_LAND_01, BLOCKS_PURPLE_IDLE, BLOCKS_PURPLE_LAND_02, BLOCKS_PURPLE_IDLE});
             break;
-          case BlockType:: RED:
+          case BlockType::RED:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_RED_LAND_01, BLOCKS_RED_IDLE, BLOCKS_RED_LAND_02, BLOCKS_RED_IDLE});
             break;
-          case BlockType:: GREEN:
+          case BlockType::GREEN:
             animation = new NonLoopingAnimation(tick, 4, {BLOCKS_GREEN_LAND_01, BLOCKS_GREEN_IDLE, BLOCKS_GREEN_LAND_02, BLOCKS_GREEN_IDLE});
+            break;
+          case BlockType::GARBAGE:
+            break;
+          case BlockType::INVISIBLE:
+            break;
+          case BlockType::TUTORIAL:
             break;
         }
         delete animations[blockSituation->id];
@@ -350,9 +362,9 @@ CCSpriteFrame *Assets::getBlockFrame(fb::Block *blockSituation, int64_t tick, bo
   return nullptr;
 }
 
-std::string Assets::format(const char *fmt, ...) {
+std::string Assets::format(const char* fmt, ...) {
   size_t size = 512;
-  char *buffer = 0;
+  char* buffer = 0;
   buffer = new char [size];
   va_list vl;
   va_start(vl, fmt);

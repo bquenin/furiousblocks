@@ -28,7 +28,7 @@ void Social::registerPlayer() {
     const Net::Context::Ptr context(new Net::Context(Net::Context::CLIENT_USE, "", "", "", Net::Context::VERIFY_NONE, 9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
 
     // Target URI
-    URI uri("https://graph.facebook.com/me?fields=id,first_name,last_name&access_token=" + AppDelegate::getAccessToken());
+    URI uri("https://graph.facebook.com/me?fields=id,first_name,last_name,friends.fields(first_name,last_name)&access_token=" + AppDelegate::getAccessToken());
     std::string path(uri.getPathEtc());
 
     // HTTP Session
@@ -57,18 +57,25 @@ void Social::registerPlayer() {
     parser.setHandler(&handler);
     parser.parse(responseBody.str());
 
-    JSON::Object::Ptr jsonResponse = handler.result().extract<JSON::Object::Ptr>();
+    JSON::Object::Ptr facebookResponse = handler.result().extract<JSON::Object::Ptr>();
+    facebookResponse->getObject("friends")->remove("paging");
 
-    AppDelegate::setFacebookId(jsonResponse->get("id"));
+#if DEBUG
+    std::ostringstream out;
+    facebookResponse->stringify(out, 2);
+    CCLOG("response = %s", out.str().c_str());
+#endif
+
+    AppDelegate::setFacebookId(facebookResponse->get("id"));
 
     // Get or create the player
-    createOrUpdatePlayer(jsonResponse->get("id"), jsonResponse->get("first_name"), jsonResponse->get("last_name"), AppDelegate::getAccessToken());
+    createOrUpdatePlayer(facebookResponse->get("id"), facebookResponse);
   } catch (Exception& exc) {
     CCLOG("error in registerPlayer = %s", exc.displayText().c_str());
   }
 }
 
-void Social::createOrUpdatePlayer(const std::string& facebookId, const std::string& firstName, const std::string& lastName, const std::string& accessToken) {
+void Social::createOrUpdatePlayer(const std::string& facebookId, JSON::Object::Ptr facebookResponse) {
   try {
     // Target URI
     URI uri(PIXODROME_SERVER + "players/" + facebookId);
@@ -77,16 +84,10 @@ void Social::createOrUpdatePlayer(const std::string& facebookId, const std::stri
     // HTTP Session
     Net::HTTPClientSession session(uri.getHost(), uri.getPort());
 
-    // Request
-    JSON::Object jsonRequest;
-    jsonRequest.set("firstName", firstName);
-    jsonRequest.set("lastName", lastName);
-    jsonRequest.set("accessToken", accessToken);
-
     Net::HTTPRequest request(Net::HTTPRequest::HTTP_POST, path, Net::HTTPMessage::HTTP_1_1);
     request.setContentType("application/json");
     request.setChunkedTransferEncoding(true);
-    jsonRequest.stringify(session.sendRequest(request));
+    facebookResponse->stringify(session.sendRequest(request));
 
     // Response
     Net::HTTPResponse response;

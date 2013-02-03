@@ -10,6 +10,8 @@
 #define __Social_H_
 
 #include <iostream>
+#include <Poco/SharedPtr.h>
+#include <Poco/JSON/Object.h>
 
 class Social {
 private:
@@ -17,7 +19,7 @@ private:
 
 public:
   static void registerPlayer();
-  static void createOrUpdatePlayer(const std::string& facebookId, const std::string& firstName, const std::string& lastName, const std::string& accessToken);
+  static void createOrUpdatePlayer(std::string const & facebookId, Poco::SharedPtr <Poco::JSON::Object> facebookResponse);
   static void submitScore(uint64_t score);
   static void getMyScores();
   static void getFriendsScores();

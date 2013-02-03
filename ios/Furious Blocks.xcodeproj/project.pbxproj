@@ -4177,10 +4177,27 @@
 					TARGET_OS_IPHONE,
 					FREEMIUM,
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"libs/cocos2dx/kazmath/include\"",
+					"\"libs/cocos2dx\"",
+					"\"libs/CocosDenshion/include\"",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"libs/extensions\"",
+					"\"libs/cocos2dx/platform/third_party/ios\"",
+					"\"libs/cocos2dx/platform/ios\"",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Foundation/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/JSON/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Net/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/XML/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Util/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/NetSSL_OpenSSL/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Crypto/include",
+				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../third-party/poco-1.5.1-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/openssl-1.0.1c-armv7/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
@@ -4203,10 +4220,27 @@
 					TARGET_OS_IPHONE,
 					FREEMIUM,
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"libs/cocos2dx/kazmath/include\"",
+					"\"libs/cocos2dx\"",
+					"\"libs/CocosDenshion/include\"",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"libs/extensions\"",
+					"\"libs/cocos2dx/platform/third_party/ios\"",
+					"\"libs/cocos2dx/platform/ios\"",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Foundation/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/JSON/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Net/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/XML/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Util/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/NetSSL_OpenSSL/include",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Crypto/include",
+				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../third-party/poco-1.5.1-all/lib/iPhoneOS/armv7\"",
+					"\"$(SRCROOT)/../third-party/openssl-1.0.1c-armv7/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
