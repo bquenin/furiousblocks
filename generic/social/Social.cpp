@@ -1,7 +1,6 @@
 //
 // Created by bquenin on 1/23/13.
 //
-//
 
 
 #include "Social.h"
@@ -20,7 +19,8 @@
 
 using namespace Poco;
 
-const std::string Social::PIXODROME_SERVER = "http://192.168.0.11:9000/";
+const std::string Social::PIXODROME_SERVER = "http://pixodro.me/";
+//const std::string Social::PIXODROME_SERVER = "http://192.168.0.11:9000/";
 
 void Social::registerPlayer() {
   try {
@@ -60,7 +60,7 @@ void Social::registerPlayer() {
     JSON::Object::Ptr facebookResponse = handler.result().extract<JSON::Object::Ptr>();
     facebookResponse->getObject("friends")->remove("paging");
 
-#if DEBUG
+#if 0
     std::ostringstream out;
     facebookResponse->stringify(out, 2);
     CCLOG("response = %s", out.str().c_str());
@@ -104,7 +104,7 @@ void Social::createOrUpdatePlayer(const std::string& facebookId, JSON::Object::P
   }
 }
 
-void Social::submitScore(uint64_t score) {
+void Social::submitScore(uint64_t score, uint32_t duration) {
   try {
     // Target URI
     URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
@@ -116,6 +116,7 @@ void Social::submitScore(uint64_t score) {
     // Request
     JSON::Object jsonRequest;
     jsonRequest.set("score", score);
+    jsonRequest.set("duration", duration);
 
     Net::HTTPRequest request(Net::HTTPRequest::HTTP_POST, path, Net::HTTPMessage::HTTP_1_1);
     request.setContentType("application/json");

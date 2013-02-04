@@ -4197,7 +4197,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../third-party/poco-1.5.1-all/lib/iPhoneOS/armv7\"",
-					"\"$(SRCROOT)/../third-party/openssl-1.0.1c-armv7/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";
@@ -4240,7 +4239,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../third-party/poco-1.5.1-all/lib/iPhoneOS/armv7\"",
-					"\"$(SRCROOT)/../third-party/openssl-1.0.1c-armv7/lib\"",
 				);
 				PRODUCT_NAME = FuriousBlocksFreeDevelopment;
 				PROVISIONING_PROFILE = "";

@@ -1,8 +1,6 @@
 //
 // Created by bquenin on 11/12/12.
 //
-// To change the template use AppCode | Preferences | File Templates.
-//
 
 #include <functional>
 #include "PanelScene.h"
@@ -219,7 +217,7 @@ void PanelScene::onGameOver() {
 
   // Store the score
   if (AppDelegate::isLoggedIn()) {
-    Social::submitScore(core->playerToPanel[player]->score);
+    Social::submitScore(core->playerToPanel[player]->score, static_cast<uint32_t>(stateTime * 1000));
   }
 
   // Initialize the grid
