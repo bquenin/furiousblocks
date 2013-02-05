@@ -60,7 +60,7 @@ void Social::registerPlayer() {
     JSON::Object::Ptr facebookResponse = handler.result().extract<JSON::Object::Ptr>();
     facebookResponse->getObject("friends")->remove("paging");
 
-#if 0
+#if DEBUG
     std::ostringstream out;
     facebookResponse->stringify(out, 2);
     CCLOG("response = %s", out.str().c_str());
@@ -141,7 +141,8 @@ void Social::submitScore(uint64_t score, uint32_t duration) {
   }
 }
 
-void Social::getMyScores() {
+std::vector<ScoreEntry> Social::getMyScores() {
+  std::vector<ScoreEntry> scores;
   try {
     // Target URI
     URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
@@ -167,20 +168,40 @@ void Social::getMyScores() {
       std::ostringstream error;
       StreamCopier::copyStream(rs, error);
       CCLOG("Bad request: %s", error.str().c_str());
-      return;
+      return scores;
     } else if (response.getStatus() == Net::HTTPResponse::HTTP_NOT_FOUND) {
       CCLOG("Not found.");
-      return;
+      return scores;
     }
+
     std::ostringstream responseBody;
     StreamCopier::copyStream(rs, responseBody);
-    CCLOG("response body = %s", responseBody.str().c_str());
+
+#if DEBUG
+    CCLOG("mines = %s", responseBody.str().c_str());
+#endif
+
+    // Parsing JSON response
+    JSON::DefaultHandler handler;
+    JSON::Parser parser;
+
+    parser.setHandler(&handler);
+    parser.parse(responseBody.str());
+
+    JSON::Array::Ptr scoreArray = handler.result().extract<JSON::Object::Ptr>()->getArray("data");
+
+    for (Dynamic::Var score : *scoreArray) {
+      ScoreEntry entry(score.extract<JSON::Object::Ptr>());
+      scores.push_back(entry);
+    }
   } catch (Exception& exc) {
-    CCLOG("%s", exc.displayText().c_str());
+    CCLOG("Exception %s", exc.displayText().c_str());
   }
+  return scores;
 }
 
-void Social::getFriendsScores() {
+std::vector<ScoreEntry> Social::getFriendsScores() {
+  std::vector<ScoreEntry> scores;
   try {
     // Target URI
     URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
@@ -206,20 +227,40 @@ void Social::getFriendsScores() {
       std::ostringstream error;
       StreamCopier::copyStream(rs, error);
       CCLOG("Bad request: %s", error.str().c_str());
-      return;
+      return scores;
     } else if (response.getStatus() == Net::HTTPResponse::HTTP_NOT_FOUND) {
       CCLOG("Not found.");
-      return;
+      return scores;
     }
+
     std::ostringstream responseBody;
     StreamCopier::copyStream(rs, responseBody);
-    CCLOG("response body = %s", responseBody.str().c_str());
+
+#if DEBUG
+    CCLOG("friends = %s", responseBody.str().c_str());
+#endif
+
+    // Parsing JSON response
+    JSON::DefaultHandler handler;
+    JSON::Parser parser;
+
+    parser.setHandler(&handler);
+    parser.parse(responseBody.str());
+
+    JSON::Array::Ptr scoreArray = handler.result().extract<JSON::Object::Ptr>()->getArray("data");
+
+    for (Dynamic::Var score : *scoreArray) {
+      ScoreEntry entry(score.extract<JSON::Object::Ptr>());
+      scores.push_back(entry);
+    }
   } catch (Exception& exc) {
-    CCLOG("%s", exc.displayText().c_str());
+    CCLOG("Exception %s", exc.displayText().c_str());
   }
+  return scores;
 }
 
-void Social::getWorldScores() {
+std::vector<ScoreEntry> Social::getWorldScores() {
+  std::vector<ScoreEntry> scores;
   try {
     // Target URI
     URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
@@ -245,16 +286,35 @@ void Social::getWorldScores() {
       std::ostringstream error;
       StreamCopier::copyStream(rs, error);
       CCLOG("Bad request: %s", error.str().c_str());
-      return;
+      return scores;
     } else if (response.getStatus() == Net::HTTPResponse::HTTP_NOT_FOUND) {
       CCLOG("Not found.");
-      return;
+      return scores;
     }
+
     std::ostringstream responseBody;
     StreamCopier::copyStream(rs, responseBody);
-    CCLOG("response body = %s", responseBody.str().c_str());
+
+#if DEBUG
+    CCLOG("world = %s", responseBody.str().c_str());
+#endif
+
+    // Parsing JSON response
+    JSON::DefaultHandler handler;
+    JSON::Parser parser;
+
+    parser.setHandler(&handler);
+    parser.parse(responseBody.str());
+
+    JSON::Array::Ptr scoreArray = handler.result().extract<JSON::Object::Ptr>()->getArray("data");
+
+    for (Dynamic::Var score : *scoreArray) {
+      ScoreEntry entry(score.extract<JSON::Object::Ptr>());
+      scores.push_back(entry);
+    }
   } catch (Exception& exc) {
-    CCLOG("%s", exc.displayText().c_str());
+    CCLOG("Exception %s", exc.displayText().c_str());
   }
+  return scores;
 }
 

@@ -11,13 +11,17 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
+#include "ScoreEntry.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class ScoresScene : public cocos2d::CCLayer, public cocos2d::extension::CCTableViewDataSource, public cocos2d::extension::CCTableViewDelegate {
-public:
+private:
+  static std::vector<ScoreEntry> scores;
+  CCTableView* tableView;
 
+public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
   static cocos2d::CCScene *scene();
 
@@ -28,6 +32,7 @@ public:
   void backToTitleAction(CCObject *sender);
   void yoursAction(CCObject* sender);
   void friendsAction(CCObject* sender);
+  void worldAction(CCObject* sender);
 
   virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
   virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
@@ -35,6 +40,7 @@ public:
   virtual cocos2d::CCSize cellSizeForTable(cocos2d::extension::CCTableView *table);
   virtual cocos2d::extension::CCTableViewCell* tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx);
   virtual unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
+
 };
 
 

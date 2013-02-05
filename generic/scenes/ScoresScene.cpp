@@ -8,10 +8,11 @@
 #include "AppDelegate.h"
 #include "TitleScene.h"
 #include "Social.h"
-#include "CustomTableViewCell.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
+
+std::vector<ScoreEntry> ScoresScene::scores;
 
 CCScene* ScoresScene::scene() {
   CCScene* scene = CCScene::create();
@@ -64,7 +65,7 @@ bool ScoresScene::init() {
   world->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   world->setPosition(ccp(Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 40));
   world->setPreferredSize(CCSizeMake(world->getContentSize().width + 10, 60));
-//  menuButton->addTargetWithActionForControlEvents(this, cccontrol_selector(ScoresScene::menuAction), CCControlEventTouchUpInside);
+  world->addTargetWithActionForControlEvents(this, cccontrol_selector(ScoresScene::worldAction), CCControlEventTouchUpInside);
   world->setDefaultTouchPriority(-64);
   addChild(world);
 
@@ -78,16 +79,9 @@ bool ScoresScene::init() {
 
   CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
-  CCTableView* tableView = CCTableView::create(this, CCSizeMake(250, 60));
-  tableView->setDirection(kCCScrollViewDirectionHorizontal);
-  tableView->setPosition(ccp(20, winSize.height / 2 - 30));
-  tableView->setDelegate(this);
-  this->addChild(tableView);
-  tableView->reloadData();
-
-  tableView = CCTableView::create(this, CCSizeMake(60, 280));
+  tableView = CCTableView::create(this, CCSizeMake(Assets::designResolutionSize.width - 128, 180));
   tableView->setDirection(kCCScrollViewDirectionVertical);
-  tableView->setPosition(ccp(winSize.width - 150, winSize.height / 2 - 120));
+  tableView->setPosition(64, Assets::designResolutionSize.height /2);
   tableView->setDelegate(this);
   tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
   this->addChild(tableView);
@@ -97,11 +91,18 @@ bool ScoresScene::init() {
 }
 
 void ScoresScene::yoursAction(CCObject* sender) {
-  Social::getMyScores();
+  scores = Social::getMyScores();
+  tableView->reloadData();
 }
 
 void ScoresScene::friendsAction(CCObject* sender) {
-  Social::getFriendsScores();
+  scores = Social::getFriendsScores();
+  tableView->reloadData();
+}
+
+void ScoresScene::worldAction(CCObject* sender) {
+  scores = Social::getWorldScores();
+  tableView->reloadData();
 }
 
 void ScoresScene::backToTitleAction(CCObject* sender) {
@@ -113,35 +114,37 @@ void ScoresScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell) {
 }
 
 CCSize ScoresScene::cellSizeForTable(CCTableView* table) {
-  return CCSizeMake(60, 60);
+  return CCSizeMake(Assets::designResolutionSize.width - 128, 30);
 }
 
 CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int idx) {
-  CCString* string = CCString::createWithFormat("%d", idx);
+  ScoreEntry entry = scores.at(idx);
+  CCString* index = CCString::createWithFormat("%d. %-12s %-12s %s", idx + 1, entry.score.c_str(), entry.firstName.c_str(), entry.duration.c_str());
   CCTableViewCell* cell = table->dequeueCell();
 
   if (!cell) {
     cell = new CCTableViewCell();
     cell->autorelease();
-    CCSprite* sprite = CCSprite::createWithSpriteFrame(AppDelegate::assets.CURSOR_01);
-    sprite->setAnchorPoint(CCPointZero);
-    sprite->setPosition(ccp(0, 0));
-    cell->addChild(sprite);
 
-    CCLabelTTF* label = CCLabelTTF::create(string->getCString(), "SkaterDudes.ttf", 24);
+    CCLabelTTF* label = CCLabelTTF::create(index->getCString(), "SkaterDudes.ttf", 24);
     label->setPosition(CCPointZero);
     label->setAnchorPoint(CCPointZero);
     label->setTag(123);
     cell->addChild(label);
+
+//    CCLabelTTF* firstName = CCLabelTTF::create(scores.at(idx).firstName.c_str(), "SkaterDudes.ttf", 24);
+//    label->setPosition(CCPointZero);
+//    label->setAnchorPoint(CCPointZero);
+//    cell->addChild(firstName);
   }
   else {
     CCLabelTTF* label = (CCLabelTTF*) cell->getChildByTag(123);
-    label->setString(string->getCString());
+    label->setString(index->getCString());
   }
 
   return cell;
 }
 
 unsigned int ScoresScene::numberOfCellsInTableView(CCTableView* table) {
-  return 20;
+  return scores.size();
 }

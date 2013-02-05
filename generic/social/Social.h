@@ -12,6 +12,7 @@
 #include <iostream>
 #include <Poco/SharedPtr.h>
 #include <Poco/JSON/Object.h>
+#include "ScoreEntry.h"
 
 class Social {
 private:
@@ -21,9 +22,9 @@ public:
   static void registerPlayer();
   static void createOrUpdatePlayer(std::string const & facebookId, Poco::SharedPtr <Poco::JSON::Object> facebookResponse);
   static void submitScore(uint64_t score, uint32_t duration);
-  static void getMyScores();
-  static void getFriendsScores();
-  static void getWorldScores();
+  static std::vector<ScoreEntry> getMyScores();
+  static std::vector<ScoreEntry> getFriendsScores();
+  static std::vector<ScoreEntry> getWorldScores();
 };
 
 #endif //__Social_H_
