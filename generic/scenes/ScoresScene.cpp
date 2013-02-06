@@ -79,12 +79,13 @@ bool ScoresScene::init() {
 
   CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
-  tableView = CCTableView::create(this, CCSizeMake(Assets::designResolutionSize.width - 128, 180));
-  tableView->setDirection(kCCScrollViewDirectionVertical);
-  tableView->setPosition(64, Assets::designResolutionSize.height /2);
+  tableView = CCTableView::create(this, CCSizeMake(Assets::designResolutionSize.width - 128, Assets::designResolutionSize.height - 128));
+  tableView->setDirection(kCCScrollViewDirectionBoth);
+  tableView->setPosition(64, 64);
   tableView->setDelegate(this);
   tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
   this->addChild(tableView);
+  scores = Social::getMyScores();
   tableView->reloadData();
 
   return true;
@@ -114,7 +115,7 @@ void ScoresScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell) {
 }
 
 CCSize ScoresScene::cellSizeForTable(CCTableView* table) {
-  return CCSizeMake(Assets::designResolutionSize.width - 128, 30);
+  return CCSizeMake(Assets::designResolutionSize.width - 128, 40);
 }
 
 CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int idx) {
