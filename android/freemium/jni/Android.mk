@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
-POCO_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all
-OPENSSL_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/android-external-openssl-ndk-static
+POCO_ROOT = /home/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all
+OPENSSL_ROOT = /home/bquenin/workspace/furiousblocks/third-party/android-external-openssl-ndk-static
 
 #
 # libgame
@@ -49,8 +49,8 @@ LOCAL_LDLIBS += -lcrypto
 #
 LOCAL_CPPFLAGS := -fexceptions -frtti -std=gnu++0x
 LOCAL_CPPFLAGS += -DFREEMIUM
-LOCAL_CPPFLAGS += -O2 -DNDEBUG -fomit-frame-pointer
-#LOCAL_CPPFLAGS += -DCOCOS2D_DEBUG -DDEBUG
+#LOCAL_CPPFLAGS += -O2 -DNDEBUG -fomit-frame-pointer
+LOCAL_CPPFLAGS += -DCOCOS2D_DEBUG -DDEBUG
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/bootstrap
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic
@@ -99,6 +99,7 @@ bootstrap/CCApplicationEx.cpp \
 ../../../generic/script/SetBlocksAction.cpp \
 ../../../generic/script/TextToType.cpp \
 ../../../generic/script/TypeTextAction.cpp \
+../../../generic/social/ScoreEntry.cpp \
 ../../../generic/social/Social.cpp \
 ../../../generic/social/SocialPlayer.cpp \
 ../../../generic/tween/easing/easing_back.cpp \
