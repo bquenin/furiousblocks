@@ -48,7 +48,6 @@ LOCAL_LDLIBS += -lcrypto
 # Build flags
 #
 LOCAL_CPPFLAGS := -fexceptions -frtti -std=gnu++0x
-#LOCAL_CPPFLAGS += -DFREEMIUM
 LOCAL_CPPFLAGS += -O2 -DNDEBUG -fomit-frame-pointer
 #LOCAL_CPPFLAGS += -DCOCOS2D_DEBUG -DDEBUG
 
@@ -65,6 +64,7 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/tween
 
 LOCAL_SRC_FILES := \
 bootstrap/main.cpp \
+bootstrap/CCApplicationEx.cpp \
 ../../../generic/AppDelegate.cpp \
 ../../../generic/Assets.cpp \
 ../../../generic/animation/Animation.cpp \
@@ -98,6 +98,7 @@ bootstrap/main.cpp \
 ../../../generic/script/SetBlocksAction.cpp \
 ../../../generic/script/TextToType.cpp \
 ../../../generic/script/TypeTextAction.cpp \
+../../../generic/social/ScoreEntry.cpp \
 ../../../generic/social/Social.cpp \
 ../../../generic/social/SocialPlayer.cpp \
 ../../../generic/tween/easing/easing_back.cpp \
