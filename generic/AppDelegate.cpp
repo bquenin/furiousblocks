@@ -140,3 +140,22 @@ void AppDelegate::setFacebookId(const std::string& facebookId) {
   CCUserDefault::sharedUserDefault()->flush();
 }
 
+std::string AppDelegate::getFirstName() {
+  return CCUserDefault::sharedUserDefault()->getStringForKey("firstName", "none");
+}
+
+void AppDelegate::setFirstName(const std::string& firstName) {
+  CCUserDefault::sharedUserDefault()->setStringForKey("firstName", firstName);
+  CCUserDefault::sharedUserDefault()->flush();
+}
+
+std::string AppDelegate::getLastName() {
+  return CCUserDefault::sharedUserDefault()->getStringForKey("lastName", "none");
+}
+
+void AppDelegate::setLastName(const std::string& lastName) {
+  CCUserDefault::sharedUserDefault()->setStringForKey("lastName", lastName);
+  CCUserDefault::sharedUserDefault()->flush();
+}
+
+

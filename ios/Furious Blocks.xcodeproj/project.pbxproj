@@ -32,18 +32,15 @@
 		7969E3E5249480638BFCE0EA /* ScoresScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EC7244448D927D9B4E91 /* ScoresScene.cpp */; };
 		7969E417E51B0E4A7782424D /* blocks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7969E06309C54DF53182E0F3 /* blocks.plist */; };
 		7969E44E27EE3DC7B7C442A8 /* voices.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E7F9A6066AE2418BF9C1 /* voices.mp3 */; };
-		7969E4607E8582D129E6B8F5 /* SocialPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */; };
 		7969E4619693C1A40587587D /* coopblack64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E93AF6D39B4F7DDFA839 /* coopblack64.fnt */; };
 		7969E5188D35B6858E168BD9 /* CCApplicationEx.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7969EE618BE9CE483747FEEF /* CCApplicationEx.mm */; };
 		7969E5856CCB532A06436A24 /* Social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E7A92BDB7499BB8AA4A0 /* Social.cpp */; };
 		7969E5F1EFCBB5B41BE16CAB /* QuitOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */; };
 		7969E6623BBFC5705BFB9CD9 /* ScoresScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EC7244448D927D9B4E91 /* ScoresScene.cpp */; };
 		7969E67D04CFF4A800E22D6F /* CCApplicationEx.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7969EE618BE9CE483747FEEF /* CCApplicationEx.mm */; };
-		7969E6E9343F06E2C8347A1C /* SocialPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */; };
 		7969E86718637B161B33382F /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969E8964F7A1C3B4F11D455 /* ScoreEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */; };
 		7969E8FDA05207335D97FEBB /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */; };
-		7969E9C55BC5569229987932 /* SocialPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EAA65F7587E0386426FE /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EACB2CF570960D037656 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E79960EAF9FDDBA0C804 /* blocks.png */; };
@@ -54,7 +51,6 @@
 		7969EB7560835402674ABD3F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969EB7ABA416427D5DE3C32 /* Joystix.ttf */; };
 		7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EC1B6F2481A41CC10938 /* ScoreEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */; };
-		7969ED30F4AA1700F052A139 /* SocialPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */; };
 		7969EDD992FFE86272E82942 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EE0B72DD5902D633346A /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E0A3A7B96B0347359069 /* LogoScene.cpp */; };
 		7969EE2683183745408F0B9A /* ScoresScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EC7244448D927D9B4E91 /* ScoresScene.cpp */; };
@@ -1134,9 +1130,7 @@
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
 		7969EA45FDA5B84C72EBAC72 /* rootcert.pem */ = {isa = PBXFileReference; lastKnownFileType = file.pem; path = rootcert.pem; sourceTree = "<group>"; };
 		7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuitOverlay.cpp; sourceTree = "<group>"; };
-		7969EB3DE6AB332E7EA6C542 /* SocialPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialPlayer.h; sourceTree = "<group>"; };
 		7969EB7ABA416427D5DE3C32 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Joystix.ttf; sourceTree = "<group>"; };
-		7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocialPlayer.cpp; sourceTree = "<group>"; };
 		7969EC2DC8041F2823CAF77B /* CCApplicationEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCApplicationEx.h; sourceTree = "<group>"; };
 		7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = harmonic.mp3; sourceTree = "<group>"; };
 		7969EC7244448D927D9B4E91 /* ScoresScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoresScene.cpp; sourceTree = "<group>"; };
@@ -2797,8 +2791,6 @@
 			children = (
 				7969E7A92BDB7499BB8AA4A0 /* Social.cpp */,
 				7969E251E1C511302A7B5E8B /* Social.h */,
-				7969EB7D7887E9CEA92B4A3E /* SocialPlayer.cpp */,
-				7969EB3DE6AB332E7EA6C542 /* SocialPlayer.h */,
 				7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */,
 				7969E2510CE0E6F14007F8B9 /* ScoreEntry.h */,
 			);
@@ -3280,7 +3272,6 @@
 				D254FDEA1674BE200072CE69 /* AdScene.cpp in Sources */,
 				7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */,
 				7969EFC4157A674238364E23 /* Social.cpp in Sources */,
-				7969E4607E8582D129E6B8F5 /* SocialPlayer.cpp in Sources */,
 				7969E3E5249480638BFCE0EA /* ScoresScene.cpp in Sources */,
 				7969EF3452C399AE46552380 /* CCApplicationEx.mm in Sources */,
 				7969E8964F7A1C3B4F11D455 /* ScoreEntry.cpp in Sources */,
@@ -3512,7 +3503,6 @@
 				D261DBF3167DF531008C6503 /* AdScene.cpp in Sources */,
 				D261DBF4167DF531008C6503 /* CreditsScene.cpp in Sources */,
 				7969E3BFBAE88E442A4C6DE0 /* Social.cpp in Sources */,
-				7969E9C55BC5569229987932 /* SocialPlayer.cpp in Sources */,
 				7969EE2683183745408F0B9A /* ScoresScene.cpp in Sources */,
 				7969E07349F545F805BEC220 /* CCApplicationEx.mm in Sources */,
 				7969E16E0F412599EF5171C0 /* ScoreEntry.cpp in Sources */,
@@ -3744,7 +3734,6 @@
 				D261DCF8167DF54D008C6503 /* AdScene.cpp in Sources */,
 				D261DCF9167DF54D008C6503 /* CreditsScene.cpp in Sources */,
 				7969EAFE84FCC8ACB21D8066 /* Social.cpp in Sources */,
-				7969ED30F4AA1700F052A139 /* SocialPlayer.cpp in Sources */,
 				7969E2F382ABA7B7D1824334 /* ScoresScene.cpp in Sources */,
 				7969E67D04CFF4A800E22D6F /* CCApplicationEx.mm in Sources */,
 				7969EC1B6F2481A41CC10938 /* ScoreEntry.cpp in Sources */,
@@ -3976,7 +3965,6 @@
 				D261DDFD167DF558008C6503 /* AdScene.cpp in Sources */,
 				D261DDFE167DF558008C6503 /* CreditsScene.cpp in Sources */,
 				7969E5856CCB532A06436A24 /* Social.cpp in Sources */,
-				7969E6E9343F06E2C8347A1C /* SocialPlayer.cpp in Sources */,
 				7969E6623BBFC5705BFB9CD9 /* ScoresScene.cpp in Sources */,
 				7969E5188D35B6858E168BD9 /* CCApplicationEx.mm in Sources */,
 				7969E07435AE4D096CF37830 /* ScoreEntry.cpp in Sources */,

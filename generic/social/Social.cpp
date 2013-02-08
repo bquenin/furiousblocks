@@ -67,6 +67,8 @@ void Social::registerPlayer() {
 #endif
 
     AppDelegate::setFacebookId(facebookResponse->get("id"));
+    AppDelegate::setFirstName(facebookResponse->get("first_name"));
+    AppDelegate::setLastName(facebookResponse->get("last_name"));
 
     // Get or create the player
     createOrUpdatePlayer(facebookResponse->get("id"), facebookResponse);

@@ -84,7 +84,7 @@ bool TitleScene::init() {
   howToPlaylButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
   addChild(howToPlaylButton);
 
-  CCControlButton *scoresButton = CCControlButton::create(CCLabelTTF::create("Scores", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  scoresButton = CCControlButton::create(CCLabelTTF::create("Scores", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   scoresButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   scoresButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   scoresButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 120));
@@ -140,6 +140,9 @@ bool TitleScene::init() {
 void TitleScene::update(float dt) {
   logIn->setVisible(!AppDelegate::isLoggedIn());
   logOut->setVisible(AppDelegate::isLoggedIn());
+
+  scoresButton->setEnabled(AppDelegate::isLoggedIn());
+  scoresButton->setColor(AppDelegate::isLoggedIn() ? ccc3(0xFF, 0xFF, 0xFF) : ccc3(0x80, 0x80, 0x80));
 }
 
 void TitleScene::logInAction(CCObject *sender) {

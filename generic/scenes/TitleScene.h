@@ -22,6 +22,7 @@ private:
   CCControlButton *logOut;
   CCControlButton *musicSwitchOn;
   CCControlButton *musicSwitchOff;
+  CCControlButton* scoresButton;
 
 public:
 

@@ -19,10 +19,17 @@ CCScene* ScoresScene::scene() {
   return scene;
 }
 
+ScoresScene::ScoresScene()
+: state(ScoresState::myself)
+, myself(nullptr) {
+}
+
 bool ScoresScene::init() {
   if (!CCLayer::init()) {
     return false;
   }
+
+  scores = Social::getMyScores();
 
   // Background
   CCSprite* bgMiddle = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_MIDDLE);
@@ -76,31 +83,41 @@ bool ScoresScene::init() {
   endGameButton->addTargetWithActionForControlEvents(this, cccontrol_selector(ScoresScene::backToTitleAction), CCControlEventTouchUpInside);
   addChild(endGameButton);
 
-  CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-
   tableView = CCTableView::create(this, CCSizeMake(Assets::designResolutionSize.width - 48, Assets::designResolutionSize.height - 198));
   tableView->setDirection(kCCScrollViewDirectionVertical);
   tableView->setPosition(64, 106);
   tableView->setDelegate(this);
   tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
   this->addChild(tableView);
-  scores = Social::getMyScores();
   tableView->reloadData();
+
+  // Start scheduling
+  schedule(schedule_selector(ScoresScene::update));
 
   return true;
 }
 
+void ScoresScene::update(float dt) {
+  if (myself != nullptr) {
+    CCLabelTTF* score = static_cast<CCLabelTTF*>(myself->getChildByTag(2));
+    score->setColor(ccc3(static_cast<GLubyte>(random.nextInt() % 256), static_cast<GLubyte>(random.nextInt() % 256), static_cast<GLubyte>(random.nextInt() % 256)));
+  }
+}
+
 void ScoresScene::yoursAction(CCObject* sender) {
+  state = ScoresState::myself;
   scores = Social::getMyScores();
   tableView->reloadData();
 }
 
 void ScoresScene::friendsAction(CCObject* sender) {
+  state = ScoresState::friends;
   scores = Social::getFriendsScores();
   tableView->reloadData();
 }
 
 void ScoresScene::worldAction(CCObject* sender) {
+  state = ScoresState::world;
   scores = Social::getWorldScores();
   tableView->reloadData();
 }
@@ -123,16 +140,21 @@ CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int 
   CCString* name = nullptr;
   CCString* time = nullptr;
 
+  CCTableViewCell* cell = table->dequeueCell();
   try {
     ScoreEntry entry = scores.at(idx);
     index = CCString::createWithFormat("%d.", idx + 1);
     score = CCString::create(entry.score);
     name = CCString::create(entry.firstName);
     time = CCString::createWithFormat("%02d:%02d:%02d", static_cast<int32_t>(atoi(entry.duration.c_str()) / (60 * 1000)), static_cast<int32_t>(atoi(entry.duration.c_str()) / 1000) % 60, static_cast<int32_t>(atoi(entry.duration.c_str()) / 10) % 100);
+    if (state == ScoresState::myself) {
+      myself = nullptr;
+    } else if ((AppDelegate::getFirstName() == entry.firstName) && (AppDelegate::getLastName() == entry.lastName)) {
+      myself = cell;
+    }
   } catch (std::out_of_range e) {
   }
 
-  CCTableViewCell* cell = table->dequeueCell();
   if (!cell) {
     cell = new CCTableViewCell();
     cell->autorelease();
@@ -147,6 +169,7 @@ CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int 
     _score ->setPositionX(48);
     _score->setAnchorPoint(CCPointZero);
     _score->setTag(2);
+    _score->setColor(ccWHITE);
     cell->addChild(_score);
 
     CCLabelTTF* _name = CCLabelTTF::create(name == nullptr ? "" : name->getCString(), "SkaterDudes.ttf", 20);
@@ -166,6 +189,7 @@ CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int 
 
     CCLabelTTF* _score = (CCLabelTTF*) cell->getChildByTag(2);
     _score->setString(score == nullptr ? "" : score->getCString());
+    _score->setColor(ccWHITE);
 
     CCLabelTTF* _name = (CCLabelTTF*) cell->getChildByTag(3);
     _name->setString(name == nullptr ? "" : name->getCString());
@@ -173,9 +197,10 @@ CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int 
     CCLabelTTF* _time = (CCLabelTTF*) cell->getChildByTag(4);
     _time->setString(time == nullptr ? "" : time->getCString());
   }
+
   return cell;
 }
 
 unsigned int ScoresScene::numberOfCellsInTableView(CCTableView* table) {
-  return scores.size() < 20 ? 20 : scores.size();
+  return scores.size() < 19 ? 19 : scores.size();
 }

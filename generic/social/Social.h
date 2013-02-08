@@ -17,10 +17,10 @@
 class Social {
 private:
   static const std::string PIXODROME_SERVER;
+  static void createOrUpdatePlayer(std::string const & facebookId, Poco::SharedPtr <Poco::JSON::Object> facebookResponse);
 
 public:
   static void registerPlayer();
-  static void createOrUpdatePlayer(std::string const & facebookId, Poco::SharedPtr <Poco::JSON::Object> facebookResponse);
   static void submitScore(uint64_t score, uint32_t duration);
   static std::vector<ScoreEntry> getMyScores();
   static std::vector<ScoreEntry> getFriendsScores();
