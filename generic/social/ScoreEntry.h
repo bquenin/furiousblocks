@@ -14,11 +14,13 @@ using namespace Poco;
 
 class ScoreEntry {
 public:
+
   std::string firstName;
   std::string lastName;
   std::string score;
   std::string duration;
 
+  ScoreEntry();
   ScoreEntry(JSON::Object::Ptr json);
   ~ScoreEntry();
 

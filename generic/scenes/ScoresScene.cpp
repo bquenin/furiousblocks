@@ -1,7 +1,6 @@
 //
 // Created by tsug on 04/07/12.
 //
-//
 
 #include "ScoresScene.h"
 #include "Assets.h"
@@ -79,9 +78,9 @@ bool ScoresScene::init() {
 
   CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
-  tableView = CCTableView::create(this, CCSizeMake(Assets::designResolutionSize.width - 128, Assets::designResolutionSize.height - 128));
-  tableView->setDirection(kCCScrollViewDirectionBoth);
-  tableView->setPosition(64, 64);
+  tableView = CCTableView::create(this, CCSizeMake(Assets::designResolutionSize.width - 48, Assets::designResolutionSize.height - 198));
+  tableView->setDirection(kCCScrollViewDirectionVertical);
+  tableView->setPosition(64, 106);
   tableView->setDelegate(this);
   tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
   this->addChild(tableView);
@@ -115,37 +114,68 @@ void ScoresScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell) {
 }
 
 CCSize ScoresScene::cellSizeForTable(CCTableView* table) {
-  return CCSizeMake(Assets::designResolutionSize.width - 128, 40);
+  return CCSizeMake(Assets::designResolutionSize.width - 48, 40);
 }
 
 CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int idx) {
-  ScoreEntry entry = scores.at(idx);
-  CCString* index = CCString::createWithFormat("%d. %-12s %-12s %s", idx + 1, entry.score.c_str(), entry.firstName.c_str(), entry.duration.c_str());
-  CCTableViewCell* cell = table->dequeueCell();
+  CCString* index = nullptr;
+  CCString* score = nullptr;
+  CCString* name = nullptr;
+  CCString* time = nullptr;
 
+  try {
+    ScoreEntry entry = scores.at(idx);
+    index = CCString::createWithFormat("%d.", idx + 1);
+    score = CCString::create(entry.score);
+    name = CCString::create(entry.firstName);
+    time = CCString::createWithFormat("%02d:%02d:%02d", static_cast<int32_t>(atoi(entry.duration.c_str()) / (60 * 1000)), static_cast<int32_t>(atoi(entry.duration.c_str()) / 1000) % 60, static_cast<int32_t>(atoi(entry.duration.c_str()) / 10) % 100);
+  } catch (std::out_of_range e) {
+  }
+
+  CCTableViewCell* cell = table->dequeueCell();
   if (!cell) {
     cell = new CCTableViewCell();
     cell->autorelease();
 
-    CCLabelTTF* label = CCLabelTTF::create(index->getCString(), "SkaterDudes.ttf", 24);
-    label->setPosition(CCPointZero);
-    label->setAnchorPoint(CCPointZero);
-    label->setTag(123);
-    cell->addChild(label);
+    CCLabelTTF* _index = CCLabelTTF::create(index == nullptr ? "" : index->getCString(), "SkaterDudes.ttf", 20);
+    _index->setPosition(CCPointZero);
+    _index->setAnchorPoint(CCPointZero);
+    _index->setTag(1);
+    cell->addChild(_index);
 
-//    CCLabelTTF* firstName = CCLabelTTF::create(scores.at(idx).firstName.c_str(), "SkaterDudes.ttf", 24);
-//    label->setPosition(CCPointZero);
-//    label->setAnchorPoint(CCPointZero);
-//    cell->addChild(firstName);
-  }
-  else {
-    CCLabelTTF* label = (CCLabelTTF*) cell->getChildByTag(123);
-    label->setString(index->getCString());
-  }
+    CCLabelTTF* _score = CCLabelTTF::create(score == nullptr ? "" : score->getCString(), "SkaterDudes.ttf", 20);
+    _score ->setPositionX(48);
+    _score->setAnchorPoint(CCPointZero);
+    _score->setTag(2);
+    cell->addChild(_score);
 
+    CCLabelTTF* _name = CCLabelTTF::create(name == nullptr ? "" : name->getCString(), "SkaterDudes.ttf", 20);
+    _name->setPositionX((Assets::designResolutionSize.width - 48) / 3);
+    _name->setAnchorPoint(CCPointZero);
+    _name->setTag(3);
+    cell->addChild(_name);
+
+    CCLabelTTF* _time = CCLabelTTF::create(time == nullptr ? "" : time->getCString(), "SkaterDudes.ttf", 20);
+    _time->setPositionX(((Assets::designResolutionSize.width - 48) * 2 / 3) - 16);
+    _time->setAnchorPoint(CCPointZero);
+    _time->setTag(4);
+    cell->addChild(_time);
+  } else {
+    CCLabelTTF* _index = (CCLabelTTF*) cell->getChildByTag(1);
+    _index->setString(index == nullptr ? "" : index->getCString());
+
+    CCLabelTTF* _score = (CCLabelTTF*) cell->getChildByTag(2);
+    _score->setString(score == nullptr ? "" : score->getCString());
+
+    CCLabelTTF* _name = (CCLabelTTF*) cell->getChildByTag(3);
+    _name->setString(name == nullptr ? "" : name->getCString());
+
+    CCLabelTTF* _time = (CCLabelTTF*) cell->getChildByTag(4);
+    _time->setString(time == nullptr ? "" : time->getCString());
+  }
   return cell;
 }
 
 unsigned int ScoresScene::numberOfCellsInTableView(CCTableView* table) {
-  return scores.size();
+  return scores.size() < 20 ? 20 : scores.size();
 }

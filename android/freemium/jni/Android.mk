@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
-POCO_ROOT = /home/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all
-OPENSSL_ROOT = /home/bquenin/workspace/furiousblocks/third-party/android-external-openssl-ndk-static
+POCO_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all
+OPENSSL_ROOT = /Users/bquenin/workspace/furiousblocks/third-party/android-external-openssl-ndk-static
 
 #
 # libgame
