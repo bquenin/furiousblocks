@@ -37,6 +37,7 @@ static AppDelegate s_sharedApplication;
       s_sharedApplication.setLoggedIn(true);
       s_sharedApplication.setAccessToken(std::string([[FBSession.activeSession accessToken] cStringUsingEncoding:NSUTF8StringEncoding]));
       Social::registerPlayer();
+      Social::likesCount();
       break;
 
     case FBSessionStateClosed:
@@ -95,8 +96,8 @@ static AppDelegate s_sharedApplication;
   // FBSample logic
   // See if we have a valid token for the current state.
   if (![self openSessionWithAllowLoginUI:NO]) {
-//    // No? Display the login page.
-//    [self openSessionWithAllowLoginUI:YES];
+    // No? Display the login page.
+    [self openSessionWithAllowLoginUI:YES];
   }
 
   cocos2d::CCApplication::sharedApplication()->run();

@@ -4062,7 +4062,17 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=armv7]" = (
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=armv7s]" = (
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -4107,8 +4117,19 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=armv7]" = (
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7",
 				);
+				"LIBRARY_SEARCH_PATHS[arch=armv7s]" = (
+					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-lxml2",

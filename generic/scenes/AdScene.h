@@ -16,17 +16,24 @@ using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class AdScene : public cocos2d::CCLayer {
+private:
+  float stateTime;
+  uint32_t lastTime;
+  CCSprite* spinner;
 
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
-  static cocos2d::CCScene *scene();
+  static cocos2d::CCScene* scene();
 
   // Implement the "static node()" method manually
   CREATE_FUNC(AdScene);
 
+  AdScene();
   bool init();
-  void backToTitleAction(CCObject *sender);
-  void buyAction(CCObject *sender);
+  void backToTitleAction(CCObject* sender);
+  void buyAction(CCObject* sender);
+  void likeAction(CCObject* sender);
+  void update(float dt);
 };
 
 

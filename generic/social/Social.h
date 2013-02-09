@@ -25,6 +25,7 @@ public:
   static std::vector<ScoreEntry> getMyScores();
   static std::vector<ScoreEntry> getFriendsScores();
   static std::vector<ScoreEntry> getWorldScores();
+  static uint32_t likesCount();
 };
 
 #endif //__Social_H_

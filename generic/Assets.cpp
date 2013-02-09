@@ -27,6 +27,8 @@ void Assets::load() {
   CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
 
   // Frame assets
+  SPINNER = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("wait.png");
+
   FLOGO = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("f-logo.png");
 
   TITLE = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("title.png");

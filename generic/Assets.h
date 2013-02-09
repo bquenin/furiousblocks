@@ -36,6 +36,8 @@ public:
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
 
   // Assets
+  CCSpriteFrame *SPINNER;
+
   CCSpriteFrame *FLOGO;
 
   CCSpriteFrame *TITLE;

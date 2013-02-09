@@ -17,7 +17,7 @@ LINKMODE ?= STATIC
 # If the SDK is defined use it
 # Otherwise find the latest version installed
 #
-IPHONE_SDK_VERSION = 6.0
+IPHONE_SDK_VERSION = 6.1
 
 # if IPHONE_SDK_VERSION_MIN is defined use that
 # Otherwise use the version found.
@@ -30,7 +30,7 @@ IPHONE_SDK_BASE         = $(shell ls -d $(IPHONE_SDK_ROOT_DIR)$(IPHONE_SDK_VERSI
 IPHONE_SDK_VERSION_MIN ?= $(patsubst %.sdk,%,$(patsubst $(IPHONE_SDK_ROOT_DIR)%,%,$(IPHONE_SDK_BASE)))
 
 POCO_TARGET_OSNAME     ?= $(IPHONE_SDK)
-POCO_TARGET_OSARCH     ?= armv7
+POCO_TARGET_OSARCH     ?= armv7s
 TOOL_PREFIX            ?= $(shell xcode-select -print-path)/Platforms/$(IPHONE_SDK).platform/Developer/usr/bin
 OSFLAGS                ?= -arch $(POCO_TARGET_OSARCH) -isysroot $(IPHONE_SDK_BASE) -mthumb -miphoneos-version-min=$(IPHONE_SDK_VERSION_MIN)
 

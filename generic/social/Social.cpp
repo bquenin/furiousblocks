@@ -320,3 +320,50 @@ std::vector<ScoreEntry> Social::getWorldScores() {
   return scores;
 }
 
+uint32_t Social::likesCount() {
+  try {
+    // SSL Context
+    const Net::Context::Ptr context(new Net::Context(Net::Context::CLIENT_USE, "", "", "", Net::Context::VERIFY_NONE, 9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
+
+    // Target URI
+    URI uri("https://graph.facebook.com/422411451165165?fields=likes&access_token=" + AppDelegate::getAccessToken());
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPSClientSession session(uri.getHost(), uri.getPort(), context);
+
+    // Request
+    Net::HTTPRequest request(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
+    session.sendRequest(request);
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+    std::ostringstream responseBody;
+    if (response.getStatus() != Net::HTTPResponse::HTTP_UNAUTHORIZED) {
+      StreamCopier::copyStream(rs, responseBody);
+    } else {
+      NullOutputStream null;
+      StreamCopier::copyStream(rs, null);
+      return 0;
+    }
+
+    // Parsing JSON response
+    JSON::DefaultHandler handler;
+    JSON::Parser parser;
+
+    parser.setHandler(&handler);
+    parser.parse(responseBody.str());
+
+    JSON::Object::Ptr facebookResponse = handler.result().extract<JSON::Object::Ptr>();
+
+#if DEBUG
+    std::ostringstream out;
+    facebookResponse->stringify(out, 2);
+    CCLOG("response = %s", out.str().c_str());
+#endif
+    return facebookResponse->get("likes");
+  } catch (Exception& exc) {
+    CCLOG("error in likesCount = %s", exc.displayText().c_str());
+  }
+}
