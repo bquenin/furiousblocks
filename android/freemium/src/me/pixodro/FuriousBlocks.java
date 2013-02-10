@@ -47,7 +47,6 @@ public class FuriousBlocks extends Cocos2dxActivity {
           final List<String> permissions = new ArrayList<String>();
           permissions.add("user_likes");
           session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback).setPermissions(permissions));
-//          session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback));
       }
     }
   }
