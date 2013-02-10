@@ -10,6 +10,7 @@
 
 #include "LogoScene.h"
 #include "Poco/Net/SSLManager.h"
+#include "Social.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -69,7 +70,6 @@ void AppDelegate::applicationDidEnterBackground() {
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
   CCLOG("AppDelegate::applicationWillEnterForeground()");
-  getGamesLeft();
 
   CCDirector::sharedDirector()->resume();
 
@@ -77,33 +77,6 @@ void AppDelegate::applicationWillEnterForeground() {
 
   // if you use SimpleAudioEngine, it must resume here
   SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
-}
-
-int32_t AppDelegate::getGamesLeft() {
-  int32_t gamesLeft = CCUserDefault::sharedUserDefault()->getIntegerForKey("left", 0);
-
-  // Cheating ?
-  if (gamesLeft > 5) {
-    gamesLeft = 0;
-  }
-
-  // New day ? If so, reset the number of left games
-  time_t t = time(0); // get time now
-  struct tm* now = localtime(&t);
-  if (CCUserDefault::sharedUserDefault()->getIntegerForKey("lastDay", 1) != now->tm_yday) {
-    // Update the last day
-    CCUserDefault::sharedUserDefault()->setIntegerForKey("lastDay", now->tm_yday);
-    CCUserDefault::sharedUserDefault()->flush();
-    gamesLeft = 5;
-  }
-
-  setGamesLeft(gamesLeft);
-  return gamesLeft;
-}
-
-void AppDelegate::setGamesLeft(int32_t gamesLeft) {
-  CCUserDefault::sharedUserDefault()->setIntegerForKey("left", gamesLeft);
-  CCUserDefault::sharedUserDefault()->flush();
 }
 
 bool AppDelegate::isMusicOn() {

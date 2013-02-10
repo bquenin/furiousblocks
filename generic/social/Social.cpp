@@ -20,7 +20,57 @@
 using namespace Poco;
 
 const std::string Social::PIXODROME_SERVER = "http://pixodro.me/";
+//const std::string Social::PIXODROME_SERVER = "http://pixodro.me:9000/";
 //const std::string Social::PIXODROME_SERVER = "http://192.168.0.11:9000/";
+
+bool Social::likesFuriousBlocks() {
+  try {
+    // SSL Context
+    const Net::Context::Ptr context(new Net::Context(Net::Context::CLIENT_USE, "", "", "", Net::Context::VERIFY_NONE, 9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
+
+    // Target URI
+    URI uri("https://graph.facebook.com/me/likes/422411451165165?access_token=" + AppDelegate::getAccessToken());
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPSClientSession session(uri.getHost(), uri.getPort(), context);
+
+    // Request
+    Net::HTTPRequest request(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
+    session.sendRequest(request);
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+    std::ostringstream responseBody;
+    if (response.getStatus() != Net::HTTPResponse::HTTP_UNAUTHORIZED) {
+      StreamCopier::copyStream(rs, responseBody);
+    } else {
+      NullOutputStream null;
+      StreamCopier::copyStream(rs, null);
+      return 0;
+    }
+
+    // Parsing JSON response
+    JSON::DefaultHandler handler;
+    JSON::Parser parser;
+
+    parser.setHandler(&handler);
+    parser.parse(responseBody.str());
+
+    JSON::Object::Ptr facebookResponse = handler.result().extract<JSON::Object::Ptr>();
+
+#if DEBUG
+    std::ostringstream out;
+    facebookResponse->stringify(out, 2);
+    CCLOG("response = %s", out.str().c_str());
+#endif
+    return facebookResponse->getArray("data")->size() != 0;
+  } catch (Exception& exc) {
+    CCLOG("error in likesCount = %s", exc.displayText().c_str());
+  }
+  return false;
+}
 
 void Social::registerPlayer() {
   try {
@@ -106,7 +156,7 @@ void Social::createOrUpdatePlayer(const std::string& facebookId, JSON::Object::P
   }
 }
 
-void Social::submitScore(uint64_t score, uint32_t duration) {
+void Social::submitScore(uint64_t score, uint32_t level, uint32_t time) {
   try {
     // Target URI
     URI uri(PIXODROME_SERVER + "scores/" + AppDelegate::getFacebookId());
@@ -118,7 +168,8 @@ void Social::submitScore(uint64_t score, uint32_t duration) {
     // Request
     JSON::Object jsonRequest;
     jsonRequest.set("score", score);
-    jsonRequest.set("duration", duration);
+    jsonRequest.set("level", level);
+    jsonRequest.set("time", time);
 
     Net::HTTPRequest request(Net::HTTPRequest::HTTP_POST, path, Net::HTTPMessage::HTTP_1_1);
     request.setContentType("application/json");
@@ -320,21 +371,23 @@ std::vector<ScoreEntry> Social::getWorldScores() {
   return scores;
 }
 
-bool Social::likesFuriousBlocks() {
+uint32_t Social::gamesLeft() {
   try {
-    // SSL Context
-    const Net::Context::Ptr context(new Net::Context(Net::Context::CLIENT_USE, "", "", "", Net::Context::VERIFY_NONE, 9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
-
     // Target URI
-    URI uri("https://graph.facebook.com/me/likes/422411451165165?access_token=" + AppDelegate::getAccessToken());
+    URI uri(PIXODROME_SERVER + "devices");
     std::string path(uri.getPathEtc());
 
     // HTTP Session
-    Net::HTTPSClientSession session(uri.getHost(), uri.getPort(), context);
+    Net::HTTPClientSession session(uri.getHost(), uri.getPort());
 
     // Request
-    Net::HTTPRequest request(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
-    session.sendRequest(request);
+    JSON::Object jsonRequest;
+    jsonRequest.set("id", AppDelegate::getDeviceUID());
+
+    Net::HTTPRequest httpRequest(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
+    httpRequest.setContentType("application/json");
+    httpRequest.setChunkedTransferEncoding(true);
+    jsonRequest.stringify(session.sendRequest(httpRequest));
 
     // Response
     Net::HTTPResponse response;
@@ -348,6 +401,10 @@ bool Social::likesFuriousBlocks() {
       return 0;
     }
 
+#if DEBUG
+    CCLOG("response = %s", responseBody.str().c_str());
+#endif
+
     // Parsing JSON response
     JSON::DefaultHandler handler;
     JSON::Parser parser;
@@ -355,15 +412,143 @@ bool Social::likesFuriousBlocks() {
     parser.setHandler(&handler);
     parser.parse(responseBody.str());
 
-    JSON::Object::Ptr facebookResponse = handler.result().extract<JSON::Object::Ptr>();
+    JSON::Object::Ptr jsonResponse = handler.result().extract<JSON::Object::Ptr>();
 
 #if DEBUG
     std::ostringstream out;
-    facebookResponse->stringify(out, 2);
+    jsonResponse->stringify(out, 2);
     CCLOG("response = %s", out.str().c_str());
 #endif
-    return facebookResponse->getArray("data")->size() != 0;
+
+    return jsonResponse->get("gamesLeft");
   } catch (Exception& exc) {
-    CCLOG("error in likesCount = %s", exc.displayText().c_str());
+    CCLOG("error in gamesLeft = %s", exc.displayText().c_str());
+  }
+  return 0;
+}
+
+uint32_t Social::gamesPerDay() {
+  try {
+    // Target URI
+    URI uri(PIXODROME_SERVER + "devices");
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+
+    // Request
+    JSON::Object jsonRequest;
+    jsonRequest.set("id", AppDelegate::getDeviceUID());
+
+    Net::HTTPRequest httpRequest(Net::HTTPRequest::HTTP_GET, path, Net::HTTPMessage::HTTP_1_1);
+    httpRequest.setContentType("application/json");
+    httpRequest.setChunkedTransferEncoding(true);
+    jsonRequest.stringify(session.sendRequest(httpRequest));
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+    std::ostringstream responseBody;
+    if (response.getStatus() != Net::HTTPResponse::HTTP_UNAUTHORIZED) {
+      StreamCopier::copyStream(rs, responseBody);
+    } else {
+      NullOutputStream null;
+      StreamCopier::copyStream(rs, null);
+      return 0;
+    }
+
+#if DEBUG
+    CCLOG("response = %s", responseBody.str().c_str());
+#endif
+
+    // Parsing JSON response
+    JSON::DefaultHandler handler;
+    JSON::Parser parser;
+
+    parser.setHandler(&handler);
+    parser.parse(responseBody.str());
+
+    JSON::Object::Ptr jsonResponse = handler.result().extract<JSON::Object::Ptr>();
+
+#if DEBUG
+    std::ostringstream out;
+    jsonResponse->stringify(out, 2);
+    CCLOG("response = %s", out.str().c_str());
+#endif
+
+    return jsonResponse->get("gamesPerDay");
+  } catch (Exception& exc) {
+    CCLOG("error in gamesLeft = %s", exc.displayText().c_str());
+  }
+  return 0;
+}
+
+
+void Social::beginGame() {
+  try {
+    // Target URI
+    URI uri(PIXODROME_SERVER + "devices");
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+
+    // Request
+    JSON::Object jsonRequest;
+    jsonRequest.set("id", AppDelegate::getDeviceUID());
+
+    Net::HTTPRequest httpRequest(Net::HTTPRequest::HTTP_POST, path, Net::HTTPMessage::HTTP_1_1);
+    httpRequest.setContentType("application/json");
+    httpRequest.setChunkedTransferEncoding(true);
+    jsonRequest.stringify(session.sendRequest(httpRequest));
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+    std::ostringstream responseBody;
+    if (response.getStatus() != Net::HTTPResponse::HTTP_UNAUTHORIZED) {
+      StreamCopier::copyStream(rs, responseBody);
+    } else {
+      NullOutputStream null;
+      StreamCopier::copyStream(rs, null);
+      return;
+    }
+  } catch (Exception& exc) {
+    CCLOG("error in beginGame = %s", exc.displayText().c_str());
+  }
+}
+
+void Social::giveLikeBonus() {
+  try {
+    // Target URI
+    URI uri(PIXODROME_SERVER + "devices");
+    std::string path(uri.getPathEtc());
+
+    // HTTP Session
+    Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+
+    // Request
+    JSON::Object jsonRequest;
+    jsonRequest.set("id", AppDelegate::getDeviceUID());
+    jsonRequest.set("bonus", AppDelegate::getDeviceUID());
+
+    Net::HTTPRequest httpRequest(Net::HTTPRequest::HTTP_POST, path, Net::HTTPMessage::HTTP_1_1);
+    httpRequest.setContentType("application/json");
+    httpRequest.setChunkedTransferEncoding(true);
+    jsonRequest.stringify(session.sendRequest(httpRequest));
+
+    // Response
+    Net::HTTPResponse response;
+    std::istream& rs = session.receiveResponse(response);
+    std::ostringstream responseBody;
+    if (response.getStatus() != Net::HTTPResponse::HTTP_UNAUTHORIZED) {
+      StreamCopier::copyStream(rs, responseBody);
+    } else {
+      NullOutputStream null;
+      StreamCopier::copyStream(rs, null);
+      return;
+    }
+  } catch (Exception& exc) {
+    CCLOG("error in beginGame = %s", exc.displayText().c_str());
   }
 }

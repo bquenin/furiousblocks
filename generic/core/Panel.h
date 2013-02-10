@@ -91,7 +91,7 @@ private:
   };
 
   static const int32_t INITIAL_SCROLLING_SPEED = static_cast<int32_t>(FuriousBlocksCoreDefaults::CORE_FREQUENCY);
-  static const int64_t NEXT_LEVEL = static_cast<int64_t>((FuriousBlocksCoreDefaults::CORE_FREQUENCY * 120));
+  static const int64_t NEXT_LEVEL = static_cast<int64_t>((FuriousBlocksCoreDefaults::CORE_FREQUENCY * 30));
   int32_t lastIndex;
   SimpleRNG random;
   int64_t localTick;
@@ -128,6 +128,7 @@ protected:
   fb::Block *newBlock(BlockType blockType, int32_t index = 0, int32_t skillChainLevel = 0);
   fb::Block *newRandom(BlockType excludedType = static_cast<BlockType>(-1), int32_t poppingIndex = 0, int32_t skillChainLevel = 0);
 public:
+  uint32_t level;
   static const int32_t numberOfRegularBlocks = 5;
   bool scrollingEnabled;
   static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;

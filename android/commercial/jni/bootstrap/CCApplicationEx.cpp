@@ -47,8 +47,22 @@ void CCApplicationEx::facebookLogout() {
   }
 }
 
-void CCApplicationEx::quit() {
+void CCApplicat ionEx::quit() {
   terminateProcessJNI();
+}
+
+std::string CCApplicationEx::getDeviceUID() {
+  JniMethodInfo t;
+
+  if (JniHelper::getStaticMethodInfo(t, "me/pixodro/FuriousBlocks", "getDeviceUID", "()Ljava/lang/String;")) {
+    jstring str = (jstring) t.env->CallStaticObjectMethod(t.classID, t.methodID);
+    t.env->DeleteLocalRef(t.classID);
+    CCString *ret = new CCString(JniHelper::jstring2string(str).c_str());
+    ret->autorelease();
+    t.env->DeleteLocalRef(str);
+    return ret->m_sString;
+  }
+  return 0;
 }
 
 extern "C" {

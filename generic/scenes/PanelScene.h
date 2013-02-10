@@ -21,6 +21,7 @@ private:
   Player *player;
 
   // Labels
+  CCLabelBMFont *level;
   CCLabelBMFont *score;
   CCLabelBMFont *minutes;
   CCLabelBMFont *seconds;

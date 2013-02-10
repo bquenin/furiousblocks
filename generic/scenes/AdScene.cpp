@@ -56,8 +56,8 @@ bool AdScene::init() {
   likeButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 8 + 100));
   likeButton->setPreferredSize(CCSizeMake(likeButton->getContentSize().width + 20, likeButton->getContentSize().height + 20));
   likeButton->addTargetWithActionForControlEvents(this, cccontrol_selector(AdScene::likeAction), CCControlEventTouchUpInside);
-  likeButton->setEnabled(!Social::likesFuriousBlocks());
-  likeButton->setColor(Social::likesFuriousBlocks() ? ccc3(0x80, 0x80, 0x80) : ccc3(0xFF, 0xFF, 0xFF));
+  likeButton->setEnabled(AppDelegate::isLoggedIn() && !Social::likesFuriousBlocks() && Social::gamesPerDay() != 5);
+  likeButton->setColor((AppDelegate::isLoggedIn() && !Social::likesFuriousBlocks() && Social::gamesPerDay() != 5) ? ccc3(0xFF, 0xFF, 0xFF) : ccc3(0x80, 0x80, 0x80));
   addChild(likeButton);
 
   CCControlButton* backToTitleButton = CCControlButton::create(CCLabelTTF::create("Back to Title", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
@@ -91,6 +91,7 @@ void AdScene::update(float dt) {
     if (static_cast<uint32_t>(stateTime) >= lastTime + 2) {
       lastTime = static_cast<uint32_t>(stateTime);
       if (Social::likesFuriousBlocks()) {
+        Social::giveLikeBonus();
         spinner->setVisible(false);
         waitForFaceBookLike = false;
 

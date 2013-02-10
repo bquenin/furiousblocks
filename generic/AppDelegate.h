@@ -25,9 +25,6 @@ public:
   AppDelegate();
   virtual ~AppDelegate();
 
-  static void setGamesLeft(int32_t gamesLeft);
-  static int32_t getGamesLeft();
-
   static void setMusicOn(bool musicOn);
   static bool isMusicOn();
 

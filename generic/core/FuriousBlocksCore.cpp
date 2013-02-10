@@ -69,13 +69,13 @@ void FuriousBlocksCore::onTick(int64_t tick) {
 
 void FuriousBlocksCore::onCombo(Combo *combo) {
   listener->onCombo(combo);
-  for (const auto & entry: playerToPanel) {
-    Player *player = entry.first;
-    Panel *panel = entry.second;
-    if ((player->id != combo->owner) && !panel->isGameOver() && combo->skillChainLevel > 1) {
-      panel->stackGarbage(panel->newGarbage(FuriousBlocksCoreDefaults::PANEL_WIDTH, (combo->skillChainLevel - 1), combo->owner, true));
-    }
-  }
+//  for (const auto & entry: playerToPanel) {
+//    Player *player = entry.first;
+//    Panel *panel = entry.second;
+//    if ((player->id != combo->owner) && !panel->isGameOver() && combo->skillChainLevel > 1) {
+//      panel->stackGarbage(panel->newGarbage(FuriousBlocksCoreDefaults::PANEL_WIDTH, (combo->skillChainLevel - 1), combo->owner, true));
+//    }
+//  }
 }
 
 void FuriousBlocksCore::onEvent(int64_t playerId, PanelEvent panelEvent) {

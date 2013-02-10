@@ -1,14 +1,22 @@
-Prevent blocks from doing combos at game start.
-Uniquely identify the phone to manage number of games left.
+Nécessaire:
+AppIRater
+
+Facile:
 Pause
-Game speed accelerate too fast
+
+Chiant:
+Prevent blocks from doing combos at game start.
 Achievements
-Highscores
 SFX
 Particles
-
 Joker blocks
-
 Double-click to raise
-
 progression rpg
+Orientation android
+
+Release note:
+Combos are now rewarded with more points
+Chain combos are now rewarded with more points
+Save scores on the cloud if logged into facebook
+Fix a crash happening sometimes when quitting application on android
+Level is now displayed on screen

@@ -37,16 +37,16 @@ PanelScene::~PanelScene() {
 CCScene *PanelScene::scene() {
 #ifdef FREEMIUM
   // Check games left
-  int32_t gamesLeft = AppDelegate::getGamesLeft();
+  int32_t gamesLeft = Social::gamesLeft();
 
-  if (gamesLeft <= 0 || gamesLeft > 5) {
+  if (gamesLeft <= 0) {
     CCScene *scene = CCScene::create();
     scene->addChild(AdScene::create());
     return scene;
   }
 
   // Decrease games left
-  AppDelegate::setGamesLeft(gamesLeft - 1);
+  Social::beginGame();
 #endif
 
   CCScene *scene = CCScene::create();
@@ -81,36 +81,44 @@ bool PanelScene::init() {
   addChild(countdownLabel);
 
   CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  scoreLabel->setPosition(ccp(Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 16 ));
+  scoreLabel->setPosition(ccp(16 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 16 ));
   addChild(scoreLabel);
 
   score = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  score->setPosition(ccp(Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
+  score->setPosition(ccp(16 +Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
   addChild(score);
 
   CCLabelBMFont *timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  timeLabel->setPosition(ccp(Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 16 ));
+  timeLabel->setPosition(ccp(16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 16 ));
   addChild(timeLabel);
 
   minutes = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  minutes->setPosition(ccp(-64 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
+  minutes->setPosition(ccp(-64 + 16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(minutes);
 
   CCLabelBMFont *colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon1->setPosition(ccp(-32 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
+  colon1->setPosition(ccp(-32 + 16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(colon1);
 
   seconds = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  seconds->setPosition(ccp(Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
+  seconds->setPosition(ccp(16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(seconds);
 
   CCLabelBMFont *colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
-  colon2->setPosition(ccp(32 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
+  colon2->setPosition(ccp(32 + 16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(colon2);
 
   centisecs = CCLabelBMFont::create("Time", "coopblack32.fnt");
-  centisecs->setPosition(ccp(64 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
+  centisecs->setPosition(ccp(64 + 16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(centisecs);
+
+  CCLabelBMFont *levelLabel = CCLabelBMFont::create("Lvl", "coopblack32.fnt");
+  levelLabel ->setPosition(ccp(48 , Assets::designResolutionSize.height - 16));
+  addChild(levelLabel);
+
+  level = CCLabelBMFont::create("Lvl.", "coopblack32.fnt");
+  level->setPosition(ccp(48, Assets::designResolutionSize.height - 48));
+  addChild(level);
 
   youLose = CCSprite::createWithSpriteFrameName("lose.png");
   youLose->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
@@ -179,6 +187,9 @@ void PanelScene::update(float dt) {
   // Tweeners update
   tweeners.update(dt);
 
+  // Level
+  level->setString(Assets::format("%d", panel.level).c_str());
+
   // Score
   score->setString(Assets::format("%d", panel.score).c_str());
   panelMenuOverlay->score->setString(Assets::format("%d", panel.score).c_str());
@@ -214,7 +225,7 @@ void PanelScene::onGameOver() {
 
   // Store the score
   if (AppDelegate::isLoggedIn()) {
-    Social::submitScore(core->playerToPanel[player]->score, static_cast<uint32_t>(stateTime * 1000));
+    Social::submitScore(core->playerToPanel[player]->score, core->playerToPanel[player]->level, static_cast<uint32_t>(stateTime * 1000));
   }
 
   // Initialize the grid
