@@ -48,7 +48,7 @@ bool PanelMenuOverlay::init() {
 #ifdef FREEMIUM
   restartButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Restart (%d left)", Social::gamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #else
-  restartButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Restart", AppDelegate::getGamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  restartButton = CCControlButton::create(CCLabelTTF::create("Restart", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #endif
   restartButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   restartButton->setTitleColorForState(ccWHITE,CCControlStateHighlighted);

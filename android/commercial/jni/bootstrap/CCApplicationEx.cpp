@@ -47,7 +47,7 @@ void CCApplicationEx::facebookLogout() {
   }
 }
 
-void CCApplicat ionEx::quit() {
+void CCApplicationEx::quit() {
   terminateProcessJNI();
 }
 
