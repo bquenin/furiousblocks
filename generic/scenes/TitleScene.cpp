@@ -7,12 +7,12 @@
 
 #include "TitleScene.h"
 #include "TutorialScene.h"
-#include "PanelScene.h"
 #include "SimpleAudioEngine.h"
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "CreditsScene.h"
 #include "ScoresScene.h"
+#include "PanelScene.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;

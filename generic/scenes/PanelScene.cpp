@@ -63,9 +63,6 @@ bool PanelScene::init() {
     return false;
   }
 
-  // Start music
-  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
-
   AbstractPanelScene::init();
 
   setTouchEnabled(true);

@@ -1,5 +1,8 @@
 package me.pixodro;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -41,7 +44,10 @@ public class FuriousBlocks extends Cocos2dxActivity {
       }
       Session.setActiveSession(session);
       if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
-        session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback));
+          final List<String> permissions = new ArrayList<String>();
+          permissions.add("user_likes");
+          session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback).setPermissions(permissions));
+//          session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback));
       }
     }
   }

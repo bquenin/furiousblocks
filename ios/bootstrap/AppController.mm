@@ -37,7 +37,7 @@ static AppDelegate s_sharedApplication;
       s_sharedApplication.setLoggedIn(true);
       s_sharedApplication.setAccessToken(std::string([[FBSession.activeSession accessToken] cStringUsingEncoding:NSUTF8StringEncoding]));
       Social::registerPlayer();
-      Social::likesCount();
+      CCLOG("accessToken = %s", s_sharedApplication.getAccessToken().c_str());
       break;
 
     case FBSessionStateClosed:
@@ -58,7 +58,12 @@ static AppDelegate s_sharedApplication;
 }
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
-  return [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:allowLoginUI
+  NSArray *permissions = [[[NSArray alloc] initWithObjects:
+      @"user_likes",
+      nil] autorelease];
+
+  return [FBSession openActiveSessionWithReadPermissions:permissions
+                                            allowLoginUI:allowLoginUI
                                        completionHandler:^(FBSession* session, FBSessionState state, NSError* error) {
                                          [self sessionStateChanged:session state:state error:error];
                                        }];

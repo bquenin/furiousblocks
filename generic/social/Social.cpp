@@ -320,13 +320,13 @@ std::vector<ScoreEntry> Social::getWorldScores() {
   return scores;
 }
 
-uint32_t Social::likesCount() {
+bool Social::likesFuriousBlocks() {
   try {
     // SSL Context
     const Net::Context::Ptr context(new Net::Context(Net::Context::CLIENT_USE, "", "", "", Net::Context::VERIFY_NONE, 9, true, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
 
     // Target URI
-    URI uri("https://graph.facebook.com/422411451165165?fields=likes&access_token=" + AppDelegate::getAccessToken());
+    URI uri("https://graph.facebook.com/me/likes/422411451165165?access_token=" + AppDelegate::getAccessToken());
     std::string path(uri.getPathEtc());
 
     // HTTP Session
@@ -362,7 +362,7 @@ uint32_t Social::likesCount() {
     facebookResponse->stringify(out, 2);
     CCLOG("response = %s", out.str().c_str());
 #endif
-    return facebookResponse->get("likes");
+    return facebookResponse->getArray("data")->size() != 0;
   } catch (Exception& exc) {
     CCLOG("error in likesCount = %s", exc.displayText().c_str());
   }

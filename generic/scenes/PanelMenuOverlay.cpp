@@ -93,6 +93,9 @@ void PanelMenuOverlay::continueAction(CCObject *sender) {
 
 void PanelMenuOverlay::restartAction(CCObject *sender) {
   setVisible(false);
+  // Restart music
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
+
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, PanelScene::scene(), kOrientationUpOver));
 }
 

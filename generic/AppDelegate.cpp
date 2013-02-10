@@ -10,7 +10,6 @@
 
 #include "LogoScene.h"
 #include "Poco/Net/SSLManager.h"
-#include "AdScene.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -31,7 +30,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   srand(static_cast<unsigned int>(time(NULL)));
 
   // initialize director
-  CCDirector *pDirector = CCDirector::sharedDirector();
+  CCDirector* pDirector = CCDirector::sharedDirector();
   pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
   // Set the design resolution
@@ -51,23 +50,25 @@ bool AppDelegate::applicationDidFinishLaunching() {
   assets.load();
 
   // run
-  pDirector->runWithScene(AdScene::scene());
+  pDirector->runWithScene(LogoScene::scene());
 
   return true;
 }
 
 // This function will be called when the app is inactive. When comes a phone call, it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
+  CCLOG("AppDelegate::applicationDidEnterBackground()");
+  // if you use SimpleAudioEngine, it must be pause
+  SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+
   CCDirector::sharedDirector()->pause();
 
   CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-
-  // if you use SimpleAudioEngine, it must be pause
-  SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
+  CCLOG("AppDelegate::applicationWillEnterForeground()");
   getGamesLeft();
 
   CCDirector::sharedDirector()->resume();
@@ -88,7 +89,7 @@ int32_t AppDelegate::getGamesLeft() {
 
   // New day ? If so, reset the number of left games
   time_t t = time(0); // get time now
-  struct tm *now = localtime(&t);
+  struct tm* now = localtime(&t);
   if (CCUserDefault::sharedUserDefault()->getIntegerForKey("lastDay", 1) != now->tm_yday) {
     // Update the last day
     CCUserDefault::sharedUserDefault()->setIntegerForKey("lastDay", now->tm_yday);

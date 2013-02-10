@@ -9,6 +9,7 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "TitleScene.h"
+#include "Social.h"
 
 #define ADTEXT "You ran out of games for today!\n\nHelp a small studio by buying the full version!"
 
@@ -23,7 +24,8 @@ CCScene* AdScene::scene() {
 
 AdScene::AdScene()
 : stateTime(0)
-, lastTime(0) {
+, lastTime(0)
+, waitForFaceBookLike(false) {
 }
 
 bool AdScene::init() {
@@ -48,12 +50,14 @@ bool AdScene::init() {
   buyButton->addTargetWithActionForControlEvents(this, cccontrol_selector(AdScene::buyAction), CCControlEventTouchUpInside);
   addChild(buyButton);
 
-  CCControlButton* likeButton = CCControlButton::create(CCLabelTTF::create("Like us to get an extra game!", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  likeButton = CCControlButton::create(CCLabelTTF::create("Like and get an extra game!", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   likeButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   likeButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   likeButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 8 + 100));
   likeButton->setPreferredSize(CCSizeMake(likeButton->getContentSize().width + 20, likeButton->getContentSize().height + 20));
   likeButton->addTargetWithActionForControlEvents(this, cccontrol_selector(AdScene::likeAction), CCControlEventTouchUpInside);
+  likeButton->setEnabled(!Social::likesFuriousBlocks());
+  likeButton->setColor(Social::likesFuriousBlocks() ? ccc3(0x80, 0x80, 0x80) : ccc3(0xFF, 0xFF, 0xFF));
   addChild(likeButton);
 
   CCControlButton* backToTitleButton = CCControlButton::create(CCLabelTTF::create("Back to Title", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
@@ -69,8 +73,8 @@ bool AdScene::init() {
   spinner->setVisible(false);
   addChild(spinner);
 
-//  // Start scheduling
-//  schedule(schedule_selector(AdScene::update));
+  // Start scheduling
+  schedule(schedule_selector(AdScene::update));
 
   return true;
 }
@@ -80,11 +84,23 @@ void AdScene::update(float dt) {
   stateTime += dt;
 
   // Spinner update
-  spinner->setRotation(stateTime*500);
+  if (waitForFaceBookLike) {
+    spinner->setRotation(stateTime * 500);
 
-  // Check every other second
-  if (static_cast<uint32_t>(stateTime) == lastTime + 2) {
-    lastTime = static_cast<uint32_t>(stateTime);
+    // Check every other second
+    if (static_cast<uint32_t>(stateTime) >= lastTime + 2) {
+      lastTime = static_cast<uint32_t>(stateTime);
+      if (Social::likesFuriousBlocks()) {
+        spinner->setVisible(false);
+        waitForFaceBookLike = false;
+
+        // Disable button
+        likeButton->setEnabled(!Social::likesFuriousBlocks());
+        likeButton->setColor(Social::likesFuriousBlocks() ? ccc3(0x80, 0x80, 0x80) : ccc3(0xFF, 0xFF, 0xFF));
+
+        CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
+      }
+    }
   }
 }
 
@@ -98,8 +114,9 @@ void AdScene::buyAction(CCObject* sender) {
 }
 
 void AdScene::likeAction(CCObject* sender) {
-  AppDelegate::openURL("fb://profile/422411451165165");
   spinner->setVisible(true);
+  waitForFaceBookLike = true;
+  AppDelegate::openURL("https://www.facebook.com/422411451165165");
 }
 
 void AdScene::backToTitleAction(CCObject* sender) {

@@ -20,6 +20,8 @@ private:
   float stateTime;
   uint32_t lastTime;
   CCSprite* spinner;
+  CCControlButton* likeButton;
+  bool waitForFaceBookLike;
 
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
@@ -34,6 +36,7 @@ public:
   void buyAction(CCObject* sender);
   void likeAction(CCObject* sender);
   void update(float dt);
+
 };
 
 

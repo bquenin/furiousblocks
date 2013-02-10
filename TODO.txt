@@ -1,2 +1,14 @@
 Prevent blocks from doing combos at game start.
 Uniquely identify the phone to manage number of games left.
+Pause
+Game speed accelerate too fast
+Achievements
+Highscores
+SFX
+Particles
+
+Joker blocks
+
+Double-click to raise
+
+progression rpg
