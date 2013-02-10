@@ -11,6 +11,7 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import com.facebook.Session;
 import com.facebook.SessionState;
+import com.sbstrm.appirater.Appirater;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 public class FuriousBlocks extends Cocos2dxActivity {
@@ -33,6 +34,9 @@ public class FuriousBlocks extends Cocos2dxActivity {
         // Wake lock
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "WakeLock Tag");
+
+        // Appirater
+        Appirater.appLaunched(this);
 
         // Facebook
         Session session = Session.getActiveSession();

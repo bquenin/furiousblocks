@@ -66,6 +66,22 @@
 		D203E32D16886C1C00FC317B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203E32816886BEF00FC317B /* SystemConfiguration.framework */; };
 		D203E32E16886C2700FC317B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203E32616886BE400FC317B /* CFNetwork.framework */; };
 		D203E32F16886C2700FC317B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203E32816886BEF00FC317B /* SystemConfiguration.framework */; };
+		D215B1AD16C80B2D00EAADC9 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = D215B19316C80B2D00EAADC9 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D215B1AE16C80B2D00EAADC9 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = D215B19316C80B2D00EAADC9 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D215B1AF16C80B2D00EAADC9 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = D215B19316C80B2D00EAADC9 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D215B1B016C80B2D00EAADC9 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = D215B19316C80B2D00EAADC9 /* Appirater.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D215B1B116C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
+		D215B1B216C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
+		D215B1B316C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
+		D215B1B416C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
+		D215B1B516C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
+		D215B1B616C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
+		D215B1B716C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
+		D215B1B816C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
+		D215B1BA16C80BA700EAADC9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D215B1B916C80BA700EAADC9 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D215B1BB16C80BB800EAADC9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D215B1B916C80BA700EAADC9 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D215B1BC16C80BC400EAADC9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D215B1B916C80BA700EAADC9 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D215B1BD16C80BCF00EAADC9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D215B1B916C80BA700EAADC9 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D224B749163892780056F752 /* base_tweener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B729163892780056F752 /* base_tweener.cpp */; };
 		D224B74A163892780056F752 /* easing_back.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B72B163892780056F752 /* easing_back.cpp */; };
 		D224B74B163892780056F752 /* easing_bounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D224B72D163892780056F752 /* easing_bounce.cpp */; };
@@ -1141,6 +1157,33 @@
 		7969EFFB0CFE2764A66CDC54 /* Assets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Assets.cpp; sourceTree = "<group>"; };
 		D203E32616886BE400FC317B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D203E32816886BEF00FC317B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D215B19216C80B2D00EAADC9 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
+		D215B19316C80B2D00EAADC9 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
+		D215B19416C80B2D00EAADC9 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppiraterDelegate.h; sourceTree = "<group>"; };
+		D215B19616C80B2D00EAADC9 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19716C80B2D00EAADC9 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19816C80B2D00EAADC9 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19916C80B2D00EAADC9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19A16C80B2D00EAADC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19B16C80B2D00EAADC9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19C16C80B2D00EAADC9 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19D16C80B2D00EAADC9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19E16C80B2D00EAADC9 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B19F16C80B2D00EAADC9 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A016C80B2D00EAADC9 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A116C80B2D00EAADC9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A216C80B2D00EAADC9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A316C80B2D00EAADC9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A416C80B2D00EAADC9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A516C80B2D00EAADC9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A616C80B2D00EAADC9 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A716C80B2D00EAADC9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		D215B1A816C80B2D00EAADC9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1A916C80B2D00EAADC9 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1AA16C80B2D00EAADC9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		D215B1AB16C80B2D00EAADC9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
+		D215B1AC16C80B2D00EAADC9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
+		D215B1B916C80BA700EAADC9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D224B729163892780056F752 /* base_tweener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base_tweener.cpp; sourceTree = "<group>"; };
 		D224B72B163892780056F752 /* easing_back.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = easing_back.cpp; sourceTree = "<group>"; };
 		D224B72C163892780056F752 /* easing_back.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = easing_back.hpp; sourceTree = "<group>"; };
@@ -1656,6 +1699,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D215B1BC16C80BC400EAADC9 /* StoreKit.framework in Frameworks */,
 				D2E53EC3169736E00064BD3C /* Accounts.framework in Frameworks */,
 				D2E53EC4169736E00064BD3C /* AdSupport.framework in Frameworks */,
 				D2E53EC5169736E00064BD3C /* Social.framework in Frameworks */,
@@ -1688,6 +1732,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D215B1BD16C80BCF00EAADC9 /* StoreKit.framework in Frameworks */,
 				D2E53EC6169736EB0064BD3C /* Accounts.framework in Frameworks */,
 				D2E53EC7169736EB0064BD3C /* AdSupport.framework in Frameworks */,
 				D2E53EC8169736EB0064BD3C /* Social.framework in Frameworks */,
@@ -1720,6 +1765,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D215B1BA16C80BA700EAADC9 /* StoreKit.framework in Frameworks */,
 				D2E53EBD169736BC0064BD3C /* Accounts.framework in Frameworks */,
 				D2E53EBE169736BC0064BD3C /* AdSupport.framework in Frameworks */,
 				D2E53EBF169736BC0064BD3C /* Social.framework in Frameworks */,
@@ -1752,6 +1798,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D215B1BB16C80BB800EAADC9 /* StoreKit.framework in Frameworks */,
 				D2E53EC0169736D30064BD3C /* Accounts.framework in Frameworks */,
 				D2E53EC1169736D30064BD3C /* AdSupport.framework in Frameworks */,
 				D2E53EC2169736D30064BD3C /* Social.framework in Frameworks */,
@@ -1831,6 +1878,7 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
+				D215B19116C80B2D00EAADC9 /* appirater-master */,
 				02BAEA13159E577F00BCA0C3 /* assets */,
 				D258918A1673C763003E3F59 /* libs */,
 				02BAEC48159E57C600BCA0C3 /* generic */,
@@ -1866,6 +1914,7 @@
 				D2D42E4516A5FE4D00647F75 /* libPocoZip.a */,
 				D25CA3B3169E3BAE00C3F774 /* libcrypto.a */,
 				D25CA3B4169E3BAE00C3F774 /* libssl.a */,
+				D215B1B916C80BA700EAADC9 /* StoreKit.framework */,
 				D2E53EBA169736BC0064BD3C /* Accounts.framework */,
 				D2E53EBB169736BC0064BD3C /* AdSupport.framework */,
 				D2E53EBC169736BC0064BD3C /* Social.framework */,
@@ -1898,6 +1947,18 @@
 			);
 			path = bootstrap;
 			sourceTree = SOURCE_ROOT;
+		};
+		D215B19116C80B2D00EAADC9 /* appirater-master */ = {
+			isa = PBXGroup;
+			children = (
+				D215B19216C80B2D00EAADC9 /* Appirater.h */,
+				D215B19316C80B2D00EAADC9 /* Appirater.m */,
+				D215B19416C80B2D00EAADC9 /* AppiraterDelegate.h */,
+				D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */,
+				D215B1A716C80B2D00EAADC9 /* README.md */,
+			);
+			path = "appirater-master";
+			sourceTree = "<group>";
 		};
 		D224B72A163892780056F752 /* easing */ = {
 			isa = PBXGroup;
@@ -2925,6 +2986,27 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ca,
+				cs,
+				da,
+				de,
+				es,
+				fi,
+				fr,
+				he,
+				hu,
+				it,
+				ja,
+				ko,
+				nb,
+				nl,
+				pl,
+				pt,
+				ru,
+				sk,
+				sv,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 02E20F97159E492E00CB0ADA;
 			productRefGroup = 02E20FA3159E492E00CB0ADA /* Products */;
@@ -2932,8 +3014,8 @@
 			projectRoot = "";
 			targets = (
 				D261DC1C167DF54D008C6503 /* Furious Blocks Free Development */,
-				D261DD21167DF558008C6503 /* Furious Blocks Commercial Development */,
 				02BAEEB6159E5AAB00BCA0C3 /* Furious Blocks Free Distribution */,
+				D261DD21167DF558008C6503 /* Furious Blocks Commercial Development */,
 				D261DB17167DF531008C6503 /* Furious Blocks Commercial Distribution */,
 			);
 		};
@@ -2963,6 +3045,8 @@
 				D29563991675516B0034C630 /* Icon@2x.png in Resources */,
 				D2E53EB71697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969E86718637B161B33382F /* rootcert.pem in Resources */,
+				D215B1B316C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
+				D215B1B716C80B2D00EAADC9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2989,6 +3073,8 @@
 				D261DC15167DF531008C6503 /* Icon@2x.png in Resources */,
 				D2E53EB81697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EDD992FFE86272E82942 /* rootcert.pem in Resources */,
+				D215B1B416C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
+				D215B1B816C80B2D00EAADC9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3015,6 +3101,8 @@
 				D261DD1A167DF54D008C6503 /* Icon@2x.png in Resources */,
 				D2E53EB51697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EAA65F7587E0386426FE /* rootcert.pem in Resources */,
+				D215B1B116C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
+				D215B1B516C80B2D00EAADC9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3041,6 +3129,8 @@
 				D261DE1F167DF558008C6503 /* Icon@2x.png in Resources */,
 				D2E53EB61697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */,
+				D215B1B216C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
+				D215B1B616C80B2D00EAADC9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3275,6 +3365,7 @@
 				7969E3E5249480638BFCE0EA /* ScoresScene.cpp in Sources */,
 				7969EF3452C399AE46552380 /* CCApplicationEx.mm in Sources */,
 				7969E8964F7A1C3B4F11D455 /* ScoreEntry.cpp in Sources */,
+				D215B1AF16C80B2D00EAADC9 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3506,6 +3597,7 @@
 				7969EE2683183745408F0B9A /* ScoresScene.cpp in Sources */,
 				7969E07349F545F805BEC220 /* CCApplicationEx.mm in Sources */,
 				7969E16E0F412599EF5171C0 /* ScoreEntry.cpp in Sources */,
+				D215B1B016C80B2D00EAADC9 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3737,6 +3829,7 @@
 				7969E2F382ABA7B7D1824334 /* ScoresScene.cpp in Sources */,
 				7969E67D04CFF4A800E22D6F /* CCApplicationEx.mm in Sources */,
 				7969EC1B6F2481A41CC10938 /* ScoreEntry.cpp in Sources */,
+				D215B1AD16C80B2D00EAADC9 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3968,10 +4061,43 @@
 				7969E6623BBFC5705BFB9CD9 /* ScoresScene.cpp in Sources */,
 				7969E5188D35B6858E168BD9 /* CCApplicationEx.mm in Sources */,
 				7969E07435AE4D096CF37830 /* ScoreEntry.cpp in Sources */,
+				D215B1AE16C80B2D00EAADC9 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D215B19616C80B2D00EAADC9 /* ca */,
+				D215B19716C80B2D00EAADC9 /* cs */,
+				D215B19816C80B2D00EAADC9 /* da */,
+				D215B19916C80B2D00EAADC9 /* de */,
+				D215B19A16C80B2D00EAADC9 /* en */,
+				D215B19B16C80B2D00EAADC9 /* es */,
+				D215B19C16C80B2D00EAADC9 /* fi */,
+				D215B19D16C80B2D00EAADC9 /* fr */,
+				D215B19E16C80B2D00EAADC9 /* he */,
+				D215B19F16C80B2D00EAADC9 /* hu */,
+				D215B1A016C80B2D00EAADC9 /* it */,
+				D215B1A116C80B2D00EAADC9 /* ja */,
+				D215B1A216C80B2D00EAADC9 /* ko */,
+				D215B1A316C80B2D00EAADC9 /* nb */,
+				D215B1A416C80B2D00EAADC9 /* nl */,
+				D215B1A516C80B2D00EAADC9 /* pl */,
+				D215B1A616C80B2D00EAADC9 /* pt */,
+				D215B1A816C80B2D00EAADC9 /* ru */,
+				D215B1A916C80B2D00EAADC9 /* sk */,
+				D215B1AA16C80B2D00EAADC9 /* sv */,
+				D215B1AB16C80B2D00EAADC9 /* zh-Hans */,
+				D215B1AC16C80B2D00EAADC9 /* zh-Hant */,
+			);
+			name = AppiraterLocalizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		02BAF0FC159E5AAD00BCA0C3 /* Debug */ = {

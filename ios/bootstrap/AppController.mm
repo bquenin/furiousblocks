@@ -13,6 +13,7 @@
 
 #import "RootViewController.h"
 #import "Social.h"
+#import "Appirater.h"
 
 @implementation AppController
 
@@ -98,6 +99,8 @@ static AppDelegate s_sharedApplication;
 
   [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
+  cocos2d::CCApplication::sharedApplication()->run();
+
   // FBSample logic
   // See if we have a valid token for the current state.
   if (![self openSessionWithAllowLoginUI:NO]) {
@@ -105,16 +108,15 @@ static AppDelegate s_sharedApplication;
     [self openSessionWithAllowLoginUI:YES];
   }
 
-  cocos2d::CCApplication::sharedApplication()->run();
+#ifdef FREEMIUM
+  [Appirater setAppId:@"586087328"];
+  [Appirater setDaysUntilPrompt:3];
+  [Appirater setUsesUntilPrompt:5];
+  [Appirater setSignificantEventsUntilPrompt:-1];
+  [Appirater setTimeBeforeReminding:3];
 
-//  [Appirater setAppId:@"586087328"];
-//  [Appirater setDaysUntilPrompt:1];
-//  [Appirater setUsesUntilPrompt:10];
-//  [Appirater setSignificantEventsUntilPrompt:-1];
-//  [Appirater setTimeBeforeReminding:2];
-//  [Appirater setDebug:YES];
-//
-//  [Appirater appLaunched:YES];
+  [Appirater appLaunched:YES];
+#endif
 
   return YES;
 }
@@ -148,12 +150,14 @@ static AppDelegate s_sharedApplication;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication*)application {
+#ifdef FREEMIUM
+  [Appirater appEnteredForeground:YES];
+#endif
+
   /*
    Called as part of transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
    */
   cocos2d::CCApplication::sharedApplication()->applicationWillEnterForeground();
-
-//  [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication*)application {
