@@ -37,11 +37,9 @@ public class Appirater {
     private static final String PREF_APP_VERSION_CODE = "versioncode";
 
     public static void appLaunched(Context mContext) {
-        System.out.println("appLaunched !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         boolean testMode = mContext.getResources().getBoolean(R.bool.appirator_test_mode);
         SharedPreferences prefs = mContext.getSharedPreferences(mContext.getPackageName() + ".appirater", 0);
         if (!testMode && (prefs.getBoolean(PREF_DONT_SHOW, false) || prefs.getBoolean(PREF_RATE_CLICKED, false))) {
-            System.out.println("appLaunched exiting 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             return;
         }
 
@@ -54,7 +52,6 @@ public class Appirater {
 
         // Increment launch counter
         long launch_count = prefs.getLong(PREF_LAUNCH_COUNT, 0);
-        System.out.println("appLaunched launch_count = " + launch_count + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         // Get date of first launch
         long date_firstLaunch = prefs.getLong(PREF_DATE_FIRST_LAUNCHED, 0);
