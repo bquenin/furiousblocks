@@ -34,7 +34,7 @@ PanelScene::~PanelScene() {
   cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 }
 
-CCScene *PanelScene::scene() {
+CCScene* PanelScene::scene() {
 #ifdef FREEMIUM
   // Check games left
   int32_t gamesLeft = Social::gamesLeft();
@@ -49,10 +49,10 @@ CCScene *PanelScene::scene() {
   Social::beginGame();
 #endif
 
-  CCScene *scene = CCScene::create();
-  PanelScene *layer = PanelScene::create();
+  CCScene* scene = CCScene::create();
+  PanelScene* layer = PanelScene::create();
   scene->addChild(layer);
-  PanelMenuOverlay *menuOverlay = PanelMenuOverlay::create();
+  PanelMenuOverlay* menuOverlay = PanelMenuOverlay::create();
   scene->addChild(menuOverlay);
   layer->setOverlay(menuOverlay);
   return scene;
@@ -80,15 +80,15 @@ bool PanelScene::init() {
   countdownLabel->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   addChild(countdownLabel);
 
-  CCLabelBMFont *scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
+  CCLabelBMFont* scoreLabel = CCLabelBMFont::create("Score", "coopblack32.fnt");
   scoreLabel->setPosition(ccp(16 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 16 ));
   addChild(scoreLabel);
 
   score = CCLabelBMFont::create("Score", "coopblack32.fnt");
-  score->setPosition(ccp(16 +Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
+  score->setPosition(ccp(16 + Assets::designResolutionSize.width * 3 / 4, Assets::designResolutionSize.height - 48));
   addChild(score);
 
-  CCLabelBMFont *timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
+  CCLabelBMFont* timeLabel = CCLabelBMFont::create("Time", "coopblack32.fnt");
   timeLabel->setPosition(ccp(16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 16 ));
   addChild(timeLabel);
 
@@ -96,7 +96,7 @@ bool PanelScene::init() {
   minutes->setPosition(ccp(-64 + 16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(minutes);
 
-  CCLabelBMFont *colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
+  CCLabelBMFont* colon1 = CCLabelBMFont::create(":", "coopblack32.fnt");
   colon1->setPosition(ccp(-32 + 16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(colon1);
 
@@ -104,7 +104,7 @@ bool PanelScene::init() {
   seconds->setPosition(ccp(16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(seconds);
 
-  CCLabelBMFont *colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
+  CCLabelBMFont* colon2 = CCLabelBMFont::create(":", "coopblack32.fnt");
   colon2->setPosition(ccp(32 + 16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(colon2);
 
@@ -112,8 +112,8 @@ bool PanelScene::init() {
   centisecs->setPosition(ccp(64 + 16 + Assets::designResolutionSize.width / 4, Assets::designResolutionSize.height - 48));
   addChild(centisecs);
 
-  CCLabelBMFont *levelLabel = CCLabelBMFont::create("Lvl", "coopblack32.fnt");
-  levelLabel ->setPosition(ccp(48 , Assets::designResolutionSize.height - 16));
+  CCLabelBMFont* levelLabel = CCLabelBMFont::create("Lvl", "coopblack32.fnt");
+  levelLabel ->setPosition(ccp(48, Assets::designResolutionSize.height - 16));
   addChild(levelLabel);
 
   level = CCLabelBMFont::create("Lvl.", "coopblack32.fnt");
@@ -125,8 +125,8 @@ bool PanelScene::init() {
   youLose->setVisible(false);
   batch->addChild(youLose);
 
-  CCScale9Sprite *backgroundButton = CCScale9Sprite::create("button.png");
-  CCScale9Sprite *backgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
+  CCScale9Sprite* backgroundButton = CCScale9Sprite::create("button.png");
+  CCScale9Sprite* backgroundHighlightedButton = CCScale9Sprite::create("buttonHighlighted.png");
   menuButton = CCControlButton::create(CCLabelTTF::create("Menu", "SkaterDudes.ttf", 24), backgroundButton);
   menuButton->setBackgroundSpriteForState(backgroundHighlightedButton, CCControlStateHighlighted);
   menuButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
@@ -160,13 +160,69 @@ void PanelScene::update(float dt) {
   // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-      fb::Block *current = panel.blocks[x][y];
-      if (current == nullptr) {
+      auto& current = panel.blocks[x][y];
+      if (!current) {
+#if DEBUG
+        debug[x][y]->setVisible(false);
+#endif
         grid[x][y]->setVisible(false);
         continue;
       }
 
-      CCSpriteFrame *frame = AppDelegate::assets.getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
+#if DEBUG
+      switch (current->state) {
+        case BlockState::BLINKING:
+          debug[x][y]->setString("B");
+          break;
+        case BlockState::DONE_BLINKING:
+          debug[x][y]->setString("DB");
+          break;
+        case BlockState::EXPLODING:
+          debug[x][y]->setString("E");
+          break;
+        case BlockState::DONE_EXPLODING:
+          debug[x][y]->setString("DE");
+          break;
+        case BlockState::IDLE:
+          debug[x][y]->setString("I");
+          break;
+        case BlockState::REVEALING:
+          debug[x][y]->setString("R");
+          break;
+        case BlockState::DONE_REVEALING:
+          debug[x][y]->setString("DR");
+          break;
+        case BlockState::SWITCHING_BACK:
+          debug[x][y]->setString("DSB");
+          break;
+        case BlockState::SWITCHING_FORTH:
+          debug[x][y]->setString("DSF");
+          break;
+        case BlockState::DONE_SWITCHING_FORTH:
+          debug[x][y]->setString("DS");
+          break;
+        case BlockState::TO_DELETE:
+          debug[x][y]->setString("TD");
+          break;
+        case BlockState::HOVERING:
+          debug[x][y]->setString("H");
+          break;
+        case BlockState::DONE_HOVERING:
+          debug[x][y]->setString("DH");
+          break;
+        case BlockState::FALLING:
+          debug[x][y]->setString("F");
+          break;
+        case BlockState::AIRBOUNCING:
+          debug[x][y]->setString("AB");
+          break;
+        case BlockState::DONE_AIRBOUNCING:
+          debug[x][y]->setString("DAB");
+          break;
+      }
+#endif
+
+      CCSpriteFrame* frame = AppDelegate::assets.getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
       if (frame == nullptr) {
         grid[x][y]->setVisible(false);
         continue;
@@ -174,9 +230,16 @@ void PanelScene::update(float dt) {
 
       if (!panel.isGameOver()) {
         grid[x][y]->setPosition(ccp(xOffset + x * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+
+#if DEBUG
+        debug[x][y]->setPosition(ccp(xOffset + x * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+#endif
       }
       grid[x][y]->setDisplayFrame(frame);
       grid[x][y]->setVisible(true);
+#if DEBUG
+      debug[x][y]->setVisible(true);
+#endif
       if (y == 0) {
         grid[x][y]->setColor(ccc3(0x50, 0x50, 0x50));
       }
@@ -210,7 +273,7 @@ void PanelScene::update(float dt) {
   core->onTick(tick++);
 }
 
-void PanelScene::onCombo(Combo *combo) {
+void PanelScene::onCombo(Combo* combo) {
   if (combo->size() > 3) {
     new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + combo->y * Assets::TILE_SIZE, Assets::format("%d", combo->size()), ccORANGE);
   }
@@ -273,11 +336,11 @@ void PanelScene::onLastStepFinished() {
   panelMenuOverlay->setVisible(true);
 }
 
-void PanelScene::menuAction(CCObject *sender) {
+void PanelScene::menuAction(CCObject* sender) {
   panelMenuOverlay->setVisible(true);
 }
 
-void PanelScene::setOverlay(PanelMenuOverlay *panelMenuOverlay) {
+void PanelScene::setOverlay(PanelMenuOverlay* panelMenuOverlay) {
   this->panelMenuOverlay = panelMenuOverlay;
 }
 
@@ -285,12 +348,12 @@ void PanelScene::registerWithTouchDispatcher() {
   cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -32, true);
 }
 
-bool PanelScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
+bool PanelScene::ccTouchBegan(CCTouch* touch, CCEvent* event) {
   if (panelMenuOverlay->isVisible()) {
     return false;
   }
   return true;
 }
 
-void PanelScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
+void PanelScene::ccTouchEnded(CCTouch* touch, CCEvent* event) {
 }

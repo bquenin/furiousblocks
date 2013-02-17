@@ -119,6 +119,7 @@ bool TitleScene::init() {
   musicSwitchOff->setVisible(!AppDelegate::isMusicOn());
   addChild(musicSwitchOff);
 
+#if DEBUG
   CCControlButton *quitButton = CCControlButton::create(CCLabelTTF::create("Quit", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   quitButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   quitButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
@@ -126,6 +127,7 @@ bool TitleScene::init() {
   quitButton->setPreferredSize(CCSizeMake(quitButton->getContentSize().width + 20, 60));
   quitButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::quitAction), CCControlEventTouchUpInside);
   addChild(quitButton);
+#endif
 
   CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2013 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));

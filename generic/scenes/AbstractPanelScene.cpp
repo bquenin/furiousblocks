@@ -36,6 +36,14 @@ bool AbstractPanelScene::init() {
       grid[x][y]->setVisible(false);
       grid[x][y]->setPosition(ccp(xOffset + x * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE));
       batch->addChild(grid[x][y]);
+
+#if DEBUG
+      debug[x][y] = CCLabelTTF::create("aze", "SkaterDudes.ttf", 20);
+      debug[x][y]->setAnchorPoint(ccp(0, 0));
+      debug[x][y]->setVisible(true);
+      debug[x][y]->setPosition(ccp(xOffset + x * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE));
+      addChild(debug[x][y]);
+#endif
     }
   }
 

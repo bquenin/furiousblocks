@@ -38,6 +38,9 @@ public:
   float stateTime;
   CCSpriteBatchNode *batch;
   CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
+#if DEBUG
+  CCLabelTTF *debug[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
+#endif
   tweener_group tweeners;
 };
 

@@ -137,7 +137,7 @@ namespace fb {
     return event;
   }
 
-  bool Block::isComputable(Block *block) {
+  bool Block::isComputable(Block* block) {
     return block != nullptr && block->movable && block->state == BlockState::IDLE;
   }
 }

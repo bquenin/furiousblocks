@@ -4,9 +4,9 @@
 
 using namespace cocos2d;
 
-TypeTextAction::TypeTextAction(float timeStep, const std::string text, TextToType &out)
+TypeTextAction::TypeTextAction(float timeStep, const std::string &&text, TextToType &out)
 : Action(timeStep)
-, text(text)
+, text(std::move(text))
 , out(out)
 , index(0) {
 }

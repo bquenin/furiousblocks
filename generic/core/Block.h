@@ -7,6 +7,8 @@
 #include "BlockType.h"
 #include "PanelEvent.h"
 
+
+
 namespace fb {
 
   class Block {
@@ -14,6 +16,21 @@ namespace fb {
 
   protected:
   public:
+    Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel);
+    void idle();
+    void switchBack();
+    void switchForth();
+    void hover();
+    void fall();
+    void land();
+    void blink();
+    void explode(int32_t explodingTime);
+    void reveal(int32_t revealingTime);
+    void airBounce();
+    void toDelete();
+    std::unique_ptr<PanelEvent> update();
+    static bool isComputable(Block *block);
+
     int32_t id;
     BlockType type;
     BlockState state;
@@ -28,20 +45,6 @@ namespace fb {
     bool movable;
     bool combinable;
     void *clearing;
-    void idle();
-    void switchBack();
-    void switchForth();
-    void hover();
-    void fall();
-    void land();
-    void blink();
-    void explode(int32_t explodingTime);
-    void reveal(int32_t revealingTime);
-    void airBounce();
-    void toDelete();
-    std::unique_ptr<PanelEvent> update();
-    static bool isComputable(Block *block);
-    Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel);
   };
 }
 #endif //__Block_H_
