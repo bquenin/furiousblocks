@@ -7,8 +7,6 @@
 #include "BlockType.h"
 #include "PanelEvent.h"
 
-
-
 namespace fb {
 
   class Block {
@@ -16,7 +14,7 @@ namespace fb {
 
   protected:
   public:
-    Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel);
+    Block(int32_t id, BlockType type);
     void idle();
     void switchBack();
     void switchForth();
@@ -37,8 +35,6 @@ namespace fb {
     int32_t stateTick;
     int32_t garbageBlockType;
     int32_t garbageOwner;
-    int32_t poppingIndex;
-    int32_t poppingSkillChainLevel;
     bool combo;
     bool fallingFromClearing;
     bool justLand;

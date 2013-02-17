@@ -4,15 +4,13 @@
 
 namespace fb {
 
-  Block::Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel)
+  Block::Block(int32_t id, BlockType type)
   : id(id)
   , type(type)
   , state(BlockState::IDLE)
   , stateTick(0)
   , garbageBlockType(0)
   , garbageOwner(0)
-  , poppingIndex(index)
-  , poppingSkillChainLevel(skillChainLevel)
   , combo(false)
   , fallingFromClearing(false)
   , justLand(false)
@@ -37,8 +35,6 @@ namespace fb {
   void Block::idle() {
     state = BlockState::IDLE;
     stateTick = 0;
-    poppingIndex = 0;
-    poppingSkillChainLevel = 0;
   }
 
   void Block::switchBack() {

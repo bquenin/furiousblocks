@@ -38,7 +38,7 @@ private:
     bool hasToFall(int32_t xOrigin, int32_t yOrigin);
     void fall(int32_t xOrigin, int32_t yOrigin);
     void idle();
-    int32_t blink(int32_t poppingIndex);
+    void blink();
     bool isRevealing();
     int32_t width;
     int32_t height;
@@ -61,7 +61,7 @@ private:
   public:
     bool isSkill();
     int32_t getOwner();
-    int32_t blink(int32_t poppingIndex, std::shared_ptr<Combo> combo);
+    void blink(std::shared_ptr<Combo> combo);
     int32_t reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing* parentClearing);
 //    GarbageSituation *getSituation();
   };
@@ -113,8 +113,9 @@ private:
 protected:
   static const int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
 
-  std::unique_ptr<fb::Block> newBlock(BlockType blockType, int32_t index = 0, int32_t skillChainLevel = 0);
-  std::unique_ptr<fb::Block> newRandom(BlockType excludedType = static_cast<BlockType>(-1), int32_t poppingIndex = 0, int32_t skillChainLevel = 0);
+
+  std::unique_ptr<fb::Block> newBlock(BlockType blockType);
+  std::unique_ptr<fb::Block> newRandom(BlockType excludedType = static_cast<BlockType>(-1));
 public:
   class Clearing {
     friend class Block;
@@ -139,9 +140,6 @@ public:
   bool scrollingEnabled;
   static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
   static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
-  //bool comboMask[Panel::X][Panel::Y];
-  std::array<std::array<bool, Panel::Y>, Panel::X> comboMask;
-  //fb::Block *blocks[Panel::X][Panel::Y];
   std::array<std::array<std::shared_ptr<fb::Block>, Panel::Y>, Panel::X> blocks;
   furiousblocks::Point cursor;
   int32_t scrollingDelta;

@@ -1,6 +1,6 @@
+#include <cassert>
 #include <cstdint>
 #include <iostream>
-#include <cassert>
 #include "Panel.h"
 #include "GarbageBlockType.h"
 
@@ -77,17 +77,17 @@ void Panel::setTransposedBlocks(std::vector<std::vector<BlockType>> & blockTypes
   }
 }
 
-std::unique_ptr<fb::Block> Panel::newRandom(BlockType excludedType, int32_t poppingIndex, int32_t skillChainLevel) {
+std::unique_ptr<fb::Block> Panel::newRandom(BlockType excludedType) {
   int32_t randomIndex = random.nextInt() % Panel::numberOfRegularBlocks;
   int32_t index = randomIndex == lastIndex ? (randomIndex + 1) % Panel::numberOfRegularBlocks : randomIndex;
   if (index == static_cast<int32_t>(excludedType)) {
     index = (index + 1) % Panel::numberOfRegularBlocks;
   }
-  return newBlock(static_cast<BlockType>(lastIndex = index), poppingIndex, skillChainLevel);
+  return newBlock(static_cast<BlockType>(lastIndex = index));
 }
 
-std::unique_ptr<fb::Block> Panel::newBlock(BlockType blockType, int32_t index, int32_t skillChainLevel) {
-  return std::unique_ptr<fb::Block>(new fb::Block(random.nextInt(), blockType, index, skillChainLevel));
+std::unique_ptr<fb::Block> Panel::newBlock(BlockType blockType) {
+  return std::unique_ptr<fb::Block>(new fb::Block(random.nextInt(), blockType));
 }
 
 void Panel::onTick(int64_t tick) {
@@ -311,9 +311,6 @@ void Panel::mechanics(int64_t tick) {
       }
       std::unique_ptr<PanelEvent> event = current->update();
       if (event != nullptr) {
-        event->data1 = current->poppingSkillChainLevel;
-        event->data2 = current->poppingIndex;
-        event->data3 = static_cast<int32_t>(tick);
         panelListener.onEvent(playerId, *event);
       }
       BlockType type = current->type;
@@ -516,13 +513,12 @@ std::shared_ptr<Panel::Garbage> Panel::getGarbageByBlock(std::shared_ptr<fb::Blo
 }
 
 std::shared_ptr<Combo> Panel::detectCombo() {
-  std::shared_ptr<Combo> currentCombo(new Combo(playerId));
+  // Create a new combo
+  auto combo = std::make_shared<Combo>(playerId);
 
-  for (int32_t y = 0; y < Panel::Y; y++) {
-    for (int32_t x = 0; x < Panel::X; x++) {
-      comboMask[x][y] = false;
-    }
-  }
+  // This creates a boolean mask initialized to false
+  std::array<std::array<bool, Panel::Y>, Panel::X> comboMask = {};
+
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
       auto& current = blocks[x][y];
@@ -557,22 +553,23 @@ std::shared_ptr<Combo> Panel::detectCombo() {
       }
     }
   }
-  int32_t poppingIndex = 0;
+
+  bool originSet = false;
   for (int32_t y = Panel::Y - 1; y > 0; y--) {
     for (int32_t x = 0; x < Panel::X; x++) {
       if (!comboMask[x][y]) {
         continue;
       }
-      if (poppingIndex == 0) {
-        currentCombo->x = x;
-        currentCombo->y = y;
+      if (!originSet) {
+        combo->x = x;
+        combo->y = y;
+        originSet = true;
       }
-      currentCombo->addBlock(blocks[x][y]);
+      combo->addBlock(blocks[x][y]);
       blocks[x][y]->combo = true;
-      blocks[x][y]->poppingIndex = poppingIndex++;
     }
   }
-  return currentCombo;
+  return combo;
 }
 
 void Panel::processCombo(std::shared_ptr<Combo> combo) {
@@ -597,9 +594,6 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
     }
   }
   score += combo->size() > 3 ? combo->size() * combo->size() * 100 : combo->size() * 100;
-  for (auto block: combo->blocks) {
-    block->poppingSkillChainLevel = skillChainLevel;
-  }
   combo->skillChainLevel = comboSkillChainLevel;
   for (auto block: combo->blocks) {
     block->blink();
@@ -618,7 +612,7 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
     }
     freeze(bonusFreezingTime);
   }
-  int32_t poppingIndex = combo->size();
+
   Clearing* clearing = new Clearing();
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
@@ -630,7 +624,7 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
         auto& aboveBlock = blocks[x][y + 1];
         auto garbage = getGarbageByBlock(aboveBlock);
         if (aboveBlock && garbage) {
-          poppingIndex = garbage->blink(poppingIndex, combo);
+          garbage->blink(combo);
           clearing->addBlockBar(garbage);
         }
       }
@@ -638,7 +632,7 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
         auto& belowBlock = blocks[x][y - 1];
         auto garbage = getGarbageByBlock(belowBlock);
         if (belowBlock && garbage) {
-          poppingIndex = garbage->blink(poppingIndex, combo);
+          garbage->blink(combo);
           clearing->addBlockBar(garbage);
         }
       }
@@ -646,7 +640,7 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
         auto& rightBlock = blocks[x + 1][y];
         auto garbage = getGarbageByBlock(rightBlock);
         if (rightBlock && garbage) {
-          poppingIndex = garbage->blink(poppingIndex, combo);
+          garbage->blink(combo);
           clearing->addBlockBar(garbage);
         }
       }
@@ -654,7 +648,7 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
         auto& leftBlock = blocks[x - 1][y];
         auto garbage = getGarbageByBlock(leftBlock);
         if (leftBlock && garbage) {
-          poppingIndex = garbage->blink(poppingIndex, combo);
+          garbage->blink(combo);
           clearing->addBlockBar(garbage);
         }
       }
@@ -747,22 +741,17 @@ void Panel::BlockBar::idle() {
   }
 }
 
-int32_t Panel::BlockBar::blink(int32_t poppingIndex) {
+void Panel::BlockBar::blink() {
   auto first = barBlocks.begin();
   if ((*first)->state == BlockState::BLINKING) {
-    return poppingIndex;
+    return;
   }
   //  if (barBlocks->iterator()->next()->state == BlockState::BLINKING) {
   //    return poppingIndex;
   //  }
-  int32_t index = poppingIndex;
   for (auto block: barBlocks) {
     block->blink();
-    int32_t poppingIndex1 = index++;
-    block->poppingIndex = poppingIndex1;
-    block->poppingSkillChainLevel = __parent->skillChainLevel;
   }
-  return index;
 }
 
 bool Panel::BlockBar::isRevealing() {
@@ -793,7 +782,7 @@ void Panel::Garbage::inject(int32_t x, int32_t y) {
       if (__parent->blocks[i][j] == nullptr) {
         __parent->blocks[i][j] = __parent->newBlock(BlockType::GARBAGE);
       } else {
-        __parent->blocks[i][j] = __parent->newBlock(BlockType::GARBAGE, __parent->blocks[i][j]->poppingIndex, __parent->blocks[i][j]->poppingSkillChainLevel);
+        __parent->blocks[i][j] = __parent->newBlock(BlockType::GARBAGE);
       }
       __parent->blocks[i][j]->garbageOwner = owner;
       barBlocks.insert(__parent->blocks[i][j]);
@@ -834,9 +823,9 @@ void Panel::Garbage::inject(int32_t x, int32_t y) {
   }
 }
 
-int32_t Panel::Garbage::blink(int32_t poppingIndex, std::shared_ptr<Combo> combo) {
+void Panel::Garbage::blink(std::shared_ptr<Combo> combo) {
   triggeringCombo = combo;
-  return BlockBar::blink(poppingIndex);
+  BlockBar::blink();
 }
 
 int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing* parentClearing) {
@@ -860,7 +849,7 @@ int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t reveali
       block->explode(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
     }
   }
-  std::shared_ptr<Panel::BlockLine> subLine(new Panel::BlockLine(__parent, width, owner));
+  auto subLine = std::make_shared<Panel::BlockLine>(__parent, width, owner);
   subLine->inject(xOrigin, yOrigin);
   parentClearing->addBlockBar(subLine);
   revealingTimeIncrement = subLine->reveal(xOrigin, yOrigin, revealingTimeIncrement);
@@ -902,11 +891,7 @@ Panel::BlockLine::BlockLine(Panel* __parent, int32_t width, int32_t owner)
 void Panel::BlockLine::inject(int32_t x, int32_t y) {
   for (int32_t j = y, h = 0; h < height; j--, h++) {
     for (int32_t i = x, w = 0; w < width; i++, w++) {
-      if (__parent->blocks[i][j] == nullptr) {
-        __parent->blocks[i][j] = __parent->newRandom();
-      } else {
-        __parent->blocks[i][j] = __parent->newRandom(static_cast<BlockType>(-1), __parent->blocks[i][j]->poppingIndex, __parent->blocks[i][j]->poppingSkillChainLevel);
-      }
+      __parent->blocks[i][j] = __parent->newRandom();
       __parent->blocks[i][j]->garbageOwner = owner;
       barBlocks.insert(__parent->blocks[i][j]);
     }
