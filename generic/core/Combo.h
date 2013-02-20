@@ -2,15 +2,15 @@
 #define __Combo_H_
 
 #include <cstdint>
-#include <set>
+#include <vector>
 #include "Block.h"
 
 class Combo {
 private:
 protected:
 public:
-  std::set<std::shared_ptr<fb::Block>> blocks;
-     /// Set (ordered) because the renderer needs to clear the blocks in a defined order.
+  std::vector<std::shared_ptr<fb::Block>> blocks;
+     /// Vector because the renderer needs to clear the blocks in a defined order.
   int32_t owner;
   int32_t skillChainLevel;
   int32_t x;
