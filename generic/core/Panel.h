@@ -24,7 +24,9 @@ private:
 
   class BlockBar {
     friend class Clearing;
+
     friend class Garbage;
+
     friend class BlockLine;
 
   protected:
@@ -47,6 +49,7 @@ private:
 
   class Garbage : public BlockBar {
     friend class Clearing;
+
     friend class Panel;
 
   private:
@@ -93,7 +96,7 @@ private:
   int32_t freezingTime;
   int32_t bonusFreezingTime;
   int32_t skillChainLevel;
-  std::unique_ptr<Move, MoveDeleter> move;
+  std::unique_ptr<Move> move;
   bool locked;
   bool lifting;
   bool gracing;
@@ -156,7 +159,7 @@ public:
   int64_t getLocalTick();
   void setLocalTick(int64_t localTick);
   bool isGameOver() const;
-  void submitMove(std::unique_ptr<Move, MoveDeleter>&& move);
+  void submitMove(std::unique_ptr<Move>&& move);
 };
 
 #endif //__Panel_H_

@@ -37,7 +37,7 @@ private:
   bool lifted;
   cocos2d::CCPoint touchPointDown;
   cocos2d::CCPoint touchPointDragged;
-  std::unique_ptr<Move, MoveDeleter> onMoveRequest(Panel const & panel);
+  std::unique_ptr<Move> onMoveRequest(Panel const & panel);
 };
 
 #endif //__TouchPlayer_H_

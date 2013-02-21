@@ -10,9 +10,6 @@
 namespace fb {
 
   class Block {
-  private:
-
-  protected:
   public:
     Block(int32_t id, BlockType type);
     void idle();
@@ -27,7 +24,7 @@ namespace fb {
     void airBounce();
     void toDelete();
     std::unique_ptr<PanelEvent> update();
-    static bool isComputable(Block *block);
+    static bool isComputable(Block* block);
 
     int32_t id;
     BlockType type;
@@ -40,7 +37,7 @@ namespace fb {
     bool justLand;
     bool movable;
     bool combinable;
-    void *clearing;
+    void* clearing;
   };
 }
 #endif //__Block_H_

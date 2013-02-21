@@ -298,7 +298,6 @@
 		D261DB1C167DF531008C6503 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF102159E5C0E00BCA0C3 /* RootViewController.mm */; };
 		D261DB1D167DF531008C6503 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D261DB1E167DF531008C6503 /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
-		D261DB1F167DF531008C6503 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398315C5D0A90038E59C /* Move.cpp */; };
 		D261DB20167DF531008C6503 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398B15C5D0A90038E59C /* Panel.cpp */; };
 		D261DB21167DF531008C6503 /* PanelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398D15C5D0A90038E59C /* PanelEvent.cpp */; };
 		D261DB22167DF531008C6503 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
@@ -544,7 +543,6 @@
 		D261DC21167DF54D008C6503 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF102159E5C0E00BCA0C3 /* RootViewController.mm */; };
 		D261DC22167DF54D008C6503 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D261DC23167DF54D008C6503 /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
-		D261DC24167DF54D008C6503 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398315C5D0A90038E59C /* Move.cpp */; };
 		D261DC25167DF54D008C6503 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398B15C5D0A90038E59C /* Panel.cpp */; };
 		D261DC26167DF54D008C6503 /* PanelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398D15C5D0A90038E59C /* PanelEvent.cpp */; };
 		D261DC27167DF54D008C6503 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
@@ -790,7 +788,6 @@
 		D261DD26167DF558008C6503 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF102159E5C0E00BCA0C3 /* RootViewController.mm */; };
 		D261DD27167DF558008C6503 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D261DD28167DF558008C6503 /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
-		D261DD29167DF558008C6503 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398315C5D0A90038E59C /* Move.cpp */; };
 		D261DD2A167DF558008C6503 /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398B15C5D0A90038E59C /* Panel.cpp */; };
 		D261DD2B167DF558008C6503 /* PanelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398D15C5D0A90038E59C /* PanelEvent.cpp */; };
 		D261DD2C167DF558008C6503 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
@@ -1041,7 +1038,6 @@
 		D2AC0A5D1697233700BFFB39 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC0A581697231000BFFB39 /* FacebookSDK.framework */; };
 		D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD396815C5D0A90038E59C /* Block.cpp */; };
 		D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD397215C5D0A90038E59C /* Combo.cpp */; };
-		D2BD39AE15C5D0A90038E59C /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398315C5D0A90038E59C /* Move.cpp */; };
 		D2BD39B215C5D0A90038E59C /* Panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398B15C5D0A90038E59C /* Panel.cpp */; };
 		D2BD39B315C5D0A90038E59C /* PanelEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD398D15C5D0A90038E59C /* PanelEvent.cpp */; };
 		D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
@@ -1664,7 +1660,6 @@
 		D2BD397A15C5D0A90038E59C /* FuriousBlocksCoreListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuriousBlocksCoreListener.h; sourceTree = "<group>"; };
 		D2BD397E15C5D0A90038E59C /* GameType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameType.h; sourceTree = "<group>"; };
 		D2BD398015C5D0A90038E59C /* GarbageBlockType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarbageBlockType.h; sourceTree = "<group>"; };
-		D2BD398315C5D0A90038E59C /* Move.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Move.cpp; sourceTree = "<group>"; };
 		D2BD398415C5D0A90038E59C /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
 		D2BD398615C5D0A90038E59C /* MoveType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveType.h; sourceTree = "<group>"; };
 		D2BD398B15C5D0A90038E59C /* Panel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Panel.cpp; sourceTree = "<group>"; };
@@ -2874,7 +2869,6 @@
 				D2BD397A15C5D0A90038E59C /* FuriousBlocksCoreListener.h */,
 				D2BD397E15C5D0A90038E59C /* GameType.h */,
 				D2BD398015C5D0A90038E59C /* GarbageBlockType.h */,
-				D2BD398315C5D0A90038E59C /* Move.cpp */,
 				D2BD398415C5D0A90038E59C /* Move.h */,
 				D2BD398615C5D0A90038E59C /* MoveType.h */,
 				D2BD398B15C5D0A90038E59C /* Panel.cpp */,
@@ -3147,7 +3141,6 @@
 				02BAF105159E5C0E00BCA0C3 /* RootViewController.mm in Sources */,
 				D2BD39A115C5D0A90038E59C /* Block.cpp in Sources */,
 				D2BD39A615C5D0A90038E59C /* Combo.cpp in Sources */,
-				D2BD39AE15C5D0A90038E59C /* Move.cpp in Sources */,
 				D2BD39B215C5D0A90038E59C /* Panel.cpp in Sources */,
 				D2BD39B315C5D0A90038E59C /* PanelEvent.cpp in Sources */,
 				D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */,
@@ -3379,7 +3372,6 @@
 				D261DB1C167DF531008C6503 /* RootViewController.mm in Sources */,
 				D261DB1D167DF531008C6503 /* Block.cpp in Sources */,
 				D261DB1E167DF531008C6503 /* Combo.cpp in Sources */,
-				D261DB1F167DF531008C6503 /* Move.cpp in Sources */,
 				D261DB20167DF531008C6503 /* Panel.cpp in Sources */,
 				D261DB21167DF531008C6503 /* PanelEvent.cpp in Sources */,
 				D261DB22167DF531008C6503 /* Point.cpp in Sources */,
@@ -3611,7 +3603,6 @@
 				D261DC21167DF54D008C6503 /* RootViewController.mm in Sources */,
 				D261DC22167DF54D008C6503 /* Block.cpp in Sources */,
 				D261DC23167DF54D008C6503 /* Combo.cpp in Sources */,
-				D261DC24167DF54D008C6503 /* Move.cpp in Sources */,
 				D261DC25167DF54D008C6503 /* Panel.cpp in Sources */,
 				D261DC26167DF54D008C6503 /* PanelEvent.cpp in Sources */,
 				D261DC27167DF54D008C6503 /* Point.cpp in Sources */,
@@ -3843,7 +3834,6 @@
 				D261DD26167DF558008C6503 /* RootViewController.mm in Sources */,
 				D261DD27167DF558008C6503 /* Block.cpp in Sources */,
 				D261DD28167DF558008C6503 /* Combo.cpp in Sources */,
-				D261DD29167DF558008C6503 /* Move.cpp in Sources */,
 				D261DD2A167DF558008C6503 /* Panel.cpp in Sources */,
 				D261DD2B167DF558008C6503 /* PanelEvent.cpp in Sources */,
 				D261DD2C167DF558008C6503 /* Point.cpp in Sources */,

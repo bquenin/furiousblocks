@@ -16,9 +16,9 @@
 
 class TutorialPlayer : public Player {
 public:
-  std::unique_ptr<Move, MoveDeleter> move;
+  std::unique_ptr<Move> move;
 
-  std::unique_ptr<Move, MoveDeleter> onMoveRequest(Panel const & panel);
+  std::unique_ptr<Move> onMoveRequest(Panel const & panel);
   void setMove(MoveType moveType);
 };
 

@@ -701,7 +701,7 @@ bool Panel::isGameOver() const {
   return gameOver;
 }
 
-void Panel::submitMove(std::unique_ptr<Move, MoveDeleter>&& move) {
+void Panel::submitMove(std::unique_ptr<Move>&& move) {
   this->move = std::move(move);
 }
 
