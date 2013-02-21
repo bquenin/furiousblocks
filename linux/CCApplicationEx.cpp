@@ -27,3 +27,7 @@ void CCApplicationEx::facebookLogout() {
 void CCApplicationEx::quit() {
     exit(0);
 }
+
+std::string CCApplicationEx::getDeviceUID() {
+    return "linux";
+}

@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/780098354/LogoScene.o \
 	${OBJECTDIR}/_ext/1929447622/FuriousBlocksCoreDefaults.o \
 	${OBJECTDIR}/_ext/780098354/AdScene.o \
-	${OBJECTDIR}/_ext/769080620/SocialPlayer.o \
 	${OBJECTDIR}/_ext/2139757430/easing_bounce.o \
 	${OBJECTDIR}/_ext/1929447622/BlockState.o \
 	${OBJECTDIR}/_ext/780098354/PanelMenuOverlay.o \
@@ -118,7 +117,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../third-party/poco-1.5.1-all/lib/Linux/x86_64 -L/opt/cocos2d-2.0-x-2.0.4/lib/linux/Debug -L/opt/cocos2d-2.0-x-2.0.4/lib/linux/Release -lbox2d -lchipmunk -lcocos2d -lcocosdenshion
+LDLIBSOPTIONS=-L../third-party/poco-1.5.1-all/lib/Linux/x86_64 -L/opt/cocos2d-2.0-x-2.0.4/lib/linux/Release -lbox2d -lchipmunk -lcocos2d -lcocosdenshion
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -142,11 +141,6 @@ ${OBJECTDIR}/_ext/780098354/AdScene.o: ../generic/scenes/AdScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/780098354
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -DLINUX -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/cocoa -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/include -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/linux -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/kazmath/include -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux/glew-1.7.0/glew-1.7.0/include -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux/libfreetype2 -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux/libjpeg -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux/libxml2 -I/opt/cocos2d-2.0-x-2.0.4/extensions -I/opt/cocos2d-2.0-x-2.0.4/CocosDenshion/include -I../generic -I../generic/animation -I../generic/core -I../generic/ext -I../generic/scenes -I../generic/script -I../generic/social -I../generic/tween -I../generic/tween/easing -I../third-party/poco-1.5.1-all/Crypto/include -I../third-party/poco-1.5.1-all/Foundation -I../third-party/poco-1.5.1-all/JSON -I../third-party/poco-1.5.1-all/Net -I../third-party/poco-1.5.1-all/NetSSL_OpenSSL -I../third-party/poco-1.5.1-all/Util -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/780098354/AdScene.o ../generic/scenes/AdScene.cpp
-
-${OBJECTDIR}/_ext/769080620/SocialPlayer.o: ../generic/social/SocialPlayer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/769080620
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -DLINUX -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/cocoa -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/include -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/linux -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/kazmath/include -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux/glew-1.7.0/glew-1.7.0/include -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux/libfreetype2 -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux/libjpeg -I/opt/cocos2d-2.0-x-2.0.4/cocos2dx/platform/third_party/linux/libxml2 -I/opt/cocos2d-2.0-x-2.0.4/extensions -I/opt/cocos2d-2.0-x-2.0.4/CocosDenshion/include -I../generic -I../generic/animation -I../generic/core -I../generic/ext -I../generic/scenes -I../generic/script -I../generic/social -I../generic/tween -I../generic/tween/easing -I../third-party/poco-1.5.1-all/Crypto/include -I../third-party/poco-1.5.1-all/Foundation -I../third-party/poco-1.5.1-all/JSON -I../third-party/poco-1.5.1-all/Net -I../third-party/poco-1.5.1-all/NetSSL_OpenSSL -I../third-party/poco-1.5.1-all/Util -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/769080620/SocialPlayer.o ../generic/social/SocialPlayer.cpp
 
 ${OBJECTDIR}/_ext/2139757430/easing_bounce.o: ../generic/tween/easing/easing_bounce.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2139757430

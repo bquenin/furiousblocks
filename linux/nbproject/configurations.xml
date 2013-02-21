@@ -101,8 +101,6 @@
         <itemPath>../generic/social/ScoreEntry.h</itemPath>
         <itemPath>../generic/social/Social.cpp</itemPath>
         <itemPath>../generic/social/Social.h</itemPath>
-        <itemPath>../generic/social/SocialPlayer.cpp</itemPath>
-        <itemPath>../generic/social/SocialPlayer.h</itemPath>
       </logicalFolder>
       <logicalFolder name="tween" displayName="tween" projectFiles="true">
         <logicalFolder name="easing" displayName="easing" projectFiles="true">
@@ -186,7 +184,7 @@
     <conf name="Debug" type="1">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>default</compilerSet>
+        <compilerSet>GNU|GNU</compilerSet>
       </toolsSet>
       <compileType>
         <ccTool>
@@ -229,7 +227,6 @@
           <linkerAddLib>
             <pElem>../third-party/poco-1.5.1-all/lib/Linux/x86_64</pElem>
             <pElem>/opt/cocos2d-2.0-x-2.0.4/lib/linux/Debug</pElem>
-            <pElem>/opt/cocos2d-2.0-x-2.0.4/lib/linux/Release</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>box2d</linkerLibLibItem>
@@ -303,7 +300,6 @@
         <linkerTool>
           <linkerAddLib>
             <pElem>../third-party/poco-1.5.1-all/lib/Linux/x86_64</pElem>
-            <pElem>/opt/cocos2d-2.0-x-2.0.4/lib/linux/Debug</pElem>
             <pElem>/opt/cocos2d-2.0-x-2.0.4/lib/linux/Release</pElem>
           </linkerAddLib>
           <linkerLibItems>
