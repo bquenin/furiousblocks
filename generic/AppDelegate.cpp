@@ -10,6 +10,7 @@
 
 #include "LogoScene.h"
 #include "Poco/Net/SSLManager.h"
+#include "Social.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -30,7 +31,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
   srand(static_cast<unsigned int>(time(NULL)));
 
   // initialize director
-  CCDirector *pDirector = CCDirector::sharedDirector();
+  CCDirector* pDirector = CCDirector::sharedDirector();
   pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
   // Set the design resolution
@@ -57,17 +58,18 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 // This function will be called when the app is inactive. When comes a phone call, it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
+  CCLOG("AppDelegate::applicationDidEnterBackground()");
+  // if you use SimpleAudioEngine, it must be pause
+  SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+
   CCDirector::sharedDirector()->pause();
 
   CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-
-  // if you use SimpleAudioEngine, it must be pause
-  SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
-  getGamesLeft();
+  CCLOG("AppDelegate::applicationWillEnterForeground()");
 
   CCDirector::sharedDirector()->resume();
 
@@ -75,33 +77,6 @@ void AppDelegate::applicationWillEnterForeground() {
 
   // if you use SimpleAudioEngine, it must resume here
   SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
-}
-
-int32_t AppDelegate::getGamesLeft() {
-  int32_t gamesLeft = CCUserDefault::sharedUserDefault()->getIntegerForKey("left", 0);
-
-  // Cheating ?
-  if (gamesLeft > 5) {
-    gamesLeft = 0;
-  }
-
-  // New day ? If so, reset the number of left games
-  time_t t = time(0); // get time now
-  struct tm *now = localtime(&t);
-  if (CCUserDefault::sharedUserDefault()->getIntegerForKey("lastDay", 1) != now->tm_yday) {
-    // Update the last day
-    CCUserDefault::sharedUserDefault()->setIntegerForKey("lastDay", now->tm_yday);
-    CCUserDefault::sharedUserDefault()->flush();
-    gamesLeft = 5;
-  }
-
-  setGamesLeft(gamesLeft);
-  return gamesLeft;
-}
-
-void AppDelegate::setGamesLeft(int32_t gamesLeft) {
-  CCUserDefault::sharedUserDefault()->setIntegerForKey("left", gamesLeft);
-  CCUserDefault::sharedUserDefault()->flush();
 }
 
 bool AppDelegate::isMusicOn() {
@@ -139,4 +114,23 @@ void AppDelegate::setFacebookId(const std::string& facebookId) {
   CCUserDefault::sharedUserDefault()->setStringForKey("facebookId", facebookId);
   CCUserDefault::sharedUserDefault()->flush();
 }
+
+std::string AppDelegate::getFirstName() {
+  return CCUserDefault::sharedUserDefault()->getStringForKey("firstName", "none");
+}
+
+void AppDelegate::setFirstName(const std::string& firstName) {
+  CCUserDefault::sharedUserDefault()->setStringForKey("firstName", firstName);
+  CCUserDefault::sharedUserDefault()->flush();
+}
+
+std::string AppDelegate::getLastName() {
+  return CCUserDefault::sharedUserDefault()->getStringForKey("lastName", "none");
+}
+
+void AppDelegate::setLastName(const std::string& lastName) {
+  CCUserDefault::sharedUserDefault()->setStringForKey("lastName", lastName);
+  CCUserDefault::sharedUserDefault()->flush();
+}
+
 

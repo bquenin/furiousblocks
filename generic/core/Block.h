@@ -10,24 +10,8 @@
 namespace fb {
 
   class Block {
-  private:
-
-  protected:
   public:
-    int32_t id;
-    BlockType type;
-    BlockState state;
-    int32_t stateTick;
-    int32_t garbageBlockType;
-    int32_t garbageOwner;
-    int32_t poppingIndex;
-    int32_t poppingSkillChainLevel;
-    bool combo;
-    bool fallingFromClearing;
-    bool justLand;
-    bool movable;
-    bool combinable;
-    void *clearing;
+    Block(int32_t id, BlockType type);
     void idle();
     void switchBack();
     void switchForth();
@@ -40,8 +24,20 @@ namespace fb {
     void airBounce();
     void toDelete();
     std::unique_ptr<PanelEvent> update();
-    static bool isComputable(Block *block);
-    Block(int32_t id, BlockType type, int32_t index, int32_t skillChainLevel);
+    static bool isComputable(Block* block);
+
+    int32_t id;
+    BlockType type;
+    BlockState state;
+    int32_t stateTick;
+    int32_t garbageBlockType;
+    int32_t garbageOwner;
+    bool combo;
+    bool fallingFromClearing;
+    bool justLand;
+    bool movable;
+    bool combinable;
+    void* clearing;
   };
 }
 #endif //__Block_H_

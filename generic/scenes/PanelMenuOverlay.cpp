@@ -12,6 +12,7 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "PanelScene.h"
+#include "Social.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -45,9 +46,9 @@ bool PanelMenuOverlay::init() {
   addChild(continueButton);
 
 #ifdef FREEMIUM
-  restartButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Restart (%d left)", AppDelegate::getGamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  restartButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Restart (%d left)", Social::gamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #else
-  restartButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Restart", AppDelegate::getGamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  restartButton = CCControlButton::create(CCLabelTTF::create("Restart", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #endif
   restartButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   restartButton->setTitleColorForState(ccWHITE,CCControlStateHighlighted);
@@ -93,6 +94,9 @@ void PanelMenuOverlay::continueAction(CCObject *sender) {
 
 void PanelMenuOverlay::restartAction(CCObject *sender) {
   setVisible(false);
+  // Restart music
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
+
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, PanelScene::scene(), kOrientationUpOver));
 }
 

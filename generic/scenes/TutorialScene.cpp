@@ -82,15 +82,15 @@ TutorialScene::~TutorialScene() {
   script.clear();
 }
 
-void TutorialScene::setOverlay(QuitOverlay *quitOverlay) {
+void TutorialScene::setOverlay(QuitOverlay* quitOverlay) {
   this->quitOverlay = quitOverlay;
 }
 
-CCScene *TutorialScene::scene() {
-  CCScene *scene = CCScene::create();
-  TutorialScene *layer = TutorialScene::create();
+CCScene* TutorialScene::scene() {
+  CCScene* scene = CCScene::create();
+  TutorialScene* layer = TutorialScene::create();
   scene->addChild(layer);
-  QuitOverlay *quitOverlay = QuitOverlay::create();
+  QuitOverlay* quitOverlay = QuitOverlay::create();
   scene->addChild(quitOverlay);
   layer->setOverlay(quitOverlay);
   return scene;
@@ -257,13 +257,13 @@ void TutorialScene::update(float dt) {
   // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-        fb::Block *current = panel.blocks[x][y];
-      if (current == nullptr) {
+      auto &current = panel.blocks[x][y];
+      if (!current) {
         grid[x][y]->setVisible(false);
         continue;
       }
 
-      CCSpriteFrame *frame = AppDelegate::assets.getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
+      CCSpriteFrame* frame = AppDelegate::assets.getBlockFrame(current, tick, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT] != nullptr, panel.blocks[x][FuriousBlocksCoreDefaults::PANEL_HEIGHT - 1] != nullptr);
       if (frame == nullptr) {
         grid[x][y]->setVisible(false);
         continue;
@@ -296,7 +296,7 @@ void TutorialScene::update(float dt) {
   script.execute(stateTime);
 }
 
-void TutorialScene::onCombo(Combo *combo) {
+void TutorialScene::onCombo(Combo* combo) {
   if (combo->size() > 3) {
     new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + combo->y * Assets::TILE_SIZE, Assets::format("%d", combo->size()), ccORANGE);
   }
@@ -320,7 +320,7 @@ void TutorialScene::registerWithTouchDispatcher() {
   cocos2d::CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
-bool TutorialScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
+bool TutorialScene::ccTouchBegan(CCTouch* touch, CCEvent* event) {
   if (inputState != InputState::untouched || quitOverlay->isVisible()) {
     return false;
   }
@@ -328,10 +328,10 @@ bool TutorialScene::ccTouchBegan(CCTouch *touch, CCEvent *event) {
   return true;
 }
 
-void TutorialScene::ccTouchEnded(CCTouch *touch, CCEvent *event) {
+void TutorialScene::ccTouchEnded(CCTouch* touch, CCEvent* event) {
   inputState = InputState::untouched;
   quitOverlay->setVisible(true);
 }
 
-void TutorialScene::ccTouchMoved(CCTouch *touch, CCEvent *event) {
+void TutorialScene::ccTouchMoved(CCTouch* touch, CCEvent* event) {
 }

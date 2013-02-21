@@ -11,10 +11,7 @@ private:
 protected:
 public:
   PanelEventType type;
-  int32_t data1;
-  int32_t data2;
-  int32_t data3;
-  PanelEvent(PanelEventType type, int32_t data1 = 0, int32_t data2 = 0);
+  PanelEvent(PanelEventType type);
 };
 
 #endif //__PanelEvent_H_

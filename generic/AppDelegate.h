@@ -25,9 +25,6 @@ public:
   AppDelegate();
   virtual ~AppDelegate();
 
-  static void setGamesLeft(int32_t gamesLeft);
-  static int32_t getGamesLeft();
-
   static void setMusicOn(bool musicOn);
   static bool isMusicOn();
 
@@ -40,6 +37,11 @@ public:
   static void setFacebookId(const std::string& facebookId);
   static std::string getFacebookId();
 
+  static void setFirstName(const std::string& firstName);
+  static std::string getFirstName();
+
+  static void setLastName(const std::string& lastName);
+  static std::string getLastName();
 
   /**
   @brief    Implement CCDirector and CCScene init code here.

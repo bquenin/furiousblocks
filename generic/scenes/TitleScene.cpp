@@ -7,12 +7,13 @@
 
 #include "TitleScene.h"
 #include "TutorialScene.h"
-#include "PanelScene.h"
 #include "SimpleAudioEngine.h"
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "CreditsScene.h"
 #include "ScoresScene.h"
+#include "PanelScene.h"
+#include "Social.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -65,7 +66,7 @@ bool TitleScene::init() {
   logOut->addChild(logoLogout);
 
 #ifdef FREEMIUM
-  CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Play! (%d left)", AppDelegate::getGamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Play! (%d left)", Social::gamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #else
   CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create("Play!", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #endif
@@ -84,7 +85,7 @@ bool TitleScene::init() {
   howToPlaylButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::howToPlayAction), CCControlEventTouchUpInside);
   addChild(howToPlaylButton);
 
-  CCControlButton *scoresButton = CCControlButton::create(CCLabelTTF::create("Scores", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  scoresButton = CCControlButton::create(CCLabelTTF::create("Scores", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   scoresButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   scoresButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   scoresButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 120));
@@ -118,6 +119,7 @@ bool TitleScene::init() {
   musicSwitchOff->setVisible(!AppDelegate::isMusicOn());
   addChild(musicSwitchOff);
 
+#if DEBUG
   CCControlButton *quitButton = CCControlButton::create(CCLabelTTF::create("Quit", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   quitButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   quitButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
@@ -125,6 +127,7 @@ bool TitleScene::init() {
   quitButton->setPreferredSize(CCSizeMake(quitButton->getContentSize().width + 20, 60));
   quitButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::quitAction), CCControlEventTouchUpInside);
   addChild(quitButton);
+#endif
 
   CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2013 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));
@@ -140,6 +143,9 @@ bool TitleScene::init() {
 void TitleScene::update(float dt) {
   logIn->setVisible(!AppDelegate::isLoggedIn());
   logOut->setVisible(AppDelegate::isLoggedIn());
+
+  scoresButton->setEnabled(AppDelegate::isLoggedIn());
+  scoresButton->setColor(AppDelegate::isLoggedIn() ? ccc3(0xFF, 0xFF, 0xFF) : ccc3(0x80, 0x80, 0x80));
 }
 
 void TitleScene::logInAction(CCObject *sender) {

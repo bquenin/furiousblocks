@@ -27,6 +27,8 @@ void Assets::load() {
   CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("blocks.plist");
 
   // Frame assets
+  SPINNER = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("wait.png");
+
   FLOGO = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("f-logo.png");
 
   TITLE = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("title.png");
@@ -165,7 +167,7 @@ void Assets::load() {
   CURSOR = new Animation(16, {CURSOR_01, CURSOR_02, CURSOR_03, CURSOR_02});
 }
 
-CCSpriteFrame* Assets::getBlockFrame(fb::Block* blockSituation, int64_t tick, bool compressed, bool panicking) {
+CCSpriteFrame* Assets::getBlockFrame(std::shared_ptr<fb::Block> blockSituation, int64_t tick, bool compressed, bool panicking) {
   NonLoopingAnimation* currentAnimation = animations[blockSituation->id];
   BlockState state = blockSituation->state;
   BlockType type = blockSituation->type;

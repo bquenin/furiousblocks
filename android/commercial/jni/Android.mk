@@ -100,7 +100,6 @@ bootstrap/CCApplicationEx.cpp \
 ../../../generic/script/TypeTextAction.cpp \
 ../../../generic/social/ScoreEntry.cpp \
 ../../../generic/social/Social.cpp \
-../../../generic/social/SocialPlayer.cpp \
 ../../../generic/tween/easing/easing_back.cpp \
 ../../../generic/tween/easing/easing_bounce.cpp \
 ../../../generic/tween/easing/easing_circ.cpp \

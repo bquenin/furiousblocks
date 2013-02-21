@@ -8,15 +8,9 @@ class Move {
 public:
 
   Move(MoveType type);
-  Move(Move *move);
+  Move(Move* move);
 
   MoveType type;
-};
-
-struct MoveDeleter {
-  void operator() (Move* p) {
-    delete p;
-  }
 };
 
 #endif //__Move_H_

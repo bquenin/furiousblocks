@@ -32,10 +32,12 @@ public:
 
   void load();
 
-  CCSpriteFrame *getBlockFrame(fb::Block *blockSituation, int64_t tick, bool compressed, bool panicking);
+  CCSpriteFrame *getBlockFrame(std::shared_ptr<fb::Block> blockSituation, int64_t tick, bool compressed, bool panicking);
   std::unordered_map<int32_t, NonLoopingAnimation *> animations;
 
   // Assets
+  CCSpriteFrame *SPINNER;
+
   CCSpriteFrame *FLOGO;
 
   CCSpriteFrame *TITLE;

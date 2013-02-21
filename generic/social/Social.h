@@ -18,13 +18,23 @@ class Social {
 private:
   static const std::string PIXODROME_SERVER;
 
-public:
-  static void registerPlayer();
+  // PixodromE
   static void createOrUpdatePlayer(std::string const & facebookId, Poco::SharedPtr <Poco::JSON::Object> facebookResponse);
-  static void submitScore(uint64_t score, uint32_t duration);
+
+public:
+  // Facebook
+  static void registerPlayer();
+  static bool likesFuriousBlocks();
+
+  // PixodromE
+  static void submitScore(uint64_t score, uint32_t level, uint32_t time);
   static std::vector<ScoreEntry> getMyScores();
   static std::vector<ScoreEntry> getFriendsScores();
   static std::vector<ScoreEntry> getWorldScores();
+  static uint32_t gamesLeft();
+  static uint32_t gamesPerDay();
+  static void beginGame();
+  static void giveLikeBonus();
 };
 
 #endif //__Social_H_

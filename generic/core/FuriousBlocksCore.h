@@ -13,13 +13,14 @@
 class FuriousBlocksCore : PanelListener {
 private:
   int32_t seed;
-  volatile bool running;
-  volatile bool paused;
+  bool running;
+  bool paused;
   bool singleTick;
   FuriousBlocksCoreListener *listener;
 
 public:
-  BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
+  std::array<std::array<BlockType, FuriousBlocksCoreDefaults::PANEL_HEIGHT>, FuriousBlocksCoreDefaults::PANEL_WIDTH> initialBlockTypes;
+  // BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
   std::unordered_map<Player *, Panel *> playerToPanel;
 
   FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener = nullptr);

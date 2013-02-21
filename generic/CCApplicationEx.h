@@ -25,6 +25,7 @@ public:
   static void facebookLogin();
   static void facebookLogout();
   static void quit();
+  static std::string getDeviceUID();
 };
 
 #endif //__CCApplicationEx_H_
