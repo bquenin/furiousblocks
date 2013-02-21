@@ -25,6 +25,9 @@
 		7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E142A99775EF929E1886 /* CreditsScene.cpp */; };
 		7969E16E0F412599EF5171C0 /* ScoreEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */; };
 		7969E18B489A6D4E3EEA6C23 /* coopblack64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E80C20BD83237A8A5BC8 /* coopblack64.png */; };
+		7969E1ABE95DBAE716526198 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
+		7969E296C7B8D953A1F64979 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
+		7969E2D8DC1E91B13B132AC0 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
 		7969E2F382ABA7B7D1824334 /* ScoresScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EC7244448D927D9B4E91 /* ScoresScene.cpp */; };
 		7969E2F5DA1276709612F52C /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1B1F4BE78AC5E68B104 /* Animation.cpp */; };
 		7969E316900662224CE10922 /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E7237904D92983195353 /* tutorial.mp3 */; };
@@ -34,6 +37,7 @@
 		7969E44E27EE3DC7B7C442A8 /* voices.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E7F9A6066AE2418BF9C1 /* voices.mp3 */; };
 		7969E4619693C1A40587587D /* coopblack64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E93AF6D39B4F7DDFA839 /* coopblack64.fnt */; };
 		7969E5188D35B6858E168BD9 /* CCApplicationEx.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7969EE618BE9CE483747FEEF /* CCApplicationEx.mm */; };
+		7969E5211AC0F32E836645CC /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
 		7969E5856CCB532A06436A24 /* Social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E7A92BDB7499BB8AA4A0 /* Social.cpp */; };
 		7969E5F1EFCBB5B41BE16CAB /* QuitOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */; };
 		7969E6623BBFC5705BFB9CD9 /* ScoresScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EC7244448D927D9B4E91 /* ScoresScene.cpp */; };
@@ -1140,6 +1144,7 @@
 		7969E91E3CB9CC20A36C6447 /* PanelMenuOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelMenuOverlay.cpp; sourceTree = "<group>"; };
 		7969E93AF6D39B4F7DDFA839 /* coopblack64.fnt */ = {isa = PBXFileReference; lastKnownFileType = file.fnt; path = coopblack64.fnt; sourceTree = "<group>"; };
 		7969E9ACF148FD1F3104BE3F /* NonLoopingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonLoopingAnimation.h; sourceTree = "<group>"; };
+		7969E9DBA931CEDD18BC98F9 /* Move.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Move.cpp; sourceTree = "<group>"; };
 		7969EA45FDA5B84C72EBAC72 /* rootcert.pem */ = {isa = PBXFileReference; lastKnownFileType = file.pem; path = rootcert.pem; sourceTree = "<group>"; };
 		7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuitOverlay.cpp; sourceTree = "<group>"; };
 		7969EB7ABA416427D5DE3C32 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Joystix.ttf; sourceTree = "<group>"; };
@@ -2881,6 +2886,7 @@
 				D2BD399E15C5D0A90038E59C /* Point.h */,
 				D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */,
 				D2BD39A015C5D0A90038E59C /* SimpleRNG.h */,
+				7969E9DBA931CEDD18BC98F9 /* Move.cpp */,
 			);
 			name = core;
 			path = ../generic/core;
@@ -3359,6 +3365,7 @@
 				7969EF3452C399AE46552380 /* CCApplicationEx.mm in Sources */,
 				7969E8964F7A1C3B4F11D455 /* ScoreEntry.cpp in Sources */,
 				D215B1AF16C80B2D00EAADC9 /* Appirater.m in Sources */,
+				7969E296C7B8D953A1F64979 /* Move.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3590,6 +3597,7 @@
 				7969E07349F545F805BEC220 /* CCApplicationEx.mm in Sources */,
 				7969E16E0F412599EF5171C0 /* ScoreEntry.cpp in Sources */,
 				D215B1B016C80B2D00EAADC9 /* Appirater.m in Sources */,
+				7969E2D8DC1E91B13B132AC0 /* Move.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3821,6 +3829,7 @@
 				7969E67D04CFF4A800E22D6F /* CCApplicationEx.mm in Sources */,
 				7969EC1B6F2481A41CC10938 /* ScoreEntry.cpp in Sources */,
 				D215B1AD16C80B2D00EAADC9 /* Appirater.m in Sources */,
+				7969E5211AC0F32E836645CC /* Move.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4052,6 +4061,7 @@
 				7969E5188D35B6858E168BD9 /* CCApplicationEx.mm in Sources */,
 				7969E07435AE4D096CF37830 /* ScoreEntry.cpp in Sources */,
 				D215B1AE16C80B2D00EAADC9 /* Appirater.m in Sources */,
+				7969E1ABE95DBAE716526198 /* Move.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

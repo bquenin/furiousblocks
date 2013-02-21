@@ -13,12 +13,4 @@ public:
   MoveType type;
 };
 
-inline Move::Move(MoveType type)
-:type(type) {
-}
-
-inline Move::Move(Move* move)
-:type(move->type) {
-}
-
 #endif //__Move_H_
