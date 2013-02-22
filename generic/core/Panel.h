@@ -15,11 +15,10 @@
 #include "Move.h"
 #include "Point.h"
 
-class Panel {
-public:
-  class Clearing;
+class Clearing;
 
-private:
+class Panel {
+  public:
   class BlockBar {
     friend class Clearing;
 
@@ -78,6 +77,7 @@ private:
     void inject(int32_t x, int32_t y);
   };
 
+private:
   static const int32_t INITIAL_SCROLLING_SPEED = static_cast<int32_t>(FuriousBlocksCoreDefaults::CORE_FREQUENCY);
   static const int64_t NEXT_LEVEL = static_cast<int64_t>((FuriousBlocksCoreDefaults::CORE_FREQUENCY * 30));
   int32_t lastIndex;
@@ -86,7 +86,7 @@ private:
   int32_t playerId;
   std::set<std::shared_ptr<Combo>> combos;
   std::set<std::shared_ptr<Panel::Garbage>> garbages;
-  std::set<std::shared_ptr<Panel::Clearing>> clearings;
+  std::set<std::shared_ptr<Clearing>> clearings;
   std::set<Panel::Garbage*> garbageStack;
   int32_t levelScrollingSpeed;
   int64_t scrollingSpeed;
@@ -107,34 +107,17 @@ private:
   void mechanics(int64_t tick);
   std::shared_ptr<Combo> getComboByBlock(fb::Block* block);
   std::shared_ptr<Panel::Garbage> getGarbageByBlock(std::shared_ptr<fb::Block> block);
-  std::shared_ptr<Panel::Clearing> getClearingByBlock(std::shared_ptr<fb::Block> block);
+  std::shared_ptr<Clearing> getClearingByBlock(std::shared_ptr<fb::Block> block);
   std::shared_ptr<Combo> detectCombo();
   void processCombo(std::shared_ptr<Combo> combo);
 
 protected:
   static const int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
 
-
   std::unique_ptr<fb::Block> newBlock(BlockType blockType);
   std::unique_ptr<fb::Block> newRandom(BlockType excludedType = static_cast<BlockType>(-1));
 public:
-  class Clearing {
-    friend class Block;
 
-  private:
-    std::set<std::shared_ptr<BlockBar>> bars;
-    int64_t revealingTime;
-
-  protected:
-  public:
-    void addBlockBar(std::shared_ptr<Panel::BlockBar> bar);
-    bool isDoneRevealing(int64_t tick);
-    void onDoneRevealing();
-    bool contains(std::shared_ptr<fb::Block> block);
-    bool isEmpty();
-    void removeBar(std::shared_ptr<BlockBar> bar);
-    void setRevealingTime(int64_t revealingTime);
-  };
 
   uint32_t level;
   static const int32_t numberOfRegularBlocks = 5;

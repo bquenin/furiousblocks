@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Panel.h"
 #include "GarbageBlockType.h"
+#include "Clearing.h"
 
 Panel::Panel(int32_t seed, int32_t playerId, std::array<std::array<BlockType, FuriousBlocksCoreDefaults::PANEL_HEIGHT>, FuriousBlocksCoreDefaults::PANEL_WIDTH> initialBlockTypes, PanelListener &panelListener)
 : lastIndex(-1)
@@ -509,7 +510,7 @@ std::shared_ptr<Panel::Garbage> Panel::getGarbageByBlock(std::shared_ptr<fb::Blo
   return nullptr;
 }
 
-std::shared_ptr<Panel::Clearing> Panel::getClearingByBlock(std::shared_ptr<fb::Block> block) {
+std::shared_ptr<Clearing> Panel::getClearingByBlock(std::shared_ptr<fb::Block> block) {
   for (auto &clearing: clearings) {
     if (clearing->contains(block)) {
       return clearing;
@@ -621,7 +622,7 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
   }
 
   // Create a new clearing
-  auto clearing = std::make_shared<Panel::Clearing>();
+  auto clearing = std::make_shared<Clearing>();
 
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
@@ -896,45 +897,4 @@ int32_t Panel::BlockLine::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revea
     }
   }
   return revealingTimeIncrement;
-}
-
-void Panel::Clearing::addBlockBar(std::shared_ptr<Panel::BlockBar> bar) {
-//  for (auto &block: bar->barBlocks) {
-//    block->clearing = this;
-//  }
-  bars.insert(bar);
-}
-
-bool Panel::Clearing::isDoneRevealing(int64_t tick) {
-  return tick == revealingTime;
-}
-
-void Panel::Clearing::onDoneRevealing() {
-  for (auto bar: bars) {
-    bar->onDoneRevealing();
-  }
-}
-
-bool Panel::Clearing::contains(std::shared_ptr<fb::Block> block) {
-  for (auto bar: bars) {
-    if (bar->contains(block)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-bool Panel::Clearing::isEmpty() {
-  return bars.empty();
-}
-
-void Panel::Clearing::removeBar(std::shared_ptr<BlockBar> bar) {
-//  for (auto block : bar->barBlocks) {
-//    block->clearing = nullptr;
-//  }
-  bars.erase(bar);
-}
-
-void Panel::Clearing::setRevealingTime(int64_t revealingTime) {
-  this->revealingTime = revealingTime;
 }

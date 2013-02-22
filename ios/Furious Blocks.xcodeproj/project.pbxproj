@@ -24,6 +24,7 @@
 		7969E14277F92AAAC5EAD0A6 /* NonLoopingAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */; };
 		7969E169DB56935C053D6493 /* CreditsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E142A99775EF929E1886 /* CreditsScene.cpp */; };
 		7969E16E0F412599EF5171C0 /* ScoreEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */; };
+		7969E173A048369587EAC503 /* Clearing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E6BA7E8E26BA4B33EFE6 /* Clearing.cpp */; };
 		7969E18B489A6D4E3EEA6C23 /* coopblack64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E80C20BD83237A8A5BC8 /* coopblack64.png */; };
 		7969E1ABE95DBAE716526198 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
 		7969E296C7B8D953A1F64979 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
@@ -44,10 +45,12 @@
 		7969E67D04CFF4A800E22D6F /* CCApplicationEx.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7969EE618BE9CE483747FEEF /* CCApplicationEx.mm */; };
 		7969E86718637B161B33382F /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969E8964F7A1C3B4F11D455 /* ScoreEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */; };
+		7969E8B78CC0E5135AE4C099 /* Clearing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E6BA7E8E26BA4B33EFE6 /* Clearing.cpp */; };
 		7969E8FDA05207335D97FEBB /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EAA65F7587E0386426FE /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EACB2CF570960D037656 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E79960EAF9FDDBA0C804 /* blocks.png */; };
+		7969EAF02AC9C2E0F36A5E90 /* Clearing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E6BA7E8E26BA4B33EFE6 /* Clearing.cpp */; };
 		7969EAFE84FCC8ACB21D8066 /* Social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E7A92BDB7499BB8AA4A0 /* Social.cpp */; };
 		7969EB0FE3EE9780D34DDB5B /* Assets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EFFB0CFE2764A66CDC54 /* Assets.cpp */; };
 		7969EB4EDA9F405BF32954AE /* coopblack32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7969E73F4EAD29E22CAA37AD /* coopblack32.png */; };
@@ -55,6 +58,7 @@
 		7969EB7560835402674ABD3F /* Joystix.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7969EB7ABA416427D5DE3C32 /* Joystix.ttf */; };
 		7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EC1B6F2481A41CC10938 /* ScoreEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */; };
+		7969EDC631D664A77F1DE1E7 /* Clearing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E6BA7E8E26BA4B33EFE6 /* Clearing.cpp */; };
 		7969EDD992FFE86272E82942 /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969EE0B72DD5902D633346A /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E0A3A7B96B0347359069 /* LogoScene.cpp */; };
 		7969EE2683183745408F0B9A /* ScoresScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EC7244448D927D9B4E91 /* ScoresScene.cpp */; };
@@ -1128,11 +1132,13 @@
 		7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreEntry.cpp; sourceTree = "<group>"; };
 		7969E2510CE0E6F14007F8B9 /* ScoreEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreEntry.h; sourceTree = "<group>"; };
 		7969E251E1C511302A7B5E8B /* Social.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Social.h; sourceTree = "<group>"; };
+		7969E2BC3280A8DE21932B01 /* Clearing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clearing.h; sourceTree = "<group>"; };
 		7969E4AE20C9DF31145E4E9A /* tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener.hpp; sourceTree = "<group>"; };
 		7969E51CC9169D96809A8B46 /* single_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = single_tweener.hpp; sourceTree = "<group>"; };
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
 		7969E619F03DD57B616F1DD3 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
 		7969E649D578804BFEB88638 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		7969E6BA7E8E26BA4B33EFE6 /* Clearing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Clearing.cpp; sourceTree = "<group>"; };
 		7969E7237904D92983195353 /* tutorial.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tutorial.mp3; sourceTree = "<group>"; };
 		7969E73F4EAD29E22CAA37AD /* coopblack32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coopblack32.png; sourceTree = "<group>"; };
 		7969E764C16873F99039F89E /* NonLoopingAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NonLoopingAnimation.cpp; sourceTree = "<group>"; };
@@ -2887,6 +2893,8 @@
 				D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */,
 				D2BD39A015C5D0A90038E59C /* SimpleRNG.h */,
 				7969E9DBA931CEDD18BC98F9 /* Move.cpp */,
+				7969E6BA7E8E26BA4B33EFE6 /* Clearing.cpp */,
+				7969E2BC3280A8DE21932B01 /* Clearing.h */,
 			);
 			name = core;
 			path = ../generic/core;
@@ -3366,6 +3374,7 @@
 				7969E8964F7A1C3B4F11D455 /* ScoreEntry.cpp in Sources */,
 				D215B1AF16C80B2D00EAADC9 /* Appirater.m in Sources */,
 				7969E296C7B8D953A1F64979 /* Move.cpp in Sources */,
+				7969EDC631D664A77F1DE1E7 /* Clearing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3598,6 +3607,7 @@
 				7969E16E0F412599EF5171C0 /* ScoreEntry.cpp in Sources */,
 				D215B1B016C80B2D00EAADC9 /* Appirater.m in Sources */,
 				7969E2D8DC1E91B13B132AC0 /* Move.cpp in Sources */,
+				7969E173A048369587EAC503 /* Clearing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3830,6 +3840,7 @@
 				7969EC1B6F2481A41CC10938 /* ScoreEntry.cpp in Sources */,
 				D215B1AD16C80B2D00EAADC9 /* Appirater.m in Sources */,
 				7969E5211AC0F32E836645CC /* Move.cpp in Sources */,
+				7969EAF02AC9C2E0F36A5E90 /* Clearing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4062,6 +4073,7 @@
 				7969E07435AE4D096CF37830 /* ScoreEntry.cpp in Sources */,
 				D215B1AE16C80B2D00EAADC9 /* Appirater.m in Sources */,
 				7969E1ABE95DBAE716526198 /* Move.cpp in Sources */,
+				7969E8B78CC0E5135AE4C099 /* Clearing.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
