@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <iostream>
 #include "Panel.h"
-#include "GarbageBlockType.h"
+#include "Garbage.h"
 #include "Clearing.h"
 
 Panel::Panel(int32_t seed, int32_t playerId, std::array<std::array<BlockType, FuriousBlocksCoreDefaults::PANEL_HEIGHT>, FuriousBlocksCoreDefaults::PANEL_WIDTH> initialBlockTypes, PanelListener &panelListener)
@@ -186,7 +186,7 @@ void Panel::processMove() {
 }
 
 void Panel::dropGarbages() {
-  std::set<Panel::Garbage*> duplicata(garbageStack);
+  std::set<Garbage*> duplicata(garbageStack);
   for (auto garbage : duplicata) {
     int32_t y = (Panel::Y_DISPLAY + garbage->height) - 1;
     for (int32_t h = 0, j = y; h < garbage->height; h++, j--) {
@@ -280,7 +280,7 @@ void Panel::newLine() {
   }
 }
 
-void Panel::stackGarbage(Panel::Garbage* garbage) {
+void Panel::stackGarbage(Garbage* garbage) {
   //  if (garbage->isSkill()) {
   //    for (ListIterator<Panel::Garbage *> *iterator = garbageStack->listIterator(garbageStack->size()); iterator->hasPrevious();) {
   //      Panel::Garbage *stackedGarbage = iterator->previous();
@@ -501,7 +501,7 @@ std::shared_ptr<Combo> Panel::getComboByBlock(fb::Block* block) {
   return nullptr;
 }
 
-std::shared_ptr<Panel::Garbage> Panel::getGarbageByBlock(std::shared_ptr<fb::Block> block) {
+std::shared_ptr<Garbage> Panel::getGarbageByBlock(std::shared_ptr<fb::Block> block) {
   for (auto &garbage: garbages) {
     if (garbage->contains(block)) {
       return garbage;
@@ -670,8 +670,8 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
   }
 }
 
-Panel::Garbage* Panel::newGarbage(int32_t width, int32_t height, int32_t owner, bool skill) {
-  return new Panel::Garbage(this, width, height, owner, skill);
+Garbage* Panel::newGarbage(int32_t width, int32_t height, int32_t owner, bool skill) {
+  return new Garbage(*this, width, height, owner, skill);
 }
 
 int64_t Panel::getLocalTick() {
@@ -688,213 +688,4 @@ bool Panel::isGameOver() const {
 
 void Panel::submitMove(std::unique_ptr<Move>&& move) {
   this->move = std::move(move);
-}
-
-Panel::BlockBar::BlockBar(Panel* __parent, int32_t width, int32_t height, int32_t owner)
-: __parent (__parent) {
-  this->id = __parent->random.nextInt();
-  this->width = width;
-  this->height = height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height;
-  this->owner = owner;
-}
-
-bool Panel::BlockBar::contains(std::shared_ptr<fb::Block> block) {
-  return barBlocks.find(block) != barBlocks.end();
-}
-
-bool Panel::BlockBar::hasToFall(int32_t xOrigin, int32_t yOrigin) {
-  for (int32_t x = xOrigin; x < xOrigin + width && x < Panel::X; x++) {
-    if (__parent->blocks[x][yOrigin - 1] != nullptr) {
-      return false;
-    }
-  }
-  return true;
-}
-
-void Panel::BlockBar::fall(int32_t xOrigin, int32_t yOrigin) {
-  for (int32_t y = yOrigin; y < yOrigin + height && y < Panel::Y; y++) {
-    for (int32_t x = xOrigin; x < xOrigin + width && x < Panel::X; x++) {
-      __parent->blocks[x][y - 1] = __parent->blocks[x][y];
-      __parent->blocks[x][y] = nullptr;
-    }
-  }
-}
-
-void Panel::BlockBar::idle() {
-  for (auto block: barBlocks) {
-    block->idle();
-  }
-}
-
-void Panel::BlockBar::blink() {
-  auto first = barBlocks.begin();
-  if ((*first)->state == BlockState::BLINKING) {
-    return;
-  }
-  //  if (barBlocks->iterator()->next()->state == BlockState::BLINKING) {
-  //    return poppingIndex;
-  //  }
-  for (auto block: barBlocks) {
-    block->blink();
-  }
-}
-
-bool Panel::BlockBar::isRevealing() {
-  for (auto block: barBlocks) {
-    if (block->state == BlockState::REVEALING) {
-      return true;
-    }
-  }
-  return false;
-}
-
-Panel::Garbage::Garbage(Panel* __parent, int32_t width, int32_t height, int32_t owner, bool skill)
-: BlockBar(__parent, width, height, owner) {
-  this->skill = skill;
-}
-
-bool Panel::Garbage::isSkill() {
-  return skill;
-}
-
-int32_t Panel::Garbage::getOwner() {
-  return owner;
-}
-
-void Panel::Garbage::inject(int32_t x, int32_t y) {
-  for (int32_t j = y, h = 0; h < height; j--, h++) {
-    for (int32_t i = x, w = 0; w < width; i++, w++) {
-      if (__parent->blocks[i][j] == nullptr) {
-        __parent->blocks[i][j] = __parent->newBlock(BlockType::GARBAGE);
-      } else {
-        __parent->blocks[i][j] = __parent->newBlock(BlockType::GARBAGE);
-      }
-      __parent->blocks[i][j]->garbageOwner = owner;
-      barBlocks.insert(__parent->blocks[i][j]);
-    }
-  }
-  __parent->garbages.insert(std::shared_ptr<Panel::Garbage>(this));
-  switch (height) {
-    case 1:
-      for (int32_t w = 1; w < (width - 1); w++) {
-        __parent->blocks[x + w][y]->garbageBlockType = GarbageBlockType::UPDOWN;
-      }
-      __parent->blocks[x][y]->garbageBlockType = GarbageBlockType::UPLEFTDOWN;
-      __parent->blocks[(x + width) - 1][y]->garbageBlockType = GarbageBlockType::UPRIGHTDOWN;
-      break;
-    default:
-      for (int32_t h = 0; h < height; h++) {
-        for (int32_t w = 0; w < width; w++) {
-          __parent->blocks[x + w][y - h]->garbageBlockType = GarbageBlockType::PLAIN;
-        }
-      }
-      __parent->blocks[x][y]->garbageBlockType = GarbageBlockType::UPLEFT;
-      __parent->blocks[x][y - (height - 1)]->garbageBlockType = GarbageBlockType::DOWNLEFT;
-      __parent->blocks[(x + width) - 1][y]->garbageBlockType = GarbageBlockType::UPRIGHT;
-      __parent->blocks[(x + width) - 1][y - (height - 1)]->garbageBlockType = GarbageBlockType::DOWNRIGHT;
-      if (width > 2) {
-        for (int32_t w = 1; w < (width - 1); w++) {
-          __parent->blocks[x + w][y]->garbageBlockType = GarbageBlockType::UP;
-          __parent->blocks[x + w][y - (height - 1)]->garbageBlockType = GarbageBlockType::DOWN;
-        }
-      }
-      if (height > 2) {
-        for (int32_t h = 1; h < (height - 1); h++) {
-          __parent->blocks[x][y - h]->garbageBlockType = GarbageBlockType::LEFT;
-          __parent->blocks[(x + width) - 1][y - h]->garbageBlockType = GarbageBlockType::RIGHT;
-        }
-      }
-      break;
-  }
-}
-
-void Panel::Garbage::blink(std::shared_ptr<Combo> combo) {
-  triggeringCombo = combo;
-  BlockBar::blink();
-}
-
-int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing& parentClearing) {
-  if (isRevealing()) {
-    return revealingTime;
-  }
-
-  for (auto garbage = std::next(__parent->garbages.begin()); garbage != __parent->garbages.end(); ++garbage) {
-    if (garbage->get() == this) {
-      __parent->garbages.erase(garbage);
-      break;
-    }
-  }
-
-  int32_t revealingTimeIncrement = revealingTime;
-  if (triggeringCombo != nullptr) {
-    for (auto block: triggeringCombo->blocks) {
-      if (block->state == BlockState::EXPLODING) {
-        break;
-      }
-      block->explode(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
-    }
-  }
-  auto subLine = std::make_shared<Panel::BlockLine>(__parent, width, owner);
-  subLine->inject(xOrigin, yOrigin);
-  parentClearing.addBlockBar(subLine);
-  revealingTimeIncrement = subLine->reveal(xOrigin, yOrigin, revealingTimeIncrement);
-  if (height > 1) {
-    std::shared_ptr<Panel::Garbage> subGarbage (__parent->newGarbage(width, height - 1, owner, skill));
-    subGarbage->inject(xOrigin, yOrigin + height - 1);
-    parentClearing.addBlockBar(subGarbage);
-    for (int32_t y = yOrigin + 1; y < yOrigin + height && y < Panel::Y; y++) {
-      for (int32_t x = xOrigin; x < xOrigin + width && x < Panel::X; x++) {
-        if (y <= Panel::Y_DISPLAY) {
-          __parent->blocks[x][y]->reveal(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
-        } else {
-          __parent->blocks[x][y]->reveal(-1);
-        }
-      }
-    }
-  }
-  return revealingTimeIncrement;
-}
-
-void Panel::Garbage::onDoneRevealing() {
-  for (auto block: barBlocks) {
-    block->idle();
-  }
-}
-
-Panel::BlockLine::BlockLine(Panel* __parent, int32_t width, int32_t owner)
-: BlockBar(__parent, width, 1, owner) {
-}
-
-void Panel::BlockLine::inject(int32_t x, int32_t y) {
-  for (int32_t j = y, h = 0; h < height; j--, h++) {
-    for (int32_t i = x, w = 0; w < width; i++, w++) {
-      __parent->blocks[i][j] = __parent->newRandom();
-      __parent->blocks[i][j]->garbageOwner = owner;
-      barBlocks.insert(__parent->blocks[i][j]);
-    }
-  }
-}
-
-void Panel::BlockLine::onDoneRevealing() {
-  for (auto block: barBlocks) {
-    block->airBounce();
-    block->fallingFromClearing = true;
-  }
-}
-
-int32_t Panel::BlockLine::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime) {
-  if (isRevealing()) {
-    return revealingTime;
-  }
-  int32_t revealingTimeIncrement = revealingTime;
-  for (int32_t y = yOrigin; y < yOrigin + height && y < Panel::Y; y++) {
-    for (int32_t x = xOrigin; x < xOrigin + width && x < Panel::X; x++) {
-      if (y <= Panel::Y_DISPLAY) {
-        __parent->blocks[x][y]->reveal(revealingTimeIncrement += FuriousBlocksCoreDefaults::BLOCK_REVEALINGTIMEINCREMENT);
-      } else {
-        __parent->blocks[x][y]->reveal(-1);
-      }
-    }
-  }
-  return revealingTimeIncrement;
 }

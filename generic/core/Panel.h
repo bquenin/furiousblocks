@@ -16,78 +16,21 @@
 #include "Point.h"
 
 class Clearing;
+class Garbage;
 
 class Panel {
-  public:
-  class BlockBar {
-    friend class Clearing;
-
-    friend class Garbage;
-
-    friend class BlockLine;
-
-  protected:
-    int32_t id;
-    Panel* __parent;
-    BlockBar(Panel* __parent, int32_t width, int32_t height, int32_t owner);
-    int32_t owner;
-  public:
-    virtual void onDoneRevealing() = 0;
-    bool contains(std::shared_ptr<fb::Block> block);
-    bool hasToFall(int32_t xOrigin, int32_t yOrigin);
-    void fall(int32_t xOrigin, int32_t yOrigin);
-    void idle();
-    void blink();
-    bool isRevealing();
-    int32_t width;
-    int32_t height;
-    std::unordered_set<std::shared_ptr<fb::Block>> barBlocks;
-  };
-
-  class Garbage : public BlockBar {
-    friend class Clearing;
-
-    friend class Panel;
-
-  private:
-    bool skill;
-    std::shared_ptr<Combo> triggeringCombo;
-    Panel* __parent;
-    Garbage(Panel* __parent, int32_t width, int32_t height, int32_t owner, bool skill);
-    void inject(int32_t x, int32_t y);
-    void onDoneRevealing();
-
-  protected:
-  public:
-    bool isSkill();
-    int32_t getOwner();
-    void blink(std::shared_ptr<Combo> combo);
-    int32_t reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing& parentClearing);
-  };
-
-  class BlockLine : public BlockBar {
-  private:
-    Panel* __parent;
-
-    void onDoneRevealing();
-  protected:
-  public:
-    BlockLine(Panel* __parent, int32_t width, int32_t owner);
-    int32_t reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime);
-    void inject(int32_t x, int32_t y);
-  };
-
+public:
+  std::set<std::shared_ptr<Garbage>> garbages;
 private:
   static const int32_t INITIAL_SCROLLING_SPEED = static_cast<int32_t>(FuriousBlocksCoreDefaults::CORE_FREQUENCY);
   static const int64_t NEXT_LEVEL = static_cast<int64_t>((FuriousBlocksCoreDefaults::CORE_FREQUENCY * 30));
   int32_t lastIndex;
-  SimpleRNG random;
+
   int64_t localTick;
   int32_t playerId;
   std::set<std::shared_ptr<Combo>> combos;
-  std::set<std::shared_ptr<Panel::Garbage>> garbages;
   std::set<std::shared_ptr<Clearing>> clearings;
-  std::set<Panel::Garbage*> garbageStack;
+  std::set<Garbage*> garbageStack;
   int32_t levelScrollingSpeed;
   int64_t scrollingSpeed;
   int32_t freezingTime;
@@ -106,24 +49,23 @@ private:
   void newLine();
   void mechanics(int64_t tick);
   std::shared_ptr<Combo> getComboByBlock(fb::Block* block);
-  std::shared_ptr<Panel::Garbage> getGarbageByBlock(std::shared_ptr<fb::Block> block);
+  std::shared_ptr<Garbage> getGarbageByBlock(std::shared_ptr<fb::Block> block);
   std::shared_ptr<Clearing> getClearingByBlock(std::shared_ptr<fb::Block> block);
   std::shared_ptr<Combo> detectCombo();
   void processCombo(std::shared_ptr<Combo> combo);
 
-protected:
-  static const int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
-
-  std::unique_ptr<fb::Block> newBlock(BlockType blockType);
-  std::unique_ptr<fb::Block> newRandom(BlockType excludedType = static_cast<BlockType>(-1));
 public:
+  SimpleRNG random;
+  static constexpr int32_t numberOfRegularBlocks = 5;
+  static constexpr int32_t X = FuriousBlocksCoreDefaults::PANEL_WIDTH;
+  static constexpr int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
+  static constexpr int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
 
+  std::unique_ptr<fb::Block> newRandom(BlockType excludedType = static_cast<BlockType>(-1));
+  std::unique_ptr<fb::Block> newBlock(BlockType blockType);
 
   uint32_t level;
-  static const int32_t numberOfRegularBlocks = 5;
   bool scrollingEnabled;
-  static const int32_t Y_DISPLAY = FuriousBlocksCoreDefaults::PANEL_HEIGHT;
-  static const int32_t Y = Panel::Y_DISPLAY + (Panel::Y_DISPLAY * 4);
   std::array<std::array<std::shared_ptr<fb::Block>, Panel::Y>, Panel::X> blocks;
   furiousblocks::Point cursor;
   int32_t scrollingDelta;
@@ -135,8 +77,8 @@ public:
   void reset();
   void setTransposedBlocks(std::vector<std::vector<BlockType>> & blockTypes);
   void onTick(int64_t tick);
-  void stackGarbage(Panel::Garbage* garbage);
-  Panel::Garbage* newGarbage(int32_t width, int32_t height, int32_t owner, bool skill);
+  void stackGarbage(Garbage* garbage);
+  Garbage* newGarbage(int32_t width, int32_t height, int32_t owner, bool skill);
   int64_t getLocalTick();
   void setLocalTick(int64_t localTick);
   bool isGameOver() const;

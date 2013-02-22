@@ -7,7 +7,7 @@
 
 #include "Clearing.h"
 
-void Clearing::addBlockBar(std::shared_ptr<Panel::BlockBar> bar) {
+void Clearing::addBlockBar(std::shared_ptr<BlockBar> bar) {
 //  for (auto &block: bar->barBlocks) {
 //    block->clearing = this;
 //  }
@@ -37,7 +37,7 @@ bool Clearing::isEmpty() {
   return bars.empty();
 }
 
-void Clearing::removeBar(std::shared_ptr<Panel::BlockBar> bar) {
+void Clearing::removeBar(std::shared_ptr<BlockBar> bar) {
 //  for (auto block : bar->barBlocks) {
 //    block->clearing = nullptr;
 //  }
