@@ -13,6 +13,8 @@
 #include "platform/ios/CCApplication.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/CCApplication.h"
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#include "platform/linux/CCApplication.h"
 #endif
 
 class CCApplicationEx : public cocos2d::CCApplication {
