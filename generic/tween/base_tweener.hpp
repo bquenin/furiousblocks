@@ -32,17 +32,14 @@
 #include <list>
 #include <functional>
 
-namespace claw
-{
-  namespace tween
-  {
+namespace claw {
+  namespace tween {
     /**
      * \brief Common interface for all tweeners.
      * \author Julien Jorge
      * \sa \ref tweeners
      */
-    class base_tweener
-    {
+    class base_tweener {
     public:
       /**
        * \brief The type of the function called to notify the end of the
@@ -56,10 +53,10 @@ namespace claw
       base_tweener* clone() const;
 
       bool is_finished() const;
-      double update( double dt );
+      double update(double dt);
 
-      void on_finished( finish_callback f );
-      
+      void on_finished(finish_callback f);
+
     private:
       void notify_finished() const;
 
@@ -78,7 +75,7 @@ namespace claw
        * \param dt The duration of the update.
        * \return The amount of extra time in dt after the end of the update.
        */
-      virtual double do_update( double dt ) = 0;
+      virtual double do_update(double dt) = 0;
 
     private:
       /** \brief The callback executed when the tweener is finished. */

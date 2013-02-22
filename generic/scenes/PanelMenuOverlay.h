@@ -18,24 +18,24 @@ using namespace cocos2d::extension;
 
 class PanelMenuOverlay : public CCLayerColor {
 private:
-  CCControlButton *restartButton;
-  CCControlButton *endGameButton;
-  CCControlButton *musicSwitchOn;
-  CCControlButton *musicSwitchOff;
+  CCControlButton* restartButton;
+  CCControlButton* endGameButton;
+  CCControlButton* musicSwitchOn;
+  CCControlButton* musicSwitchOff;
 
 public:
-  CCLabelBMFont *score;
-  CCControlButton *continueButton;
+  CCLabelBMFont* score;
+  CCControlButton* continueButton;
 
   // Implement the "static node()" method manually
   CREATE_FUNC(PanelMenuOverlay);
 
   PanelMenuOverlay();
   bool init();
-  void continueAction(CCObject *sender);
-  void restartAction(CCObject *sender);
-  void endGameAction(CCObject *sender);
-  void musicSwitchAction(CCObject *sender);
+  void continueAction(CCObject* sender);
+  void restartAction(CCObject* sender);
+  void endGameAction(CCObject* sender);
+  void musicSwitchAction(CCObject* sender);
 
 };
 

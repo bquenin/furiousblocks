@@ -19,9 +19,9 @@ LogoScene::LogoScene() {
   }
 }
 
-CCScene *LogoScene::scene() {
-  CCScene *scene = CCScene::create();
-  LogoScene *layer = LogoScene::create();
+CCScene* LogoScene::scene() {
+  CCScene* scene = CCScene::create();
+  LogoScene* layer = LogoScene::create();
   scene->addChild(layer);
   return scene;
 }
@@ -35,7 +35,7 @@ bool LogoScene::init() {
 
   CCSize texSize = CCSizeMake(LogoScene::width, LogoScene::height);
   size_t bytes = static_cast<size_t>(texSize.width * texSize.height * 4);
-  void *textureData = malloc(bytes);
+  void* textureData = malloc(bytes);
   memset(textureData, 0, bytes);
 
   texture = new CCTexture2DMutable();
@@ -51,13 +51,13 @@ bool LogoScene::init() {
 //  timerTweener.on_finished(std::bind(&LogoScene::onTimerFinished, this));
 //  tweeners.insert(timerTweener);
 
-  CCSprite *canvas = CCSprite::createWithTexture(texture);
+  CCSprite* canvas = CCSprite::createWithTexture(texture);
   canvas->setAnchorPoint(ccp(0, 0));
   canvas->setScaleX(Assets::designResolutionSize.width / LogoScene::width);
   canvas->setScaleY(Assets::designResolutionSize.height / LogoScene::height);
   addChild(canvas);
 
-  CCLabelTTF *copyright = CCLabelTTF::create("PixodromE", "Joystix.ttf", 64);
+  CCLabelTTF* copyright = CCLabelTTF::create("PixodromE", "Joystix.ttf", 64);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   copyright->setColor(ccc3(0, 0, 0));
   addChild(copyright);
@@ -115,7 +115,7 @@ void LogoScene::update(float dt) {
   texture->apply();
 }
 
-void LogoScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent) {
+void LogoScene::ccTouchesBegan(CCSet* pTouches, CCEvent* pEvent) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }
 

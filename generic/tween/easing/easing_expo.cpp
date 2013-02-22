@@ -35,7 +35,6 @@
  * \param t The ratio of the date, in (0, 1), representing the total
  *        progression of the tweener.
  */
-double claw::tween::easing_expo_func( double t )
-{
+double claw::tween::easing_expo_func(double t) {
   return t == 0 ? 0 : std::pow(2, 10 * (t - 1));
 } // easing_expo_func()

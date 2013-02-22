@@ -33,8 +33,7 @@
  * \param t The ratio of the date, in (0, 1), representing the total
  *        progression of the tweener.
  */
-double claw::tween::easing_back_func( double t )
-{
-  const double s( 1.70158 );
-  return t * t * ( (s+1) * t - s);
+double claw::tween::easing_back_func(double t) {
+  const double s(1.70158);
+  return t * t * ((s + 1) * t - s);
 } // easing_back_func()

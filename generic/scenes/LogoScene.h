@@ -34,14 +34,14 @@ private:
   int vx[LogoScene::num_blobs][LogoScene::width];
   int vy[LogoScene::num_blobs][LogoScene::height];
 
-  CCTexture2DMutable *texture;
+  CCTexture2DMutable* texture;
 
   double timer;
 //  claw::tween::tweener_group tweeners;
 
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
-  static cocos2d::CCScene *scene();
+  static cocos2d::CCScene* scene();
 
   // Implement the "static node()" method manually
   CREATE_FUNC(LogoScene);
@@ -50,7 +50,7 @@ public:
   bool init();
   void update(float dt);
 
-  void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+  void ccTouchesBegan(CCSet* pTouches, CCEvent* pEvent);
 
   void onTimerFinished(void);
 };

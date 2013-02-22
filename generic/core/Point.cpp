@@ -1,7 +1,7 @@
 #include <cstdint>
 #include "Point.h"
 
-furiousblocks::Point::Point(Point *p)
+furiousblocks::Point::Point(Point* p)
 : x(p->x)
 , y(p->y) {
 }

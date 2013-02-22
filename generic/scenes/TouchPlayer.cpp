@@ -25,7 +25,7 @@ TouchPlayer::~TouchPlayer() {
 }
 
 
-bool TouchPlayer::ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) {
+bool TouchPlayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event) {
   if (inputState != InputState::untouched) {
     return false;
   }
@@ -43,7 +43,7 @@ bool TouchPlayer::ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
   return true;
 }
 
-void TouchPlayer::ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) {
+void TouchPlayer::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event) {
   if (switchOnLeft || switchOnRight || upTrend) {
     return;
   }
@@ -71,7 +71,7 @@ void TouchPlayer::ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
   }
 }
 
-void TouchPlayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event) {
+void TouchPlayer::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event) {
   inputState = InputState::untouched;
   switchOnLeft = false;
   switchOnRight = false;

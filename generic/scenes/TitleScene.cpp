@@ -13,13 +13,12 @@
 #include "CreditsScene.h"
 #include "ScoresScene.h"
 #include "PanelScene.h"
-#include "Social.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-CCScene *TitleScene::scene() {
-  CCScene *scene = CCScene::create();
+CCScene* TitleScene::scene() {
+  CCScene* scene = CCScene::create();
   scene->addChild(TitleScene::create());
   return scene;
 }
@@ -33,7 +32,7 @@ bool TitleScene::init() {
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
 
   // Background
-  CCSprite *bg = CCSprite::createWithSpriteFrame(AppDelegate::assets.TITLE);
+  CCSprite* bg = CCSprite::createWithSpriteFrame(AppDelegate::assets.TITLE);
   bg->setAnchorPoint(ccp(0, 0));
   addChild(bg);
 
@@ -55,12 +54,12 @@ bool TitleScene::init() {
   logOut->setVisible(AppDelegate::isLoggedIn());
   addChild(logOut);
 
-  CCSprite *logoLogin = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
+  CCSprite* logoLogin = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
   logoLogin->setAnchorPoint(ccp(0, 0));
   logoLogin->setPosition(ccp(8, 6));
   logIn->addChild(logoLogin);
 
-  CCSprite *logoLogout = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
+  CCSprite* logoLogout = CCSprite::createWithSpriteFrame(AppDelegate::assets.FLOGO);
   logoLogout->setAnchorPoint(ccp(0, 0));
   logoLogout->setPosition(ccp(8, 6));
   logOut->addChild(logoLogout);
@@ -68,7 +67,7 @@ bool TitleScene::init() {
 #ifdef FREEMIUM
   CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Play! (%d left)", Social::gamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #else
-  CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create("Play!", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  CCControlButton* playButton = CCControlButton::create(CCLabelTTF::create("Play!", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #endif
   playButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   playButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
@@ -77,7 +76,7 @@ bool TitleScene::init() {
   playButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::playAction), CCControlEventTouchUpInside);
   addChild(playButton);
 
-  CCControlButton *howToPlaylButton = CCControlButton::create(CCLabelTTF::create("How to play", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  CCControlButton* howToPlaylButton = CCControlButton::create(CCLabelTTF::create("How to play", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   howToPlaylButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   howToPlaylButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   howToPlaylButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 40));
@@ -93,7 +92,7 @@ bool TitleScene::init() {
   scoresButton->addTargetWithActionForControlEvents(this, cccontrol_selector(TitleScene::scoresAction), CCControlEventTouchUpInside);
   addChild(scoresButton);
 
-  CCControlButton *creditsButton = CCControlButton::create(CCLabelTTF::create("Credits", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  CCControlButton* creditsButton = CCControlButton::create(CCLabelTTF::create("Credits", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   creditsButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   creditsButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   creditsButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 200));
@@ -120,7 +119,7 @@ bool TitleScene::init() {
   addChild(musicSwitchOff);
 
 #if DEBUG
-  CCControlButton *quitButton = CCControlButton::create(CCLabelTTF::create("Quit", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  CCControlButton* quitButton = CCControlButton::create(CCLabelTTF::create("Quit", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
   quitButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
   quitButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   quitButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 - 360));
@@ -129,7 +128,7 @@ bool TitleScene::init() {
   addChild(quitButton);
 #endif
 
-  CCLabelTTF *copyright = CCLabelTTF::create("Copyright 2013 PixodromE", "SkaterDudes.ttf", 32);
+  CCLabelTTF* copyright = CCLabelTTF::create("Copyright 2013 PixodromE", "SkaterDudes.ttf", 32);
   copyright->setPosition(ccp(Assets::designResolutionSize.width / 2, 32 ));
   copyright->setColor(ccc3(10, 10, 10));
   addChild(copyright);
@@ -148,31 +147,31 @@ void TitleScene::update(float dt) {
   scoresButton->setColor(AppDelegate::isLoggedIn() ? ccc3(0xFF, 0xFF, 0xFF) : ccc3(0x80, 0x80, 0x80));
 }
 
-void TitleScene::logInAction(CCObject *sender) {
+void TitleScene::logInAction(CCObject* sender) {
   AppDelegate::facebookLogin();
 }
 
-void TitleScene::logOutAction(CCObject *sender) {
+void TitleScene::logOutAction(CCObject* sender) {
   AppDelegate::facebookLogout();
 }
 
-void TitleScene::playAction(CCObject *sender) {
+void TitleScene::playAction(CCObject* sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, PanelScene::scene(), kOrientationUpOver));
 }
 
-void TitleScene::howToPlayAction(CCObject *sender) {
+void TitleScene::howToPlayAction(CCObject* sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TutorialScene::scene(), kOrientationUpOver));
 }
 
-void TitleScene::scoresAction(CCObject *sender) {
+void TitleScene::scoresAction(CCObject* sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, ScoresScene::scene(), kOrientationUpOver));
 }
 
-void TitleScene::creditsAction(CCObject *sender) {
+void TitleScene::creditsAction(CCObject* sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, CreditsScene::scene(), kOrientationUpOver));
 }
 
-void TitleScene::musicSwitchAction(CCObject *sender) {
+void TitleScene::musicSwitchAction(CCObject* sender) {
   AppDelegate::setMusicOn(!AppDelegate::isMusicOn());
   musicSwitchOn->setVisible(AppDelegate::isMusicOn());
   musicSwitchOff->setVisible(!AppDelegate::isMusicOn());
@@ -183,6 +182,6 @@ void TitleScene::musicSwitchAction(CCObject *sender) {
   }
 }
 
-void TitleScene::quitAction(CCObject *sender) {
+void TitleScene::quitAction(CCObject* sender) {
   AppDelegate::quit();
 }

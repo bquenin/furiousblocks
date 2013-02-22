@@ -33,30 +33,30 @@ private:
   static std::vector<std::vector<BlockType> > etc4ChainsPanel;
 
   Script script;
-  TutorialPlayer *tutorialPlayer;
+  TutorialPlayer* tutorialPlayer;
   TextToType textToType;
-  cocos2d::CCLabelBMFont *textBox;
-  cocos2d::CCSprite *cursor;
+  cocos2d::CCLabelBMFont* textBox;
+  cocos2d::CCSprite* cursor;
 
-  QuitOverlay *quitOverlay;
+  QuitOverlay* quitOverlay;
   bool overlayEnabled;
   InputState inputState;
   void registerWithTouchDispatcher();
-  bool ccTouchBegan(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
-  void ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
-  void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
+  bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+  void ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+  void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 
 public:
   TutorialScene();
   ~TutorialScene();
   bool init();
   void update(float dt);
-  void onCombo(Combo *combo);
+  void onCombo(Combo* combo);
   void onGameOver();
-  void setOverlay(QuitOverlay *quitOverlay);
+  void setOverlay(QuitOverlay* quitOverlay);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
-  static cocos2d::CCScene *scene();
+  static cocos2d::CCScene* scene();
 
   // Implement the "static node()" method manually
   CREATE_FUNC(TutorialScene);

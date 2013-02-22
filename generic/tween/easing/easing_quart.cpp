@@ -33,7 +33,6 @@
  * \param t The ratio of the date, in (0, 1), representing the total
  *        progression of the tweener.
  */
-double claw::tween::easing_quart_func( double t )
-{
+double claw::tween::easing_quart_func(double t) {
   return t * t * t * t;
 } // easing_quart_func()

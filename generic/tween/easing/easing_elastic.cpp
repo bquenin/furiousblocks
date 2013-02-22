@@ -35,14 +35,13 @@
  * \param t The ratio of the date, in (0, 1), representing the total
  *        progression of the tweener.
  */
-double claw::tween::easing_elastic_func( double t )
-{
+double claw::tween::easing_elastic_func(double t) {
 #ifdef M_PI
   const double pi = M_PI;
 #else
   const double pi = std::acos(-1);
 #endif
-  const double v(t-1);
+  const double v(t - 1);
   const double p(0.3);
-  return -std::pow(2, 10 * v) * std::sin( (v - p / 4) * 2 * pi / p );
+  return -std::pow(2, 10 * v) * std::sin((v - p / 4) * 2 * pi / p);
 } // easing_elastic_func()

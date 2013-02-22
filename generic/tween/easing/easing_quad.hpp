@@ -31,11 +31,9 @@
 
 #include "symmetric_easing.hpp"
 
-namespace claw
-{
-  namespace tween
-  {
-    double easing_quad_func( double t );
+namespace claw {
+  namespace tween {
+    double easing_quad_func(double t);
 
     /**
      * \brief Easing functions for the tweener.

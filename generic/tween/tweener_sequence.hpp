@@ -33,10 +33,8 @@
 #include "base_tweener.hpp"
 #include "tweener.hpp"
 
-namespace claw
-{
-  namespace tween
-  {
+namespace claw {
+  namespace tween {
     /**
      * \brief The tweener sequence manages several tweeners in a common
      *        timeline.
@@ -47,23 +45,22 @@ namespace claw
      * \author Julien Jorge
      * \sa \ref tweeners
      */
-    class tweener_sequence:
-      public base_tweener
-    {
+    class tweener_sequence :
+    public base_tweener {
     public:
-      void insert( const tweener& t );
+      void insert(const tweener& t);
 
       void clear();
 
     private:
       tweener_sequence* do_clone() const;
       bool do_is_finished() const;
-      double do_update( double dt );
+      double do_update(double dt);
 
     private:
       /** \brief The tweeners. */
       std::list<tweener> m_tweeners;
-      
+
     }; // class tweener_sequence
 
   } // namespace tween

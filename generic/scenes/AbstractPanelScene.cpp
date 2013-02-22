@@ -23,7 +23,7 @@ bool AbstractPanelScene::init() {
   addChild(batch);
 
   // Background
-  CCSprite *bgMiddle = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_MIDDLE);
+  CCSprite* bgMiddle = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_MIDDLE);
   bgMiddle->setAnchorPoint(ccp(0, 0));
   bgMiddle->setPosition(ccp(0, 18));
   batch->addChild(bgMiddle);
@@ -47,12 +47,12 @@ bool AbstractPanelScene::init() {
     }
   }
 
-  CCSprite *bgBottom = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_BOTTOM);
+  CCSprite* bgBottom = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_BOTTOM);
   bgBottom->setAnchorPoint(ccp(0, 0));
   bgBottom->setPosition(ccp(0, 0));
   batch->addChild(bgBottom);
 
-  CCSprite *bgTop = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_TOP);
+  CCSprite* bgTop = CCSprite::createWithSpriteFrame(AppDelegate::assets.BG_TOP);
   bgTop->setAnchorPoint(ccp(0, 0));
   bgTop->setPosition(ccp(0, Assets::designResolutionSize.height - 79));
   batch->addChild(bgTop);

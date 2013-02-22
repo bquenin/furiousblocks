@@ -10,7 +10,9 @@
 #include "cocos2d.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+
 #include "platform/ios/CCApplication.h"
+
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 #include "platform/android/CCApplication.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
@@ -21,6 +23,7 @@ class CCApplicationEx : public cocos2d::CCApplication {
 public:
 
   CCApplicationEx();
+
   virtual ~CCApplicationEx() {};
 
   static void openURL(const std::string& url);

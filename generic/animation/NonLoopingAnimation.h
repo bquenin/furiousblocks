@@ -16,8 +16,8 @@ class NonLoopingAnimation : Animation {
 public:
   int64_t creationTick;
 
-  NonLoopingAnimation(int64_t creationTick, float frameDuration, std::initializer_list<cocos2d::CCSpriteFrame *> frames);
-  cocos2d::CCSpriteFrame *getKeyFrame(int64_t stateTick);
+  NonLoopingAnimation(int64_t creationTick, float frameDuration, std::initializer_list<cocos2d::CCSpriteFrame*> frames);
+  cocos2d::CCSpriteFrame* getKeyFrame(int64_t stateTick);
   bool isAnimationFinished(int64_t stateTick);
 };
 

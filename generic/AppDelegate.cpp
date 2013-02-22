@@ -10,7 +10,6 @@
 
 #include "LogoScene.h"
 #include "Poco/Net/SSLManager.h"
-#include "Social.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;

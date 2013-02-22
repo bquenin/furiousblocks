@@ -35,8 +35,7 @@
  * \param t The ratio of the date, in (0, 1), representing the total
  *        progression of the tweener.
  */
-double claw::tween::easing_sine_func( double t )
-{
+double claw::tween::easing_sine_func(double t) {
 #ifdef M_PI
   return 1 - std::cos(t * M_PI / 2);
 #else

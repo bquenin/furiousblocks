@@ -33,8 +33,7 @@
  * \brief Add a tweener in the sequence.
  * \param t The tweener.
  */
-void claw::tween::tweener_sequence::insert( const tweener& t )
-{
+void claw::tween::tweener_sequence::insert(const tweener& t) {
   m_tweeners.push_back(t);
 } // tweener_sequence::insert()
 
@@ -42,8 +41,7 @@ void claw::tween::tweener_sequence::insert( const tweener& t )
 /**
  * \brief Remove all the tweeners from the sequence.
  */
-void claw::tween::tweener_sequence::clear()
-{
+void claw::tween::tweener_sequence::clear() {
   m_tweeners.clear();
 } // tweener_sequence::clear()
 
@@ -51,8 +49,7 @@ void claw::tween::tweener_sequence::clear()
 /**
  * \brief Create a copy of this, allocated with new.
  */
-claw::tween::tweener_sequence* claw::tween::tweener_sequence::do_clone() const
-{
+claw::tween::tweener_sequence* claw::tween::tweener_sequence::do_clone() const {
   return new tweener_sequence(*this);
 } // tweener_sequence::do_clone()
 
@@ -60,8 +57,7 @@ claw::tween::tweener_sequence* claw::tween::tweener_sequence::do_clone() const
 /**
  * \brief Tell if the tweener has reached his total duration.
  */
-bool claw::tween::tweener_sequence::do_is_finished() const
-{
+bool claw::tween::tweener_sequence::do_is_finished() const {
   return m_tweeners.empty();
 } // tweener_sequence::do_is_finished()
 
@@ -70,17 +66,16 @@ bool claw::tween::tweener_sequence::do_is_finished() const
  * \brief Update the tweeners by a given amount of time.
  * \param dt The duration of the update in time units since the last call.
  */
-double claw::tween::tweener_sequence::do_update( double dt )
-{
+double claw::tween::tweener_sequence::do_update(double dt) {
   double result(dt);
 
-  while ( (result != 0) && !m_tweeners.empty() )
-    {
-      result = m_tweeners.front().update(result);
+  while ((result != 0) && !m_tweeners.empty()) {
+    result = m_tweeners.front().update(result);
 
-      if ( m_tweeners.front().is_finished() )
-        m_tweeners.pop_front();
+    if (m_tweeners.front().is_finished()) {
+          m_tweeners.pop_front();
     }
+  }
 
   return result;
 } // tweener_sequence::do_update()

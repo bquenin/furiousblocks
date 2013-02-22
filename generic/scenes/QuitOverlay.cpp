@@ -42,10 +42,10 @@ bool QuitOverlay::init() {
   return true;
 }
 
-void QuitOverlay::resumeAction(CCObject *sender) {
+void QuitOverlay::resumeAction(CCObject* sender) {
   setVisible(false);
 }
 
-void QuitOverlay::skipAction(CCObject *sender) {
+void QuitOverlay::skipAction(CCObject* sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }

@@ -6,8 +6,9 @@
 
 class FuriousBlocksCoreListener {
 public:
-  virtual void onCombo(Combo *combo) = 0;
+  virtual void onCombo(Combo* combo) = 0;
   virtual void onGameOver() = 0;
+
   virtual ~FuriousBlocksCoreListener() {};
 
 };

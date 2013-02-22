@@ -10,7 +10,7 @@ private:
 protected:
 public:
   std::vector<std::shared_ptr<fb::Block>> blocks;
-     /// Vector because the renderer needs to clear the blocks in a defined order.
+  /// Vector because the renderer needs to clear the blocks in a defined order.
   int32_t owner;
   int32_t skillChainLevel;
   int32_t x;

@@ -28,6 +28,7 @@
  */
 #include "tweener_group.hpp"
 #include "cocos2d.h"
+
 USING_NS_CC;
 
 /*----------------------------------------------------------------------------*/
@@ -57,7 +58,7 @@ void claw::tween::tweener_group::clear() {
 /**
  * \brief Create a copy of this, allocated with new.
  */
-claw::tween::tweener_group *claw::tween::tweener_group::do_clone() const {
+claw::tween::tweener_group* claw::tween::tweener_group::do_clone() const {
   return new tweener_group(*this);
 } // tweener_group::do_clone()
 

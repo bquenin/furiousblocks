@@ -29,21 +29,18 @@
 #ifndef __CLAW_TWEEN_SYMMETRIC_EASING_HPP__
 #define __CLAW_TWEEN_SYMMETRIC_EASING_HPP__
 
-namespace claw
-{
-  namespace tween
-  {
+namespace claw {
+  namespace tween {
     /**
      * \brief Easing functions for the tweener.
      * \author Julien Jorge
      */
     template<double (*Function)(double)>
-    class symmetric_easing
-    {
+    class symmetric_easing {
     public:
-      static double ease_in( double t );
-      static double ease_out( double t );
-      static double ease_in_out( double t );
+      static double ease_in(double t);
+      static double ease_out(double t);
+      static double ease_in_out(double t);
 
     }; // class symmetric_easing
 
@@ -57,8 +54,7 @@ namespace claw
  *        of the tweener.
  */
 template<double (*Function)(double)>
-double claw::tween::symmetric_easing<Function>::ease_in( double t )
-{
+double claw::tween::symmetric_easing<Function>::ease_in(double t) {
   return Function(t);
 } // symmetric_easing::ease_in()
 
@@ -69,9 +65,8 @@ double claw::tween::symmetric_easing<Function>::ease_in( double t )
  *        of the tweener.
  */
 template<double (*Function)(double)>
-double claw::tween::symmetric_easing<Function>::ease_out( double t )
-{
-  return 1 - ease_in( 1 - t );
+double claw::tween::symmetric_easing<Function>::ease_out(double t) {
+  return 1 - ease_in(1 - t);
 } // symmetric_easing::ease_out()
 
 /*----------------------------------------------------------------------------*/
@@ -81,12 +76,12 @@ double claw::tween::symmetric_easing<Function>::ease_out( double t )
  *        of the tweener.
  */
 template<double (*Function)(double)>
-double claw::tween::symmetric_easing<Function>::ease_in_out( double t )
-{
-  if ( t < 0.5 )
-    return ease_in( 2 * t ) / 2;
-  else
-    return 0.5 + ease_out( 2 * t - 1 ) / 2;
+double claw::tween::symmetric_easing<Function>::ease_in_out(double t) {
+  if (t < 0.5) {
+      return ease_in(2 * t) / 2;
+    } else {
+        return 0.5 + ease_out(2 * t - 1) / 2;
+  }
 } // symmetric_easing::ease_in_out()
 
 #endif // __CLAW_TWEEN_SYMMETRIC_EASING_HPP__

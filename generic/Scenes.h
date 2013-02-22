@@ -20,10 +20,10 @@ class Scenes {
 public:
   void create();
 
-  CCScene *logoScene;
-  CCScene *panelScene;
-  CCScene *titleScene;
-  CCScene *tutorialScene;
+  CCScene* logoScene;
+  CCScene* panelScene;
+  CCScene* titleScene;
+  CCScene* tutorialScene;
 };
 
 #endif //__Scenes_H_

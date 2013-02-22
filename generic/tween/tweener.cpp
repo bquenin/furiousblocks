@@ -35,8 +35,7 @@
  * \brief Default constructor.
  */
 claw::tween::tweener::tweener()
-  : m_impl(nullptr)
-{
+: m_impl(nullptr) {
 
 } // tweener::tweener()
 
@@ -45,9 +44,8 @@ claw::tween::tweener::tweener()
  * \brief Copy constructor.
  * \param that The instance to copy from.
  */
-claw::tween::tweener::tweener( const tweener& that )
-  : m_impl( that.m_impl == nullptr ? nullptr : that.m_impl->clone() )
-{
+claw::tween::tweener::tweener(const tweener& that)
+: m_impl(that.m_impl == nullptr ? nullptr : that.m_impl->clone()) {
 
 } // tweener::tweener()
 
@@ -56,9 +54,8 @@ claw::tween::tweener::tweener( const tweener& that )
  * \brief Constructor from a base_tweener.
  * \param that The instance to use for the implementation.
  */
-claw::tween::tweener::tweener( const base_tweener& that )
-  : m_impl( that.clone() )
-{
+claw::tween::tweener::tweener(const base_tweener& that)
+: m_impl(that.clone()) {
 
 } // tweener::tweener()
 
@@ -66,8 +63,7 @@ claw::tween::tweener::tweener( const base_tweener& that )
 /**
  * \brief Destructor.
  */
-claw::tween::tweener::~tweener()
-{
+claw::tween::tweener::~tweener() {
   delete m_impl;
 } // tweener::~tweener()
 
@@ -76,8 +72,7 @@ claw::tween::tweener::~tweener()
  * \brief Assignment operator.
  * \param that The instance to copy from.
  */
-claw::tween::tweener& claw::tween::tweener::operator=( const tweener& that )
-{
+claw::tween::tweener& claw::tween::tweener::operator = (const tweener& that) {
   tweener tmp(that);
   swap(tmp);
   return *this;
@@ -88,8 +83,7 @@ claw::tween::tweener& claw::tween::tweener::operator=( const tweener& that )
  * \brief Swap this instance with a given instance.
  * \param that The instance to swap with.
  */
-void claw::tween::tweener::swap( tweener& that ) throw()
-{
+void claw::tween::tweener::swap(tweener& that) throw() {
   std::swap(m_impl, that.m_impl);
 } // tweener::swap()
 
@@ -97,12 +91,12 @@ void claw::tween::tweener::swap( tweener& that ) throw()
 /**
  * \brief Tell if the tweener has reached his total duration.
  */
-bool claw::tween::tweener::is_finished() const
-{
-  if ( m_impl == nullptr )
-    return true;
-  else
-    return m_impl->is_finished();
+bool claw::tween::tweener::is_finished() const {
+  if (m_impl == nullptr) {
+      return true;
+    } else {
+        return m_impl->is_finished();
+  }
 } // tweener::is_finished()
 
 /*----------------------------------------------------------------------------*/
@@ -110,22 +104,22 @@ bool claw::tween::tweener::is_finished() const
  * \brief Update the tweener of a given amount of time.
  * \param dt The duration of the update in time units since the last call.
  */
-double claw::tween::tweener::update( double dt )
-{
-  if ( m_impl == nullptr )
-    return dt;
-  else
-    return m_impl->update(dt);
+double claw::tween::tweener::update(double dt) {
+  if (m_impl == nullptr) {
+      return dt;
+    } else {
+        return m_impl->update(dt);
+  }
 } // tweener::update()
 
 /*----------------------------------------------------------------------------*/
 /**
  * \brief Execute the callbacks notifying about the finish of the tweener.
  */
-void claw::tween::tweener::on_finished( finish_callback f )
-{
-  if ( m_impl != nullptr )
-    m_impl->on_finished(f);
+void claw::tween::tweener::on_finished(finish_callback f) {
+  if (m_impl != nullptr) {
+      m_impl->on_finished(f);
+  }
 } // tweener::on_finished()
 
 /*----------------------------------------------------------------------------*/
@@ -135,7 +129,6 @@ void claw::tween::tweener::on_finished( finish_callback f )
  * \param b The second tweener.
  */
 template<>
-void std::swap( claw::tween::tweener& a, claw::tween::tweener& b )
-{
+void std::swap(claw::tween::tweener& a, claw::tween::tweener& b) {
   a.swap(b);
 } // std::swap()

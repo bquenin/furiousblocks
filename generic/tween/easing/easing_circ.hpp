@@ -32,11 +32,10 @@
 #include "symmetric_easing.hpp"
 
 #include <cmath>
-namespace claw
-{
-  namespace tween
-  {
-    double easing_circ_func( double t );
+
+namespace claw {
+  namespace tween {
+    double easing_circ_func(double t);
 
     /**
      * \brief Easing functions for the tweener.

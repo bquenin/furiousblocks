@@ -10,6 +10,6 @@
 void Scenes::create() {
   logoScene = LogoScene::scene();
   panelScene = PanelScene::scene();
-  titleScene= TitleScene::scene();
+  titleScene = TitleScene::scene();
   tutorialScene = TutorialScene::scene();
 }

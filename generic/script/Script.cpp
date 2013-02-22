@@ -1,6 +1,6 @@
 #include "Script.h"
 
-Script *Script::add(Action* action) {
+Script* Script::add(Action* action) {
   actions.push_back(action);
   return this;
 }

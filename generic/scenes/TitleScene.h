@@ -18,30 +18,30 @@ using namespace cocos2d::extension;
 class TitleScene : public cocos2d::CCLayer {
 private:
   // Ugly but convenient
-  CCControlButton *logIn;
-  CCControlButton *logOut;
-  CCControlButton *musicSwitchOn;
-  CCControlButton *musicSwitchOff;
+  CCControlButton* logIn;
+  CCControlButton* logOut;
+  CCControlButton* musicSwitchOn;
+  CCControlButton* musicSwitchOff;
   CCControlButton* scoresButton;
 
 public:
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
-  static cocos2d::CCScene *scene();
+  static cocos2d::CCScene* scene();
 
   // Implement the "static node()" method manually
   CREATE_FUNC(TitleScene);
 
   bool init();
   void update(float dt);
-  void playAction(CCObject *sender);
-  void howToPlayAction(CCObject *sender);
-  void creditsAction(CCObject *sender);
-  void musicSwitchAction(CCObject *sender);
-  void quitAction(CCObject *sender);
-  void logInAction(CCObject *sender);
-  void logOutAction(CCObject *sender);
-  void scoresAction(CCObject *sender);
+  void playAction(CCObject* sender);
+  void howToPlayAction(CCObject* sender);
+  void creditsAction(CCObject* sender);
+  void musicSwitchAction(CCObject* sender);
+  void quitAction(CCObject* sender);
+  void logInAction(CCObject* sender);
+  void logOutAction(CCObject* sender);
+  void scoresAction(CCObject* sender);
 };
 
 

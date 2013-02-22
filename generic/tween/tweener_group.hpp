@@ -34,21 +34,18 @@
 #include "base_tweener.hpp"
 #include "tweener.hpp"
 
-namespace claw
-{
-  namespace tween
-  {
+namespace claw {
+  namespace tween {
     /**
      * \brief The tweener group manages several tweeners and remove them when
      *        they are over.
      * \author Julien Jorge
      * \sa \ref tweeners
      */
-    class tweener_group:
-      public base_tweener
-    {
+    class tweener_group :
+    public base_tweener {
     public:
-      void insert( const tweener& t );
+      void insert(const tweener& t);
 
       void clear();
       bool isFinished;
@@ -56,13 +53,13 @@ namespace claw
     private:
       tweener_group* do_clone() const;
       bool do_is_finished() const;
-      double do_update( double dt );
+      double do_update(double dt);
 
 
     private:
       /** \brief The tweeners. */
       std::list<tweener> m_tweeners;
-      
+
     }; // class tweener_group
 
   } // namespace tween

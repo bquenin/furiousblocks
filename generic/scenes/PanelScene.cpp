@@ -228,7 +228,7 @@ void PanelScene::update(float dt) {
         continue;
       }
 
-      if (!panel.isGameOver()) {
+      if (!panel.gameOver) {
         grid[x][y]->setPosition(ccp(xOffset + x * Assets::TILE_SIZE, yOffset + y * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
 
 #if DEBUG
@@ -262,7 +262,7 @@ void PanelScene::update(float dt) {
   seconds->setString(Assets::format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
   centisecs->setString(Assets::format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
 
-  if (!gameRunning || panel.isGameOver()) {
+  if (!gameRunning || panel.gameOver) {
     return;
   }
 

@@ -14,7 +14,7 @@
 
 using namespace std::placeholders;
 
-StarNumber::StarNumber(AbstractPanelScene *panelScene, int32_t x, int32_t y, std::string label, ccColor3B color)
+StarNumber::StarNumber(AbstractPanelScene* panelScene, int32_t x, int32_t y, std::string label, ccColor3B color)
 : panelScene(panelScene) {
   ccSprite = CCSprite::createWithSpriteFrameName("star.png");
   ccSprite->setPosition(ccp(x, y));

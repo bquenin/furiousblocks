@@ -30,16 +30,16 @@ public:
   bool init();
 
   // Core
-  FuriousBlocksCore *core;
+  FuriousBlocksCore* core;
   bool gameRunning;
   int64_t tick;
 
   // Renderer
   float stateTime;
-  CCSpriteBatchNode *batch;
-  CCSprite *grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
+  CCSpriteBatchNode* batch;
+  CCSprite* grid[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
 #if DEBUG
-  CCLabelTTF *debug[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
+  CCLabelTTF* debug[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
 #endif
   tweener_group tweeners;
 };

@@ -11,7 +11,7 @@ namespace furiousblocks {
     int32_t x;
     int32_t y;
     Point();
-    Point(Point *p);
+    Point(Point* p);
     Point(int32_t x = 0, int32_t y = 0);
   };
 }

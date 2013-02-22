@@ -33,32 +33,27 @@
  * \param t The ratio of the date, in (0, 1), representing the total
  *        progression of the tweener.
  */
-double claw::tween::easing_bounce_func( double t )
-{
+double claw::tween::easing_bounce_func(double t) {
   const double v = 1 - t;
   double c;
   double d;
 
-  if ( v < (1 / 2.75) )
-    {
-      c = v;
-      d = 0;
-    }
-  else if ( v < (2 / 2.75) )
-    {
-      c = v - 1.5 / 2.75;
-      d = 0.75;
-    }
-  else if ( v < (2.5 / 2.75) )
-    {
-      c = v - 2.25 / 2.75;
-      d = 0.9375;
-    }
-  else
-    {
-      c = v - 2.625 / 2.75;
-      d = 0.984375;
-    }
-      
+  if (v < (1 / 2.75)) {
+    c = v;
+    d = 0;
+  }
+  else if (v < (2 / 2.75)) {
+    c = v - 1.5 / 2.75;
+    d = 0.75;
+  }
+  else if (v < (2.5 / 2.75)) {
+    c = v - 2.25 / 2.75;
+    d = 0.9375;
+  }
+  else {
+    c = v - 2.625 / 2.75;
+    d = 0.984375;
+  }
+
   return 1 - (7.5625 * c * c + d);
 } // easing_bounce_func()

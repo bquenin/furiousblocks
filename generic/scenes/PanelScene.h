@@ -18,26 +18,26 @@ using namespace cocos2d::extension;
 
 class PanelScene : public AbstractPanelScene, FuriousBlocksCoreListener {
 private:
-  Player *player;
+  Player* player;
 
   // Labels
-  CCLabelBMFont *level;
-  CCLabelBMFont *score;
-  CCLabelBMFont *minutes;
-  CCLabelBMFont *seconds;
-  CCLabelBMFont *centisecs;
+  CCLabelBMFont* level;
+  CCLabelBMFont* score;
+  CCLabelBMFont* minutes;
+  CCLabelBMFont* seconds;
+  CCLabelBMFont* centisecs;
 
   // Opening
   int countdown;
-  CCLabelBMFont *countdownLabel;
+  CCLabelBMFont* countdownLabel;
 
   // Gameover
-  CCSprite *youLose;
+  CCSprite* youLose;
 
   // Menu
 //  InputState inputState;
-  CCControlButton *menuButton;
-  PanelMenuOverlay *panelMenuOverlay;
+  CCControlButton* menuButton;
+  PanelMenuOverlay* panelMenuOverlay;
 
 public:
   bool gameOver;
@@ -45,22 +45,22 @@ public:
   CREATE_FUNC(PanelScene);
 
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
-  static CCScene *scene();
+  static CCScene* scene();
 
   PanelScene();
   ~PanelScene();
   bool init();
   void update(float d);
-  void onCombo(Combo *combo);
+  void onCombo(Combo* combo);
   void onGameOver();
   void onBeginningTweenFinished(void);
-  void menuAction(CCObject *sender);
-  void setOverlay(PanelMenuOverlay *panelMenuOverlay);
+  void menuAction(CCObject* sender);
+  void setOverlay(PanelMenuOverlay* panelMenuOverlay);
   void onLastStepFinished(void);
 
   void registerWithTouchDispatcher();
-  bool ccTouchBegan(CCTouch *touch, CCEvent *event);
-  void ccTouchEnded(CCTouch *touch, CCEvent *event);
+  bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+  void ccTouchEnded(CCTouch* touch, CCEvent* event);
 };
 
 #endif // __PANELSCENE_H_

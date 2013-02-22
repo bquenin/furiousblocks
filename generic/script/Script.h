@@ -10,7 +10,7 @@ private:
 
 protected:
 public:
-  Script *add(Action *action);
+  Script* add(Action* action);
   void execute(float stateTime);
   void clear();
 };

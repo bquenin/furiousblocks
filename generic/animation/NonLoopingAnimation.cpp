@@ -7,12 +7,12 @@
 
 #include "NonLoopingAnimation.h"
 
-NonLoopingAnimation::NonLoopingAnimation(int64_t creationTick, float frameDuration, std::initializer_list<cocos2d::CCSpriteFrame *> frames)
+NonLoopingAnimation::NonLoopingAnimation(int64_t creationTick, float frameDuration, std::initializer_list<cocos2d::CCSpriteFrame*> frames)
 : Animation(frameDuration, frames)
 , creationTick(creationTick) {
 }
 
-cocos2d::CCSpriteFrame *NonLoopingAnimation::getKeyFrame(int64_t stateTick) {
+cocos2d::CCSpriteFrame* NonLoopingAnimation::getKeyFrame(int64_t stateTick) {
   return Animation::getKeyFrame(stateTick - creationTick, false);
 }
 

@@ -65,7 +65,7 @@ namespace claw {
       void set_easing(easing_function f);
 
     private:
-      single_tweener *do_clone() const;
+      single_tweener* do_clone() const;
       bool do_is_finished() const;
       double do_update(double dt);
 

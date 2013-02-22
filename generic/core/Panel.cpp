@@ -3,7 +3,6 @@
 #include <iostream>
 #include "Panel.h"
 #include "Garbage.h"
-#include "Clearing.h"
 
 Panel::Panel(int32_t seed, int32_t playerId, std::array<std::array<BlockType, FuriousBlocksCoreDefaults::PANEL_HEIGHT>, FuriousBlocksCoreDefaults::PANEL_WIDTH> initialBlockTypes, PanelListener &panelListener)
 : lastIndex(-1)
@@ -41,10 +40,6 @@ Panel::Panel(int32_t seed, int32_t playerId, std::array<std::array<BlockType, Fu
   for (int32_t x = 0; x < Panel::X; x++) {
     blocks[x][0] = blocks[x][1] == nullptr ? newRandom() : newRandom(blocks[x][1]->type);
   }
-}
-
-Panel::~Panel() {
-  reset();
 }
 
 void Panel::reset() {
@@ -186,7 +181,7 @@ void Panel::processMove() {
 }
 
 void Panel::dropGarbages() {
-  std::set<Garbage*> duplicata(garbageStack);
+  std::unordered_set<Garbage*> duplicata(garbageStack);
   for (auto garbage : duplicata) {
     int32_t y = (Panel::Y_DISPLAY + garbage->height) - 1;
     for (int32_t h = 0, j = y; h < garbage->height; h++, j--) {
@@ -672,18 +667,6 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
 
 Garbage* Panel::newGarbage(int32_t width, int32_t height, int32_t owner, bool skill) {
   return new Garbage(*this, width, height, owner, skill);
-}
-
-int64_t Panel::getLocalTick() {
-  return localTick;
-}
-
-void Panel::setLocalTick(int64_t localTick) {
-  this->localTick = localTick;
-}
-
-bool Panel::isGameOver() const {
-  return gameOver;
 }
 
 void Panel::submitMove(std::unique_ptr<Move>&& move) {

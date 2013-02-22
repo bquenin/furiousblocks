@@ -29,20 +29,17 @@
 #ifndef __CLAW_TWEEN_EASING_NONE_HPP__
 #define __CLAW_TWEEN_EASING_NONE_HPP__
 
-namespace claw
-{
-  namespace tween
-  {
+namespace claw {
+  namespace tween {
     /**
      * \brief Easing functions for the tweener. Those functions do nothing.
      * \author Julien Jorge
      */
-    class easing_none
-    {
+    class easing_none {
     public:
-      static double ease_in( double t );
-      static double ease_out( double t );
-      static double ease_in_out( double t );
+      static double ease_in(double t);
+      static double ease_out(double t);
+      static double ease_in_out(double t);
 
     }; // class easing_none
 

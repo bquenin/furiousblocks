@@ -33,7 +33,6 @@
  * \param t The ratio of the date, in (0, 1), representing the total
  *        progression of the tweener.
  */
-double claw::tween::easing_circ_func( double t )
-{
+double claw::tween::easing_circ_func(double t) {
   return 1 - std::sqrt(1 - t * t);
 } // easing_circ_func()

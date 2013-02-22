@@ -12,7 +12,6 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "PanelScene.h"
-#include "Social.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -27,7 +26,7 @@ bool PanelMenuOverlay::init() {
 
   initWithColor(ccc4(0, 0, 0, 80));
 
-  CCLabelBMFont *yourScore = CCLabelBMFont::create("Your score", "coopblack32.fnt");
+  CCLabelBMFont* yourScore = CCLabelBMFont::create("Your score", "coopblack32.fnt");
   yourScore ->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height - 170));
 //  score->setVisible(false);
   addChild(yourScore);
@@ -51,7 +50,7 @@ bool PanelMenuOverlay::init() {
   restartButton = CCControlButton::create(CCLabelTTF::create("Restart", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #endif
   restartButton->setBackgroundSpriteForState(CCScale9Sprite::create("buttonHighlighted.png"), CCControlStateHighlighted);
-  restartButton->setTitleColorForState(ccWHITE,CCControlStateHighlighted);
+  restartButton->setTitleColorForState(ccWHITE, CCControlStateHighlighted);
   restartButton->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2 + 40));
   restartButton->setPreferredSize(CCSizeMake(restartButton->getContentSize().width + 20, 60));
   restartButton->addTargetWithActionForControlEvents(this, cccontrol_selector(PanelMenuOverlay::restartAction), CCControlEventTouchUpInside);
@@ -88,11 +87,11 @@ bool PanelMenuOverlay::init() {
   return true;
 }
 
-void PanelMenuOverlay::continueAction(CCObject *sender) {
+void PanelMenuOverlay::continueAction(CCObject* sender) {
   setVisible(false);
 }
 
-void PanelMenuOverlay::restartAction(CCObject *sender) {
+void PanelMenuOverlay::restartAction(CCObject* sender) {
   setVisible(false);
   // Restart music
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("harmonic.mp3", true);
@@ -100,12 +99,12 @@ void PanelMenuOverlay::restartAction(CCObject *sender) {
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, PanelScene::scene(), kOrientationUpOver));
 }
 
-void PanelMenuOverlay::endGameAction(CCObject *sender) {
+void PanelMenuOverlay::endGameAction(CCObject* sender) {
   setVisible(false);
   CCDirector::sharedDirector()->replaceScene(CCTransitionZoomFlipY::create(Assets::transitionDuration, TitleScene::scene(), kOrientationUpOver));
 }
 
-void PanelMenuOverlay::musicSwitchAction(CCObject *sender) {
+void PanelMenuOverlay::musicSwitchAction(CCObject* sender) {
   AppDelegate::setMusicOn(!AppDelegate::isMusicOn());
   musicSwitchOn->setVisible(AppDelegate::isMusicOn());
   musicSwitchOff->setVisible(!AppDelegate::isMusicOn());

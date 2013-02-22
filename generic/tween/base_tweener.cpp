@@ -33,8 +33,7 @@
 /**
  * \brief Destructor.
  */
-claw::tween::base_tweener::~base_tweener()
-{
+claw::tween::base_tweener::~base_tweener() {
 
 } // base_tweener::~base_tweener()
 
@@ -42,8 +41,7 @@ claw::tween::base_tweener::~base_tweener()
 /**
  * \brief Create a copy of this allocated with new.
  */
-claw::tween::base_tweener* claw::tween::base_tweener::clone() const
-{
+claw::tween::base_tweener* claw::tween::base_tweener::clone() const {
   return do_clone();
 } // base_tweener::clone()
 
@@ -51,8 +49,7 @@ claw::tween::base_tweener* claw::tween::base_tweener::clone() const
 /**
  * \brief Tell if the tweener has reached his total duration.
  */
-bool claw::tween::base_tweener::is_finished() const
-{
+bool claw::tween::base_tweener::is_finished() const {
   return do_is_finished();
 } // base_tweener::is_finished()
 
@@ -62,14 +59,14 @@ bool claw::tween::base_tweener::is_finished() const
  * \param dt The duration of the update in time units since the last call.
  * \return The amount of extra time in dt after the end of the update.
  */
-double claw::tween::base_tweener::update( double dt )
-{
+double claw::tween::base_tweener::update(double dt) {
   assert( dt >= 0 );
 
   const double result = do_update(dt);
 
-  if ( is_finished() )
-    notify_finished();
+  if (is_finished()) {
+      notify_finished();
+  }
 
   assert( result <= dt );
   assert( result >= 0 );
@@ -81,8 +78,7 @@ double claw::tween::base_tweener::update( double dt )
 /**
  * \brief Execute the callbacks notifying about the finish of the tweener.
  */
-void claw::tween::base_tweener::on_finished( finish_callback f )
-{
+void claw::tween::base_tweener::on_finished(finish_callback f) {
   m_on_finished.push_back(f);
 } // base_tweener::on_finished()
 
@@ -90,14 +86,14 @@ void claw::tween::base_tweener::on_finished( finish_callback f )
 /**
  * \brief Execute the callbacks notifying about the finish of the tweener.
  */
-void claw::tween::base_tweener::notify_finished() const
-{
+void claw::tween::base_tweener::notify_finished() const {
   // If one of the callbacks deletes the tweener, then m_on_finished will not be
   // available. Since we still want to execute all the callbacks, we iterate on
   // a copy of it.
   const std::list<finish_callback> callbacks(m_on_finished);
 
-  for ( std::list<finish_callback>::const_iterator it=callbacks.begin();
-        it!=callbacks.end(); ++it )
-    (*it)();
+  for (std::list<finish_callback>::const_iterator it = callbacks.begin();
+       it != callbacks.end(); ++it) {
+           (*it)();
+  }
 } // base_tweener::notify_finished()

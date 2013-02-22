@@ -34,8 +34,7 @@
  * \param t The ratio of the date, in (0, 1), representing the total progression
  *        of the tweener.
  */
-double claw::tween::easing_none::ease_in( double t )
-{
+double claw::tween::easing_none::ease_in(double t) {
   return 0;
 } // easing_none::ease_in()
 
@@ -45,8 +44,7 @@ double claw::tween::easing_none::ease_in( double t )
  * \param t The ratio of the date, in (0, 1), representing the total progression
  *        of the tweener.
  */
-double claw::tween::easing_none::ease_out( double t )
-{
+double claw::tween::easing_none::ease_out(double t) {
   return 0;
 } // easing_none::ease_out()
 
@@ -56,7 +54,6 @@ double claw::tween::easing_none::ease_out( double t )
  * \param t The ratio of the date, in (0, 1), representing the total progression
  *        of the tweener.
  */
-double claw::tween::easing_none::ease_in_out( double t )
-{
+double claw::tween::easing_none::ease_in_out(double t) {
   return 0;
 } // easing_none::ease_in_out()

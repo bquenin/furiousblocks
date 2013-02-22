@@ -2,7 +2,7 @@
 #include <memory>
 #include "FuriousBlocksCore.h"
 
-FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *listener)
+FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener* listener)
 : seed(seed)
 , running(false)
 , paused(false)
@@ -24,18 +24,18 @@ FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener *li
 
 FuriousBlocksCore::~FuriousBlocksCore() {
   for (auto &entry: playerToPanel) {
-    Player *player = entry.first;
-    Panel *panel = entry.second;
+    Player* player = entry.first;
+    Panel* panel = entry.second;
     delete player;
     delete panel;
   }
 }
 
-void FuriousBlocksCore::addPlayer(Player *newPlayer) {
+void FuriousBlocksCore::addPlayer(Player* newPlayer) {
   addPlayer(newPlayer, nullptr);
 }
 
-void FuriousBlocksCore::addPlayer(Player *newPlayer, Panel *panel) {
+void FuriousBlocksCore::addPlayer(Player* newPlayer, Panel* panel) {
   playerToPanel[newPlayer] = panel == nullptr ? new Panel(seed + newPlayer->id, newPlayer->id, initialBlockTypes, *this) : panel;
 }
 
@@ -57,9 +57,9 @@ void FuriousBlocksCore::stop() {
 
 void FuriousBlocksCore::onTick(int64_t tick) {
   for (const auto &entry: playerToPanel) {
-    Player *player = entry.first;
-    Panel *panel = entry.second;
-    if (panel->isGameOver()) {
+    Player* player = entry.first;
+    Panel* panel = entry.second;
+    if (panel->gameOver) {
       continue;
     }
     panel->submitMove(player->onMoveRequest(*panel));
@@ -67,7 +67,7 @@ void FuriousBlocksCore::onTick(int64_t tick) {
   }
 }
 
-void FuriousBlocksCore::onCombo(Combo *combo) {
+void FuriousBlocksCore::onCombo(Combo* combo) {
   listener->onCombo(combo);
 //  for (const auto & entry: playerToPanel) {
 //    Player *player = entry.first;

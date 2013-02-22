@@ -19,16 +19,16 @@ class CreditsScene : public cocos2d::CCLayerColor {
 
 public:
   // there's no 'id' in cpp, so we recommend to return the exactly class pointer
-  static cocos2d::CCScene *scene();
+  static cocos2d::CCScene* scene();
 
   // Implement the "static node()" method manually
   CREATE_FUNC(CreditsScene);
 
   bool init();
-  void codeAction(CCObject *sender);
-  void musicAction(CCObject *sender);
-  void graphicsAction(CCObject *sender);
-  void backToTitleAction(CCObject *sender);
+  void codeAction(CCObject* sender);
+  void musicAction(CCObject* sender);
+  void graphicsAction(CCObject* sender);
+  void backToTitleAction(CCObject* sender);
 };
 
 

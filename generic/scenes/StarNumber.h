@@ -19,14 +19,14 @@ using namespace cocos2d;
 class AbstractPanelScene;
 
 class StarNumber {
-  private:
-  AbstractPanelScene *panelScene;
-  CCSprite *ccSprite;
-  CCLabelBMFont *ccLabel;
+private:
+  AbstractPanelScene* panelScene;
+  CCSprite* ccSprite;
+  CCLabelBMFont* ccLabel;
   claw::tween::tweener_group tweener;
 
 public:
-  StarNumber(AbstractPanelScene *panelScene, int32_t x, int32_t y, std::string label, ccColor3B color);
+  StarNumber(AbstractPanelScene* panelScene, int32_t x, int32_t y, std::string label, ccColor3B color);
   void onTweenFinished();
 
 };

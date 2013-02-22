@@ -4,10 +4,9 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 
-class CustomTableViewCell : public cocos2d::extension::CCTableViewCell
-{
+class CustomTableViewCell : public cocos2d::extension::CCTableViewCell {
 public:
-	virtual void draw();
+  virtual void draw();
 };
 
 #endif /* __CUSTOMTABELVIEWCELL_H__ */
