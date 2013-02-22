@@ -37,7 +37,6 @@ namespace fb {
     bool justLand;
     bool movable;
     bool combinable;
-    void* clearing;
   };
 }
 #endif //__Block_H_

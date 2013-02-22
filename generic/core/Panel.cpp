@@ -110,10 +110,6 @@ void Panel::processMove() {
   MoveType type = move->type;
   switch (type) {
     case MoveType::BLOCK_SWITCH: {
-//      std::unique_ptr<fb::Block>& src = blocks[cursor.x][cursor.y];
-//      std::unique_ptr<fb::Block>& dst = blocks[cursor.x + 1][cursor.y];
-//      std::unique_ptr<fb::Block>& aboveSrc = blocks[cursor.x][cursor.y + 1];
-//      std::unique_ptr<fb::Block>& aboveDst = blocks[cursor.x + 1][cursor.y + 1];
       auto& src = blocks[cursor.x][cursor.y];
       auto& dst = blocks[cursor.x + 1][cursor.y];
       auto& aboveSrc = blocks[cursor.x][cursor.y + 1];
@@ -425,9 +421,9 @@ void Panel::mechanics(int64_t tick) {
             }
               break;
             case BlockType::GARBAGE: {
-              auto clearing = static_cast<Clearing*>(current->clearing);
+              auto clearing = getClearingByBlock(current);
               auto garbage = getGarbageByBlock(current);
-              revealingTime = garbage->reveal(x, y, revealingTime, clearing);
+              revealingTime = garbage->reveal(x, y, revealingTime, *clearing);
               clearing->setRevealingTime(tick + revealingTime);
               clearing->removeBar(garbage);
               x += garbage->width - 1;
@@ -471,11 +467,11 @@ void Panel::mechanics(int64_t tick) {
           }
           break;
         case BlockState::DONE_REVEALING: {
-          Clearing* clearing = static_cast<Clearing*>(current->clearing);
+          auto clearing = getClearingByBlock(current);
           if (clearing->isDoneRevealing(tick)) {
             clearing->onDoneRevealing();
             clearings.erase(clearing);
-            delete clearing;
+            clearing.reset();
           }
         }
           break;
@@ -511,6 +507,16 @@ std::shared_ptr<Panel::Garbage> Panel::getGarbageByBlock(std::shared_ptr<fb::Blo
   }
   return nullptr;
 }
+
+std::shared_ptr<Panel::Clearing> Panel::getClearingByBlock(std::shared_ptr<fb::Block> block) {
+  for (auto &clearing: clearings) {
+    if (clearing->contains(block)) {
+      return clearing;
+    }
+  }
+  return nullptr;
+}
+
 
 std::shared_ptr<Combo> Panel::detectCombo() {
   // Create a new combo
@@ -569,7 +575,7 @@ std::shared_ptr<Combo> Panel::detectCombo() {
       blocks[x][y]->combo = true;
     }
   }
-  return combo;
+  return std::move(combo);
 }
 
 void Panel::processCombo(std::shared_ptr<Combo> combo) {
@@ -613,7 +619,9 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
     freeze(bonusFreezingTime);
   }
 
-  Clearing* clearing = new Clearing();
+  // Create a new clearing
+  auto clearing = std::make_shared<Panel::Clearing>();
+
   for (int32_t y = 1; y < Panel::Y; y++) {
     for (int32_t x = 0; x < Panel::X; x++) {
       auto& current = blocks[x][y];
@@ -654,36 +662,11 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
       }
     }
   }
+
   if (!clearing->isEmpty()) {
     clearings.insert(clearing);
-  } else {
-    delete clearing;
   }
 }
-
-//PanelSituation *Panel::getSituation() {
-//  BlockSituation ***blockSituations = new BlockSituation **[FuriousBlocksCoreDefaults::PANEL_WIDTH];
-//  for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
-//    blockSituations[x] = new BlockSituation *[FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1];
-//    for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
-//      blockSituations[x][y] = blocks[x][y] == NULL ? NULL : blocks[x][y]->getSituation();
-//    }
-//  }
-//
-//  std::set<ComboSituation *> comboSituations;
-//  for (auto combo: combos) {
-//    comboSituations.insert(combo->getSituation());
-//  }
-//  std::set<GarbageSituation *> garbageSituations;
-//  for (auto garbage: garbages) {
-//    garbageSituations.insert(garbage->getSituation());
-//  }
-//  std::set<GarbageSituation *> garbageStackSituation;
-//  for (auto garbage: garbageStack) {
-//    garbageStackSituation.insert(garbage->getSituation());
-//  }
-//  return new PanelSituation(blockSituations, locked, comboSituations, cursor, scrollingDelta, state, stateTick, garbageSituations, garbageStackSituation, skillChainLevel, freezingTime, gameOver, wallOffset, gracing, score, !clearings.empty());
-//}
 
 Panel::Garbage* Panel::newGarbage(int32_t width, int32_t height, int32_t owner, bool skill) {
   return new Panel::Garbage(this, width, height, owner, skill);
@@ -828,7 +811,7 @@ void Panel::Garbage::blink(std::shared_ptr<Combo> combo) {
   BlockBar::blink();
 }
 
-int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing* parentClearing) {
+int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing& parentClearing) {
   if (isRevealing()) {
     return revealingTime;
   }
@@ -851,12 +834,12 @@ int32_t Panel::Garbage::reveal(int32_t xOrigin, int32_t yOrigin, int32_t reveali
   }
   auto subLine = std::make_shared<Panel::BlockLine>(__parent, width, owner);
   subLine->inject(xOrigin, yOrigin);
-  parentClearing->addBlockBar(subLine);
+  parentClearing.addBlockBar(subLine);
   revealingTimeIncrement = subLine->reveal(xOrigin, yOrigin, revealingTimeIncrement);
   if (height > 1) {
     std::shared_ptr<Panel::Garbage> subGarbage (__parent->newGarbage(width, height - 1, owner, skill));
     subGarbage->inject(xOrigin, yOrigin + height - 1);
-    parentClearing->addBlockBar(subGarbage);
+    parentClearing.addBlockBar(subGarbage);
     for (int32_t y = yOrigin + 1; y < yOrigin + height && y < Panel::Y; y++) {
       for (int32_t x = xOrigin; x < xOrigin + width && x < Panel::X; x++) {
         if (y <= Panel::Y_DISPLAY) {
@@ -875,14 +858,6 @@ void Panel::Garbage::onDoneRevealing() {
     block->idle();
   }
 }
-
-//GarbageSituation *Panel::Garbage::getSituation() {
-//  std::unordered_set<int32_t> blockIds;
-//  for (auto barBlock: barBlocks) {
-//    blockIds.insert(barBlock->id);
-//  }
-//  return new GarbageSituation(width, height, owner, blockIds);
-//}
 
 Panel::BlockLine::BlockLine(Panel* __parent, int32_t width, int32_t owner)
 : BlockBar(__parent, width, 1, owner) {
@@ -923,9 +898,9 @@ int32_t Panel::BlockLine::reveal(int32_t xOrigin, int32_t yOrigin, int32_t revea
 }
 
 void Panel::Clearing::addBlockBar(std::shared_ptr<Panel::BlockBar> bar) {
-  for (auto &block: bar->barBlocks) {
-    block->clearing = this;
-  }
+//  for (auto &block: bar->barBlocks) {
+//    block->clearing = this;
+//  }
   bars.insert(bar);
 }
 
@@ -953,9 +928,9 @@ bool Panel::Clearing::isEmpty() {
 }
 
 void Panel::Clearing::removeBar(std::shared_ptr<BlockBar> bar) {
-  for (auto block : bar->barBlocks) {
-    block->clearing = nullptr;
-  }
+//  for (auto block : bar->barBlocks) {
+//    block->clearing = nullptr;
+//  }
   bars.erase(bar);
 }
 

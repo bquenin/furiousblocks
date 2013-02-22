@@ -20,8 +20,6 @@ public:
   class Clearing;
 
 private:
-
-
   class BlockBar {
     friend class Clearing;
 
@@ -65,8 +63,7 @@ private:
     bool isSkill();
     int32_t getOwner();
     void blink(std::shared_ptr<Combo> combo);
-    int32_t reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing* parentClearing);
-//    GarbageSituation *getSituation();
+    int32_t reveal(int32_t xOrigin, int32_t yOrigin, int32_t revealingTime, Clearing& parentClearing);
   };
 
   class BlockLine : public BlockBar {
@@ -89,7 +86,7 @@ private:
   int32_t playerId;
   std::set<std::shared_ptr<Combo>> combos;
   std::set<std::shared_ptr<Panel::Garbage>> garbages;
-  std::set<Clearing*> clearings;
+  std::set<std::shared_ptr<Panel::Clearing>> clearings;
   std::set<Panel::Garbage*> garbageStack;
   int32_t levelScrollingSpeed;
   int64_t scrollingSpeed;
@@ -110,6 +107,7 @@ private:
   void mechanics(int64_t tick);
   std::shared_ptr<Combo> getComboByBlock(fb::Block* block);
   std::shared_ptr<Panel::Garbage> getGarbageByBlock(std::shared_ptr<fb::Block> block);
+  std::shared_ptr<Panel::Clearing> getClearingByBlock(std::shared_ptr<fb::Block> block);
   std::shared_ptr<Combo> detectCombo();
   void processCombo(std::shared_ptr<Combo> combo);
 
