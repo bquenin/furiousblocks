@@ -96,9 +96,10 @@ void Panel::onTick(int64_t tick) {
   std::shared_ptr<Combo> currentCombo(detectCombo());
   if (currentCombo->size() > 0) {
     processCombo(currentCombo);
-  } else {
-    currentCombo.reset();
   }
+//  else {
+//    currentCombo.reset();
+//  }
   scrolling(tick);
   dropGarbages();
 }
@@ -572,7 +573,7 @@ std::shared_ptr<Combo> Panel::detectCombo() {
         originSet = true;
       }
       combo->addBlock(blocks[x][y]);
-      blocks[x][y]->combo = true;
+//      blocks[x][y]->combo = true;
     }
   }
   return std::move(combo);

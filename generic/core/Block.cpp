@@ -11,7 +11,7 @@ namespace fb {
   , stateTick(0)
   , garbageBlockType(0)
   , garbageOwner(0)
-  , combo(false)
+//  , combo(false)
   , fallingFromClearing(false)
   , justLand(false)
   , movable(false)

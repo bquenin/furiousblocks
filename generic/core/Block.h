@@ -32,7 +32,7 @@ namespace fb {
     int32_t stateTick;
     int32_t garbageBlockType;
     int32_t garbageOwner;
-    bool combo;
+//    bool combo;
     bool fallingFromClearing;
     bool justLand;
     bool movable;
