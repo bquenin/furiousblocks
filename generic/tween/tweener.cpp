@@ -93,9 +93,9 @@ void claw::tween::tweener::swap(tweener& that) throw() {
  */
 bool claw::tween::tweener::is_finished() const {
   if (m_impl == nullptr) {
-      return true;
-    } else {
-        return m_impl->is_finished();
+    return true;
+  } else {
+    return m_impl->is_finished();
   }
 } // tweener::is_finished()
 
@@ -106,9 +106,9 @@ bool claw::tween::tweener::is_finished() const {
  */
 double claw::tween::tweener::update(double dt) {
   if (m_impl == nullptr) {
-      return dt;
-    } else {
-        return m_impl->update(dt);
+    return dt;
+  } else {
+    return m_impl->update(dt);
   }
 } // tweener::update()
 
@@ -118,7 +118,7 @@ double claw::tween::tweener::update(double dt) {
  */
 void claw::tween::tweener::on_finished(finish_callback f) {
   if (m_impl != nullptr) {
-      m_impl->on_finished(f);
+    m_impl->on_finished(f);
   }
 } // tweener::on_finished()
 

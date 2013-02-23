@@ -78,9 +78,9 @@ double claw::tween::symmetric_easing<Function>::ease_out(double t) {
 template<double (*Function)(double)>
 double claw::tween::symmetric_easing<Function>::ease_in_out(double t) {
   if (t < 0.5) {
-      return ease_in(2 * t) / 2;
-    } else {
-        return 0.5 + ease_out(2 * t - 1) / 2;
+    return ease_in(2 * t) / 2;
+  } else {
+    return 0.5 + ease_out(2 * t - 1) / 2;
   }
 } // symmetric_easing::ease_in_out()
 

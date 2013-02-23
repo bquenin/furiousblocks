@@ -153,9 +153,9 @@ bool CCTexture2DMutable::setPixelAt(const CCPoint& pt, ccColor4B c) {
 
 void CCTexture2DMutable::fill(ccColor4B p) {
   for (int r = 0; r < m_tContentSize.height; ++r) {
-      for (int c = 0; c < m_tContentSize.width; ++c) {
-        this->setPixelAt(CCPointMake(c, r), p);
-      }
+    for (int c = 0; c < m_tContentSize.width; ++c) {
+      this->setPixelAt(CCPointMake(c, r), p);
+    }
   }
 }
 

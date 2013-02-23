@@ -33,10 +33,8 @@
 #include <utility>
 #include <functional>
 
-namespace claw
-{
-  namespace tween
-  {
+namespace claw {
+  namespace tween {
     class base_tweener;
 
     /**
@@ -45,8 +43,7 @@ namespace claw
      * \author Julien Jorge
      * \sa \ref tweeners
      */
-    class tweener
-    {
+    class tweener {
     public:
       /**
        * \brief The type of the function called to notify the end of the
@@ -56,32 +53,31 @@ namespace claw
 
     public:
       tweener();
-      tweener( const tweener& that );
-      tweener( const base_tweener& that );
+      tweener(const tweener& that);
+      tweener(const base_tweener& that);
       ~tweener();
 
-      tweener& operator=( const tweener& that );
+      tweener& operator = (const tweener& that);
 
-      void swap( tweener& that ) throw();
+      void swap(tweener& that) throw();
 
       bool is_finished() const;
-      double update( double dt );
+      double update(double dt);
 
-      void on_finished( finish_callback f );
-      
+      void on_finished(finish_callback f);
+
     private:
       /** \brief The implementation of this tweener. */
       base_tweener* m_impl;
-      
+
     }; // class tweener
 
   } // namespace tween
 } // namespace claw
 
-namespace std
-{
+namespace std {
   template<>
-  void swap( claw::tween::tweener& a, claw::tween::tweener& b );
+  void swap(claw::tween::tweener& a, claw::tween::tweener& b);
 } // namespace std
 
 #endif // __CLAW_TWEEN_TWEENER_HPP__

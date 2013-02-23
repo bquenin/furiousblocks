@@ -65,7 +65,7 @@ double claw::tween::base_tweener::update(double dt) {
   const double result = do_update(dt);
 
   if (is_finished()) {
-      notify_finished();
+    notify_finished();
   }
 
   assert( result <= dt );
@@ -94,6 +94,6 @@ void claw::tween::base_tweener::notify_finished() const {
 
   for (std::list<finish_callback>::const_iterator it = callbacks.begin();
        it != callbacks.end(); ++it) {
-           (*it)();
+    (*it)();
   }
 } // base_tweener::notify_finished()

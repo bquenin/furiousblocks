@@ -20,14 +20,15 @@ private:
 
 public:
   std::array<std::array<BlockType, FuriousBlocksCoreDefaults::PANEL_HEIGHT>, FuriousBlocksCoreDefaults::PANEL_WIDTH> initialBlockTypes;
-  // BlockType initialBlockTypes[FuriousBlocksCoreDefaults::PANEL_WIDTH][FuriousBlocksCoreDefaults::PANEL_HEIGHT];
-  std::unordered_map<Player*, Panel*> playerToPanel;
+
+  std::unordered_map<Player*, std::unique_ptr<Panel>> playerToPanel;
+  /// Long story short: You cannot use abstract classes in containers (it just doesn't compile).
+  /// You can't use std::unique<T> if T is an abstract class.
 
   FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener* listener = nullptr);
   ~FuriousBlocksCore();
 
   void addPlayer(Player* newPlayer);
-  void addPlayer(Player* newPlayer, Panel* panel);
   void run();
   void pause();
   void resume();

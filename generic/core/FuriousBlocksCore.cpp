@@ -24,19 +24,13 @@ FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener* li
 
 FuriousBlocksCore::~FuriousBlocksCore() {
   for (auto &entry: playerToPanel) {
-    Player* player = entry.first;
-    Panel* panel = entry.second;
+    auto& player = entry.first;
     delete player;
-    delete panel;
   }
 }
 
 void FuriousBlocksCore::addPlayer(Player* newPlayer) {
-  addPlayer(newPlayer, nullptr);
-}
-
-void FuriousBlocksCore::addPlayer(Player* newPlayer, Panel* panel) {
-  playerToPanel[newPlayer] = panel == nullptr ? new Panel(seed + newPlayer->id, newPlayer->id, initialBlockTypes, *this) : panel;
+  playerToPanel[newPlayer].reset(new Panel(seed + newPlayer->id, newPlayer->id, initialBlockTypes, *this));
 }
 
 void FuriousBlocksCore::run() {
@@ -57,13 +51,13 @@ void FuriousBlocksCore::stop() {
 
 void FuriousBlocksCore::onTick(int64_t tick) {
   for (const auto &entry: playerToPanel) {
-    Player* player = entry.first;
-    Panel* panel = entry.second;
-    if (panel->gameOver) {
+    auto& player = *entry.first;
+    auto& panel = *entry.second;
+    if (panel.gameOver) {
       continue;
     }
-    panel->submitMove(player->onMoveRequest(*panel));
-    panel->onTick(tick);
+    panel.submitMove(player.onMoveRequest(panel));
+    panel.onTick(tick);
   }
 }
 
