@@ -2,12 +2,12 @@
 #include <memory>
 #include "FuriousBlocksCore.h"
 
-FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener* listener)
+FuriousBlocksCore::FuriousBlocksCore(int32_t seed, std::unique_ptr<FuriousBlocksCoreListener>&& listener)
 : seed(seed)
 , running(false)
 , paused(false)
 , singleTick(false)
-, listener(listener) {
+, listener(std::move(listener)) {
   SimpleRNG random(seed);
   for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
     for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {

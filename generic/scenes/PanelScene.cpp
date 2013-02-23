@@ -141,7 +141,7 @@ bool PanelScene::init() {
   tweeners.insert(countDownTweener);
 
   // Game initialization
-  core = new FuriousBlocksCore(rand(), this);
+  core = new FuriousBlocksCore(rand(), std::unique_ptr<FuriousBlocksCoreListener>(this));
 
   // Player initialization
   player = new TouchPlayer();
