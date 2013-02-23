@@ -8,7 +8,6 @@ private:
   int32_t m_w;
   int32_t m_z;
 
-protected:
 public:
   SimpleRNG(int32_t u = 521288629);
   int32_t nextInt();

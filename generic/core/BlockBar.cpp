@@ -9,11 +9,11 @@
 #include "Panel.h"
 
 BlockBar::BlockBar(Panel& panel, int32_t width, int32_t height, int32_t owner)
-: panel(panel) {
-  this->id = panel.random.nextInt();
-  this->width = width;
-  this->height = height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height;
-  this->owner = owner;
+: panel(panel)
+, id(panel.random.nextInt())
+, width(width)
+, height(height >= Panel::Y - Panel::Y_DISPLAY ? Panel::Y - Panel::Y_DISPLAY : height)
+, owner(owner) {
 }
 
 bool BlockBar::contains(std::shared_ptr<fb::Block> block) {

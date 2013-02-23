@@ -11,21 +11,8 @@
 #include "Panel.h"
 
 class FuriousBlocksCore : PanelListener {
-private:
-  int32_t seed;
-  bool running;
-  bool paused;
-  bool singleTick;
-  std::unique_ptr<FuriousBlocksCoreListener> listener;
-
 public:
-  std::array<std::array<BlockType, FuriousBlocksCoreDefaults::PANEL_HEIGHT>, FuriousBlocksCoreDefaults::PANEL_WIDTH> initialBlockTypes;
-
-  /// Long story short: You cannot use abstract classes in containers (it just doesn't compile).
-  /// You can't use std::unique<T> if T is an abstract class.
-  std::unordered_map<Player*, std::unique_ptr<Panel>> playerToPanel;
-
-  FuriousBlocksCore(int32_t seed, std::unique_ptr<FuriousBlocksCoreListener>&& listener);
+  FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener& listener);
   ~FuriousBlocksCore();
 
   void addPlayer(Player* newPlayer);
@@ -38,6 +25,18 @@ public:
   void onEvent(int64_t playerId, PanelEvent panelEvent);
   void justATick();
   void onGameOver();
+
+  std::array<std::array<BlockType, FuriousBlocksCoreDefaults::PANEL_HEIGHT>, FuriousBlocksCoreDefaults::PANEL_WIDTH> initialBlockTypes;
+
+  /// Long story short: You cannot use abstract classes in containers (it just doesn't compile).
+  /// You can't use std::unique<T> if T is an abstract class.
+  std::unordered_map<Player*, std::shared_ptr<Panel>> playerToPanel;
+
+  int32_t seed;
+  bool running;
+  bool paused;
+  bool singleTick;
+  FuriousBlocksCoreListener& listener;
 };
 
 #endif //__FuriousBlocksCore_H_

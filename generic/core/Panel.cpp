@@ -9,7 +9,7 @@ Panel::Panel(int32_t seed, int32_t playerId, std::array<std::array<BlockType, Fu
 , random(SimpleRNG(seed))
 , localTick(0)
 , playerId(playerId)
-, cursor(furiousblocks::Point((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2)))
+, cursor((Panel::X / 2) - 1, (Panel::Y_DISPLAY / 2))
 , levelScrollingSpeed(Panel::INITIAL_SCROLLING_SPEED)
 , scrollingSpeed(Panel::INITIAL_SCROLLING_SPEED)
 , scrollingDelta(0)
@@ -302,10 +302,12 @@ void Panel::mechanics(int64_t tick) {
         current->justLand = false;
         current->fallingFromClearing = false;
       }
-      std::unique_ptr<PanelEvent> event = current->update();
-      if (event != nullptr) {
+
+      auto event = current->update();
+      if (event) {
         panelListener.onEvent(playerId, *event);
       }
+
       BlockType type = current->type;
       BlockState state = current->state;
       switch (state) {

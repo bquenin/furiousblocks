@@ -9,7 +9,7 @@ namespace fb {
   , type(type)
   , state(BlockState::IDLE)
   , stateTick(0)
-  , garbageBlockType(0)
+  , garbageBlockType()
   , garbageOwner(0)
 //  , combo(false)
   , fallingFromClearing(false)

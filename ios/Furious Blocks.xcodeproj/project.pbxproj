@@ -1687,7 +1687,6 @@
 		D2BD397615C5D0A90038E59C /* FuriousBlocksCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuriousBlocksCore.h; sourceTree = "<group>"; };
 		D2BD397815C5D0A90038E59C /* FuriousBlocksCoreDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuriousBlocksCoreDefaults.h; sourceTree = "<group>"; };
 		D2BD397A15C5D0A90038E59C /* FuriousBlocksCoreListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuriousBlocksCoreListener.h; sourceTree = "<group>"; };
-		D2BD397E15C5D0A90038E59C /* GameType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameType.h; sourceTree = "<group>"; };
 		D2BD398015C5D0A90038E59C /* GarbageBlockType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarbageBlockType.h; sourceTree = "<group>"; };
 		D2BD398415C5D0A90038E59C /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
 		D2BD398615C5D0A90038E59C /* MoveType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveType.h; sourceTree = "<group>"; };
@@ -2896,7 +2895,6 @@
 				D2BD397615C5D0A90038E59C /* FuriousBlocksCore.h */,
 				D2BD397815C5D0A90038E59C /* FuriousBlocksCoreDefaults.h */,
 				D2BD397A15C5D0A90038E59C /* FuriousBlocksCoreListener.h */,
-				D2BD397E15C5D0A90038E59C /* GameType.h */,
 				D2BD398015C5D0A90038E59C /* GarbageBlockType.h */,
 				D2BD398415C5D0A90038E59C /* Move.h */,
 				D2BD398615C5D0A90038E59C /* MoveType.h */,

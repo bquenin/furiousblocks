@@ -118,7 +118,7 @@ bool TutorialScene::init() {
   addChild(textBox);
 
   // Game initialization
-  core = new FuriousBlocksCore(2064, std::unique_ptr<FuriousBlocksCoreListener>(this));
+  core = new FuriousBlocksCore(2064, *this);
   core->initialBlockTypes[5][2] = static_cast<BlockType >(-1);
   core->initialBlockTypes[5][3] = static_cast<BlockType >(-1);
   core->initialBlockTypes[4][3] = static_cast<BlockType >(-1);

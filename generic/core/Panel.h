@@ -73,8 +73,8 @@ public:
   bool locked;
   bool lifting;
   bool gracing;
-  PanelListener &panelListener;
   bool scrollingEnabled;
+  PanelListener &panelListener;
   furiousblocks::Point cursor;
   int32_t scrollingDelta;
   uint64_t score;

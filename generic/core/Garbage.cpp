@@ -6,31 +6,18 @@
 
 
 #include "Garbage.h"
-#include "GarbageBlockType.h"
 #include "Panel.h"
 #include "BlockLine.h"
 
 Garbage::Garbage(Panel& panel, int32_t width, int32_t height, int32_t owner, bool skill)
-: BlockBar(panel, width, height, owner) {
-  this->skill = skill;
-}
-
-bool Garbage::isSkill() {
-  return skill;
-}
-
-int32_t Garbage::getOwner() {
-  return owner;
+: BlockBar(panel, width, height, owner)
+, skill(skill) {
 }
 
 void Garbage::inject(int32_t x, int32_t y) {
   for (int32_t j = y, h = 0; h < height; j--, h++) {
     for (int32_t i = x, w = 0; w < width; i++, w++) {
-      if (panel.blocks[i][j] == nullptr) {
-        panel.blocks[i][j] = panel.newBlock(BlockType::GARBAGE);
-      } else {
-        panel.blocks[i][j] = panel.newBlock(BlockType::GARBAGE);
-      }
+      panel.blocks[i][j] = panel.newBlock(BlockType::GARBAGE);
       panel.blocks[i][j]->garbageOwner = owner;
       barBlocks.insert(panel.blocks[i][j]);
     }

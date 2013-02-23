@@ -5,10 +5,6 @@
 #include "PanelEventType.h"
 
 class PanelEvent {
-private:
-
-
-protected:
 public:
   PanelEventType type;
   PanelEvent(PanelEventType type);

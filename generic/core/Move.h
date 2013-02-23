@@ -6,9 +6,7 @@
 
 class Move {
 public:
-
   Move(MoveType type);
-  Move(Move* move);
 
   MoveType type;
 };

@@ -6,6 +6,7 @@
 #include "BlockState.h"
 #include "BlockType.h"
 #include "PanelEvent.h"
+#include "GarbageBlockType.h"
 
 namespace fb {
 
@@ -24,13 +25,14 @@ namespace fb {
     void airBounce();
     void toDelete();
     std::unique_ptr<PanelEvent> update();
+
     static bool isComputable(Block* block);
 
     int32_t id;
     BlockType type;
     BlockState state;
     int32_t stateTick;
-    int32_t garbageBlockType;
+    GarbageBlockType garbageBlockType;
     int32_t garbageOwner;
 //    bool combo;
     bool fallingFromClearing;

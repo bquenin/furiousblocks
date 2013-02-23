@@ -2,12 +2,12 @@
 #include <memory>
 #include "FuriousBlocksCore.h"
 
-FuriousBlocksCore::FuriousBlocksCore(int32_t seed, std::unique_ptr<FuriousBlocksCoreListener>&& listener)
+FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener& listener)
 : seed(seed)
 , running(false)
 , paused(false)
 , singleTick(false)
-, listener(std::move(listener)) {
+, listener(listener) {
   SimpleRNG random(seed);
   for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
     for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
@@ -62,7 +62,7 @@ void FuriousBlocksCore::onTick(int64_t tick) {
 }
 
 void FuriousBlocksCore::onCombo(Combo* combo) {
-  listener->onCombo(combo);
+  listener.onCombo(combo);
 //  for (const auto & entry: playerToPanel) {
 //    Player *player = entry.first;
 //    Panel *panel = entry.second;
@@ -79,7 +79,7 @@ void FuriousBlocksCore::onEvent(int64_t playerId, PanelEvent panelEvent) {
 }
 
 void FuriousBlocksCore::onGameOver() {
-  listener->onGameOver();
+  listener.onGameOver();
 }
 
 
