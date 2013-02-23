@@ -16,7 +16,6 @@
 #include "Point.h"
 
 class Clearing;
-
 class Garbage;
 
 class Panel {

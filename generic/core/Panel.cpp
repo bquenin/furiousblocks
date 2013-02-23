@@ -101,25 +101,25 @@ void Panel::onTick(int64_t tick) {
 }
 
 void Panel::processMove() {
-  if (move == nullptr) {
+  if (!move) {
     return;
   }
   MoveType type = move->type;
   switch (type) {
     case MoveType::BLOCK_SWITCH: {
-      auto& src = blocks[cursor.x][cursor.y];
-      auto& dst = blocks[cursor.x + 1][cursor.y];
-      auto& aboveSrc = blocks[cursor.x][cursor.y + 1];
-      auto& aboveDst = blocks[cursor.x + 1][cursor.y + 1];
+      auto&& src = blocks[cursor.x][cursor.y];
+      auto&& dst = blocks[cursor.x + 1][cursor.y];
+      auto&& aboveSrc = blocks[cursor.x][cursor.y + 1];
+      auto&& aboveDst = blocks[cursor.x + 1][cursor.y + 1];
       if (!src && !dst) {
         break;
       }
-      if (src != nullptr) {
+      if (src) {
         if (!fb::Block::isComputable(src.get())) {
           break;
         }
       }
-      if (dst != nullptr) {
+      if (dst) {
         if (!fb::Block::isComputable(dst.get())) {
           break;
         }
@@ -177,7 +177,7 @@ void Panel::processMove() {
       }
       break;
   }
-  move.reset(nullptr);
+  move.reset();
 }
 
 void Panel::dropGarbages() {
