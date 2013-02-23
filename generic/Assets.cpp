@@ -363,21 +363,3 @@ CCSpriteFrame* Assets::getBlockFrame(std::shared_ptr<fb::Block> blockSituation, 
 
   return nullptr;
 }
-
-std::string Assets::format(const char* fmt, ...) {
-  size_t size = 512;
-  char* buffer = 0;
-  buffer = new char [size];
-  va_list vl;
-  va_start(vl, fmt);
-  int nsize = vsnprintf(buffer, size, fmt, vl);
-  if (size <= nsize) { //fail delete buffer and try again
-    delete buffer;
-    buffer = new char [nsize + 1];//+1 for /0
-    vsnprintf(buffer, size, fmt, vl);
-  }
-  std::string ret(buffer);
-  va_end(vl);
-  delete buffer;
-  return ret;
-}

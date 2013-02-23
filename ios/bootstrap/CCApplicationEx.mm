@@ -75,9 +75,8 @@ std::string CCApplicationEx::getDeviceUID() {
   ifm = (struct if_msghdr*) buf;
   sdl = (struct sockaddr_dl*) (ifm + 1);
   ptr = (unsigned char*) LLADDR(sdl);
-  std::string outString = Assets::format("%02X:%02X:%02X:%02X:%02X:%02X", *ptr, *(ptr + 1), *(ptr + 2), *(ptr + 3), *(ptr + 4), *(ptr + 5));
+  std::string outString = CCString::createWithFormat("%02X:%02X:%02X:%02X:%02X:%02X", *ptr, *(ptr + 1), *(ptr + 2), *(ptr + 3), *(ptr + 4), *(ptr + 5))->getCString();
   free(buf);
 
   return outString;
 }
-

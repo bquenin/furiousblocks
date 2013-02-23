@@ -76,7 +76,7 @@ bool PanelScene::init() {
     }
   }
 
-  countdownLabel = CCLabelBMFont::create(Assets::format("%d", countdown).c_str(), "coopblack64.fnt");
+  countdownLabel = CCLabelBMFont::create(CCString::createWithFormat("%d", countdown)->getCString(), "coopblack64.fnt");
   countdownLabel->setPosition(ccp(Assets::designResolutionSize.width / 2, Assets::designResolutionSize.height / 2));
   addChild(countdownLabel);
 
@@ -251,16 +251,16 @@ void PanelScene::update(float dt) {
   tweeners.update(dt);
 
   // Level
-  level->setString(Assets::format("%d", panel.level).c_str());
+  level->setString(CCString::createWithFormat("%d", panel.level)->getCString());
 
   // Score
-  score->setString(Assets::format("%d", panel.score).c_str());
-  panelMenuOverlay->score->setString(Assets::format("%d", panel.score).c_str());
+  score->setString(CCString::createWithFormat("%d", panel.score)->getCString());
+  panelMenuOverlay->score->setString(CCString::createWithFormat("%d", panel.score)->getCString());
 
   // Time
-  minutes->setString(Assets::format("%02d", static_cast<int32_t>(stateTime / 60)).c_str());
-  seconds->setString(Assets::format("%02d", static_cast<int32_t>(stateTime) % 60).c_str());
-  centisecs->setString(Assets::format("%02d", static_cast<int32_t>(stateTime * 100) % 100).c_str());
+  minutes->setString(CCString::createWithFormat("%02d", static_cast<int32_t>(stateTime / 60))->getCString());
+  seconds->setString(CCString::createWithFormat("%02d", static_cast<int32_t>(stateTime) % 60)->getCString());
+  centisecs->setString(CCString::createWithFormat("%02d", static_cast<int32_t>(stateTime * 100) % 100)->getCString());
 
   if (!gameRunning || panel.gameOver) {
     return;
@@ -275,10 +275,10 @@ void PanelScene::update(float dt) {
 
 void PanelScene::onCombo(Combo* combo) {
   if (combo->size() > 3) {
-    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + combo->y * Assets::TILE_SIZE, Assets::format("%d", combo->size()), ccORANGE);
+    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + combo->y * Assets::TILE_SIZE, CCString::createWithFormat("%d", combo->size())->getCString(), ccORANGE);
   }
   if (combo->skillChainLevel > 1) {
-    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + (combo->y + 1) * Assets::TILE_SIZE, Assets::format("x%d", combo->skillChainLevel), ccc3(255, 128, 128));
+    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + (combo->y + 1) * Assets::TILE_SIZE, CCString::createWithFormat("x%d", combo->skillChainLevel)->getCString(), ccc3(255, 128, 128));
   }
 }
 
@@ -322,7 +322,7 @@ void PanelScene::onGameOver() {
 void PanelScene::onBeginningTweenFinished(void) {
   if (countdown > 1) {
     countdown--;
-    countdownLabel->setCString(Assets::format("%d", countdown).c_str());
+    countdownLabel->setCString(CCString::createWithFormat("%d", countdown)->getCString());
     claw::tween::single_tweener cdTweener(0, 3, 1, std::bind(&CCNode::setScale, countdownLabel, _1), claw::tween::easing_back::ease_out);
     cdTweener.on_finished(std::bind(&PanelScene::onBeginningTweenFinished, this));
     tweeners.insert(cdTweener);

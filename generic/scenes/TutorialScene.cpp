@@ -298,10 +298,10 @@ void TutorialScene::update(float dt) {
 
 void TutorialScene::onCombo(Combo* combo) {
   if (combo->size() > 3) {
-    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + combo->y * Assets::TILE_SIZE, Assets::format("%d", combo->size()), ccORANGE);
+    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + combo->y * Assets::TILE_SIZE, CCString::createWithFormat("%d", combo->size())->getCString(), ccORANGE);
   }
   if (combo->skillChainLevel > 1) {
-    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + (combo->y + 1) * Assets::TILE_SIZE, Assets::format("x%d", combo->skillChainLevel), ccc3(255, 128, 128));
+    new StarNumber(this, xOffset + combo->x * Assets::TILE_SIZE, yOffset + (combo->y + 1) * Assets::TILE_SIZE, CCString::createWithFormat("x%d", combo->skillChainLevel)->getCString(), ccc3(255, 128, 128));
   }
 }
 
