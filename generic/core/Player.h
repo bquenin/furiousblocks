@@ -9,12 +9,13 @@
 
 class Player {
 public:
-  Player(int32_t id = 123) : id(id) {};
-  virtual std::unique_ptr<Move> onMoveRequest(const Panel &panel) = 0;
+  Player() : id(simpleRNG.nextInt()) {};
+  virtual std::unique_ptr<Move>&& onMoveRequest(const Panel &panel) = 0;
 
   virtual ~Player() {};
 
   int32_t id;
+  SimpleRNG simpleRNG;
 };
 
 #endif //__Player_H_

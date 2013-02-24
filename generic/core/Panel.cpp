@@ -114,15 +114,11 @@ void Panel::processMove() {
       if (!src && !dst) {
         break;
       }
-      if (src) {
-        if (!fb::Block::isComputable(src.get())) {
-          break;
-        }
+      if (!fb::Block::isComputable(src.get())) {
+        break;
       }
-      if (dst) {
-        if (!fb::Block::isComputable(dst.get())) {
-          break;
-        }
+      if (!fb::Block::isComputable(dst.get())) {
+        break;
       }
       if (!dst && aboveDst) {
         if ((aboveDst->state == BlockState::SWITCHING_BACK) || (aboveDst->state == BlockState::SWITCHING_FORTH)) {

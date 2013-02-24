@@ -9,13 +9,13 @@
 #include "easing_bounce.hpp"
 #include "easing_linear.hpp"
 #include "easing_quad.hpp"
-#include "TouchPlayer.h"
 #include "single_tweener.hpp"
 #include "tweener_sequence.hpp"
 #include "StarNumber.h"
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "Social.h"
+#include "ComputerPlayer.h"
 
 #ifdef FREEMIUM
 #include "AdScene.h"
@@ -144,7 +144,8 @@ bool PanelScene::init() {
   core = new FuriousBlocksCore(rand(), *this);
 
   // Player initialization
-  player = new TouchPlayer();
+//  player = new TouchPlayer();
+  player = new ComputerPlayer();
   core->addPlayer(player);
 
   // Start scheduling

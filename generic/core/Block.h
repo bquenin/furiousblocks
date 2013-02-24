@@ -27,6 +27,7 @@ namespace fb {
     std::unique_ptr<PanelEvent> update();
 
     static bool isComputable(Block* block);
+    static bool isMovable(Block* block);
 
     int32_t id;
     BlockType type;

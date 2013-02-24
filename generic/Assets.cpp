@@ -6,7 +6,6 @@
 
 
 #include "Assets.h"
-#include "GarbageBlockType.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;

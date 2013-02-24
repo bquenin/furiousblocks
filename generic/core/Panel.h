@@ -16,6 +16,7 @@
 #include "Point.h"
 
 class Clearing;
+
 class Garbage;
 
 class Panel {
@@ -74,7 +75,7 @@ public:
   bool gracing;
   bool scrollingEnabled;
   PanelListener &panelListener;
-  furiousblocks::Point cursor;
+  fb::Point cursor;
   int32_t scrollingDelta;
   uint64_t score;
   bool gameOver;

@@ -1,15 +1,7 @@
 #include "Script.h"
 
-Script* Script::add(Action* action) {
-  actions.push_back(action);
-  return this;
-}
-
-void Script::clear() {
-  for (auto action : actions) {
-    delete action;
-  }
-  actions.clear();
+void Script::add(std::unique_ptr<Action>&& action) {
+  actions.push_back(std::move(action));
 }
 
 void Script::execute(float stateTime) {

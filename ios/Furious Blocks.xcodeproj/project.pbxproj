@@ -1111,6 +1111,18 @@
 		D2E53EC6169736EB0064BD3C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E53EBA169736BC0064BD3C /* Accounts.framework */; };
 		D2E53EC7169736EB0064BD3C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E53EBB169736BC0064BD3C /* AdSupport.framework */; };
 		D2E53EC8169736EB0064BD3C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E53EBC169736BC0064BD3C /* Social.framework */; };
+		D2F6BF7616D9B039002235DA /* ComboStarter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7016D9B039002235DA /* ComboStarter.cpp */; };
+		D2F6BF7716D9B039002235DA /* ComboStarter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7016D9B039002235DA /* ComboStarter.cpp */; };
+		D2F6BF7816D9B039002235DA /* ComboStarter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7016D9B039002235DA /* ComboStarter.cpp */; };
+		D2F6BF7916D9B039002235DA /* ComboStarter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7016D9B039002235DA /* ComboStarter.cpp */; };
+		D2F6BF7A16D9B039002235DA /* ComputerPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7216D9B039002235DA /* ComputerPlayer.cpp */; };
+		D2F6BF7B16D9B039002235DA /* ComputerPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7216D9B039002235DA /* ComputerPlayer.cpp */; };
+		D2F6BF7C16D9B039002235DA /* ComputerPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7216D9B039002235DA /* ComputerPlayer.cpp */; };
+		D2F6BF7D16D9B039002235DA /* ComputerPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7216D9B039002235DA /* ComputerPlayer.cpp */; };
+		D2F6BF7E16D9B039002235DA /* PanelHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7416D9B039002235DA /* PanelHelper.cpp */; };
+		D2F6BF7F16D9B039002235DA /* PanelHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7416D9B039002235DA /* PanelHelper.cpp */; };
+		D2F6BF8016D9B039002235DA /* PanelHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7416D9B039002235DA /* PanelHelper.cpp */; };
+		D2F6BF8116D9B039002235DA /* PanelHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2F6BF7416D9B039002235DA /* PanelHelper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1715,6 +1727,12 @@
 		D2E53EBA169736BC0064BD3C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		D2E53EBB169736BC0064BD3C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D2E53EBC169736BC0064BD3C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		D2F6BF7016D9B039002235DA /* ComboStarter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComboStarter.cpp; sourceTree = "<group>"; };
+		D2F6BF7116D9B039002235DA /* ComboStarter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComboStarter.h; sourceTree = "<group>"; };
+		D2F6BF7216D9B039002235DA /* ComputerPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComputerPlayer.cpp; sourceTree = "<group>"; };
+		D2F6BF7316D9B039002235DA /* ComputerPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerPlayer.h; sourceTree = "<group>"; };
+		D2F6BF7416D9B039002235DA /* PanelHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PanelHelper.cpp; sourceTree = "<group>"; };
+		D2F6BF7516D9B039002235DA /* PanelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1881,6 +1899,7 @@
 		02BAEC48159E57C600BCA0C3 /* generic */ = {
 			isa = PBXGroup;
 			children = (
+				D2F6BF6F16D9B039002235DA /* ai */,
 				D2A58D0416B0A06100A9B581 /* social */,
 				D2DE72D01662D2F300724790 /* ext */,
 				D23E7D90164FCB71003B565D /* scenes */,
@@ -2931,6 +2950,19 @@
 			path = ext;
 			sourceTree = "<group>";
 		};
+		D2F6BF6F16D9B039002235DA /* ai */ = {
+			isa = PBXGroup;
+			children = (
+				D2F6BF7016D9B039002235DA /* ComboStarter.cpp */,
+				D2F6BF7116D9B039002235DA /* ComboStarter.h */,
+				D2F6BF7216D9B039002235DA /* ComputerPlayer.cpp */,
+				D2F6BF7316D9B039002235DA /* ComputerPlayer.h */,
+				D2F6BF7416D9B039002235DA /* PanelHelper.cpp */,
+				D2F6BF7516D9B039002235DA /* PanelHelper.h */,
+			);
+			path = ai;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3400,6 +3432,9 @@
 				7969E737B4E873544316DB70 /* BlockBar.cpp in Sources */,
 				7969ECCA369A00F4E7BB8C15 /* Garbage.cpp in Sources */,
 				7969EABE54D517E99D2B490A /* BlockLine.cpp in Sources */,
+				D2F6BF7716D9B039002235DA /* ComboStarter.cpp in Sources */,
+				D2F6BF7B16D9B039002235DA /* ComputerPlayer.cpp in Sources */,
+				D2F6BF7F16D9B039002235DA /* PanelHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3636,6 +3671,9 @@
 				7969EC88658F23F359BCD67E /* BlockBar.cpp in Sources */,
 				7969EC8A48105F947A11BF94 /* Garbage.cpp in Sources */,
 				7969EC14FD38C10DD3B1A41E /* BlockLine.cpp in Sources */,
+				D2F6BF7916D9B039002235DA /* ComboStarter.cpp in Sources */,
+				D2F6BF7D16D9B039002235DA /* ComputerPlayer.cpp in Sources */,
+				D2F6BF8116D9B039002235DA /* PanelHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3872,6 +3910,9 @@
 				7969E7D308CEBCF5907AFB06 /* BlockBar.cpp in Sources */,
 				7969EA9854376029C7515CA0 /* Garbage.cpp in Sources */,
 				7969E01583E8A4CCCC5DCD5F /* BlockLine.cpp in Sources */,
+				D2F6BF7616D9B039002235DA /* ComboStarter.cpp in Sources */,
+				D2F6BF7A16D9B039002235DA /* ComputerPlayer.cpp in Sources */,
+				D2F6BF7E16D9B039002235DA /* PanelHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4108,6 +4149,9 @@
 				7969E722B6D41033010DEAC3 /* BlockBar.cpp in Sources */,
 				7969EB272EC706F3223DC3C3 /* Garbage.cpp in Sources */,
 				7969EE89EE07613567CE07E2 /* BlockLine.cpp in Sources */,
+				D2F6BF7816D9B039002235DA /* ComboStarter.cpp in Sources */,
+				D2F6BF7C16D9B039002235DA /* ComputerPlayer.cpp in Sources */,
+				D2F6BF8016D9B039002235DA /* PanelHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -81,7 +81,7 @@ void TouchPlayer::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
   lifted = false;
 }
 
-std::unique_ptr<Move> TouchPlayer::onMoveRequest(const Panel &panel) {
+std::unique_ptr<Move>&& TouchPlayer::onMoveRequest(const Panel& panel) {
   int32_t const x = static_cast<int32_t> (AbstractPanelScene::xOffset + (Assets::TILE_SIZE * panel.cursor.x));
   int32_t const y = static_cast<int32_t> (AbstractPanelScene::yOffset + (Assets::TILE_SIZE * panel.cursor.y) + ((panel.scrollingDelta * Assets::TILE_SIZE) / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
   cocos2d::CCRect cursorPosition(x + (leftTrend ? Assets::TILE_SIZE : 0), y, Assets::TILE_SIZE, Assets::TILE_SIZE);

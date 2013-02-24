@@ -2,7 +2,7 @@
 #define __BlockType_H_
 
 
-enum class BlockType {
+enum class BlockType : uint8_t {
   YELLOW,
   GREEN,
   RED,
