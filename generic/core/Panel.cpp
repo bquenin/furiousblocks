@@ -40,6 +40,10 @@ Panel::Panel(int32_t seed, int32_t playerId, std::array<std::array<BlockType, Fu
   for (int32_t x = 0; x < Panel::X; x++) {
     blocks[x][0] = blocks[x][1] == nullptr ? newRandom() : newRandom(blocks[x][1]->type);
   }
+
+#ifdef DEBUG
+  levelScrollingSpeed = 1;
+#endif
 }
 
 void Panel::reset() {
