@@ -16,8 +16,8 @@ class ComboStarter {
 public:
   ComboStarter(PanelHelper& helper);
 
-  std::unique_ptr<fb::Point>&& compute();
-  std::unique_ptr<fb::Point>&& getHorizontalComboPointOnLine(BlockType blockType, int line);
+  std::unique_ptr<fb::Point> compute();
+  std::unique_ptr<fb::Point> getHorizontalComboPointOnLine(BlockType blockType, int line);
 
   PanelHelper& helper;
 };

@@ -11,10 +11,11 @@ ComboStarter::ComboStarter(PanelHelper& helper)
 : helper(helper) {
 }
 
-std::unique_ptr<fb::Point>&& ComboStarter::compute() {
+std::unique_ptr<fb::Point> ComboStarter::compute() {
   auto target = std::unique_ptr<fb::Point>();
+
   for (int y = 1; y < helper.panel.Y_DISPLAY - 1; y++) {
-    int sameBlock[Panel::numberOfRegularBlocks];
+    int sameBlock[Panel::numberOfRegularBlocks] = {};
     for (int x = 0; x < helper.panel.X; x++) {
       auto&& current = helper.panel.blocks[x][y];
       if (!fb::Block::isComputable(current.get())) {
@@ -35,7 +36,7 @@ std::unique_ptr<fb::Point>&& ComboStarter::compute() {
   return std::move(target);
 }
 
-std::unique_ptr<fb::Point>&& ComboStarter::getHorizontalComboPointOnLine(BlockType blockType, int line) {
+std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType blockType, int line) {
   auto comboStarter = std::unique_ptr<fb::Point>();
 
   // Build a bit mask of blocks of Type blockType

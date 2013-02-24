@@ -26,6 +26,9 @@ private:
   CCLabelBMFont* minutes;
   CCLabelBMFont* seconds;
   CCLabelBMFont* centisecs;
+#if DEBUG
+  CCSprite* cursor;
+#endif
 
   // Opening
   int countdown;

@@ -16,7 +16,7 @@ class ComputerPlayer : public Player {
 public:
   ComputerPlayer();
 
-  virtual std::unique_ptr<Move>&& onMoveRequest(const Panel& panel) override;
+  virtual std::unique_ptr<Move> onMoveRequest(const Panel& panel) override;
 
   std::unique_ptr<Move> moveCursorToCurrentTarget(const Panel& panel);
   std::unique_ptr<Move> moveCursorToNewTarget(const Panel& panel, const fb::Point& target);

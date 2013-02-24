@@ -10,6 +10,7 @@
 
 #include "LogoScene.h"
 #include "Poco/Net/SSLManager.h"
+#include "PanelScene.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -50,7 +51,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
   assets.load();
 
   // run
-  pDirector->runWithScene(LogoScene::scene());
+//  pDirector->runWithScene(LogoScene::scene());
+  pDirector->runWithScene(PanelScene::scene());
 
   return true;
 }

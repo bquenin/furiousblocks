@@ -67,6 +67,13 @@ bool PanelScene::init() {
 
   setTouchEnabled(true);
 
+#if DEBUG
+  // Cursor
+  cursor = CCSprite::createWithSpriteFrame(AppDelegate::assets.CURSOR_01);
+  cursor->setAnchorPoint(ccp(0, 0));
+  batch->addChild(cursor);
+#endif
+
   // Initialize the grid
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
     for (int x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
@@ -247,6 +254,10 @@ void PanelScene::update(float dt) {
 
     }
   }
+
+#if DEBUG
+  cursor->setPosition(ccp(panel.cursor.x * Assets::TILE_SIZE, -16 + (panel.cursor.y - 1) * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+#endif
 
   // Tweeners update
   tweeners.update(dt);

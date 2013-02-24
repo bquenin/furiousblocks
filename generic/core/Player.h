@@ -10,7 +10,7 @@
 class Player {
 public:
   Player() : id(simpleRNG.nextInt()) {};
-  virtual std::unique_ptr<Move>&& onMoveRequest(const Panel &panel) = 0;
+  virtual std::unique_ptr<Move> onMoveRequest(const Panel &panel) = 0;
 
   virtual ~Player() {};
 

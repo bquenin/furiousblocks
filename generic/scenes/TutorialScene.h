@@ -35,8 +35,8 @@ private:
   Script script;
   TutorialPlayer* tutorialPlayer;
   TextToType textToType;
-  cocos2d::CCLabelBMFont* textBox;
-  cocos2d::CCSprite* cursor;
+  CCLabelBMFont* textBox;
+  CCSprite* cursor;
 
   QuitOverlay* quitOverlay;
   bool overlayEnabled;

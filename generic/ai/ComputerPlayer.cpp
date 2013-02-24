@@ -13,7 +13,7 @@ ComputerPlayer::ComputerPlayer()
 : cursorMoving(false) {
 }
 
-std::unique_ptr<Move>&& ComputerPlayer::onMoveRequest(const Panel& panel) {
+std::unique_ptr<Move> ComputerPlayer::onMoveRequest(const Panel& panel) {
   // Helper for the panel
   PanelHelper helper(panel);
 

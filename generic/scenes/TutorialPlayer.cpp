@@ -11,6 +11,6 @@ void TutorialPlayer::setMove(MoveType moveType) {
   move.reset(new Move(moveType));
 }
 
-std::unique_ptr<Move>&& TutorialPlayer::onMoveRequest(const Panel& panel) {
+std::unique_ptr<Move> TutorialPlayer::onMoveRequest(const Panel& panel) {
   return std::move(move);
 }
