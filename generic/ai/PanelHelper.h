@@ -17,7 +17,7 @@ class PanelHelper {
 public:
   PanelHelper(const Panel &panel) : panel(panel) {};
 
-  bool isBlockSwitchPossible(const fb::Point &location);
+  bool isBlockSwitchPossible(int x, int y) const;
 
   const Panel &panel;
 };

@@ -28,6 +28,7 @@ private:
   CCLabelBMFont* centisecs;
 #if DEBUG
   CCSprite* cursor;
+  CCSprite* aiTarget;
 #endif
 
   // Opening

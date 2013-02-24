@@ -72,6 +72,11 @@ bool PanelScene::init() {
   cursor = CCSprite::createWithSpriteFrame(AppDelegate::assets.CURSOR_01);
   cursor->setAnchorPoint(ccp(0, 0));
   batch->addChild(cursor);
+
+  // Cursor
+  aiTarget = CCSprite::createWithSpriteFrame(AppDelegate::assets.SPINNER);
+  aiTarget->setAnchorPoint(ccp(0, 0));
+  aiTarget->addChild(aiTarget);
 #endif
 
   // Initialize the grid
@@ -256,7 +261,16 @@ void PanelScene::update(float dt) {
   }
 
 #if DEBUG
-  cursor->setPosition(ccp(panel.cursor.x * Assets::TILE_SIZE, -16 + (panel.cursor.y - 1) * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+  cursor->setPosition(ccp(panel.cursor.x * Assets::TILE_SIZE, (panel.cursor.y - 1) * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+  auto&& target = static_cast<ComputerPlayer*>(player)->cursorMoving;
+  if (static_cast<ComputerPlayer*>(player)->cursorMoving) {
+    fprintf(stderr, "target !!!\n");
+    auto&& target = static_cast<ComputerPlayer*>(player)->targetPosition;
+    aiTarget->setVisible(true);
+    aiTarget->setPosition(ccp(target.x * Assets::TILE_SIZE, target.y * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+  } else {
+    aiTarget->setVisible(false);
+  }
 #endif
 
   // Tweeners update

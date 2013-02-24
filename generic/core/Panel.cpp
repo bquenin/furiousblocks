@@ -114,11 +114,15 @@ void Panel::processMove() {
       if (!src && !dst) {
         break;
       }
-      if (!fb::Block::isComputable(src.get())) {
-        break;
+      if (src) {
+        if (!fb::Block::isComputable(src.get())) {
+          break;
+        }
       }
-      if (!fb::Block::isComputable(dst.get())) {
-        break;
+      if (dst) {
+        if (!fb::Block::isComputable(dst.get())) {
+          break;
+        }
       }
       if (!dst && aboveDst) {
         if ((aboveDst->state == BlockState::SWITCHING_BACK) || (aboveDst->state == BlockState::SWITCHING_FORTH)) {
@@ -631,7 +635,7 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
           clearing->addBlockBar(garbage);
         }
       }
-      if (y - 1 > 0) {
+      if (y - 1 >= 1) {
         auto& belowBlock = blocks[x][y - 1];
         auto garbage = getGarbageByBlock(belowBlock);
         if (belowBlock && garbage) {
@@ -647,7 +651,7 @@ void Panel::processCombo(std::shared_ptr<Combo> combo) {
           clearing->addBlockBar(garbage);
         }
       }
-      if (x - 1 > 0) {
+      if (x - 1 >= 0) {
         auto& leftBlock = blocks[x - 1][y];
         auto garbage = getGarbageByBlock(leftBlock);
         if (leftBlock && garbage) {

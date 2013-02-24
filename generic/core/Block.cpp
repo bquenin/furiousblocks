@@ -134,11 +134,11 @@ namespace fb {
   }
 
   bool Block::isComputable(Block* block) {
-    return block != nullptr && block->movable && block->state == BlockState::IDLE;
+    return block != nullptr && block->state == BlockState::IDLE && block->movable;
   }
 
   bool Block::isMovable(Block* block) {
-    return block == nullptr || (block->state == BlockState::IDLE && block->type != BlockType::GARBAGE);
+    return block == nullptr || (block->state == BlockState::IDLE && block->movable);
   }
 
 }
