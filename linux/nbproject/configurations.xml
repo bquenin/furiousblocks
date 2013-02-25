@@ -2,6 +2,14 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="generic" displayName="generic" projectFiles="true">
+      <logicalFolder name="ai" displayName="ai" projectFiles="true">
+        <itemPath>../generic/ai/ComboStarter.cpp</itemPath>
+        <itemPath>../generic/ai/ComboStarter.h</itemPath>
+        <itemPath>../generic/ai/ComputerPlayer.cpp</itemPath>
+        <itemPath>../generic/ai/ComputerPlayer.h</itemPath>
+        <itemPath>../generic/ai/PanelHelper.cpp</itemPath>
+        <itemPath>../generic/ai/PanelHelper.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="animation" displayName="animation" projectFiles="true">
         <itemPath>../generic/animation/Animation.cpp</itemPath>
         <itemPath>../generic/animation/Animation.h</itemPath>
@@ -11,34 +19,31 @@
       <logicalFolder name="core" displayName="core" projectFiles="true">
         <itemPath>../generic/core/Block.cpp</itemPath>
         <itemPath>../generic/core/Block.h</itemPath>
-        <itemPath>../generic/core/BlockState.cpp</itemPath>
+        <itemPath>../generic/core/BlockBar.cpp</itemPath>
+        <itemPath>../generic/core/BlockBar.h</itemPath>
+        <itemPath>../generic/core/BlockLine.cpp</itemPath>
+        <itemPath>../generic/core/BlockLine.h</itemPath>
         <itemPath>../generic/core/BlockState.h</itemPath>
-        <itemPath>../generic/core/BlockType.cpp</itemPath>
         <itemPath>../generic/core/BlockType.h</itemPath>
         <itemPath>../generic/core/Clearing.cpp</itemPath>
+        <itemPath>../generic/core/Clearing.h</itemPath>
         <itemPath>../generic/core/Combo.cpp</itemPath>
         <itemPath>../generic/core/Combo.h</itemPath>
         <itemPath>../generic/core/FuriousBlocksCore.cpp</itemPath>
         <itemPath>../generic/core/FuriousBlocksCore.h</itemPath>
-        <itemPath>../generic/core/FuriousBlocksCoreDefaults.cpp</itemPath>
         <itemPath>../generic/core/FuriousBlocksCoreDefaults.h</itemPath>
-        <itemPath>../generic/core/FuriousBlocksCoreListener.cpp</itemPath>
         <itemPath>../generic/core/FuriousBlocksCoreListener.h</itemPath>
-        <itemPath>../generic/core/GameType.cpp</itemPath>
-        <itemPath>../generic/core/GameType.h</itemPath>
-        <itemPath>../generic/core/GarbageBlockType.cpp</itemPath>
+        <itemPath>../generic/core/Garbage.cpp</itemPath>
+        <itemPath>../generic/core/Garbage.h</itemPath>
         <itemPath>../generic/core/GarbageBlockType.h</itemPath>
         <itemPath>../generic/core/Move.cpp</itemPath>
         <itemPath>../generic/core/Move.h</itemPath>
-        <itemPath>../generic/core/MoveType.cpp</itemPath>
         <itemPath>../generic/core/MoveType.h</itemPath>
         <itemPath>../generic/core/Panel.cpp</itemPath>
         <itemPath>../generic/core/Panel.h</itemPath>
         <itemPath>../generic/core/PanelEvent.cpp</itemPath>
         <itemPath>../generic/core/PanelEvent.h</itemPath>
-        <itemPath>../generic/core/PanelEventType.cpp</itemPath>
         <itemPath>../generic/core/PanelEventType.h</itemPath>
-        <itemPath>../generic/core/PanelListener.cpp</itemPath>
         <itemPath>../generic/core/PanelListener.h</itemPath>
         <itemPath>../generic/core/Player.h</itemPath>
         <itemPath>../generic/core/Point.cpp</itemPath>
@@ -178,6 +183,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../generic</Elem>
+    <Elem>/opt/cocos2d-2.0-x-2.0.4/cocos2dx</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -204,6 +210,7 @@
             <pElem>/opt/cocos2d-2.0-x-2.0.4/extensions</pElem>
             <pElem>/opt/cocos2d-2.0-x-2.0.4/CocosDenshion/include</pElem>
             <pElem>../generic</pElem>
+            <pElem>../generic/ai</pElem>
             <pElem>../generic/animation</pElem>
             <pElem>../generic/core</pElem>
             <pElem>../generic/ext</pElem>
@@ -220,6 +227,7 @@
             <pElem>../third-party/poco-1.5.1-all/Util</pElem>
           </incDir>
           <preprocessorList>
+            <Elem>DEBUG</Elem>
             <Elem>LINUX</Elem>
           </preprocessorList>
         </ccTool>
@@ -257,6 +265,7 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
           <incDir>
             <pElem>/opt/cocos2d-2.0-x-2.0.4/cocos2dx</pElem>
             <pElem>/opt/cocos2d-2.0-x-2.0.4/cocos2dx/cocoa</pElem>
@@ -307,6 +316,15 @@
             <linkerLibLibItem>chipmunk</linkerLibLibItem>
             <linkerLibLibItem>cocos2d</linkerLibLibItem>
             <linkerLibLibItem>cocosdenshion</linkerLibLibItem>
+            <linkerLibLibItem>PocoCrypto</linkerLibLibItem>
+            <linkerLibLibItem>PocoFoundation</linkerLibLibItem>
+            <linkerLibLibItem>PocoJSON</linkerLibLibItem>
+            <linkerLibLibItem>PocoNet</linkerLibLibItem>
+            <linkerLibLibItem>PocoNetSSL</linkerLibLibItem>
+            <linkerLibLibItem>PocoUtil</linkerLibLibItem>
+            <linkerLibLibItem>PocoXML</linkerLibLibItem>
+            <linkerLibLibItem>PocoZip</linkerLibLibItem>
+            <linkerOptionItem>`pkg-config --libs gl`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

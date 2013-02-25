@@ -11,6 +11,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>../generic</sourceRootElem>
+                <sourceRootElem>/opt/cocos2d-2.0-x-2.0.4/cocos2dx</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

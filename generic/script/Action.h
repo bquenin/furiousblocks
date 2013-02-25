@@ -1,7 +1,6 @@
 #ifndef __Action_H_
 #define __Action_H_
 
-
 class Action {
 private:
 protected:

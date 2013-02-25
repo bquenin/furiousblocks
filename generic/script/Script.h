@@ -2,6 +2,7 @@
 #define __Script_H_
 
 #include <vector>
+#include <memory>
 #include "Action.h"
 
 class Script {

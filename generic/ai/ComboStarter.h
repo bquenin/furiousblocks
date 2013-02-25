@@ -9,7 +9,7 @@
 #ifndef __ComboStarter_H_
 #define __ComboStarter_H_
 
-#include <iostream>
+#include <memory>
 #include "PanelHelper.h"
 
 class ComboStarter {
