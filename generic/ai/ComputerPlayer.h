@@ -9,7 +9,7 @@
 #ifndef __ComputerPlayer_H_
 #define __ComputerPlayer_H_
 
-#include <iostream>
+#include <memory>
 #include "Player.h"
 
 class ComputerPlayer : public Player {

@@ -229,6 +229,7 @@
           <preprocessorList>
             <Elem>DEBUG</Elem>
             <Elem>LINUX</Elem>
+            <Elem>__GXX_EXPERIMENTAL_CXX0X__</Elem>
           </preprocessorList>
         </ccTool>
         <linkerTool>
@@ -297,7 +298,9 @@
             <pElem>../third-party/poco-1.5.1-all/Util</pElem>
           </incDir>
           <preprocessorList>
+            <Elem>DEBUG</Elem>
             <Elem>LINUX</Elem>
+            <Elem>__GXX_EXPERIMENTAL_CXX0X__</Elem>
           </preprocessorList>
         </ccTool>
         <fortranCompilerTool>
