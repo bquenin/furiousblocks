@@ -20,6 +20,7 @@ public:
   bool isBlockSwitchPossible(int x, int y) const;
   bool doesRowContainBlockType(int row, BlockType blockType);
   
+  std::unique_ptr<fb::Point> getClosestBlock(int column, int row);
   std::unique_ptr<fb::Point> getClosestBlockWithType(int column, int row, BlockType type);
   
   const Panel &panel;

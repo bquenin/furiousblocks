@@ -81,3 +81,60 @@ std::unique_ptr<fb::Point> PanelHelper::getClosestBlockWithType(int column, int 
   }
   return std::move(closestBlockLeft);
 }
+
+std::unique_ptr<fb::Point> PanelHelper::getClosestBlock(int column, int row) {
+  // First check on the left
+  auto closestBlockLeft = std::unique_ptr<fb::Point>();
+
+  for (int x = column - 1; x >= 0; x--) {
+    auto&& current = panel.blocks[x][row];
+    // If the block is null, just continue
+    if (!current) {
+      continue;
+    }
+    // If the blocks are not switchable for any reason, just break
+    if (!isBlockSwitchPossible(x, row)) {
+      break;
+    }
+    closestBlockLeft.reset(new fb::Point(x, row));
+    break;
+  }
+
+  // Then check on the right
+  auto closestBlockRight = std::unique_ptr<fb::Point>();
+
+  for (int x = column; x < panel.X - 1; x++) {
+    auto&& current = panel.blocks[x + 1][row];
+    // If the block is null, just continue
+    if (!current) {
+      continue;
+    }
+    // If the blocks are not switchable for any reason, just break
+    if (!isBlockSwitchPossible(x, row)) {
+      break;
+    }
+    closestBlockRight.reset(new fb::Point(x, row));
+    break;
+  }
+
+  if (closestBlockLeft && !closestBlockRight) {
+    return std::move(closestBlockLeft);
+  }
+  if (!closestBlockLeft && closestBlockRight) {
+    return std::move(closestBlockRight);
+  }
+  if (!closestBlockLeft && !closestBlockRight) {
+    return std::move(std::unique_ptr<fb::Point>());
+  }
+
+  int deltax = column - closestBlockLeft->x;
+  int deltay = closestBlockRight->x - column;
+
+  if (deltax > deltay) {
+    return std::move(closestBlockRight);
+  }
+  if (deltay > deltax) {
+    return std::move(closestBlockLeft);
+  }
+  return std::move(closestBlockLeft);
+}
