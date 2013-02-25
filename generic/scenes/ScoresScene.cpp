@@ -11,8 +11,6 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-std::vector<ScoreEntry> ScoresScene::scores;
-
 CCScene* ScoresScene::scene() {
   CCScene* scene = CCScene::create();
   scene->addChild(ScoresScene::create());
@@ -184,7 +182,7 @@ CCTableViewCell* ScoresScene::tableCellAtIndex(CCTableView* table, unsigned int 
     } else if ((AppDelegate::getFirstName() == entry.firstName) && (AppDelegate::getLastName() == entry.lastName)) {
       myself = cell;
     }
-  } catch (std::out_of_range e) {
+  } catch (std::logic_error e) {
   }
 
   if (!cell) {

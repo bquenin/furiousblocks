@@ -10,6 +10,7 @@
 #import "AppController.h"
 #import <sys/socket.h> // Per msqr
 #import "Assets.h"
+#include "AppDelegate.h"
 #import <sys/sysctl.h>
 #import <net/if.h>
 #import <net/if_dl.h>
@@ -30,6 +31,8 @@ void CCApplicationEx::facebookLogin() {
 }
 
 void CCApplicationEx::facebookLogout() {
+  AppDelegate::setLoggedIn(false);
+  AppDelegate::setAccessToken("none");
   [FBSession.activeSession closeAndClearTokenInformation];
 }
 

@@ -13,7 +13,6 @@
 
 #import "RootViewController.h"
 #import "Social.h"
-#import "Appirater.h"
 
 @implementation AppController
 
@@ -26,9 +25,17 @@
 // cocos2d application instance
 static AppDelegate s_sharedApplication;
 
+- (BOOL)application:(UIApplication*)application
+            openURL:(NSURL*)url
+  sourceApplication:(NSString*)sourceApplication
+         annotation:(id)annotation {
+  return [FBSession.activeSession handleOpenURL:url];
+}
+
 - (void)sessionStateChanged:(FBSession*)session
                       state:(FBSessionState)state
                       error:(NSError*)error {
+  CCLOG("sessionStateChanged = %d", [FBSession.activeSession isOpen]);
   // FBSample logic
   // Any time the session is closed, we want to display the login controller (the user
   // cannot use the application unless they are logged in to Facebook). When the session
@@ -59,7 +66,7 @@ static AppDelegate s_sharedApplication;
 }
 
 - (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI {
-  NSArray *permissions = [[[NSArray alloc] initWithObjects:
+  NSArray* permissions = [[[NSArray alloc] initWithObjects:
       @"user_likes",
       nil] autorelease];
 
@@ -100,13 +107,6 @@ static AppDelegate s_sharedApplication;
   [[UIApplication sharedApplication] setStatusBarHidden:YES];
 
   cocos2d::CCApplication::sharedApplication()->run();
-
-  // FBSample logic
-  // See if we have a valid token for the current state.
-  if (![self openSessionWithAllowLoginUI:NO]) {
-    // No? Display the login page.
-    [self openSessionWithAllowLoginUI:YES];
-  }
 
 #ifdef FREEMIUM
   [Appirater setAppId:@"586087328"];

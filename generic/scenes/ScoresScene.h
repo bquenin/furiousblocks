@@ -24,7 +24,7 @@ private:
   };
 
   ScoresState state;
-  static std::vector<ScoreEntry> scores;
+  std::vector<ScoreEntry> scores;
   CCTableView* tableView;
   CCTableViewCell* myself;
   SimpleRNG random;

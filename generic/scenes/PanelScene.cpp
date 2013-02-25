@@ -16,6 +16,7 @@
 #include "AppDelegate.h"
 #include "Social.h"
 #include "ComputerPlayer.h"
+#include "TouchPlayer.h"
 
 #ifdef FREEMIUM
 #include "AdScene.h"
@@ -155,8 +156,8 @@ bool PanelScene::init() {
   core = new FuriousBlocksCore(rand(), *this);
 
   // Player initialization
-//  player = new TouchPlayer();
-  player = new ComputerPlayer();
+  player = new TouchPlayer();
+//  player = new ComputerPlayer();
   core->addPlayer(player);
 
   // Start scheduling
@@ -260,15 +261,15 @@ void PanelScene::update(float dt) {
   }
 
 #if DEBUG
-  cursor->setPosition(ccp(panel.cursor.x * Assets::TILE_SIZE, -16 + (panel.cursor.y - 1) * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
-  auto&& target = static_cast<ComputerPlayer*>(player)->cursorMoving;
-  if (static_cast<ComputerPlayer*>(player)->cursorMoving) {
-    auto&& target = static_cast<ComputerPlayer*>(player)->targetPosition;
-    aiTarget->setVisible(true);
-    aiTarget->setPosition(ccp(target.x * Assets::TILE_SIZE, -16 + target.y * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
-  } else {
-    aiTarget->setVisible(false);
-  }
+//  cursor->setPosition(ccp(panel.cursor.x * Assets::TILE_SIZE, -16 + (panel.cursor.y - 1) * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+//  auto&& target = static_cast<ComputerPlayer*>(player)->cursorMoving;
+//  if (static_cast<ComputerPlayer*>(player)->cursorMoving) {
+//    auto&& target = static_cast<ComputerPlayer*>(player)->targetPosition;
+//    aiTarget->setVisible(true);
+//    aiTarget->setPosition(ccp(target.x * Assets::TILE_SIZE, -16 + target.y * Assets::TILE_SIZE + panel.scrollingDelta * Assets::TILE_SIZE / FuriousBlocksCoreDefaults::BLOCK_LOGICALHEIGHT));
+//  } else {
+//    aiTarget->setVisible(false);
+//  }
 #endif
 
   // Tweeners update
