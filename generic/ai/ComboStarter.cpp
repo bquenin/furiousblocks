@@ -21,7 +21,7 @@ std::unique_ptr<fb::Point> ComboStarter::compute() {
     target = computeVerticalStarter();
   }
 
-  return std::move(target);
+  return target;
 }
 
 std::unique_ptr<fb::Point> ComboStarter::computeHorizontalStarter() {
@@ -39,12 +39,12 @@ std::unique_ptr<fb::Point> ComboStarter::computeHorizontalStarter() {
       if (sameBlock[index] >= 3) {
         target = getHorizontalComboPointOnLine(static_cast<BlockType>(index), y);
         if (target) {
-          return std::move(target);
+          return target;
         }
       }
     }
   }
-  return std::move(target);
+  return target;
 }
 
 std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType blockType, int line) {
@@ -69,7 +69,7 @@ std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType
       for (int x = i + 2; x < panel.X - 1; x++) {
         if (mask[x + 1]) {
           if (helper.isBlockSwitchPossible(x, line)) {
-            return std::move(std::unique_ptr<fb::Point>(new fb::Point(x, line)));
+            return std::unique_ptr<fb::Point>(new fb::Point(x, line));
           }
         }
       }
@@ -77,7 +77,7 @@ std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType
       for (int x = i - 2; x >= 0; x--) {
         if (mask[x]) {
           if (helper.isBlockSwitchPossible(x, line)) {
-            return std::move(std::unique_ptr<fb::Point>(new fb::Point(x, line)));
+            return std::unique_ptr<fb::Point>(new fb::Point(x, line));
           }
         }
       }
@@ -89,7 +89,7 @@ std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType
       for (int x = i + 1; x < panel.X - 1; x++) {
         if (mask[x + 1]) {
           if (helper.isBlockSwitchPossible(x, line)) {
-            return std::move(std::unique_ptr<fb::Point>(new fb::Point(x, line)));
+            return std::unique_ptr<fb::Point>(new fb::Point(x, line));
           }
         }
       }
@@ -97,13 +97,13 @@ std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType
       for (int x = i - 2; x >= 0; x--) {
         if (mask[x]) {
           if (helper.isBlockSwitchPossible(x, line)) {
-            return std::move(std::unique_ptr<fb::Point>(new fb::Point(x, line)));
+            return std::unique_ptr<fb::Point>(new fb::Point(x, line));
           }
         }
       }
     }
   }
-  return std::move(std::unique_ptr<fb::Point>());
+  return std::unique_ptr<fb::Point>();
 }
 
 std::unique_ptr<fb::Point> ComboStarter::computeVerticalStarter() {
@@ -140,7 +140,7 @@ std::unique_ptr<fb::Point> ComboStarter::computeVerticalStarter() {
         if (!closestBlock) {
           continue;
         }
-        return std::move(closestBlock);
+        return closestBlock;
       }
 
       // Enforce that the block is actually misaligned by checking the block 2 rows above the current block is either null or
@@ -152,9 +152,9 @@ std::unique_ptr<fb::Point> ComboStarter::computeVerticalStarter() {
         if (!closestBlock) {
           continue;
         }
-        return std::move(closestBlock);
+        return closestBlock;
       }
     }
   }
-  return std::move(target);
+  return target;
 }

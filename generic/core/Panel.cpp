@@ -578,7 +578,7 @@ std::shared_ptr<Combo> Panel::detectCombo() {
 //      blocks[x][y]->combo = true;
     }
   }
-  return std::move(combo);
+  return combo;
 }
 
 void Panel::processCombo(std::shared_ptr<Combo> combo) {

@@ -43,7 +43,7 @@ std::unique_ptr<Move> ComputerPlayer::onMoveRequest(const Panel& panel) {
     }
   }
 
-  return std::move(move);
+  return move;
 }
 
 std::unique_ptr<Move> ComputerPlayer::moveCursorToNewTarget(const Panel& panel, const fb::Point& target) {

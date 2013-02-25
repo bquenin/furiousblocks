@@ -104,5 +104,5 @@ std::unique_ptr<Move> TouchPlayer::onMoveRequest(const Panel& panel) {
   } else if (touchPointDown.y > cursorPosition.origin.y + cursorPosition.size.height) {
     move.reset(new Move(MoveType::CURSOR_UP));
   }
-  return std::move(move);
+  return move;
 }

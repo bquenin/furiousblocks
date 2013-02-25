@@ -61,25 +61,25 @@ std::unique_ptr<fb::Point> PanelHelper::getClosestBlockWithType(int column, int 
   }
 
   if (closestBlockLeft && !closestBlockRight) {
-    return std::move(closestBlockLeft);
+    return closestBlockLeft;
   }
   if (!closestBlockLeft && closestBlockRight) {
-    return std::move(closestBlockRight);
+    return closestBlockRight;
   }
   if (!closestBlockLeft && !closestBlockRight) {
-    return std::move(std::unique_ptr<fb::Point>());
+    return std::unique_ptr<fb::Point>();
   }
 
   int deltax = column - closestBlockLeft->x;
   int deltay = closestBlockRight->x - column;
 
   if (deltax > deltay) {
-    return std::move(closestBlockRight);
+    return closestBlockRight;
   }
   if (deltay > deltax) {
-    return std::move(closestBlockLeft);
+    return closestBlockLeft;
   }
-  return std::move(closestBlockLeft);
+  return closestBlockLeft;
 }
 
 std::unique_ptr<fb::Point> PanelHelper::getClosestBlock(int column, int row) {
@@ -118,23 +118,23 @@ std::unique_ptr<fb::Point> PanelHelper::getClosestBlock(int column, int row) {
   }
 
   if (closestBlockLeft && !closestBlockRight) {
-    return std::move(closestBlockLeft);
+    return closestBlockLeft;
   }
   if (!closestBlockLeft && closestBlockRight) {
-    return std::move(closestBlockRight);
+    return closestBlockRight;
   }
   if (!closestBlockLeft && !closestBlockRight) {
-    return std::move(std::unique_ptr<fb::Point>());
+    return std::unique_ptr<fb::Point>();
   }
 
   int deltax = column - closestBlockLeft->x;
   int deltay = closestBlockRight->x - column;
 
   if (deltax > deltay) {
-    return std::move(closestBlockRight);
+    return closestBlockRight;
   }
   if (deltay > deltax) {
-    return std::move(closestBlockLeft);
+    return closestBlockLeft;
   }
-  return std::move(closestBlockLeft);
+  return closestBlockLeft;
 }
