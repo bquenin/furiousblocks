@@ -13,6 +13,10 @@
 #include "AppDelegate.h"
 #include "PanelScene.h"
 
+#ifdef FREEMIUM
+#include "Social.h"
+#endif
+
 using namespace cocos2d;
 using namespace CocosDenshion;
 
@@ -45,7 +49,7 @@ bool PanelMenuOverlay::init() {
   addChild(continueButton);
 
 #ifdef FREEMIUM
-  restartButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Restart (%d left)", Social::gamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  restartButton = CCControlButton::create(CCLabelTTF::create(CCString::createWithFormat("Restart (%d left)", Social::gamesLeft())->getCString(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #else
   restartButton = CCControlButton::create(CCLabelTTF::create("Restart", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #endif

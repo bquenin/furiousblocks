@@ -14,6 +14,13 @@
 #import "RootViewController.h"
 #import "Social.h"
 
+#ifdef FREEMIUM
+
+#import "Appirater.h"
+
+#endif
+
+
 @implementation AppController
 
 @synthesize window;

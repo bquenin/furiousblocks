@@ -14,6 +14,10 @@
 #include "ScoresScene.h"
 #include "PanelScene.h"
 
+#ifdef FREEMIUM
+#include "Social.h"
+#endif
+
 using namespace cocos2d;
 using namespace CocosDenshion;
 
@@ -65,7 +69,7 @@ bool TitleScene::init() {
   logOut->addChild(logoLogout);
 
 #ifdef FREEMIUM
-  CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create(Assets::format("Play! (%d left)", Social::gamesLeft()).c_str(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
+  CCControlButton *playButton = CCControlButton::create(CCLabelTTF::create(CCString::createWithFormat("Play! (%d left)", Social::gamesLeft())->getCString(), "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #else
   CCControlButton* playButton = CCControlButton::create(CCLabelTTF::create("Play!", "SkaterDudes.ttf", 32), CCScale9Sprite::create("button.png"));
 #endif
