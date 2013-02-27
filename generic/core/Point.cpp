@@ -7,6 +7,11 @@ namespace fb {
   , y(y) {
   }
 
+  Point::Point(Point&& point)
+  : x(point.x)
+  , y(point.y) {
+  }
+
   Point& Point::operator = (const Point& other) {
     if (this != &other) {
       x = other.x;

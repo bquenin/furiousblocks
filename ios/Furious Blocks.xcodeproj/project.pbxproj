@@ -30,6 +30,7 @@
 		7969E1ABE95DBAE716526198 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
 		7969E296C7B8D953A1F64979 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
 		7969E2D8DC1E91B13B132AC0 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E9DBA931CEDD18BC98F9 /* Move.cpp */; };
+		7969E2EFC75F2614D2B614DF /* Leveler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E475E578D4F0B45A620B /* Leveler.cpp */; };
 		7969E2F382ABA7B7D1824334 /* ScoresScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EC7244448D927D9B4E91 /* ScoresScene.cpp */; };
 		7969E2F5DA1276709612F52C /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1B1F4BE78AC5E68B104 /* Animation.cpp */; };
 		7969E316900662224CE10922 /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E7237904D92983195353 /* tutorial.mp3 */; };
@@ -49,8 +50,10 @@
 		7969E7D308CEBCF5907AFB06 /* BlockBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E23DA16F0EF4254A8660 /* BlockBar.cpp */; };
 		7969E86718637B161B33382F /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
 		7969E8964F7A1C3B4F11D455 /* ScoreEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */; };
+		7969E8A0477EEC426EAD9887 /* Leveler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E475E578D4F0B45A620B /* Leveler.cpp */; };
 		7969E8B78CC0E5135AE4C099 /* Clearing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E6BA7E8E26BA4B33EFE6 /* Clearing.cpp */; };
 		7969E8FDA05207335D97FEBB /* harmonic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */; };
+		7969E9676DEF4CF56131607C /* Leveler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E475E578D4F0B45A620B /* Leveler.cpp */; };
 		7969EA11FA5988519A889687 /* FuriousBlocksCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */; };
 		7969EA9854376029C7515CA0 /* Garbage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969EFBD44F5D3E0181710C7 /* Garbage.cpp */; };
 		7969EAA65F7587E0386426FE /* rootcert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 7969EA45FDA5B84C72EBAC72 /* rootcert.pem */; };
@@ -76,6 +79,7 @@
 		7969EE89EE07613567CE07E2 /* BlockLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E6DC7499562D6F071A7D /* BlockLine.cpp */; };
 		7969EE8A943653E43E23ABD2 /* coopblack32.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7969E190E9B4C07482F4316E /* coopblack32.fnt */; };
 		7969EF3452C399AE46552380 /* CCApplicationEx.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7969EE618BE9CE483747FEEF /* CCApplicationEx.mm */; };
+		7969EF902281809E9A9E1384 /* Leveler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E475E578D4F0B45A620B /* Leveler.cpp */; };
 		7969EFBE63F5CA04AD591F2D /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7969E619F03DD57B616F1DD3 /* gameover.mp3 */; };
 		7969EFC4157A674238364E23 /* Social.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E7A92BDB7499BB8AA4A0 /* Social.cpp */; };
 		D203E32716886BE400FC317B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203E32616886BE400FC317B /* CFNetwork.framework */; };
@@ -94,7 +98,6 @@
 		D215B1B216C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
 		D215B1B316C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
 		D215B1B416C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
-		D215B1B516C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
 		D215B1B616C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
 		D215B1B716C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
 		D215B1B816C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
@@ -1118,6 +1121,7 @@
 		7969E2510CE0E6F14007F8B9 /* ScoreEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreEntry.h; sourceTree = "<group>"; };
 		7969E251E1C511302A7B5E8B /* Social.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Social.h; sourceTree = "<group>"; };
 		7969E2BC3280A8DE21932B01 /* Clearing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clearing.h; sourceTree = "<group>"; };
+		7969E475E578D4F0B45A620B /* Leveler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Leveler.cpp; sourceTree = "<group>"; };
 		7969E4AE20C9DF31145E4E9A /* tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tweener.hpp; sourceTree = "<group>"; };
 		7969E51CC9169D96809A8B46 /* single_tweener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = single_tweener.hpp; sourceTree = "<group>"; };
 		7969E572CA3F236FC7C909F8 /* FuriousBlocksCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FuriousBlocksCore.cpp; sourceTree = "<group>"; };
@@ -1142,6 +1146,7 @@
 		7969EB274F8802097FFEAEE6 /* QuitOverlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuitOverlay.cpp; sourceTree = "<group>"; };
 		7969EB76D9786C36E95E1597 /* BlockLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockLine.h; sourceTree = "<group>"; };
 		7969EB7ABA416427D5DE3C32 /* Joystix.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; path = Joystix.ttf; sourceTree = "<group>"; };
+		7969EC2CE36B19B8D1812784 /* Leveler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leveler.h; sourceTree = "<group>"; };
 		7969EC2DC8041F2823CAF77B /* CCApplicationEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCApplicationEx.h; sourceTree = "<group>"; };
 		7969EC64DBF4DD459150A1D0 /* harmonic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = harmonic.mp3; sourceTree = "<group>"; };
 		7969EC7244448D927D9B4E91 /* ScoresScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoresScene.cpp; sourceTree = "<group>"; };
@@ -2859,6 +2864,8 @@
 				D2F6BF7316D9B039002235DA /* ComputerPlayer.h */,
 				D2F6BF7416D9B039002235DA /* PanelHelper.cpp */,
 				D2F6BF7516D9B039002235DA /* PanelHelper.h */,
+				7969E475E578D4F0B45A620B /* Leveler.cpp */,
+				7969EC2CE36B19B8D1812784 /* Leveler.h */,
 			);
 			path = ai;
 			sourceTree = "<group>";
@@ -3064,7 +3071,6 @@
 				D2E53EB51697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EAA65F7587E0386426FE /* rootcert.pem in Resources */,
 				D215B1B116C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
-				D215B1B516C80B2D00EAADC9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3335,6 +3341,7 @@
 				D2F6BF7716D9B039002235DA /* ComboStarter.cpp in Sources */,
 				D2F6BF7B16D9B039002235DA /* ComputerPlayer.cpp in Sources */,
 				D2F6BF7F16D9B039002235DA /* PanelHelper.cpp in Sources */,
+				7969E2EFC75F2614D2B614DF /* Leveler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3574,6 +3581,7 @@
 				D2F6BF7916D9B039002235DA /* ComboStarter.cpp in Sources */,
 				D2F6BF7D16D9B039002235DA /* ComputerPlayer.cpp in Sources */,
 				D2F6BF8116D9B039002235DA /* PanelHelper.cpp in Sources */,
+				7969E9676DEF4CF56131607C /* Leveler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3813,6 +3821,7 @@
 				D2F6BF7616D9B039002235DA /* ComboStarter.cpp in Sources */,
 				D2F6BF7A16D9B039002235DA /* ComputerPlayer.cpp in Sources */,
 				D2F6BF7E16D9B039002235DA /* PanelHelper.cpp in Sources */,
+				7969EF902281809E9A9E1384 /* Leveler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4052,6 +4061,7 @@
 				D2F6BF7816D9B039002235DA /* ComboStarter.cpp in Sources */,
 				D2F6BF7C16D9B039002235DA /* ComputerPlayer.cpp in Sources */,
 				D2F6BF8016D9B039002235DA /* PanelHelper.cpp in Sources */,
+				7969E8A0477EEC426EAD9887 /* Leveler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4140,7 +4150,6 @@
 					USE_FILE32API,
 					TARGET_OS_IPHONE,
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"libs/cocos2dx/kazmath/include\"",
 					"\"libs/cocos2dx\"",
@@ -4149,6 +4158,7 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/include",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Foundation/include",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/JSON/include",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Net/include",
@@ -4161,14 +4171,17 @@
 				"LIBRARY_SEARCH_PATHS[arch=armv7]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[arch=armv7s]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneSimulator/i686",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -4205,7 +4218,6 @@
 					USE_FILE32API,
 					TARGET_OS_IPHONE,
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"libs/cocos2dx/kazmath/include\"",
 					"\"libs/cocos2dx\"",
@@ -4214,6 +4226,7 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/include",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Foundation/include",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/JSON/include",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Net/include",
@@ -4231,10 +4244,12 @@
 				"LIBRARY_SEARCH_PATHS[arch=armv7s]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
 					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneSimulator/i686",
+					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

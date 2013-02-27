@@ -24,8 +24,8 @@ IPHONESIMULATOR_GCC="${IPHONESIMULATOR_PLATFORM}/Developer/usr/bin/gcc"
 # Clean up whatever was left from our previous build
 
 rm -rf include lib
-rm -rf "/tmp/openssl-${OPENSSL_VERSION}-*"
-rm -rf "/tmp/openssl-${OPENSSL_VERSION}-*.log"
+#rm -rf "/tmp/openssl-${OPENSSL_VERSION}-*"
+#rm -rf "/tmp/openssl-${OPENSSL_VERSION}-*.log"
 
 build()
 {
@@ -47,8 +47,8 @@ build()
 }
 
 build "armv7" "${IPHONEOS_GCC}" "${IPHONEOS_SDK}"
-build "armv7s" "${IPHONEOS_GCC}" "${IPHONEOS_SDK}"
-build "i386" "${IPHONESIMULATOR_GCC}" "${IPHONESIMULATOR_SDK}"
+#build "armv7s" "${IPHONEOS_GCC}" "${IPHONEOS_SDK}"
+#build "i386" "${IPHONESIMULATOR_GCC}" "${IPHONESIMULATOR_SDK}"
 
 #
 

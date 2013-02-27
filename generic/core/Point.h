@@ -7,6 +7,7 @@ namespace fb {
   class Point {
   public:
     Point(int32_t x = 0, int32_t y = 0);
+    Point(Point&& move);
 
     Point& operator = (Point const & other);
     bool operator ==(Point const & other) const;

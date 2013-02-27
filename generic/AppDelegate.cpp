@@ -51,8 +51,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
   assets.load();
 
   // run
-  pDirector->runWithScene(LogoScene::scene());
-//  pDirector->runWithScene(PanelScene::scene());
+//  pDirector->runWithScene(LogoScene::scene());
+  pDirector->runWithScene(PanelScene::scene());
 
   return true;
 }

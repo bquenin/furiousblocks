@@ -8,22 +8,27 @@
 #include "ComputerPlayer.h"
 #include "PanelHelper.h"
 #include "ComboStarter.h"
+#include "Leveler.h"
 
 ComputerPlayer::ComputerPlayer()
 : cursorMoving(false) {
 }
 
 std::unique_ptr<Move> ComputerPlayer::onMoveRequest(const Panel& panel) {
+  std::unique_ptr<fb::Point> target;
+
   // Helper for the panel
   PanelHelper helper(panel);
+  Leveler leveler(helper);
+  ComboStarter comboStarter(helper);
 
   // Move to return
   auto move = std::unique_ptr<Move>();
 
   // The AI is too fast, just make it stop for a few frames
-//      if (helper.isAnyBlockSwitching()) {
-//        // Do nothing
-//      }
+  //      if (helper.isAnyBlockSwitching()) {
+  //        // Do nothing
+  //      }
 
   // If the cursor is moving to a target,
   // we just wait until it reaches its target.
@@ -31,16 +36,15 @@ std::unique_ptr<Move> ComputerPlayer::onMoveRequest(const Panel& panel) {
   if (cursorMoving) {
     move = moveCursorToCurrentTarget(panel);
   }
-      // Check if we need to lift (Lifter)
-      // Check if we need to level (Leveler)
-      // If a combo is in progress, find a chain (ComboChainer)
-      // Nothing is happening, find a combo starter (ComboStarter)
-  else {
-    ComboStarter comboStarter(helper);
-    auto target = comboStarter.compute();
-    if (target) {
-      move = moveCursorToNewTarget(panel, *target);
-    }
+  // Check if we need to lift (Lifter)
+  // Check if we need to level (Leveler)
+  else if ((target = leveler.compute()) != nullptr) {
+    move = moveCursorToNewTarget(panel, *target);
+  }
+  // If a combo is in progress, find a chain (ComboChainer)
+  // Nothing is happening, find a combo starter (ComboStarter)
+  else if ((target = comboStarter.compute())!= nullptr) {
+    move = moveCursorToNewTarget(panel, *target);
   }
 
   return move;

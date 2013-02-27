@@ -15,11 +15,8 @@
 #import "Social.h"
 
 #ifdef FREEMIUM
-
 #import "Appirater.h"
-
 #endif
-
 
 @implementation AppController
 
