@@ -36,14 +36,16 @@ std::unique_ptr<Move> ComputerPlayer::onMoveRequest(const Panel& panel) {
   if (cursorMoving) {
     move = moveCursorToCurrentTarget(panel);
   }
-  // Check if we need to lift (Lifter)
-  // Check if we need to level (Leveler)
-  else if ((target = leveler.compute()) != nullptr) {
+
+      // Check if we need to lift (Lifter)
+      // Check if we need to level (Leveler)
+  else if ((target = leveler.compute())) {
     move = moveCursorToNewTarget(panel, *target);
   }
-  // If a combo is in progress, find a chain (ComboChainer)
-  // Nothing is happening, find a combo starter (ComboStarter)
-  else if ((target = comboStarter.compute())!= nullptr) {
+
+      // If a combo is in progress, find a chain (ComboChainer)
+      // Nothing is happening, find a combo starter (ComboStarter)
+  else if ((target = comboStarter.compute())) {
     move = moveCursorToNewTarget(panel, *target);
   }
 
@@ -63,8 +65,8 @@ std::unique_ptr<Move> ComputerPlayer::moveCursorToNewTarget(const Panel& panel, 
   if (targetPosition.x < 0) {
     targetPosition.x = 0;
   }
-  if (targetPosition.y > panel.Y_DISPLAY - 2) {
-    targetPosition.y = panel.Y_DISPLAY - 2;
+  if (targetPosition.y > panel.Y_DISPLAY - 1) {
+    targetPosition.y = panel.Y_DISPLAY - 1;
   }
   if (targetPosition.y < 1) {
     targetPosition.y = 1;

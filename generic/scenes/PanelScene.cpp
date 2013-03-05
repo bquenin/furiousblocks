@@ -16,7 +16,6 @@
 #include "AppDelegate.h"
 #include "Social.h"
 #include "ComputerPlayer.h"
-#include "TouchPlayer.h"
 
 #ifdef FREEMIUM
 #include "AdScene.h"
@@ -167,8 +166,19 @@ bool PanelScene::init() {
 }
 
 void PanelScene::update(float dt) {
-  // Situation rendering
+  // State time update
+  stateTime += dt;
+
+  // Tweeners update
+  tweeners.update(dt);
+
+  // Core update
   Panel const &panel = *core->playerToPanel[player];
+
+  // Core tick
+  if (gameRunning && !panel.gameOver) {
+    core->onTick(tick++);
+  }
 
   // Blocks
   for (int y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT + 1; y++) {
@@ -272,9 +282,6 @@ void PanelScene::update(float dt) {
   }
 #endif
 
-  // Tweeners update
-  tweeners.update(dt);
-
   // Level
   level->setString(CCString::createWithFormat("%d", panel.level)->getCString());
 
@@ -286,16 +293,6 @@ void PanelScene::update(float dt) {
   minutes->setString(CCString::createWithFormat("%02d", static_cast<int32_t>(stateTime / 60))->getCString());
   seconds->setString(CCString::createWithFormat("%02d", static_cast<int32_t>(stateTime) % 60)->getCString());
   centisecs->setString(CCString::createWithFormat("%02d", static_cast<int32_t>(stateTime * 100) % 100)->getCString());
-
-  if (!gameRunning || panel.gameOver) {
-    return;
-  }
-
-  // State time update
-  stateTime += dt;
-
-  // Core tick
-  core->onTick(tick++);
 }
 
 void PanelScene::onCombo(Combo* combo) {

@@ -17,13 +17,15 @@ class PanelHelper {
 public:
   PanelHelper(const Panel &panel) : panel(panel) {};
 
-  bool isBlockSwitchPossible(int x, int y) const;
-  bool doesRowContainBlockType(int row, BlockType blockType);
-  
-  std::unique_ptr<fb::Point> getClosestBlock(int column, int row);
-  std::unique_ptr<fb::Point> getClosestBlockWithType(int column, int row, BlockType type);
-  
+  bool isBlockSwitchPossible(const int x, const int y) const;
+  bool isBlockMoveableToPosition(const int start, const int end, const int row) const;
+  bool doesRowContainBlockType(const int row, const BlockType blockType) const;
+
+  std::unique_ptr<fb::Point> getClosestBlock(const int column, const int row) const;
+  std::unique_ptr<fb::Point> getClosestBlockWithType(const int column, const int row, const BlockType type) const;
+
   const Panel &panel;
+
 };
 
 

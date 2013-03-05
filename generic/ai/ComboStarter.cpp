@@ -82,7 +82,7 @@ std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType
         }
       }
     }
-    
+
     // no consecutive blocks
     if (mask[i]) {
       // Check right
@@ -134,25 +134,43 @@ std::unique_ptr<fb::Point> ComboStarter::computeVerticalStarter() {
       // Enforce that the block is actually misaligned by checking the block 1 row above the current block is either null or
       // not of the right type
       // 1 row above
+      auto closestBlockAbove = std::unique_ptr<fb::Point>();
+      auto blockAboveAligned = true;
       if (!panel.blocks[x][y + 1] || panel.blocks[x][y + 1]->type != electedType) {
         // Then look for where the block is
-        auto closestBlock = helper.getClosestBlockWithType(x, y + 1, electedType);
-        if (!closestBlock) {
-          continue;
-        }
-        return closestBlock;
+        blockAboveAligned = false;
+        closestBlockAbove = helper.getClosestBlockWithType(x, y + 1, electedType);
       }
 
       // Enforce that the block is actually misaligned by checking the block 2 rows above the current block is either null or
       // not of the right type
       // 2 rows above
+      auto closestBlockAboveAbove = std::unique_ptr<fb::Point>();
+      auto blockAboveAboveAligned = true;
       if (!panel.blocks[x][y + 2] || panel.blocks[x][y + 2]->type != electedType) {
         // Then look for where the block is
-        auto closestBlock = helper.getClosestBlockWithType(x, y + 2, electedType);
-        if (!closestBlock) {
+        blockAboveAboveAligned = false;
+        closestBlockAboveAbove = helper.getClosestBlockWithType(x, y + 2, electedType);
+      }
+
+      // Both blocks misaligned
+      if (!blockAboveAligned && !blockAboveAboveAligned) {
+        // Make sure we can move the 2 blocks to the target
+        if (!closestBlockAbove || !closestBlockAboveAbove) {
           continue;
         }
-        return closestBlock;
+        if (closestBlockAbove) {
+          return closestBlockAbove;
+        } else {
+          return closestBlockAboveAbove;
+        }
+      }
+
+      if (blockAboveAboveAligned && closestBlockAbove) {
+        return closestBlockAbove;
+      }
+      if (blockAboveAligned && closestBlockAboveAbove) {
+        return closestBlockAboveAbove;
       }
     }
   }

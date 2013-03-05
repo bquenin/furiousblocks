@@ -7,11 +7,22 @@
 
 #include "PanelHelper.h"
 
-bool PanelHelper::isBlockSwitchPossible(int x, int y) const {
+bool PanelHelper::isBlockSwitchPossible(const int x, const int y) const {
   return fb::Block::isMovable(panel.blocks[x][y].get()) && fb::Block::isMovable(panel.blocks[x + 1][y].get());
 }
 
-bool PanelHelper::doesRowContainBlockType(int row, BlockType blockType) {
+bool PanelHelper::isBlockMoveableToPosition(const int start, const int end, const int row) const {
+  const int xStart = start <= end ? start : end;
+  const int xEnd = start <= end ? end : start;
+  for (int x = xStart; x <= xEnd; x++) {
+    if (!fb::Block::isMovable(panel.blocks[x][row].get())) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool PanelHelper::doesRowContainBlockType(const int row, const BlockType blockType) const {
   for (int x = 0; x < panel.X; x++) {
     auto&& current = panel.blocks[x][row];
     if (!fb::Block::isComputable(current.get())) {
@@ -25,7 +36,7 @@ bool PanelHelper::doesRowContainBlockType(int row, BlockType blockType) {
   return false;
 }
 
-std::unique_ptr<fb::Point> PanelHelper::getClosestBlockWithType(int column, int row, BlockType type) {
+std::unique_ptr<fb::Point> PanelHelper::getClosestBlockWithType(const int column, const int row, const BlockType type) const {
   // First check on the left
   auto closestBlockLeft = std::unique_ptr<fb::Point>();
 
@@ -35,8 +46,8 @@ std::unique_ptr<fb::Point> PanelHelper::getClosestBlockWithType(int column, int 
     if (!current || current->type != type) {
       continue;
     }
-    // If the blocks are not switchable for any reason, just break
-    if (!isBlockSwitchPossible(x, row)) {
+    // If the blocks are not movable for any reason, just break
+    if (!isBlockMoveableToPosition(x, column, row)) {
       break;
     }
     closestBlockLeft.reset(new fb::Point(x, row));
@@ -52,8 +63,9 @@ std::unique_ptr<fb::Point> PanelHelper::getClosestBlockWithType(int column, int 
     if (!current || current->type != type) {
       continue;
     }
-    // If the blocks are not switchable for any reason, just break
-    if (!isBlockSwitchPossible(x, row)) {
+
+    // If the blocks are not movable for any reason, just break
+    if (!isBlockMoveableToPosition(x, column, row)) {
       break;
     }
     closestBlockRight.reset(new fb::Point(x, row));
@@ -82,7 +94,7 @@ std::unique_ptr<fb::Point> PanelHelper::getClosestBlockWithType(int column, int 
   return closestBlockLeft;
 }
 
-std::unique_ptr<fb::Point> PanelHelper::getClosestBlock(int column, int row) {
+std::unique_ptr<fb::Point> PanelHelper::getClosestBlock(const int column, const int row) const {
   // First check on the left
   auto closestBlockLeft = std::unique_ptr<fb::Point>();
 
@@ -92,8 +104,8 @@ std::unique_ptr<fb::Point> PanelHelper::getClosestBlock(int column, int row) {
     if (!current) {
       continue;
     }
-    // If the blocks are not switchable for any reason, just break
-    if (!isBlockSwitchPossible(x, row)) {
+    // If the blocks are not movable for any reason, just break
+    if (!isBlockMoveableToPosition(x, column, row)) {
       break;
     }
     closestBlockLeft.reset(new fb::Point(x, row));
@@ -109,8 +121,8 @@ std::unique_ptr<fb::Point> PanelHelper::getClosestBlock(int column, int row) {
     if (!current) {
       continue;
     }
-    // If the blocks are not switchable for any reason, just break
-    if (!isBlockSwitchPossible(x, row)) {
+    // If the blocks are not movable for any reason, just break
+    if (!isBlockMoveableToPosition(x, column, row)) {
       break;
     }
     closestBlockRight.reset(new fb::Point(x, row));

@@ -140,5 +140,4 @@ namespace fb {
   bool Block::isMovable(Block* block) {
     return block == nullptr || (block->state == BlockState::IDLE && block->movable);
   }
-
 }
