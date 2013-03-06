@@ -260,7 +260,9 @@ void Panel::gracePeriod() {
 }
 
 void Panel::freeze(int32_t freezingTime) {
+#ifndef DEBUG
   this->freezingTime = freezingTime;
+#endif
 }
 
 void Panel::newLine() {
@@ -325,6 +327,7 @@ void Panel::mechanics(int64_t tick) {
           if (blocks[x + 1][y]->type == BlockType::INVISIBLE) {
             blocks[x + 1][y]->toDelete();
           }
+          x--;
           break;
         case BlockState::TO_DELETE:
           if (type != BlockType::INVISIBLE) {

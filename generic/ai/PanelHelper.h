@@ -17,7 +17,6 @@ class PanelHelper {
 public:
   PanelHelper(const Panel &panel) : panel(panel) {};
 
-  bool isBlockSwitchPossible(const int x, const int y) const;
   bool isBlockMoveableToPosition(const int start, const int end, const int row) const;
   bool doesRowContainBlockType(const int row, const BlockType blockType) const;
 

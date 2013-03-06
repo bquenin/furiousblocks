@@ -7,10 +7,6 @@
 
 #include "PanelHelper.h"
 
-bool PanelHelper::isBlockSwitchPossible(const int x, const int y) const {
-  return fb::Block::isMovable(panel.blocks[x][y].get()) && fb::Block::isMovable(panel.blocks[x + 1][y].get());
-}
-
 bool PanelHelper::isBlockMoveableToPosition(const int start, const int end, const int row) const {
   const int xStart = start <= end ? start : end;
   const int xEnd = start <= end ? end : start;
