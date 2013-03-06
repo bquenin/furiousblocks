@@ -68,10 +68,11 @@ std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType
       // Check right
       for (int x = i + 2; x < panel.X - 1; x++) {
         if (mask[x + 1]) {
-          return std::unique_ptr<fb::Point>(helper.isBlockMoveableToPosition(x + 1, i + 2, line) ? new fb::Point(x, line) : nullptr);
+          if (helper.isBlockMoveableToPosition(x + 1, i + 2, line)) {
+            return std::unique_ptr<fb::Point>(new fb::Point(x, line));
+          }
         }
       }
-
       // Check left
       for (int x = i - 2; x >= 0; x--) {
         if (mask[x]) {
@@ -85,7 +86,9 @@ std::unique_ptr<fb::Point> ComboStarter::getHorizontalComboPointOnLine(BlockType
       // Check right
       for (int x = i + 1; x < panel.X - 1; x++) {
         if (mask[x + 1]) {
-          return std::unique_ptr<fb::Point>(helper.isBlockMoveableToPosition(x + 1, i + 1, line) ? new fb::Point(x, line) : nullptr);
+          if (helper.isBlockMoveableToPosition(x + 1, i + 1, line)) {
+            return std::unique_ptr<fb::Point>(new fb::Point(x, line));
+          }
         }
       }
       // Check left
