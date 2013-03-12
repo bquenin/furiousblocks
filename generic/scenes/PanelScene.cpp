@@ -15,7 +15,14 @@
 #include "Assets.h"
 #include "AppDelegate.h"
 #include "Social.h"
+
+#ifdef DEBUG
+
 #include "ComputerPlayer.h"
+
+#else
+#include "TouchPlayer.h"
+#endif
 
 #ifdef FREEMIUM
 #include "AdScene.h"
@@ -155,8 +162,11 @@ bool PanelScene::init() {
   core = new FuriousBlocksCore(rand(), *this);
 
   // Player initialization
-//  player = new TouchPlayer();
+#if DEBUG
   player = new ComputerPlayer();
+#else
+  player = new TouchPlayer();
+#endif
   core->addPlayer(player);
 
   // Start scheduling
@@ -266,7 +276,6 @@ void PanelScene::update(float dt) {
       if (y == 0) {
         grid[x][y]->setColor(ccc3(0x50, 0x50, 0x50));
       }
-
     }
   }
 
@@ -286,8 +295,10 @@ void PanelScene::update(float dt) {
   level->setString(CCString::createWithFormat("%d", panel.level)->getCString());
 
   // Score
-  score->setString(CCString::createWithFormat("%d", panel.score)->getCString());
-  panelMenuOverlay->score->setString(CCString::createWithFormat("%d", panel.score)->getCString());
+  std::stringstream scoreText;
+  scoreText << panel.score;
+  score->setString(scoreText.str().c_str());
+  panelMenuOverlay->score->setString(scoreText.str().c_str());
 
   // Time
   minutes->setString(CCString::createWithFormat("%02d", static_cast<int32_t>(stateTime / 60))->getCString());

@@ -53,6 +53,7 @@ LOCAL_CPPFLAGS += -O2 -DNDEBUG -fomit-frame-pointer
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/bootstrap
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/ai
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/animation
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/core
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../generic/ext
@@ -67,11 +68,19 @@ bootstrap/main.cpp \
 bootstrap/CCApplicationEx.cpp \
 ../../../generic/AppDelegate.cpp \
 ../../../generic/Assets.cpp \
+../../../generic/ai/ComboStarter.cpp \
+../../../generic/ai/ComputerPlayer.cpp \
+../../../generic/ai/Leveler.cpp \
+../../../generic/ai/PanelHelper.cpp \
 ../../../generic/animation/Animation.cpp \
 ../../../generic/animation/NonLoopingAnimation.cpp \
 ../../../generic/core/Block.cpp \
+../../../generic/core/BlockBar.cpp \
+../../../generic/core/BlockLine.cpp \
+../../../generic/core/Clearing.cpp \
 ../../../generic/core/Combo.cpp \
 ../../../generic/core/FuriousBlocksCore.cpp \
+../../../generic/core/Garbage.cpp \
 ../../../generic/core/Move.cpp \
 ../../../generic/core/Panel.cpp \
 ../../../generic/core/PanelEvent.cpp \
