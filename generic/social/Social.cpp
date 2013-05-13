@@ -19,7 +19,7 @@
 
 using namespace Poco;
 
-const std::string Social::PIXODROME_SERVER = "http://pixodro.me/";
+const std::string Social::PIXODROME_SERVER = "http://www.pixodro.me/";
 //const std::string Social::PIXODROME_SERVER = "http://pixodro.me:9000/";
 //const std::string Social::PIXODROME_SERVER = "http://192.168.0.11:9000/";
 

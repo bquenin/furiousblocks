@@ -19,6 +19,10 @@
 		02BAF104159E5C0E00BCA0C3 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF101159E5C0E00BCA0C3 /* AppController.mm */; };
 		02BAF105159E5C0E00BCA0C3 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 02BAF102159E5C0E00BCA0C3 /* RootViewController.mm */; };
 		02BAF4B7159E5F5C00BCA0C3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02BAEC49159E57C600BCA0C3 /* AppDelegate.cpp */; };
+		03A1F274174072590038027D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A1F273174072590038027D /* Default-568h@2x.png */; };
+		03A1F275174072950038027D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A1F273174072590038027D /* Default-568h@2x.png */; };
+		03A1F276174072B30038027D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A1F273174072590038027D /* Default-568h@2x.png */; };
+		03A1F277174072BE0038027D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A1F273174072590038027D /* Default-568h@2x.png */; };
 		7969E01583E8A4CCCC5DCD5F /* BlockLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E6DC7499562D6F071A7D /* BlockLine.cpp */; };
 		7969E07349F545F805BEC220 /* CCApplicationEx.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7969EE618BE9CE483747FEEF /* CCApplicationEx.mm */; };
 		7969E07435AE4D096CF37830 /* ScoreEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7969E1C7F6CBE519E9EF04EC /* ScoreEntry.cpp */; };
@@ -98,9 +102,6 @@
 		D215B1B216C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
 		D215B1B316C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
 		D215B1B416C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D215B19516C80B2D00EAADC9 /* AppiraterLocalizable.strings */; };
-		D215B1B616C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
-		D215B1B716C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
-		D215B1B816C80B2D00EAADC9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D215B1A716C80B2D00EAADC9 /* README.md */; };
 		D215B1BA16C80BA700EAADC9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D215B1B916C80BA700EAADC9 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D215B1BB16C80BB800EAADC9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D215B1B916C80BA700EAADC9 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D215B1BC16C80BC400EAADC9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D215B1B916C80BA700EAADC9 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -1058,10 +1059,6 @@
 		D2BD39BB15C5D0A90038E59C /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399D15C5D0A90038E59C /* Point.cpp */; };
 		D2BD39BC15C5D0A90038E59C /* SimpleRNG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BD399F15C5D0A90038E59C /* SimpleRNG.cpp */; };
 		D2DE72D31662D2F300724790 /* CCTexture2DMutable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */; };
-		D2E53EB51697367C0064BD3C /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2E53EB41697367C0064BD3C /* FacebookSDKResources.bundle */; };
-		D2E53EB61697367C0064BD3C /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2E53EB41697367C0064BD3C /* FacebookSDKResources.bundle */; };
-		D2E53EB71697367C0064BD3C /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2E53EB41697367C0064BD3C /* FacebookSDKResources.bundle */; };
-		D2E53EB81697367C0064BD3C /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2E53EB41697367C0064BD3C /* FacebookSDKResources.bundle */; };
 		D2E53EBD169736BC0064BD3C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E53EBA169736BC0064BD3C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D2E53EBE169736BC0064BD3C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E53EBB169736BC0064BD3C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D2E53EBF169736BC0064BD3C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E53EBC169736BC0064BD3C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -1106,6 +1103,7 @@
 		02E20FB0159E492E00CB0ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		02E20FB2159E492E00CB0ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02E20FB4159E492E00CB0ADA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		03A1F273174072590038027D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7969E01F329B16F39A497D9B /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoScene.h; sourceTree = "<group>"; };
 		7969E06309C54DF53182E0F3 /* blocks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = blocks.plist; sourceTree = "<group>"; };
 		7969E0705F45DB90A8CF4DEE /* PanelMenuOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelMenuOverlay.h; sourceTree = "<group>"; };
@@ -1643,10 +1641,10 @@
 		D25B370B164583B600496D14 /* TypeTextAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TypeTextAction.cpp; sourceTree = "<group>"; };
 		D25B370C164583B600496D14 /* TypeTextAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeTextAction.h; sourceTree = "<group>"; };
 		D261DC19167DF531008C6503 /* FuriousBlocksCommercialDistribution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriousBlocksCommercialDistribution.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D261DC1B167DF532008C6503 /* Furious Blocks Free-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Furious Blocks Free-Info.plist"; path = "/Users/bquenin/workspace/furiousblocks/ios/Furious Blocks Free-Info.plist"; sourceTree = "<absolute>"; };
+		D261DC1B167DF532008C6503 /* Furious Blocks Free-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Furious Blocks Free-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D261DD1E167DF54D008C6503 /* FuriousBlocksFreeDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriousBlocksFreeDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D261DE23167DF558008C6503 /* FuriousBlocksCommercialDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriousBlocksCommercialDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D261DE25167DF559008C6503 /* Furious Blocks Commercial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Furious Blocks Commercial-Info.plist"; path = "/Users/bquenin/workspace/furiousblocks/ios/Furious Blocks Commercial-Info.plist"; sourceTree = "<absolute>"; };
+		D261DE25167DF559008C6503 /* Furious Blocks Commercial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Furious Blocks Commercial-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D28E6A3B1673CED400318956 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		D28E6A3D1673CED400318956 /* buttonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonHighlighted.png; sourceTree = "<group>"; };
 		D2956392167550A60034C630 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -1678,7 +1676,7 @@
 		D2BD39A015C5D0A90038E59C /* SimpleRNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleRNG.h; sourceTree = "<group>"; };
 		D2DE72D11662D2F300724790 /* CCTexture2DMutable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTexture2DMutable.cpp; sourceTree = "<group>"; };
 		D2DE72D21662D2F300724790 /* CCTexture2DMutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTexture2DMutable.h; sourceTree = "<group>"; };
-		D2E53EB41697367C0064BD3C /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		D2E53EB41697367C0064BD3C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = SOURCE_ROOT; };
 		D2E53EBA169736BC0064BD3C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		D2E53EBB169736BC0064BD3C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D2E53EBC169736BC0064BD3C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -1835,6 +1833,7 @@
 		02E20F97159E492E00CB0ADA = {
 			isa = PBXGroup;
 			children = (
+				03A1F273174072590038027D /* Default-568h@2x.png */,
 				D215B19116C80B2D00EAADC9 /* appirater-master */,
 				02BAEA13159E577F00BCA0C3 /* assets */,
 				D258918A1673C763003E3F59 /* libs */,
@@ -1865,7 +1864,7 @@
 				D2E53EBA169736BC0064BD3C /* Accounts.framework */,
 				D2E53EBB169736BC0064BD3C /* AdSupport.framework */,
 				D2E53EBC169736BC0064BD3C /* Social.framework */,
-				D2E53EB41697367C0064BD3C /* FacebookSDKResources.bundle */,
+				D2E53EB41697367C0064BD3C /* FacebookSDK.framework */,
 				D2AC0A581697231000BFFB39 /* FacebookSDK.framework */,
 				D203E32816886BEF00FC317B /* SystemConfiguration.framework */,
 				D203E32616886BE400FC317B /* CFNetwork.framework */,
@@ -3012,10 +3011,9 @@
 				D2956393167550A60034C630 /* Icon.png in Resources */,
 				D2956397167551270034C630 /* Icon-72.png in Resources */,
 				D29563991675516B0034C630 /* Icon@2x.png in Resources */,
-				D2E53EB71697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969E86718637B161B33382F /* rootcert.pem in Resources */,
 				D215B1B316C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
-				D215B1B716C80B2D00EAADC9 /* README.md in Resources */,
+				03A1F276174072B30038027D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3040,10 +3038,9 @@
 				D261DC13167DF531008C6503 /* Icon.png in Resources */,
 				D261DC14167DF531008C6503 /* Icon-72.png in Resources */,
 				D261DC15167DF531008C6503 /* Icon@2x.png in Resources */,
-				D2E53EB81697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EDD992FFE86272E82942 /* rootcert.pem in Resources */,
 				D215B1B416C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
-				D215B1B816C80B2D00EAADC9 /* README.md in Resources */,
+				03A1F274174072590038027D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3068,9 +3065,9 @@
 				D261DD18167DF54D008C6503 /* Icon.png in Resources */,
 				D261DD19167DF54D008C6503 /* Icon-72.png in Resources */,
 				D261DD1A167DF54D008C6503 /* Icon@2x.png in Resources */,
-				D2E53EB51697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EAA65F7587E0386426FE /* rootcert.pem in Resources */,
 				D215B1B116C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
+				03A1F277174072BE0038027D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3095,10 +3092,9 @@
 				D261DE1D167DF558008C6503 /* Icon.png in Resources */,
 				D261DE1E167DF558008C6503 /* Icon-72.png in Resources */,
 				D261DE1F167DF558008C6503 /* Icon@2x.png in Resources */,
-				D2E53EB61697367C0064BD3C /* FacebookSDKResources.bundle in Resources */,
 				7969EBE619B642C4DECD01C8 /* rootcert.pem in Resources */,
 				D215B1B216C80B2D00EAADC9 /* AppiraterLocalizable.strings in Resources */,
-				D215B1B616C80B2D00EAADC9 /* README.md in Resources */,
+				03A1F275174072950038027D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4103,7 +4099,7 @@
 		02BAF0FC159E5AAD00BCA0C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bertrand Quenin";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
 					"COCOS2D_DEBUG=1",
@@ -4113,14 +4109,14 @@
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
 				PRODUCT_NAME = FuriousBlocksFreeDistribution;
-				PROVISIONING_PROFILE = "2491854E-B902-4AC4-BF2D-AF59FB3E2DC4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		02BAF0FD159E5AAD00BCA0C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bertrand Quenin";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
 					USE_FILE32API,
@@ -4129,7 +4125,7 @@
 				);
 				INFOPLIST_FILE = "Furious Blocks Free-Info.plist";
 				PRODUCT_NAME = FuriousBlocksFreeDistribution;
-				PROVISIONING_PROFILE = "2491854E-B902-4AC4-BF2D-AF59FB3E2DC4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -4140,7 +4136,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = /Users/bquenin/workspace/furiousblocks/ios;
+				FRAMEWORK_SEARCH_PATHS = /Users/bq/workspace/furiousblocks/ios;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
@@ -4158,32 +4154,31 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
-					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Foundation/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/JSON/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Net/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/XML/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Util/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/NetSSL_OpenSSL/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Crypto/include",
+					"/Users/bq/workspace/furiousblocks/third-party/ios-openssl/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/Foundation/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/JSON/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/Net/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/XML/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/Util/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/NetSSL_OpenSSL/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/Crypto/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				"LIBRARY_SEARCH_PATHS[arch=armv7]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7",
-					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7",
+					"/Users/bq/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[arch=armv7s]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
-					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
+					"/Users/bq/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneSimulator/i686",
-					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneSimulator/i686",
+					"/Users/bq/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
@@ -4210,7 +4205,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = /Users/bquenin/workspace/furiousblocks/ios;
+				FRAMEWORK_SEARCH_PATHS = /Users/bq/workspace/furiousblocks/ios;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = bootstrap/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4226,32 +4221,31 @@
 					"\"libs/extensions\"",
 					"\"libs/cocos2dx/platform/third_party/ios\"",
 					"\"libs/cocos2dx/platform/ios\"",
-					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Foundation/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/JSON/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Net/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/XML/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Util/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/NetSSL_OpenSSL/include",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/Crypto/include",
+					"/Users/bq/workspace/furiousblocks/third-party/ios-openssl/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/Foundation/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/JSON/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/Net/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/XML/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/Util/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/NetSSL_OpenSSL/include",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/Crypto/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				"LIBRARY_SEARCH_PATHS[arch=armv7]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7",
+					"/Users/bq/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[arch=armv7s]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
-					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneOS/armv7s",
+					"/Users/bq/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = (
 					"\"$(SRCROOT)/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/bquenin/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneSimulator/i686",
-					"/Users/bquenin/workspace/furiousblocks/third-party/ios-openssl/lib",
+					"/Users/bq/workspace/furiousblocks/third-party/poco-1.5.1-all/lib/iPhoneSimulator/i686",
+					"/Users/bq/workspace/furiousblocks/third-party/ios-openssl/lib",
 				);
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -4276,20 +4270,20 @@
 		D261DC17167DF531008C6503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bertrand Quenin";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
 				PRODUCT_NAME = FuriousBlocksCommercialDistribution;
-				PROVISIONING_PROFILE = "F26BEBE9-D4DE-470F-B37C-30C930DAA4E0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		D261DC18167DF531008C6503 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bertrand Quenin";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = "Furious Blocks Commercial-Info.plist";
 				PRODUCT_NAME = FuriousBlocksCommercialDistribution;
-				PROVISIONING_PROFILE = "F26BEBE9-D4DE-470F-B37C-30C930DAA4E0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -30,7 +30,7 @@ IPHONE_SDK_BASE         = $(shell ls -d $(IPHONE_SDK_ROOT_DIR)$(IPHONE_SDK_VERSI
 IPHONE_SDK_VERSION_MIN ?= $(patsubst %.sdk,%,$(patsubst $(IPHONE_SDK_ROOT_DIR)%,%,$(IPHONE_SDK_BASE)))
 
 POCO_TARGET_OSNAME     ?= $(IPHONE_SDK)
-POCO_TARGET_OSARCH     ?= armv7s
+POCO_TARGET_OSARCH     ?= armv7
 TOOL_PREFIX            ?= $(shell xcode-select -print-path)/Platforms/$(IPHONE_SDK).platform/Developer/usr/bin
 OSFLAGS                ?= -arch $(POCO_TARGET_OSARCH) -isysroot $(IPHONE_SDK_BASE) -mthumb -miphoneos-version-min=$(IPHONE_SDK_VERSION_MIN)
 
@@ -71,7 +71,7 @@ SHAREDLIBLINKEXT = .dylib
 CFLAGS          = $(OSFLAGS)
 CFLAGS32        =
 CFLAGS64        =
-CXXFLAGS        = $(OSFLAGS) -Wall -Wno-sign-compare -fvisibility=hidden -fvisibility-inlines-hidden -std=c++11 -stdlib=libc++
+CXXFLAGS        = $(OSFLAGS) -Wall -Wno-sign-compare -fvisibility=hidden -fvisibility-inlines-hidden -std=c++11 -stdlib=libc++ -I/Users/bq/workspace/furiousblocks/third-party/ios-openssl/include
 CXXFLAGS32      =
 CXXFLAGS64      =
 LINKFLAGS       = $(OSFLAGS)
