@@ -61,7 +61,7 @@ SHAREDLIBLINKEXT = .so
 CFLAGS          = $(ARCHFLAGS) -fpic -ffunction-sections -funwind-tables -fstack-protector -fno-strict-aliasing -finline-limit=64
 CFLAGS32        =
 CFLAGS64        =
-CXXFLAGS        = $(ARCHFLAGS) -fpic -ffunction-sections -funwind-tables -fstack-protector -fno-strict-aliasing -finline-limit=64 -frtti -fexceptions -std=gnu++0x I/Users/bq/workspace/furiousblocks/third-party/ios-openssl/include
+CXXFLAGS        = $(ARCHFLAGS) -fpic -ffunction-sections -funwind-tables -fstack-protector -fno-strict-aliasing -finline-limit=64 -frtti -fexceptions -std=gnu++0x
 CXXFLAGS32      =
 CXXFLAGS64      =
 LINKFLAGS      += 

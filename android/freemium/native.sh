@@ -1,5 +1,5 @@
-NDK_ROOT=/Users/bquenin/android-ndk-r8d
-COCOS2DX_ROOT=/Users/bquenin/cocos2d-2.0-x-2.0.4
+NDK_ROOT=/Users/bq/android-ndk-r8e
+COCOS2DX_ROOT=/Users/bq/cocos2d-2.0-x-2.0.4
 APP_ROOT=../..
 APP_ANDROID_ROOT=$APP_ROOT/android/freemium
 

@@ -94,19 +94,19 @@ private:
 //
 inline bool FPEnvironmentImpl::isInfiniteImpl(float value)
 {
-  return isinf(value) != 0;
+  return std::isinf(value) != 0;
 }
 
 
 inline bool FPEnvironmentImpl::isInfiniteImpl(double value)
 {
-  return isinf(value) != 0;
+  return std::isinf(value) != 0;
 }
 
 
 inline bool FPEnvironmentImpl::isInfiniteImpl(long double value)
 {
-  return isinf((double) value) != 0;
+  return std::isinf((double) value) != 0;
 }
 
 

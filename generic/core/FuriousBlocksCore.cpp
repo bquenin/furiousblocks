@@ -9,7 +9,7 @@ FuriousBlocksCore::FuriousBlocksCore(int32_t seed, FuriousBlocksCoreListener& li
 , singleTick(false)
 , listener(listener) {
   SimpleRNG random(seed);
-  for (int32_t y = 1; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
+  for (int32_t y = 0; y < FuriousBlocksCoreDefaults::PANEL_HEIGHT; y++) {
     for (int32_t x = 0; x < FuriousBlocksCoreDefaults::PANEL_WIDTH; x++) {
       initialBlockTypes[x][y] = static_cast<BlockType>(y < 4 ? random.nextInt() % Panel::numberOfRegularBlocks : -1);
     }
